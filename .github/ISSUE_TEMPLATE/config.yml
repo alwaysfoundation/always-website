@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security issue privately
+    url: mailto:security@alwaysfoundation.org
+    about: Please don't open public issues for vulnerabilities.
+  - name: Safeguarding concern
+    url: mailto:safeguarding@alwaysfoundation.org
+    about: Concerns about a person's safety go to a trained person, not GitHub.
+  - name: Claim your church
+    url: https://alwaysfoundation.org/#/claim
+    about: Churches claim their page on the website.

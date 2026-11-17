@@ -1,0 +1,12 @@
+name: check
+on: [pull_request, push]
+permissions: { contents: read }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - run: cd src && python3 build_site.py
+      - run: git diff --stat --exit-code -- index.html || echo "index.html differs from a fresh build; rebuild before merging."

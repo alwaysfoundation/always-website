@@ -1,0 +1,18 @@
+name: A missing church or ministry
+description: Tell us about a church or ministry that isn't in the directory.
+labels: ["directory", "triage"]
+body:
+  - type: input
+    id: name
+    attributes: { label: Name }
+    validations: { required: true }
+  - type: input
+    id: where
+    attributes: { label: Suburb and state }
+    validations: { required: true }
+  - type: input
+    id: url
+    attributes: { label: Website }
+  - type: input
+    id: network
+    attributes: { label: Denomination or network }

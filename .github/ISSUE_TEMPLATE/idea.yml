@@ -1,0 +1,13 @@
+name: Share an idea
+description: Something that would help people find their next step.
+labels: ["idea", "triage"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+    validations: { required: true }
+  - type: textarea
+    id: who
+    attributes:
+      label: Who it helps, and how
