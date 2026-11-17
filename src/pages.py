@@ -1,6 +1,6 @@
 """Website pages: For churches, For ministries, The Always app, FAQs."""
 import json
-L = json.load(open('/home/claude/logo/paths.json'))
+L = json.load(open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)), 'paths.json')))
 def wm(c, h): return f'<svg width="{round(h*1328/366)}" height="{h}" viewBox="186 250 1328 366" role="img" aria-label="Always"><path fill="{c}" fill-rule="evenodd" d="{"".join(L["word"])}"/><path fill="#EE8B54" d="{"".join(L["cross"])}"/></svg>'
 
 def steps(items):
