@@ -387,3 +387,30 @@ form.cl-form { display: grid; gap: 16px; background: none; padding: 0; border-ra
 .fb-kind input:focus-visible + span { outline: 3px solid var(--peach); outline-offset: 2px; }
 @media (max-width: 860px) { .cl-grid { grid-template-columns: 1fr; } .fb-kinds { grid-template-columns: 1fr; } }
 '''
+
+# ---------------- Research
+RESEARCH_ITEMS = [
+  ('Brief', 'In progress', 'What happens after a yes', 'Every week people respond to Jesus at events, services and online. We are documenting what happens next across Australian ministries: how responses are captured, where people are lost between ministries, and what helps them take a next step.', None),
+  ('Standard', 'Published', 'Consent that travels with the person', 'How a consent receipt can move between ministries and systems, what it records, and why every system checks it before it acts. Built on ISO/IEC TS 27560 for consent records.', '#/docs/consent'),
+  ('Field notes', 'Published', 'Agents with a human in the loop', 'The Always Network grew out of an earlier project called Branches. Its agent checked each response and handed it to a person before anything was shared. Trialled at a youth event with UEN, it shaped how the Always Agent works today.', '#/docs/always-agent'),
+  ('Open data', 'Published', 'Mapping the churches of Australia', 'How we built a directory of 3,937 evangelical and Pentecostal churches and ministries from public denominational and network directories, and how churches correct and claim their own listing.', '#/directory'),
+  ('Brief', 'In progress', 'Measuring humbly', 'What we count, what we don’t, and why a person is only counted as connected when they say so themselves. Totals only, with minimum group sizes so no one can be identified.', '#/docs/results'),
+]
+RESEARCH = '''<section class="page-hero"><div class="wrap"><h1>Research</h1><p>We learn in the open: briefs, field notes and open data from building Always with churches and ministries.</p></div></section>
+<section class="sec pg-sec"><div class="wrap"><div class="rs-list">''' + ''.join(
+  f'<article class="rs-item"><p class="rs-meta">{k} · <span class="{"rs-live" if s == "Published" else "rs-soon"}">{s}</span></p><h2>{t}</h2><p>{d}</p>' + (f'<a href="{l}">Read more</a>' if l else '') + '</article>'
+  for k, s, t, d, l in RESEARCH_ITEMS) + '''</div>
+<div class="rs-note"><h3>Research with us</h3><p>Working on discipleship, follow-up or faith and technology in Australia? We'd love to collaborate and share what we learn. Email <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p></div>
+</div></section>'''
+RESEARCH_CSS = '''
+.rs-list { display: grid; gap: 18px; }
+.rs-item { background: var(--paper); border-radius: 26px; padding: 32px 36px; display: grid; gap: 10px; }
+.rs-item h2 { font-size: 27px; letter-spacing: -0.02em; color: var(--green); }
+.rs-item p { margin: 0; color: var(--soft); max-width: 70ch; }
+.rs-item a { color: var(--clay); font-weight: 600; justify-self: start; }
+.rs-meta { font: 700 15px var(--head); color: var(--muted) !important; }
+.rs-live { color: var(--green); } .rs-soon { color: var(--clay); }
+.rs-note { margin-top: 56px; background: var(--sage); border-radius: 26px; padding: 36px; }
+.rs-note h3 { font-size: 27px; color: var(--green); } .rs-note p { margin: 10px 0 0; color: var(--soft); }
+@media (max-width: 640px) { .rs-item, .rs-note { padding: 26px 22px; } }
+'''
