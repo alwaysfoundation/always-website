@@ -1,9 +1,10 @@
 """Assemble the Always Foundation website: home, directory, about and docs in one page with hash routes."""
 import json, html, os
+import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
-css = open(os.path.join(ROOT, 'base.css')).read()
-home = open(os.path.join(ROOT, 'main.html')).read()
+css = open(os.path.join(ROOT,'base.css')).read()
+home = open(os.path.join(ROOT,'main.html')).read()
 import extras, pages as P, re as _re
 def _swap(h, marker, new):
     i = h.find(marker); a = h.rfind('<section', 0, i); b = h.find('</section>', i) + 10
@@ -12,7 +13,7 @@ home = _swap(home, 'class="sec map"', '')
 import base64 as _b
 home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
 home = _swap(home, 'class="sec promise"', extras.FLOW_SECTION)
-directory = open(os.path.join(ROOT, 'dir.json')).read()
+directory = open(os.path.join(ROOT,'dir.json')).read()
 COUNT = len(json.loads(directory))
 
 # ---------------------------------------------------------------- Docs content
@@ -159,9 +160,33 @@ DOCS = [
 <pre><code>&lt;always-response page="testimony-video"&gt;&lt;/always-response&gt;</code></pre>
 <p>An invisible check stops spam without puzzles. The same consent and safeguards apply as at any event, and each person is introduced to a church near where they live.</p>
 """),
-  ("results", "Results you can trust", """
-<p>Every ministry measures the same things the same way: responses, received, accepted, first contact, and connected (confirmed by the person). We show totals only, and never a figure smaller than 10 adults or 20 young people, so no one can be identified.</p>
-<p>A public results page shows how the whole network is going each month, including the people we couldn't connect.</p>
+  ("results", "Reports for your funders", """
+<p class="lead">If donors, a foundation or your denomination fund your ministry, Always writes your report for you, every month.</p>
+<p>Always already knows each step a person takes after they respond, so there is nothing extra to enter. Pick a month, a quarter or the financial year, and your report is ready.</p>
+<h2>What's in a report</h2>
+<ol>
+<li>The journey: how many people responded, were introduced to a church or ministry nearby, were accepted, were contacted, and told us they are connected.</li>
+<li>What people asked for, like finding a church or exploring faith.</li>
+<li>Where they live, by state.</li>
+<li>Month by month, so you can show the trend.</li>
+<li>A short story, only when the person has agreed to share it.</li>
+<li>Plain definitions of every number, so your funder knows exactly what each one means.</li>
+</ol>
+<h2>An example</h2>
+<table class="doc-table"><thead><tr><th scope="col">City worship tour, July to September</th><th scope="col">People</th></tr></thead><tbody>
+<tr><th scope="row">Responded</th><td>1,240</td></tr>
+<tr><th scope="row">Introduced to a church nearby</th><td>1,188</td></tr>
+<tr><th scope="row">Accepted by that church</th><td>1,046</td></tr>
+<tr><th scope="row">Contacted</th><td>962</td></tr>
+<tr><th scope="row">Told us they are connected</th><td>418</td></tr>
+</tbody></table>
+<p><small>Every figure here is made up.</small></p>
+<h2>Sharing it</h2>
+<p>Download it as a PDF or a spreadsheet, or send your funder a link. A link shows the report exactly as it was when you made it, and you can switch it off any time. Add your own title, your funder's name and a short introduction.</p>
+<h2>Keeping people safe</h2>
+<p>Reports show totals only. Any figure under 10 people, or 20 where young people are included, is shown as "too few to show", so no one can be identified. No funder ever sees a person's name or details.</p>
+<h2>Fair credit</h2>
+<p>Each ministry sees what happened to the people it introduced, and each church sees the people it welcomed. Every number is counted once, using the same definitions across the whole network, so reports from different ministries can be compared fairly.</p>
 """),
  ]),
  ("For people", [
@@ -580,6 +605,12 @@ DECK_CSS = '''
 .prose p, .prose li { font-size: 17px; }
 .doc-meta { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
 .doc-meta a { color: var(--clay); }
+.doc-table { width: 100%; border-collapse: collapse; margin: 16px 0 8px; font-size: 16px; }
+.doc-table th, .doc-table td { text-align: left; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.doc-table thead th { font-weight: 700; color: var(--green); }
+.doc-table thead th:last-child { text-align: right; }
+.doc-table td { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.doc-table tbody th { font-weight: 400; }
 @media (max-width: 860px) { #page-docs .page-hero { padding: 120px 0 40px; } }
 .rv { transform: none; transition: opacity .6s ease; }
 .word .verse { font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; color: var(--green); }
@@ -872,5 +903,5 @@ import re as _re2
 doc = _re2.sub(r'(<form\b[^>]*>)', r'\1<input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">', doc)
 doc = doc.replace('</footer>', '<p class="photo-credit">Photos from Unsplash under the Unsplash License: Vitaly Gariev, Nathan Mullet, Meredith Spencer, Amonwat Dumkrut. Event photo: UEN, used with permission.</p></footer>', 1)
 doc = doc.replace('</style>', '.photo-band{margin:0;height:min(64vh,620px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>', 1)
-open(os.path.join(ROOT, '..', 'index.html'), 'w').write(doc)
+open(os.path.join(ROOT,'index.html'), 'w').write(doc)
 print('pages', len(order), 'bytes', len(doc))

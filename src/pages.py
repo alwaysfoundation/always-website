@@ -1,6 +1,8 @@
 """Website pages: For churches, For ministries, The Always app, FAQs."""
 import json
-L = json.load(open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)), 'paths.json')))
+import os
+ROOT = os.path.dirname(os.path.abspath(__file__))
+L = json.load(open(os.path.join(ROOT,'paths.json')))
 def wm(c, h): return f'<svg width="{round(h*1328/366)}" height="{h}" viewBox="186 250 1328 366" role="img" aria-label="Always"><path fill="{c}" fill-rule="evenodd" d="{"".join(L["word"])}"/><path fill="#EE8B54" d="{"".join(L["cross"])}"/></svg>'
 
 def steps(items):
@@ -32,7 +34,7 @@ CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What your church gets</h2>
-  {feats([('Your page on the map', 'Your welcome, service times, what to expect, and the next steps you offer, in your colours.'), ('Introductions near you', 'People who have already said yes to Jesus, within the area you choose.'), ('Next steps and capacity', 'Choose what you offer and how many people you can welcome each month. Pause any time.'), ('Your team', 'Invite your pastor, connect lead and youth leaders, each with the right access.'), ('Walking with', 'Keep track of everyone you are welcoming, and see when they tell us they are connected.'), ('Your own tools', 'Use the free inbox, or connect your church management system through the API.')])}
+  {feats([('Your page on the map', 'Your welcome, service times, what to expect, and the next steps you offer, in your colours.'), ('Introductions near you', 'People who have already said yes to Jesus, within the area you choose.'), ('Next steps and capacity', 'Choose what you offer and how many people you can welcome each month. Pause any time.'), ('Your team', 'Invite your pastor, connect lead and youth leaders, each with the right access.'), ('Walking with', 'Keep track of everyone you are welcoming, and get a simple monthly report for your leaders.'), ('Your own tools', 'Use the free inbox, or connect your church management system through the API.')])}
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/directory">Find your church</a><a class="btn btn-green" href="#/docs/claim">How claiming works</a></div>
 </div></section>'''
 
@@ -47,15 +49,23 @@ ministry_desk = f'''<div class="pg-desk rv" aria-label="The ministry dashboard o
 </div>'''
 ministry_phone = phone('<p class="pg-mbrand">YOUR MINISTRY</p><p class="pg-mh">Said yes tonight? Take your next step.</p><div class="pg-mo sel">Find a church near me</div><div class="pg-mo">Join a youth group</div><div class="pg-mo">Explore faith first</div><div class="pg-mbtn">Continue</div>', 'dark')
 
+report_mock = '<div class="pg-desk pg-report rv" aria-label="An example monthly report"><div class="pg-desk-main"><div class="pg-row-h"><b>September report</b><em class="ok">Ready</em></div><span class="pg-mut">City worship tour · Prepared for our supporters</span><div class="pg-kpis">' + ''.join(f'<div><b{" class=pe" if i == 3 else ""}>{v}</b><span>{l}</span></div>' for i, (v, l) in enumerate([('310', 'Responded'), ('295', 'Introduced'), ('258', 'Accepted'), ('117', 'Connected')])) + '</div><div class="pg-btns"><span class="pg-b">Download PDF</span><span class="pg-b ln">Share a link</span></div><p class="pg-mut">Example figures. Totals only.</p></div></div>'
+
 MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries</h1><p>Tours, camps, youth events, campus and street outreach, and media ministries: give everyone who responds a next step near where they live.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">From the altar call to a church family</h2>
-  {steps([('Create a response page', 'Choose the next steps you offer and add your brand. Ready in minutes.'), ('Invite a response', 'Show the QR code on the big screen, hand out cards, or use the response card in your own app.'), ('See the fruit', 'Watch results live: who responded, who was introduced to a church nearby, and who is connected.')])}
+  {steps([('Create a response page', 'Choose the next steps you offer and add your brand. Ready in minutes.'), ('Invite a response', 'Show the QR code on the big screen, hand out cards, or use the response card in your own app.'), ('See the fruit', 'Watch results live, and get a monthly report ready for your funders and board.')])}
 </div></section>
 <section class="sec pg-sec pg-night"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Your brand. Live results.</h2><p class="pg-lead rv">People respond on a page that looks and sounds like you. Your team sees totals as they happen, and each person's details go only to the church that welcomes them.</p>
   <ul class="pg-list rv"><li>Results for every event, tour and campus.</li><li>An inbox for the steps you offer yourself, like a youth night or a course.</li><li>Street teams and evangelists use the Always app to show their own QR.</li></ul></div>
   <div class="pg-mocks">{ministry_desk}<div class="pg-phone-over rv">{ministry_phone}</div></div>
+</div></section>
+<section class="sec pg-sec"><div class="wrap pg-split">
+  <div><h2 class="pg-h rv">Reporting your funders can trust</h2><p class="pg-lead rv">Many ministries answer to donors, foundations or a denomination. Always writes your report for you each month, from the steps people have already taken. Nothing extra to enter.</p>
+  <ul class="pg-list rv"><li>Responded, introduced, accepted, contacted and connected, month by month.</li><li>Download a PDF or spreadsheet, or send your funder a link you can switch off.</li><li>Your title, your funder's name, your words. Totals only, so no one can be identified.</li></ul>
+  <div class="pg-cta rv" style="margin-top:24px"><a class="btn btn-green" href="#/docs/results">See what's in a report</a></div></div>
+  <div class="pg-mocks">{report_mock}</div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony video, a sermon or a post? Add a response link or QR in the description, or embed the response card on your website. People anywhere in Australia can say yes and be introduced to a church near them.</p></div>
@@ -68,7 +78,7 @@ always.au/r/testimony-video</code></pre>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Built for events of every size</h2>
-  {feats([('Response pages and QR codes', 'For the big screen, printed cards, video descriptions and short links.'), ('Leading the moment', 'Simple wording for the altar call: invite, pray, respond, welcome.'), ('Your team', 'Response team leads, evangelists and youth leaders, each with the right access.'), ('Safe for young people', 'Young people are introduced only to verified youth partners. Under 15s need a parent to confirm.'), ('Australia-wide', 'People are introduced to a church near where they live, anywhere in Australia.'), ('Open API and SDK', 'Add the response card to your own app or website.')])}
+  {feats([('Response pages and QR codes', 'For the big screen, printed cards, video descriptions and short links.'), ('Leading the moment', 'Simple wording for the altar call: invite, pray, respond, welcome.'), ('Your team', 'Response team leads, evangelists and youth leaders, each with the right access.'), ('Safe for young people', 'Young people are introduced only to verified youth partners. Under 15s need a parent to confirm.'), ('Reports for funders', 'A monthly report with clear definitions, ready for donors, foundations and your board.'), ('Open API and SDK', 'Add the response card to your own app or website.')])}
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section>'''
 
@@ -110,6 +120,9 @@ FAQ_GROUPS = [
  ('For ministries and events', [
   ('Can we use our own brand?', 'Yes. Response pages, QR codes and texts can use your colours, logo and wording.'),
   ('What results do we see?', 'Totals for each event: responded, introduced, accepted and connected. Each person\'s details go only to the church that welcomes them.'),
+  ('Can Always help us report to our funders?', 'Yes. Always writes a monthly report for you from the steps people have already taken: who responded, who was introduced, who was contacted and who is connected. Download it as a PDF or spreadsheet, or send your funder a link.'),
+  ('Will our funders see people\'s details?', 'No. Reports show totals only, and small numbers are hidden so no one can be identified.'),
+  ('Can we make the report our own?', 'Yes. Add your title, your funder\'s name and a short introduction. If a funder needs something specific, talk to us.'),
   ('Can we receive introductions ourselves?', 'Yes, for the steps you offer, like a youth night or a course.'),
   ('Can people respond online?', 'Yes. Add a response link or QR to a video description or post, or embed the response card on your website. An invisible check stops spam without puzzles.'),
   ('Can we list our events?', 'Yes. Add them from Always for churches and ministries, and they show on our Events page and in the Always app.'),
@@ -164,6 +177,8 @@ CSS = '''
 .page-hero .pg-screen p, .page-hero .pg-screen b { color: var(--ink); }
 .page-hero .pg-verse p { color: var(--cream); }
 .pg-desk { background: var(--paper); color: var(--ink); border-radius: 20px; display: grid; grid-template-columns: 150px 1fr; overflow: hidden; box-shadow: 0 40px 70px -40px rgba(0,0,0,.45); font-size: 13px; }
+.pg-report { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+.pg-report .pg-desk-main { min-height: 0; gap: 10px; }
 .pg-desk-nav { background: var(--green); color: var(--on-green); padding: 18px 12px; display: flex; flex-direction: column; gap: 4px; }
 .pg-desk-nav svg { margin: 0 6px 14px; }
 .pg-desk-nav span { padding: 8px 10px; border-radius: 9px; font: 600 12.5px var(--head); }
