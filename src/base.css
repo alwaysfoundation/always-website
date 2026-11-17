@@ -61,7 +61,7 @@ nav a:hover { color: var(--cream); }
 .sec { padding: 140px 0; }
 .sec-title { font-size: clamp(40px, 5.4vw, 72px); max-width: 15ch; color: var(--green); }
 .sec-lede { margin-top: 22px; max-width: 660px; font-size: 21px; color: var(--soft); }
-.tag { font: 700 14px/1 var(--head); letter-spacing: .08em; text-transform: uppercase; color: var(--clay); }
+.tag { font: 700 14px/1 var(--head); color: var(--clay); }
 
 /* Steps */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 64px; }
@@ -108,7 +108,7 @@ nav a:hover { color: var(--cream); }
 .tick { padding: 30px 28px 0 0; position: relative; }
 .tick::before { content: ''; position: absolute; top: -9px; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 3px solid var(--green); }
 .tick:last-child::before { background: var(--peach); border-color: var(--peach); }
-.tick .t { font: 800 15px/1 var(--head); letter-spacing: .06em; text-transform: uppercase; color: var(--clay); }
+.tick .t { font: 800 15px/1 var(--head); color: var(--clay); }
 .tick h3 { margin-top: 14px; font-size: 26px; letter-spacing: -0.03em; }
 .tick p { margin-top: 10px; color: var(--soft); font-size: 16.5px; }
 
@@ -135,7 +135,7 @@ nav a:hover { color: var(--cream); }
 .story-side { background: var(--green); color: var(--cream); padding: 56px 48px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
 .story-side .who { font: 800 34px/1.05 var(--head); letter-spacing: -0.03em; }
 .story-side dl { margin: 0; display: grid; gap: 16px; }
-.story-side dt { font: 700 13px/1 var(--head); letter-spacing: .08em; text-transform: uppercase; color: var(--peach); }
+.story-side dt { font: 700 13px/1 var(--head); color: var(--peach); }
 .story-side dd { margin: 6px 0 0; color: var(--on-green); }
 .story-body { padding: 56px 56px; display: grid; gap: 28px; align-content: center; }
 .story-body blockquote { margin: 0; font: 700 30px/1.25 var(--head); letter-spacing: -0.025em; color: var(--green); }

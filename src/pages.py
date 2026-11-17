@@ -1,8 +1,6 @@
-import os
-ROOT = os.path.dirname(os.path.abspath(__file__))
 """Website pages: For churches, For ministries, The Always app, FAQs."""
 import json
-L = json.load(open(os.path.join(ROOT, 'paths.json')))
+L = json.load(open('/home/claude/logo/paths.json'))
 def wm(c, h): return f'<svg width="{round(h*1328/366)}" height="{h}" viewBox="186 250 1328 366" role="img" aria-label="Always"><path fill="{c}" fill-rule="evenodd" d="{"".join(L["word"])}"/><path fill="#EE8B54" d="{"".join(L["cross"])}"/></svg>'
 
 def steps(items):
@@ -204,7 +202,7 @@ em.new { background: #FDF0D9; color: #7A4B07; } em.ok { background: var(--sage);
 .pg-card.hl { border: 2px solid var(--peach); }
 .pg-card .pg-row-h b { font-size: 14px; }
 .pg-mbrand { font: 800 11px var(--head); letter-spacing: .12em; margin: 0; }
-.pg-mh { font: 800 17px/1.15 var(--head); text-transform: uppercase; margin: 6px 0; }
+.pg-mh { font: 800 17px/1.15 var(--head); margin: 6px 0; }
 .pg-mo { background: #151B3A; border: 1px solid #252C55; border-radius: 10px; padding: 10px; font-size: 12px; }
 .pg-mo.sel { background: #5B6AD6; border-color: #5B6AD6; }
 .pg-mbtn { margin-top: auto; background: #5B6AD6; border-radius: 10px; min-height: 38px; display: flex; align-items: center; justify-content: center; font-weight: 600; }
