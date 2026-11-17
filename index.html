@@ -207,9 +207,10 @@ footer .brand svg.wm { height: 28px; }
 @media (max-width: 480px) { header .brand svg.wm { height: 26px; } header .brand { font-size: 21px; } }
 /* Multi-page */
 .page[hidden] { display: none; }
-.page-hero { background: var(--green); color: var(--cream); padding: 150px 0 72px; }
+.page-hero { background: var(--green); color: var(--cream); padding: 176px 0 104px; }
+@media (max-width: 860px) { .page-hero { padding: 128px 0 64px; } }
 .page-hero h1 { font-size: clamp(44px, 6vw, 84px); letter-spacing: -0.045em; }
-.page-hero p { margin-top: 18px; max-width: 680px; font-size: 20px; color: var(--on-green); }
+.page-hero p { margin-top: 22px; max-width: 700px; font-size: 22px; line-height: 1.5; color: var(--on-green); }
 nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; text-decoration-color: var(--peach); text-underline-offset: 8px; text-decoration-thickness: 2px; }
 
 /* Directory */
@@ -553,6 +554,46 @@ form.cl-form { display: grid; gap: 16px; background: none; padding: 0; border-ra
 .fb-kind input:checked + span b { color: var(--cream); }
 .fb-kind input:focus-visible + span { outline: 3px solid var(--peach); outline-offset: 2px; }
 @media (max-width: 860px) { .cl-grid { grid-template-columns: 1fr; } .fb-kinds { grid-template-columns: 1fr; } }
+
+/* ---- Aligned with the interactive deck ---- */
+.rv { transform: none; transition: opacity .6s ease; }
+.word .verse { font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; color: var(--green); }
+.word .verse::before { content: '\201C'; display: inline; font-size: inherit; line-height: inherit; margin: 0; color: inherit; }
+.word .verse::after { content: '\201D'; }
+.word .cite { font: 700 17px var(--head); color: var(--clay); }
+@media (max-width: 860px) { .southland svg.cross { display: none; } }
+.btn { border-radius: 16px; }
+.sec-title, .page-hero h1 { letter-spacing: -0.035em; }
+.tag, .lm-k { display: block; font: 700 17px/1.2 var(--head); color: var(--clay); margin-bottom: 18px; }
+.sec-lede { color: var(--muted); }
+.southland { background: var(--cream); color: var(--ink); }
+.southland .year { color: var(--clay); }
+.southland .year-sub { color: var(--muted); }
+.southland h2 { color: var(--green); }
+.southland p { color: var(--soft); }
+.southland .prayer { color: var(--ink); border-left-color: var(--orange, #EE8B54); font-family: 'Newsreader', Georgia, serif; font-size: 23px; line-height: 1.45; }
+.southland svg.cross path { fill: var(--green); } .southland svg.cross { opacity: .06; }
+.churches { background: var(--sage); color: var(--ink); }
+.churches .sec-title { color: var(--green); }
+.churches .sec-lede { color: var(--muted); }
+.gift { background: var(--paper); }
+.gift h3 { color: var(--ink); }
+.gift p { color: var(--muted); }
+.story { background: var(--cream); }
+.app-band { background: var(--peach); color: var(--night); padding: 0; overflow: hidden; }
+.app-band-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 80px; align-items: stretch; }
+.app-band-grid > div:first-child { padding: 140px 0; }
+.app-band .tag { color: var(--night); }
+.app-band .sec-title { color: var(--night); max-width: 14ch; }
+.app-band .sec-lede { color: #3B2A1F; }
+.app-band .ctas { margin-top: 36px; }
+.app-band-mark { background: var(--green); display: flex; align-items: center; justify-content: center; margin-right: calc(-1 * max(40px, (100vw - 1240px) / 2 + 40px)); }
+.app-band-mark svg { width: 96px; }
+@media (max-width: 860px) {
+  .app-band-grid { grid-template-columns: 1fr; gap: 0; }
+  .app-band-grid > div:first-child { padding: 96px 0 56px; }
+  .app-band-mark { margin: 0 -22px; height: 200px; }
+}
 </style>
 </head>
 <body class="no-js">
@@ -714,6 +755,17 @@ form.cl-form { display: grid; gap: 16px; background: none; padding: 0; border-ra
   </div>
 </section>
 
+<section class="sec app-band" id="app-band">
+  <div class="wrap app-band-grid">
+    <div>
+      <p class="tag rv">The Always app</p>
+      <h2 class="sec-title rv">Every Christian can be someone's next step.</h2>
+      <p class="sec-lede rv">Often the best next step is a person: the friend who prayed with them, the evangelist who met them on the street. The free Always app helps every believer understand the gospel, share it, and walk with people into a church family.</p>
+      <div class="ctas rv"><a class="btn btn-green" href="#/app">See the Always app</a></div>
+    </div>
+    <div class="app-band-mark" aria-hidden="true"><svg viewBox="1316 251 196 312"><path fill="#EE8B54" d="M1434.5,553.6C1436.3,552.3 1436.4,549.1 1436.4,463.1L1436.5,374.0L1468.9,374.0C1497.7,374.0 1501.5,373.8 1503.2,372.3C1504.8,370.9 1505.0,368.9 1505.0,352.8C1505.0,342.3 1504.6,334.1 1504.0,332.9C1503.0,331.1 1501.5,331.0 1470.0,331.0L1437.0,331.0L1437.0,296.4C1437.0,274.5 1436.6,261.2 1436.0,259.9C1435.0,258.1 1433.7,258.0 1413.4,258.0L1392.0,258.0L1391.0,260.6C1390.4,262.0 1390.0,277.4 1390.0,297.1L1390.0,331.0L1357.7,331.0C1333.9,331.0 1325.1,331.3 1324.2,332.2C1323.3,333.1 1323.0,339.0 1323.0,352.7C1323.0,370.7 1323.1,372.0 1324.9,373.0C1326.2,373.6 1338.6,374.0 1358.4,374.0L1390.0,374.0L1390.0,462.5C1390.0,549.7 1390.0,551.0 1392.0,553.0C1393.9,554.9 1395.3,555.0 1413.3,555.0C1428.1,555.0 1433.1,554.7 1434.5,553.6Z"/></svg></div>
+  </div>
+</section>
 <section class="sec story" id="stories">
   <div class="wrap">
     <div class="story-card rv">

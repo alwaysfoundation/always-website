@@ -331,6 +331,7 @@ const ok = await verifyWebhook({
 <li><b>Contributions</b> use the Developer Certificate of Origin. Contributors keep their copyright. AI-assisted work is disclosed.</li>
 <li>Every change needs two human approvals, with code owners for consent, minors, security and routing.</li>
 <li>People's information always stays private.</li>
+<li><b>Speech to text</b> in the Always app uses NVIDIA Parakeet TDT 0.6B, an open-weights model under CC BY 4.0, running offline on the phone. Credit: NVIDIA.</li>
 </ul>
 <p>Code lives at <b>github.com/alwaysfoundation</b>. Our focus is Australia, but anyone, anywhere, can use the technology for their own network.</p>
 """),
@@ -363,9 +364,10 @@ footer .brand svg.wm { height: 28px; }
 @media (max-width: 480px) { header .brand svg.wm { height: 26px; } header .brand { font-size: 21px; } }
 /* Multi-page */
 .page[hidden] { display: none; }
-.page-hero { background: var(--green); color: var(--cream); padding: 150px 0 72px; }
+.page-hero { background: var(--green); color: var(--cream); padding: 176px 0 104px; }
+@media (max-width: 860px) { .page-hero { padding: 128px 0 64px; } }
 .page-hero h1 { font-size: clamp(44px, 6vw, 84px); letter-spacing: -0.045em; }
-.page-hero p { margin-top: 18px; max-width: 680px; font-size: 20px; color: var(--on-green); }
+.page-hero p { margin-top: 22px; max-width: 700px; font-size: 22px; line-height: 1.5; color: var(--on-green); }
 nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; text-decoration-color: var(--peach); text-underline-offset: 8px; text-decoration-thickness: 2px; }
 
 /* Directory */
@@ -536,6 +538,48 @@ docs_page = f"""
   <article class="prose" id="doc"></article></div>
 </div>
 """
+
+DECK_CSS = '''
+/* ---- Aligned with the interactive deck ---- */
+.rv { transform: none; transition: opacity .6s ease; }
+.word .verse { font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; color: var(--green); }
+.word .verse::before { content: '\\201C'; display: inline; font-size: inherit; line-height: inherit; margin: 0; color: inherit; }
+.word .verse::after { content: '\\201D'; }
+.word .cite { font: 700 17px var(--head); color: var(--clay); }
+@media (max-width: 860px) { .southland svg.cross { display: none; } }
+.btn { border-radius: 16px; }
+.sec-title, .page-hero h1 { letter-spacing: -0.035em; }
+.tag, .lm-k { display: block; font: 700 17px/1.2 var(--head); color: var(--clay); margin-bottom: 18px; }
+.sec-lede { color: var(--muted); }
+.southland { background: var(--cream); color: var(--ink); }
+.southland .year { color: var(--clay); }
+.southland .year-sub { color: var(--muted); }
+.southland h2 { color: var(--green); }
+.southland p { color: var(--soft); }
+.southland .prayer { color: var(--ink); border-left-color: var(--orange, #EE8B54); font-family: 'Newsreader', Georgia, serif; font-size: 23px; line-height: 1.45; }
+.southland svg.cross path { fill: var(--green); } .southland svg.cross { opacity: .06; }
+.churches { background: var(--sage); color: var(--ink); }
+.churches .sec-title { color: var(--green); }
+.churches .sec-lede { color: var(--muted); }
+.gift { background: var(--paper); }
+.gift h3 { color: var(--ink); }
+.gift p { color: var(--muted); }
+.story { background: var(--cream); }
+.app-band { background: var(--peach); color: var(--night); padding: 0; overflow: hidden; }
+.app-band-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 80px; align-items: stretch; }
+.app-band-grid > div:first-child { padding: 140px 0; }
+.app-band .tag { color: var(--night); }
+.app-band .sec-title { color: var(--night); max-width: 14ch; }
+.app-band .sec-lede { color: #3B2A1F; }
+.app-band .ctas { margin-top: 36px; }
+.app-band-mark { background: var(--green); display: flex; align-items: center; justify-content: center; margin-right: calc(-1 * max(40px, (100vw - 1240px) / 2 + 40px)); }
+.app-band-mark svg { width: 96px; }
+@media (max-width: 860px) {
+  .app-band-grid { grid-template-columns: 1fr; gap: 0; }
+  .app-band-grid > div:first-child { padding: 96px 0 56px; }
+  .app-band-mark { margin: 0 -22px; height: 200px; }
+}
+'''
 
 header = """
 <header>
@@ -742,7 +786,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{DECK_CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
