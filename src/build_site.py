@@ -540,7 +540,7 @@ DECK_CSS = '''
 /* ---- Aligned with the interactive deck ---- */
 .case { background: var(--cream); }
 .case .sec-title { max-width: 18ch; }
-.case-photo { margin: 56px 0 0; border-radius: 26px; overflow: hidden; aspect-ratio: 3 / 2; max-height: 640px; background: var(--night); }
+.case-photo { margin: 56px 0 0; border-radius: 26px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--night); }
 .case-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 56px; }
 .case-grid h3 { font-size: 27px; color: var(--green); }
