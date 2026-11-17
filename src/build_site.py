@@ -9,7 +9,7 @@ import extras, pages as P, re as _re
 def _swap(h, marker, new):
     i = h.find(marker); a = h.rfind('<section', 0, i); b = h.find('</section>', i) + 10
     return h[:a] + new + h[b:]
-home = _swap(home, 'class="sec map"', extras.MAP_SECTION)
+home = _swap(home, 'class="sec map"', '')
 home = _swap(home, 'class="sec promise"', extras.FLOW_SECTION)
 directory = open(os.path.join(ROOT, 'dir.json')).read()
 COUNT = len(json.loads(directory))
