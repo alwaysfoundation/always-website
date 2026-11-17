@@ -90,7 +90,7 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Made for evangelists, and for everyone</h2>
-  {feats([('A beautiful Bible', 'KJV and WEB built in, more through YouVersion. Highlight, share verses as images, listen with soft music and a sleep timer.'), ('Conversation guides', 'How to share with someone with no faith, a Muslim friend, a Jehovah\'s Witness, a Buddhist and more.'), ('Altar calls and the street', 'Start a response point in seconds, coach the moment, and connect people with their yes.'), ('Prayer list and field notes', 'Pray for people by name. Talk through a conversation and it\'s turned into notes on your phone.'), ('Church team inbox', 'Connect leads accept introductions right in the app.'), ('Private by design', 'Your prayer list, notes and plans stay on your phone. No ads.')])}
+  {feats([('A beautiful Bible', 'KJV and WEB built in, more through YouVersion. Highlight, share verses as images, listen with soft music and a sleep timer.'), ('Conversation guides', 'How to share with someone with no faith, a Muslim friend, a Jehovah\'s Witness, a Buddhist and more.'), ('Altar calls and the street', 'Start a response point in seconds, coach the moment, and connect people with their yes.'), ('Prayer list and field notes', 'Pray for people by name. Talk through a conversation and it\'s turned into notes on your phone, offline. The audio never leaves it.'), ('Church team inbox', 'Connect leads accept introductions right in the app.'), ('Private by design', 'Your prayer list, notes and plans stay on your phone. No ads.')])}
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Join the pilot</a></div>
 </div></section>'''
 
@@ -124,11 +124,11 @@ FAQ_GROUPS = [
   ('Who is the app for?', 'Every Christian who wants to share Jesus and walk with people, and church teams who welcome them.'),
   ('How do I get it?', 'The app is in pilot. Join the pilot through the form on our home page.'),
   ('Which Bible translations are included?', 'The King James Version and the World English Bible, with more through YouVersion.'),
-  ('Where are my notes and prayer list kept?', 'On your phone. Voice notes are turned into text on your phone too.')]),
+  ('Where are my notes and prayer list kept?', 'On your phone. Voice notes are turned into text on your phone too, using NVIDIA Parakeet, an open speech model. The audio never leaves your phone.')]),
  ('Privacy and safety', [
   ('Where is information kept?', 'In Australia, encrypted, under Australian privacy law.'),
   ('Do you sell information or use it for advertising?', 'No.'),
-  ('How do you use AI?', 'To save people time, like turning a voice note into text on your own phone. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
+  ('How do you use AI?', 'To save people time, like turning a voice note into text on your own phone with NVIDIA Parakeet, an open model that works offline. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
   ('How is Always funded?', 'By supporters, and by larger ministries contributing to upkeep according to their size. Churches never pay.'),
