@@ -1,7 +1,6 @@
-import os
-ROOT = os.path.dirname(os.path.abspath(__file__))
 """Assemble the Always Foundation website: home, directory, about and docs in one page with hash routes."""
-import json, html
+import json, html, os
+ROOT = os.path.dirname(os.path.abspath(__file__))
 
 css = open(os.path.join(ROOT, 'base.css')).read()
 home = open(os.path.join(ROOT, 'main.html')).read()
@@ -10,6 +9,8 @@ def _swap(h, marker, new):
     i = h.find(marker); a = h.rfind('<section', 0, i); b = h.find('</section>', i) + 10
     return h[:a] + new + h[b:]
 home = _swap(home, 'class="sec map"', '')
+import base64 as _b
+home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
 home = _swap(home, 'class="sec promise"', extras.FLOW_SECTION)
 directory = open(os.path.join(ROOT, 'dir.json')).read()
 COUNT = len(json.loads(directory))
@@ -537,6 +538,16 @@ docs_page = f"""
 
 DECK_CSS = '''
 /* ---- Aligned with the interactive deck ---- */
+.case { background: var(--cream); }
+.case .sec-title { max-width: 18ch; }
+.case-photo { margin: 56px 0 0; border-radius: 26px; overflow: hidden; aspect-ratio: 3 / 2; max-height: 640px; background: var(--night); }
+.case-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 56px; }
+.case-grid h3 { font-size: 27px; color: var(--green); }
+.case-grid p { margin-top: 14px; color: var(--soft); font-size: 18px; }
+.case-quote { margin: 64px 0 0; max-width: 30ch; font: 400 clamp(26px, 3vw, 38px)/1.3 'Newsreader', Georgia, serif; color: var(--green); }
+.case-fine { margin-top: 28px; font-size: 13px; color: var(--muted); }
+@media (max-width: 860px) { .case-grid { grid-template-columns: 1fr; gap: 36px; } .case-photo { aspect-ratio: 4 / 3; } }
 
 /* Docs: calm and compact */
 #page-docs .page-hero { padding: 150px 0 56px; }
@@ -698,7 +709,8 @@ let t;
 document.getElementById('dmore').addEventListener('click', () => renderDir(false));
 
 // Contact form
-const FORM_ENDPOINT = ''; // Set to your form service URL when live. Messages go to hello@alwaysfoundation.org.
+const LIVE = /(^|\\.)alwaysfoundation\\.org$/.test(location.hostname);
+const FORM_ENDPOINT = LIVE ? '/api/forms/join' : ''; // On the live site, messages go to the foundation inbox.
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 form.addEventListener('submit', async (e) => {
@@ -714,7 +726,7 @@ function evf(){const s=document.getElementById('ev-s').value,k=document.getEleme
 ['ev-s','ev-k'].forEach((id)=>document.getElementById(id).addEventListener('change',evf));
 
 // ---------- claim a church
-const API_BASE = ''; // Set to the Always API, e.g. https://api.alwaysfoundation.org, when live.
+const API_BASE = LIVE ? '/api/forms' : ''; // Claims and feedback go to the foundation inbox until the Always API is live.
 let claimRow = null;
 function claimPick(i) {
   const r = DIR[+i];
@@ -819,25 +831,24 @@ doc = f"""<!DOCTYPE html>
 </html>
 """
 
-# ---------- optional photos: drop files into af-web/img/ and rebuild
-import base64 as _b64, glob as _glob
-PHOTOS = {  # name: (anchor to insert before, alt text, credit)
-  'friends': ('<section class="sec story" id="stories">', 'Friends talking together outdoors', 'Nathan Mullet'),
-  'baptism': ('<section class="sec pg-sec"', 'A baptism in the ocean', 'Vitaly Gariev'),
-}
-_credits = []
-for _n, (_anchor, _alt, _by) in PHOTOS.items():
-    _f = sorted(_glob.glob(os.path.join(ROOT, 'img', f'{_n}.*')))
-    if not _f or _anchor not in doc: continue
-    _ext = _f[0].rsplit('.', 1)[1].lower().replace('jpg', 'jpeg')
-    _uri = f'data:image/{_ext};base64,' + _b64.b64encode(open(_f[0], 'rb').read()).decode()
-    _fig = f'<figure class="photo-band"><img src="{_uri}" alt="{_alt}" loading="lazy"></figure>\n'
-    _i = doc.index(_anchor) if _n == 'friends' else doc.index(_anchor, doc.index('id="page-churches"'))
+# ---------- photos (Unsplash, hotlinked as the Unsplash guidelines ask; hidden if they can't load)
+U = 'https://images.unsplash.com/'
+PHOTOS = [  # (photo id, where: (page id, anchor inside it))
+  ('photo-1753351056236-9b5d333dcc40', ('page-home', '<section class="sec word">')),
+  ('photo-1790805370091-2c237d73bf16', ('page-churches', '<section class="sec pg-sec')),
+  ('photo-1663162550932-f67b561e656f', ('page-ministries', '<section class="sec pg-sec')),
+  ('photo-1775400713633-e4b2b3577fb7', ('page-app', '<section class="sec pg-sec')),
+]
+for _pid, (_page, _anchor) in PHOTOS:
+    _p = doc.index(f'id="{_page}"'); _i = doc.find(_anchor, _p)
+    if _i < 0: continue
+    _fig = (f'<figure class="photo-band"><img src="{U}{_pid}?w=1800&q=75&auto=format&fit=crop" '
+            f'srcset="{U}{_pid}?w=900&q=75&auto=format&fit=crop 900w, {U}{_pid}?w=1800&q=75&auto=format&fit=crop 1800w" '
+            f'sizes="100vw" alt="" loading="lazy" onerror="this.parentNode.remove()"></figure>\n')
     doc = doc[:_i] + _fig + doc[_i:]
-    _credits.append(_by)
-if _credits:
-    doc = doc.replace('</footer>', f'<p class="photo-credit">Photos from Unsplash under the Unsplash License: {", ".join(_credits)}.</p></footer>', 1)
-    doc = doc.replace('</style>', '.photo-band{margin:0;height:min(62vh,560px);overflow:hidden}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}.photo-credit{font-size:12px;opacity:.65;text-align:center;margin:18px 0 0}</style>', 1)
-print('photos', _credits)
+import re as _re2
+doc = _re2.sub(r'(<form\b[^>]*>)', r'\1<input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">', doc)
+doc = doc.replace('</footer>', '<p class="photo-credit">Photos from Unsplash under the Unsplash License: Vitaly Gariev, Nathan Mullet, Meredith Spencer, Amonwat Dumkrut. Event photo: UEN, used with permission.</p></footer>', 1)
+doc = doc.replace('</style>', '.photo-band{margin:0;height:min(64vh,620px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;margin:22px 0 0}</style>', 1)
 open(os.path.join(ROOT, '..', 'index.html'), 'w').write(doc)
 print('pages', len(order), 'bytes', len(doc))
