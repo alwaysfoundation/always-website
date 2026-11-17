@@ -60,9 +60,9 @@ DOCS = [
   ("claim", "Claim your church's page", """
 <p class="lead">Every evangelical and Pentecostal church in Australia is on the map. Claiming your page is free and takes about ten minutes.</p>
 <ol>
-<li>Find your church in the <a href="#/directory">directory</a> and choose <b>Claim this page</b>.</li>
+<li>Find your church in the <a href="#/directory">directory</a> and choose <b>Claim this page</b>, or go straight to <a href="#/claim">Claim your church</a>.</li>
 <li>Tell us your role (pastor, elder, administrator, connect lead) and how we can confirm it, such as your listing on your denomination's website.</li>
-<li>We check with your denomination or network, usually within two working days.</li>
+<li>We check with your denomination or network and email you when your page is ready.</li>
 <li>Once confirmed, invite your team and set up your page, next steps and capacity.</li>
 </ol>
 <h2>Becoming verified</h2>
@@ -158,7 +158,7 @@ DOCS = [
 """),
   ("results", "Results you can trust", """
 <p>Every ministry measures the same things the same way: responses, received, accepted, first contact, and connected (confirmed by the person). We show totals only, and never a figure smaller than 10 adults or 20 young people, so no one can be identified.</p>
-<p>The public <b>promise page</b> shows how the whole network is going each month, including the people we couldn't connect.</p>
+<p>A public results page shows how the whole network is going each month, including the people we couldn't connect.</p>
 """),
  ]),
  ("For people", [
@@ -173,8 +173,8 @@ DOCS = [
 """),
  ]),
  ("The platform", [
-  ("consent", "The consent primitive", """
-<p class="lead">Consent travels with the person. This is the heart of Always.</p>
+  ("consent", "How consent works", """
+<p class="lead">Consent travels with the person. Every system checks it before it acts.</p>
 <p>Every person carries a consent receipt everywhere their details go. It records exactly what they agreed to, who may receive their details, who agreed (them or a parent), their age band, and the exact words they saw. Every system that touches the person checks it first and fails closed: anything not explicitly allowed is refused. Withdrawal is one tap and reaches everyone holding their details.</p>
 <pre><code>{
   "purposes": ["connect.church", "notify.sender"],
@@ -337,10 +337,6 @@ const ok = await verifyWebhook({
 """),
   ("brand", "Brand and trademark", """
 <p>"Always", "Always Foundation" and the Always mark are trademarks held for the foundation's members. Anyone may say their app is "built on Always" or "connects to the Always Network". Please ask before using the mark, or anything that suggests the foundation endorses or verifies your product: <b>hello@alwaysfoundation.org</b>.</p>
-"""),
-  ("faq", "Questions", """
-<p class="lead">Our full FAQs cover churches, ministries, people who respond, the Always app, privacy and supporters.</p>
-<p><a href="#/faq">Read the FAQs</a></p>
 """),
  ]),
 ]
@@ -541,6 +537,18 @@ docs_page = f"""
 
 DECK_CSS = '''
 /* ---- Aligned with the interactive deck ---- */
+
+/* Docs: calm and compact */
+#page-docs .page-hero { padding: 150px 0 56px; }
+#page-docs .page-hero h1 { font-size: clamp(40px, 4.4vw, 60px); }
+#page-docs .page-hero p { font-size: 19px; }
+.prose h1 { font-size: clamp(34px, 3.6vw, 48px); letter-spacing: -0.035em; }
+.prose h2 { font-size: 25px; letter-spacing: -0.02em; margin-top: 44px; }
+.prose .lead { font-size: 20px; color: var(--muted); }
+.prose p, .prose li { font-size: 17px; }
+.doc-meta { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.doc-meta a { color: var(--clay); }
+@media (max-width: 860px) { #page-docs .page-hero { padding: 120px 0 40px; } }
 .rv { transform: none; transition: opacity .6s ease; }
 .word .verse { font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; color: var(--green); }
 .word .verse::before { content: '\\201C'; display: inline; font-size: inherit; line-height: inherit; margin: 0; color: inherit; }
@@ -649,7 +657,8 @@ function showDoc(slug) {
     `<p class="crumb">${d.group}</p><h1>${d.title}</h1>${d.html}` +
     `<nav class="pager" aria-label="Next and previous">` +
     (prev ? `<a href="#/docs/${prev}"><span>Previous</span><b>${DOCS[prev].title}</b></a>` : '') +
-    (next ? `<a class="next" href="#/docs/${next}"><span>Next</span><b>${DOCS[next].title}</b></a>` : '') + `</nav>`;
+    (next ? `<a class="next" href="#/docs/${next}"><span>Next</span><b>${DOCS[next].title}</b></a>` : '') + `</nav>` +
+    `<div class="doc-meta"><span>Updated November 2026 · CC BY 4.0</span><span><a href="#/feedback">Suggest a change</a> · <a href="https://github.com/alwaysfoundation/always-website">Edit on GitHub</a></span></div>`;
   document.querySelectorAll('.dnav a').forEach((a) => a.classList.toggle('on', a.dataset.slug === slug));
   document.getElementById('dpick').value = slug in DOCS ? slug : 'introduction';
   document.title = d.title + ' · Always docs';
