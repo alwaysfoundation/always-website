@@ -108,8 +108,8 @@ a { color: inherit; }
   <div class="top"><button class="back" data-go="age">← Back</button><span class="step-count">2 of 4</span></div>
   <h2 id="step-h" style="margin-top:22px">What would help you next?</h2>
   <div class="opts" role="radiogroup" aria-labelledby="step-h" id="step-opts">
-    <label class="opt" data-adult><input type="radio" name="step" value="church"><span>Find a church near me <small>A local church will welcome you.</small></span></label>
-    <label class="opt" data-minor><input type="radio" name="step" value="youth"><span>Join a youth group <small>A verified youth group near you.</small></span></label>
+    <label class="opt" data-adult><input type="radio" name="step" value="church"><span>Find a church near me <small>We'll help you find one that will welcome you.</small></span></label>
+    <label class="opt" data-minor><input type="radio" name="step" value="youth"><span>Join a youth group <small>A safe, checked youth group near you.</small></span></label>
     <label class="opt"><input type="radio" name="step" value="talk"><span>Talk with someone <small>About Jesus, life or prayer.</small></span></label>
     <label class="opt" data-adult><input type="radio" name="step" value="explore"><span>Explore faith <small>A relaxed course with others asking the same questions.</small></span></label>
   </div>
@@ -130,6 +130,7 @@ a { color: inherit; }
       <div class="field"><label for="suburb">Suburb</label><input id="suburb" name="suburb" autocomplete="address-level2" maxlength="60"></div>
       <div class="field"><label for="postcode">Postcode</label><input id="postcode" name="postcode" inputmode="numeric" autocomplete="postal-code" maxlength="4" pattern="\d{4}"></div>
     </div>
+    <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden"><label>Website<input id="hp" name="website" tabindex="-1" autocomplete="off"></label></div>
     <p class="err" id="details-err" role="alert"></p>
     <button class="btn btn-red" type="submit" style="margin-top:8px">Next</button>
   </form>
@@ -139,11 +140,11 @@ a { color: inherit; }
 <section class="screen" id="consent" aria-labelledby="consent-h">
   <div class="top"><button class="back" data-go="details">← Back</button><span class="step-count">4 of 4</span></div>
   <h2 id="consent-h" style="margin-top:22px">Your yes, your choice</h2>
-  <div class="check"><input type="checkbox" id="c-connect"><label for="c-connect"><b>Connect me.</b> I'm happy for my first name, mobile and suburb to be shared with one verified church or ministry near me, so they can get in touch.</label></div>
+  <div class="check"><input type="checkbox" id="c-connect"><label for="c-connect"><b>Connect me.</b> I'm happy for Sydney Fire Evangelism and the Always Foundation to keep my first name, mobile and suburb, so they can get in touch and help me find a church or ministry near me.</label></div>
   <div class="check"><input type="checkbox" id="c-nearby" checked><label for="c-nearby"><b>Try the next one nearby</b> if the first church can't welcome me.</label></div>
-  <div class="check"><input type="checkbox" id="c-sender"><label for="c-sender"><b>Let Sydney Fire know</b> when I've been connected.</label></div>
+  <div class="check"><input type="checkbox" id="c-sender"><label for="c-sender"><b>Keep me posted</b> about Sydney Fire's events.</label></div>
   <div class="check hidden" id="assent-box"><input type="checkbox" id="c-assent"><label for="c-assent"><b>My child agrees too.</b> I've talked with my child and they're happy to be connected with a youth group.</label></div>
-  <p class="note">Your details are kept in Australia and never sold. You can change your mind any time from the link we text you, and your details are then deleted.</p>
+  <p class="note">Your details are kept in Australia and never sold. We delete them after 90 days. To change your mind any time, email hello@alwaysfoundation.org and we'll delete them straight away.</p>
   <p class="err" id="consent-err" role="alert"></p>
   <div class="spacer"></div>
   <button class="btn btn-red" id="send" disabled>Send</button>
@@ -153,7 +154,7 @@ a { color: inherit; }
 <section class="screen" id="done" aria-labelledby="done-h">
   <img class="hero-logo" src="/logo.jpg" alt="" width="148" height="148" style="width:96px;height:96px;margin:18px 0 26px">
   <h2 id="done-h">Welcome to the family<span id="done-name"></span>.</h2>
-  <p class="lead" id="done-lead">We've sent you a text. A church or ministry near you will be in touch to say hello.</p>
+  <p class="lead" id="done-lead">Someone from Sydney Fire will be in touch soon to say hello and help you find a church near you.</p>
   <div class="verse"><p>“Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.”</p><span>2 Corinthians 5:17</span></div>
   <div class="stack"><a class="btn btn-red" href="https://www.bible.com/bible/1/JHN.1.KJV" rel="noopener" target="_blank">Start reading John</a><button class="btn btn-line" data-go="home">Done</button></div>
 </section>
@@ -179,6 +180,7 @@ a { color: inherit; }
     <li><b>2/ Let them choose.</b> They pick their next step and say yes to being connected. Never fill it in for them.</li>
     <li><b>3/ Under 15?</b> A parent or guardian says yes too. Under 13, the parent fills it in.</li>
     <li><b>4/ Stay with them.</b> If it doesn't send, take their name the way you usually do, and let us know.</li>
+    <li><b>5/ Follow up.</b> Every contact is saved securely in Australia. The Always Foundation shares new contacts with your team leader for follow-up.</li>
   </ul>
   <p class="lead" style="margin-top:26px">A simple prayer to pray together</p>
   <p class="prayer">Jesus, thank You for loving me and dying for me. I'm sorry for my sins. I believe You rose again, and I give You my life. Please forgive me, fill me with Your Spirit, and lead me from today. Amen.</p>
@@ -189,9 +191,10 @@ a { color: inherit; }
 <script>
 (() => {
   // Configuration. The API and page slug are public; nothing secret lives here.
-  const API = 'https://api.alwaysfoundation.org';
-  const SLUG = 'sydneyfire';
-  const WORDING = 'sydneyfire-2026-11';
+  // Saves to the Always Foundation's database in Sydney. Church introductions switch on later.
+  const SAVE_URL = 'https://scoitzteqsvomsghtxfe.supabase.co/functions/v1/field-contact?forceFunctionRegion=ap-southeast-2';
+  const SOURCE = 'sydneyfire';
+  const WORDING = 'sydneyfire-2026-11-v2';
 
   // Everything the person types lives only in this object, in memory. It is never written to storage.
   let f = {};
@@ -271,28 +274,26 @@ a { color: inherit; }
 
   async function send() {
     const u13 = f.ageBand === 'under13';
-    const purposes = ['connect.church'];
-    if ($('c-sender').checked) purposes.push('notify.sender');
     const body = {
+      source: SOURCE,
       firstName: f.firstName,
-      contact: { kind: 'mobile', value: f.mobile.replace(/[\s()-]/g, '') },
-      parentContact: f.parentMobile ? { kind: 'mobile', value: f.parentMobile.replace(/[\s()-]/g, '') } : undefined,
-      suburb: f.suburb, postcode: f.postcode, state: 'NSW',
+      mobile: f.mobile, parentMobile: f.parentMobile,
+      suburb: f.suburb, postcode: f.postcode,
       ageBand: f.ageBand, step: f.step,
-      consent: { purposes, recipients: [], allowNextNearby: $('c-nearby').checked, wordingVersion: WORDING, party: u13 ? 'parent' : 'self', ...(u13 ? { childAssent: $('c-assent').checked } : {}) },
-      humanToken: window.__humanToken,
+      consent: { connect: $('c-connect').checked, allowNextNearby: $('c-nearby').checked, notifySender: $('c-sender').checked, wordingVersion: WORDING, party: u13 ? 'parent' : 'self', childAssent: u13 ? $('c-assent').checked : false },
+      website: $('hp').value,
     };
     $('send').disabled = true; $('send').textContent = 'Sending…';
     try {
-      const res = await fetch(`${API}/v1/pages/${SLUG}/respond`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(15000) });
+      const res = await fetch(SAVE_URL, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(15000) });
       if (!res.ok) throw new Error('http_' + res.status);
       const name = f.firstName;
       const waitingParent = f.ageBand === '13-14';
       reset();
       $('done-name').textContent = name ? ', ' + name : '';
       $('done-lead').textContent = waitingParent
-        ? "We've texted your parent or guardian. Once they say yes, a youth group near you will be in touch."
-        : "We've sent a text. A church or ministry near you will be in touch to say hello.";
+        ? "We'll check with your parent or guardian first. Once they say yes, someone will help you find a youth group near you."
+        : 'Someone from Sydney Fire will be in touch soon to say hello and help you find a church near you.';
       go('done');
     } catch (e) {
       reset();           // nothing is kept on the phone, even when sending fails
