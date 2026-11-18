@@ -870,7 +870,7 @@ function route() {
   if (page === 'feedback' && second === 'missing') { document.querySelector('#fb-form input[value=missing]').checked = true; fbKind(); }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Every response deserves a next step', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'For evangelists · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Platform · Always Foundation' };
+  const titles = { home: 'Always Foundation · Every response deserves a next step', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'For evangelists · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation' };
   if (page !== 'docs') document.title = titles[page];
   watch(document.getElementById(pages[page]));
 }
@@ -1011,7 +1011,7 @@ footer = """
     <a class="foot-mail" href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a></div>
     <nav class="foot-cols" aria-label="Footer">
       <div><h2>For you</h2><a href="#/churches">Churches</a><a href="#/ministries">Ministries</a><a href="#/app">Evangelists</a><a href="#/events">Events</a><a href="#/claim">Claim your church</a></div>
-      <div><h2>Build</h2><a href="#/platform">Platform</a><a href="#/docs/introduction">Docs</a><a href="#/docs/feed">Church feed</a><a href="#/docs/mcp">AI assistants</a><a href="https://github.com/alwaysfoundation">Open source</a></div>
+      <div><h2>Build</h2><a href="#/platform">Always Platform</a><a href="#/docs/introduction">Docs</a><a href="#/docs/feed">Church feed</a><a href="#/docs/mcp">AI assistants</a><a href="https://github.com/alwaysfoundation">Open source</a></div>
       <div><h2>Foundation</h2><a href="#/about">About</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/faq">FAQs</a></div>
       <div><h2>Help</h2><a href="#/feedback">Ideas and problems</a><a href="#/docs/privacy">Privacy</a><a href="#/docs/young-people">Keeping young people safe</a></div>
     </nav>

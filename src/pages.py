@@ -117,7 +117,7 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
 
 FAQ_GROUPS = [
  ('About Always', [
-  ('What is Always?', 'An open platform for the Church in Australia: tools, an API and an SDK that help everyone who says yes to Jesus take their next step, usually at a church near home.'),
+  ('What is Always?', 'An open platform for the Church in Australia. Always Platform gives evangelists, ministries and churches tools, an API and an SDK that help everyone who says yes to Jesus take their next step, usually at a church near home.'),
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
@@ -551,7 +551,7 @@ PLAT_BLOCKS = [
 ]
 
 PLAT_WAYS = [
-  ('Your own app', 'Give people a next step with your name and colours on it: response pages, QR codes, event screens and your own app.',
+  ('Your own brand', 'Give people a next step with your name and colours on it: response pages, QR codes, event screens, and pieces for your own app.',
    '<div class="pw-art pw-phone" aria-hidden="true"><div class="pw-screen"><span class="pw-brand">Your ministry</span><b>Said yes tonight?</b><span class="pw-opt">Find a church near me</span><span class="pw-opt">Join a youth group</span><span class="pw-go">Continue</span></div></div>'),
   ('API', 'Plug Always into the church and ministry tools you already use. Plain, well-documented and open.',
    '<div class="pw-art pw-code" aria-hidden="true"><span class="k">GET</span> /v1/feed/churches<br><span class="d">?postcode=2150</span><br><span class="d">&amp;welcoming=true</span></div>'),
@@ -562,7 +562,7 @@ PLAT_WAYS = [
 ]
 
 PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><h1>One platform for every next step.</h1><p>Free, open tools for evangelists, ministries and churches across Australia. Build your own app, plug in our API, or ask an AI assistant.</p>
+  <div><p class="pl-badge">Always Platform</p><h1>One platform for every next step.</h1><p>Free, open tools for evangelists, ministries and churches across Australia. Build your own app, plug in our API, or ask an AI assistant.</p>
   <div class="pl-ctas"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/join">Talk to us</a></div></div>
   <pre class="pl-code" aria-label="Example code"><code><span class="c">// Find churches welcoming people near 2150</span>
 <span class="k">import</span> {{ AlwaysClient }} <span class="k">from</span> <span class="s">'@always/sdk'</span>;
@@ -587,7 +587,7 @@ PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
   <h2 class="pg-h rv">Your tools, one network.</h2>
   <div class="pl-stack rv" role="list">
     <div class="pl-layer" role="listitem"><b>Apps</b><span>The Always app, the church inbox, your own app and website, and AI assistants</span></div>
-    <div class="pl-layer mid" role="listitem"><b>Platform</b><span>Find a church, introduce someone, welcome them, trust, gather, see the fruit</span></div>
+    <div class="pl-layer mid" role="listitem"><b>Always Platform</b><span>Find a church, introduce someone, welcome them, trust, gather, see the fruit</span></div>
     <div class="pl-layer base" role="listitem"><b>Network</b><span>Verified churches, permission that travels with people, and a care team when no one else can</span></div>
   </div>
 </div></section>
@@ -599,6 +599,7 @@ PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
 </div></section>'''
 
 PLATFORM_CSS = """
+.pl-badge { display: inline-block; margin: 0 0 18px; padding: 6px 14px; border-radius: 999px; background: rgba(232,165,119,.16); color: #E8A577; font: 700 15px/1 var(--head); }
 .pl-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .pl-code { margin: 0; background: #14352F; color: #E3ECE6; border-radius: 24px; padding: 28px 30px; font: 14.5px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; box-shadow: 0 30px 60px rgba(0,0,0,.2); }
 .pl-code .c { color: #8FB5A5; } .pl-code .k { color: #E8A577; } .pl-code .s { color: #CFE0D6; }
@@ -612,7 +613,7 @@ PLATFORM_CSS = """
 .pl-block h3 { margin: 8px 0 0; font: 800 24px/1.15 var(--head); color: var(--green); letter-spacing: -0.02em; }
 .pl-block p { margin: 0; color: var(--soft); font-size: 17px; line-height: 1.55; }
 .pl-stack { display: grid; gap: 12px; margin-top: 44px; max-width: 920px; }
-.pl-layer { display: grid; grid-template-columns: 140px 1fr; gap: 18px; align-items: center; padding: 26px 28px; border-radius: 22px; background: var(--paper, #FFFDF8); }
+.pl-layer { display: grid; grid-template-columns: 170px 1fr; gap: 18px; align-items: center; padding: 26px 28px; border-radius: 22px; background: var(--paper, #FFFDF8); }
 .pl-layer b { font: 800 20px/1 var(--head); color: var(--green); }
 .pl-layer span { color: var(--soft); font-size: 17px; }
 .pl-layer.mid { background: #1B4740; box-shadow: 0 30px 60px rgba(20,53,47,.18); } .pl-layer.mid b { color: #E8A577; } .pl-layer.mid span { color: #E3ECE6; }
