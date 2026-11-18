@@ -11,10 +11,12 @@ def _swap(h, marker, new):
     return h[:a] + new + h[b:]
 home = _swap(home, 'class="sec map"', '')
 import base64 as _b
+home = home.replace('{{ALPHA_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-photo.jpg'), 'rb').read()).decode())
+home = home.replace('{{ALPHA_LOGO}}', 'data:image/png;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), 'rb').read()).decode())
 home = home.replace('{{SYDNEYFIRE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'sydneyfire-street.jpg'), 'rb').read()).decode())
 home = home.replace('{{REJOICE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'rejoice-team.jpg'), 'rb').read()).decode())
 home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
-home = _swap(home, 'class="sec promise"', extras.FLOW_SECTION)
+home = _swap(home, 'class="sec promise"', '')  # 'Watch it work' removed
 directory = open(os.path.join(ROOT,'dir.json')).read()
 COUNT = len(json.loads(directory))
 
@@ -778,6 +780,7 @@ DECK_CSS = '''
 .case-part p { margin-top: 6px; color: var(--soft); font-size: 17px; max-width: 58ch; }
 .case .case-quote { margin-top: 28px; font-size: clamp(20px, 1.8vw, 24px); max-width: 40ch; padding-left: 22px; }
 .case .case-fine { margin-top: 18px; }
+.case-logo { display: block; width: 52px; height: 52px; margin: 0 0 14px; }
 .case-quote cite { display: block; margin-top: 12px; font: normal 700 14px/1.3 var(--head); color: var(--clay); }
 /* calmer home on small screens */
 .plat .ctas { margin-top: 48px; }

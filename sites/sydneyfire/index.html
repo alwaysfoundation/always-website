@@ -40,7 +40,7 @@ a { color: inherit; }
 .btn:focus-visible, .opt:focus-within, input:focus-visible, .back:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .opts { display: grid; gap: 10px; margin-top: 26px; }
 .opt { position: relative; display: block; }
-.opt input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.opt input { position: absolute; opacity: 0; inset: 0; z-index: 1; width: 100%; height: 100%; margin: 0; cursor: pointer; }
 .opt span { display: block; min-height: 60px; padding: 16px 18px; border-radius: 16px; background: var(--coal); box-shadow: inset 0 0 0 2px var(--line); font-weight: 800; font-size: 18px; }
 .opt span small { display: block; font-weight: 500; font-size: 15px; color: var(--mute); margin-top: 2px; }
 .opt input:checked + span { box-shadow: inset 0 0 0 2px var(--red); background: #241112; }
@@ -68,6 +68,13 @@ a { color: inherit; }
 .tips b { color: #fff; display: block; }
 .prayer { margin-top: 18px; padding: 18px; border-left: 4px solid var(--red); background: var(--coal); border-radius: 0 16px 16px 0; color: var(--soft); font-size: 17px; }
 .hidden { display: none !important; }
+.with-logo { position: relative; padding-left: 70px !important; }
+.with-logo img { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: #fff; border-radius: 10px; padding: 4px; }
+.alpha-card { display: flex; gap: 14px; align-items: center; margin-top: 22px; padding: 16px; border-radius: 18px; background: #fff; color: var(--ink); text-decoration: none; min-height: 72px; }
+.alpha-card img { flex: none; }
+.alpha-card b { display: block; font-size: 18px; font-weight: 800; }
+.alpha-card small { display: block; color: #555; font-size: 14px; margin-top: 2px; }
+.alpha-card:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .card { padding: 16px 16px 14px; border-radius: 18px; background: var(--coal); box-shadow: inset 0 0 0 1px var(--line); }
 .card + .card { margin-top: 10px; }
 .card h3 { margin: 0; font-size: 20px; font-weight: 800; }
@@ -123,7 +130,7 @@ a { color: inherit; }
     <label class="opt" data-adult><input type="radio" name="step" value="church"><span>Find a church near me <small>We'll help you find one that will welcome you.</small></span></label>
     <label class="opt" data-minor><input type="radio" name="step" value="youth"><span>Join a youth group <small>A safe, checked youth group near you.</small></span></label>
     <label class="opt"><input type="radio" name="step" value="talk"><span>Talk with someone <small>About Jesus, life or prayer.</small></span></label>
-    <label class="opt" data-adult><input type="radio" name="step" value="explore"><span>Explore faith <small>A relaxed course with others asking the same questions.</small></span></label>
+    <label class="opt" data-adult><input type="radio" name="step" value="explore"><span class="with-logo"><img src="/alpha.png" alt="" width="40" height="40">Explore faith with Alpha <small>Relaxed sessions, in person or online, to explore life, faith and meaning.</small></span></label>
   </div>
   <div class="spacer"></div>
   <button class="btn btn-red" id="step-next" disabled>Next</button>
@@ -155,6 +162,7 @@ a { color: inherit; }
   <div class="check"><input type="checkbox" id="c-connect"><label for="c-connect"><b>Connect me.</b> I'm happy for Sydney Fire Evangelism and the Always Foundation to keep my first name, mobile and suburb, so they can get in touch and help me find a church or ministry near me.</label></div>
   <div class="check"><input type="checkbox" id="c-nearby" checked><label for="c-nearby"><b>Try the next one nearby</b> if the first church can't welcome me.</label></div>
   <div class="check"><input type="checkbox" id="c-sender"><label for="c-sender"><b>Keep me posted</b> about Sydney Fire's events.</label></div>
+  <div class="check hidden" id="alpha-box"><input type="checkbox" id="c-alpha"><label for="c-alpha"><b>Connect me with Alpha.</b> I'm happy for Alpha Australia to receive my first name, mobile and suburb, so they can help me find an Alpha near me.</label></div>
   <div class="check hidden" id="assent-box"><input type="checkbox" id="c-assent"><label for="c-assent"><b>My child agrees too.</b> I've talked with my child and they're happy to be connected with a youth group.</label></div>
   <p class="note">Your details are kept in Australia and never sold. We delete them after 90 days. To change your mind any time, email hello@alwaysfoundation.org and we'll delete them straight away.</p>
   <p class="err" id="consent-err" role="alert"></p>
@@ -168,6 +176,7 @@ a { color: inherit; }
   <h2 id="done-h">Welcome to the family<span id="done-name"></span>.</h2>
   <p class="lead" id="done-lead">Someone from Sydney Fire will be in touch soon to say hello and help you find a church near you.</p>
   <div class="verse"><p>“Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.”</p><span>2 Corinthians 5:17</span></div>
+  <a class="alpha-card hidden" id="alpha-find" href="https://alpha.org.au/try/find/" rel="noopener" target="_blank"><img src="/alpha.png" alt="" width="48" height="48"><span><b>Find an Alpha near you</b><small>See Alpha courses near you, in person or online.</small></span></a>
   <div class="stack"><a class="btn btn-red" href="https://www.bible.com/bible/1/JHN.1.KJV" rel="noopener" target="_blank">Start reading John</a><button class="btn btn-line" data-go="home">Done</button></div>
 </section>
 
@@ -214,6 +223,7 @@ a { color: inherit; }
   </div>
   <div id="l-in" class="hidden">
     <h2 style="margin-top:22px">Your contacts <span id="l-count" class="pill"></span></h2>
+    <div class="field hidden" id="l-team-wrap"><label for="l-team">Team</label><select id="l-team" style="min-height:50px;border-radius:14px;border:0;background:var(--coal);box-shadow:inset 0 0 0 2px var(--line);color:#fff;font:700 17px Archivo,sans-serif;padding:0 14px"></select></div>
     <p class="note" id="l-minors"></p>
     <div class="bar"><span id="l-who"></span><span><button class="linkbtn" id="l-refresh">Refresh</button> · <button class="linkbtn" id="l-signout">Sign out</button></span></div>
     <p class="err" id="l-err2" role="alert"></p>
@@ -247,7 +257,7 @@ a { color: inherit; }
     f = {};
     document.querySelectorAll('input[type=radio]').forEach((i) => (i.checked = false));
     document.querySelectorAll('#details-form input').forEach((i) => (i.value = ''));
-    $('c-connect').checked = false; $('c-nearby').checked = true; $('c-sender').checked = false; $('c-assent').checked = false;
+    $('c-connect').checked = false; $('c-alpha').checked = false; $('c-nearby').checked = true; $('c-sender').checked = false; $('c-assent').checked = false;
     $('age-next').disabled = true; $('step-next').disabled = true; $('send').disabled = true;
     ['details-err', 'consent-err'].forEach((i) => ($(i).textContent = ''));
   }
@@ -296,6 +306,7 @@ a { color: inherit; }
     if (err) return;
     Object.assign(f, { firstName: u13 ? undefined : v('firstName'), mobile: v('mobile'), parentMobile: u15 ? v('parentMobile') : undefined, suburb: v('suburb'), postcode: v('postcode') });
     $('assent-box').classList.toggle('hidden', !u13);
+    $('alpha-box').classList.toggle('hidden', f.step !== 'explore');
     updateSend();
     go('consent');
   });
@@ -315,7 +326,7 @@ a { color: inherit; }
       mobile: f.mobile, parentMobile: f.parentMobile,
       suburb: f.suburb, postcode: f.postcode,
       ageBand: f.ageBand, step: f.step,
-      consent: { connect: $('c-connect').checked, allowNextNearby: $('c-nearby').checked, notifySender: $('c-sender').checked, wordingVersion: WORDING, party: u13 ? 'parent' : 'self', childAssent: u13 ? $('c-assent').checked : false },
+      consent: { shareWith: f.step === 'explore' && $('c-alpha').checked ? ['alpha'] : [], connect: $('c-connect').checked, allowNextNearby: $('c-nearby').checked, notifySender: $('c-sender').checked, wordingVersion: WORDING, party: u13 ? 'parent' : 'self', childAssent: u13 ? $('c-assent').checked : false },
       website: $('hp').value,
     };
     $('send').disabled = true; $('send').textContent = 'Sending…';
@@ -324,11 +335,15 @@ a { color: inherit; }
       if (!res.ok) throw new Error('http_' + res.status);
       const name = f.firstName;
       const waitingParent = f.ageBand === '13-14';
+      const explore = f.step === 'explore', toAlpha = explore && $('c-alpha').checked;
       reset();
       $('done-name').textContent = name ? ', ' + name : '';
       $('done-lead').textContent = waitingParent
         ? "We'll check with your parent or guardian first. Once they say yes, someone will help you find a youth group near you."
+        : toAlpha ? 'Someone from Alpha will be in touch to help you find an Alpha near you. You can also look now.'
+        : explore ? 'Have a look at Alpha courses near you. Someone from Sydney Fire will also be in touch.'
         : 'Someone from Sydney Fire will be in touch soon to say hello and help you find a church near you.';
+      $('alpha-find').classList.toggle('hidden', !explore);
       go('done');
     } catch (e) {
       reset();           // nothing is kept on the phone, even when sending fails
@@ -343,7 +358,8 @@ a { color: inherit; }
   // ---------------------------------------------------------------- Team leaders
   const SB_URL = 'https://scoitzteqsvomsghtxfe.supabase.co';
   const SB_KEY = 'sb_publishable_Wcgql0VPiQ54KREb48X_Ew_dk1U5yy-'; // public sign-in key, safe in the browser
-  const TEAM_URL = SB_URL + '/functions/v1/field-team?forceFunctionRegion=ap-southeast-2&source=' + SOURCE;
+  const TEAM_BASE = SB_URL + '/functions/v1/field-team?forceFunctionRegion=ap-southeast-2';
+  let team_id = SOURCE;
   const STEP_LABEL = { church: 'Find a church', talk: 'Talk with someone', explore: 'Explore faith', youth: 'Youth group' };
   let sb = null, idle = null;
   function loadSb() {
@@ -364,12 +380,22 @@ a { color: inherit; }
     go('leader');
     const signedIn = !!data.session;
     $('l-out').classList.toggle('hidden', signedIn); $('l-in').classList.toggle('hidden', !signedIn);
-    if (signedIn) { $('l-who').textContent = data.session.user.email; touch(); loadContacts(); }
+    if (signedIn) {
+      $('l-who').textContent = data.session.user.email; touch();
+      try {
+        const { teams } = await team('GET', 'teams');
+        const sel = $('l-team'); sel.textContent = '';
+        for (const t of teams) { const o = document.createElement('option'); o.value = t.id; o.textContent = t.name; sel.appendChild(o); }
+        if (teams.length) { team_id = teams.some((t) => t.id === team_id) ? team_id : teams[0].id; sel.value = team_id; }
+        $('l-team-wrap').classList.toggle('hidden', teams.length < 2);
+      } catch {}
+      loadContacts();
+    }
   }
   async function team(method, body) {
     const { data } = await sb.auth.getSession();
     if (!data.session) throw new Error('signed_out');
-    const res = await fetch(TEAM_URL, { method, headers: { authorization: 'Bearer ' + data.session.access_token, 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+    const res = await fetch(TEAM_BASE + (body === 'teams' ? '&teams=1' : '&source=' + encodeURIComponent(team_id)), { method, headers: { authorization: 'Bearer ' + data.session.access_token, 'content-type': 'application/json' }, body: body && body !== 'teams' ? JSON.stringify(body) : undefined });
     const j = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(j.error || 'failed');
     return j;
@@ -406,7 +432,7 @@ a { color: inherit; }
       }
     } catch (e) {
       if (e.message === 'signed_out' || e.message === 'sign_in_required') return signOut();
-      $('l-err2').textContent = e.message === 'not_on_team' ? "You're signed in, but not on Sydney Fire's team yet. Ask the Always Foundation to add you." : "Couldn't load contacts. Check your connection and refresh.";
+      $('l-err2').textContent = e.message === 'not_on_team' ? "You're signed in, but not on this team yet. Ask the Always Foundation to add you." : "Couldn't load contacts. Check your connection and refresh.";
     }
   }
   $('l-form').addEventListener('submit', async (e) => {
@@ -421,6 +447,7 @@ a { color: inherit; }
     } catch { $('l-err').textContent = "Couldn't send the link. Wait a minute and try again."; }
   });
   $('l-refresh').addEventListener('click', loadContacts);
+  $('l-team').addEventListener('change', (e) => { team_id = e.target.value; loadContacts(); });
   $('l-signout').addEventListener('click', signOut);
   ['click', 'keydown', 'touchstart'].forEach((ev) => document.addEventListener(ev, () => { if (sb && $('leader').classList.contains('on')) touch(); }, { passive: true }));
 
