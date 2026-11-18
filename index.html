@@ -187,7 +187,11 @@ footer a { color: #D3E2D8; }
 }
 @media (max-width: 1020px) {
   nav ul { display: none; }
-  .steps, .gifts { grid-template-columns: 1fr 1fr; }
+  .gifts { grid-template-columns: 1fr 1fr; }
+  .steps { gap: 14px; }
+}
+@media (max-width: 760px) {
+  .steps { grid-template-columns: 1fr; }
   .word .wrap, .southland .wrap, .map .wrap, .join .wrap, .story-card { grid-template-columns: 1fr; gap: 48px; }
   .clock { grid-template-columns: 1fr 1fr; gap: 36px 0; border-top: 0; }
   .tick { border-top: 2px solid var(--line); }
