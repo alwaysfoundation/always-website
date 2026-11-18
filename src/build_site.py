@@ -11,19 +11,22 @@ def _swap(h, marker, new):
     return h[:a] + new + h[b:]
 home = _swap(home, 'class="sec map"', '')
 import base64 as _b
-home = home.replace('{{UEN_STUDIO}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-studio.jpg'), 'rb').read()).decode())
-home = home.replace('{{CXMMXNS_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'cxmmxns-tour.jpg'), 'rb').read()).decode())
-home = home.replace('{{ALPHA_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-photo.jpg'), 'rb').read()).decode())
+import io as _io
+from PIL import Image as _Im
+def _photo(name, maxw=800, q=64):
+  im = _Im.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', name)).convert('RGB')
+  if im.width > maxw: im = im.resize((maxw, round(im.height * maxw / im.width)), _Im.LANCZOS)
+  buf = _io.BytesIO(); im.save(buf, 'WEBP', quality=q, method=6)
+  return 'data:image/webp;base64,' + _b.b64encode(buf.getvalue()).decode()
+home = home.replace('{{UEN_STUDIO}}', _photo('uen-studio.jpg'))
+home = home.replace('{{CXMMXNS_IMG}}', _photo('cxmmxns-tour.jpg'))
+home = home.replace('{{ALPHA_IMG}}', _photo('alpha-photo.jpg'))
 home = home.replace('{{ALPHA_LOGO}}', 'data:image/png;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), 'rb').read()).decode())
-home = home.replace('{{SYDNEYFIRE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'sydneyfire-street.jpg'), 'rb').read()).decode())
-home = home.replace('{{REJOICE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'rejoice-team.jpg'), 'rb').read()).decode())
-home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
+home = home.replace('{{SYDNEYFIRE_IMG}}', _photo('sydneyfire-street.jpg'))
+home = home.replace('{{REJOICE_IMG}}', _photo('rejoice-team.jpg'))
+home = home.replace('{{UEN_IMG}}', _photo('uen-event.jpg'))
 home = _swap(home, 'class="sec promise"', '')
   # 'Watch it work' removed
-_h = home.index('<section class="sec heart"')
-home = home[:_h] + extras.FIRE_SECTION + '\n' + home[_h:]
-home = home.replace('<article class="heart-item rv"><h3>', '<article class="heart-item rv">' + extras.FLAME_SVG + '<h3>')
-home = home.replace('<section class="sec join" id="join">', '<section class="sec join" id="join"><canvas class="join-embers" aria-hidden="true"></canvas>', 1)
 directory = open(os.path.join(ROOT,'dir.json')).read()
 COUNT = len(json.loads(directory))
 
@@ -746,7 +749,7 @@ DECK_CSS = '''
 .app-band .sec-title { color: var(--night); max-width: 14ch; }
 .app-band .sec-lede { color: #3B2A1F; }
 .app-band .ctas { margin-top: 36px; }
-.app-band-mark { background: var(--green); display: flex; align-items: center; justify-content: center; margin-right: calc(-1 * max(40px, (100vw - 1240px) / 2 + 40px)); }
+.app-band-mark { background: transparent; display: flex; align-items: center; justify-content: center; }
 .app-band-mark svg { width: 96px; }
 
 /* home platform section: green band, deck style */
@@ -906,7 +909,7 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
 @media (max-width: 860px) {
   .app-band-grid { grid-template-columns: 1fr; gap: 0; }
   .app-band-grid > div:first-child { padding: 96px 0 56px; }
-  .app-band-mark { margin: 0 -22px; height: 200px; }
+  .app-band-mark { margin: 0; height: auto; padding: 0 0 72px !important; }
 }
 '''
 
@@ -1074,7 +1077,7 @@ route();
   });
 })();
 
-""" + extras.JS + extras.WOW_JS + extras.FIRE_JS
+""" + extras.JS + extras.WOW_JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """
@@ -1107,7 +1110,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{extras.WOW_CSS}{extras.FIRE_CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{extras.WOW_CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>

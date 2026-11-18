@@ -259,7 +259,6 @@ WOW_JS = '''
     const a = Math.random() * Math.PI * 2, r = 14 + Math.random() * 30;
     const x = base.x + Math.cos(a) * r, y = base.y + Math.sin(a) * r;
     sparks.push({ x, y, to: nearest(x, y), t: 0, seed: Math.random() * 10 });
-    for (let k = 0; k < 6; k++) embers.push({ x: x + (Math.random() - .5) * 6, y, vx: (Math.random() - .5) * 0.012, vy: -(0.018 + Math.random() * 0.03), life: 0, max: 700 + Math.random() * 700, r: 0.8 + Math.random() * 1.4 });
     made++;
   }
   function draw(dt) {
@@ -273,7 +272,7 @@ WOW_JS = '''
       c.glow = Math.max(0.2, c.glow - dt * 0.00004);
       ctx.fillStyle = c.glow > 0.4 ? `rgba(255,${Math.round(214 + 30 * (1 - c.glow))},${Math.round(150 + 80 * (1 - c.glow))},${0.3 + c.glow * 0.7})` : `rgba(248,243,234,${0.22 + c.glow * 0.7})`;
       ctx.beginPath(); ctx.arc(c.x, c.y, 2.8 + c.glow * 2.4, 0, 7); ctx.fill();
-      if (c.glow > 0.4) { ctx.fillStyle = `rgba(238,120,60,${(c.glow - 0.4) * 0.5})`; ctx.beginPath(); ctx.arc(c.x, c.y, 9 + c.glow * 12, 0, 7); ctx.fill(); }
+      if (c.glow > 0.4) { ctx.fillStyle = `rgba(233,165,120,${(c.glow - 0.4) * 0.28})`; ctx.beginPath(); ctx.arc(c.x, c.y, 6 + c.glow * 7, 0, 7); ctx.fill(); }
     }
     sparks = sparks.filter((s) => s.t < 1.6);
     for (const s of sparks) {
@@ -282,17 +281,17 @@ WOW_JS = '''
       const ease = 1 - (1 - p) ** 3;
       if (s.t < 0.25 || p < 1) {
         const pr = Math.min(1, s.t / 0.25);
-        const fl = 1 + Math.sin((s.t * 40) + s.seed) * 0.18 + Math.sin((s.t * 23) + s.seed * 2) * 0.12;
+        const fl = 1;
         const fade = s.t > 1 ? Math.max(0, 1 - (s.t - 1) * 1.5) : 1;
-        ctx.fillStyle = `rgba(238,96,40,${0.22 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (6 + pr * 14) * fl, 0, 7); ctx.fill();
-        ctx.fillStyle = `rgba(255,150,60,${0.85 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (3 + pr * 2.5) * fl, 0, 7); ctx.fill();
-        ctx.fillStyle = `rgba(255,236,170,${0.95 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (1.4 + pr) * fl, 0, 7); ctx.fill();
+        ctx.fillStyle = `rgba(233,165,120,${0.14 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (5 + pr * 6) * fl, 0, 7); ctx.fill();
+        ctx.fillStyle = `rgba(240,200,165,${0.7 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (2.2 + pr * 1.4) * fl, 0, 7); ctx.fill();
+        ctx.fillStyle = `rgba(255,248,236,${0.95 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (1.4 + pr) * fl, 0, 7); ctx.fill();
       }
       if (p > 0) {
         const x = s.x + (s.to.x - s.x) * ease, y = s.y + (s.to.y - s.y) * ease;
         const g = ctx.createLinearGradient(s.x, s.y, x, y);
-        g.addColorStop(0, 'rgba(238,96,40,0)'); g.addColorStop(1, `rgba(255,210,140,${s.t > 1 ? Math.max(0, 1 - (s.t - 1) * 1.7) : 0.95})`);
-        ctx.strokeStyle = g; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(x, y); ctx.stroke();
+        g.addColorStop(0, 'rgba(233,165,120,0)'); g.addColorStop(1, `rgba(255,240,222,${s.t > 1 ? Math.max(0, 1 - (s.t - 1) * 1.7) : 0.95})`);
+        ctx.strokeStyle = g; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(x, y); ctx.stroke();
         if (p >= 1 && !s.done) { s.done = true; s.to.glow = 1; }
       }
     }
@@ -324,81 +323,3 @@ WOW_JS = '''
 '''.replace('__MAP__', MAP)
 
 # ---------------------------------------------------------------- Pentecost flame moments
-FIRE_SECTION = '''<section class="fire" id="fire" aria-labelledby="fire-h">
-  <canvas class="fire-canvas" id="fire-canvas" aria-hidden="true"></canvas>
-  <div class="wrap fire-in">
-    <p class="fire-v" id="fire-h">“And divided tongues as of fire appeared to them and rested on each one of them.”</p>
-    <p class="fire-c">Acts 2:3 (ESV)</p>
-    <p class="fire-l">We're praying for that fire again: on every church, in every city, across Australia.</p>
-  </div>
-</section>'''
-
-FLAME_SVG = '<svg class="flame" viewBox="0 0 40 56" aria-hidden="true"><defs><linearGradient id="fg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#E25822"/><stop offset=".55" stop-color="#EE8B54"/><stop offset="1" stop-color="#FFD58A"/></linearGradient></defs><path class="fo" d="M20 2C24 14 36 20 36 34c0 10-7 19-16 19S4 44 4 34c0-8 5-12 8-18 1 6 4 9 7 10C17 18 17 10 20 2z" fill="url(#fg)"/><path class="fi" d="M20 26c3 6 8 9 8 15 0 5-4 9-8 9s-8-4-8-9c0-4 3-6 4-9 1 3 2 4 3 5 0-4 0-7 1-11z" fill="#FFE7B0"/></svg>'
-
-FIRE_CSS = '''
-.fire { position: relative; overflow: hidden; background: radial-gradient(90% 70% at 50% 100%, #3A1A0E 0%, #1A1410 45%, #0E1412 100%); color: var(--cream); padding: clamp(110px, 14vw, 200px) 0 clamp(130px, 16vw, 230px); text-align: center; isolation: isolate; }
-.fire-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
-.fire-in { position: relative; max-width: 980px; }
-.fire-v { margin: 0 auto; font-family: var(--serif, Georgia, serif); font-size: clamp(32px, 4.6vw, 62px); line-height: 1.18; letter-spacing: -0.01em; color: #FFF6E8; text-shadow: 0 2px 30px rgba(226,88,34,.35); max-width: 22ch; text-wrap: balance; }
-.fire-c { margin: 22px 0 0; font: 700 15px/1 var(--head); color: #FFB37A; }
-.fire-l { margin: 34px auto 0; font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: #E9D9C6; max-width: 34ch; text-wrap: balance; }
-.heart-item { position: relative; }
-.heart-item .flame { width: 30px; height: 42px; display: block; margin-bottom: 14px; transform-origin: 50% 100%; animation: flick 2.4s ease-in-out infinite; filter: drop-shadow(0 4px 10px rgba(226,88,34,.35)); }
-.heart-item:nth-child(2) .flame { animation-delay: -.8s; } .heart-item:nth-child(3) .flame { animation-delay: -1.6s; }
-.heart-item .flame .fi { transform-origin: 50% 100%; animation: flick2 1.3s ease-in-out infinite; }
-@keyframes flick { 0%,100% { transform: scale(1, 1) skewX(0deg); } 25% { transform: scale(.96, 1.06) skewX(-2deg); } 50% { transform: scale(1.03, .97) skewX(1.5deg); } 75% { transform: scale(.98, 1.04) skewX(-1deg); } }
-@keyframes flick2 { 0%,100% { transform: scale(1, 1); } 50% { transform: scale(.9, 1.12); } }
-.join { position: relative; isolation: isolate; }
-.join-embers { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-@media (prefers-reduced-motion: reduce) { .heart-item .flame, .heart-item .flame .fi { animation: none; } }
-'''
-
-FIRE_JS = '''
-(() => {
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Flame field: many soft particles rising from the base, additive blending, stronger while in view.
-  function flameField(cv, opts) {
-    const ctx = cv.getContext('2d'); let W = 0, H = 0, dpr = 1, parts = [], on = false, last = 0, power = 0, target = 0;
-    function size() { const r = cv.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-    function spawn() {
-      const x = Math.random() * W; const big = Math.random() < opts.tongues;
-      parts.push({ x, y: H + 10, vx: (Math.random() - .5) * 0.02, vy: -(opts.speed * (0.6 + Math.random() * 0.8)), r: big ? 26 + Math.random() * 30 : 6 + Math.random() * 14, life: 0, max: opts.life * (0.6 + Math.random() * 0.7), seed: Math.random() * 6 });
-    }
-    function frame(now) {
-      if (!on) return; const dt = Math.min(48, now - (last || now)); last = now;
-      power += (target - power) * 0.04;
-      const n = opts.rate * power * dt / 16; for (let i = 0; i < n; i++) spawn();
-      ctx.globalCompositeOperation = 'source-over'; ctx.clearRect(0, 0, W, H);
-      ctx.globalCompositeOperation = 'lighter';
-      parts = parts.filter((p) => p.life < p.max);
-      for (const p of parts) {
-        p.life += dt; const k = p.life / p.max;
-        p.x += (p.vx + Math.sin(p.life / 180 + p.seed) * 0.03) * dt; p.y += p.vy * dt;
-        const r = p.r * (1 - k * 0.7);
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
-        const a = (1 - k) * opts.alpha;
-        g.addColorStop(0, `rgba(255,${Math.round(220 - k * 120)},${Math.round(150 - k * 120)},${a})`);
-        g.addColorStop(.45, `rgba(238,${Math.round(120 - k * 60)},40,${a * 0.55})`);
-        g.addColorStop(1, 'rgba(120,30,10,0)');
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 7); ctx.fill();
-      }
-      requestAnimationFrame(frame);
-    }
-    size(); addEventListener('resize', size);
-    if (reduce) { target = power = 1; for (let i = 0; i < 220; i++) { spawn(); const p = parts[parts.length - 1]; p.life = Math.random() * p.max * .8; p.y = H - Math.random() * H * opts.reach; } on = true; frame(performance.now()); on = false; return; }
-    new IntersectionObserver((es) => es.forEach((e) => {
-      target = Math.min(1, e.intersectionRatio * 1.6);
-      if (e.isIntersecting && !on) { on = true; last = 0; requestAnimationFrame(frame); }
-      else if (!e.isIntersecting) { on = false; parts = []; power = 0; }
-    }), { threshold: [0, .15, .3, .45, .6, .75] }).observe(cv);
-  }
-  window.__flameField = flameField;
-  const f = document.getElementById('fire-canvas');
-  if (f) flameField(f, { rate: 3.2, speed: 0.16, life: 2600, alpha: 0.5, tongues: 0.18, reach: .6 });
-  const j = document.querySelector('.join-embers');
-  if (j) flameField(j, { rate: 0.35, speed: 0.07, life: 5200, alpha: 0.28, tongues: 0, reach: 1 });
-})();
-'''
-
-# ---------------------------------------------------------------- Opening: Matthew 28 over flame, every visit
-
