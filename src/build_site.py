@@ -606,7 +606,7 @@ about = """
       <p>Our focus is Australia. Because the technology is open source, the Church in other nations is free to use it too.</p></div>
   </div>
   <div class="mv">
-    <div><h3>Our mission</h3><p>Helping the Church make disciples: connecting everyone who turns to the Lord Jesus Christ with a local church and their next step with Him.</p></div>
+    <div><h3>Our mission</h3><p>Helping the Church make disciples: helping everyone who turns to Jesus take their next step with Him, often in a local church.</p></div>
     <div><h3>Our vision</h3><p>A connected Church in Australia, where no one who says yes to Jesus walks alone.</p></div>
     <div><h3>Our values</h3><p>Christ-centred. Shared, not owned. Freely given. People's stories stay theirs. Humble about what we measure.</p></div>
   </div>
