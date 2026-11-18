@@ -25,7 +25,7 @@ church_phone = phone(f'''<p class="pg-cap">Always app · Team inbox</p><div clas
 CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus. Free, always.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Three steps to welcoming people</h2>
-  {steps([('Claim your page', 'Find your church in the directory and claim its page. It takes about ten minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead does a 20-minute course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
+  {steps([('Claim your page', 'Tell us about your church and who you are. It takes about ten minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead does a 20-minute course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">On the web, or in your pocket</h2><p class="pg-lead rv">Use it in any browser, or in the Always app, so your connect lead can say yes from their phone on a Sunday.</p>
@@ -35,7 +35,7 @@ CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What your church gets</h2>
   {feats([('Your page on the map', 'Your welcome, service times, what to expect, and the next steps you offer, in your colours.'), ('Introductions near you', 'People who have already said yes to Jesus, within the area you choose.'), ('Next steps and capacity', 'Choose what you offer and how many people you can welcome each month. Pause any time.'), ('Your team', 'Invite your pastor, connect lead and youth leaders, each with the right access.'), ('Walking with', 'Keep track of everyone you are welcoming, and get a simple monthly report for your leaders.'), ('Your own tools', 'Use the free inbox, or connect your church management system through the API.')])}
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/directory">Find your church</a><a class="btn btn-green" href="#/docs/claim">How claiming works</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/claim">Claim your church</a><a class="btn btn-green" href="#/docs/claim">How claiming works</a></div>
 </div></section>'''
 
 ministry_desk = f'''<div class="pg-desk rv" aria-label="The ministry dashboard on the web">
@@ -124,7 +124,7 @@ FAQ_GROUPS = [
   ('How do I sign in?', 'With one Always account, using Apple, Google, YouVersion or your email. The same account works in the Always app and on the web.')]),
  ('For churches', [
   ('Does it cost anything?', 'No. Always is free for every church.'),
-  ('How do we join?', 'Find your church in the directory, claim its page, and we verify you with your denomination or network.'),
+  ('How do we join?', 'Claim your church\'s page, and we verify you with your denomination or network.'),
   ('What if we can\'t welcome someone?', 'Pass, with a reason. The next church or ministry nearby is asked. If none can, our care team helps.'),
   ('Do we have to change our church software?', 'No. Use the free inbox on the web or in the Always app, or connect your system through the API. Elvanto and Planning Center come first.'),
   ('What does welcoming now mean?', 'You\'re verified, trained, have room this month and usually reply on time. If you get busy, introductions simply pause.'),
@@ -335,10 +335,9 @@ ROLES = ['Senior pastor or minister', 'Pastor or staff member', 'Elder or board 
 CLAIM = '''<section class="page-hero"><div class="wrap"><h1>Claim your church</h1><p>Manage your page, choose the next steps you offer, and start welcoming people near you. Free, always.</p></div></section>
 <section class="sec pg-sec"><div class="wrap cl-grid">
   <div>
-    <div class="cl-org" id="cl-org"><p class="pg-cap">Your church</p><h2 id="cl-name">Choose your church</h2><p id="cl-where" class="pg-mut"></p></div>
     <form class="cl-form" id="claim-form" novalidate>
-      <label>Search for your church<input id="cl-q" type="search" placeholder="Church name or suburb" autocomplete="off"></label>
-      <div id="cl-results" class="cl-results"></div>
+      <label>Your church<input name="church" required autocomplete="organization" placeholder="Church or ministry name"></label>
+      <label>Suburb<input name="suburb" required placeholder="Suburb and state, like Parramatta NSW"></label>
       <label>Your name<input name="name" required autocomplete="name"></label>
       <label>Your role<select name="role" required><option value="">Choose your role</option>''' + ''.join(f'<option>{r}</option>' for r in ROLES) + '''</select></label>
       <label>Work email<input name="email" type="email" required autocomplete="email" placeholder="you@yourchurch.org.au"></label>
@@ -352,8 +351,7 @@ CLAIM = '''<section class="page-hero"><div class="wrap"><h1>Claim your church</h
   <aside class="cl-side">
     <h3>What happens next</h3>
     <ol><li><b>We check your role</b> with your denomination or network.</li><li><b>You set up your page</b>: welcome, service times and next steps.</li><li><b>Your connect lead</b> completes the 20-minute welcoming course.</li><li><b>You're verified</b>, and people nearby can be introduced to you.</li></ol>
-    <p class="pg-mut">Can't find your church? <a href="#/feedback/missing">Tell us about it</a>.</p>
-  </aside>
+      </aside>
 </div></section>'''
 FEEDBACK = '''<section class="page-hero"><div class="wrap"><h1>Ideas and problems</h1><p>Help us make Always better. Share an idea, report something that isn't working, or tell us about a church we've missed.</p></div></section>
 <section class="sec pg-sec"><div class="wrap cl-grid">
@@ -363,7 +361,7 @@ FEEDBACK = '''<section class="page-hero"><div class="wrap"><h1>Ideas and problem
       <label class="fb-kind"><input type="radio" name="kind" value="bug"><span><b>A problem</b>Something isn't working</span></label>
       <label class="fb-kind"><input type="radio" name="kind" value="missing"><span><b>A missing church</b>Add a church or ministry</span></label>
     </div>
-    <label>Where<select name="area"><option>The website</option><option>The Always app</option><option>Always for churches and ministries</option><option>A response page</option><option>The directory</option><option>Somewhere else</option></select></label>
+    <label>Where<select name="area"><option>The website</option><option>The Always app</option><option>Always for churches and ministries</option><option>A response page</option><option>Somewhere else</option></select></label>
     <label id="fb-msg-l">Tell us more<textarea name="message" rows="6" required></textarea></label>
     <label>Your email <span>Optional, if you'd like a reply</span><input name="email" type="email" autocomplete="email"></label>
     <button class="btn btn-green" type="submit">Send</button>
@@ -421,7 +419,6 @@ RESEARCH_ITEMS = [
   ('Brief', 'In progress', 'What happens after a yes', 'Every week people respond to Jesus at events, services and online. We\'re studying what happens after someone says yes: where people get lost, and what helps them take a next step.', None),
   ('Standard', 'Published', 'Consent that travels with the person', 'How a consent receipt can move between ministries and systems, what it records, and why every system checks it before it acts. Built on ISO/IEC TS 27560 for consent records.', '#/docs/consent'),
   ('Field notes', 'Published', 'Agents with a human in the loop', 'The Always Network grew out of an earlier project called Branches. Its agent checked each response and handed it to a person before anything was shared. Trialled at a youth event with UEN, it shaped how the Always Agent works today.', '#/docs/always-agent'),
-  ('Open data', 'Published', 'Mapping the churches of Australia', 'How we built a directory of 3,937 evangelical and Pentecostal churches and ministries from public denominational and network directories, and how churches correct and claim their own listing.', '#/directory'),
   ('Brief', 'In progress', 'Measuring humbly', 'What we count, what we don’t, and why a person is only counted as connected when they say so themselves. Totals only, with minimum group sizes so no one can be identified.', '#/docs/results'),
 ]
 RESEARCH = '''<section class="page-hero"><div class="wrap"><h1>Research</h1><p>We learn in the open: briefs, field notes and open data from building Always with churches and ministries.</p></div></section>

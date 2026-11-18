@@ -66,7 +66,7 @@ DOCS = [
   ("claim", "Claim your church's page", """
 <p class="lead">Every evangelical and Pentecostal church in Australia is on the map. Claiming your page is free and takes about ten minutes.</p>
 <ol>
-<li>Find your church in the <a href="#/directory">directory</a> and choose <b>Claim this page</b>, or go straight to <a href="#/claim">Claim your church</a>.</li>
+<li>Go to <a href="#/claim">Claim your church</a>.</li>
 <li>Tell us your role (pastor, elder, administrator, connect lead) and how we can confirm it, such as your listing on your denomination's website.</li>
 <li>We check with your denomination or network and email you when your page is ready.</li>
 <li>Once confirmed, invite your team and set up your page, next steps and capacity.</li>
@@ -277,7 +277,7 @@ DOCS = [
 <p>The standard is published as JSON Schema under CC BY 4.0. Changes go through an open RFC process, approved by the Technology Steering Committee and, where people's safety is involved, the Safeguarding, Privacy and Ethics Committee.</p>
 """),
   ("api", "Always API", """
-<p class="lead">A REST API (OpenAPI 3.1) for sending responses, receiving introductions, managing a page and reading the directory. Hosted in Sydney.</p>
+<p class="lead">A REST API (OpenAPI 3.1) for sending responses, receiving introductions, managing a page and reading the church feed. Hosted in Sydney.</p>
 <h2>Authentication</h2>
 <p>Integrations use scoped API tokens (<code>alw_live_…</code>), shown once, hashed at rest and revocable. Staff sign in with passkeys or an authenticator app, and send the organisation they're acting for.</p>
 <pre><code>curl https://api.alwaysfoundation.org/v1/responses \\
@@ -842,7 +842,6 @@ header = """
       <li><a href="#/ministries" data-route="ministries">Ministries</a></li>
       <li><a href="#/app" data-route="app">Evangelists</a></li>
       <li><a href="#/platform" data-route="platform">Platform</a></li>
-      <li><a href="#/directory" data-route="directory">Directory</a></li>
       <li><a href="#/faq" data-route="faq">FAQs</a></li>
     </ul><div class="nav-foot"><div class="nav-more"><a href="#/about">About</a><a href="#/docs/introduction">Docs</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/claim">Claim your church</a><a href="#/feedback">Ideas and problems</a></div><a class="btn btn-peach nav-cta" href="#/join">Get involved</a></div></nav>
     <a class="btn btn-peach" href="#/join">Get involved</a>
@@ -858,7 +857,7 @@ home = home.replace('<p class="note">Evangelical and Pentecostal, in every state
  '<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and is verified before anyone is introduced to it.</p><a class="btn btn-green" href="#/directory" style="margin-top:28px">Search the directory</a>')
 
 script = """
-const DIR = __DIR__;
+
 const DOCS = __DOCS__;
 const ORDER = __ORDER__;
 document.body.classList.remove('no-js');
@@ -868,7 +867,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => e
 function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io ? io.observe(el) : el.classList.add('in'); }); }
 
 // Router
-const pages = { home: 'page-home', directory: 'page-directory', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform' };
+const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform' };
 const anchors = { join: 'join', how: 'how' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
@@ -879,8 +878,6 @@ function route() {
   document.querySelectorAll('nav a[data-route]').forEach((a) => a.toggleAttribute('aria-current', a.dataset.route === page) || a.setAttribute('aria-current', a.dataset.route === page ? 'page' : ''));
   document.querySelectorAll('nav a[data-route]').forEach((a) => { if (a.dataset.route === page) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   if (page === 'docs') showDoc(second || 'introduction');
-  if (page === 'directory') renderDir(true);
-  if (page === 'claim') claimPick(second);
   if (page === 'feedback' && second === 'missing') { document.querySelector('#fb-form input[value=missing]').checked = true; fbKind(); }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
@@ -916,28 +913,7 @@ document.getElementById('dsq').addEventListener('input', (e) => {
 
 document.getElementById('dpick').addEventListener('change', (e) => { location.hash = '#/docs/' + e.target.value; });
 
-// Directory
-const STATUS = { Unverified: 'Listed', Claimed: 'Claimed', Verified: 'Verified', 'Verified youth': 'Verified youth' };
-let shown = 0, matches = [];
 const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-function filterDir() {
-  const q = document.getElementById('dq').value.trim().toLowerCase();
-  const st = document.getElementById('ds').value, k = document.getElementById('dk').value;
-  matches = DIR.filter((r) => (!st || r[4] === st) && (!k || r[1] === k) && (!q || (r[0] + ' ' + r[2] + ' ' + r[3]).toLowerCase().includes(q)));
-}
-function renderDir(reset) {
-  if (reset) { filterDir(); shown = 0; document.getElementById('dlist').innerHTML = ''; }
-  const list = document.getElementById('dlist');
-  const slice = matches.slice(shown, shown + 30);
-  if (!matches.length) list.innerHTML = '<div class="dir-empty" style="grid-column:1/-1">No churches or ministries match yet. Try a nearby suburb, or tell us about a church we\\'ve missed at hello@alwaysfoundation.org.</div>';
-  list.insertAdjacentHTML('beforeend', slice.map((r) => `<article class="org"><h3>${esc(r[0])}</h3><p class="where">${esc([r[3], r[4]].filter(Boolean).join(', '))}</p><p class="den">${esc(r[2])}</p><div class="foot"><span class="badge ${r[1] === 'M' ? 'kind' : ''}">${r[1] === 'M' ? 'Ministry' : STATUS[r[5]] || 'Listed'}</span><button type="button" onclick="location.hash='#/claim/${DIR.indexOf(r)}'">Claim this page</button></div></article>`).join(''));
-  shown += slice.length;
-  document.getElementById('dcount').textContent = `${matches.length.toLocaleString('en-AU')} ${matches.length === 1 ? 'result' : 'results'}`;
-  document.getElementById('dmore').hidden = shown >= matches.length;
-}
-let t;
-['dq', 'ds', 'dk'].forEach((id) => document.getElementById(id).addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => renderDir(true), 120); }));
-document.getElementById('dmore').addEventListener('click', () => renderDir(false));
 
 // Contact form
 const LIVE = /(^|\\.)alwaysfoundation\\.org$/.test(location.hostname);
@@ -958,22 +934,6 @@ function evf(){const s=document.getElementById('ev-s').value,k=document.getEleme
 
 // ---------- claim a church
 const API_BASE = LIVE ? '/api/forms' : ''; // Claims and feedback go to the foundation inbox until the Always API is live.
-let claimRow = null;
-function claimPick(i) {
-  const r = DIR[+i];
-  claimRow = Number.isInteger(+i) && r ? r : null;
-  document.getElementById('cl-name').textContent = claimRow ? claimRow[0] : 'Choose your church';
-  document.getElementById('cl-where').textContent = claimRow ? [claimRow[3], claimRow[4]].filter(Boolean).join(', ') + ' · ' + claimRow[2] : 'Search below, or pick it from the directory.';
-  document.getElementById('cl-results').innerHTML = '';
-  document.getElementById('claim-form').hidden = false; document.getElementById('cl-done').hidden = true;
-}
-document.getElementById('cl-q').addEventListener('input', (e) => {
-  const q = e.target.value.trim().toLowerCase();
-  const m = q.length < 2 ? [] : DIR.map((r, i) => [r, i]).filter(([r]) => (r[0] + ' ' + r[3]).toLowerCase().includes(q)).slice(0, 6);
-  const box = document.getElementById('cl-results');
-  box.innerHTML = m.map(([r, i]) => `<button type="button" data-i="${i}"><b>${esc(r[0])}</b> <span>· ${esc([r[3], r[4]].filter(Boolean).join(', '))}</span></button>`).join('');
-  box.querySelectorAll('button').forEach((b) => b.onclick = () => { location.hash = '#/claim/' + b.dataset.i; e.target.value = ''; });
-});
 async function sendJSON(path, body) {
   if (!API_BASE) return true; // prototype: no API connected yet
   const r = await fetch(API_BASE + path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
@@ -981,11 +941,10 @@ async function sendJSON(path, body) {
 }
 document.getElementById('claim-form').addEventListener('submit', async (e) => {
   e.preventDefault(); const f = e.target, st = document.getElementById('cl-status');
-  if (!claimRow) { st.textContent = 'Search for your church first.'; return; }
-  if (!f.checkValidity()) { st.textContent = 'Please add your name, role and work email, and tick the box.'; return; }
+  if (!f.checkValidity()) { st.textContent = 'Please add your church, your name, role and work email, and tick the box.'; return; }
   const d = Object.fromEntries(new FormData(f));
   st.textContent = 'Sending…';
-  const ok = await sendJSON(`/v1/orgs/${encodeURIComponent(claimRow[0])}/claims`, { email: d.email, role: d.role, evidence: [d.name, d.evidence].filter(Boolean).join(' · ') }).catch(() => false);
+  const ok = await sendJSON('/v1/orgs/new/claims', { email: d.email, role: d.role, evidence: [d.church, d.suburb, d.name, d.evidence].filter(Boolean).join(' · ') }).catch(() => false);
   if (!ok) { st.textContent = 'Your claim could not be sent. Please email hello@alwaysfoundation.org.'; return; }
   st.textContent = ''; f.reset(); f.hidden = true; document.getElementById('cl-done').hidden = false;
 });
@@ -1054,7 +1013,6 @@ doc = f"""<!DOCTYPE html>
 {header}
 <main id="main">
 <div class="page" id="page-home">{home}</div>
-<div class="page" id="page-directory" hidden>{directory_page}</div>
 <div class="page" id="page-about" hidden>{about}</div>
 <div class="page" id="page-docs" hidden>{docs_page}</div>
 <div class="page" id="page-churches" hidden>{P.CHURCHES}</div>
