@@ -322,3 +322,156 @@ WOW_JS = '''
   }), { threshold: 0.2 }).observe(cv);
 })();
 '''.replace('__MAP__', MAP)
+
+# ---------------------------------------------------------------- Pentecost flame moments
+FIRE_SECTION = '''<section class="fire" id="fire" aria-labelledby="fire-h">
+  <canvas class="fire-canvas" id="fire-canvas" aria-hidden="true"></canvas>
+  <div class="wrap fire-in">
+    <p class="fire-v" id="fire-h">“And divided tongues as of fire appeared to them and rested on each one of them.”</p>
+    <p class="fire-c">Acts 2:3 (ESV)</p>
+    <p class="fire-l">We're praying for that fire again: on every church, in every city, across Australia.</p>
+  </div>
+</section>'''
+
+FLAME_SVG = '<svg class="flame" viewBox="0 0 40 56" aria-hidden="true"><defs><linearGradient id="fg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#E25822"/><stop offset=".55" stop-color="#EE8B54"/><stop offset="1" stop-color="#FFD58A"/></linearGradient></defs><path class="fo" d="M20 2C24 14 36 20 36 34c0 10-7 19-16 19S4 44 4 34c0-8 5-12 8-18 1 6 4 9 7 10C17 18 17 10 20 2z" fill="url(#fg)"/><path class="fi" d="M20 26c3 6 8 9 8 15 0 5-4 9-8 9s-8-4-8-9c0-4 3-6 4-9 1 3 2 4 3 5 0-4 0-7 1-11z" fill="#FFE7B0"/></svg>'
+
+FIRE_CSS = '''
+.fire { position: relative; overflow: hidden; background: radial-gradient(90% 70% at 50% 100%, #3A1A0E 0%, #1A1410 45%, #0E1412 100%); color: var(--cream); padding: clamp(110px, 14vw, 200px) 0 clamp(130px, 16vw, 230px); text-align: center; isolation: isolate; }
+.fire-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.fire-in { position: relative; max-width: 980px; }
+.fire-v { margin: 0 auto; font-family: var(--serif, Georgia, serif); font-size: clamp(32px, 4.6vw, 62px); line-height: 1.18; letter-spacing: -0.01em; color: #FFF6E8; text-shadow: 0 2px 30px rgba(226,88,34,.35); max-width: 22ch; text-wrap: balance; }
+.fire-c { margin: 22px 0 0; font: 700 15px/1 var(--head); color: #FFB37A; }
+.fire-l { margin: 34px auto 0; font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55; color: #E9D9C6; max-width: 34ch; text-wrap: balance; }
+.heart-item { position: relative; }
+.heart-item .flame { width: 30px; height: 42px; display: block; margin-bottom: 14px; transform-origin: 50% 100%; animation: flick 2.4s ease-in-out infinite; filter: drop-shadow(0 4px 10px rgba(226,88,34,.35)); }
+.heart-item:nth-child(2) .flame { animation-delay: -.8s; } .heart-item:nth-child(3) .flame { animation-delay: -1.6s; }
+.heart-item .flame .fi { transform-origin: 50% 100%; animation: flick2 1.3s ease-in-out infinite; }
+@keyframes flick { 0%,100% { transform: scale(1, 1) skewX(0deg); } 25% { transform: scale(.96, 1.06) skewX(-2deg); } 50% { transform: scale(1.03, .97) skewX(1.5deg); } 75% { transform: scale(.98, 1.04) skewX(-1deg); } }
+@keyframes flick2 { 0%,100% { transform: scale(1, 1); } 50% { transform: scale(.9, 1.12); } }
+.join { position: relative; isolation: isolate; }
+.join-embers { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .heart-item .flame, .heart-item .flame .fi { animation: none; } }
+'''
+
+FIRE_JS = '''
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Flame field: many soft particles rising from the base, additive blending, stronger while in view.
+  function flameField(cv, opts) {
+    const ctx = cv.getContext('2d'); let W = 0, H = 0, dpr = 1, parts = [], on = false, last = 0, power = 0, target = 0;
+    function size() { const r = cv.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    function spawn() {
+      const x = Math.random() * W; const big = Math.random() < opts.tongues;
+      parts.push({ x, y: H + 10, vx: (Math.random() - .5) * 0.02, vy: -(opts.speed * (0.6 + Math.random() * 0.8)), r: big ? 26 + Math.random() * 30 : 6 + Math.random() * 14, life: 0, max: opts.life * (0.6 + Math.random() * 0.7), seed: Math.random() * 6 });
+    }
+    function frame(now) {
+      if (!on) return; const dt = Math.min(48, now - (last || now)); last = now;
+      power += (target - power) * 0.04;
+      const n = opts.rate * power * dt / 16; for (let i = 0; i < n; i++) spawn();
+      ctx.globalCompositeOperation = 'source-over'; ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      parts = parts.filter((p) => p.life < p.max);
+      for (const p of parts) {
+        p.life += dt; const k = p.life / p.max;
+        p.x += (p.vx + Math.sin(p.life / 180 + p.seed) * 0.03) * dt; p.y += p.vy * dt;
+        const r = p.r * (1 - k * 0.7);
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
+        const a = (1 - k) * opts.alpha;
+        g.addColorStop(0, `rgba(255,${Math.round(220 - k * 120)},${Math.round(150 - k * 120)},${a})`);
+        g.addColorStop(.45, `rgba(238,${Math.round(120 - k * 60)},40,${a * 0.55})`);
+        g.addColorStop(1, 'rgba(120,30,10,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 7); ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    size(); addEventListener('resize', size);
+    if (reduce) { target = power = 1; for (let i = 0; i < 220; i++) { spawn(); const p = parts[parts.length - 1]; p.life = Math.random() * p.max * .8; p.y = H - Math.random() * H * opts.reach; } on = true; frame(performance.now()); on = false; return; }
+    new IntersectionObserver((es) => es.forEach((e) => {
+      target = Math.min(1, e.intersectionRatio * 1.6);
+      if (e.isIntersecting && !on) { on = true; last = 0; requestAnimationFrame(frame); }
+      else if (!e.isIntersecting) { on = false; parts = []; power = 0; }
+    }), { threshold: [0, .15, .3, .45, .6, .75] }).observe(cv);
+  }
+  window.__flameField = flameField;
+  const f = document.getElementById('fire-canvas');
+  if (f) flameField(f, { rate: 3.2, speed: 0.16, life: 2600, alpha: 0.5, tongues: 0.18, reach: .6 });
+  const j = document.querySelector('.join-embers');
+  if (j) flameField(j, { rate: 0.35, speed: 0.07, life: 5200, alpha: 0.28, tongues: 0, reach: 1 });
+})();
+'''
+
+# ---------------------------------------------------------------- Opening: Matthew 28 over flame, every visit
+_LINES = [
+  ('And Jesus came and said to them,', 'n'),
+  ('“All authority in heaven and on earth has been given to me.', 'n'),
+  ('Go therefore and make disciples of all nations,', 'n'),
+  ('baptizing them in the name of the Father and of the Son and of the Holy Spirit,', 'n'),
+  ('teaching them to observe all that I have commanded you.', 'n'),
+  ('And behold, I am with you <span class="ia" id="intro-always">always</span>, to the end of the age.”', 'k'),
+]
+def _zf(t):
+  a, rest = t.split('<span class="ia"', 1)
+  word, b = rest.split('</span>', 1)
+  return f'<span class="zf">{a}</span><span class="ia"{word}</span><span class="zf">{b}</span>'
+
+INTRO = ('<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Matthew 28:18 to 20">'
+  '<canvas class="intro-fire" id="intro-fire" aria-hidden="true"></canvas>'
+  '<div class="intro-in"><p class="intro-v">'
+  + ''.join(f'<span class="il{" ik" if k == "k" else ""}" style="--i:{i}">{_zf(t) if k == "k" else t} </span>' for i, (t, k) in enumerate(_LINES))
+  + '</p><p class="intro-c" style="--i:6">Matthew 28:18–20 (ESV)</p></div>'
+  '<button type="button" class="intro-skip" id="intro-skip">Enter</button></div>')
+
+INTRO_CSS = '''
+.intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: radial-gradient(80% 60% at 50% 100%, #3A1A0E 0%, #160F0C 50%, #0B0F0E 100%); color: #FFF6E8; overflow: hidden; transition: opacity .9s ease, visibility .9s; }
+.intro.out { opacity: 0; visibility: hidden; }
+.no-js .intro { display: none; }
+.intro-fire { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity 1.2s ease; }
+.intro-in { position: relative; padding: 0 28px; max-width: 980px; text-align: center; }
+.intro-v { margin: 0; font-family: var(--serif, Georgia, serif); font-size: clamp(22px, 3.1vw, 40px); line-height: 1.4; text-shadow: 0 2px 24px rgba(0,0,0,.5); }
+.intro .il { opacity: 0; filter: blur(6px); display: inline; animation: lineIn 1s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(.35s + var(--i) * .95s); }
+.intro .ik { display: block; margin-top: .5em; font-size: 1.3em; color: #FFC27A; text-shadow: 0 0 30px rgba(238,120,40,.55); }
+.intro .ia { display: inline-block; padding-bottom: .06em; background: linear-gradient(90deg, #E2582A, #FFB347) no-repeat 0 100% / 0% .09em; animation: ulDraw .9s cubic-bezier(.6,0,.2,1) 6.3s forwards; }
+.intro-c { margin: 26px 0 0; font: 700 15px/1 var(--head); color: #FFB37A; opacity: 0; animation: lineIn 1s ease forwards; animation-delay: calc(.35s + var(--i) * .95s); transition: opacity .4s ease; }
+.intro-skip { position: absolute; right: 22px; bottom: 22px; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(255,246,232,.35); background: rgba(0,0,0,.25); color: #FFF6E8; font: 600 15px/1 var(--head); cursor: pointer; transition: opacity .3s ease; }
+.intro-skip:hover, .intro-skip:focus-visible { background: #FFF6E8; color: #1A1410; }
+@keyframes lineIn { to { opacity: 1; filter: none; } }
+@keyframes ulDraw { to { background-size: 100% .09em; } }
+/* the blow-up: everything but "always" falls away, then "always" rushes toward you and opens onto the site */
+.intro.zoom { pointer-events: none; opacity: 0; transition: opacity .55s ease 1.2s; }
+.intro.zoom .intro-skip { opacity: 0; }
+.intro.zoom .intro-c { animation: none; opacity: 0; }
+.intro.zoom .il { animation: none; opacity: 1; filter: none; transition: opacity .45s ease; }
+.intro.zoom .il:not(.ik), .intro.zoom .ik .zf { opacity: 0; }
+.intro.zoom .ia { background-size: 100% .09em; animation: none; }
+.intro.zoom .intro-in { transform: scale(var(--zs, 40)); transition: transform 1.6s cubic-bezier(.65,0,.3,1) .3s; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .intro .il, .intro-c { animation: none; opacity: 1; filter: none; } .intro .ia { animation: none; background-size: 100% .09em; } .intro, .intro.zoom .intro-in { transition: none; } }
+body.intro-on { overflow: hidden; }
+'''
+
+INTRO_JS = '''
+(() => {
+  const el = document.getElementById('intro'); if (!el) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('intro-on');
+  let done = false;
+  const finish = (ms) => setTimeout(() => { el.style.display = 'none'; }, ms);
+  const close = () => {
+    if (done) return; done = true;
+    document.body.classList.remove('intro-on');
+    const w = document.getElementById('intro-always'), inner = el.querySelector('.intro-in');
+    if (reduce || !w || !inner) { el.classList.add('out'); finish(950); return; }
+    // zoom into the centre of "always" until it fills far more than the screen
+    const r = w.getBoundingClientRect(), ir = inner.getBoundingClientRect();
+    inner.style.transformOrigin = (r.left + r.width / 2 - ir.left) + 'px ' + (r.top + r.height * 0.55 - ir.top) + 'px';
+    inner.style.setProperty('--zs', Math.max(28, Math.ceil(innerWidth * 2.2 / Math.max(r.width, 1))));
+    el.classList.add('zoom');
+    finish(1900);
+  };
+  const skip = document.getElementById('intro-skip');
+  skip.addEventListener('click', close); skip.focus({ preventScroll: true });
+  el.addEventListener('click', (e) => { if (e.target !== skip) close(); });
+  addEventListener('keydown', (e) => { if (!done && (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); close(); } });
+  setTimeout(close, reduce ? 5000 : 8400);
+  if (window.__flameField) window.__flameField(document.getElementById('intro-fire'), { rate: 3.6, speed: 0.17, life: 2800, alpha: 0.55, tongues: 0.2, reach: .65 });
+})();
+'''

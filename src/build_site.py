@@ -20,6 +20,10 @@ home = home.replace('{{REJOICE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(
 home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
 home = _swap(home, 'class="sec promise"', '')
   # 'Watch it work' removed
+_h = home.index('<section class="sec heart"')
+home = home[:_h] + extras.FIRE_SECTION + '\n' + home[_h:]
+home = home.replace('<article class="heart-item rv"><h3>', '<article class="heart-item rv">' + extras.FLAME_SVG + '<h3>')
+home = home.replace('<section class="sec join" id="join">', '<section class="sec join" id="join"><canvas class="join-embers" aria-hidden="true"></canvas>', 1)
 directory = open(os.path.join(ROOT,'dir.json')).read()
 COUNT = len(json.loads(directory))
 
@@ -1070,7 +1074,7 @@ route();
   });
 })();
 
-""" + extras.JS + extras.WOW_JS
+""" + extras.JS + extras.WOW_JS + extras.FIRE_JS + extras.INTRO_JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """
@@ -1103,9 +1107,10 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{extras.WOW_CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{extras.WOW_CSS}{extras.FIRE_CSS}{extras.INTRO_CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
 </head>
 <body class="no-js">
+{extras.INTRO}
 <a class="skip" href="#main">Skip to content</a>
 {header}
 <main id="main">
@@ -1145,7 +1150,7 @@ for _pid, (_page, _anchor) in PHOTOS:
     doc = doc[:_i] + _fig + doc[_i:]
 import re as _re2
 doc = _re2.sub(r'(<form\b[^>]*>)', r'\1<input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">', doc)
-doc = doc.replace('{{CREDIT}}', 'Scripture quotations marked NKJV are taken from the New King James Version®. Copyright © 1982 by Thomas Nelson. Used by permission. All rights reserved. Scripture quotations marked ESV are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Scripture quotations are not covered by our Creative Commons licence. Photos: UEN, Rejoice, Sydney Fire Evangelism, Alpha Australia and CXMMXNS, used with permission; some photos from Unsplash under the Unsplash License.', 1)
+doc = doc.replace('{{CREDIT}}', 'Scripture quotations marked ESV are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Scripture quotations are not covered by our Creative Commons licence. Photos: UEN, Rejoice, Sydney Fire Evangelism, Alpha Australia and CXMMXNS, used with permission; some photos from Unsplash under the Unsplash License.', 1)
 doc = doc.replace('</style>', '.photo-band{margin:0;height:min(52vh,480px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>', 1)
 _svg = lambda n: 'data:image/svg+xml;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', n), 'rb').read()).decode()
 doc = doc.replace('{{LOGO}}', _svg('always-foundation-logo.svg')).replace('{{LOGO_REV}}', _svg('always-foundation-logo-reverse.svg'))
