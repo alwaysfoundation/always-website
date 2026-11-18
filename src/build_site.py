@@ -637,6 +637,7 @@ about = """
 <section class="sec" style="padding-top:96px"><div class="wrap">
   <div class="about-grid">
     <div><h2>Why we exist</h2>
+      <p>Always Foundation is a new initiative. We are being established now, and we are testing our first tools with churches and ministries.</p>
       <p>Across Australia, churches and ministries are sharing the Gospel, making disciples and serving their communities. Jesus sent His Church to “go therefore and make disciples of all nations” (Matthew 28:19, ESV), and no single church or ministry carries that alone.</p>
       <p>Yet many ministries each build and pay for the same tools, carry heavy administration, and struggle to pass people on to one another safely. Too many people respond to Jesus and never find a church family. We exist to support their work, so ministries can devote more of their time and resources to what matters most.</p></div>
     <div><h2>How we help</h2>
@@ -646,9 +647,9 @@ about = """
       <p>All of it runs on Always Platform, our open-source technology. Our focus is Australia, and the Church in other nations is free to use it too.</p></div>
   </div>
   <div class="mv">
-    <div><h3>Our vision</h3><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p></div>
-    <div><h3>Our name</h3><p>Jesus' promise in the Great Commission: “I am with you always” (Matthew 28:20, ESV). We build for the long haul, because He is with His Church to the end of the age.</p></div>
-    <div><h3>Our values</h3><p>Christ-centred. Gospel first. Built together, shared freely. Open by default. People's details stay theirs. Humble about what we measure.</p></div>
+    <div><h3>Our vision</h3><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p style="margin-top:12px">Our values: Christ-centred. Gospel first. Built together, shared freely. People's details stay theirs.</p></div>
+    <div><h3>Our name</h3><p>From Jesus' promise in the Great Commission: “I am with you always” (Matthew 28:20, ESV).</p></div>
+    <div><h3>Our posture</h3><p>We serve quietly, behind the scenes. Our tools carry the names of churches and ministries, not ours. The credit is theirs, and the glory is God's.</p></div>
   </div>
   <div class="creed">
     <div><h2>Built together. Shared freely.</h2></div>
@@ -830,7 +831,12 @@ DECK_CSS = '''
 .hero { padding-bottom: clamp(56px, 7vw, 96px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
 .hero-grid .hero-copy > * { max-width: 620px; }
-.hero h1 { font-size: clamp(46px, 5.4vw, 88px); }
+.hero h1 { font-size: clamp(48px, 7vw, 104px); }
+.hero .hero-split { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; max-width: none; }
+.hero .hero-split > * { max-width: none; }
+.hero .hero-split h1 { margin: 0; }
+.hero .hero-side .lede { margin-top: 0; max-width: 40ch; }
+@media (max-width: 900px) { .hero .hero-split { grid-template-columns: 1fr; gap: 24px; } }
 .hero h1 .nw { white-space: nowrap; }
 .hero h1 .u { text-decoration: underline; text-decoration-color: var(--peach); text-decoration-thickness: .075em; text-underline-offset: .12em; text-decoration-skip-ink: none; }
 .sv { margin: 18px 0 0; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.45; color: inherit; opacity: .78; }
@@ -1139,7 +1145,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + extras.JS + extras.WOW_JS
+""" + extras.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """
@@ -1172,7 +1178,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{extras.WOW_CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
