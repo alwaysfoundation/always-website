@@ -442,3 +442,92 @@ RESEARCH_CSS = '''
 .rs-note h3 { font-size: 27px; color: var(--green); } .rs-note p { margin: 10px 0 0; color: var(--soft); }
 @media (max-width: 640px) { .rs-item, .rs-note { padding: 26px 22px; } }
 '''
+
+
+def _swatch(name, hexv, use, dark=False):
+    return f'<div class="br-sw"><span class="br-chip" style="background:{hexv}"></span><b>{name}</b><code>{hexv}</code><span>{use}</span></div>'
+
+BRAND = f'''<section class="page-hero"><div class="wrap">
+  <h1>Brand</h1><p>How Always looks and sounds. Use it freely when you talk about Always.</p>
+</div></section>
+<section class="sec pg-sec"><div class="wrap">
+  <h2 class="pg-h rv">Logo</h2>
+  <p class="pg-lead rv">The word "always", ending in a cross: Jesus at the end of every always.</p>
+  <div class="br-logos">
+    <figure class="br-logo"><img src="{{{{LOGO}}}}" alt="Always Foundation logo"><a class="btn btn-green" href="{{{{LOGO}}}}" download="always-foundation-logo.svg">Download</a></figure>
+    <figure class="br-logo dark"><img src="{{{{LOGO_REV}}}}" alt="Always Foundation logo, reversed for dark backgrounds"><a class="btn btn-peach" href="{{{{LOGO_REV}}}}" download="always-foundation-logo-reverse.svg">Download</a></figure>
+  </div>
+  <ul class="br-list rv"><li>Use the dark logo on light backgrounds, and the light one on green.</li><li>Leave space around it. Don't recolour, stretch or add effects.</li><li>Put it on a solid band, never straight on a photo.</li></ul>
+</div></section>
+<section class="sec pg-sec pg-sage"><div class="wrap">
+  <h2 class="pg-h rv">Colour</h2>
+  <p class="pg-lead rv">Deep green and warm cream, with peach for the one thing to press.</p>
+  <div class="br-sws rv">
+    {_swatch('Green', '#1B4740', 'The brand colour')}
+    {_swatch('Cream', '#F8F3EA', 'Pages and space')}
+    {_swatch('Sage', '#DDE9E0', 'Scripture and calm')}
+    {_swatch('Night', '#1E2A26', 'Text and footers')}
+    {_swatch('Peach', '#E8A577', 'One main button')}
+    {_swatch('Orange', '#EE8B54', 'The cross only')}
+    {_swatch('Clay', '#A4562A', 'Links on cream')}
+  </div>
+</div></section>
+<section class="sec pg-sec"><div class="wrap">
+  <h2 class="pg-h rv">Type</h2>
+  <div class="br-type rv">
+    <div><p class="br-cap">Manrope, for headlines</p><p class="br-display">Every yes deserves a next step.</p></div>
+    <div><p class="br-cap">Inter, for everything else</p><p class="br-body">Free for every church. Kept in Australia. Nothing shared without permission.</p></div>
+    <div><p class="br-cap">Newsreader, for Scripture</p><p class="br-verse">“Lo, I am with you alway.”</p><p class="br-ref">Matthew 28:20</p></div>
+  </div>
+</div></section>
+<section class="sec pg-sec pg-sage"><div class="wrap">
+  <h2 class="pg-h rv">Voice</h2>
+  <p class="pg-lead rv">Warm and plain, like a pastor at the door.</p>
+  <ul class="br-list rv">
+    <li>Start with people and with Jesus, never with the software.</li>
+    <li>One idea at a time, in short sentences a twelve-year-old could read aloud.</li>
+    <li>Say what happens. No hype, and no promises about time.</li>
+    <li>Capitalise He, Him and His for God. Australian spelling.</li>
+  </ul>
+  <table class="doc-table br-say rv"><thead><tr><th scope="col">Say</th><th scope="col">Not</th></tr></thead><tbody>
+    <tr><td>welcome, introduce, walk with</td><td>route, dispatch, funnel</td></tr>
+    <tr><td>people who said yes to Jesus</td><td>leads, contacts, records</td></tr>
+    <tr><td>next step</td><td>conversion</td></tr>
+    <tr><td>free for every church</td><td>free tier</td></tr>
+  </tbody></table>
+</div></section>
+<section class="sec pg-sec"><div class="wrap">
+  <h2 class="pg-h rv">Photos</h2>
+  <ul class="br-list rv">
+    <li>Real people and churches in natural light, with written permission and first names only.</li>
+    <li>No identifiable children or young people under 18.</li>
+    <li>Credit every photo.</li>
+  </ul>
+  <p class="br-more rv">Need something else, like slides or social templates? <b>hello@alwaysfoundation.org</b></p>
+</div></section>'''
+
+BRAND_CSS = """
+.br-logos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
+.br-logo { margin: 0; background: var(--paper, #FFFDF8); border-radius: 26px; padding: 48px 32px 28px; display: grid; gap: 28px; justify-items: center; }
+.br-logo.dark { background: #1B4740; }
+.br-logo img { width: min(280px, 80%); height: auto; }
+.br-list { margin: 28px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 18px; max-width: 62ch; }
+.br-sws { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; margin-top: 36px; }
+.br-sw { display: grid; gap: 4px; background: var(--paper, #FFFDF8); border-radius: 20px; padding: 14px 14px 16px; }
+.br-chip { height: 84px; border-radius: 14px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); margin-bottom: 8px; }
+.br-sw b { font: 700 16px/1.2 var(--head); color: var(--green); }
+.br-sw code { font-size: 14px; color: var(--muted); background: none; padding: 0; }
+.br-sw span:last-child { font-size: 14px; color: var(--soft); }
+.br-type { display: grid; gap: 36px; margin-top: 36px; max-width: 900px; }
+.br-cap { font-size: 14px; color: var(--muted); margin: 0 0 6px; }
+.br-display { font: 800 clamp(36px, 5vw, 62px)/1.05 'Manrope', sans-serif; letter-spacing: -0.035em; color: var(--green); margin: 0; }
+.br-body { font: 400 21px/1.6 'Inter', sans-serif; margin: 0; max-width: 46ch; }
+.br-verse { font: 400 clamp(28px, 3.4vw, 44px)/1.3 'Newsreader', Georgia, serif; color: var(--green); margin: 0; }
+.br-ref { font: 700 16px/1 var(--head); color: #A4562A; margin: 10px 0 0; }
+.br-say { max-width: 620px; margin-top: 28px; }
+.doc-table.br-say td, .doc-table.br-say th { text-align: left; font-weight: 400; }
+.doc-table.br-say thead th, .doc-table.br-say thead th:last-child { font-weight: 700; text-align: left; }
+
+.br-more { margin-top: 36px; color: var(--muted); }
+@media (max-width: 700px) { .br-logos { grid-template-columns: 1fr; } }
+"""
