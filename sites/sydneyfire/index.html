@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sydney Fire Evangelism · Your next step</title>
+<meta name="description" content="Said yes to Jesus? Take your next step with Sydney Fire Evangelism. Powered by Always Platform.">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/logo-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0d0d0d; --coal: #171717; --line: #2b2b2b; --red: #e3262e; --red-d: #b81b22; --paper: #faf7f2; --mute: #a9a39b; --soft: #d8d2c9; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--ink); color: #fff; font: 500 17px/1.5 Archivo, system-ui, -apple-system, Segoe UI, sans-serif; -webkit-font-smoothing: antialiased; }
+main { max-width: 520px; margin: 0 auto; padding: max(20px, env(safe-area-inset-top)) 22px calc(40px + env(safe-area-inset-bottom)); min-height: 100dvh; display: flex; flex-direction: column; }
+h1, h2 { font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
+h1 { font-size: clamp(38px, 11vw, 52px); }
+h2 { font-size: clamp(28px, 8vw, 36px); }
+p { margin: 0; }
+a { color: inherit; }
+.screen { display: none; flex: 1; flex-direction: column; }
+.screen.on { display: flex; }
+.top { display: flex; align-items: center; justify-content: space-between; min-height: 48px; }
+.top img { width: 44px; height: 44px; border-radius: 50%; }
+.back { background: none; border: 0; color: var(--soft); font: 700 16px/1 Archivo, sans-serif; min-height: 44px; padding: 0 4px; cursor: pointer; }
+.step-count { color: var(--mute); font-size: 14px; font-weight: 700; }
+.hero-logo { width: 148px; height: 148px; border-radius: 50%; margin: 28px auto 30px; display: block; box-shadow: 0 0 0 1px var(--line), 0 20px 60px rgba(227,38,46,.18); }
+.lead { color: var(--soft); font-size: 18px; margin-top: 14px; }
+.red { color: var(--red); }
+.stack { display: grid; gap: 12px; margin-top: 32px; }
+.btn { display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 14px 20px; border-radius: 16px; border: 0; font: 800 18px/1.2 Archivo, sans-serif; text-decoration: none; cursor: pointer; width: 100%; text-align: center; }
+.btn-red { background: var(--red); color: #fff; }
+.btn-red:active { background: var(--red-d); }
+.btn-line { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px var(--line); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.btn:focus-visible, .opt:focus-within, input:focus-visible, .back:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.opts { display: grid; gap: 10px; margin-top: 26px; }
+.opt { position: relative; display: block; }
+.opt input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.opt span { display: block; min-height: 60px; padding: 16px 18px; border-radius: 16px; background: var(--coal); box-shadow: inset 0 0 0 2px var(--line); font-weight: 800; font-size: 18px; }
+.opt span small { display: block; font-weight: 500; font-size: 15px; color: var(--mute); margin-top: 2px; }
+.opt input:checked + span { box-shadow: inset 0 0 0 2px var(--red); background: #241112; }
+.field { display: grid; gap: 6px; margin-top: 16px; }
+.field label { font-weight: 700; font-size: 15px; color: var(--soft); }
+.field input { min-height: 54px; border-radius: 14px; border: 0; background: var(--coal); box-shadow: inset 0 0 0 2px var(--line); color: #fff; font: 600 18px/1.2 Archivo, sans-serif; padding: 0 16px; width: 100%; }
+.field input:focus { box-shadow: inset 0 0 0 2px var(--red); outline: none; }
+.row { display: grid; grid-template-columns: 1.6fr 1fr; gap: 12px; }
+.note { color: var(--mute); font-size: 15px; margin-top: 14px; }
+.check { display: flex; gap: 14px; align-items: flex-start; margin-top: 18px; padding: 16px; border-radius: 16px; background: var(--coal); }
+.check input { width: 26px; height: 26px; margin: 2px 0 0; accent-color: var(--red); flex: none; }
+.check label { font-size: 16px; color: var(--soft); }
+.check label b { color: #fff; }
+.spacer { flex: 1; min-height: 24px; }
+.err { color: #ff8a8f; font-weight: 700; margin-top: 14px; min-height: 1.5em; }
+.verse { margin-top: 26px; padding: 20px; border-radius: 18px; background: var(--paper); color: var(--ink); }
+.verse p { font-size: 19px; font-weight: 700; line-height: 1.4; }
+.verse span { display: block; margin-top: 8px; color: var(--red-d); font-weight: 800; font-size: 15px; }
+.foot { margin-top: 36px; color: var(--mute); font-size: 13px; text-align: center; }
+.foot a { color: var(--soft); }
+.qr { background: #fff; border-radius: 22px; padding: 18px; margin: 26px auto 0; width: min(320px, 100%); }
+.qr img { display: block; width: 100%; height: auto; }
+.tips { margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.tips li { padding: 16px 18px; border-radius: 16px; background: var(--coal); color: var(--soft); }
+.tips b { color: #fff; display: block; }
+.prayer { margin-top: 18px; padding: 18px; border-left: 4px solid var(--red); background: var(--coal); border-radius: 0 16px 16px 0; color: var(--soft); font-size: 17px; }
+.hidden { display: none !important; }
+@media (prefers-reduced-motion: no-preference) { .screen.on { animation: in .25s ease both; } @keyframes in { from { opacity: 0; transform: translateY(8px); } } }
+</style>
+</head>
+<body>
+<main>
+
+<!-- Home -->
+<section class="screen on" id="home" aria-labelledby="home-h">
+  <img class="hero-logo" src="/logo.jpg" alt="Sydney Fire Evangelism" width="148" height="148">
+  <h1 id="home-h">God loves you. <span class="red">Jesus is the way.</span></h1>
+  <p class="lead">Whatever brought you here today, there's a next step for you, and real people ready to walk with you.</p>
+  <div class="stack">
+    <button class="btn btn-red" data-start="yes">I said yes to Jesus today</button>
+    <button class="btn btn-line" data-start="talk">I'd like to talk with someone</button>
+    <a class="btn btn-line" href="https://www.bible.com/bible/1/JHN.3.KJV" rel="noopener" target="_blank">Read about Jesus</a>
+  </div>
+  <div class="spacer"></div>
+  <p class="foot">Sydney Fire Evangelism · powered by <a href="https://alwaysfoundation.org/#/platform">Always Platform</a><br><a href="#team">For the team</a> · <a href="https://alwaysfoundation.org/#/docs/privacy">Privacy</a></p>
+</section>
+
+<!-- 1. Age (minors rules first) -->
+<section class="screen" id="age" aria-labelledby="age-h">
+  <div class="top"><button class="back" data-go="home">← Back</button><span class="step-count">1 of 4</span></div>
+  <h2 id="age-h" style="margin-top:22px">How old are you?</h2>
+  <p class="lead">This helps us connect you safely.</p>
+  <div class="opts" role="radiogroup" aria-labelledby="age-h">
+    <label class="opt"><input type="radio" name="age" value="18+"><span>18 or over</span></label>
+    <label class="opt"><input type="radio" name="age" value="15-17"><span>15 to 17</span></label>
+    <label class="opt"><input type="radio" name="age" value="13-14"><span>13 to 14 <small>We'll also ask a parent or guardian to say yes.</small></span></label>
+    <label class="opt"><input type="radio" name="age" value="under13"><span>Under 13 <small>A parent or guardian fills this in with you.</small></span></label>
+  </div>
+  <div class="spacer"></div>
+  <button class="btn btn-red" id="age-next" disabled>Next</button>
+</section>
+
+<!-- 2. Next step -->
+<section class="screen" id="step" aria-labelledby="step-h">
+  <div class="top"><button class="back" data-go="age">← Back</button><span class="step-count">2 of 4</span></div>
+  <h2 id="step-h" style="margin-top:22px">What would help you next?</h2>
+  <div class="opts" role="radiogroup" aria-labelledby="step-h" id="step-opts">
+    <label class="opt" data-adult><input type="radio" name="step" value="church"><span>Find a church near me <small>A local church will welcome you.</small></span></label>
+    <label class="opt" data-minor><input type="radio" name="step" value="youth"><span>Join a youth group <small>A verified youth group near you.</small></span></label>
+    <label class="opt"><input type="radio" name="step" value="talk"><span>Talk with someone <small>About Jesus, life or prayer.</small></span></label>
+    <label class="opt" data-adult><input type="radio" name="step" value="explore"><span>Explore faith <small>A relaxed course with others asking the same questions.</small></span></label>
+  </div>
+  <div class="spacer"></div>
+  <button class="btn btn-red" id="step-next" disabled>Next</button>
+</section>
+
+<!-- 3. Details -->
+<section class="screen" id="details" aria-labelledby="details-h">
+  <div class="top"><button class="back" data-go="step">← Back</button><span class="step-count">3 of 4</span></div>
+  <h2 id="details-h" style="margin-top:22px">How can we reach you?</h2>
+  <p class="lead" id="details-lead">Just the basics, so someone can get in touch.</p>
+  <form id="details-form" novalidate>
+    <div class="field" id="f-name"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" maxlength="60"></div>
+    <div class="field"><label for="mobile" id="mobile-l">Mobile</label><input id="mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="04"></div>
+    <div class="field hidden" id="f-parent"><label for="parentMobile">Parent or guardian's mobile</label><input id="parentMobile" name="parentMobile" type="tel" inputmode="tel" maxlength="20" placeholder="04"></div>
+    <div class="row">
+      <div class="field"><label for="suburb">Suburb</label><input id="suburb" name="suburb" autocomplete="address-level2" maxlength="60"></div>
+      <div class="field"><label for="postcode">Postcode</label><input id="postcode" name="postcode" inputmode="numeric" autocomplete="postal-code" maxlength="4" pattern="\d{4}"></div>
+    </div>
+    <p class="err" id="details-err" role="alert"></p>
+    <button class="btn btn-red" type="submit" style="margin-top:8px">Next</button>
+  </form>
+</section>
+
+<!-- 4. Consent -->
+<section class="screen" id="consent" aria-labelledby="consent-h">
+  <div class="top"><button class="back" data-go="details">← Back</button><span class="step-count">4 of 4</span></div>
+  <h2 id="consent-h" style="margin-top:22px">Your yes, your choice</h2>
+  <div class="check"><input type="checkbox" id="c-connect"><label for="c-connect"><b>Connect me.</b> I'm happy for my first name, mobile and suburb to be shared with one verified church or ministry near me, so they can get in touch.</label></div>
+  <div class="check"><input type="checkbox" id="c-nearby" checked><label for="c-nearby"><b>Try the next one nearby</b> if the first church can't welcome me.</label></div>
+  <div class="check"><input type="checkbox" id="c-sender"><label for="c-sender"><b>Let Sydney Fire know</b> when I've been connected.</label></div>
+  <div class="check hidden" id="assent-box"><input type="checkbox" id="c-assent"><label for="c-assent"><b>My child agrees too.</b> I've talked with my child and they're happy to be connected with a youth group.</label></div>
+  <p class="note">Your details are kept in Australia and never sold. You can change your mind any time from the link we text you, and your details are then deleted.</p>
+  <p class="err" id="consent-err" role="alert"></p>
+  <div class="spacer"></div>
+  <button class="btn btn-red" id="send" disabled>Send</button>
+</section>
+
+<!-- Done -->
+<section class="screen" id="done" aria-labelledby="done-h">
+  <img class="hero-logo" src="/logo.jpg" alt="" width="148" height="148" style="width:96px;height:96px;margin:18px 0 26px">
+  <h2 id="done-h">Welcome to the family<span id="done-name"></span>.</h2>
+  <p class="lead" id="done-lead">We've sent you a text. A church or ministry near you will be in touch to say hello.</p>
+  <div class="verse"><p>“Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.”</p><span>2 Corinthians 5:17</span></div>
+  <div class="stack"><a class="btn btn-red" href="https://www.bible.com/bible/1/JHN.1.KJV" rel="noopener" target="_blank">Start reading John</a><button class="btn btn-line" data-go="home">Done</button></div>
+</section>
+
+<!-- Not sent: nothing kept on this phone -->
+<section class="screen" id="fail" aria-labelledby="fail-h">
+  <img class="hero-logo" src="/logo.jpg" alt="" width="96" height="96" style="width:96px;height:96px;margin:18px 0 26px">
+  <h2 id="fail-h">We couldn't send that just now</h2>
+  <p class="lead">Please show this screen to someone from the Sydney Fire team. They'll make sure you're connected.</p>
+  <p class="note">For your privacy, nothing you typed has been kept on this phone.</p>
+  <div class="spacer"></div>
+  <div class="stack"><button class="btn btn-red" id="retry">Try again</button><button class="btn btn-line" data-go="home">Back to start</button></div>
+</section>
+
+<!-- Team -->
+<section class="screen" id="team" aria-labelledby="team-h">
+  <div class="top"><button class="back" data-go="home">← Back</button><img src="/logo-192.png" alt=""></div>
+  <h2 id="team-h" style="margin-top:22px">For the Sydney Fire team</h2>
+  <p class="lead">When someone says yes, let them scan this, or hand them your phone.</p>
+  <div class="qr"><img src="/qr.svg" alt="QR code that opens sydneyfire.alwaysfoundation.org"></div>
+  <ul class="tips">
+    <li><b>1/ Pray with them first.</b> Celebrate their yes. The form can wait a minute.</li>
+    <li><b>2/ Let them choose.</b> They pick their next step and say yes to being connected. Never fill it in for them.</li>
+    <li><b>3/ Under 15?</b> A parent or guardian says yes too. Under 13, the parent fills it in.</li>
+    <li><b>4/ Stay with them.</b> If it doesn't send, take their name the way you usually do, and let us know.</li>
+  </ul>
+  <p class="lead" style="margin-top:26px">A simple prayer to pray together</p>
+  <p class="prayer">Jesus, thank You for loving me and dying for me. I'm sorry for my sins. I believe You rose again, and I give You my life. Please forgive me, fill me with Your Spirit, and lead me from today. Amen.</p>
+  <p class="foot">Powered by <a href="https://alwaysfoundation.org/#/platform">Always Platform</a></p>
+</section>
+
+</main>
+<script>
+(() => {
+  // Configuration. The API and page slug are public; nothing secret lives here.
+  const API = 'https://api.alwaysfoundation.org';
+  const SLUG = 'sydneyfire';
+  const WORDING = 'sydneyfire-2026-11';
+
+  // Everything the person types lives only in this object, in memory. It is never written to storage.
+  let f = {};
+  const $ = (id) => document.getElementById(id);
+  const screens = [...document.querySelectorAll('.screen')];
+  function go(id) {
+    screens.forEach((s) => s.classList.toggle('on', s.id === id));
+    if (id === 'home') reset();
+    if (location.hash.slice(1) !== id) history.replaceState(null, '', id === 'home' ? location.pathname + location.search : '#' + id);
+    const h = document.querySelector('#' + id + ' h1, #' + id + ' h2');
+    if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    window.scrollTo(0, 0);
+  }
+  function reset() {
+    f = {};
+    document.querySelectorAll('input[type=radio]').forEach((i) => (i.checked = false));
+    document.querySelectorAll('#details-form input').forEach((i) => (i.value = ''));
+    $('c-connect').checked = false; $('c-nearby').checked = true; $('c-sender').checked = false; $('c-assent').checked = false;
+    $('age-next').disabled = true; $('step-next').disabled = true; $('send').disabled = true;
+    ['details-err', 'consent-err'].forEach((i) => ($(i).textContent = ''));
+  }
+  document.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => go(b.dataset.go)));
+  document.querySelectorAll('[data-start]').forEach((b) => b.addEventListener('click', () => { reset(); f.intent = b.dataset.start; go('age'); }));
+
+  // 1. Age first: the minors rules decide everything after it.
+  document.querySelectorAll('input[name=age]').forEach((i) => i.addEventListener('change', () => { $('age-next').disabled = false; }));
+  $('age-next').addEventListener('click', () => {
+    f.ageBand = document.querySelector('input[name=age]:checked').value;
+    const minor = f.ageBand !== '18+';
+    document.querySelectorAll('[data-adult]').forEach((el) => el.classList.toggle('hidden', minor));
+    document.querySelectorAll('[data-minor]').forEach((el) => el.classList.toggle('hidden', !minor));
+    document.querySelectorAll('input[name=step]').forEach((i) => (i.checked = false));
+    if (f.intent === 'talk') { const t = document.querySelector('input[name=step][value=talk]'); t.checked = true; $('step-next').disabled = false; }
+    else $('step-next').disabled = true;
+    go('step');
+  });
+
+  // 2. Next step
+  document.querySelectorAll('input[name=step]').forEach((i) => i.addEventListener('change', () => { $('step-next').disabled = false; }));
+  $('step-next').addEventListener('click', () => {
+    f.step = document.querySelector('input[name=step]:checked').value;
+    const u13 = f.ageBand === 'under13', u15 = f.ageBand === '13-14';
+    $('f-name').classList.toggle('hidden', u13);          // under 13: no child data
+    $('f-parent').classList.toggle('hidden', !u15);
+    $('mobile-l').textContent = u13 ? "Parent or guardian's mobile" : 'Mobile';
+    $('details-h').textContent = u13 ? 'How can we reach your family?' : 'How can we reach you?';
+    $('details-lead').textContent = u13 ? "We'll only contact you, the parent or guardian." : 'Just the basics, so someone can get in touch.';
+    go('details');
+  });
+
+  // 3. Details
+  const mobileOk = (v) => /^(\+?61|0)4\d{8}$/.test(v.replace(/[\s()-]/g, ''));
+  $('details-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = (id) => $(id).value.trim();
+    const u13 = f.ageBand === 'under13', u15 = f.ageBand === '13-14';
+    let err = '';
+    if (!u13 && !v('firstName')) err = 'Please add your first name.';
+    else if (!mobileOk(v('mobile'))) err = 'Please check the mobile number.';
+    else if (u15 && !mobileOk(v('parentMobile'))) err = "Please add your parent or guardian's mobile.";
+    else if (v('suburb').length < 2) err = 'Please add your suburb.';
+    else if (!/^\d{4}$/.test(v('postcode'))) err = 'Please add a 4-digit postcode.';
+    $('details-err').textContent = err;
+    if (err) return;
+    Object.assign(f, { firstName: u13 ? undefined : v('firstName'), mobile: v('mobile'), parentMobile: u15 ? v('parentMobile') : undefined, suburb: v('suburb'), postcode: v('postcode') });
+    $('assent-box').classList.toggle('hidden', !u13);
+    updateSend();
+    go('consent');
+  });
+
+  // 4. Consent: nothing is sent without an explicit yes.
+  function updateSend() {
+    const needAssent = f.ageBand === 'under13';
+    $('send').disabled = !$('c-connect').checked || (needAssent && !$('c-assent').checked);
+  }
+  ['c-connect', 'c-assent'].forEach((id) => $(id).addEventListener('change', updateSend));
+
+  async function send() {
+    const u13 = f.ageBand === 'under13';
+    const purposes = ['connect.church'];
+    if ($('c-sender').checked) purposes.push('notify.sender');
+    const body = {
+      firstName: f.firstName,
+      contact: { kind: 'mobile', value: f.mobile.replace(/[\s()-]/g, '') },
+      parentContact: f.parentMobile ? { kind: 'mobile', value: f.parentMobile.replace(/[\s()-]/g, '') } : undefined,
+      suburb: f.suburb, postcode: f.postcode, state: 'NSW',
+      ageBand: f.ageBand, step: f.step,
+      consent: { purposes, recipients: [], allowNextNearby: $('c-nearby').checked, wordingVersion: WORDING, party: u13 ? 'parent' : 'self', ...(u13 ? { childAssent: $('c-assent').checked } : {}) },
+      humanToken: window.__humanToken,
+    };
+    $('send').disabled = true; $('send').textContent = 'Sending…';
+    try {
+      const res = await fetch(`${API}/v1/pages/${SLUG}/respond`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(15000) });
+      if (!res.ok) throw new Error('http_' + res.status);
+      const name = f.firstName;
+      const waitingParent = f.ageBand === '13-14';
+      reset();
+      $('done-name').textContent = name ? ', ' + name : '';
+      $('done-lead').textContent = waitingParent
+        ? "We've texted your parent or guardian. Once they say yes, a youth group near you will be in touch."
+        : "We've sent a text. A church or ministry near you will be in touch to say hello.";
+      go('done');
+    } catch (e) {
+      reset();           // nothing is kept on the phone, even when sending fails
+      go('fail');
+    } finally {
+      $('send').textContent = 'Send';
+    }
+  }
+  $('send').addEventListener('click', send);
+  $('retry').addEventListener('click', () => go('age'));
+
+  const start = location.hash.slice(1);
+  if (start === 'team') go('team');
+  window.addEventListener('hashchange', () => { if (location.hash === '#team') go('team'); });
+
+})();
+</script>
+</body>
+</html>
