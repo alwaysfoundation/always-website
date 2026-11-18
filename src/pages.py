@@ -22,7 +22,7 @@ church_desk = f'''<div class="pg-desk rv" aria-label="The church inbox on the we
 </div>'''
 church_phone = phone(f'''<p class="pg-cap">Always for churches · Inbox</p><div class="pg-card hl"><div class="pg-row-h"><b>Sam</b><em class="new">New</em></div><span class="pg-mut">Parramatta · Find a church</span><div class="pg-field">04•• ••• •••</div><div class="pg-btns"><span class="pg-b">Accept</span><span class="pg-b ln">Pass</span></div></div><div class="pg-card"><div class="pg-row-h"><b>Josh</b><em class="ok">Accepted</em></div><span class="pg-mut">Harris Park · Talk with someone</span></div>''')
 
-CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus. Free, always.</p></div></section>
+CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples. Free, always.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Three steps to welcoming people</h2>
   {steps([('Claim your page', 'Tell us about your church and who you are. It takes about ten minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead does a 20-minute course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
@@ -51,7 +51,7 @@ ministry_phone = phone('<p class="pg-mbrand">YOUR MINISTRY</p><p class="pg-mh">S
 
 report_mock = '<div class="pg-desk pg-report rv" aria-label="An example monthly report"><div class="pg-desk-main"><div class="pg-row-h"><b>September report</b><em class="ok">Ready</em></div><span class="pg-mut">City worship tour · Prepared for our supporters</span><div class="pg-kpis">' + ''.join(f'<div><b{" class=pe" if i == 3 else ""}>{v}</b><span>{l}</span></div>' for i, (v, l) in enumerate([('310', 'Responded'), ('295', 'Introduced'), ('258', 'Accepted'), ('117', 'Connected')])) + '</div><div class="pg-btns"><span class="pg-b">Download PDF</span><span class="pg-b ln">Share a link</span></div><p class="pg-mut">Example figures. Totals only.</p></div></div>'
 
-MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries</h1><p>Tours, camps, youth events, outreach and online ministries: give everyone who says yes a next step near home.</p></div></section>
+MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries</h1><p>Tours, camps, youth events, outreach and online ministries: when people respond to the Gospel, give each one a next step near home.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">From the altar call to a church family</h2>
   {steps([('Create a response page', 'Choose the next steps you offer and add your brand. Ready in minutes.'), ('Invite a response', 'Show the QR code on the big screen, hand out cards, or use the response card in your own app.'), ('See the fruit', 'Watch results live, and get a monthly report ready for your funders and board.')])}
@@ -85,7 +85,7 @@ always.au/r/testimony-video</code></pre>
 app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of man is come to seek and to save that which was lost.”</p><span>Luke 19:10</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><h1>For evangelists</h1><p>Infrastructure and tools for everyone who shares Jesus: the Always App, your own branded response app, training and follow-up, all free, so every yes becomes a next step.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><h1>For evangelists</h1><p>Infrastructure and tools for everyone who shares the Gospel: the Always App, your own branded response app, training and follow-up. All free, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
@@ -580,7 +580,7 @@ BUILT_ON = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
 </div></section>'''
 
 PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-badge">Always Platform</p><h1>One platform for every next step.</h1><p>The open infrastructure behind the Always App and every tool we make. Use it to build your own app, plug in our API, or ask an AI assistant.</p>
+  <div><p class="pl-badge">Always Platform</p><h1>One platform for the Great Commission.</h1><p>Open infrastructure for the Gospel, behind the Always App and every tool we make. Use it to build your own app, plug in our API, or ask an AI assistant.</p>
   <div class="pl-ctas"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/join">Talk to us</a></div></div>
   <pre class="pl-code" aria-label="Example code"><code><span class="c">// Find churches welcoming people near 2150</span>
 <span class="k">import</span> {{ AlwaysClient }} <span class="k">from</span> <span class="s">'@always/sdk'</span>;
