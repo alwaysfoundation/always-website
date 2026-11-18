@@ -829,7 +829,22 @@ DECK_CSS = '''
 .hero { padding-bottom: clamp(56px, 7vw, 96px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
 .hero-grid .hero-copy > * { max-width: 620px; }
-.hero h1 { font-size: clamp(50px, 6.6vw, 104px); }
+.hero h1 { font-size: clamp(46px, 5.4vw, 88px); }
+.hero h1 .nw { white-space: nowrap; }
+.hero h1 .u { text-decoration: underline; text-decoration-color: var(--peach); text-decoration-thickness: .075em; text-underline-offset: .12em; text-decoration-skip-ink: none; }
+.sv { margin: 18px 0 0; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.45; color: inherit; opacity: .78; }
+.sv cite, .heart-fine cite { font: 700 12.5px/1 var(--head); font-style: normal; letter-spacing: .01em; color: var(--clay, #B5603A); margin-left: .35em; white-space: nowrap; }
+.sc { font-variant: small-caps; }
+.heart-item .sv { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(27,71,64,.1); font-size: 16px; }
+.cs-head .sv { margin-top: 14px; font-size: 19px; }
+.app-band .sv { font-size: 19px; margin: 22px 0 0; opacity: .85; }
+.app-band .sv cite { color: var(--night); }
+.plat .sv, .join .sv { font-size: 19px; }
+.join .wrap > * { min-width: 0; }
+.join .mail { overflow-wrap: anywhere; }
+.plat .sv cite, .join .sv cite { color: var(--peach); }
+.hero-cite { margin: 26px 0 0; font: 700 15px/1 var(--head); color: var(--peach); }
+.hero .hero-cite + .lede { margin-top: 26px; }
 .hero-map { position: relative; }
 .hero-stat { margin: 4px 0 0; font-size: 14.5px; color: #A9C2B8; text-align: right; }
 .hero-stat b { color: var(--peach); font: 800 18px/1 var(--head); }
@@ -1105,7 +1120,7 @@ doc = f"""<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23033D2B'/><path fill='%23EE8B54' d='M29 10h6v12h12v6H35v26h-6V28H17v-6h12z'/></svg>">
-<title>Always Foundation · Go and make disciples</title>
+<title>Always Foundation · I am with you always</title>
 <meta name="description" content="Go and make disciples. The Always Foundation serves the whole Church in Australia, as we pray for revival and long to see more people worshipping Jesus.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

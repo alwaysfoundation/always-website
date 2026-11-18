@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23033D2B'/><path fill='%23EE8B54' d='M29 10h6v12h12v6H35v26h-6V28H17v-6h12z'/></svg>">
-<title>Always Foundation · Go and make disciples</title>
+<title>Always Foundation · I am with you always</title>
 <meta name="description" content="Go and make disciples. The Always Foundation serves the whole Church in Australia, as we pray for revival and long to see more people worshipping Jesus.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -794,7 +794,22 @@ form.cl-form { display: grid; gap: 16px; background: none; padding: 0; border-ra
 .hero { padding-bottom: clamp(56px, 7vw, 96px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
 .hero-grid .hero-copy > * { max-width: 620px; }
-.hero h1 { font-size: clamp(50px, 6.6vw, 104px); }
+.hero h1 { font-size: clamp(46px, 5.4vw, 88px); }
+.hero h1 .nw { white-space: nowrap; }
+.hero h1 .u { text-decoration: underline; text-decoration-color: var(--peach); text-decoration-thickness: .075em; text-underline-offset: .12em; text-decoration-skip-ink: none; }
+.sv { margin: 18px 0 0; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.45; color: inherit; opacity: .78; }
+.sv cite, .heart-fine cite { font: 700 12.5px/1 var(--head); font-style: normal; letter-spacing: .01em; color: var(--clay, #B5603A); margin-left: .35em; white-space: nowrap; }
+.sc { font-variant: small-caps; }
+.heart-item .sv { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(27,71,64,.1); font-size: 16px; }
+.cs-head .sv { margin-top: 14px; font-size: 19px; }
+.app-band .sv { font-size: 19px; margin: 22px 0 0; opacity: .85; }
+.app-band .sv cite { color: var(--night); }
+.plat .sv, .join .sv { font-size: 19px; }
+.join .wrap > * { min-width: 0; }
+.join .mail { overflow-wrap: anywhere; }
+.plat .sv cite, .join .sv cite { color: var(--peach); }
+.hero-cite { margin: 26px 0 0; font: 700 15px/1 var(--head); color: var(--peach); }
+.hero .hero-cite + .lede { margin-top: 26px; }
 .hero-map { position: relative; }
 .hero-stat { margin: 4px 0 0; font-size: 14.5px; color: #A9C2B8; text-align: right; }
 .hero-stat b { color: var(--peach); font: 800 18px/1 var(--head); }
@@ -904,8 +919,9 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
 <section class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <h1>See Australia worship Jesus.</h1>
-      <p class="lede">We pray for revival, and quietly serve the whole Church so everyone who says yes to Jesus finds a church family. No one walks alone.</p>
+      <h1><span class="nw">“I am with you</span><br> <span class="u">always</span>.”</h1>
+      <p class="hero-cite">Matthew 28:20 (ESV)</p>
+      <p class="lede">Jesus' promise is the heart of our name. We pray for revival across Australia, and quietly serve the whole Church so everyone who says yes to Jesus finds a church family. No one walks alone.</p>
       <div class="ctas">
         <a class="btn btn-peach" href="#/join">Join the mission</a>
         <a class="btn btn-ghost" href="#/stories">Read the stories</a>
@@ -921,11 +937,11 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
 <section class="sec word">
   <div class="wrap">
     <div class="rv">
-      <p class="verse">And behold, I am with you always, to the end of the age.</p>
-      <p class="cite">Matthew 28:20 (ESV)</p>
+      <p class="verse">And the Lord added to their number day by day those who were being saved.</p>
+      <p class="cite">Acts 2:47 (ESV)</p>
     </div>
     <div class="side rv">
-      <p>Every week Australians say yes to Jesus, and too often no one follows up. Our name comes from His promise in the Great Commission. He sent us to make disciples, not count decisions.</p>
+      <p>Every week Australians say yes to Jesus, and too often no one follows up. Jesus sent us to make disciples, not count decisions. We want every person who says yes welcomed into a church family, walked with and worshipping.</p>
     </div>
   </div>
 </section>
@@ -934,13 +950,14 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
   <div class="wrap">
     <p class="tag rv">Our heart</p>
     <h2 class="sec-title rv" id="heart-h">Pray. Equip. Welcome.</h2>
-    <p class="sec-lede rv">Revival is God's work. Together, we prepare the way.</p>
+    <p class="sec-lede rv">Revival is God's work. We long to see Australia worship Jesus, and together we prepare the way.</p>
     <div class="heart-grid">
-      <article class="heart-item rv"><h3>Pray and unite</h3><p>Churches across denominations, praying together for the Holy Spirit to move across our nation.</p></article>
-      <article class="heart-item rv"><h3>Equip every believer</h3><p>Most people meet Jesus through someone they know. We give every Christian free tools to share Him.</p></article>
-      <article class="heart-item rv"><h3>No one walks alone</h3><p>Everyone who says yes is introduced to a local church nearby. They see who it is before anything is shared.</p></article>
+      <article class="heart-item rv"><h3>Pray and unite</h3><p>Churches across denominations, praying together for the Holy Spirit to move across our nation.</p><p class="sv">“that they may all be one” <cite>John 17:21</cite></p></article>
+      <article class="heart-item rv"><h3>Equip every believer</h3><p>Most people meet Jesus through someone they know. We give every Christian free tools to share Him.</p><p class="sv">“to equip the saints for the work of ministry” <cite>Ephesians 4:12</cite></p></article>
+      <article class="heart-item rv"><h3>No one walks alone</h3><p>Everyone who says yes is introduced to a local church nearby. They see who it is before anything is shared.</p><p class="sv">“God settles the solitary in a home” <cite>Psalm 68:6</cite></p></article>
     </div>
     <p class="heart-fine rv">We stay in the background. The credit belongs to the local church, and the glory to God.</p>
+    <p class="sv rv">“Not to us, O <span class="sc">Lord</span>, not to us, but to your name give glory” <cite>Psalm 115:1</cite></p>
   </div>
 </section>
 
@@ -948,7 +965,7 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
   <div class="wrap">
     <div class="cs-head">
       <div><p class="tag rv">Stories</p>
-      <h2 class="sec-title rv" id="stories-h">It's already happening.</h2></div>
+      <h2 class="sec-title rv" id="stories-h">It's already happening.</h2><p class="sv rv">“Behold, I am doing a new thing; now it springs forth” <cite>Isaiah 43:19</cite></p></div>
       <div class="cs-arrows"><button type="button" class="cs-arrow" data-dir="-1" aria-label="Previous case study">←</button><button type="button" class="cs-arrow" data-dir="1" aria-label="Next case study">→</button></div>
     </div>
   </div>
@@ -1064,6 +1081,7 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
       <p class="tag rv">For evangelists</p>
       <h2 class="sec-title rv">Every Christian can be someone's next step.</h2>
       <p class="sec-lede rv">Every believer is sent. The Always App gives evangelists free tools and training to share the Gospel and walk with people into a church family.</p>
+      <p class="sv rv">“As the Father has sent me, even so I am sending you.” <cite>John 20:21</cite></p>
       <div class="ctas rv"><a class="btn btn-green" href="#/app">Tools for evangelists</a></div>
     </div>
     <div class="app-band-mark" aria-hidden="true">
@@ -1082,6 +1100,7 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
     <p class="tag rv">How we serve: Always Platform</p>
     <h2 class="sec-title rv">Infrastructure for the Great Commission.</h2>
     <p class="sec-lede rv">Free, open tools for everyone who shares the Gospel. They power the Always App and our apps for churches and ministries, and they're yours to build on too.</p>
+    <p class="sv rv">“You received without paying; give without pay.” <cite>Matthew 10:8</cite></p>
     <div class="plat-ways">
       <article class="plat-way rv">
         <div class="pw-art pw-phone" aria-hidden="true"><div class="pw-screen"><span class="pw-brand">Your ministry</span><b>Said yes tonight?</b><span class="pw-opt">Find a church near me</span><span class="pw-opt">Join a youth group</span><span class="pw-go">Continue</span></div></div>
@@ -1114,6 +1133,7 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
       <span class="tag">Join the mission</span>
       <h2>Help us see Australia worship Jesus.</h2>
       <p class="lead">For churches, ministries and every Christian who wants to see the Gospel go further in Australia.</p>
+      <p class="sv">“The harvest is plentiful, but the laborers are few” <cite>Matthew 9:37</cite></p>
       <a class="mail" href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>
     </div>
     <form id="contact-form" class="rv" novalidate><input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
