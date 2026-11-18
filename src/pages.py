@@ -85,11 +85,12 @@ always.au/r/testimony-video</code></pre>
 app_home = phone('<p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of man is come to seek and to save that which was lost.”</p><span>Luke 19:10</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><h1>The Always app</h1><p>A free app to help you share Jesus and walk with people into a church family.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><h1>For evangelists</h1><p>Free tools, training and infrastructure for everyone who shares Jesus, so every yes becomes a next step.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
-  <h2 class="pg-h rv">Everything you need to share Jesus</h2>
+  <h2 class="pg-h rv">The Always app</h2>
+  <p class="pg-lead rv">Everything you need to share Jesus, in your pocket.</p>
   <div class="pg-minis">
     {mini('Bible', '<p class="pg-cap">John 3 · KJV</p><span class="pg-big">3</span><p class="pg-read"><sup>16</sup> <mark>For God so loved the world, that he gave his only begotten Son…</mark></p>')}
     {mini('Learn', '<p class="pg-cap">The Always path</p>' + ''.join(f'<div class="pg-path"><i class="s{i}"></i><b>0{i+1} / {s}</b></div>' for i, s in enumerate(['Understand', 'Live', 'Share', 'Walk'])))}
@@ -101,7 +102,17 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Made for evangelists, and for everyone</h2>
   {feats([('A beautiful Bible', 'KJV and WEB built in, more through YouVersion. Highlight, share verses as images, listen with soft music and a sleep timer.'), ('Conversation guides', 'How to share with someone with no faith, a Muslim friend, a Jehovah\'s Witness, a Buddhist and more.'), ('Altar calls and the street', 'Start a response point in seconds, coach the moment, and connect people with their yes.'), ('Prayer list and field notes', 'Pray for people by name. Talk through a conversation and it\'s turned into notes on your phone, offline. The audio never leaves it.'), ('Church team inbox', 'Connect leads accept introductions right in the app.'), ('Private by design', 'Your prayer list, notes and plans stay on your phone. No ads.')])}
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Join the pilot</a></div>
+</div></section>
+<section class="sec pg-sec"><div class="wrap">
+  <h2 class="pg-h rv">Training</h2>
+  <p class="pg-lead rv">Short, free courses you can do on your phone, made with evangelists and churches.</p>
+  {feats([('Sharing your story', 'Tell how Jesus changed your life, in three minutes, in your own words.'), ('Leading someone to Jesus', 'What to say, how to pray, and what to do next when someone says yes.'), ('Welcoming well', 'For church connect leads: the first call, the first coffee, the first Sunday.'), ('Safe ministry with young people', 'Child safe practice for youth leaders and events.'), ('Conversations across faiths', 'Listening well and sharing gently with friends of other beliefs.'), ('Walking with someone', 'The first months of following Jesus: Bible, prayer, church and friends.')])}
+</div></section>
+<section class="sec pg-sec pg-sage"><div class="wrap">
+  <h2 class="pg-h rv">Infrastructure for your ministry</h2>
+  <p class="pg-lead rv">Running an outreach, a tour or an app? Use the same open tools we use, free.</p>
+  {feats([('Response pages and QR codes', 'People say yes on a page with your name on it, and get a next step near home.'), ('Find a church near me', 'Add our church finder to your website or app in one line.'), ('Church feed and API', 'Verified churches ready to welcome people, for your own tools.'), ('AI assistants', 'Use Always from Claude and other assistants to find churches and events, with no personal data involved.'), ('Reports for funders', 'Monthly reports written for you, with totals only.'), ('Open source', 'Every tool is open, so you can check it, improve it or run it yourself.')])}
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Join the pilot</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
 </div></section>'''
 
 FAQ_GROUPS = [
