@@ -424,31 +424,6 @@ nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; te
 .join-embers { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .heart-item .flame, .heart-item .flame .fi { animation: none; } }
 
-.intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: radial-gradient(80% 60% at 50% 100%, #3A1A0E 0%, #160F0C 50%, #0B0F0E 100%); color: #FFF6E8; overflow: hidden; transition: opacity .9s ease, visibility .9s; }
-.intro.out { opacity: 0; visibility: hidden; }
-.no-js .intro { display: none; }
-.intro-fire { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity 1.2s ease; }
-.intro-in { position: relative; padding: 0 28px; max-width: 980px; text-align: center; }
-.intro-v { margin: 0; font-family: var(--serif, Georgia, serif); font-size: clamp(22px, 3.1vw, 40px); line-height: 1.4; text-shadow: 0 2px 24px rgba(0,0,0,.5); }
-.intro .il { opacity: 0; filter: blur(6px); display: inline; animation: lineIn 1s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(.35s + var(--i) * .95s); }
-.intro .ik { display: block; margin-top: .5em; font-size: 1.3em; color: #FFC27A; text-shadow: 0 0 30px rgba(238,120,40,.55); }
-.intro .ia { display: inline-block; padding-bottom: .06em; background: linear-gradient(90deg, #E2582A, #FFB347) no-repeat 0 100% / 0% .09em; animation: ulDraw .9s cubic-bezier(.6,0,.2,1) 6.3s forwards; }
-.intro-c { margin: 26px 0 0; font: 700 15px/1 var(--head); color: #FFB37A; opacity: 0; animation: lineIn 1s ease forwards; animation-delay: calc(.35s + var(--i) * .95s); transition: opacity .4s ease; }
-.intro-skip { position: absolute; right: 22px; bottom: 22px; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(255,246,232,.35); background: rgba(0,0,0,.25); color: #FFF6E8; font: 600 15px/1 var(--head); cursor: pointer; transition: opacity .3s ease; }
-.intro-skip:hover, .intro-skip:focus-visible { background: #FFF6E8; color: #1A1410; }
-@keyframes lineIn { to { opacity: 1; filter: none; } }
-@keyframes ulDraw { to { background-size: 100% .09em; } }
-/* the blow-up: everything but "always" falls away, then "always" rushes toward you and opens onto the site */
-.intro.zoom { pointer-events: none; opacity: 0; transition: opacity .55s ease 1.2s; }
-.intro.zoom .intro-skip { opacity: 0; }
-.intro.zoom .intro-c { animation: none; opacity: 0; }
-.intro.zoom .il { animation: none; opacity: 1; filter: none; transition: opacity .45s ease; }
-.intro.zoom .il:not(.ik), .intro.zoom .ik .zf { opacity: 0; }
-.intro.zoom .ia { background-size: 100% .09em; animation: none; }
-.intro.zoom .intro-in { transform: scale(var(--zs, 40)); transition: transform 1.6s cubic-bezier(.65,0,.3,1) .3s; will-change: transform; }
-@media (prefers-reduced-motion: reduce) { .intro .il, .intro-c { animation: none; opacity: 1; filter: none; } .intro .ia { animation: none; background-size: 100% .09em; } .intro, .intro.zoom .intro-in { transition: none; } }
-body.intro-on { overflow: hidden; }
-
 .pg-code { background: var(--night, #1E2A26); color: #E4EEE7; border-radius: 22px; padding: 26px 28px; font: 500 15.5px/1.7 ui-monospace, Menlo, monospace; margin: 0; overflow-x: auto; }
 .pg-sec { padding: 96px 0; }
 .pg-sage { background: var(--sage); }
@@ -920,7 +895,6 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
 .photo-band{margin:0;height:min(52vh,480px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>
 </head>
 <body class="no-js">
-<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Matthew 28:18 to 20"><canvas class="intro-fire" id="intro-fire" aria-hidden="true"></canvas><div class="intro-in"><p class="intro-v"><span class="il" style="--i:0">And Jesus came and said to them, </span><span class="il" style="--i:1">“All authority in heaven and on earth has been given to me. </span><span class="il" style="--i:2">Go therefore and make disciples of all nations, </span><span class="il" style="--i:3">baptizing them in the name of the Father and of the Son and of the Holy Spirit, </span><span class="il" style="--i:4">teaching them to observe all that I have commanded you. </span><span class="il ik" style="--i:5"><span class="zf">And behold, I am with you </span><span class="ia" id="intro-always">always</span><span class="zf">, to the end of the age.”</span> </span></p><p class="intro-c" style="--i:6">Matthew 28:18–20 (ESV)</p></div><button type="button" class="intro-skip" id="intro-skip">Enter</button></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <header>
@@ -1874,32 +1848,6 @@ route();
   if (f) flameField(f, { rate: 3.2, speed: 0.16, life: 2600, alpha: 0.5, tongues: 0.18, reach: .6 });
   const j = document.querySelector('.join-embers');
   if (j) flameField(j, { rate: 0.35, speed: 0.07, life: 5200, alpha: 0.28, tongues: 0, reach: 1 });
-})();
-
-(() => {
-  const el = document.getElementById('intro'); if (!el) return;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.body.classList.add('intro-on');
-  let done = false;
-  const finish = (ms) => setTimeout(() => { el.style.display = 'none'; }, ms);
-  const close = () => {
-    if (done) return; done = true;
-    document.body.classList.remove('intro-on');
-    const w = document.getElementById('intro-always'), inner = el.querySelector('.intro-in');
-    if (reduce || !w || !inner) { el.classList.add('out'); finish(950); return; }
-    // zoom into the centre of "always" until it fills far more than the screen
-    const r = w.getBoundingClientRect(), ir = inner.getBoundingClientRect();
-    inner.style.transformOrigin = (r.left + r.width / 2 - ir.left) + 'px ' + (r.top + r.height * 0.55 - ir.top) + 'px';
-    inner.style.setProperty('--zs', Math.max(28, Math.ceil(innerWidth * 2.2 / Math.max(r.width, 1))));
-    el.classList.add('zoom');
-    finish(1900);
-  };
-  const skip = document.getElementById('intro-skip');
-  skip.addEventListener('click', close); skip.focus({ preventScroll: true });
-  el.addEventListener('click', (e) => { if (e.target !== skip) close(); });
-  addEventListener('keydown', (e) => { if (!done && (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); close(); } });
-  setTimeout(close, reduce ? 5000 : 8400);
-  if (window.__flameField) window.__flameField(document.getElementById('intro-fire'), { rate: 3.6, speed: 0.17, life: 2800, alpha: 0.55, tongues: 0.2, reach: .65 });
 })();
 </script>
 </body>
