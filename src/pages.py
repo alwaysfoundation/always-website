@@ -115,13 +115,15 @@ FAQ_GROUPS = [
   ('Does it cost anything?', 'No. Always is free for every church.'),
   ('How do we join?', 'Find your church in the directory, claim its page, and we verify you with your denomination or network.'),
   ('What if we can\'t welcome someone?', 'Pass, with a reason. The next church or ministry nearby is asked. If none can, our care team helps.'),
-  ('Do we have to change our church software?', 'No. Use the free inbox on the web or in the Always app, or connect your system through the API.'),
+  ('Do we have to change our church software?', 'No. Use the free inbox on the web or in the Always app, or connect your system through the API. Elvanto and Planning Center come first.'),
+  ('What does welcoming now mean?', 'Your church is verified, your connect lead has done the welcoming course, you have room this month and you usually answer introductions on time. If you get busy, introductions simply pause.'),
   ('Who on our team can see people\'s details?', 'Only the people you add to your team, and only after your church accepts an introduction.')]),
  ('For ministries and events', [
   ('Can we use our own brand?', 'Yes. Response pages, QR codes and texts can use your colours, logo and wording.'),
   ('What results do we see?', 'Totals for each event: responded, introduced, accepted and connected. Each person\'s details go only to the church that welcomes them.'),
   ('Can Always help us report to our funders?', 'Yes. Always writes a monthly report for you from the steps people have already taken: who responded, who was introduced, who was contacted and who is connected. Download it as a PDF or spreadsheet, or send your funder a link.'),
   ('Will our funders see people\'s details?', 'No. Reports show totals only, and small numbers are hidden so no one can be identified.'),
+  ('Can Always help with privacy and child safety paperwork?', 'Yes. Your Compliance tab keeps a consent register, privacy requests, a data breach register, child safety checklists, Working With Children Check reminders and proof of deletion, ready to export.'),
   ('Can we make the report our own?', 'Yes. Add your title, your funder\'s name and a short introduction. If a funder needs something specific, talk to us.'),
   ('Can we receive introductions ourselves?', 'Yes, for the steps you offer, like a youth night or a course.'),
   ('Can people respond online?', 'Yes. Add a response link or QR to a video description or post, or embed the response card on your website. An invisible check stops spam without puzzles.'),
@@ -132,7 +134,7 @@ FAQ_GROUPS = [
   ('What do you need from me?', 'Your first name, a mobile number and your suburb.'),
   ('Do I need to download an app?', 'No. You respond on a simple web page. Later, you\'re welcome to try the Always app to read the Bible and grow.'),
   ('Can I change my mind?', 'Yes, any time, from the link in your text. Your details are then deleted.'),
-  ('I\'m under 18. Can I still respond?', 'Yes. Under 15s need a parent or guardian to confirm, and young people are introduced only to verified youth partners.')]),
+  ('I\'m under 18. Can I still respond?', 'Yes. If you\'re under 15, a parent or guardian says yes with you. From 15 you can decide for yourself. Young people are introduced only to verified youth partners, and no AI ever touches your information.')]),
  ('The Always app', [
   ('Who is the app for?', 'Every Christian who wants to share Jesus and walk with people, and church teams who welcome them.'),
   ('How do I get it?', 'The app is in pilot. Join the pilot through the form on our home page.'),
@@ -146,7 +148,7 @@ FAQ_GROUPS = [
  ('Supporters and builders', [
   ('How is Always funded?', 'By supporters, and by larger ministries contributing to upkeep according to their size. Churches never pay.'),
   ('How can I support the work?', 'Pray with us, and get in touch at hello@alwaysfoundation.org to book a catch-up call.'),
-  ('Can developers build on Always?', 'Yes. The API, SDK and open standard are open source under Apache 2.0, with docs under CC BY 4.0.')])]
+  ('Can developers build on Always?', 'Yes. The API, SDK and open standard are open source under Apache 2.0, with docs under CC BY 4.0. An MCP server for AI assistants is coming, and it never sees a person\'s details.')])]
 
 FAQ = '<section class="page-hero"><div class="wrap"><h1>FAQs</h1><p>Short answers to the questions we hear most.</p></div></section><section class="sec pg-sec"><div class="wrap pg-faq">' + \
   '<nav class="pg-faq-nav" aria-label="FAQ topics">' + ''.join(f'<a href="#faq-{i}" data-faq="{i}">{g}</a>' for i, (g, _) in enumerate(FAQ_GROUPS)) + '</nav><div>' + \

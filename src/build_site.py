@@ -56,6 +56,7 @@ DOCS = [
 <dt>Consent receipt</dt><dd>The record that travels with a person: what they agreed to, who may receive their details, who agreed, and the exact words they saw.</dd>
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to the network.</dd>
 <dt>Always Network</dt><dd>The churches and ministries connected through Always. It grew out of an earlier project called Branches.</dd>
+<dt>Welcoming now</dt><dd>A church or ministry that is verified, trained, has room this month and answers introductions on time.</dd>
 <dt>Always Agent</dt><dd>An assistant that helps teams with the admin around a welcome, with a person deciding every step.</dd>
 </dl>
 """),
@@ -105,6 +106,22 @@ DOCS = [
 <li><b>Pause</b> introductions for a holiday or a busy season, and resume in one tap.</li>
 </ul>
 <p>Matching uses distance first, then how quickly churches usually respond, then how many introductions each church already holds, so welcomes are shared fairly.</p>
+"""),
+  ("ready", "Ready to welcome", """
+<p class="lead">Churches marked <b>welcoming now</b> are ready to receive people this month.</p>
+<p>A church or ministry is welcoming now when:</p>
+<ol>
+<li>It's verified with its denomination or network.</li>
+<li>Its connect lead has done the short welcoming course.</li>
+<li>It offers at least one next step and has room this month.</li>
+<li>It has checked its details in the last 90 days.</li>
+<li>It usually accepts or passes introductions on time.</li>
+</ol>
+<p>If things get busy, introductions pause until you're ready again. Nothing is removed, and only your own team sees your response times.</p>
+<h2>Welcoming young people</h2>
+<p>You'll also need a child safe policy, a named child safety contact, and current Working With Children Checks for your youth leaders. We remind you before a check expires.</p>
+<h2>Who sees what</h2>
+<p>Everyone sees your name, suburb, the next steps you offer and the badge. Partner ministries can check readiness through the API so they can offer people a church nearby. Capacity and response times stay private.</p>
 """),
   ("welcoming", "Welcoming well", """
 <p class="lead">The free 20-minute course every connect lead completes before their church is verified.</p>
@@ -188,6 +205,21 @@ DOCS = [
 <h2>Fair credit</h2>
 <p>Each ministry sees what happened to the people it introduced, and each church sees the people it welcomed. Every number is counted once, using the same definitions across the whole network, so reports from different ministries can be compared fairly.</p>
 """),
+  ("compliance", "Compliance made simple", """
+<p class="lead">The privacy and child safety paperwork, kept for you as you go.</p>
+<p>Each church and ministry gets a Compliance tab with records you can export when your board, denomination or insurer asks.</p>
+<ul>
+<li><b>Consent register</b>: every permission, what it covered, the wording shown, and any withdrawal.</li>
+<li><b>Privacy requests</b>: people see, download, correct or delete their details from their own link.</li>
+<li><b>Data breaches</b>: a register, the 30-day assessment checklist, and draft notices if one is ever needed.</li>
+<li><b>Child safety</b>: a checklist against the National Principles for Child Safe Organisations, Working With Children Check reminders, and your child safety contact.</li>
+<li><b>Retention</b>: proof that details were deleted on schedule.</li>
+<li><b>Audit trail</b>: a tamper-evident log of who opened what, and why.</li>
+<li><b>Annual reporting</b>: activity totals ready for your ACNC return.</li>
+</ul>
+<p>The Compliance tab shows records and dates, never people's details. Child safety incidents stay in your own safeguarding system, kept for at least 45 years as the Royal Commission recommended.</p>
+<p><small>Always helps you keep good records. It isn't legal advice; check your obligations with your own adviser.</small></p>
+"""),
  ]),
  ("For people", [
   ("your-choices", "Your choices and your privacy", """
@@ -219,6 +251,17 @@ DOCS = [
 <tr><td><code>resources</code></td><td>Send a few helpful resources. Adults only.</td></tr>
 <tr><td><code>stats.anonymous</code></td><td>Count the person in anonymous totals.</td></tr></table>
 <p>The receipt follows ISO/IEC TS 27560 for consent records, so it can travel between any systems that implement the Always Handoff standard.</p>
+"""),
+  ("journey", "One journey, with consent", """
+<p class="lead">Help people take the next step without starting from scratch each time, and only with their permission.</p>
+<p>When someone responds at a second event, the ministry can see they're already connected with a church, so nobody asks the same questions twice or loses track of them.</p>
+<ul>
+<li>Shared only if the person agrees, and only the steps (which church, which step, when), never notes.</li>
+<li>No one can search for people or browse a list. It's not a mailing list or a CRM.</li>
+<li>Withdraw once and it stops everywhere: every church and ministry is told straight away.</li>
+<li>Never for anyone under 18. Each young person's response stands alone.</li>
+</ul>
+<p>Moving between church systems uses the open Always Handoff standard, starting with Elvanto and Planning Center.</p>
 """),
   ("standard", "The Always Handoff standard", """
 <p class="lead">An open specification for passing a person from one ministry to another, with consent attached.</p>
@@ -274,6 +317,24 @@ await always.responses.create({
   consent: buildConsent({ ageBand: '18+', connect: true, allowNextNearby: true }),
 });</code></pre>
 """),
+  ("mcp", "Always for AI assistants", """
+<p class="lead">Use Always from Claude and other AI assistants, safely.</p>
+<p>The Always MCP server lets an assistant help your team with the network, without ever seeing a person's details.</p>
+<h2>What it can do</h2>
+<ul>
+<li>Find churches and ministries, and check who's welcoming now.</li>
+<li>List upcoming events.</li>
+<li>Explain the Always Handoff standard and how to build on it.</li>
+<li>Fetch your own organisation's reports (totals only).</li>
+</ul>
+<h2>What it never does</h2>
+<ul>
+<li>Touch any young person's information.</li>
+<li>Act without a person. Later versions may draft a welcome message for an adult who agreed to AI help, and you still press send.</li>
+</ul>
+<pre><code>https://mcp.alwaysfoundation.org/mcp</code></pre>
+<p>Coming soon, with a developer portal for test keys and sample data.</p>
+"""),
   ("webhooks", "Webhooks", """
 <p>Subscribe to events such as <code>always.offer.created</code>, <code>always.handoff.accepted</code> and <code>always.handoff.withdrawn</code>. Events are CloudEvents 1.0, signed with HMAC-SHA256, and carry ids only, never personal details.</p>
 <pre><code>import { verifyWebhook } from '@always/sdk';
@@ -311,20 +372,30 @@ const ok = await verifyWebhook({
 <p class="lead">Your story is yours. You choose who hears it.</p>
 <ul>
 <li>We ask only for what a next step needs: a first name, a way to reach you, your suburb and what you'd like help with.</li>
+<li>Saying yes to Jesus is about your faith, which Australian privacy law treats as sensitive. So nothing is shared without your clear permission.</li>
 <li>You see who will reach out before anything is shared, and it goes only to the church or ministry that welcomes you.</li>
-<li>Change your mind whenever you like, and your details are deleted.</li>
+<li>Your information stays in Australia, encrypted.</li>
+<li>See, download or delete what we hold at any time, from the link in your text. Change your mind and your details are deleted within a week.</li>
+<li>We keep details only as long as your next step needs them, then delete them. Reports only ever show totals.</li>
 <li>We don't sell information or use it for advertising.</li>
 </ul>
 <p>Questions, or want to see what we hold? <b>privacy@alwaysfoundation.org</b></p>
 """),
   ("young-people", "Children and young people", """
-<p class="lead">Young people are welcome, and kept safe.</p>
+<p class="lead">Young people are welcome, and kept safe. The rules below are built into Always and can't be switched off.</p>
+<table class="doc-table age-table"><thead><tr><th scope="col"><span class="sr-only">Rule</span></th><th scope="col">Under 13</th><th scope="col">13 and 14</th><th scope="col">15 to 17</th></tr></thead><tbody><tr><th scope="row">Who says yes to sharing</th><td data-label="Under 13">A parent or guardian</td><td data-label="13 and 14">A parent or guardian</td><td data-label="15 to 17">The young person</td></tr><tr><th scope="row">The young person's own agreement</th><td data-label="Under 13">Asked, in plain words</td><td data-label="13 and 14">Asked</td><td data-label="15 to 17">They decide</td></tr><tr><th scope="row">Their own details</th><td data-label="Under 13">None. A parent responds</td><td data-label="13 and 14">First name and contact only</td><td data-label="15 to 17">First name and contact only</td></tr><tr><th scope="row">Who they meet</th><td colspan="3" data-label="Everyone under 18">Only verified youth partners</td></tr></tbody></table>
+<h2>What every young person can count on</h2>
 <ul>
-<li>Under 13s ask a parent or leader to help them take a next step.</li>
-<li>For 13 and 14 year olds, a parent or guardian confirms first.</li>
-<li>Young people are only introduced to verified youth partners, with Working With Children Checks and child-safe policies.</li>
+<li>Only youth leaders with a current Working With Children Check can see a young person's details, and only at the church that welcomes them.</li>
+<li>No AI ever touches a young person's information.</li>
+<li>No bulk lists or exports, and no sharing between ministries.</li>
+<li>No profiles, feeds or messaging. Always isn't social media.</li>
+<li>Permission lasts 12 months, then we ask again. Details are deleted on a short schedule.</li>
+<li>If we're unsure of someone's age, the younger rules apply.</li>
 </ul>
-<p>We follow the National Principles for Child Safe Organisations. Questions: <b>safeguarding@alwaysfoundation.org</b></p>
+<h2>Youth partners</h2>
+<p>To welcome young people, a church or ministry needs a child safe policy, a named child safety contact, and current Working With Children Checks for its youth leaders. Leaders meet young people in line with their own child safe policy, and mandatory reporting duties always come first.</p>
+<p>We follow the National Principles for Child Safe Organisations and are designing to Australia's Children's Online Privacy Code. Questions: <b>safeguarding@alwaysfoundation.org</b></p>
 """),
   ("always-agent", "Always Agent", """
 <p class="lead">The Always Agent helps people do the admin around a welcome, so they have more time for the welcome itself.</p>
@@ -482,6 +553,7 @@ nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; te
 .pager a span { font-size: 13px; color: var(--muted); }
 .pager a b { font: 700 17px/1.3 var(--head); color: var(--green); }
 .pager a.next { text-align: right; margin-left: auto; }
+@media (max-width: 640px) { .pager { flex-direction: column; } .pager a { min-width: 0; } .pager a.next { margin-left: 0; } }
 @media (max-width: 1020px) {
   .dir-list { grid-template-columns: 1fr 1fr; }
   .docs { grid-template-columns: minmax(0, 1fr); gap: 24px; }
@@ -611,6 +683,9 @@ DECK_CSS = '''
 .doc-table thead th:last-child { text-align: right; }
 .doc-table td { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
 .doc-table tbody th { font-weight: 400; }
+.age-table td { text-align: left; font-weight: 400; padding-right: 12px; } .age-table th[scope=row] { padding-right: 16px; } .age-table thead th:last-child { text-align: left; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 640px) { .age-table thead { display: none; } .age-table, .age-table tbody, .age-table tr, .age-table th, .age-table td { display: block; width: 100%; } .age-table tr { border-bottom: 1px solid var(--line); padding: 12px 0; } .age-table th[scope=row] { border: 0; padding: 0 0 6px; font-weight: 700; color: var(--green); } .age-table td { border: 0; padding: 3px 0; display: flex; gap: 12px; } .age-table td::before { content: attr(data-label); flex: 0 0 120px; color: var(--muted); font-size: 14px; } }
 @media (max-width: 860px) { #page-docs .page-hero { padding: 120px 0 40px; } }
 .rv { transform: none; transition: opacity .6s ease; }
 .word .verse { font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; color: var(--green); }
