@@ -11,6 +11,7 @@ def _swap(h, marker, new):
     return h[:a] + new + h[b:]
 home = _swap(home, 'class="sec map"', '')
 import base64 as _b
+home = home.replace('{{SYDNEYFIRE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'sydneyfire-street.jpg'), 'rb').read()).decode())
 home = home.replace('{{REJOICE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'rejoice-team.jpg'), 'rb').read()).decode())
 home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
 home = _swap(home, 'class="sec promise"', extras.FLOW_SECTION)

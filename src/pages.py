@@ -85,7 +85,7 @@ always.au/r/testimony-video</code></pre>
 app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of man is come to seek and to save that which was lost.”</p><span>Luke 19:10</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><h1>For evangelists</h1><p>Free tools, training and infrastructure for everyone who shares Jesus, so every yes becomes a next step.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><h1>For evangelists</h1><p>Infrastructure and tools for everyone who shares Jesus: the Always App, your own branded response app, training and follow-up, all free, so every yes becomes a next step.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
@@ -110,8 +110,8 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
   {feats([('Sharing your story', 'Tell how Jesus changed your life, in three minutes, in your own words.'), ('Leading someone to Jesus', 'What to say, how to pray, and what to do next when someone says yes.'), ('Welcoming well', 'For church connect leads: the first call, the first coffee, the first Sunday.'), ('Safe ministry with young people', 'Child safe practice for youth leaders and events.'), ('Conversations across faiths', 'Listening well and sharing gently with friends of other beliefs.'), ('Walking with someone', 'The first months of following Jesus: Bible, prayer, church and friends.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
-  <h2 class="pg-h rv">Infrastructure for your ministry</h2>
-  <p class="pg-lead rv">Running an outreach, a tour or an app? Use the same open tools we use, free.</p>
+  <h2 class="pg-h rv">Infrastructure for your evangelism</h2>
+  <p class="pg-lead rv">Running a street team, an outreach or a tour? Get your own branded response app on Always Platform, like Sydney Fire Evangelism's, and use the same open tools we use, free.</p>
   {feats([('Response pages and QR codes', 'People say yes on a page with your name on it, and get a next step near home.'), ('Find a church near me', 'Add our church finder to your website or app in one line.'), ('Church feed and API', 'Verified churches ready to welcome people, for your own tools.'), ('AI assistants', 'Use Always Platform from Claude and other assistants to find churches and events, with no personal data involved.'), ('Reports for funders', 'Monthly reports written for you, with totals only.'), ('Open source', 'Every tool is open, so you can check it, improve it or run it yourself.')])}
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Join the pilot</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
 </div></section>'''
