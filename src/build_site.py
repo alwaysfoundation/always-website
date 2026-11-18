@@ -782,6 +782,42 @@ DECK_CSS = '''
 .case-part p { margin-top: 6px; color: var(--soft); font-size: 17px; max-width: 58ch; }
 .case .case-quote { margin-top: 28px; font-size: clamp(20px, 1.8vw, 24px); max-width: 40ch; padding-left: 22px; }
 .case .case-fine { margin-top: 18px; }
+/* Case study slider */
+#stories { padding-top: clamp(72px, 9vw, 112px); padding-bottom: clamp(72px, 9vw, 112px); }
+.cs-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.cs-head .sec-title { max-width: 18ch; }
+.cs-arrows { display: flex; gap: 10px; flex: none; }
+.cs-arrow { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(27,71,64,.25); background: transparent; color: var(--green); font-size: 20px; cursor: pointer; transition: background .2s, color .2s; }
+.cs-arrow:hover, .cs-arrow:focus-visible { background: var(--green); color: var(--cream); }
+.cs-arrow:disabled { opacity: .35; cursor: default; background: transparent; color: var(--green); }
+.cs-track { list-style: none; margin: 40px 0 0; padding: 4px max(22px, calc((100vw - 1240px) / 2 + 40px)) 18px; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(280px, 30vw, 380px); gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(22px, calc((100vw - 1240px) / 2 + 40px)); scrollbar-width: none; overscroll-behavior-x: contain; }
+.cs-track::-webkit-scrollbar { display: none; }
+.cs-tile { scroll-snap-align: start; background: #FFFDF8; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 0 rgba(27,71,64,.06); }
+.cs-img { position: relative; aspect-ratio: 4 / 3; background: var(--night); }
+.cs-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cs-soon { position: absolute; left: 14px; top: 14px; padding: 6px 12px; border-radius: 999px; background: var(--cream); color: #9A4F22; font: 700 12.5px/1 var(--head); }
+.cs-text { padding: 22px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.cs-name { display: flex; align-items: center; gap: 8px; margin: 0; font: 700 13.5px/1.2 var(--head); color: var(--clay); }
+.cs-logo { width: 28px; height: 28px; }
+.cs-text h3 { margin: 10px 0 0; font-size: 21px; line-height: 1.2; letter-spacing: -0.01em; color: var(--green); }
+.cs-text > p:not(.cs-name) { margin: 8px 0 0; color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+.cs-more { margin-top: auto; align-self: flex-start; padding: 16px 0 0; min-height: 44px; background: none; border: 0; color: var(--green); font: 700 15px/1 var(--head); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(27,71,64,.35); }
+.cs-more:hover, .cs-more:focus-visible { text-decoration-color: currentColor; }
+.cs-dialog { border: 0; padding: 0; border-radius: 24px; width: min(720px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); background: #FFFDF8; color: var(--night); box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+.cs-dialog::backdrop { background: rgba(20,53,47,.6); backdrop-filter: blur(2px); }
+.cs-dlg-in { position: relative; padding: 28px clamp(22px, 4vw, 40px) 32px; }
+.cs-close { position: absolute; right: 14px; top: 14px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(27,71,64,.08); color: var(--green); font-size: 26px; line-height: 1; cursor: pointer; }
+.cs-dialog h3 { margin: 10px 0 18px; font-size: clamp(24px, 3vw, 30px); line-height: 1.15; color: var(--green); padding-right: 48px; }
+.cs-dialog h4 { margin: 22px 0 6px; font: 700 16px/1.3 var(--head); color: var(--green); }
+.cs-dialog p { margin: 0; color: var(--soft); font-size: 16.5px; line-height: 1.6; }
+.cs-dialog a { color: var(--clay); }
+.cs-hero { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px; display: block; }
+.cs-two { margin-top: 10px; } .cs-two img { width: 48%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; display: block; }
+.cs-dialog blockquote { margin: 22px 0 0; padding-left: 18px; border-left: 3px solid var(--clay); }
+.cs-dialog blockquote p { font-family: var(--serif, Georgia, serif); font-size: 19px; color: var(--night); }
+.cs-dialog cite { display: block; margin-top: 10px; font: normal 700 14px/1.3 var(--head); color: var(--clay); }
+.cs-fine { margin-top: 20px !important; font-size: 13px !important; color: var(--muted, #7a827e) !important; }
+@media (max-width: 640px) { .cs-arrows { display: none; } .cs-track { grid-auto-columns: 82vw; gap: 14px; } }
 .case-media { position: relative; padding-bottom: 22%; }
 .case .case-media .case-photo:first-child { width: 88%; }
 .case .case-inset { position: absolute; right: 0; bottom: 0; width: 52%; border: 6px solid var(--cream); box-shadow: 0 18px 40px rgba(20,53,47,.18); border-radius: 18px; }
@@ -997,6 +1033,27 @@ addEventListener('hashchange', () => toggleMenu(false));
 addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
 document.querySelectorAll('.pg-faq-nav a').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); document.getElementById(a.getAttribute('href').slice(1)).scrollIntoView({ behavior: 'smooth' }); }));
 route();
+
+(() => {
+  const track = document.querySelector('.cs-track');
+  if (!track) return;
+  const arrows = document.querySelectorAll('.cs-arrow');
+  const step = () => (track.querySelector('.cs-tile')?.getBoundingClientRect().width || 300) + 20;
+  arrows.forEach((a) => a.addEventListener('click', () => track.scrollBy({ left: step() * Number(a.dataset.dir), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })));
+  const sync = () => { const max = track.scrollWidth - track.clientWidth - 4; arrows[0].disabled = track.scrollLeft <= 4; arrows[1].disabled = track.scrollLeft >= max; };
+  track.addEventListener('scroll', sync, { passive: true }); addEventListener('resize', sync); sync();
+  document.querySelectorAll('.cs-more').forEach((btn) => btn.addEventListener('click', () => {
+    const d = document.getElementById('cs-' + btn.dataset.cs);
+    if (!d || !d.showModal) return;
+    d.querySelectorAll('img[data-from]').forEach((im) => { if (!im.src) { const src = document.querySelector('img[data-key="' + im.dataset.from + '"]'); if (src) im.src = src.src; } });
+    d.showModal(); d.querySelector('.cs-close').focus();
+  }));
+  document.querySelectorAll('.cs-dialog').forEach((d) => {
+    d.querySelector('.cs-close').addEventListener('click', () => d.close());
+    d.addEventListener('click', (e) => { if (e.target === d) d.close(); });
+  });
+})();
+
 """ + extras.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
