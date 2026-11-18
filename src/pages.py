@@ -82,7 +82,7 @@ always.au/r/testimony-video</code></pre>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section>'''
 
-app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of man is come to seek and to save that which was lost.”</p><span>Luke 19:10</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
+app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
   <div><h1>For evangelists</h1><p>Infrastructure and tools for everyone who shares the Gospel: the Always App, your own branded response app, training and follow-up. All free, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
@@ -92,7 +92,7 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
   <h2 class="pg-h rv">Always App</h2>
   <p class="pg-lead rv">A free web app with everything you need to share Jesus. Nothing to download: open it in your phone's browser and add it to your home screen.</p>
   <div class="pg-minis">
-    {mini('Bible', '<p class="pg-cap">John 3 · KJV</p><span class="pg-big">3</span><p class="pg-read"><sup>16</sup> <mark>For God so loved the world, that he gave his only begotten Son…</mark></p>')}
+    {mini('Bible', '<p class="pg-cap">John 3 · ESV</p><span class="pg-big">3</span><p class="pg-read"><sup>16</sup> <mark>For God so loved the world, that he gave his only Son…</mark></p>')}
     {mini('Learn', '<p class="pg-cap">The Always path</p>' + ''.join(f'<div class="pg-path"><i class="s{i}"></i><b>0{i+1} / {s}</b></div>' for i, s in enumerate(['Understand', 'Live', 'Share', 'Walk'])))}
     {mini('Gather', '<p class="pg-serif sm">Someone said yes to Jesus. Give them a next step.</p><div class="pg-tile">Show a QR code</div><div class="pg-card">Connect someone now</div>')}
     {mini('Walk', '<p class="pg-cap">Walking with Sam</p>' + ''.join(f'<div class="pg-tick{" done" if d else ""}"><i></i>{t}</div>' for t, d in [('Send a welcome message', 1), ('Share John 3', 1), ('Coffee this week', 0), ('Church together', 0)]))}

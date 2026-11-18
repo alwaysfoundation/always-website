@@ -630,7 +630,7 @@ about = """
 <section class="sec" style="padding-top:96px"><div class="wrap">
   <div class="about-grid">
     <div><h2>Why we exist</h2>
-      <p>Jesus sent His Church to “go … and teach all nations” (Matthew 28:19). He asked us to make disciples, not just gather decisions. Every week Australians respond to Jesus at concerts, camps, services, film screenings and online. Many of the ministries that see those responses aren't churches, and until now there has been no simple, safe way to connect each person with the right next step nearby.</p>
+      <p>Jesus sent His Church to “go therefore and make disciples of all nations” (Matthew 28:19, ESV). He asked us to make disciples, not just gather decisions. Every week Australians respond to Jesus at concerts, camps, services, film screenings and online. Many of the ministries that see those responses aren't churches, and until now there has been no simple, safe way to connect each person with the right next step nearby.</p>
       <p>Too many people said yes to Jesus and then never heard from anyone again. Always Platform exists to close that gap.</p></div>
     <div><h2>What we do</h2>
       <p>We map Australia's evangelical and Pentecostal churches, verify them with their denominations, and run one network so everyone who says yes to Jesus has a next step and a person to walk with.</p>
@@ -1145,7 +1145,7 @@ for _pid, (_page, _anchor) in PHOTOS:
     doc = doc[:_i] + _fig + doc[_i:]
 import re as _re2
 doc = _re2.sub(r'(<form\b[^>]*>)', r'\1<input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">', doc)
-doc = doc.replace('{{CREDIT}}', 'Photos from Unsplash under the Unsplash License: Vitaly Gariev, Nathan Mullet, Meredith Spencer, Amonwat Dumkrut. Event photo: UEN, and team photo: Rejoice, both used with permission.', 1)
+doc = doc.replace('{{CREDIT}}', 'Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Scripture quotations are not covered by our Creative Commons licence. Photos: UEN, Rejoice, Sydney Fire Evangelism, Alpha Australia and CXMMXNS, used with permission; some photos from Unsplash under the Unsplash License.', 1)
 doc = doc.replace('</style>', '.photo-band{margin:0;height:min(52vh,480px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>', 1)
 _svg = lambda n: 'data:image/svg+xml;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', n), 'rb').read()).decode()
 doc = doc.replace('{{LOGO}}', _svg('always-foundation-logo.svg')).replace('{{LOGO_REV}}', _svg('always-foundation-logo-reverse.svg'))
