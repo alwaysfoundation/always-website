@@ -22,23 +22,23 @@ COUNT = len(json.loads(directory))
 DOCS = [
  ("Getting started", [
   ("introduction", "Introduction", """
-<p class="lead">Always connects churches and ministries across Australia, so everyone who says yes to Jesus has a next step and a real person to walk with.</p>
-<p>Every week people respond to Jesus at concerts, camps, services, film screenings and online. Always makes sure that moment becomes a next step. The person chooses what would help and sees who will reach out. Then a local church gets in touch. If no one can, our care team helps.</p>
-<h2>Who Always is for</h2>
+<p class="lead">Always Platform connects churches and ministries across Australia, so everyone who says yes to Jesus has a next step and a real person to walk with.</p>
+<p>Every week people respond to Jesus at concerts, camps, services, film screenings and online. Always Platform makes sure that moment becomes a next step. The person chooses what would help and sees who will reach out. Then a local church gets in touch. If no one can, our care team helps.</p>
+<h2>Who Always Platform is for</h2>
 <ul>
 <li><b>Churches</b> claim their page on the map, receive introductions and welcome people from their phone. Free, always.</li>
 <li><b>Ministries and events</b> (tours, camps, youth events, campus and street outreach, media) give everyone who says yes a safe next step, under their own name if they like.</li>
 <li><b>People who respond</b> get a clear choice, a real person, and control of their own story.</li>
-<li><b>Builders</b> add Always to church and ministry apps with the Always API and SDK.</li>
+<li><b>Builders</b> add Always Platform to church and ministry apps with its API and SDK.</li>
 </ul>
-<div class="callout">New here? Read <a href="#/docs/how-it-works">How Always works</a>, then the guide for your role in the sidebar.</div>
+<div class="callout">New here? Read <a href="#/docs/how-it-works">How Always Platform works</a>, then the guide for your role in the sidebar.</div>
 """),
-  ("how-it-works", "How Always works", """
+  ("how-it-works", "How Always Platform works", """
 <p class="lead">Respond. Connect. Walk. Someone responds to Jesus, they're introduced to their next best faith step nearby, and a real person walks with them.</p>
 <h2>1. Someone responds</h2>
 <p>At an event, a service or online, the person opens a response card (a QR code, a link or a ministry's own app). They choose what would help: a church, a course, someone to talk to, a youth group or reading the Bible. They give their first name, a mobile and their suburb, and agree to share them with a church or ministry nearby.</p>
 <h2>2. They're connected</h2>
-<p>Always offers them to the nearest verified church or ministry that offers that next step, has room this month and speaks their language. It accepts, or passes with a reason, and the next one nearby that fits is offered.</p>
+<p>Always Platform offers them to the nearest verified church or ministry that offers that next step, has room this month and speaks their language. It accepts, or passes with a reason, and the next one nearby that fits is offered.</p>
 <h2>3. A real person walks with them</h2>
 <p>Once a church accepts, it sees the person's contact details and reaches out from its own phone. The person gets a text saying who will be in touch. The church notes that they've been in touch (never what was said) and keeps going: coffee, Sunday together, a small group.</p>
 <h2>The care team</h2>
@@ -56,7 +56,7 @@ DOCS = [
 <dt>Listed, claimed, verified</dt><dd>Every church starts as a listing on the map. A claimed page is managed by the church. A verified church has been checked with its denomination or network and can receive introductions. Verified youth partners can receive young people.</dd>
 <dt>Consent receipt</dt><dd>A record of what the person agreed to, who may see their details, and the exact words they saw.</dd>
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to the network.</dd>
-<dt>Always Network</dt><dd>The churches and ministries connected through Always. It grew out of an earlier project called Branches.</dd>
+<dt>Always Network</dt><dd>The churches and ministries connected through Always Platform. It grew out of an earlier project called Branches.</dd>
 <dt>Welcoming now</dt><dd>A church or ministry that is verified, trained, has room this month and answers introductions on time.</dd>
 <dt>Always Agent</dt><dd>An assistant that helps teams with the admin around a welcome, with a person deciding every step.</dd>
 </dl>
@@ -75,7 +75,7 @@ DOCS = [
 <p>Before receiving introductions, a church is verified. It affirms the Nicene Creed, belongs to a denomination or network (or has two references from verified churches), and has a connect lead who has done the 20-minute welcoming course. To receive young people, a church is verified as a youth partner, which adds Working With Children Checks and a child-safe policy.</p>
 """),
   ("inbox", "Welcome from your phone", """
-<p class="lead">The Always inbox works on any phone. It shows everyone you're walking with, what they asked for and what's due.</p>
+<p class="lead">The inbox in Always for churches works in any phone's browser. It shows everyone you're walking with, what they asked for and what's due.</p>
 <h2>When someone is waiting</h2>
 <p>You get an email or notification that says someone near you has asked for a next step. It doesn't include their name or details. Open your inbox to see their first name, suburb, age band and what they asked for.</p>
 <h2>Accept or pass</h2>
@@ -139,7 +139,7 @@ DOCS = [
   ("senders", "Response pages and QR codes", """
 <p class="lead">Give everyone who responds at your event a safe next step, in seconds.</p>
 <ol>
-<li>Create a campaign for your event or tour in the Always console.</li>
+<li>Create a campaign for your event or tour in Always for ministries.</li>
 <li>Add placements: a QR code for the screen, a short link, an armband card, or the response card inside your app.</li>
 <li>People respond on their own phones. Volunteers can capture a conversation for someone too, with their consent.</li>
 <li>Each person is offered to a verified church or ministry near where they live, anywhere in Australia.</li>
@@ -148,7 +148,7 @@ DOCS = [
 <p>You see how many people responded and how many were received, accepted and connected. Their details stay with the church that welcomes them. If a person agrees, you'll also see that they connected.</p>
 """),
   ("branding", "Custom branding", """
-<p class="lead">Run Always under your own brand. Same promise, your look and voice.</p>
+<p class="lead">Run Always Platform under your own brand. Same promise, your look and voice.</p>
 <p>In the console, set your colours, fonts, logo, heading and button wording, and which next steps you offer. The consent wording, minors rules and privacy promises stay the same everywhere, so people are just as safe whichever ministry they meet.</p>
 <pre><code>&lt;always-response
   endpoint="/api/always/respond"
@@ -166,7 +166,7 @@ DOCS = [
 <li><b>Ticketing platforms.</b> Organisers can bring in events from their ticketing account, where the platform allows it. We're talking with platforms about doing this well.</li>
 </ol>
 <h2>Where events show</h2>
-<p>On our Events page, in the Connect tab of Always for evangelists, and through the API so other apps can list them too.</p>
+<p>On our Events page, in the Connect tab of Always App, and through the API so other apps can list them too.</p>
 """),
   ("online", "Online responses", """
 <p class="lead">Sharing a testimony video, a sermon or a post? Give people a way to respond, wherever they watch.</p>
@@ -179,8 +179,8 @@ DOCS = [
 <p>An invisible check stops spam without puzzles. The same consent and safeguards apply as at any event, and each person is introduced to a church near where they live.</p>
 """),
   ("results", "Reports for your funders", """
-<p class="lead">If donors, a foundation or your denomination fund your ministry, Always writes your report for you, every month.</p>
-<p>Always already knows each step a person takes after they respond, so there is nothing extra to enter. Pick a month, a quarter or the financial year, and your report is ready.</p>
+<p class="lead">If donors, a foundation or your denomination fund your ministry, Always Platform writes your report for you, every month.</p>
+<p>Always Platform already knows each step a person takes after they respond, so there is nothing extra to enter. Pick a month, a quarter or the financial year, and your report is ready.</p>
 <h2>What's in a report</h2>
 <ol>
 <li>The journey: how many people responded, were introduced, were accepted, were contacted and are connected.</li>
@@ -219,7 +219,7 @@ DOCS = [
 <li><b>Annual reporting</b>: activity totals ready for your ACNC return.</li>
 </ul>
 <p>The Compliance tab shows records and dates, never people's details. Child safety incidents stay in your own safeguarding system, kept for at least 45 years as the Royal Commission recommended.</p>
-<p><small>Always helps you keep good records. It isn't legal advice; check your obligations with your own adviser.</small></p>
+<p><small>Always Platform helps you keep good records. It isn't legal advice; check your obligations with your own adviser.</small></p>
 """),
  ]),
  ("For people", [
@@ -276,7 +276,7 @@ DOCS = [
 </ul>
 <p>The standard is published as JSON Schema under CC BY 4.0. Changes go through an open RFC process, approved by the Technology Steering Committee and, where people's safety is involved, the Safeguarding, Privacy and Ethics Committee.</p>
 """),
-  ("api", "Always API", """
+  ("api", "Always Platform API", """
 <p class="lead">A REST API (OpenAPI 3.1) for sending responses, receiving introductions, managing a page and reading the church feed. Hosted in Sydney.</p>
 <h2>Authentication</h2>
 <p>Integrations use scoped API tokens (<code>alw_live_…</code>), shown once, hashed at rest and revocable. Staff sign in with passkeys or an authenticator app, and send the organisation they're acting for.</p>
@@ -300,8 +300,8 @@ DOCS = [
 <tr><td><code>PUT /v1/org/profile</code></td><td>Update your page, next steps and capacity</td></tr></table>
 <p>Contact details appear only after acceptance. Errors use plain codes such as <code>no_pending_offer_for_org</code> and <code>under13_no_child_data</code>.</p>
 """),
-  ("sdk", "Always SDK", """
-<p class="lead">Add Always to any church or ministry app in about ten minutes.</p>
+  ("sdk", "Always Platform SDK", """
+<p class="lead">Add Always Platform to any church or ministry app in about ten minutes.</p>
 <pre><code>npm install @always/sdk</code></pre>
 <h2>The response card</h2>
 <p>A drop-in web component: accessible, brandable, no cookies or tracking. It posts to your own backend, so no secret ever reaches the browser.</p>
@@ -344,13 +344,13 @@ GET https://api.alwaysfoundation.org/v1/verify/hope-parramatta</code></pre>
 </ul>
 """),
   ("mcp", "Always for AI assistants", """
-<p class="lead">Use Always from Claude and other AI assistants, safely.</p>
+<p class="lead">Use Always Platform from Claude and other AI assistants, safely.</p>
 <p>The Always MCP server gives an assistant four tools. All of them read public church information only, so no one's personal details are ever involved.</p>
 <ul>
 <li><b>find_churches</b>: churches near a postcode, with filters for welcoming now, youth partners and next steps.</li>
 <li><b>verify_church</b>: whether a church is verified, and whether it welcomes young people.</li>
 <li><b>list_events</b>: upcoming Christian events.</li>
-<li><b>how_always_works</b>: a short guide, so the assistant explains Always accurately.</li>
+<li><b>how_always_works</b>: a short guide, so the assistant explains Always Platform accurately.</li>
 </ul>
 <h2>Connect it</h2>
 <pre><code>https://api.alwaysfoundation.org/mcp</code></pre>
@@ -375,13 +375,13 @@ const ok = await verifyWebhook({
 <p>When you receive <code>always.handoff.withdrawn</code>, delete what you hold about that person.</p>
 """),
   ("youversion", "Scripture with YouVersion", """
-<p class="lead">YouVersion opens the technology behind the Bible App to ministries. Always uses it in three places.</p>
+<p class="lead">YouVersion opens the technology behind the Bible App to ministries. Always Platform uses it in three places.</p>
 <ol>
 <li><b>Scripture from the first step.</b> Choosing "Start reading the Bible" opens a reading plan in the person's language, while a church gets in touch.</li>
-<li><b>Sign in with YouVersion.</b> People can sign in with the account they already use. If they agree, Always links it to their home church, so their church stays with them across member apps.</li>
-<li><b>Every member app starts with Scripture.</b> Apps built on Always can add the Bible reader in a few lines. Free, with no ads.</li>
+<li><b>Sign in with YouVersion.</b> People can sign in with the account they already use. If they agree, Always Platform links it to their home church, so their church stays with them across member apps.</li>
+<li><b>Every member app starts with Scripture.</b> Apps built on Always Platform can add the Bible reader in a few lines. Free, with no ads.</li>
 </ol>
-<p>YouVersion confirms who someone is. Always holds which church they belong to and what they agreed to share. Neither holds the other's data.</p>
+<p>YouVersion confirms who someone is. Always Platform holds which church they belong to and what they agreed to share. Neither holds the other's data.</p>
 """),
  ]),
  ("Trust and safety", [
@@ -409,14 +409,14 @@ const ok = await verifyWebhook({
 <p>Questions, or want to see what we hold? <b>privacy@alwaysfoundation.org</b></p>
 """),
   ("young-people", "Children and young people", """
-<p class="lead">Young people are welcome, and kept safe. The rules below are built into Always and can't be switched off.</p>
+<p class="lead">Young people are welcome, and kept safe. The rules below are built into Always Platform and can't be switched off.</p>
 <table class="doc-table age-table"><thead><tr><th scope="col"><span class="sr-only">Rule</span></th><th scope="col">Under 13</th><th scope="col">13 and 14</th><th scope="col">15 to 17</th></tr></thead><tbody><tr><th scope="row">Who says yes to sharing</th><td data-label="Under 13">A parent or guardian</td><td data-label="13 and 14">A parent or guardian</td><td data-label="15 to 17">The young person</td></tr><tr><th scope="row">The young person's own agreement</th><td data-label="Under 13">Asked, in plain words</td><td data-label="13 and 14">Asked</td><td data-label="15 to 17">They decide</td></tr><tr><th scope="row">Their own details</th><td data-label="Under 13">None. A parent responds</td><td data-label="13 and 14">First name and contact only</td><td data-label="15 to 17">First name and contact only</td></tr><tr><th scope="row">Who they meet</th><td colspan="3" data-label="Everyone under 18">Only verified youth partners</td></tr></tbody></table>
 <h2>What every young person can count on</h2>
 <ul>
 <li>Only youth leaders with a current Working With Children Check can see a young person's details, and only at the church that welcomes them.</li>
 <li>No AI ever touches a young person's information.</li>
 <li>No bulk lists or exports, and no sharing between ministries.</li>
-<li>No profiles, feeds or messaging. Always isn't social media.</li>
+<li>No profiles, feeds or messaging. Always Platform isn't social media.</li>
 <li>Permission lasts 12 months, then we ask again. Details are deleted on a short schedule.</li>
 <li>If we're unsure of someone's age, the younger rules apply.</li>
 </ul>
@@ -448,7 +448,7 @@ const ok = await verifyWebhook({
 <p>Every welcome comes from a real person. Where we use AI, it's to save volunteers time, like turning a voice note into text on their own phone, and the person stays in charge of what happens next. The <a href="#/docs/always-agent">Always Agent</a> helps teams with admin, with a person deciding every step. We don't use anyone's information to train AI, and young people's information is kept out of it entirely.</p>
 """),
   ("policies", "Our policies", """
-<p>Always is governed by six published policies, each with numbered rules:</p>
+<p>Always Platform is governed by six published policies, each with numbered rules:</p>
 <table><tr><th>Policy</th><th>What it covers</th></tr>
 <tr><td>Cybersecurity Policy</td><td>Access, encryption, secure development, incident response, business continuity</td></tr>
 <tr><td>Privacy Policy</td><td>What we collect, why, who sees it, your rights</td></tr>
@@ -466,7 +466,7 @@ const ok = await verifyWebhook({
 <li><b>Members own it.</b> Churches and ministries that affirm the Nicene Creed are voting members: one member, one vote.</li>
 <li><b>A skilled, independent board</b> of five to nine directors, a majority independent of any single organisation.</li>
 <li><b>Committees:</b> Theology and Mission; Technology Steering; Safeguarding, Privacy and Ethics; Partnerships and Membership; Finance, Audit and Risk.</li>
-<li><b>Builders on equal terms.</b> Anyone building on Always, including commercial builders, does so on the same terms as everyone else, with no special rights.</li>
+<li><b>Builders on equal terms.</b> Anyone building on Always Platform, including commercial builders, does so on the same terms as everyone else, with no special rights.</li>
 </ul>
 """),
   ("open-source", "Open source and licences", """
@@ -620,12 +620,12 @@ nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; te
 """
 
 about = """
-<section class="page-hero"><div class="wrap"><h1>About Always</h1><p>A gift to the Church in Australia, so no one who responds to Jesus walks alone.</p></div></section>
+<section class="page-hero"><div class="wrap"><h1>About Always Platform</h1><p>A gift to the Church in Australia, so no one who responds to Jesus walks alone.</p></div></section>
 <section class="sec" style="padding-top:96px"><div class="wrap">
   <div class="about-grid">
     <div><h2>Why we exist</h2>
       <p>Jesus told us to make disciples, not just gather decisions (Matthew 28:19–20). Every week Australians respond to Jesus at concerts, camps, services, film screenings and online. Many of the ministries that see those responses aren't churches, and until now there has been no simple, safe way to connect each person with the right next step nearby.</p>
-      <p>Too many people said yes to Jesus and then never heard from anyone again. Always exists to close that gap.</p></div>
+      <p>Too many people said yes to Jesus and then never heard from anyone again. Always Platform exists to close that gap.</p></div>
     <div><h2>What we do</h2>
       <p>We map Australia's evangelical and Pentecostal churches, verify them with their denominations, and run one network so everyone who says yes to Jesus has a next step and a person to walk with.</p>
       <p>Churches use it free. Ministries can run it under their own brand. Builders can add it to their apps. And people stay in control of their own story.</p>
@@ -668,7 +668,7 @@ directory_page = f"""
 
 picker = ''.join(f'<optgroup label="{esc(g)}">' + ''.join(f'<option value="{sl}">{esc(t)}</option>' for sl,t,_ in ps) + '</optgroup>' for g, ps in DOCS)
 docs_page = f"""
-<section class="page-hero" style="padding-bottom:56px"><div class="wrap"><h1>Docs</h1><p>Everything about how Always works, for churches, ministries, people and builders.</p></div></section>
+<section class="page-hero" style="padding-bottom:56px"><div class="wrap"><h1>Docs</h1><p>Everything about how Always Platform works, for churches, ministries, people and builders.</p></div></section>
 <div class="wrap docs">
   <aside class="dnav" aria-label="Docs">
     <label class="skip" for="dsq">Search the docs</label>
@@ -1015,7 +1015,7 @@ doc = f"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23033D2B'/><path fill='%23EE8B54' d='M29 10h6v12h12v6H35v26h-6V28H17v-6h12z'/></svg>">
 <title>Always Foundation · Every response deserves a next step</title>
-<meta name="description" content="No one who responds to Jesus should walk alone. Always connects the body of Christ in Australia, so everyone who responds is offered their next best faith step.">
+<meta name="description" content="No one who responds to Jesus should walk alone. Always Platform connects the body of Christ in Australia, so everyone who responds is offered their next best faith step.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
