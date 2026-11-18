@@ -41,6 +41,15 @@ export default {
     const m = url.pathname.match(/^\/api\/forms\/(join|v1\/orgs\/[^/]+\/claims|v1\/feedback)$/);
     if (m) return handleForm(request, env, m[1] === 'join' ? 'join' : m[1].endsWith('claims') ? 'claims' : 'feedback');
     if (url.pathname.startsWith('/api/')) return new Response('Not found', { status: 404 });
+    const BRAND = { 'always-foundation-logo.svg': 'image/svg+xml', 'always-foundation-logo.png': 'image/png', 'always-foundation-logo-on-green.svg': 'image/svg+xml', 'always-foundation-logo-on-green.png': 'image/png', 'always-foundation-logo-reverse.svg': 'image/svg+xml' };
+    if (url.pathname.startsWith('/brand/')) {
+      const f = url.pathname.slice(7), type = BRAND[f];
+      if (!type) return new Response('Not found', { status: 404 });
+      const r = await fetch('https://raw.githubusercontent.com/alwaysfoundation/always-website/main/brand/' + f, { headers: { 'user-agent': 'always-website-worker' }, cf: { cacheTtlByStatus: { '200-299': 3600, '404': 0 }, cacheEverything: true } });
+      if (!r.ok) return new Response('Not found', { status: 404 });
+      const disp = url.searchParams.has('download') ? 'attachment; filename="' + f + '"' : 'inline';
+      return new Response(r.body, { headers: { 'content-type': type, 'content-disposition': disp, 'cache-control': 'public, max-age=3600', 'x-content-type-options': 'nosniff' } });
+    }
     if (url.pathname === '/robots.txt') return new Response('User-agent: *\nAllow: /\n', { headers: { 'content-type': 'text/plain' } });
     return new Response(HTML, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=300', ...SECURITY } });
   },

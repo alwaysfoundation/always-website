@@ -454,9 +454,10 @@ BRAND = f'''<section class="page-hero"><div class="wrap">
   <h2 class="pg-h rv">Logo</h2>
   <p class="pg-lead rv">The word "always", ending in a cross: Jesus at the end of every always.</p>
   <div class="br-logos">
-    <figure class="br-logo"><img src="{{{{LOGO}}}}" alt="Always Foundation logo"><a class="btn btn-green" href="{{{{LOGO}}}}" download="always-foundation-logo.svg">Download</a></figure>
-    <figure class="br-logo dark"><img src="{{{{LOGO_REV}}}}" alt="Always Foundation logo, reversed for dark backgrounds"><a class="btn btn-peach" href="{{{{LOGO_REV}}}}" download="always-foundation-logo-reverse.svg">Download</a></figure>
+    <figure class="br-logo"><img src="{{{{LOGO}}}}" alt="Always Foundation logo"><figcaption>For light backgrounds</figcaption><div class="br-dl"><a class="btn btn-green" href="/brand/always-foundation-logo.png?download">Download PNG</a><a class="br-alt" href="/brand/always-foundation-logo.svg?download">SVG</a></div></figure>
+    <figure class="br-logo dark"><img src="{{{{LOGO_REV}}}}" alt="Always Foundation logo on green"><figcaption>On green</figcaption><div class="br-dl"><a class="btn btn-peach" href="/brand/always-foundation-logo-on-green.png?download">Download PNG</a><a class="br-alt" href="/brand/always-foundation-logo-on-green.svg?download">SVG</a></div></figure>
   </div>
+  <p class="br-fine rv">Designers: a <a href="/brand/always-foundation-logo-reverse.svg?download">light logo with no background</a> is there for placing on your own green.</p>
   <ul class="br-list rv"><li>Use the dark logo on light backgrounds, and the light one on green.</li><li>Leave space around it. Don't recolour, stretch or add effects.</li><li>Put it on a solid band, never straight on a photo.</li></ul>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
@@ -511,6 +512,13 @@ BRAND_CSS = """
 .br-logo { margin: 0; background: var(--paper, #FFFDF8); border-radius: 26px; padding: 48px 32px 28px; display: grid; gap: 28px; justify-items: center; }
 .br-logo.dark { background: #1B4740; }
 .br-logo img { width: min(280px, 80%); height: auto; }
+.br-logo figcaption { font-size: 14px; color: var(--muted); margin-top: -12px; }
+.br-logo.dark figcaption { color: #CFE0D6; }
+.br-dl { display: flex; gap: 16px; align-items: center; }
+.br-alt { font-weight: 600; color: #A4562A; min-height: 44px; display: inline-flex; align-items: center; }
+.br-logo.dark .br-alt { color: #E8A577; }
+.br-fine { margin-top: 16px; font-size: 15px; color: var(--muted); }
+.br-fine a { color: #A4562A; }
 .br-list { margin: 28px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 18px; max-width: 62ch; }
 .br-sws { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; margin-top: 36px; }
 .br-sw { display: grid; gap: 4px; background: var(--paper, #FFFDF8); border-radius: 20px; padding: 14px 14px 16px; }
