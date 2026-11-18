@@ -421,7 +421,7 @@ RESEARCH_ITEMS = [
   ('Field notes', 'Published', 'Agents with a human in the loop', 'The Always Network grew out of an earlier project called Branches. Its agent checked each response and handed it to a person before anything was shared. Trialled at a youth event with UEN, it shaped how the Always Agent works today.', '#/docs/always-agent'),
   ('Brief', 'In progress', 'Measuring humbly', 'What we count, what we don’t, and why a person is only counted as connected when they say so themselves. Totals only, with minimum group sizes so no one can be identified.', '#/docs/results'),
 ]
-RESEARCH = '''<section class="page-hero"><div class="wrap"><h1>Research</h1><p>We learn in the open: briefs, field notes and open data from building Always with churches and ministries.</p></div></section>
+RESEARCH = '''<section class="page-hero"><div class="wrap"><h1>Research</h1><p>We learn in the open: briefs and field notes from building Always with churches and ministries.</p></div></section>
 <section class="sec pg-sec"><div class="wrap"><div class="rs-list">''' + ''.join(
   f'<article class="rs-item"><p class="rs-meta">{k} · <span class="{"rs-live" if s == "Published" else "rs-soon"}">{s}</span></p><h2>{t}</h2><p>{d}</p>' + (f'<a href="{l}">Read more</a>' if l else '') + '</article>'
   for k, s, t, d, l in RESEARCH_ITEMS) + '''</div>

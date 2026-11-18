@@ -779,6 +779,19 @@ DECK_CSS = '''
 .case .case-quote { margin-top: 28px; font-size: clamp(20px, 1.8vw, 24px); max-width: 40ch; padding-left: 22px; }
 .case .case-fine { margin-top: 18px; }
 .case-quote cite { display: block; margin-top: 12px; font: normal 700 14px/1.3 var(--head); color: var(--clay); }
+/* calmer home on small screens */
+.plat .ctas { margin-top: 48px; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.pl-hero > *, .pl-hero .wrap > * { min-width: 0; }
+@media (max-width: 640px) {
+  .step { padding: 28px 24px 30px; }
+  .plat-ways { grid-template-columns: 1fr 1fr !important; gap: 12px; }
+  .plat-way .pw-art { display: none; }
+  .plat-way { padding: 20px 18px; }
+  .plat-way h3 { font-size: 19px; }
+  .plat-way p { font-size: 14.5px; }
+  .app-band-mark { height: auto !important; padding: 36px 22px 44px !important; }
+}
 @media (max-width: 860px) { .case-item { grid-template-columns: 1fr; gap: 24px; margin-top: 40px; } .case-item + .case-item { margin-top: 48px; padding-top: 48px; } }
 /* footer */
 footer { background: var(--night); color: #B8CCC1; padding: 88px 0 40px; font-size: 15px; }
@@ -1050,8 +1063,8 @@ for _pid, (_page, _anchor) in PHOTOS:
     doc = doc[:_i] + _fig + doc[_i:]
 import re as _re2
 doc = _re2.sub(r'(<form\b[^>]*>)', r'\1<input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">', doc)
-doc = doc.replace('{{CREDIT}}', 'Photos from Unsplash under the Unsplash License: Vitaly Gariev, Nathan Mullet, Meredith Spencer, Amonwat Dumkrut. Event photo: UEN, used with permission.', 1)
-doc = doc.replace('</style>', '.photo-band{margin:0;height:min(64vh,620px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>', 1)
+doc = doc.replace('{{CREDIT}}', 'Photos from Unsplash under the Unsplash License: Vitaly Gariev, Nathan Mullet, Meredith Spencer, Amonwat Dumkrut. Event photo: UEN, and team photo: Rejoice, both used with permission.', 1)
+doc = doc.replace('</style>', '.photo-band{margin:0;height:min(52vh,480px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>', 1)
 _svg = lambda n: 'data:image/svg+xml;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', n), 'rb').read()).decode()
 doc = doc.replace('{{LOGO}}', _svg('always-foundation-logo.svg')).replace('{{LOGO_REV}}', _svg('always-foundation-logo-reverse.svg'))
 open(os.path.join(ROOT,'index.html'), 'w').write(doc)
