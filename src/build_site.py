@@ -769,10 +769,17 @@ DECK_CSS = '''
 @media (max-width: 640px) { .plat-ways, .plat-does { grid-template-columns: 1fr; } }
 
 /* Case studies */
-.case-item + .case-item { margin-top: 112px; padding-top: 112px; border-top: 1px solid rgba(27,71,64,.12); }
-.case-item:first-of-type .sec-title { margin-top: 20px; }
-.case-quote cite { display: block; margin-top: 14px; font: normal 700 15px/1.3 var(--head); color: var(--clay); }
-@media (max-width: 860px) { .case-item + .case-item { margin-top: 72px; padding-top: 72px; } }
+.case-item { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: start; margin-top: 64px; }
+.case-item + .case-item { margin-top: 72px; padding-top: 72px; border-top: 1px solid rgba(27,71,64,.12); }
+.case .case-photo { margin: 0; aspect-ratio: 4 / 3; border-radius: 20px; }
+.case-title { font-size: clamp(26px, 2.6vw, 34px); line-height: 1.15; letter-spacing: -0.02em; color: var(--green); max-width: 22ch; }
+.case-part { margin-top: 20px; }
+.case-part h3 { font-size: 18px; color: var(--green); }
+.case-part p { margin-top: 6px; color: var(--soft); font-size: 17px; max-width: 58ch; }
+.case .case-quote { margin-top: 28px; font-size: clamp(20px, 1.8vw, 24px); max-width: 40ch; padding-left: 22px; }
+.case .case-fine { margin-top: 18px; }
+.case-quote cite { display: block; margin-top: 12px; font: normal 700 14px/1.3 var(--head); color: var(--clay); }
+@media (max-width: 860px) { .case-item { grid-template-columns: 1fr; gap: 24px; margin-top: 40px; } .case-item + .case-item { margin-top: 48px; padding-top: 48px; } }
 /* footer */
 footer { background: var(--night); color: #B8CCC1; padding: 88px 0 40px; font-size: 15px; }
 footer { padding-bottom: 0; overflow: hidden; }
