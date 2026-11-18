@@ -21,12 +21,12 @@ COUNT = len(json.loads(directory))
 DOCS = [
  ("Getting started", [
   ("introduction", "Introduction", """
-<p class="lead">Always connects the body of Christ in Australia, so everyone who responds to Jesus is offered their next best faith step, with a real person walking with them.</p>
-<p>Every week people respond to Jesus at concerts, camps, services, film screenings and online. Always makes sure that moment becomes a next step. The person chooses what would help, sees exactly who will reach out before sharing anything, and a local church or ministry gets in touch. If no one can, our care team helps.</p>
+<p class="lead">Always connects churches and ministries across Australia, so everyone who says yes to Jesus has a next step and a real person to walk with.</p>
+<p>Every week people respond to Jesus at concerts, camps, services, film screenings and online. Always makes sure that moment becomes a next step. The person chooses what would help and sees who will reach out. Then a local church gets in touch. If no one can, our care team helps.</p>
 <h2>Who Always is for</h2>
 <ul>
 <li><b>Churches</b> claim their page on the map, receive introductions and welcome people from their phone. Free, always.</li>
-<li><b>Ministries and events</b> (tours, camps, youth events, campus and street outreach, media) give everyone who responds a safe next step, under their own brand if they like.</li>
+<li><b>Ministries and events</b> (tours, camps, youth events, campus and street outreach, media) give everyone who says yes a safe next step, under their own name if they like.</li>
 <li><b>People who respond</b> get a clear choice, a real person, and control of their own story.</li>
 <li><b>Builders</b> add Always to church and ministry apps with the Always API and SDK.</li>
 </ul>
@@ -35,11 +35,11 @@ DOCS = [
   ("how-it-works", "How Always works", """
 <p class="lead">Respond. Connect. Walk. Someone responds to Jesus, they're introduced to their next best faith step nearby, and a real person walks with them.</p>
 <h2>1. Someone responds</h2>
-<p>At an event, a service or online, the person opens a response card (a QR code, a link or a ministry's own app). They choose what would help: finding a church, exploring faith in a course, talking with someone, joining a youth group or starting to read the Bible. They give their first name, a mobile and their suburb, and agree to share them with a church or ministry nearby.</p>
+<p>At an event, a service or online, the person opens a response card (a QR code, a link or a ministry's own app). They choose what would help: a church, a course, someone to talk to, a youth group or reading the Bible. They give their first name, a mobile and their suburb, and agree to share them with a church or ministry nearby.</p>
 <h2>2. They're connected</h2>
 <p>Always offers them to the nearest verified church or ministry that offers that next step, has room this month and speaks their language. It accepts, or passes with a reason, and the next one nearby that fits is offered.</p>
 <h2>3. A real person walks with them</h2>
-<p>Once a church accepts, it sees the person's contact details and reaches out from its own phone. The person gets a text saying who will be in touch. The church logs that contact happened (never what was said) and keeps going: coffee, a seat together on Sunday, a course or a small group.</p>
+<p>Once a church accepts, it sees the person's contact details and reaches out from its own phone. The person gets a text saying who will be in touch. The church notes that they've been in touch (never what was said) and keeps going: coffee, Sunday together, a small group.</p>
 <h2>The care team</h2>
 <p>If no church or ministry can take someone, the Always care team helps, so everyone is offered a next step.</p>
 <h2>Only the person says "connected"</h2>
@@ -48,12 +48,12 @@ DOCS = [
   ("glossary", "Glossary", """
 <dl class="gloss">
 <dt>Response</dt><dd>Someone telling us they responded to Jesus and would like a next step, with their consent.</dd>
-<dt>Next best faith step</dt><dd>What would help this person most right now: often a local church, sometimes a course to explore faith, a youth group, discipleship or care.</dd>
+<dt>Next best faith step</dt><dd>What would help most right now: usually a local church, sometimes a course, a youth group or care.</dd>
 <dt>Introduction</dt><dd>An invitation to a church or ministry nearby to welcome a person. Their details are shared only once it accepts.</dd>
 
 <dt>Care team</dt><dd>Trained Always staff and volunteers who say hello and walk with anyone no church could take.</dd>
 <dt>Listed, claimed, verified</dt><dd>Every church starts as a listing on the map. A claimed page is managed by the church. A verified church has been checked with its denomination or network and can receive introductions. Verified youth partners can receive young people.</dd>
-<dt>Consent receipt</dt><dd>The record that travels with a person: what they agreed to, who may receive their details, who agreed, and the exact words they saw.</dd>
+<dt>Consent receipt</dt><dd>A record of what the person agreed to, who may see their details, and the exact words they saw.</dd>
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to the network.</dd>
 <dt>Always Network</dt><dd>The churches and ministries connected through Always. It grew out of an earlier project called Branches.</dd>
 <dt>Welcoming now</dt><dd>A church or ministry that is verified, trained, has room this month and answers introductions on time.</dd>
@@ -71,7 +71,7 @@ DOCS = [
 <li>Once confirmed, invite your team and set up your page, next steps and capacity.</li>
 </ol>
 <h2>Becoming verified</h2>
-<p>To receive introductions, a church is verified: we confirm it affirms the Nicene Creed, is part of a denomination or network (or has two references from verified churches), and has a named connect lead who has completed the 20-minute welcoming course. To receive young people, a church is verified as a youth partner, which adds Working With Children Checks and a child-safe policy.</p>
+<p>Before receiving introductions, a church is verified. It affirms the Nicene Creed, belongs to a denomination or network (or has two references from verified churches), and has a connect lead who has done the 20-minute welcoming course. To receive young people, a church is verified as a youth partner, which adds Working With Children Checks and a child-safe policy.</p>
 """),
   ("inbox", "Welcome from your phone", """
 <p class="lead">The Always inbox works on any phone. It shows everyone you're walking with, what they asked for and what's due.</p>
@@ -182,7 +182,7 @@ DOCS = [
 <p>Always already knows each step a person takes after they respond, so there is nothing extra to enter. Pick a month, a quarter or the financial year, and your report is ready.</p>
 <h2>What's in a report</h2>
 <ol>
-<li>The journey: how many people responded, were introduced to a church or ministry nearby, were accepted, were contacted, and told us they are connected.</li>
+<li>The journey: how many people responded, were introduced, were accepted, were contacted and are connected.</li>
 <li>What people asked for, like finding a church or exploring faith.</li>
 <li>Where they live, by state.</li>
 <li>Month by month, so you can show the trend.</li>
@@ -235,7 +235,7 @@ DOCS = [
  ("The platform", [
   ("consent", "How consent works", """
 <p class="lead">Consent travels with the person. Every system checks it before it acts.</p>
-<p>Every person carries a consent receipt everywhere their details go. It records exactly what they agreed to, who may receive their details, who agreed (them or a parent), their age band, and the exact words they saw. Every system that touches the person checks it first and fails closed: anything not explicitly allowed is refused. Withdrawal is one tap and reaches everyone holding their details.</p>
+<p>Every person carries a consent receipt everywhere their details go. It records what they agreed to, who may see their details, who agreed (them or a parent), their age group and the words they saw. Every system that touches the person checks it first and fails closed: anything not explicitly allowed is refused. Withdrawal is one tap and reaches everyone holding their details.</p>
 <pre><code>{
   "purposes": ["connect.church", "notify.sender"],
   "recipients": [],
@@ -352,7 +352,7 @@ const ok = await verifyWebhook({
 <ol>
 <li><b>Scripture from the first step.</b> Choosing "Start reading the Bible" opens a reading plan in the person's language, while a church gets in touch.</li>
 <li><b>Sign in with YouVersion.</b> People can sign in with the account they already use. If they agree, Always links it to their home church, so their church stays with them across member apps.</li>
-<li><b>Every member app starts with Scripture.</b> Apps built on the Always SDK can add the Bible reader in a few lines, free to use, with no paywall on Scripture and no ads.</li>
+<li><b>Every member app starts with Scripture.</b> Apps built on Always can add the Bible reader in a few lines. Free, with no ads.</li>
 </ol>
 <p>YouVersion confirms who someone is. Always holds which church they belong to and what they agreed to share. Neither holds the other's data.</p>
 """),
@@ -601,18 +601,18 @@ about = """
       <p>Jesus told us to make disciples, not just gather decisions (Matthew 28:19–20). Every week Australians respond to Jesus at concerts, camps, services, film screenings and online. Many of the ministries that see those responses aren't churches, and until now there has been no simple, safe way to connect each person with the right next step nearby.</p>
       <p>Too many people said yes to Jesus and then never heard from anyone again. Always exists to close that gap.</p></div>
     <div><h2>What we do</h2>
-      <p>We map every evangelical and Pentecostal church and ministry in Australia, verify them with their denominations and networks, and run one shared network that offers everyone who responds their next best faith step, with a real person walking with them.</p>
+      <p>We map Australia's evangelical and Pentecostal churches, verify them with their denominations, and run one network so everyone who says yes to Jesus has a next step and a person to walk with.</p>
       <p>Churches use it free. Ministries can run it under their own brand. Builders can add it to their apps. And people stay in control of their own story.</p>
       <p>Our focus is Australia. Because the technology is open source, the Church in other nations is free to use it too.</p></div>
   </div>
   <div class="mv">
-    <div><h3>Our mission</h3><p>Equipping the saints to make disciples: connecting everyone who turns to the Lord Jesus Christ with a local church and their next step in following Him.</p></div>
-    <div><h3>Our vision</h3><p>A connected body of Christ in Australia, where no one who responds to Jesus walks alone, and everyone is offered their next best faith step.</p></div>
+    <div><h3>Our mission</h3><p>Helping the Church make disciples: connecting everyone who turns to the Lord Jesus Christ with a local church and their next step with Him.</p></div>
+    <div><h3>Our vision</h3><p>A connected Church in Australia, where no one who says yes to Jesus walks alone.</p></div>
     <div><h3>Our values</h3><p>Christ-centred. Shared, not owned. Freely given. People's stories stay theirs. Humble about what we measure.</p></div>
   </div>
   <div class="creed">
     <div><h2>Common ground: the Nicene Creed.</h2></div>
-    <div><p>Members affirm the Nicene Creed (AD 381) as the minimum common ground for membership, so churches and ministries across denominations and traditions can serve together on the historic faith.</p>
+    <div><p>Members affirm the Nicene Creed (AD 381), so churches across denominations can serve together on the historic faith.</p>
     <p style="margin-top:16px">The foundation is members-based and is being established as an Australian not-for-profit company limited by guarantee, to register as a charity with the ACNC.</p></div>
   </div>
 </div>
@@ -720,6 +720,23 @@ DECK_CSS = '''
 .app-band .ctas { margin-top: 36px; }
 .app-band-mark { background: var(--green); display: flex; align-items: center; justify-content: center; margin-right: calc(-1 * max(40px, (100vw - 1240px) / 2 + 40px)); }
 .app-band-mark svg { width: 96px; }
+/* polish: steps, app phone, case quote */
+.step { min-height: 0; padding: 36px 34px 40px; gap: 14px; }
+.step .art { margin: 0 0 10px; height: 56px; width: auto; align-self: flex-start; }
+.step .tag { margin: 0; }
+.app-band-mark { padding: 56px 24px; }
+.app-phone { width: min(300px, 100%); background: var(--cream); border-radius: 36px; padding: 26px 18px 30px; box-shadow: 0 0 0 10px #12302B, 0 30px 60px rgba(0,0,0,.25); display: grid; gap: 10px; }
+.ap-day { font: 700 13px/1 var(--head); color: var(--muted); margin: 0 4px 4px; }
+.ap-card { display: flex; gap: 12px; align-items: flex-start; background: var(--paper); border-radius: 16px; padding: 14px; text-align: left; }
+.ap-card b { display: block; font: 700 15px/1.25 var(--head); color: var(--green); }
+.ap-card em { display: block; font-style: normal; font-size: 13px; color: var(--muted); margin-top: 3px; }
+.ap-card.soft { background: #E9EFEA; }
+.ap-dot { flex: 0 0 10px; height: 10px; border-radius: 50%; background: var(--green); margin-top: 4px; }
+.ap-dot.pe { background: var(--peach); }
+.case-quote { max-width: 34ch; padding-left: 28px; border-left: 3px solid var(--peach); }
+.case-quote p { margin: 0; }
+@media (max-width: 900px) { .app-band-mark { height: auto; padding: 40px 22px; } }
+
 @media (max-width: 860px) {
   .app-band-grid { grid-template-columns: 1fr; gap: 0; }
   .app-band-grid > div:first-child { padding: 96px 0 56px; }

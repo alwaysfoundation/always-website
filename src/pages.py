@@ -22,13 +22,13 @@ church_desk = f'''<div class="pg-desk rv" aria-label="The church inbox on the we
 </div>'''
 church_phone = phone(f'''<p class="pg-cap">Always app · Team inbox</p><div class="pg-card hl"><div class="pg-row-h"><b>Sam</b><em class="new">New</em></div><span class="pg-mut">Parramatta · Find a church</span><div class="pg-field">04•• ••• •••</div><div class="pg-btns"><span class="pg-b">Accept</span><span class="pg-b ln">Pass</span></div></div><div class="pg-card"><div class="pg-row-h"><b>Josh</b><em class="ok">Accepted</em></div><span class="pg-mut">Harris Park · Talk with someone</span></div>''')
 
-CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1><p>Welcome the people near you who have said yes to Jesus and asked for a next step. Free, always.</p></div></section>
+CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus. Free, always.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Three steps to welcoming people</h2>
-  {steps([('Claim your page', 'Find your church in the directory and claim its page. It takes about ten minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead completes a 20-minute welcoming course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, you accept or pass. Accept, and you reach out from your own phone.')])}
+  {steps([('Claim your page', 'Find your church in the directory and claim its page. It takes about ten minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead does a 20-minute course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
-  <div><h2 class="pg-h rv">On the web, or in your pocket</h2><p class="pg-lead rv">Always for churches and ministries runs in any browser. The same inbox is inside the Always app, so your connect lead can accept someone from their phone on a Sunday afternoon.</p>
+  <div><h2 class="pg-h rv">On the web, or in your pocket</h2><p class="pg-lead rv">Use it in any browser, or in the Always app, so your connect lead can say yes from their phone on a Sunday.</p>
   <ul class="pg-list rv"><li>See who nearby has asked for a next step, and what they asked for.</li><li>Accept to see their number, or pass so the next church nearby is asked.</li><li>Log that you got in touch. The conversation stays between you.</li></ul></div>
   <div class="pg-mocks">{church_desk}<div class="pg-phone-over rv">{church_phone}</div></div>
 </div></section>
@@ -51,24 +51,24 @@ ministry_phone = phone('<p class="pg-mbrand">YOUR MINISTRY</p><p class="pg-mh">S
 
 report_mock = '<div class="pg-desk pg-report rv" aria-label="An example monthly report"><div class="pg-desk-main"><div class="pg-row-h"><b>September report</b><em class="ok">Ready</em></div><span class="pg-mut">City worship tour · Prepared for our supporters</span><div class="pg-kpis">' + ''.join(f'<div><b{" class=pe" if i == 3 else ""}>{v}</b><span>{l}</span></div>' for i, (v, l) in enumerate([('310', 'Responded'), ('295', 'Introduced'), ('258', 'Accepted'), ('117', 'Connected')])) + '</div><div class="pg-btns"><span class="pg-b">Download PDF</span><span class="pg-b ln">Share a link</span></div><p class="pg-mut">Example figures. Totals only.</p></div></div>'
 
-MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries</h1><p>Tours, camps, youth events, campus and street outreach, and media ministries: give everyone who responds a next step near where they live.</p></div></section>
+MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries</h1><p>Tours, camps, youth events, outreach and online ministries: give everyone who says yes a next step near home.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">From the altar call to a church family</h2>
   {steps([('Create a response page', 'Choose the next steps you offer and add your brand. Ready in minutes.'), ('Invite a response', 'Show the QR code on the big screen, hand out cards, or use the response card in your own app.'), ('See the fruit', 'Watch results live, and get a monthly report ready for your funders and board.')])}
 </div></section>
 <section class="sec pg-sec pg-night"><div class="wrap pg-split">
-  <div><h2 class="pg-h rv">Your brand. Live results.</h2><p class="pg-lead rv">People respond on a page that looks and sounds like you. Your team sees totals as they happen, and each person's details go only to the church that welcomes them.</p>
+  <div><h2 class="pg-h rv">Your brand. Live results.</h2><p class="pg-lead rv">People respond on a page that looks like you. Your team sees totals live, and each person's details go only to the church that welcomes them.</p>
   <ul class="pg-list rv"><li>Results for every event, tour and campus.</li><li>An inbox for the steps you offer yourself, like a youth night or a course.</li><li>Street teams and evangelists use the Always app to show their own QR.</li></ul></div>
   <div class="pg-mocks">{ministry_desk}<div class="pg-phone-over rv">{ministry_phone}</div></div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap pg-split">
-  <div><h2 class="pg-h rv">Reporting your funders can trust</h2><p class="pg-lead rv">Many ministries answer to donors, foundations or a denomination. Always writes your report for you each month, from the steps people have already taken. Nothing extra to enter.</p>
+  <div><h2 class="pg-h rv">Reporting your funders can trust</h2><p class="pg-lead rv">Answer to donors, a foundation or a denomination? Always writes your report each month. Nothing extra to enter.</p>
   <ul class="pg-list rv"><li>Responded, introduced, accepted, contacted and connected, month by month.</li><li>Download a PDF or spreadsheet, or send your funder a link you can switch off.</li><li>Your title, your funder's name, your words. Totals only, so no one can be identified.</li></ul>
   <div class="pg-cta rv" style="margin-top:24px"><a class="btn btn-green" href="#/docs/results">See what's in a report</a></div></div>
   <div class="pg-mocks">{report_mock}</div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
-  <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony video, a sermon or a post? Add a response link or QR in the description, or embed the response card on your website. People anywhere in Australia can say yes and be introduced to a church near them.</p></div>
+  <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony, sermon or post? Add a response link or QR code. Anyone in Australia can say yes and meet a church near them.</p></div>
   <pre class="pg-code rv"><code>&lt;always-response
   page="testimony-video"&gt;
 &lt;/always-response&gt;
@@ -85,7 +85,7 @@ always.au/r/testimony-video</code></pre>
 app_home = phone('<p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of man is come to seek and to save that which was lost.”</p><span>Luke 19:10</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><h1>The Always app</h1><p>Every Christian can be someone's next step. A free app to understand the gospel, share it, and walk with people into a church family.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><h1>The Always app</h1><p>A free app to help you share Jesus and walk with people into a church family.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
@@ -106,7 +106,7 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
 
 FAQ_GROUPS = [
  ('About Always', [
-  ('What is Always?', 'A shared network that connects everyone who responds to Jesus in Australia with their next best faith step, usually a local church near where they live.'),
+  ('What is Always?', 'One network that helps everyone in Australia who says yes to Jesus take their next step, usually at a church near home.'),
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
@@ -116,14 +116,14 @@ FAQ_GROUPS = [
   ('How do we join?', 'Find your church in the directory, claim its page, and we verify you with your denomination or network.'),
   ('What if we can\'t welcome someone?', 'Pass, with a reason. The next church or ministry nearby is asked. If none can, our care team helps.'),
   ('Do we have to change our church software?', 'No. Use the free inbox on the web or in the Always app, or connect your system through the API. Elvanto and Planning Center come first.'),
-  ('What does welcoming now mean?', 'Your church is verified, your connect lead has done the welcoming course, you have room this month and you usually answer introductions on time. If you get busy, introductions simply pause.'),
+  ('What does welcoming now mean?', 'You\'re verified, trained, have room this month and usually reply on time. If you get busy, introductions simply pause.'),
   ('Who on our team can see people\'s details?', 'Only the people you add to your team, and only after your church accepts an introduction.')]),
  ('For ministries and events', [
   ('Can we use our own brand?', 'Yes. Response pages, QR codes and texts can use your colours, logo and wording.'),
   ('What results do we see?', 'Totals for each event: responded, introduced, accepted and connected. Each person\'s details go only to the church that welcomes them.'),
-  ('Can Always help us report to our funders?', 'Yes. Always writes a monthly report for you from the steps people have already taken: who responded, who was introduced, who was contacted and who is connected. Download it as a PDF or spreadsheet, or send your funder a link.'),
+  ('Can Always help us report to our funders?', 'Yes. Always writes a monthly report for you: who responded, who was introduced, who was contacted and who is connected. Download it as a PDF or spreadsheet, or send your funder a link.'),
   ('Will our funders see people\'s details?', 'No. Reports show totals only, and small numbers are hidden so no one can be identified.'),
-  ('Can Always help with privacy and child safety paperwork?', 'Yes. Your Compliance tab keeps a consent register, privacy requests, a data breach register, child safety checklists, Working With Children Check reminders and proof of deletion, ready to export.'),
+  ('Can Always help with privacy and child safety paperwork?', 'Yes. Your Compliance tab keeps your consent records, privacy requests, child safety checklists and Working With Children Check reminders, ready to export.'),
   ('Can we make the report our own?', 'Yes. Add your title, your funder\'s name and a short introduction. If a funder needs something specific, talk to us.'),
   ('Can we receive introductions ourselves?', 'Yes, for the steps you offer, like a youth night or a course.'),
   ('Can people respond online?', 'Yes. Add a response link or QR to a video description or post, or embed the response card on your website. An invisible check stops spam without puzzles.'),
@@ -143,7 +143,7 @@ FAQ_GROUPS = [
  ('Privacy and safety', [
   ('Where is information kept?', 'In Australia, encrypted, under Australian privacy law.'),
   ('Do you sell information or use it for advertising?', 'No.'),
-  ('How do you use AI?', 'To save people time, like turning a voice note into text on your own phone with NVIDIA Parakeet, an open model that works offline. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
+  ('How do you use AI?', 'To save time, like turning a voice note into text on your own phone with NVIDIA Parakeet, which works offline. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
   ('How is Always funded?', 'By supporters, and by larger ministries contributing to upkeep according to their size. Churches never pay.'),
@@ -407,7 +407,7 @@ form.cl-form { display: grid; gap: 16px; background: none; padding: 0; border-ra
 
 # ---------------- Research
 RESEARCH_ITEMS = [
-  ('Brief', 'In progress', 'What happens after a yes', 'Every week people respond to Jesus at events, services and online. We are documenting what happens next across Australian ministries: how responses are captured, where people are lost between ministries, and what helps them take a next step.', None),
+  ('Brief', 'In progress', 'What happens after a yes', 'Every week people respond to Jesus at events, services and online. We\'re studying what happens after someone says yes: where people get lost, and what helps them take a next step.', None),
   ('Standard', 'Published', 'Consent that travels with the person', 'How a consent receipt can move between ministries and systems, what it records, and why every system checks it before it acts. Built on ISO/IEC TS 27560 for consent records.', '#/docs/consent'),
   ('Field notes', 'Published', 'Agents with a human in the loop', 'The Always Network grew out of an earlier project called Branches. Its agent checked each response and handed it to a person before anything was shared. Trialled at a youth event with UEN, it shaped how the Always Agent works today.', '#/docs/always-agent'),
   ('Open data', 'Published', 'Mapping the churches of Australia', 'How we built a directory of 3,937 evangelical and Pentecostal churches and ministries from public denominational and network directories, and how churches correct and claim their own listing.', '#/directory'),
