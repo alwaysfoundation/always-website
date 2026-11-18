@@ -51,7 +51,7 @@ ministry_phone = phone('<p class="pg-mbrand">YOUR MINISTRY</p><p class="pg-mh">S
 
 report_mock = '<div class="pg-desk pg-report rv" aria-label="An example monthly report"><div class="pg-desk-main"><div class="pg-row-h"><b>September report</b><em class="ok">Ready</em></div><span class="pg-mut">City worship tour · Prepared for our supporters</span><div class="pg-kpis">' + ''.join(f'<div><b{" class=pe" if i == 3 else ""}>{v}</b><span>{l}</span></div>' for i, (v, l) in enumerate([('310', 'Responded'), ('295', 'Introduced'), ('258', 'Accepted'), ('117', 'Connected')])) + '</div><div class="pg-btns"><span class="pg-b">Download PDF</span><span class="pg-b ln">Share a link</span></div><p class="pg-mut">Example figures. Totals only.</p></div></div>'
 
-MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries</h1><p>Tours, camps, youth events, outreach and online ministries: when people respond to the Gospel, give each one a next step near home.</p></div></section>
+MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries</h1><p>Tours, camps, youth events, outreach and online ministries: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">From the altar call to a church family</h2>
   {steps([('Create a response page', 'Choose the next steps you offer and add your brand. Ready in minutes.'), ('Invite a response', 'Show the QR code on the big screen, hand out cards, or use the response card in your own app.'), ('See the fruit', 'Watch results live, and get a monthly report ready for your funders and board.')])}
@@ -66,6 +66,11 @@ MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries
   <ul class="pg-list rv"><li>Responded, introduced, contacted, and now part of a church family, month by month.</li><li>Download a PDF or spreadsheet, or send your funder a link you can switch off.</li><li>Your title, your funder's name, your words. Totals only, so no one can be identified.</li></ul>
   <div class="pg-cta rv" style="margin-top:24px"><a class="btn btn-green" href="#/docs/results">See what's in a report</a></div></div>
   <div class="pg-mocks">{report_mock}</div>
+</div></section>
+<section class="sec pg-sec pg-night"><div class="wrap">
+  <h2 class="pg-h rv">Less administration, more ministry</h2>
+  <p class="pg-lead rv">Shared tools for the everyday work behind every ministry, so your team can spend more time on people.</p>
+  {feats([('Governance', 'Shared policies, templates and member records for boards and leaders.'), ('Compliance', 'Consent records and privacy requests, ready to export when you need them.'), ('Safeguarding', 'Child safety checklists and Working With Children Check reminders, kept in one place.'), ('Reporting', 'A monthly report for your board and funders, with totals only.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony, sermon or post? Add a response link or QR code. Anyone in Australia can say yes and meet a church near them.</p></div>
@@ -117,14 +122,16 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
 </div></section>'''
 
 FAQ_GROUPS = [
- ('About Always Platform', [
-  ('What is Always Platform?', 'Open infrastructure for the Church in Australia. It gives evangelists, ministries and churches tools, an API and an SDK that help everyone who says yes to Jesus take their next step, usually at a church near home.'),
+ ('About Always', [
+  ('What is the Always Foundation?', 'An independent, member-based Christian nonprofit that brings churches and Christian ministries together. We equip them with free, open-source tools, support them with shared tools for governance, compliance, safeguarding and reporting, and connect them as one network.'),
+  ('Who can become a member?', 'Churches and Christian ministries that affirm the Nicene Creed. Members help shape what we build and share in the benefits. Supporters can join us too, through prayer and giving.'),
+  ('What is Always Platform?', 'The open-source technology behind everything we offer members: branded response pages, forms, reports, the directory and the Always App. Developers can build on it too.'),
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always Platform only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
   ('How do I sign in?', 'With one Always account, using Apple, Google, YouVersion or your email. The same account works across the Always App and every tool built on Always Platform.')]),
  ('For churches', [
-  ('Does it cost anything?', 'No. Always Platform is free for every church.'),
+  ('Does it cost anything?', 'No. Churches never pay. Larger ministries contribute according to their size.'),
   ('How do we join?', 'Claim your church\'s page, and we verify you with your denomination or network.'),
   ('What if we can\'t welcome someone?', 'Pass, with a reason. The next church or ministry nearby is asked. If none can, our care team helps.'),
   ('Do we have to change our church software?', 'No. Use the free inbox in Always for churches, in any browser, or connect your system through the API. Elvanto and Planning Center come first.'),
@@ -159,7 +166,7 @@ FAQ_GROUPS = [
   ('How do you use AI?', 'To save time on routine work, like writing your monthly report. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
-  ('How is Always Platform funded?', 'By supporters, and by larger ministries contributing to upkeep according to their size. Churches never pay.'),
+  ('How is the Always Foundation funded?', 'By supporters, and by larger ministries contributing according to their size. Churches never pay.'),
   ('How can I support the work?', 'Pray with us, and get in touch at hello@alwaysfoundation.org to book a catch-up call.'),
   ('Can developers build on Always Platform?', 'Yes. The API, SDK and open standard are open source under Apache 2.0, with docs under CC BY 4.0. An MCP server for AI assistants is coming, and it never sees a person\'s details.')])]
 
