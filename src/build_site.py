@@ -11,6 +11,7 @@ def _swap(h, marker, new):
     return h[:a] + new + h[b:]
 home = _swap(home, 'class="sec map"', '')
 import base64 as _b
+home = home.replace('{{REJOICE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'rejoice-team.jpg'), 'rb').read()).decode())
 home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
 home = _swap(home, 'class="sec promise"', extras.FLOW_SECTION)
 directory = open(os.path.join(ROOT,'dir.json')).read()
@@ -766,6 +767,19 @@ DECK_CSS = '''
 .btn-line { border: 1.5px solid #1B4740; color: #1B4740; background: transparent; }
 @media (max-width: 1080px) { .plat-ways, .plat-does { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .plat-ways, .plat-does { grid-template-columns: 1fr; } }
+
+/* Rejoice case study */
+.case-rejoice { background: var(--sage); }
+.rj-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; margin-top: 56px; align-items: center; }
+.rj-photo { margin: 0; border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--night); }
+.rj-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rj-text { display: grid; gap: 32px; }
+.rj-text h3 { font-size: 27px; color: var(--green); }
+.rj-text p { margin-top: 12px; color: var(--soft); font-size: 18px; }
+.rj-vision { margin: 72px 0 0; max-width: 34ch; font: 800 clamp(26px, 3.2vw, 40px)/1.2 var(--head); letter-spacing: -0.025em; color: var(--green); }
+.rj-quote { margin-top: 48px; }
+.case-quote cite { display: block; margin-top: 16px; font: normal 700 16px/1.3 var(--head); color: #A4562A; }
+@media (max-width: 860px) { .rj-grid { grid-template-columns: 1fr; gap: 32px; } }
 /* footer */
 footer { background: var(--night); color: #B8CCC1; padding: 88px 0 40px; font-size: 15px; }
 footer { padding-bottom: 0; overflow: hidden; }
