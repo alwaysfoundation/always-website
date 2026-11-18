@@ -68,6 +68,18 @@ a { color: inherit; }
 .tips b { color: #fff; display: block; }
 .prayer { margin-top: 18px; padding: 18px; border-left: 4px solid var(--red); background: var(--coal); border-radius: 0 16px 16px 0; color: var(--soft); font-size: 17px; }
 .hidden { display: none !important; }
+.card { padding: 16px 16px 14px; border-radius: 18px; background: var(--coal); box-shadow: inset 0 0 0 1px var(--line); }
+.card + .card { margin-top: 10px; }
+.card h3 { margin: 0; font-size: 20px; font-weight: 800; }
+.card .meta { color: var(--mute); font-size: 14px; margin-top: 2px; }
+.card .acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.card .acts a { min-height: 44px; font-size: 16px; border-radius: 12px; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+.seg button { min-height: 44px; border-radius: 12px; border: 0; background: #222; color: var(--soft); font: 700 14px/1 Archivo, sans-serif; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--red); color: #fff; }
+.linkbtn { background: none; border: 0; color: var(--mute); font: 600 14px/1 Archivo, sans-serif; text-decoration: underline; min-height: 44px; padding: 0; cursor: pointer; }
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; color: var(--mute); font-size: 14px; }
+.pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #2a1213; color: #ff9da1; font-size: 13px; font-weight: 700; margin-left: 6px; }
 @media (prefers-reduced-motion: no-preference) { .screen.on { animation: in .25s ease both; } @keyframes in { from { opacity: 0; transform: translateY(8px); } } }
 </style>
 </head>
@@ -182,9 +194,32 @@ a { color: inherit; }
     <li><b>4/ Stay with them.</b> If it doesn't send, take their name the way you usually do, and let us know.</li>
     <li><b>5/ Follow up.</b> Every contact is saved securely in Australia. The Always Foundation shares new contacts with your team leader for follow-up.</li>
   </ul>
+  <a class="btn btn-line" href="#leader" style="margin-top:22px">Team leader sign-in</a>
   <p class="lead" style="margin-top:26px">A simple prayer to pray together</p>
   <p class="prayer">Jesus, thank You for loving me and dying for me. I'm sorry for my sins. I believe You rose again, and I give You my life. Please forgive me, fill me with Your Spirit, and lead me from today. Amen.</p>
   <p class="foot">Powered by <a href="https://alwaysfoundation.org/#/platform">Always Platform</a></p>
+</section>
+
+<!-- Leader: sign in and follow up -->
+<section class="screen" id="leader" aria-labelledby="leader-h">
+  <div class="top"><button class="back" data-go="team">← Back</button><img src="/logo-192.png" alt=""></div>
+  <div id="l-out">
+    <h2 id="leader-h" style="margin-top:22px">Team leader sign-in</h2>
+    <p class="lead">We'll email you a sign-in link. Only leaders the Always Foundation has added can see contacts.</p>
+    <form id="l-form" novalidate>
+      <div class="field"><label for="l-email">Your email</label><input id="l-email" type="email" autocomplete="email" inputmode="email" maxlength="120"></div>
+      <p class="err" id="l-err" role="alert"></p>
+      <button class="btn btn-red" type="submit">Email me a sign-in link</button>
+    </form>
+  </div>
+  <div id="l-in" class="hidden">
+    <h2 style="margin-top:22px">Your contacts <span id="l-count" class="pill"></span></h2>
+    <p class="note" id="l-minors"></p>
+    <div class="bar"><span id="l-who"></span><span><button class="linkbtn" id="l-refresh">Refresh</button> · <button class="linkbtn" id="l-signout">Sign out</button></span></div>
+    <p class="err" id="l-err2" role="alert"></p>
+    <div id="l-list" style="margin-top:14px"></div>
+    <p class="note">Please keep these details private. Call or text from your own phone, and mark each person as you go. If someone changes their mind, remove them and their details are deleted straight away. For your privacy, you're signed out after 15 minutes without use.</p>
+  </div>
 </section>
 
 </main>
@@ -305,9 +340,98 @@ a { color: inherit; }
   $('send').addEventListener('click', send);
   $('retry').addEventListener('click', () => go('age'));
 
-  const start = location.hash.slice(1);
-  if (start === 'team') go('team');
-  window.addEventListener('hashchange', () => { if (location.hash === '#team') go('team'); });
+  // ---------------------------------------------------------------- Team leaders
+  const SB_URL = 'https://scoitzteqsvomsghtxfe.supabase.co';
+  const SB_KEY = 'sb_publishable_Wcgql0VPiQ54KREb48X_Ew_dk1U5yy-'; // public sign-in key, safe in the browser
+  const TEAM_URL = SB_URL + '/functions/v1/field-team?forceFunctionRegion=ap-southeast-2&source=' + SOURCE;
+  const STEP_LABEL = { church: 'Find a church', talk: 'Talk with someone', explore: 'Explore faith', youth: 'Youth group' };
+  let sb = null, idle = null;
+  function loadSb() {
+    if (sb) return Promise.resolve(sb);
+    return new Promise((ok, bad) => {
+      const el = document.createElement('script');
+      el.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.js';
+      el.onload = () => { sb = window.supabase.createClient(SB_URL, SB_KEY, { auth: { storage: window.sessionStorage, persistSession: true, detectSessionInUrl: true, flowType: 'implicit' } }); ok(sb); };
+      el.onerror = bad; document.head.appendChild(el);
+    });
+  }
+  function touch() { clearTimeout(idle); idle = setTimeout(() => signOut(), 15 * 60 * 1000); }
+  async function signOut() { clearTimeout(idle); if (sb) await sb.auth.signOut(); $('l-list').textContent = ''; showLeader(); }
+  async function showLeader() {
+    // Read the sign-in link's token (if any) before the address changes.
+    let data = { session: null };
+    try { await loadSb(); ({ data } = await sb.auth.getSession()); } catch { go('leader'); $('l-err').textContent = "Couldn't load sign-in. Check your connection."; return; }
+    go('leader');
+    const signedIn = !!data.session;
+    $('l-out').classList.toggle('hidden', signedIn); $('l-in').classList.toggle('hidden', !signedIn);
+    if (signedIn) { $('l-who').textContent = data.session.user.email; touch(); loadContacts(); }
+  }
+  async function team(method, body) {
+    const { data } = await sb.auth.getSession();
+    if (!data.session) throw new Error('signed_out');
+    const res = await fetch(TEAM_URL, { method, headers: { authorization: 'Bearer ' + data.session.access_token, 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+    const j = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(j.error || 'failed');
+    return j;
+  }
+  function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function ago(iso) { const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 60 ? m + ' min ago' : m < 1440 ? Math.round(m / 60) + ' h ago' : new Date(iso).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }); }
+  async function loadContacts() {
+    $('l-err2').textContent = ''; touch();
+    try {
+      const { contacts, minorsWithCareTeam } = await team('GET');
+      $('l-count').textContent = contacts.length;
+      $('l-minors').textContent = minorsWithCareTeam ? `${minorsWithCareTeam} young ${minorsWithCareTeam === 1 ? 'person is' : 'people are'} with the Always care team, who'll connect them with a verified youth group.` : '';
+      const list = $('l-list'); list.textContent = '';
+      if (!contacts.length) list.appendChild(el('p', 'note', 'No contacts yet. They appear here as soon as someone sends the form.'));
+      for (const c of contacts) {
+        const card = el('div', 'card');
+        card.appendChild(el('h3', '', c.first_name || 'Someone'));
+        card.appendChild(el('p', 'meta', `${STEP_LABEL[c.step] || c.step} · ${c.suburb} ${c.postcode} · ${ago(c.created_at)}${c.notify_sender ? ' · wants event news' : ''}`));
+        const acts = el('div', 'acts');
+        const call = el('a', 'btn btn-red', 'Call'); call.href = 'tel:' + c.mobile;
+        const text = el('a', 'btn btn-line', 'Text'); text.href = 'sms:' + c.mobile;
+        acts.append(call, text); card.appendChild(acts);
+        const seg = el('div', 'seg'); seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', 'Follow-up status');
+        for (const [v, label] of [['new', 'New'], ['contacted', 'Contacted'], ['connected', 'Connected']]) {
+          const b = el('button', '', label); b.type = 'button'; b.setAttribute('aria-pressed', String(c.status === v));
+          b.addEventListener('click', async () => { try { await team('POST', { id: c.id, status: v }); loadContacts(); } catch { $('l-err2').textContent = "Couldn't save that. Try again."; } });
+          seg.appendChild(b);
+        }
+        card.appendChild(seg);
+        const rm = el('button', 'linkbtn', 'Changed their mind? Remove and delete'); rm.type = 'button';
+        rm.addEventListener('click', async () => { if (!confirm('Delete this person\'s details now? This can\'t be undone.')) return; try { await team('POST', { id: c.id, action: 'withdraw' }); loadContacts(); } catch { $('l-err2').textContent = "Couldn't delete. Try again."; } });
+        card.appendChild(rm);
+        list.appendChild(card);
+      }
+    } catch (e) {
+      if (e.message === 'signed_out' || e.message === 'sign_in_required') return signOut();
+      $('l-err2').textContent = e.message === 'not_on_team' ? "You're signed in, but not on Sydney Fire's team yet. Ask the Always Foundation to add you." : "Couldn't load contacts. Check your connection and refresh.";
+    }
+  }
+  $('l-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = $('l-email').value.trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { $('l-err').textContent = 'Please check your email address.'; return; }
+    try {
+      await loadSb();
+      const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: location.origin + '/#leader' } });
+      if (error) throw error;
+      $('l-err').textContent = ''; $('l-form').replaceChildren(el('p', 'lead', 'Check your email for a sign-in link. Open it on this phone.'));
+    } catch { $('l-err').textContent = "Couldn't send the link. Wait a minute and try again."; }
+  });
+  $('l-refresh').addEventListener('click', loadContacts);
+  $('l-signout').addEventListener('click', signOut);
+  ['click', 'keydown', 'touchstart'].forEach((ev) => document.addEventListener(ev, () => { if (sb && $('leader').classList.contains('on')) touch(); }, { passive: true }));
+
+  function route() {
+    const hsh = location.hash;
+    if (hsh.includes('access_token=') && sb) return location.reload(); // let sign-in read the link on a fresh load
+    if (hsh.includes('access_token=') || hsh === '#leader') return showLeader();
+    if (hsh === '#team') return go('team');
+  }
+  route();
+  window.addEventListener('hashchange', route);
 
 })();
 </script>
