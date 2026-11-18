@@ -209,3 +209,102 @@ JS = r'''
   }), { threshold: .35 }).observe(root);
 })();
 '''.replace('__MAP__', MAP).replace('__QR__', qr(150)).replace('__WM__', wm('#033D2B', 22))
+
+# ---------------------------------------------------------------- Wow moment: Australia lights up
+WOW_SECTION = '''<section class="wow" id="wow" aria-labelledby="wow-h">
+  <div class="wrap wow-in">
+    <div class="wow-copy">
+      <h2 id="wow-h" class="wow-h">Every yes,<br>connected.</h2>
+      <p class="wow-lead">Across Australia, every person who says yes to Jesus can be connected with a church near them, and someone to walk with.</p>
+      <p class="wow-stat"><b>3,937</b> churches and ministries mapped, in every state and territory.</p>
+    </div>
+    <div class="wow-map">
+      <canvas id="wow-canvas" role="img" aria-label="An illustrated map of Australia. Sparks of light, each one a person saying yes to Jesus, connect to churches nearby until the map glows."></canvas>
+      <p class="wow-note">Illustration. Each dot is a church.</p>
+    </div>
+  </div>
+</section>'''
+
+WOW_CSS = '''
+.wow { position: relative; background: radial-gradient(120% 90% at 70% 40%, #1B4740 0%, #10302A 55%, #0B231F 100%); color: var(--cream); padding: clamp(80px, 10vw, 140px) 0; overflow: hidden; }
+.wow-in { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.7fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.wow-h { font: 800 clamp(48px, 7.4vw, 108px)/0.95 var(--head); letter-spacing: -0.045em; margin: 0; color: var(--cream); }
+.wow-lead { margin: 26px 0 0; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.55; color: #CFE0D6; max-width: 30ch; }
+.wow-stat { margin: 28px 0 0; padding-top: 22px; border-top: 1px solid rgba(248,243,234,.15); font-size: 15px; color: #A9C2B8; max-width: 30ch; }
+.wow-stat b { display: block; font: 800 clamp(40px, 4.4vw, 60px)/1 var(--head); letter-spacing: -0.04em; color: var(--peach); margin-bottom: 6px; }
+.wow-map { position: relative; }
+#wow-canvas { display: block; width: 100%; height: auto; aspect-ratio: 924 / 748; }
+.wow-note { margin: 6px 0 0; font-size: 12px; color: #7F9A90; text-align: right; }
+@media (max-width: 900px) { .wow-in { grid-template-columns: 1fr; } .wow-lead, .wow-stat { max-width: 40ch; } }
+'''
+
+WOW_JS = '''
+(() => {
+  const cv = document.getElementById('wow-canvas'); if (!cv) return;
+  const M = __MAP__;
+  const ctx = cv.getContext('2d');
+  const W = M.w, H = M.h, pad = 10;
+  const outline = new Path2D(M.outline);
+  const ch = M.churches.map(([x, y]) => ({ x, y, glow: 0 }));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let scale = 1, sparks = [], running = false, last = 0, made = 0;
+  function size() {
+    const r = cv.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+    cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.width * (H / W) * dpr);
+    scale = cv.width / (W + pad * 2);
+  }
+  function nearest(x, y) { let b = ch[0], d = 1e9; for (const c of ch) { const e = (c.x - x) ** 2 + (c.y - y) ** 2; if (e < d) { d = e; b = c; } } return b; }
+  function spawn() {
+    const base = ch[(Math.random() * ch.length) | 0];
+    const a = Math.random() * Math.PI * 2, r = 14 + Math.random() * 30;
+    const x = base.x + Math.cos(a) * r, y = base.y + Math.sin(a) * r;
+    sparks.push({ x, y, to: nearest(x, y), t: 0 });
+    made++;
+  }
+  function draw(dt) {
+    ctx.setTransform(scale, 0, 0, scale, pad * scale, pad * scale);
+    ctx.clearRect(-pad, -pad, W + pad * 2, H + pad * 2);
+    ctx.fillStyle = 'rgba(248,243,234,0.05)'; ctx.fill(outline);
+    ctx.strokeStyle = 'rgba(207,224,214,0.32)'; ctx.lineWidth = 1.2 / scale * 1.4; ctx.stroke(outline);
+    for (const c of ch) {
+      c.glow = Math.max(0.2, c.glow - dt * 0.00004);
+      ctx.fillStyle = `rgba(248,243,234,${0.22 + c.glow * 0.7})`;
+      ctx.beginPath(); ctx.arc(c.x, c.y, 2.8 + c.glow * 2.4, 0, 7); ctx.fill();
+      if (c.glow > 0.4) { ctx.fillStyle = `rgba(238,160,110,${(c.glow - 0.4) * 0.45})`; ctx.beginPath(); ctx.arc(c.x, c.y, 9 + c.glow * 12, 0, 7); ctx.fill(); }
+    }
+    sparks = sparks.filter((s) => s.t < 1.6);
+    for (const s of sparks) {
+      s.t += dt / 1400;
+      const p = Math.min(1, Math.max(0, (s.t - 0.25) / 0.75));
+      const ease = 1 - (1 - p) ** 3;
+      if (s.t < 0.25 || p < 1) {
+        const pr = Math.min(1, s.t / 0.25);
+        ctx.fillStyle = `rgba(238,139,84,${0.9 - (s.t > 1 ? (s.t - 1) * 1.5 : 0)})`;
+        ctx.beginPath(); ctx.arc(s.x, s.y, 2.5 + pr * 2.5, 0, 7); ctx.fill();
+        ctx.fillStyle = `rgba(238,139,84,${0.25 * (1 - pr)})`; ctx.beginPath(); ctx.arc(s.x, s.y, 4 + pr * 18, 0, 7); ctx.fill();
+      }
+      if (p > 0) {
+        const x = s.x + (s.to.x - s.x) * ease, y = s.y + (s.to.y - s.y) * ease;
+        const g = ctx.createLinearGradient(s.x, s.y, x, y);
+        g.addColorStop(0, 'rgba(238,139,84,0)'); g.addColorStop(1, `rgba(255,224,196,${s.t > 1 ? Math.max(0, 1 - (s.t - 1) * 1.7) : 0.95})`);
+        ctx.strokeStyle = g; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(x, y); ctx.stroke();
+        if (p >= 1 && !s.done) { s.done = true; s.to.glow = 1; }
+      }
+    }
+  }
+  function frame(now) {
+    if (!running) return;
+    const dt = Math.min(64, now - (last || now)); last = now;
+    const rate = made < 60 ? 70 : 160; // a quick burst, then a steady rhythm
+    if (Math.random() < dt / rate) spawn();
+    draw(dt); requestAnimationFrame(frame);
+  }
+  size(); addEventListener('resize', () => { size(); if (reduce || !running) draw(0); });
+  if (reduce) { ch.forEach((c, i) => { c.glow = i % 3 ? 0.35 : 0.9; }); draw(0); return; }
+  draw(0);
+  new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting && !running) { running = true; last = 0; requestAnimationFrame(frame); }
+    else if (!e.isIntersecting) running = false;
+  }), { threshold: 0.2 }).observe(cv);
+})();
+'''.replace('__MAP__', MAP)

@@ -18,7 +18,9 @@ home = home.replace('{{ALPHA_LOGO}}', 'data:image/png;base64,' + _b.b64encode(op
 home = home.replace('{{SYDNEYFIRE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'sydneyfire-street.jpg'), 'rb').read()).decode())
 home = home.replace('{{REJOICE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'rejoice-team.jpg'), 'rb').read()).decode())
 home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
-home = _swap(home, 'class="sec promise"', '')  # 'Watch it work' removed
+home = _swap(home, 'class="sec promise"', '')
+_i = home.index('<section', home.index('id="how"') + 10)
+home = home[:_i] + extras.WOW_SECTION + '\n' + home[_i:]  # 'Watch it work' removed
 directory = open(os.path.join(ROOT,'dir.json')).read()
 COUNT = len(json.loads(directory))
 
@@ -1054,7 +1056,7 @@ route();
   });
 })();
 
-""" + extras.JS
+""" + extras.JS + extras.WOW_JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """
@@ -1087,7 +1089,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{extras.WOW_CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
