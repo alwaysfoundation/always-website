@@ -11,6 +11,9 @@ def _swap(h, marker, new):
     return h[:a] + new + h[b:]
 home = _swap(home, 'class="sec map"', '')
 import base64 as _b
+home = home.replace('{{UEN_STUDIO}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-studio.jpg'), 'rb').read()).decode())
+home = home.replace('{{CXMMXNS_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'cxmmxns-tour.jpg'), 'rb').read()).decode())
+home = home.replace('{{CHOSEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'chosen-sydney.jpg'), 'rb').read()).decode())
 home = home.replace('{{ALPHA_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-photo.jpg'), 'rb').read()).decode())
 home = home.replace('{{ALPHA_LOGO}}', 'data:image/png;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), 'rb').read()).decode())
 home = home.replace('{{SYDNEYFIRE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'sydneyfire-street.jpg'), 'rb').read()).decode())
@@ -780,6 +783,11 @@ DECK_CSS = '''
 .case-part p { margin-top: 6px; color: var(--soft); font-size: 17px; max-width: 58ch; }
 .case .case-quote { margin-top: 28px; font-size: clamp(20px, 1.8vw, 24px); max-width: 40ch; padding-left: 22px; }
 .case .case-fine { margin-top: 18px; }
+.case-media { position: relative; padding-bottom: 22%; }
+.case .case-media .case-photo:first-child { width: 88%; }
+.case .case-inset { position: absolute; right: 0; bottom: 0; width: 52%; border: 6px solid var(--cream); box-shadow: 0 18px 40px rgba(20,53,47,.18); border-radius: 18px; }
+.case-soon { display: inline-block; margin: 0 0 14px; padding: 6px 12px; border-radius: 999px; background: rgba(232,165,119,.2); color: #9A4F22; font: 700 13px/1 var(--head); }
+@media (max-width: 860px) { .case-media { padding-bottom: 18%; } .case .case-media .case-photo:first-child { width: 90%; } .case .case-inset { width: 48%; border-width: 4px; } }
 .case-logo { display: block; width: 52px; height: 52px; margin: 0 0 14px; }
 .case-quote cite { display: block; margin-top: 12px; font: normal 700 14px/1.3 var(--head); color: var(--clay); }
 /* calmer home on small screens */
