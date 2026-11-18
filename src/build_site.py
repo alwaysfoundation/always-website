@@ -934,7 +934,7 @@ header = """
 """
 
 # Home: rewrite in-page links to routes
-home = home.replace('href="#join"', 'href="#/join"').replace('href="#how"', 'href="#/how"')
+home = home.replace('href="#join"', 'href="#/join"').replace('href="#stories"', 'href="#/stories"')
 home = home.replace('<a class="btn btn-peach" href="#/join">Join as a church or ministry</a>', '<a class="btn btn-peach" href="#/join">Join as a church or ministry</a>')
 home = home.replace('<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and is verified before anyone is introduced to it.</p>',
  '<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and is verified before anyone is introduced to it.</p><a class="btn btn-green" href="#/directory" style="margin-top:28px">Search the directory</a>')
@@ -951,7 +951,7 @@ function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => 
 
 // Router
 const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform' };
-const anchors = { join: 'join', how: 'how', stories: 'stories' };
+const anchors = { join: 'join', how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
   const [first, second] = h.split('/');
