@@ -19,8 +19,7 @@ home = home.replace('{{SYDNEYFIRE_IMG}}', 'data:image/jpeg;base64,' + _b.b64enco
 home = home.replace('{{REJOICE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'rejoice-team.jpg'), 'rb').read()).decode())
 home = home.replace('{{UEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-event.jpg'), 'rb').read()).decode())
 home = _swap(home, 'class="sec promise"', '')
-_i = home.index('<section', home.index('id="how"') + 10)
-home = home[:_i] + extras.WOW_SECTION + '\n' + home[_i:]  # 'Watch it work' removed
+  # 'Watch it work' removed
 directory = open(os.path.join(ROOT,'dir.json')).read()
 COUNT = len(json.loads(directory))
 
@@ -820,6 +819,15 @@ DECK_CSS = '''
 .cs-dialog cite { display: block; margin-top: 10px; font: normal 700 14px/1.3 var(--head); color: var(--clay); }
 .cs-fine { margin-top: 20px !important; font-size: 13px !important; color: var(--muted, #7a827e) !important; }
 @media (max-width: 640px) { .cs-arrows { display: none; } .cs-track { grid-auto-columns: 82vw; gap: 14px; } }
+.hero { padding-bottom: clamp(56px, 7vw, 96px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.hero-grid .hero-copy > * { max-width: 620px; }
+.hero h1 { font-size: clamp(50px, 6.6vw, 104px); }
+.hero-map { position: relative; }
+.hero-stat { margin: 4px 0 0; font-size: 14.5px; color: #A9C2B8; text-align: right; }
+.hero-stat b { color: var(--peach); font: 800 18px/1 var(--head); }
+.hero-stat span { display: block; font-size: 12px; color: #7F9A90; margin-top: 4px; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero-stat { text-align: left; } }
 .heart-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
 .heart-item { padding: 30px 28px; border-radius: 22px; background: #FFFDF8; border-top: 4px solid var(--peach); }
 .heart-item h3 { margin: 0; font-size: 23px; color: var(--green); }
@@ -909,7 +917,7 @@ header = """
       <li><a href="#/ministries" data-route="ministries">Ministries</a></li>
       <li><a href="#/app" data-route="app">Evangelists</a></li>
       <li><a href="#/platform" data-route="platform">Platform</a></li>
-      <li><a href="#/stories" data-route="stories">Case studies</a></li>
+      <li><a href="#/stories" data-route="stories">Stories</a></li>
       <li><a href="#/faq" data-route="faq">FAQs</a></li>
     </ul><div class="nav-foot"><div class="nav-more"><a href="#/about">About</a><a href="#/docs/introduction">Docs</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/claim">Claim your church</a><a href="#/feedback">Ideas and problems</a></div><a class="btn btn-peach nav-cta" href="#/join">Get involved</a></div></nav>
     <a class="btn btn-peach" href="#/join">Get involved</a>
@@ -1124,7 +1132,6 @@ doc = f"""<!DOCTYPE html>
 # ---------- photos (Unsplash, hotlinked as the Unsplash guidelines ask; hidden if they can't load)
 U = 'https://images.unsplash.com/'
 PHOTOS = [  # (photo id, where: (page id, anchor inside it))
-  ('photo-1753351056236-9b5d333dcc40', ('page-home', '<section class="sec word">')),
   ('photo-1790805370091-2c237d73bf16', ('page-churches', '<section class="sec pg-sec')),
   ('photo-1663162550932-f67b561e656f', ('page-ministries', '<section class="sec pg-sec')),
   ('photo-1775400713633-e4b2b3577fb7', ('page-app', '<section class="sec pg-sec')),
