@@ -247,7 +247,7 @@ WOW_JS = '''
   const outline = new Path2D(M.outline);
   const ch = M.churches.map(([x, y]) => ({ x, y, glow: 0 }));
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let scale = 1, sparks = [], running = false, last = 0, made = 0;
+  let scale = 1, sparks = [], embers = [], running = false, last = 0, made = 0;
   function size() {
     const r = cv.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
     cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.width * (H / W) * dpr);
@@ -258,19 +258,22 @@ WOW_JS = '''
     const base = ch[(Math.random() * ch.length) | 0];
     const a = Math.random() * Math.PI * 2, r = 14 + Math.random() * 30;
     const x = base.x + Math.cos(a) * r, y = base.y + Math.sin(a) * r;
-    sparks.push({ x, y, to: nearest(x, y), t: 0 });
+    sparks.push({ x, y, to: nearest(x, y), t: 0, seed: Math.random() * 10 });
+    for (let k = 0; k < 6; k++) embers.push({ x: x + (Math.random() - .5) * 6, y, vx: (Math.random() - .5) * 0.012, vy: -(0.018 + Math.random() * 0.03), life: 0, max: 700 + Math.random() * 700, r: 0.8 + Math.random() * 1.4 });
     made++;
   }
   function draw(dt) {
+    ctx.globalCompositeOperation = 'source-over';
     ctx.setTransform(scale, 0, 0, scale, pad * scale, pad * scale);
     ctx.clearRect(-pad, -pad, W + pad * 2, H + pad * 2);
     ctx.fillStyle = 'rgba(248,243,234,0.05)'; ctx.fill(outline);
     ctx.strokeStyle = 'rgba(207,224,214,0.32)'; ctx.lineWidth = 1.2 / scale * 1.4; ctx.stroke(outline);
+    ctx.globalCompositeOperation = 'lighter';
     for (const c of ch) {
       c.glow = Math.max(0.2, c.glow - dt * 0.00004);
-      ctx.fillStyle = `rgba(248,243,234,${0.22 + c.glow * 0.7})`;
+      ctx.fillStyle = c.glow > 0.4 ? `rgba(255,${Math.round(214 + 30 * (1 - c.glow))},${Math.round(150 + 80 * (1 - c.glow))},${0.3 + c.glow * 0.7})` : `rgba(248,243,234,${0.22 + c.glow * 0.7})`;
       ctx.beginPath(); ctx.arc(c.x, c.y, 2.8 + c.glow * 2.4, 0, 7); ctx.fill();
-      if (c.glow > 0.4) { ctx.fillStyle = `rgba(238,160,110,${(c.glow - 0.4) * 0.45})`; ctx.beginPath(); ctx.arc(c.x, c.y, 9 + c.glow * 12, 0, 7); ctx.fill(); }
+      if (c.glow > 0.4) { ctx.fillStyle = `rgba(238,120,60,${(c.glow - 0.4) * 0.5})`; ctx.beginPath(); ctx.arc(c.x, c.y, 9 + c.glow * 12, 0, 7); ctx.fill(); }
     }
     sparks = sparks.filter((s) => s.t < 1.6);
     for (const s of sparks) {
@@ -279,17 +282,28 @@ WOW_JS = '''
       const ease = 1 - (1 - p) ** 3;
       if (s.t < 0.25 || p < 1) {
         const pr = Math.min(1, s.t / 0.25);
-        ctx.fillStyle = `rgba(238,139,84,${0.9 - (s.t > 1 ? (s.t - 1) * 1.5 : 0)})`;
-        ctx.beginPath(); ctx.arc(s.x, s.y, 2.5 + pr * 2.5, 0, 7); ctx.fill();
-        ctx.fillStyle = `rgba(238,139,84,${0.25 * (1 - pr)})`; ctx.beginPath(); ctx.arc(s.x, s.y, 4 + pr * 18, 0, 7); ctx.fill();
+        const fl = 1 + Math.sin((s.t * 40) + s.seed) * 0.18 + Math.sin((s.t * 23) + s.seed * 2) * 0.12;
+        const fade = s.t > 1 ? Math.max(0, 1 - (s.t - 1) * 1.5) : 1;
+        ctx.fillStyle = `rgba(238,96,40,${0.22 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (6 + pr * 14) * fl, 0, 7); ctx.fill();
+        ctx.fillStyle = `rgba(255,150,60,${0.85 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (3 + pr * 2.5) * fl, 0, 7); ctx.fill();
+        ctx.fillStyle = `rgba(255,236,170,${0.95 * fade})`; ctx.beginPath(); ctx.arc(s.x, s.y, (1.4 + pr) * fl, 0, 7); ctx.fill();
       }
       if (p > 0) {
         const x = s.x + (s.to.x - s.x) * ease, y = s.y + (s.to.y - s.y) * ease;
         const g = ctx.createLinearGradient(s.x, s.y, x, y);
-        g.addColorStop(0, 'rgba(238,139,84,0)'); g.addColorStop(1, `rgba(255,224,196,${s.t > 1 ? Math.max(0, 1 - (s.t - 1) * 1.7) : 0.95})`);
+        g.addColorStop(0, 'rgba(238,96,40,0)'); g.addColorStop(1, `rgba(255,210,140,${s.t > 1 ? Math.max(0, 1 - (s.t - 1) * 1.7) : 0.95})`);
         ctx.strokeStyle = g; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(x, y); ctx.stroke();
         if (p >= 1 && !s.done) { s.done = true; s.to.glow = 1; }
       }
+    }
+  }
+  function drawEmbers(dt) {
+    embers = embers.filter((e) => e.life < e.max);
+    for (const e of embers) {
+      e.life += dt; e.x += e.vx * dt + Math.sin(e.life / 120) * 0.04; e.y += e.vy * dt;
+      const a = 1 - e.life / e.max;
+      ctx.fillStyle = `rgba(255,${Math.round(140 + 90 * a)},${Math.round(60 + 60 * a)},${a * 0.9})`;
+      ctx.beginPath(); ctx.arc(e.x, e.y, e.r * (0.5 + a * 0.5), 0, 7); ctx.fill();
     }
   }
   function frame(now) {
@@ -297,7 +311,7 @@ WOW_JS = '''
     const dt = Math.min(64, now - (last || now)); last = now;
     const rate = made < 60 ? 70 : 160; // a quick burst, then a steady rhythm
     if (Math.random() < dt / rate) spawn();
-    draw(dt); requestAnimationFrame(frame);
+    draw(dt); drawEmbers(dt); requestAnimationFrame(frame);
   }
   size(); addEventListener('resize', () => { size(); if (reduce || !running) draw(0); });
   if (reduce) { ch.forEach((c, i) => { c.glow = i % 3 ? 0.35 : 0.9; }); draw(0); return; }
