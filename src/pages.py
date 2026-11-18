@@ -20,7 +20,7 @@ church_desk = f'''<div class="pg-desk rv" aria-label="The church inbox on the we
     <div class="pg-detail"><b>Sam</b><span>Responded at City worship night</span><div class="pg-field">04•• ••• ••• · accept to see</div><div class="pg-btns"><span class="pg-b">Accept</span><span class="pg-b ln">Pass</span></div></div>
   </div>
 </div>'''
-church_phone = phone(f'''<p class="pg-cap">Always app · Team inbox</p><div class="pg-card hl"><div class="pg-row-h"><b>Sam</b><em class="new">New</em></div><span class="pg-mut">Parramatta · Find a church</span><div class="pg-field">04•• ••• •••</div><div class="pg-btns"><span class="pg-b">Accept</span><span class="pg-b ln">Pass</span></div></div><div class="pg-card"><div class="pg-row-h"><b>Josh</b><em class="ok">Accepted</em></div><span class="pg-mut">Harris Park · Talk with someone</span></div>''')
+church_phone = phone(f'''<p class="pg-cap">Always for churches · Inbox</p><div class="pg-card hl"><div class="pg-row-h"><b>Sam</b><em class="new">New</em></div><span class="pg-mut">Parramatta · Find a church</span><div class="pg-field">04•• ••• •••</div><div class="pg-btns"><span class="pg-b">Accept</span><span class="pg-b ln">Pass</span></div></div><div class="pg-card"><div class="pg-row-h"><b>Josh</b><em class="ok">Accepted</em></div><span class="pg-mut">Harris Park · Talk with someone</span></div>''')
 
 CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus. Free, always.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
@@ -28,7 +28,7 @@ CHURCHES = f'''<section class="page-hero"><div class="wrap"><h1>For churches</h1
   {steps([('Claim your page', 'Tell us about your church and who you are. It takes about ten minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead does a 20-minute course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
-  <div><h2 class="pg-h rv">On the web, or in your pocket</h2><p class="pg-lead rv">Use it in any browser, or in the Always app, so your connect lead can say yes from their phone on a Sunday.</p>
+  <div><h2 class="pg-h rv">Always for churches, in any browser</h2><p class="pg-lead rv">A free web app for your team. Nothing to install, so your connect lead can say yes from their phone on a Sunday.</p>
   <ul class="pg-list rv"><li>See who nearby has asked for a next step, and what they asked for.</li><li>Accept to see their number, or pass so the next church nearby is asked.</li><li>Log that you got in touch. The conversation stays between you.</li></ul></div>
   <div class="pg-mocks">{church_desk}<div class="pg-phone-over rv">{church_phone}</div></div>
 </div></section>
@@ -82,15 +82,15 @@ always.au/r/testimony-video</code></pre>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section>'''
 
-app_home = phone('<p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of man is come to seek and to save that which was lost.”</p><span>Luke 19:10</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
+app_home = phone('<p class="pg-url">Always for evangelists · web app</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of man is come to seek and to save that which was lost.”</p><span>Luke 19:10</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
   <div><h1>For evangelists</h1><p>Free tools, training and infrastructure for everyone who shares Jesus, so every yes becomes a next step.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
-  <h2 class="pg-h rv">The Always app</h2>
-  <p class="pg-lead rv">Everything you need to share Jesus, in your pocket.</p>
+  <h2 class="pg-h rv">Always for evangelists</h2>
+  <p class="pg-lead rv">A free web app with everything you need to share Jesus. Nothing to download: open it in your phone's browser and add it to your home screen.</p>
   <div class="pg-minis">
     {mini('Bible', '<p class="pg-cap">John 3 · KJV</p><span class="pg-big">3</span><p class="pg-read"><sup>16</sup> <mark>For God so loved the world, that he gave his only begotten Son…</mark></p>')}
     {mini('Learn', '<p class="pg-cap">The Always path</p>' + ''.join(f'<div class="pg-path"><i class="s{i}"></i><b>0{i+1} / {s}</b></div>' for i, s in enumerate(['Understand', 'Live', 'Share', 'Walk'])))}
@@ -98,14 +98,15 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
     {mini('Walk', '<p class="pg-cap">Walking with Sam</p>' + ''.join(f'<div class="pg-tick{" done" if d else ""}"><i></i>{t}</div>' for t, d in [('Send a welcome message', 1), ('Share John 3', 1), ('Coffee this week', 0), ('Church together', 0)]))}
     {mini('Connect', '<p class="pg-cap">Near you</p><div class="pg-mapbox"></div><div class="pg-card">Hope Church Parramatta</div><div class="pg-card">City worship night · Fri</div>')}
   </div>
+  <p class="pg-built rv">Built on <a href="#/platform">Always Platform</a>: Connect uses the church feed and events, Gather uses response pages and the handoff, and the Bible comes through the YouVersion Platform.</p>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Made for evangelists, and for everyone</h2>
-  {feats([('A beautiful Bible', 'KJV and WEB built in, more through YouVersion. Highlight, share verses as images, listen with soft music and a sleep timer.'), ('Conversation guides', 'How to share with someone with no faith, a Muslim friend, a Jehovah\'s Witness, a Buddhist and more.'), ('Altar calls and the street', 'Start a response point in seconds, coach the moment, and connect people with their yes.'), ('Prayer list and field notes', 'Pray for people by name. Talk through a conversation and it\'s turned into notes on your phone, offline. The audio never leaves it.'), ('Church team inbox', 'Connect leads accept introductions right in the app.'), ('Private by design', 'Your prayer list, notes and plans stay on your phone. No ads.')])}
+  {feats([('A beautiful Bible', 'KJV and WEB built in, more through YouVersion. Highlight, share verses as images, listen with soft music and a sleep timer.'), ('Conversation guides', 'How to share with someone with no faith, a Muslim friend, a Jehovah\'s Witness, a Buddhist and more.'), ('Altar calls and the street', 'Start a response point in seconds, coach the moment, and connect people with their yes.'), ('Prayer list and field notes', 'Pray for people by name and keep short notes after a conversation. They stay in your browser, on your own device.'), ('Church team inbox', 'Connect leads accept introductions in Always for churches, on the web.'), ('Private by design', 'Your prayer list, notes and plans stay on your own device. No ads.')])}
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Training</h2>
-  <p class="pg-lead rv">Short, free courses you can do on your phone, made with evangelists and churches.</p>
+  <p class="pg-lead rv">Short, free courses you can do in any browser, made with evangelists and churches.</p>
   {feats([('Sharing your story', 'Tell how Jesus changed your life, in three minutes, in your own words.'), ('Leading someone to Jesus', 'What to say, how to pray, and what to do next when someone says yes.'), ('Welcoming well', 'For church connect leads: the first call, the first coffee, the first Sunday.'), ('Safe ministry with young people', 'Child safe practice for youth leaders and events.'), ('Conversations across faiths', 'Listening well and sharing gently with friends of other beliefs.'), ('Walking with someone', 'The first months of following Jesus: Bible, prayer, church and friends.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
@@ -121,12 +122,12 @@ FAQ_GROUPS = [
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
-  ('How do I sign in?', 'With one Always account, using Apple, Google, YouVersion or your email. The same account works in the Always app and on the web.')]),
+  ('How do I sign in?', 'With one Always account, using Apple, Google, YouVersion or your email. The same account works in every Always web app.')]),
  ('For churches', [
   ('Does it cost anything?', 'No. Always is free for every church.'),
   ('How do we join?', 'Claim your church\'s page, and we verify you with your denomination or network.'),
   ('What if we can\'t welcome someone?', 'Pass, with a reason. The next church or ministry nearby is asked. If none can, our care team helps.'),
-  ('Do we have to change our church software?', 'No. Use the free inbox on the web or in the Always app, or connect your system through the API. Elvanto and Planning Center come first.'),
+  ('Do we have to change our church software?', 'No. Use the free inbox in Always for churches, in any browser, or connect your system through the API. Elvanto and Planning Center come first.'),
   ('What does welcoming now mean?', 'You\'re verified, trained, have room this month and usually reply on time. If you get busy, introductions simply pause.'),
   ('Who on our team can see people\'s details?', 'Only the people you add to your team, and only after your church accepts an introduction.')]),
  ('For ministries and events', [
@@ -138,23 +139,24 @@ FAQ_GROUPS = [
   ('Can we make the report our own?', 'Yes. Add your title, your funder\'s name and a short introduction. If a funder needs something specific, talk to us.'),
   ('Can we receive introductions ourselves?', 'Yes, for the steps you offer, like a youth night or a course.'),
   ('Can people respond online?', 'Yes. Add a response link or QR to a video description or post, or embed the response card on your website. An invisible check stops spam without puzzles.'),
-  ('Can we list our events?', 'Yes. Add them from Always for churches and ministries, and they show on our Events page and in the Always app.'),
-  ('How do evangelists and street teams use it?', 'With the Always app: they start a response point, show their own QR, or connect someone in a conversation with their yes.')]),
+  ('Can we list our events?', 'Yes. Add them from Always for churches and ministries, and they show on our Events page and in Always for evangelists.'),
+  ('How do evangelists and street teams use it?', 'With Always for evangelists, a free web app: they start a response point, show their own QR, or connect someone in a conversation with their yes.')]),
  ('For people who respond', [
   ('What happens when I respond?', 'You choose a next step, see who will be in touch, and a church or ministry near you reaches out.'),
   ('What do you need from me?', 'Your first name, a mobile number and your suburb.'),
-  ('Do I need to download an app?', 'No. You respond on a simple web page. Later, you\'re welcome to try the Always app to read the Bible and grow.'),
+  ('Do I need to download an app?', 'No. You respond on a simple web page. Later, you\'re welcome to try Always for evangelists in your browser to read the Bible and grow.'),
   ('Can I change my mind?', 'Yes, any time, from the link in your text. Your details are then deleted.'),
   ('I\'m under 18. Can I still respond?', 'Yes. If you\'re under 15, a parent or guardian says yes with you. From 15 you can decide for yourself. Young people are introduced only to verified youth partners, and no AI ever touches your information.')]),
- ('The Always app', [
-  ('Who is the app for?', 'Every Christian who wants to share Jesus and walk with people, and church teams who welcome them.'),
-  ('How do I get it?', 'The app is in pilot. Join the pilot through the form on our home page.'),
+ ('Always for evangelists', [
+  ('Who is it for?', 'Every Christian who wants to share Jesus and walk with people, and church teams who welcome them.'),
+  ('How do I get it?', 'It\'s a web app, so there\'s nothing to download. It\'s in pilot: join through the form on our home page.'),
+  ('Is there a mobile app?', 'Not for now. Every Always app runs in the browser on your phone, tablet or computer, and you can add it to your home screen.'),
   ('Which Bible translations are included?', 'The King James Version and the World English Bible, with more through YouVersion.'),
-  ('Where are my notes and prayer list kept?', 'On your phone. Voice notes are turned into text on your phone too, using NVIDIA Parakeet, an open speech model. The audio never leaves your phone.')]),
+  ('Where are my notes and prayer list kept?', 'In your browser, on your own device. They aren\'t sent to us.')]),
  ('Privacy and safety', [
   ('Where is information kept?', 'In Australia, encrypted, under Australian privacy law.'),
   ('Do you sell information or use it for advertising?', 'No.'),
-  ('How do you use AI?', 'To save time, like turning a voice note into text on your own phone with NVIDIA Parakeet, which works offline. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
+  ('How do you use AI?', 'To save time on routine work, like writing your monthly report. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
   ('How is Always funded?', 'By supporters, and by larger ministries contributing to upkeep according to their size. Churches never pay.'),
@@ -361,7 +363,7 @@ FEEDBACK = '''<section class="page-hero"><div class="wrap"><h1>Ideas and problem
       <label class="fb-kind"><input type="radio" name="kind" value="bug"><span><b>A problem</b>Something isn't working</span></label>
       <label class="fb-kind"><input type="radio" name="kind" value="missing"><span><b>A missing church</b>Add a church or ministry</span></label>
     </div>
-    <label>Where<select name="area"><option>The website</option><option>The Always app</option><option>Always for churches and ministries</option><option>A response page</option><option>Somewhere else</option></select></label>
+    <label>Where<select name="area"><option>The website</option><option>Always for evangelists</option><option>Always for churches and ministries</option><option>A response page</option><option>Somewhere else</option></select></label>
     <label id="fb-msg-l">Tell us more<textarea name="message" rows="6" required></textarea></label>
     <label>Your email <span>Optional, if you'd like a reply</span><input name="email" type="email" autocomplete="email"></label>
     <button class="btn btn-green" type="submit">Send</button>
@@ -558,8 +560,27 @@ PLAT_WAYS = [
    '<div class="pw-art pw-chat" aria-hidden="true"><span class="me">Find a church near Parramatta for Sam</span><span class="ai">Hope Church is 1 km away and welcoming now.</span></div>'),
 ]
 
+
+PRODUCTS = [
+  ('Always for evangelists', 'Share Jesus, start a response point and walk with people.', '#/app',
+   [('Connect', 'Church feed and Events'), ('Gather', 'Response pages and Handoff'), ('Bible', 'YouVersion Platform'), ('Walk', 'Kept in your browser')]),
+  ('Always for churches', 'Accept or pass introductions, welcome people and keep walking with them.', '#/churches',
+   [('Inbox', 'Handoff'), ('Your page', 'Church feed and Verification'), ('Leaders\' report', 'Reports')]),
+  ('Always for ministries', 'Branded response pages, live results, funder reports and compliance.', '#/ministries',
+   [('Response pages', 'Your own brand'), ('Live results', 'Handoff'), ('Funder reports', 'Reports'), ('Compliance', 'Consent records')]),
+]
+def _prod(name, line, href, uses):
+    rows = ''.join(f'<li><b>{a}</b><span>{b}</span></li>' for a, b in uses)
+    return f'<a class="pl-prod rv" href="{href}"><p class="pl-prod-k">Web app</p><h3>{name}</h3><p>{line}</p><ul>{rows}</ul></a>'
+BUILT_ON = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
+  <p class="pl-kick rv">Built on Always Platform</p>
+  <h2 class="pg-h rv">We build our own apps on it too.</h2>
+  <p class="pg-lead rv">Each Always product is a free web app that runs in any browser, with nothing to download. Each one talks to the platform through the same public API and SDK that are open to you. There's no private back door: if we can build it, so can you.</p>
+  <div class="pl-prods">{''.join(_prod(*p) for p in PRODUCTS)}</div>
+</div></section>'''
+
 PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-badge">Always Platform</p><h1>One platform for every next step.</h1><p>Free, open tools for evangelists, ministries and churches across Australia. Build your own app, plug in our API, or ask an AI assistant.</p>
+  <div><p class="pl-badge">Always Platform</p><h1>One platform for every next step.</h1><p>The open infrastructure behind every Always web app. Use it to build your own app, plug in our API, or ask an AI assistant.</p>
   <div class="pl-ctas"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/join">Talk to us</a></div></div>
   <pre class="pl-code" aria-label="Example code"><code><span class="c">// Find churches welcoming people near 2150</span>
 <span class="k">import</span> {{ AlwaysClient }} <span class="k">from</span> <span class="s">'@always/sdk'</span>;
@@ -574,16 +595,17 @@ PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
   <h2 class="pg-h rv">Start wherever you are.</h2>
   <div class="plat-ways pl-ways4">{''.join(f'<article class="plat-way rv">{art}<h3>{t}</h3><p>{d}</p></article>' for t, d, art in PLAT_WAYS)}</div>
 </div></section>
-<section class="sec pg-sec pg-sage"><div class="wrap">
+{BUILT_ON}
+<section class="sec pg-sec"><div class="wrap">
   <p class="pl-kick rv">What it does</p>
   <h2 class="pg-h rv">From the first yes to a church family.</h2>
   <div class="pl-grid">{''.join(f'<div class="pl-block rv"><span class="pl-tag">{c}</span><h3>{t}</h3><p>{d}</p></div>' for t, d, c in PLAT_BLOCKS)}</div>
 </div></section>
-<section class="sec pg-sec"><div class="wrap">
+<section class="sec pg-sec pg-sage"><div class="wrap">
   <p class="pl-kick rv">How it fits together</p>
   <h2 class="pg-h rv">Your tools, one network.</h2>
   <div class="pl-stack rv" role="list">
-    <div class="pl-layer" role="listitem"><b>Apps</b><span>The Always app, the church inbox, your own app and website, and AI assistants</span></div>
+    <div class="pl-layer" role="listitem"><b>Web apps</b><span>Always for evangelists, churches and ministries, your own apps and websites, and AI assistants</span></div>
     <div class="pl-layer mid" role="listitem"><b>Always Platform</b><span>Find a church, introduce someone, welcome them, trust, gather, see the fruit</span></div>
     <div class="pl-layer base" role="listitem"><b>Network</b><span>Verified churches, permission that travels with people, and a care team when no one else can</span></div>
   </div>
@@ -596,6 +618,21 @@ PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
 </div></section>'''
 
 PLATFORM_CSS = """
+.pl-prods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 48px; }
+.pl-prod { display: flex; flex-direction: column; background: var(--paper); border-radius: 22px; padding: 30px 28px 26px; color: inherit; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.pl-prod:hover, .pl-prod:focus-visible { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(20,53,47,.10); }
+.pl-prod-k { margin: 0 0 10px; font: 700 13px/1 var(--head); color: var(--clay); }
+.pl-prod h3 { font-size: 23px; color: var(--green); }
+.pl-prod > p:not(.pl-prod-k) { margin-top: 8px; color: var(--soft); font-size: 16px; }
+.pl-prod ul { list-style: none; margin: 22px 0 0; padding: 18px 0 0; border-top: 1px solid rgba(27,71,64,.12); display: grid; gap: 10px; }
+.pl-prod li { display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px; }
+.pl-prod li b { font: 700 14.5px/1.35 var(--head); color: var(--green); }
+.pl-prod li span { color: var(--muted); text-align: right; }
+.pg-built { margin-top: 36px; max-width: 64ch; font-size: 15.5px; color: var(--soft); }
+.pg-built a { color: var(--clay); font-weight: 600; }
+.pg-screen p.pg-url { margin: -4px auto 12px; max-width: none; line-height: 1 !important; letter-spacing: 0; width: fit-content; padding: 5px 12px; border-radius: 999px; background: #E9EFEA; font: 600 10.5px/1 var(--head) !important; color: var(--muted) !important; white-space: nowrap; }
+@media (max-width: 960px) { .pl-prods { grid-template-columns: 1fr; } }
+
 .pl-badge { display: inline-block; margin: 0 0 18px; padding: 6px 14px; border-radius: 999px; background: rgba(232,165,119,.16); color: #E8A577; font: 700 15px/1 var(--head); }
 .pl-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .pl-code { margin: 0; background: #14352F; color: #E3ECE6; border-radius: 24px; padding: 28px 30px; font: 14.5px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-x: auto; box-shadow: 0 30px 60px rgba(0,0,0,.2); }

@@ -166,7 +166,7 @@ DOCS = [
 <li><b>Ticketing platforms.</b> Organisers can bring in events from their ticketing account, where the platform allows it. We're talking with platforms about doing this well.</li>
 </ol>
 <h2>Where events show</h2>
-<p>On our Events page, in the Always app's Connect tab, and through the API so other apps can list them too.</p>
+<p>On our Events page, in the Connect tab of Always for evangelists, and through the API so other apps can list them too.</p>
 """),
   ("online", "Online responses", """
 <p class="lead">Sharing a testimony video, a sermon or a post? Give people a way to respond, wherever they watch.</p>
@@ -476,7 +476,6 @@ const ok = await verifyWebhook({
 <li><b>Contributions</b> use the Developer Certificate of Origin. Contributors keep their copyright. AI-assisted work is disclosed.</li>
 <li>Every change needs two human approvals, with code owners for consent, minors, security and routing.</li>
 <li>People's information always stays private.</li>
-<li><b>Speech to text</b> in the Always app uses NVIDIA Parakeet TDT 0.6B, an open-weights model under CC BY 4.0, running offline on the phone. Credit: NVIDIA.</li>
 </ul>
 <p>Code lives at <b>github.com/alwaysfoundation</b>. Our focus is Australia, but anyone, anywhere, can use the technology for their own network.</p>
 """),
