@@ -768,18 +768,11 @@ DECK_CSS = '''
 @media (max-width: 1080px) { .plat-ways, .plat-does { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .plat-ways, .plat-does { grid-template-columns: 1fr; } }
 
-/* Rejoice case study */
-.case-rejoice { background: var(--sage); }
-.rj-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; margin-top: 56px; align-items: center; }
-.rj-photo { margin: 0; border-radius: 26px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--night); }
-.rj-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.rj-text { display: grid; gap: 32px; }
-.rj-text h3 { font-size: 27px; color: var(--green); }
-.rj-text p { margin-top: 12px; color: var(--soft); font-size: 18px; }
-.rj-vision { margin: 72px 0 0; max-width: 34ch; font: 800 clamp(26px, 3.2vw, 40px)/1.2 var(--head); letter-spacing: -0.025em; color: var(--green); }
-.rj-quote { margin-top: 48px; }
-.case-quote cite { display: block; margin-top: 16px; font: normal 700 16px/1.3 var(--head); color: #A4562A; }
-@media (max-width: 860px) { .rj-grid { grid-template-columns: 1fr; gap: 32px; } }
+/* Case studies */
+.case-item + .case-item { margin-top: 112px; padding-top: 112px; border-top: 1px solid rgba(27,71,64,.12); }
+.case-item:first-of-type .sec-title { margin-top: 20px; }
+.case-quote cite { display: block; margin-top: 14px; font: normal 700 15px/1.3 var(--head); color: var(--clay); }
+@media (max-width: 860px) { .case-item + .case-item { margin-top: 72px; padding-top: 72px; } }
 /* footer */
 footer { background: var(--night); color: #B8CCC1; padding: 88px 0 40px; font-size: 15px; }
 footer { padding-bottom: 0; overflow: hidden; }
@@ -842,6 +835,7 @@ header = """
       <li><a href="#/ministries" data-route="ministries">Ministries</a></li>
       <li><a href="#/app" data-route="app">Evangelists</a></li>
       <li><a href="#/platform" data-route="platform">Platform</a></li>
+      <li><a href="#/stories" data-route="stories">Case studies</a></li>
       <li><a href="#/faq" data-route="faq">FAQs</a></li>
     </ul><div class="nav-foot"><div class="nav-more"><a href="#/about">About</a><a href="#/docs/introduction">Docs</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/claim">Claim your church</a><a href="#/feedback">Ideas and problems</a></div><a class="btn btn-peach nav-cta" href="#/join">Get involved</a></div></nav>
     <a class="btn btn-peach" href="#/join">Get involved</a>
@@ -868,7 +862,7 @@ function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => 
 
 // Router
 const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform' };
-const anchors = { join: 'join', how: 'how' };
+const anchors = { join: 'join', how: 'how', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
   const [first, second] = h.split('/');

@@ -58,7 +58,7 @@ nav a:hover { color: var(--cream); }
 @keyframes glow { from { opacity: 0; } }
 
 /* Section scaffolding */
-.sec { padding: 140px 0; }
+.sec { padding: clamp(88px, 11vw, 128px) 0; }
 .sec-title { font-size: clamp(40px, 5.4vw, 72px); max-width: 15ch; color: var(--green); }
 .sec-lede { margin-top: 22px; max-width: 660px; font-size: 21px; color: var(--soft); }
 .tag { font: 700 14px/1 var(--head); color: var(--clay); }
