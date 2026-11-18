@@ -63,7 +63,7 @@ MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries
 </div></section>
 <section class="sec pg-sec"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Reporting your funders can trust</h2><p class="pg-lead rv">Answer to donors, a foundation or a denomination? Always Platform writes your report each month. Nothing extra to enter.</p>
-  <ul class="pg-list rv"><li>Responded, introduced, accepted, contacted and connected, month by month.</li><li>Download a PDF or spreadsheet, or send your funder a link you can switch off.</li><li>Your title, your funder's name, your words. Totals only, so no one can be identified.</li></ul>
+  <ul class="pg-list rv"><li>Responded, introduced, contacted, and now part of a church family, month by month.</li><li>Download a PDF or spreadsheet, or send your funder a link you can switch off.</li><li>Your title, your funder's name, your words. Totals only, so no one can be identified.</li></ul>
   <div class="pg-cta rv" style="margin-top:24px"><a class="btn btn-green" href="#/docs/results">See what's in a report</a></div></div>
   <div class="pg-mocks">{report_mock}</div>
 </div></section>
@@ -133,7 +133,7 @@ FAQ_GROUPS = [
  ('For ministries and events', [
   ('Can we use our own brand?', 'Yes. Response pages, QR codes and texts can use your colours, logo and wording.'),
   ('What results do we see?', 'Totals for each event: responded, introduced, accepted and connected. Each person\'s details go only to the church that welcomes them.'),
-  ('Can Always Platform help us report to our funders?', 'Yes. It writes a monthly report for you: who responded, who was introduced, who was contacted and who is connected. Download it as a PDF or spreadsheet, or send your funder a link.'),
+  ('Can Always Platform help us report to our funders?', 'Yes. It writes a monthly report for you: who responded, who was introduced, who was contacted, and who is now part of a church family. Download it as a PDF or spreadsheet, or send your funder a link.'),
   ('Will our funders see people\'s details?', 'No. Reports show totals only, and small numbers are hidden so no one can be identified.'),
   ('Can Always Platform help with privacy and child safety paperwork?', 'Yes. Your Compliance tab keeps your consent records, privacy requests, child safety checklists and Working With Children Check reminders, ready to export.'),
   ('Can we make the report our own?', 'Yes. Add your title, your funder\'s name and a short introduction. If a funder needs something specific, talk to us.'),
