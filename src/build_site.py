@@ -13,7 +13,6 @@ home = _swap(home, 'class="sec map"', '')
 import base64 as _b
 home = home.replace('{{UEN_STUDIO}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'uen-studio.jpg'), 'rb').read()).decode())
 home = home.replace('{{CXMMXNS_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'cxmmxns-tour.jpg'), 'rb').read()).decode())
-home = home.replace('{{CHOSEN_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'chosen-sydney.jpg'), 'rb').read()).decode())
 home = home.replace('{{ALPHA_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-photo.jpg'), 'rb').read()).decode())
 home = home.replace('{{ALPHA_LOGO}}', 'data:image/png;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), 'rb').read()).decode())
 home = home.replace('{{SYDNEYFIRE_IMG}}', 'data:image/jpeg;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'sydneyfire-street.jpg'), 'rb').read()).decode())
