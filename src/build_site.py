@@ -737,6 +737,7 @@ docs_page = f"""
   </aside>
   <div style="min-width:0"><label class="skip" for="dpick">Choose a page</label><select class="dpick" id="dpick">{picker}</select>
   <article class="prose" id="doc"></article></div>
+  <aside class="dtoc" id="dtoc" aria-label="On this page"></aside>
 </div>
 """
 
@@ -1098,6 +1099,17 @@ function showDoc(slug) {
   document.querySelectorAll('.dnav a').forEach((a) => a.classList.toggle('on', a.dataset.slug === slug));
   document.getElementById('dpick').value = slug in DOCS ? slug : 'introduction';
   document.title = d.title + ' · Always docs';
+  const toc = document.getElementById('dtoc'), hs = [...document.querySelectorAll('#doc h2')];
+  toc.innerHTML = '';
+  if (hs.length > 1) {
+    const t = document.createElement('p'); t.textContent = 'On this page'; toc.appendChild(t);
+    hs.forEach((h) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = h.textContent; b.addEventListener('click', () => h.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' })); toc.appendChild(b); });
+    if ('IntersectionObserver' in window) {
+      const btns = [...toc.querySelectorAll('button')];
+      const io2 = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) btns.forEach((b, k) => b.classList.toggle('on', hs[k] === e.target)); }), { rootMargin: '-100px 0px -70% 0px' });
+      hs.forEach((h) => io2.observe(h));
+    }
+  }
 }
 document.getElementById('dsq').addEventListener('input', (e) => {
   const q = e.target.value.trim().toLowerCase();

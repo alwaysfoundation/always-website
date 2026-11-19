@@ -3,25 +3,50 @@
 REVIEW = '<p class="doc-review">This draft is being reviewed by our lawyers before the foundation is registered. We will post the reviewed version here and note the date it changed.</p>'
 
 INTRO = """
-<p class="lead">Always Platform helps churches and ministries across Australia share Jesus, care for every person who says yes, and stay lawful, with one sign-in and shared tools.</p>
-<p>Every week people respond to Jesus at concerts, camps, services, film screenings and online. Always Platform makes sure that moment becomes a next step. The person chooses what would help and sees who will reach out. Then a local church gets in touch. If no one can, our care team helps.</p>
-<h2>Five modules</h2>
-<p>Switch on what you need. Each module works on its own and shares the same sign-in and records.</p>
-<table class="dt"><tr><th>Module</th><th>What it helps you do</th></tr>
-<tr><td><a href="#/docs/modules">Always App</a></td><td>Share Jesus and capture a response, at an event or in a conversation.</td></tr>
-<tr><td><a href="#/docs/senders">Always Respond</a></td><td>A way to respond under your own brand, by QR code, tap, ticket or link, on the street, from the stage or online.</td></tr>
-<tr><td><a href="#/docs/compliance-overview">Always Compliance</a></td><td>Stay on top of privacy, child safety, charity and messaging rules.</td></tr>
-<tr><td><a href="#/docs/results">Always Reports</a></td><td>Show the fruit to your board and funders, with totals only.</td></tr>
-<tr><td><a href="#/docs/inbox">Always Connect</a></td><td>Find a local church, hand people on safely and follow up together.</td></tr></table>
-<h2>Who it's for</h2>
+<p class="lead">Always Foundation is a ministry that serves ministries. We build shared tools for churches and Christian ministries across Australia, so no one who says yes to Jesus walks alone.</p>
+<p>Every week people respond to Jesus at concerts, camps, services, on the street and online. Always Platform makes sure that moment becomes a next step: the person chooses what would help, and a church or ministry nearby gets in touch. If no one can, our care team helps.</p>
+<h2>Five modules, one platform</h2>
+<div class="dcards">
+<a href="#/docs/app"><span>Share Jesus</span><b>Always App</b><em>Share the Good News and capture a yes, at an event or in a conversation.</em></a>
+<a href="#/docs/senders"><span>Capture every yes</span><b>Always Respond</b><em>Respond by QR code, tap, ticket or link, under your own brand.</em></a>
+<a href="#/docs/inbox"><span>Hand people on</span><b>Always Connect</b><em>Find the next best faith step nearby, and walk with people.</em></a>
+<a href="#/docs/compliance-overview"><span>Stay lawful</span><b>Always Compliance</b><em>Privacy, child safety, charity and messaging rules, made clear.</em></a>
+<a href="#/docs/results"><span>Show the fruit</span><b>Always Reports</b><em>The report your board and funders ask for, with totals only.</em></a>
+<a href="#/developers"><span>Build on it</span><b>Developers</b><em>The API, SDK, MCP server, Scripture and webhooks.</em></a>
+</div>
+<h2>Where to start</h2>
 <ul>
-<li><b>Churches</b> join, receive introductions and welcome people from their phone. Free.</li>
-<li><b>Ministries and events</b> give everyone who says yes a safe next step, under their own name if they like.</li>
-<li><b>People who respond</b> get a clear choice, a real person, and control of their own story.</li>
-<li><b>Developers</b> build on Always Platform with the API, SDK, MCP server and webhooks.</li>
+<li><b>New here?</b> Read <a href="#/docs/how-it-works">How it works</a>.</li>
+<li><b>A church or ministry?</b> <a href="#/docs/joining">Join Always</a>. Free for churches.</li>
+<li><b>Someone who responded?</b> See <a href="#/docs/your-choices">Your choices and your privacy</a>.</li>
+<li><b>A developer?</b> Start with the <a href="#/docs/api">API</a> or <a href="#/docs/compliance-api">Compliance API</a>.</li>
 </ul>
-<div class="callout">New here? Read <a href="#/docs/how-it-works">How Always Platform works</a>, or <a href="#/docs/joining">join Always</a>.</div>
 """
+
+HOW = """
+<p class="lead">One yes, the next best faith step. Always Respond captures the moment someone says yes to Jesus. Always Connect makes sure it leads somewhere, with a real person to walk with them.</p>
+<ol class="dflow">
+<li><b>They say yes</b><span>Always Respond</span><p>At an event, on the street or online, the person scans a QR code, taps an armband or opens a link. They choose what would help, give a first name, a way to reach them and their suburb, and agree to be connected. Age comes first, and the rules for young people apply before anything else.</p></li>
+<li><b>We find the right step</b><span>Always Connect</span><p>They're offered to the church or ministry nearby that fits best: a verified church that has room this month, Alpha to explore faith, a youth partner for young people, or someone to talk to. It accepts, or passes with a reason, and the next one that fits is offered.</p></li>
+<li><b>Someone walks with them</b><span>Always Connect</span><p>Once a church or ministry accepts, it sees their contact details and reaches out from its own phone. The person gets a text saying who will be in touch. If no one can take them, our care team helps.</p></li>
+</ol>
+<h2>Only the person says "connected"</h2>
+<p>We count someone as connected only when they confirm it themselves, through the link in their text. That's the number in every report, alongside the people we missed.</p>
+<h2>Consent travels with them</h2>
+<p>Every step checks the person's consent first, and stops if it doesn't allow the next one. They can see, change or withdraw it at any time. See <a href="#/docs/consent">How consent works</a>.</p>
+"""
+
+APP = """
+<p class="lead">The Always App helps every Christian share Jesus, and gives the people who say yes a safe next step.</p>
+<ul>
+<li><b>The Good News.</b> Walk through the Romans Road together, verse by verse.</li>
+<li><b>Scripture.</b> Open the Bible in the app through YouVersion. See <a href="#/docs/youversion">Scripture with YouVersion</a>.</li>
+<li><b>A response point.</b> Someone can say yes on your phone or their own, with their consent, and be handed on through Always Connect.</li>
+<li><b>Conversation guides and short training</b> for sharing your story and welcoming well.</li>
+</ul>
+<p>The Always App runs in any browser, with nothing to download. It's in pilot with evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join the pilot</a>.</p>
+"""
+
 
 MODULES = """
 <p class="lead">Always Platform is one platform with five modules. Your team signs in once and switches on what it needs.</p>
@@ -277,21 +302,22 @@ def apply(DOCS):
     for i, (g, pages) in enumerate(DOCS):
         DOCS[i] = (g, list(pages))
 
-    set_page('introduction', body=INTRO)
-    edit('how-it-works', '<h2>1. Someone responds</h2>', '<div class="callout"><b>Always Respond and Always Connect work together.</b> Always Respond captures the yes. Always Connect finds the next best faith step for that person, near where they live, and makes sure a real person walks with them. Often that step is a local church; sometimes it is another ministry first, like Alpha.</div>\n<h2>1. Someone responds</h2>')
+    set_page('introduction', title='Welcome', body=INTRO)
+    set_page('how-it-works', title='How it works', body=HOW)
+    if False: edit('how-it-works', '<h2>1. Someone responds</h2>', '<div class="callout"><b>Always Respond and Always Connect work together.</b> Always Respond captures the yes. Always Connect finds the next best faith step for that person, near where they live, and makes sure a real person walks with them. Often that step is a local church; sometimes it is another ministry first, like Alpha.</div>\n<h2>1. Someone responds</h2>')
     set_page('glossary', body=GLOSSARY)
     gi, _ = find('introduction')
-    DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING)]
+    DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING), ('app', 'Always App', APP)]
 
     edit('senders', 'in Always for ministries', 'in Always Respond')
-    set_page('senders', title='Always Respond: response pages and QR codes')
+    set_page('senders', title='Response pages and QR codes')
     gi, pi = find('senders')
     DOCS[gi][1].insert(pi + 1, ('taps', 'Taps, tickets and armbands', TAPS))
     set_page('youversion', body=YOUVERSION)
     edit('branding', 'In the console, set', 'In Always Respond, set')
     set_page('branding', title='Your own brand')
-    set_page('results', title='Always Reports: reports for your funders')
-    set_page('inbox', title='Always Connect: welcome from your phone')
+    set_page('results', title='Reports for your funders')
+    set_page('inbox', title='Welcome from your phone')
     edit('inbox', 'The Always Connect inbox works', 'Your Always Connect inbox works')
 
     gi, pi = find('claim')
@@ -318,13 +344,66 @@ def apply(DOCS):
             DOCS[i] = ('Modules in use', pages)
         if g == 'The platform':
             DOCS[i] = ('Developers', pages)
-    names = [g for g, _ in DOCS]
-    cp = DOCS.pop(names.index('Always Compliance'))
-    DOCS.insert([g for g, _ in DOCS].index('Modules in use') + 1, cp)
+    pages = {t[0]: t for _, ps in DOCS for t in ps}
+    layout = [
+        ('Start here', ['introduction', 'how-it-works', 'modules', 'joining', 'glossary']),
+        ('Always App', ['app']),
+        ('Always Respond', ['senders', 'taps', 'branding', 'online']),
+        ('Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming', 'always-agent']),
+        ('Always Compliance', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review', 'compliance-api', 'compliance-platforms']),
+        ('Always Reports', ['results']),
+        ('For people', ['your-choices']),
+        ('Developers', ['api', 'sdk', 'youversion', 'feed', 'mcp', 'webhooks', 'consent', 'journey', 'standard']),
+        ('Trust and safety', ['security', 'privacy', 'terms', 'young-people', 'ai', 'policies']),
+        ('The foundation', ['governance', 'open-source', 'brand']),
+    ]
+    used = {sl for _, sls in layout for sl in sls}
+    missing = [sl for sl in pages if sl not in used]
+    assert not missing, missing
+    DOCS[:] = [(g, [pages[sl] for sl in sls]) for g, sls in layout]
     return DOCS
 
 
 CSS = '''
+.prose .dcards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.prose .dcards a { display: grid; gap: 4px; padding: 18px 20px; border-radius: 18px; background: #FFFDF8; border: 1px solid var(--line); text-decoration: none; background-image: none; color: inherit; transition: transform .25s cubic-bezier(.2,.7,.2,1), border-color .25s ease, box-shadow .25s ease; }
+.prose .dcards a:hover { transform: translateY(-2px); border-color: rgba(27,71,64,.25); box-shadow: 0 18px 36px -26px rgba(10,30,26,.4); }
+.prose .dcards span { font: 700 13px/1.2 var(--head); color: var(--clay); }
+.prose .dcards b { font: 800 19px/1.2 var(--head); color: var(--green); letter-spacing: -0.01em; }
+.prose .dcards em { font-style: normal; font-size: 15px; line-height: 1.5; color: var(--soft); }
+.prose .dflow { list-style: none; counter-reset: df; margin: 28px 0 0; padding: 0; display: grid; gap: 0; }
+.prose .dflow li { counter-increment: df; position: relative; padding: 0 0 28px 64px; margin: 0; }
+.prose .dflow li::before { content: counter(df, decimal-leading-zero); position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: var(--cream); font: 400 18px/1 'Newsreader', Georgia, serif; }
+.prose .dflow li:not(:last-child)::after { content: ''; position: absolute; left: 21px; top: 48px; bottom: 4px; width: 2px; background: linear-gradient(180deg, var(--green), var(--peach)); opacity: .35; }
+.prose .dflow b { display: inline; font: 800 21px/1.3 var(--head); color: var(--green); }
+.prose .dflow span { display: inline-block; margin-left: 10px; padding: 4px 10px; border-radius: 999px; background: var(--sage); color: var(--green); font: 700 12px/1.2 var(--head); vertical-align: 3px; }
+.prose .dflow p { margin: 8px 0 0; }
+.docs { grid-template-columns: 250px minmax(0, 1fr); }
+@media (min-width: 1240px) { .docs { grid-template-columns: 240px minmax(0, 1fr) 200px; gap: 56px; } }
+.dtoc { display: none; }
+@media (min-width: 1240px) { .dtoc { display: block; position: sticky; top: 104px; align-self: start; font-size: 14px; } }
+.dtoc p { margin: 0 0 10px; font: 700 13px/1 var(--head); color: var(--clay); }
+.dtoc button { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--line); padding: 7px 0 7px 14px; min-height: 32px; color: var(--soft); font: 500 14px/1.35 var(--text, inherit); cursor: pointer; transition: color .2s ease, border-color .2s ease; }
+.dtoc button:hover, .dtoc button.on { color: var(--green); border-left-color: var(--green); }
+.dnav { top: 104px; max-height: calc(100vh - 128px); }
+.dnav .dgroup { display: flex; align-items: center; gap: 8px; margin: 22px 0 6px; padding: 0 12px; font-size: 12.5px; letter-spacing: .01em; }
+.dnav a { font-size: 15px; padding: 7px 12px; transition: background .2s ease, color .2s ease; }
+.dnav a.on { box-shadow: 0 10px 20px -16px rgba(10,30,26,.6); }
+.dsearch { border-radius: 14px !important; }
+.prose { max-width: 720px; }
+.prose h1 { margin-bottom: 4px; }
+.prose .crumb { display: inline-block; padding: 5px 11px; border-radius: 999px; background: var(--sage); color: var(--green) !important; font: 700 12.5px/1.2 var(--head) !important; }
+.prose h2 { padding-top: 6px; }
+.prose table { border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+.prose th { background: rgba(27,71,64,.05); }
+.prose td, .prose th { padding: 12px 16px !important; }
+.prose .callout { border-left: 4px solid var(--peach); }
+.prose pre { box-shadow: 0 24px 44px -32px rgba(10,30,26,.55); }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pager a { border-radius: 18px !important; transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease; }
+.pager a:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -26px rgba(10,30,26,.4); }
+@media (max-width: 640px) { .prose .dcards { grid-template-columns: minmax(0, 1fr); } .pager { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .prose .dcards a, .pager a, .dtoc button { transition: none; } .prose .dcards a:hover, .pager a:hover { transform: none; } }
 .prose .br-dl .btn-green, .prose .br-dl .btn-peach { background-image: none; } .prose .br-dl .btn-green { color: var(--cream); } .prose .br-dl .btn-peach { color: var(--ink); }
 .page-hero .dq { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 36px; }
 .page-hero .dq a { display: grid; gap: 4px; min-height: 44px; padding: 16px 18px; border-radius: 18px; background: rgba(248,243,234,.07); border: 1px solid rgba(248,243,234,.14); color: var(--cream); text-decoration: none; transition: background .2s ease, transform .2s ease, border-color .2s ease; }
