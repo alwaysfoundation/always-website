@@ -211,7 +211,7 @@ def _works_with(slugs):
     return '<div class="pd-with">' + ''.join(product_link(s) for s in slugs) + '</div>'
 
 
-def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Join Always', '#/join'), secondary=None, feats_title='What you get', statement=None):
+def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Join Always', '#/join'), secondary=None, feats_title='What you get', statement=None, feats_html=None):
     route, name, pillar, line, who = PRODUCTS[slug]
     badge = f'<p class="pd-status">{status}</p>' if status else ''
     sec = f'<a class="btn btn-ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
@@ -225,10 +225,10 @@ def product_page(slug, intro, feats, works_with, extra='', status=None, primary=
   {mock(slug, 'mk-lg')}
 </div></section>
 {stmt}
-<section class="sec pg-sec"><div class="wrap">
+{feats_html or f'''<section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">{feats_title}</h2>
   {_feats(feats)}
-</div></section>
+</div></section>'''}
 {extra}
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Works with</h2>
@@ -244,7 +244,7 @@ PAGES_BRAND = '''<section class="sec pg-sec pg-green"><div class="wrap pd-brand"
 </div></section>'''
 
 PAGES_PAGE = product_page('pages',
-    'Wherever someone says yes to Jesus, give them a simple page that looks like you. One scan or tap takes them from a moment online, on the street or in the room to a real next step.',
+    'Wherever someone says yes to Jesus, give them a simple page that looks like you. One scan or tap, from a QR code, an NFC armband or a ticket, takes them from a moment online, on the street or in the room to a real next step.',
     [('On the street', 'A QR card or phone link so evangelists can save a contact in seconds, safely.'),
      ('At the altar call', 'Put a code on the big screen and let everyone who responds say so, then and there.'),
      ('Landing pages', 'A page for your event, campaign or video, with a clear way to respond.'),
@@ -254,6 +254,7 @@ PAGES_PAGE = product_page('pages',
     ['connect', 'app', 'reports'],
     extra=PAGES_BRAND,
     feats_title='Wherever people respond',
+    feats_html=__import__('respond').SECTION,
     secondary=('Read the guide', '#/docs/senders'),
     statement='Every yes deserves a next step, in your name.')
 
