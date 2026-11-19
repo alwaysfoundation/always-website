@@ -21,12 +21,12 @@ PAGE = '''
 <div class="ft-hero"><div class="wrap ft-hero-in">
   <p class="ft-kick"><a href="#/stories">Stories</a> <span aria-hidden="true">/</span> Christians in AI (CHAI)</p>
   <h1>Branches: walking with new believers from decision to discipleship</h1>
-  <p class="ft-dek">At Christians in AI, Nathan Gaw shares the story of Branches, an open tool from Rejoice that has evolved into Always Connect.</p>
+  <p class="ft-dek">At Christians in AI, Nathan Gaw shares the story of Branches, which evolved into Always Connect.</p>
 </div></div>
 
 <figure class="ft-fig wrap chai-fig">
-  <img src="{{BRANCHES_IMG}}" alt="Branches: the global Gospel response network. Open source infrastructure for what happens after someone responds to the Gospel." width="1474" height="803" loading="lazy">
-  <figcaption>Branches, before it evolved into Always Connect.</figcaption>
+  <img src="{{BRANCHES_IMG}}" alt="Branches: the global Gospel response network. Open source infrastructure for what happens after someone responds to the Gospel." width="1267" height="678" loading="lazy">
+  <figcaption>Branches evolved into Always Connect.</figcaption>
 </figure>
 
 <div class="wrap ft-body">
@@ -39,8 +39,7 @@ PAGE = '''
     <p>Branches meets people the moment they respond, with a simple QR code or link. It asks for their consent, then connects them to a church, a Bible reading plan or a mentor, and follows up so no one slips through the cracks.</p>
 
     <h2>From Branches to Always Connect</h2>
-    <p>Branches has evolved into <a href="#/connect">Always Connect</a>, a module of Always Platform, now run by the Always Foundation for churches and ministries across Australia. The heart of it hasn't changed: a person's yes to Jesus becomes a next step, with a real person walking alongside them.</p>
-    <p>What has grown is the reach. Instead of one tool for one team, Always Connect hands people to verified local churches across Australia, with the same consent and safeguards wherever they responded.</p>
+    <p>Branches evolved into <a href="#/connect">Always Connect</a>.</p>
 
     <blockquote class="ft-pull">AI can help ministries care for people. It should never replace the relationships that matter most.</blockquote>
 
@@ -67,7 +66,7 @@ PAGE = '''
         <dt>Talk</dt><dd>Branches: Walking with New Believers from Decision to Discipleship</dd>
         <dt>Speaker</dt><dd>Nathan Gaw</dd>
         <dt>Community</dt><dd>Christians in AI (CHAI), a global community stewarding AI for the glory of Jesus Christ</dd>
-        <dt>Today</dt><dd>Branches has evolved into Always Connect</dd>
+        <dt>Today</dt><dd>Branches evolved into Always Connect</dd>
       </dl>
       <a class="btn btn-peach" href="#/connect">See Always Connect</a>
       <a class="ft-link" href="#/docs/always-agent">How agents work</a>
@@ -95,7 +94,7 @@ TILE = '''      <li class="cs-tile">
         <div class="cs-text">
           <p class="cs-name">Christians in AI (CHAI)</p>
           <h3>From decision to discipleship.</h3>
-          <p>Nathan Gaw on Branches, an open tool from Rejoice that has evolved into Always Connect.</p>
+          <p>Nathan Gaw on Branches, which evolved into Always Connect.</p>
           <a class="cs-more" href="#/chai">Read the story</a>
         </div>
       </li>

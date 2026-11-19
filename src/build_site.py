@@ -39,7 +39,7 @@ home = home.replace('{{UEN_IMG}}', _photo('uen-event.jpg'))
 import home as HM
 home = home.replace('{{HORIZON}}', HM.HORIZON)
 FAITHTECH_IMG = _photo('faithtech.png', maxw=1600, q=84)
-BRANCHES_IMG = _photo('branches.png', maxw=1600, q=80)
+BRANCHES_IMG = _photo('branches.png', maxw=1600, q=90)
 CHAI_LOGO = _photo('chai-logo.png', maxw=600, q=88)
 home = _swap(home, 'class="sec promise"', '')
   # 'Watch it work' removed
