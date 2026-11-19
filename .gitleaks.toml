@@ -1,0 +1,6 @@
+# Supabase publishable keys are designed to ship to browsers; database rules protect the data.
+[extend]
+useDefault = true
+
+[allowlist]
+regexes = ['''sb_publishable_[A-Za-z0-9_-]+''']
