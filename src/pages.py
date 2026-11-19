@@ -87,12 +87,12 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
 app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-kick">A module of Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join/evangelist" style="margin-top:28px">Join the pilot</a></div>
+  <div><p class="pl-kick">A module of Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="https://app.alwaysfoundation.org" style="margin-top:28px">Open the Always App</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What's inside</h2>
-  <p class="pg-lead rv">A free web app with everything you need to share Jesus. Nothing to download: open it in your phone's browser and add it to your home screen.</p>
+  <p class="pg-lead rv">A free web app with everything you need to share Jesus. Nothing to download: open <a href="https://app.alwaysfoundation.org">app.alwaysfoundation.org</a> on your phone and add it to your home screen.</p>
   <div class="pg-minis">
     {mini('Bible', '<p class="pg-cap">John 3 · ESV</p><span class="pg-big">3</span><p class="pg-read"><sup>16</sup> <mark>For God so loved the world, that he gave his only Son…</mark></p>')}
     {mini('Learn', '<p class="pg-cap">The Always path</p>' + ''.join(f'<div class="pg-path"><i class="s{i}"></i><b>0{i+1} / {s}</b></div>' for i, s in enumerate(['Understand', 'Live', 'Share', 'Walk'])))}
@@ -129,7 +129,7 @@ FAQ_GROUPS = [
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always Platform only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
-  ('How do I sign in?', 'With one Always account, using Apple, Google, YouVersion or your email. The same account works across the Always App and every tool built on Always Platform.')]),
+  ('Do I need an account?', 'Not for the Always App: open it and start, and your prayer list and notes stay on your phone. Church and ministry teams sign in with an email link for tools like Always Compliance.')]),
  ('For churches', [
   ('Does it cost anything?', 'No. Churches never pay. Larger ministries contribute according to their size.'),
   ('How do we join?', 'Register at Join Always and get ready at your own pace. We check with your denomination or network, and then you\'re a partner church.'),
