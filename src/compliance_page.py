@@ -42,10 +42,10 @@ STATES = [
 
 PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
   <div>
-    <p class="pl-kick">Always Compliance, a module of Always Platform</p>
+    <p class="pl-kick">Always Compliance</p>
     <h1>Compliance, made clear.</h1>
     <p class="pd-line">Know exactly what applies to your ministry, approve a simple check-up each quarter, and hear when the law changes.</p>
-    <div class="pg-cta"><a class="btn btn-peach" href="#/compliance/check">Start your free check-up</a><a class="btn btn-ghost" href="#/compliance/problem">See the problem we solve</a></div>
+    <div class="pg-cta"><a class="btn btn-peach" href="#/compliance/check">Start your free check-up</a><a class="btn btn-ghost" href="#/compliance/how">How it works</a></div>
     <p class="cm-fine">Free for churches. About ten minutes. A guide to common obligations, not legal advice.</p>
   </div>
   <div class="cmx-card" aria-hidden="true">
@@ -66,52 +66,39 @@ PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
   <div class="cmx-states rv" aria-label="The same kind of check has a different name in each state and territory">
     {''.join(f'<div><b>{st}</b><span>{nm}</span></div>' for st, nm in STATES)}
   </div>
-  <p class="cmx-caption rv">One kind of check for people who work with children, with a different name and different rules in every state.</p>
-  <div class="sl-rows cmx-why">
-    <div class="sl-row rv"><h3>A patchwork</h3><p>Child safety, screening checks and privacy differ from state to state, and a ministry across borders has to meet them all.</p></div>
-    <div class="sl-row rv"><h3>Always moving</h3><p>Privacy reforms, a new Children's Online Privacy Code, updated Child Safe Standards. What was right last year may not be now.</p></div>
-    <div class="sl-row rv"><h3>Nobody's full-time job</h3><p>Most ministries run on small teams and volunteers, yet the board carries the responsibility.</p></div>
-  </div>
+  <p class="cmx-caption rv">One kind of check, with a different name and rules in every state. It's a lot for a small team of volunteers.</p>
 </div></section>
 
-<section class="sec pg-sec pg-sage cmx-value"><div class="wrap">
-  <h2 class="pg-h rv">What Always Compliance does</h2>
+<section class="sec pg-sec pg-sage cmx-value" id="how"><div class="wrap">
+  <h2 class="pg-h rv">How it works</h2>
   <div class="cmx-trio">
     <div class="cmx-tile rv"><div class="cmx-art"><div class="cmx-mini">
       <span class="cmx-mini-k">What applies to you</span>
       <div class="cmx-mini-row"><b>Privacy</b><span>4</span></div><div class="cmx-mini-row"><b>Child safety</b><span>3</span></div><div class="cmx-mini-row"><b>Charity</b><span>3</span></div><div class="cmx-mini-row"><b>Emails and texts</b><span>2</span></div>
-    </div></div><h3>One clear picture</h3><p>Answer eleven questions and see every obligation that applies to you, in plain English, with what to do next.</p></div>
+    </div></div><h3>See what applies to you</h3><p>Answer eleven questions. Get every obligation that applies, in plain English, with your next steps.</p></div>
     <div class="cmx-tile rv"><div class="cmx-art"><div class="cmx-mini">
       <span class="cmx-mini-k">October to December</span>
       <p class="cmx-mini-h">Your check-up is ready</p>
       <span class="cmx-mini-s">Review, update and approve</span>
       <span class="cmx-mini-btn">Approve for the board</span>
-    </div></div><h3>A check-up every quarter</h3><p>A short, clear record each quarter. Someone at your ministry reviews it and approves it for your board.</p></div>
+    </div></div><h3>Approve it each quarter</h3><p>We draft a fresh check-up each quarter. Someone at your ministry reviews it and approves it for the board.</p></div>
     <div class="cmx-tile rv"><div class="cmx-art"><div class="cmx-mini cmx-alert">
       <span class="cmx-mini-k">Law change</span>
       <p class="cmx-mini-h">Child Safe Standards updated</p>
       <span class="cmx-mini-s">Affects 1 obligation for your ministry</span>
       <span class="cmx-mini-link">See what changed</span>
-    </div></div><h3>Alerts when the law changes</h3><p>We watch official sources and tell you what changed, what it means for you, and what to do.</p></div>
+    </div></div><h3>Hear when the law changes</h3><p>We watch official sources and tell you what changed, and what it means for you.</p></div>
   </div>
 </div></section>
 
-<section class="sec pg-sec"><div class="wrap">
-  <h2 class="pg-h rv">How it works</h2>
-  <div class="pg-steps">
-    <div class="pg-step rv"><span>01</span><h3>Tell us about your ministry</h3><p>Where you meet, who you work with and how you keep in touch. Eleven quick questions.</p></div>
-    <div class="pg-step rv"><span>02</span><h3>See where you stand</h3><p>What's in place, what needs attention, and what's coming. Always fills in what it already does for you.</p></div>
-    <div class="pg-step rv"><span>03</span><h3>Approve each quarter</h3><p>A fresh check-up every quarter, plus an alert whenever a rule that applies to you changes.</p></div>
-  </div>
-</div></section>
-
-<section class="sec pg-sec pg-sage"><div class="wrap">
+<section class="sec pg-sec cmx-covers" id="covers"><div class="wrap">
   <h2 class="pg-h rv">What it covers</h2>
-  <p class="pg-lead rv">{sum(1 for o in REGISTER['obligations'] if not o['title'].startswith('Watch'))} obligations across four areas, plus changes we're watching, each one linked to the law it comes from.</p>
+  <p class="pg-lead rv">{sum(1 for o in REGISTER['obligations'] if not o['title'].startswith('Watch'))} obligations across four areas, plus changes we're watching.</p>
   <div class="cv-grid">{''.join(_cover(k) for k in AREAS)}</div>
+  <p class="cmx-trust rv">Every obligation links to the law it comes from, and a qualified reviewer approves every change before it reaches you. <a class="cm-link" href="#/docs/compliance-register">See every obligation</a></p>
 </div></section>
 
-<section class="sec pg-sec" id="check" aria-labelledby="check-h"><div class="wrap">
+<section class="sec pg-sec pg-sage" id="check" aria-labelledby="check-h"><div class="wrap">
   <h2 class="pg-h rv" id="check-h">Try the free check-up</h2>
   <p class="pg-lead rv">About ten minutes. You don't need an account, and nothing you enter is sent or saved unless you choose to save it.</p>
   <div class="cw" id="cw">
@@ -122,24 +109,9 @@ PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
   </div>
 </div></section>
 
-<section class="sec pg-sec solutions-home"><div class="wrap">
-  <h2 class="pg-h rv">Why you can trust it</h2>
-  <div class="sl-rows">
-    <div class="sl-row rv"><h3>Checked by people</h3><p>A qualified reviewer approves every change to the rules before it reaches you.</p></div>
-    <div class="sl-row rv"><h3>Linked to the law</h3><p>Every obligation links to its official source, so you can read it for yourself.</p></div>
-    <div class="sl-row rv"><h3>Open to everyone</h3><p>The full list is open, so denominations and safe ministry teams can share one view of the rules. <a class="cm-link" href="#/docs/compliance-register">See every obligation</a></p></div>
-  </div>
-</div></section>
-
-<section class="sec pg-sec pg-sage" id="infrastructure" aria-labelledby="infra-h"><div class="wrap">
-  <div class="cm-infra-head"><div><p class="pl-kick cm-kick rv">For Christian tech platforms</p>
-  <h2 class="pg-h rv" id="infra-h">Build it into your own product.</h2>
-  <p class="pg-lead rv">Give your users the same clear view of the rules without leaving your app: the open register, change alerts and a check-up you can embed. Love is Our Weapon is our first user.</p>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/compliance-platforms">Read the guide</a><a class="btn btn-ghost-dark" href="#/contact/compliance">Talk to us</a></div></div>
-  <div class="cm-embed rv" aria-hidden="true"><span class="cm-embed-k">Add the check-up to any page</span><code>&lt;script type="module"
-  src="https://alwaysfoundation.org/sdk/v0/compliance-widget.js"&gt;&lt;/script&gt;
-&lt;always-compliance-check&gt;
-&lt;/always-compliance-check&gt;</code></div></div>
+<section class="sec cmx-build" id="infrastructure" aria-labelledby="infra-h"><div class="wrap">
+  <div class="cmx-build-in rv"><div><h2 id="infra-h">Building for churches?</h2><p>Add the check-up, the open register and change alerts to your own product. Love is Our Weapon is our first partner.</p></div>
+  <a class="btn btn-ghost-dark" href="#/docs/compliance-platforms">Read the guide</a></div>
 </div></section>
 
 <section class="sec pd-statement cmx-end"><div class="wrap">
@@ -181,6 +153,12 @@ CSS = '''
 .cmx-card li i { width: 18px; height: 18px; border-radius: 50%; flex: none; display: grid; place-items: center; }
 .cmx-card li.ok i { background: var(--green); } .cmx-card li.ok i::after { content: ''; width: 7px; height: 3.5px; border-left: 1.8px solid #fff; border-bottom: 1.8px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
 .cmx-card li.todo i { box-shadow: inset 0 0 0 2px var(--peach); } .cmx-card li.soon i { box-shadow: inset 0 0 0 2px var(--line); }
+.cmx-trust { margin: 28px 0 0; max-width: 720px; color: var(--soft); font-size: 16px; line-height: 1.6; }
+.cmx-covers .cv-card { border: 1px solid rgba(27,71,64,.1); }
+.cmx-build { padding: 64px 0 0; }
+.cmx-build-in { display: flex; gap: 24px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 28px 32px; border-radius: 24px; border: 1px solid rgba(27,71,64,.14); }
+.cmx-build-in h2 { font: 800 22px/1.2 var(--head); margin: 0 0 6px; color: var(--green); letter-spacing: -.01em; }
+.cmx-build-in p { margin: 0; color: var(--soft); max-width: 620px; line-height: 1.55; }
 .cmx-card li em { margin-left: auto; white-space: nowrap; padding-left: 8px; font: 700 11px/1 var(--head); font-style: normal; color: var(--clay); }
 .cmx-card li.soon em { color: var(--muted); }
 .cmx-card-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 4px; }
