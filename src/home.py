@@ -151,11 +151,14 @@ ABOUT_CSS = r'''
 .ab-h { margin: 0; font-size: clamp(32px, 3.6vw, 48px); letter-spacing: -0.035em; color: var(--green); line-height: 1.05; }
 .ab-lede { margin: 18px 0 28px; font-size: 18.5px; color: var(--soft); }
 .ab-mods { list-style: none; margin: 0; padding: 0; }
-.ab-mods a { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 20px; align-items: center; padding: 22px 4px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; transition: padding .3s cubic-bezier(.2,.7,.2,1), background .3s ease; }
+.ab-mods a { display: grid; grid-template-columns: 52px 1fr auto; grid-template-rows: auto auto; column-gap: 20px; align-items: center; padding: 22px 4px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; transition: padding .3s cubic-bezier(.2,.7,.2,1), background .3s ease; }
 .ab-mods li:first-child a { border-top: 1px solid var(--line); }
 .ab-mods span { font: 700 13.5px/1.2 var(--head); color: var(--clay); }
-.ab-mods b { grid-row: 2; font: 800 clamp(22px, 2.2vw, 28px)/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
-.ab-mods i { grid-row: 1 / 3; grid-column: 2; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(27,71,64,.22); position: relative; transition: background .25s ease, border-color .25s ease, transform .3s ease; }
+.ab-mods .mi { grid-row: 1 / 3; grid-column: 1; color: var(--green); }
+.ab-mods a:hover .mi, .ab-mods a:focus-visible .mi { background: var(--green); color: var(--cream); }
+.ab-mods span { grid-column: 2; }
+.ab-mods b { grid-row: 2; grid-column: 2; font: 800 clamp(22px, 2.2vw, 28px)/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
+.ab-mods i { grid-row: 1 / 3; grid-column: 3; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(27,71,64,.22); position: relative; transition: background .25s ease, border-color .25s ease, transform .3s ease; }
 .ab-mods i::after { content: ''; position: absolute; inset: 0; margin: auto; width: 14px; height: 14px; background: var(--green); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
 .ab-mods a:hover, .ab-mods a:focus-visible { padding-left: 14px; }
 .ab-mods a:hover i, .ab-mods a:focus-visible i { background: var(--green); border-color: var(--green); }

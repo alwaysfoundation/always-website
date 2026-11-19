@@ -476,7 +476,7 @@ const ok = await verifyWebhook({
 <li>Young people's information is kept out of it entirely.</li>
 <li>No one's information is used to train AI.</li>
 </ul>
-<p>The Always Agent grew from our earlier work on agents with a human in the loop.  It is in pilot with the foundation team.</p>
+<p>The Always Agent grew from our earlier work on agents with a human in the loop.</p>
 """),
   ("ai", "AI", """
 <p class="lead">People welcome people. Technology helps them do it well.</p>
@@ -686,7 +686,7 @@ nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; te
 """
 
 about = """
-<section class="page-hero ab-hero"><div class="wrap"><h1>A ministry that serves ministries.</h1><p>Always Foundation brings churches and Christian ministries across Australia together, with shared tools, standards and connections, so they can give more of themselves to the Gospel.</p></div></section>
+<section class="page-hero ab-hero"><div class="wrap"><h1>A ministry that serves ministries.</h1><p>We bring churches and Christian ministries across Australia together, with shared tools and a shared heart, so more of their time, money and love can go to the Gospel.</p></div></section>
 <div class="wrap ab-photos" aria-hidden="false">
   <figure class="rv"><img src="{{AB1}}" alt="A UEN esports event with players on stage and an audience watching large screens" loading="lazy"></figure>
   <figure class="rv"><img src="{{AB2}}" alt="A crowd in a Sydney city square with hands raised in worship" loading="lazy"></figure>
@@ -694,11 +694,11 @@ about = """
 </div>
 <section class="sec ab-sec"><div class="wrap">
   <div class="ab-why">
-    <div class="rv"><p class="tag">Why we exist</p><p class="ab-big">Too many people say yes to Jesus and never find a church family.</p></div>
+    <div class="rv"><p class="tag">Why we exist</p><p class="ab-big">Every yes to Jesus deserves a church family.</p></div>
     <div class="rv">
-      <p>Across Australia, churches and ministries are sharing the Gospel, making disciples and serving their communities. Jesus sent His Church to \u201cgo therefore and make disciples of all nations\u201d (Matthew 28:19, ESV), and no single church or ministry carries that alone.</p>
-      <p>Yet many ministries each build and pay for the same tools, carry heavy administration, and struggle to pass people on to one another safely. We exist to carry that practical work together, so ministries can devote more of their time to what matters most.</p>
-      <p>Always Foundation is new. We are being established now, and we are testing our first tools with churches and ministries.</p>
+      <p>Every week across Australia, people meet Jesus at camps, concerts, services, on the street and online, and churches and ministries are already doing beautiful work to reach them. Jesus sent His Church to \u201cgo therefore and make disciples of all nations\u201d (Matthew 28:19, ESV), and He never meant any of us to carry that alone.</p>
+      <p>Yet ministries often build the same tools twice, carry heavy administration, and find it hard to pass people on to one another with care. We carry that practical work together, so every team can give more of itself to people.</p>
+      <p>We\u2019re new, and grateful to be starting alongside the churches and ministries already using these tools.</p>
     </div>
   </div>
   <div class="ab-help">
@@ -709,8 +709,8 @@ about = """
 <section class="sec ab-band"><div class="wrap">
   <div class="ab-three">
     <div class="rv"><p class="ab-k">Our name</p><p class="ab-verse">\u201cI am with you always.\u201d</p><p>From Jesus\u2019 promise in the Great Commission (Matthew 28:20, ESV).</p></div>
-    <div class="rv"><p class="ab-k">Our posture</p><p>Like those appointed in Acts 6 to carry the practical work, we serve quietly in the background, so churches and ministries can give themselves to the Gospel. We are not on the frontline. We stand behind it.</p></div>
-    <div class="rv"><p class="ab-k">Our vision</p><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p>Christ-centred. Gospel first. Built together, shared freely. People\u2019s details stay theirs.</p></div>
+    <div class="rv"><p class="ab-k">Our posture</p><p>Like the seven appointed in Acts 6 to serve tables, so the apostles could give themselves to prayer and the word, we serve gladly in the background, so churches and ministries can give themselves to the Gospel.</p></div>
+    <div class="rv"><p class="ab-k">Our vision</p><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p>Christ at the centre and the Gospel first. Built together and shared freely, with people\u2019s details always their own.</p></div>
   </div>
 </div></section>
 <section class="sec" style="padding-top:0"><div class="wrap">
@@ -722,7 +722,7 @@ about = """
 </div></section>
 """
 about = about.replace('{{AB1}}', _photo('uen-event.jpg')).replace('{{AB2}}', _photo('sydneyfire-street.jpg')).replace('{{AB3}}', _photo('alpha-photo.jpg'))
-about = about.replace('{{MODS}}', ''.join(f'<li><a href="#/{PR.PRODUCTS[k][0]}"><span>{PR.VERBS[k]}</span><b>{PR.PRODUCTS[k][1]}</b><i aria-hidden="true"></i></a></li>' for k in ['app', 'pages', 'compliance', 'reports', 'connect']))
+about = about.replace('{{MODS}}', ''.join(f'<li><a href="#/{PR.PRODUCTS[k][0]}">{PR.mod_icon(k)}<span>{PR.VERBS[k]}</span><b>{PR.PRODUCTS[k][1]}</b><i aria-hidden="true"></i></a></li>' for k in ['app', 'pages', 'compliance', 'reports', 'connect']))
 
 
 

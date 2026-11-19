@@ -157,7 +157,7 @@ FAQ_GROUPS = [
   ('I\'m under 18. Can I still respond?', 'Yes. If you\'re under 15, a parent or guardian says yes with you. From 15 you can decide for yourself. Young people are introduced only to youth partners, and no AI ever touches your information.')]),
  ('Always App', [
   ('Who is it for?', 'Every Christian who wants to share Jesus and walk with people, and church teams who welcome them.'),
-  ('How do I get it?', 'It\'s a web app, so there\'s nothing to download. It\'s in pilot: join through the form on our home page.'),
+  ('How do I get it?', 'It\'s a web app, so there\'s nothing to download. Open app.alwaysfoundation.org on any phone.'),
   ('Is there a mobile app?', 'Not for now. The Always App and our tools for churches and ministries run in the browser on your phone, tablet or computer, and you can add it to your home screen.'),
   ('Which Bible translations are included?', 'The King James Version and the World English Bible, with more through YouVersion.'),
   ('Where are my notes and prayer list kept?', 'In your browser, on your own device. They aren\'t sent to us.')]),

@@ -44,7 +44,7 @@ APP = """
 <li><b>A response point.</b> Someone can say yes on your phone or their own, with their consent, and be handed on through Always Connect.</li>
 <li><b>Conversation guides and short training</b> for sharing your story and welcoming well.</li>
 </ul>
-<p>The Always App runs in any browser, with nothing to download. It's in pilot with evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join the pilot</a>.</p>
+<p>The Always App runs in any browser, with nothing to download. It's used by evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join the pilot</a>.</p>
 """
 
 

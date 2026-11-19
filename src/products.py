@@ -85,7 +85,7 @@ def bento_tile(slug):
     route, name, pillar, line, _ = PRODUCTS[slug]
     return (f'<a class="bt bt-{slug} rv" href="#/{route}">{mock(slug)}'
             f'<div class="bt-body"><span class="bt-hd">{mod_icon(slug, "mi-sm")}<span class="bt-k btv-{slug}">{VERBS[slug]}</span></span>'
-            f'<h3>{name}</h3><p>{line}</p><span class="st st-{STATUS[slug].split()[-1].lower()}">{STATUS[slug]}</span></div></a>')
+            f'<h3>{name}</h3><p>{line}</p></div></a>')
 
 
 def product_bento():
@@ -219,7 +219,6 @@ def _works_with(slugs):
 def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Join Always', '#/join'), secondary=None, feats_title='What you get', statement=None, feats_html=None):
     import showcase as SC
     route, name, pillar, line, who = PRODUCTS[slug]
-    status = status or STATUS.get(slug)
     badge = f'<p class="pd-status">{status}</p>' if status else ''
     sec = f'<a class="btn btn-ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
     stmt = f'<section class="sec pd-statement"><div class="wrap"><p class="rv">{statement}</p></div></section>' if statement else ''

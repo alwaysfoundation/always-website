@@ -24,7 +24,7 @@ def _panel(i, s):
     a, b = CHIPS[s]
     return (f'<div class="msx-panel msx-{TONE[s]}" role="tabpanel" id="msx-p-{s}" aria-labelledby="msx-t-{s}"{"" if i == 0 else " hidden"}>'
             f'<div class="msx-art"><span class="msx-chip msx-c1">{a}</span>{mock(s, "mk-lg")}<span class="msx-chip msx-c2">{b}</span></div>'
-            f'<div class="msx-cap"><p><b>{name}.</b> {line} <span class="st st-{PR.STATUS[s].split()[-1].lower()}">{PR.STATUS[s]}</span></p><a href="#/{route}">Explore {name}</a></div></div>')
+            f'<div class="msx-cap"><p><b>{name}.</b> {line}</p><a href="#/{route}">Explore {name}</a></div></div>')
 
 
 def home_showcase():
