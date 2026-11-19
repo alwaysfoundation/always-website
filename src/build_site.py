@@ -596,6 +596,7 @@ nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; te
 .prose code { font: 500 14.5px/1.5 ui-monospace, 'SF Mono', Menlo, monospace; background: var(--sage-2); color: var(--green); padding: 2px 6px; border-radius: 6px; }
 .prose pre { margin: 20px 0 0; background: var(--night); color: #E4EEE7; border-radius: 18px; padding: 22px 24px; overflow-x: auto; }
 .prose pre code { background: none; color: inherit; padding: 0; font-size: 14px; line-height: 1.7; }
+.prose .dt code { overflow-wrap: anywhere; word-break: break-word; }
 .prose table { width: 100%; margin-top: 20px; border-collapse: collapse; font-size: 16px; }
 .prose th { text-align: left; font: 700 14px/1.3 var(--head); color: var(--ink); padding: 12px 14px; border-bottom: 2px solid var(--line); }
 .prose td { padding: 12px 14px; border-bottom: 1px solid var(--line); color: var(--soft); vertical-align: top; }

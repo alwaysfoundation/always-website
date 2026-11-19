@@ -15,9 +15,8 @@ PILLARS = [
     ('equip', 'Equip', 'Resources for every ministry.'),
     ('support', 'Support', 'More time for ministry.'),
     ('connect', 'Connect', 'One body. Many members.'),
-    ('agents', 'Agents', 'Help that never sleeps, with a person in charge.'),
-    ('build', 'Build', 'The foundation everything runs on.'),
 ]
+BUILD_LINE = 'Build on Always Platform'
 
 # slug: (route, name, pillar, positioning, for)
 PRODUCTS = {
@@ -26,7 +25,7 @@ PRODUCTS = {
     'compliance': ('compliance', 'Always Compliance', 'support', 'Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.', 'Every ministry'),
     'reports':    ('reports',    'Always Reports',    'support', 'A monthly report for your board and funders, written for you, with totals only.', 'Ministries with boards and funders'),
     'connect':    ('connect',    'Always Connect',    'connect', 'The church directory and a safe, consent-based handoff, so no one walks alone.', 'Churches, ministries and events'),
-    'agents':     ('agents',     'Always Agents',     'agents',  'Help with follow-up and admin. A person approves every step.', 'Ministry teams'),
+    'agents':     ('agents',     'Always Agents',     'support',  'Help with follow-up and admin. A person approves every step.', 'Ministry teams'),
     'build':      ('build',      'Always Build',      'build',   'The API, SDK, feeds and AI connector, for developers and partner platforms.', 'Developers and Christian tech platforms'),
 }
 
@@ -40,7 +39,7 @@ SOLUTIONS = {
     'platforms':  ('platforms',   'Christian tech platforms',     'Build compliance, handoff and church data into your own product, on open standards.', ['build', 'compliance', 'connect'], ('Love is Our Weapon', 'Our first Always Compliance user, ready to roll it out to youth ministries and churches.')),
 }
 
-PILLAR_NAME = {k: n for k, n, _ in PILLARS}
+PILLAR_NAME = {k: n for k, n, _ in PILLARS} | {'build': 'Build'}
 
 
 def for_name(name):
@@ -78,7 +77,7 @@ def pillar_grid():
     return '<div class="pl-pillars">' + ''.join(cards) + '</div>'
 
 
-BENTO = ['app', 'pages', 'compliance', 'reports', 'connect', 'agents', 'build']
+BENTO = ['app', 'pages', 'compliance', 'reports', 'agents', 'connect', 'build']
 
 
 def bento_tile(slug):
@@ -109,10 +108,12 @@ def menu_html():
     plat = ''.join(
         f'<div class="dd-col"><p class="dd-h">{name}</p>' + ''.join(f'<a href="#/{PRODUCTS[s][0]}" data-route="{PRODUCTS[s][0]}"><b>{PRODUCTS[s][1]}</b><span>{PRODUCTS[s][3]}</span></a>' for s in PRODUCTS if PRODUCTS[s][2] == key) + '</div>'
         for key, name, _ in PILLARS)
+    b = PRODUCTS['build']
+    build_row = (f'<a class="dd-build" href="#/{b[0]}" data-route="{b[0]}"><b>{b[1]}</b><span>{BUILD_LINE}: {b[3][0].lower() + b[3][1:]}</span></a>')
     sol = ''.join(f'<a href="#/{r}" data-route="{r}"><b>{n}</b><span>{l}</span></a>' for r, n, l, _, _ in SOLUTIONS.values())
     return (
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button>'
-        f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-grid">{plat}</div><a class="dd-all" href="#/platform" data-route="platform">See Always Platform</a></div></li>'
+        f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-grid">{plat}</div><div class="dd-foot">{build_row}<a class="dd-all" href="#/platform" data-route="platform">See Always Platform</a></div></div></li>'
         '<li class="dd"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-solutions" data-group="solutions">Solutions</button>'
         f'<div class="dd-panel" id="dd-solutions"><div class="dd-list">{sol}</div></div></li>'
         '<li><a href="#/stories" data-route="stories">Stories</a></li>'
@@ -291,7 +292,7 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-s
 <section class="sec pd-statement"><div class="wrap"><p class="rv">Built once. Shared with every church and ministry.</p></div></section>
 <section class="sec pg-sec pf-products"><div class="wrap">
   <h2 class="pg-h rv">The products</h2>
-  <p class="pg-lead rv">Equip, support and connect ministries, with agents to lighten the load and open tools to build on.</p>
+  <p class="pg-lead rv">Equip, support and connect ministries. Underneath it all, Always Build lets developers and partner platforms build on the same foundation.</p>
   {product_bento()}
 </div></section>
 <section class="sec pg-sec solutions-home"><div class="wrap">
@@ -361,7 +362,7 @@ CSS = MOCK_CSS + '''
 /* ---- Bento ---- */
 .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; margin-top: 44px; }
 .bt { grid-column: span 2; display: grid; grid-template-rows: auto 1fr; background: var(--paper); border-radius: 28px; padding: 10px; color: inherit; text-decoration: none; box-shadow: 0 1px 0 rgba(30,42,38,.04); transition: transform .25s ease, box-shadow .25s ease; }
-.bt-app, .bt-pages, .bt-agents, .bt-build { grid-column: span 3; }
+.bt-app, .bt-pages, .bt-connect, .bt-build { grid-column: span 3; }
 .bt .mk { min-height: 250px; }
 .bt-body { padding: 20px 18px 16px; display: grid; align-content: start; gap: 8px; }
 .bt h3 { margin: 0; font: 800 23px/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
@@ -371,7 +372,7 @@ CSS = MOCK_CSS + '''
 .bt:hover, .bt:focus-visible { transform: translateY(-3px); box-shadow: 0 26px 50px -30px rgba(20,53,47,.45); }
 .bt:hover .mk-card, .bt:focus-visible .mk-card { transform: translateY(-3px); }
 .mk-card { transition: transform .35s ease; }
-@media (max-width: 1000px) { .bento { grid-template-columns: 1fr 1fr; } .bt, .bt-app, .bt-pages, .bt-agents, .bt-build { grid-column: auto; } .bt-build { grid-column: span 2; } }
+@media (max-width: 1000px) { .bento { grid-template-columns: 1fr 1fr; } .bt, .bt-app, .bt-pages, .bt-connect, .bt-build { grid-column: auto; } .bt-build { grid-column: span 2; } }
 @media (max-width: 640px) { .bento { grid-template-columns: 1fr; } .bt-build { grid-column: auto; } .bt .mk { min-height: 210px; } }
 .heart .bento { margin-top: 48px; }
 
@@ -444,8 +445,11 @@ CSS = MOCK_CSS + '''
 .dd-panel { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%); background: #FFFDF8; color: var(--ink, #1A1410); border-radius: 22px; padding: 22px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.4); width: 380px; z-index: 50; display: none; }
 .dd-panel.open { display: block; }
 .dd-static { position: static; }
-.dd-wide { width: min(1080px, 92vw); top: 84px; }
-.dd-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.dd-wide { width: min(860px, 92vw); top: 84px; }
+.dd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.dd-foot { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(27,71,64,.1); }
+.dd-panel .dd-build { margin: 0 0 0 -12px; } .dd-panel .dd-build span { max-width: 52ch; }
+.dd-foot .dd-all { margin: 0 !important; border: 0; padding: 10px 12px !important; white-space: nowrap; }
 .dd-h { margin: 0 0 8px; font: 700 12.5px/1 var(--head); color: var(--clay, #B5603A); }
 .dd-panel a { display: grid; gap: 3px; padding: 10px 12px; margin: 0 -12px; border-radius: 12px; color: inherit; text-decoration: none; }
 .dd-panel a b { font: 700 15px/1.25 var(--head); color: var(--green); } .dd-panel a span { font-size: 13px; line-height: 1.45; color: var(--soft); font-weight: 400; }
@@ -460,6 +464,7 @@ CSS = MOCK_CSS + '''
   .dd-h { color: var(--peach); margin-top: 8px; }
   .dd-panel a { margin: 0; padding: 6px 0; } .dd-panel a b { color: var(--cream); font-size: 17px; } .dd-panel a span { display: none; }
   .dd-all { border: 0; padding: 8px 0 !important; color: var(--peach) !important; }
+  .dd-foot { display: grid; border: 0; padding: 0; margin: 4px 0 0; gap: 0; } .dd-panel .dd-build { margin: 0; }
 }
 '''
 

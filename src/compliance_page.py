@@ -72,6 +72,25 @@ PAGE = f'''<section class="page-hero cm-hero"><div class="wrap pg-split">
   <p class="rv"><a class="cm-link" href="#/docs/compliance-register">See every obligation</a></p></div>
 </div></section>
 
+<section class="sec pg-sec pg-sage" id="infrastructure" aria-labelledby="infra-h"><div class="wrap">
+  <div class="cm-infra-head"><div><p class="pl-kick cm-kick rv">For Christian tech platforms</p>
+  <h2 class="pg-h rv" id="infra-h">Compliance infrastructure, built in.</h2>
+  <p class="pg-lead rv">Put the same reviewed view of the rules inside your own product, so your users stay lawful without leaving it. Love is Our Weapon is our first user.</p></div>
+  <div class="cm-embed rv" aria-hidden="true"><span class="cm-embed-k">Add the check-up to any page</span><code>&lt;script type="module"
+  src="…/sdk/v0/compliance-widget.js"&gt;&lt;/script&gt;
+&lt;always-compliance-check&gt;
+&lt;/always-compliance-check&gt;</code></div></div>
+  <div class="sl-rows cm-infra-rows">
+    <div class="sl-row rv"><h3>An open register</h3><p>Every obligation as versioned open data. Pin a version, or follow the latest.</p></div>
+    <div class="sl-row rv"><h3>Change alerts</h3><p>Signed webhooks when the rules change, and which obligations it affects for each ministry.</p></div>
+    <div class="sl-row rv"><h3>Check-up API and embed</h3><p>Run the check-up from your own app, or drop in the ready-made one. Nothing is stored.</p></div>
+    <div class="sl-row rv"><h3>Compliant by default</h3><p>The same guardrails Always Platform runs on: age asked first, consent checked, no personal details in messages, Spam Act basics.</p></div>
+    <div class="sl-row rv"><h3>A record your board approves</h3><p>A quarterly check-up approved by a person, ready to share with funders, a denomination or an insurer.</p></div>
+    <div class="sl-row rv"><h3>Free for churches</h3><p>Platforms and larger ministries contribute according to their size.</p></div>
+  </div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/compliance-platforms">Read the guide</a><a class="btn btn-ghost-dark" href="#/join" data-join-interest="Always Compliance">Talk to us</a></div>
+</div></section>
+
 <section class="sec pg-sec"><div class="wrap cm-end">
   <h2 class="pg-h rv">Get your check-up every quarter</h2>
   <p class="pg-lead rv">Free for churches. Larger ministries contribute according to their size. One sign-in with every Always product.</p>
@@ -80,6 +99,15 @@ PAGE = f'''<section class="page-hero cm-hero"><div class="wrap pg-split">
 '''
 
 CSS = '''
+.cm-infra-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center; }
+.cm-kick { color: var(--clay); }
+.cm-embed { display: grid; gap: 12px; padding: 22px 24px; border-radius: 22px; background: #0F2925; color: #CFE0D7; box-shadow: 0 30px 50px -30px rgba(20,53,47,.6); min-width: 0; }
+.cm-embed-k { font: 700 12.5px/1 var(--head); color: var(--peach); }
+.cm-embed code { font: 500 13px/1.7 ui-monospace, 'SF Mono', Menlo, monospace; white-space: pre; overflow-x: auto; background: none; color: inherit; padding: 0; }
+.cm-infra-rows { margin-top: 48px; }
+#infrastructure .pg-cta { margin-top: 12px; }
+@media (max-width: 900px) { .cm-infra-head { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
+
 .cm-hero h1 { max-width: 15ch; }
 .cm-fine { margin-top: 18px; font-size: 14px; opacity: .8; }
 .cm-sample { background: #FFFDF8; color: var(--ink, #1A1410); border-radius: 24px; padding: 24px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); display: grid; gap: 10px; max-width: 420px; justify-self: end; width: 100%; }
@@ -346,7 +374,9 @@ DOCS = ("Always Compliance", [
 <p class="lead">Use the register and the check-up in your own tools. The register is public; member data needs sign-in.</p>
 <h2>Public</h2>
 <table class="dt"><thead><tr><th>Call</th><th>What it does</th></tr></thead><tbody>
-<tr><td><code>GET /v1/compliance/register</code></td><td>The latest published register</td></tr>
+<tr><td><code>GET /v1/compliance/register</code></td><td>The latest published register, with an ETag</td></tr>
+<tr><td><code>GET /v1/compliance/register/versions</code></td><td>Every published version</td></tr>
+<tr><td><code>GET /v1/compliance/register/{version}</code></td><td>One version. It never changes.</td></tr>
 <tr><td><code>GET /v1/compliance/changes</code></td><td>What changed between versions, newest first</td></tr>
 <tr><td><code>POST /v1/compliance/check</code></td><td>A check-up from a profile and answers. Nothing is stored.</td></tr>
 </tbody></table>
@@ -367,5 +397,32 @@ DOCS = ("Always Compliance", [
 <tr><td><code>POST /v1/compliance/assessments/{id}/approve</code></td><td>Approve a quarterly assessment. A signed-in person only.</td></tr>
 </tbody></table>
 <p>The engine is also in the open-source <code>@always/core</code> package as <code>assess()</code>.</p>
+"""),
+  ("compliance-platforms", "For platforms", """
+<p class="lead">Build Always Compliance into your own product. The register, the check-up and the embed are free and need no sign-in. Change alerts need an Always account.</p>
+<h2>Embed the check-up</h2>
+<pre><code>&lt;script type="module" src="https://cdn.alwaysfoundation.org/sdk/v0/compliance-widget.js"&gt;&lt;/script&gt;
+&lt;always-compliance-check accent="#5B67D8"&gt;&lt;/always-compliance-check&gt;</code></pre>
+<p>Answers stay in the browser and nothing is stored. Listen for the <code>always-compliance-result</code> event to see the totals.</p>
+<h2>Hear when the rules change</h2>
+<p>Add a webhook endpoint as an admin, or with a token that has the <code>webhooks</code> scope. Keep the secret it returns: it is shown once.</p>
+<pre><code>curl -X POST https://api.alwaysfoundation.org/v1/webhooks \\
+  -H "authorization: Bearer $ALWAYS_TOKEN" -H "x-always-org: $ORG_ID" \\
+  -H 'content-type: application/json' \\
+  -d '{"url":"https://your-app.example/hooks/always",
+       "events":["always.compliance.obligations.affected"]}'</code></pre>
+<table class="dt"><thead><tr><th>Event</th><th>When</th></tr></thead><tbody>
+<tr><td><code>always.compliance.register.published</code></td><td>A new version is published, with what changed</td></tr>
+<tr><td><code>always.compliance.obligations.affected</code></td><td>A change affects obligations that apply to you</td></tr>
+</tbody></table>
+<p>Deliveries are signed CloudEvents. Check each one with <code>verifyWebhook</code> from <code>@always/sdk</code>. They carry register facts, never people's details.</p>
+<h2>Compliant by default</h2>
+<pre><code>import { ageGuard, requireConsent, personalDataProblems, spamActProblems } from '@always/sdk';
+
+if (!ageGuard(person.ageBand).aiAllowed) skipAi();   // no AI for under-18s
+requireConsent(person.consent, 'connect.church');    // throws without consent
+personalDataProblems(notificationText);              // [] when there are no emails or phone numbers
+spamActProblems({ consented, sender, unsubscribeUrl, body });</code></pre>
+<p>These are the rules Always Platform itself runs on. They help with common obligations; they are not legal advice.</p>
 """),
 ])
