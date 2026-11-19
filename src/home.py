@@ -54,31 +54,50 @@ CSS = r'''
 .hero .hero-kick { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px; font: 700 15px/1.2 var(--head); color: var(--peach); animation: heroUp .9s cubic-bezier(.2,.8,.2,1) both; }
 .hero .hero-kick i { width: 8px; height: 8px; border-radius: 50%; background: var(--peach); box-shadow: 0 0 0 5px rgba(232,165,119,.18); }
 
-.case { padding-top: clamp(72px, 8vw, 112px); }
-.cs-track { grid-auto-columns: clamp(300px, 40vw, 540px); gap: 24px; margin-top: 44px; padding-bottom: 28px;
-  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 140px), transparent);
-          mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 140px), transparent); }
-.cs-track.scrolled { -webkit-mask-image: linear-gradient(90deg, transparent, #000 140px, #000 calc(100% - 140px), transparent); mask-image: linear-gradient(90deg, transparent, #000 140px, #000 calc(100% - 140px), transparent); }
-.cs-track.at-end { -webkit-mask-image: linear-gradient(90deg, transparent, #000 140px); mask-image: linear-gradient(90deg, transparent, #000 140px); }
-.cs-tile { border-radius: 26px; box-shadow: 0 1px 0 rgba(27,71,64,.06), 0 24px 48px -32px rgba(10,30,26,.35); transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease; opacity: 0; transform: translateX(48px); }
-.cs-tile.in { opacity: 1; transform: none; transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease; }
-.cs-tile.in:hover { transform: translateY(-4px); box-shadow: 0 1px 0 rgba(27,71,64,.06), 0 32px 60px -30px rgba(10,30,26,.45); }
-.cs-img { aspect-ratio: 16 / 10; overflow: hidden; }
-.cs-img img { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
-.cs-tile:hover .cs-img img { transform: scale(1.04); }
-.cs-text { padding: 26px 28px 28px !important; }
-.cs-text h3 { font-size: clamp(22px, 1.9vw, 27px) !important; line-height: 1.15; }
-.cs-text p:not(.cs-name) { font-size: 16.5px; }
-.cs-dots { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
-.cs-dots button { width: 8px; height: 8px; min-width: 8px; padding: 0; border: 0; border-radius: 99px; background: rgba(27,71,64,.22); cursor: pointer; transition: width .3s ease, background .3s ease; }
-.cs-dots button[aria-current="true"] { width: 26px; background: var(--green); }
-.cs-dots button::after { content: ''; display: block; margin: -18px; width: 44px; height: 44px; }
-@media (max-width: 640px) { .cs-track { grid-auto-columns: 84vw; -webkit-mask-image: none; mask-image: none; } }
+.case { background: var(--green); color: var(--cream); padding-top: clamp(80px, 9vw, 120px); padding-bottom: clamp(72px, 8vw, 110px); overflow: hidden; }
+.case .tag { color: var(--peach); }
+.case .sec-title { color: var(--cream); }
+.case .cs-head .sv { color: var(--on-green); } .case .cs-head .sv cite { color: var(--peach); }
+.case .cs-arrow { border-color: rgba(248,243,234,.35); color: var(--cream); }
+.case .cs-arrow:hover, .case .cs-arrow:focus-visible { background: var(--cream); color: var(--green); }
+.case .cs-arrow:disabled { background: transparent; color: var(--cream); }
+.cs-track { grid-auto-columns: min(760px, 84vw); gap: 32px; margin-top: 48px; padding-top: 12px; padding-bottom: 12px; align-items: center; }
+.cs-tile { position: relative; min-height: clamp(420px, 34vw, 470px); border-radius: 28px; overflow: hidden; background: var(--night); box-shadow: 0 40px 80px -40px rgba(0,0,0,.6);
+  opacity: .42; transform: scale(.94); filter: saturate(.55); transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1), filter .6s ease; }
+.cs-tile.active { opacity: 1; transform: none; filter: none; }
+.cs-img { position: absolute; inset: 0; aspect-ratio: auto; }
+.cs-img > img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+.cs-tile.active:hover .cs-img > img { transform: scale(1.03); }
+.cs-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,44,40,.94) 0%, rgba(16,44,40,.78) 38%, rgba(16,44,40,.15) 75%, rgba(16,44,40,0) 100%), linear-gradient(0deg, rgba(16,44,40,.55), rgba(16,44,40,0) 45%); pointer-events: none; }
+.cs-img.chai-tile { background: #fff; display: block; }
+.cs-img.chai-tile > img { object-fit: contain; width: 46%; height: 100%; margin-left: 50%; }
+.cs-text { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; max-width: 460px; min-height: inherit; padding: clamp(28px, 4vw, 44px) !important; background: none; }
+.cs-pill { display: inline-block; padding: 6px 12px; border-radius: 999px; background: rgba(248,243,234,.9); color: var(--green); font: 700 12.5px/1 var(--head); margin-bottom: 18px; }
+.cs-name { color: var(--peach) !important; font-size: 14px !important; }
+.cs-name .cs-logo { border-radius: 6px; background: #fff; }
+.cs-text h3 { margin-top: 10px !important; font-size: clamp(28px, 3vw, 40px) !important; line-height: 1.04 !important; letter-spacing: -0.03em !important; color: var(--cream) !important; text-wrap: balance; }
+.cs-text > p:not(.cs-name) { margin-top: 16px !important; color: rgba(248,243,234,.85) !important; font-size: 16.5px !important; max-width: 40ch; }
+.cs-more { margin-top: 26px !important; padding: 0 20px !important; min-height: 46px; display: inline-flex; align-items: center; gap: 10px; border-radius: 14px; background: var(--cream) !important; color: var(--green) !important; text-decoration: none !important; font: 700 15px/1 var(--head); transition: transform .2s ease, box-shadow .2s ease; }
+.cs-more::after { content: ''; width: 14px; height: 14px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; transition: transform .2s ease; }
+.cs-more:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.25); } .cs-more:hover::after { transform: translateX(3px); }
+.cs-polaroid { position: absolute; z-index: 3; right: 5%; bottom: 7%; width: 30%; margin: 0; padding: 8px 8px 0; background: #FFFDF8; border-radius: 10px; transform: rotate(4deg); box-shadow: 0 24px 40px -16px rgba(0,0,0,.55); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.cs-polaroid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; }
+.cs-polaroid figcaption { padding: 8px 2px 10px; font-size: 12px; line-height: 1.3; color: var(--green); }
+.cs-tile.active:hover .cs-polaroid { transform: rotate(1deg) translateY(-4px); }
+.cs-foot { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 28px; }
+.cs-bars { display: flex; gap: 8px; }
+.cs-bars button { position: relative; width: 48px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; }
+.cs-bars button::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 3px; background: rgba(248,243,234,.22); transition: background .3s ease; }
+.cs-bars button[aria-current="true"]::before { background: var(--peach); }
+.cs-count { position: absolute; left: 50%; transform: translateX(-50%); font: 700 14px/1 var(--head); letter-spacing: .04em; color: var(--cream); font-variant-numeric: tabular-nums; }
+.cs-count span { color: rgba(248,243,234,.5); }
+@media (max-width: 860px) { .cs-text { max-width: none; justify-content: flex-end; } .cs-img::after { background: linear-gradient(0deg, rgba(16,44,40,.95) 0%, rgba(16,44,40,.75) 50%, rgba(16,44,40,.1) 100%); } .cs-polaroid { width: 38%; top: 6%; bottom: auto; right: 6%; } .cs-img.chai-tile > img { width: 70%; height: 50%; margin: 0 auto; display: block; } .cs-count { position: static; transform: none; } }
+@media (max-width: 640px) { .cs-bars { flex: 1; } .cs-bars button { flex: 1; width: auto; } .cs-count { display: none; } .cs-track { grid-auto-columns: 86vw; gap: 14px; } .cs-tile { min-height: 520px; } .cs-text h3 { font-size: 28px !important; } }
 
 @media (prefers-reduced-motion: reduce) {
   .oz-road, .oz-sun, .oz-door, .oz-s, .hero .hero-kick { animation: none !important; }
-  .cs-tile, .cs-tile.in { opacity: 1; transform: none; transition: none; }
-  .cs-img img { transition: none; } .cs-tile:hover .cs-img img { transform: none; }
+  .cs-tile { transition: none; } .cs-img > img, .cs-polaroid { transition: none; }
+  .cs-tile.active:hover .cs-img > img { transform: none; }
 }
 '''
 
@@ -87,32 +106,32 @@ JS = r'''
   const track = document.querySelector('.cs-track');
   if (!track) return;
   const tiles = [...track.querySelectorAll('.cs-tile')];
-  const dots = document.createElement('div');
-  dots.className = 'cs-dots';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const foot = document.createElement('div');
+  foot.className = 'cs-foot';
+  const bars = document.createElement('div'); bars.className = 'cs-bars';
+  const count = document.createElement('p'); count.className = 'cs-count'; count.setAttribute('aria-live', 'polite');
+  const pad = (n) => String(n).padStart(2, '0');
+  const go = (i) => track.scrollTo({ left: tiles[i].offsetLeft - tiles[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
   tiles.forEach((t, i) => {
     const b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('aria-label', 'Story ' + (i + 1) + ' of ' + tiles.length);
-    b.addEventListener('click', () => track.scrollTo({ left: t.offsetLeft - tiles[0].offsetLeft, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
-    dots.appendChild(b);
+    b.type = 'button'; b.setAttribute('aria-label', 'Story ' + (i + 1) + ' of ' + tiles.length);
+    b.addEventListener('click', () => go(i));
+    bars.appendChild(b);
+    t.addEventListener('click', (e) => { if (!t.classList.contains('active') && !e.target.closest('a,button')) go(i); });
   });
-  track.after(dots);
+  foot.append(bars, count);
+  track.closest('.wrap') ? track.after(foot) : track.after(foot);
+  const wrap = document.createElement('div'); wrap.className = 'wrap'; foot.replaceWith(wrap); wrap.appendChild(foot);
   function sync() {
     const x = track.scrollLeft, max = track.scrollWidth - track.clientWidth;
-    track.classList.toggle('scrolled', x > 8 && x < max - 8);
-    track.classList.toggle('at-end', x >= max - 8 && max > 0);
     const w = (tiles[1]?.offsetLeft || 1) - tiles[0].offsetLeft;
     const n = x >= max - 8 ? tiles.length - 1 : Math.round(x / w);
-    [...dots.children].forEach((d, i) => d.setAttribute('aria-current', i === n ? 'true' : 'false'));
+    tiles.forEach((t, i) => { t.classList.toggle('active', i === n); t.toggleAttribute('inert', false); });
+    [...bars.children].forEach((d, i) => d.setAttribute('aria-current', i === n ? 'true' : 'false'));
+    count.innerHTML = pad(n + 1) + ' <span>/ ' + pad(tiles.length) + '</span>';
   }
   track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
   addEventListener('resize', sync); sync();
-  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { tiles.forEach((t) => t.classList.add('in')); return; }
-  const io = new IntersectionObserver((es) => es.forEach((e) => {
-    if (!e.isIntersecting) return;
-    io.unobserve(e.target);
-    setTimeout(() => e.target.classList.add('in'), (tiles.indexOf(e.target) % 4) * 110);
-  }), { threshold: 0.15 });
-  tiles.forEach((t) => io.observe(t));
 })();
 '''
