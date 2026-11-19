@@ -454,6 +454,11 @@ RESEARCH_CSS = '''
 def _swatch(name, hexv, use, dark=False):
     return f'<div class="br-sw"><span class="br-chip" style="background:{hexv}"></span><b>{name}</b><code>{hexv}</code><span>{use}</span></div>'
 
+import base64 as _b64, os as _os
+def _sq(name):
+    path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'brand', name + '.svg')
+    return 'data:image/svg+xml;base64,' + _b64.b64encode(open(path, 'rb').read()).decode()
+
 BRAND = f'''<section class="page-hero"><div class="wrap">
   <h1>Brand</h1><p>How Always looks and sounds. Use it freely when you talk about Always.</p>
 </div></section>
@@ -465,6 +470,14 @@ BRAND = f'''<section class="page-hero"><div class="wrap">
     <figure class="br-logo dark"><img src="{{{{LOGO_REV}}}}" alt="Always Foundation logo on green"><figcaption>On green</figcaption><div class="br-dl"><a class="btn btn-peach" href="/brand/always-foundation-logo-on-green.png?download">Download PNG</a><a class="br-alt" href="/brand/always-foundation-logo-on-green.svg?download">SVG</a></div></figure>
   </div>
   <p class="br-fine rv">Designers: a <a href="/brand/always-foundation-logo-reverse.svg?download">light logo with no background</a> is there for placing on your own green.</p>
+  <h3 class="br-sub rv">Square</h3>
+  <p class="br-fine rv">For profile pictures, social media, app icons and anywhere that needs a square. 1024 by 1024 pixels.</p>
+  <div class="br-logos br-squares">
+    <figure class="br-logo br-sq"><img src="{_sq('always-foundation-square')}" alt="Always Foundation square logo"><figcaption>Square</figcaption><div class="br-dl"><a class="btn btn-green" href="/brand/always-foundation-square.png?download">Download PNG</a><a class="br-alt" href="/brand/always-foundation-square.svg?download">SVG</a></div></figure>
+    <figure class="br-logo br-sq dark"><img src="{_sq('always-foundation-square-on-green')}" alt="Always Foundation square logo on green"><figcaption>Square on green</figcaption><div class="br-dl"><a class="btn btn-peach" href="/brand/always-foundation-square-on-green.png?download">Download PNG</a><a class="br-alt" href="/brand/always-foundation-square-on-green.svg?download">SVG</a></div></figure>
+    <figure class="br-logo br-sq dark"><img src="{_sq('always-foundation-icon')}" alt="Always Foundation icon: the cross"><figcaption>Icon</figcaption><div class="br-dl"><a class="btn btn-peach" href="/brand/always-foundation-icon.png?download">Download PNG</a><a class="br-alt" href="/brand/always-foundation-icon.svg?download">SVG</a></div></figure>
+  </div>
+
   <ul class="br-list rv"><li>Use the dark logo on light backgrounds, and the light one on green.</li><li>Leave space around it. Don't recolour, stretch or add effects.</li><li>Put it on a solid band, never straight on a photo.</li></ul>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
@@ -515,6 +528,12 @@ BRAND = f'''<section class="page-hero"><div class="wrap">
 </div></section>'''
 
 BRAND_CSS = """
+.br-sub { margin: 48px 0 6px; font-size: 22px; color: var(--green); }
+.br-logos.br-squares { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.br-logo.dark.br-sq img { box-shadow: 0 0 0 1px rgba(248,243,234,.28); }
+.br-sq img { aspect-ratio: 1; width: 100%; max-width: 220px; height: auto; border-radius: 18px; }
+@media (max-width: 760px) { .br-logos.br-squares { grid-template-columns: 1fr; } }
+
 .br-logos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
 .br-logo { margin: 0; background: var(--paper, #FFFDF8); border-radius: 26px; padding: 48px 32px 28px; display: grid; gap: 28px; justify-items: center; }
 .br-logo.dark { background: #1B4740; }
