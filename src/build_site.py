@@ -36,6 +36,8 @@ home = home.replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png')
 home = home.replace('{{SYDNEYFIRE_IMG}}', _photo('sydneyfire-street.jpg'))
 home = home.replace('{{REJOICE_IMG}}', _photo('rejoice-team.jpg'))
 home = home.replace('{{UEN_IMG}}', _photo('uen-event.jpg'))
+import home as HM
+home = home.replace('{{HORIZON}}', HM.HORIZON)
 FAITHTECH_IMG = _photo('faithtech.png', maxw=1600, q=84)
 home = _swap(home, 'class="sec promise"', '')
   # 'Watch it work' removed
@@ -515,6 +517,10 @@ def esc(s): return html.escape(s, quote=True)
 DOCS.insert(1, CP.DOCS)
 import docs_update as DU
 import faithtech as FT
+import chai as CH
+PR.NEW_PAGES['chai'] = CH.PAGE
+PR.TITLES['chai'] = 'Christians in AI: Branches · Always Foundation'
+import home as HM
 PR.NEW_PAGES['faithtech'] = FT.PAGE
 PR.TITLES['faithtech'] = 'FaithTech Australia · Always Foundation'
 import motion as MO
@@ -1173,7 +1179,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + CP.JS + extras.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS
+""" + CP.JS + extras.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS + HM.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """
@@ -1203,7 +1209,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{HM.CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
