@@ -15,7 +15,7 @@ INTRO = """
 <tr><td><a href="#/docs/inbox">Always Connect</a></td><td>Find a local church, hand people on safely and follow up together.</td></tr></table>
 <h2>Who it's for</h2>
 <ul>
-<li><b>Churches</b> claim their page on the map, receive introductions and welcome people from their phone. Free.</li>
+<li><b>Churches</b> join, receive introductions and welcome people from their phone. Free.</li>
 <li><b>Ministries and events</b> give everyone who says yes a safe next step, under their own name if they like.</li>
 <li><b>People who respond</b> get a clear choice, a real person, and control of their own story.</li>
 <li><b>Developers</b> build on Always Platform with the API, SDK, MCP server and webhooks.</li>
@@ -72,7 +72,6 @@ PRIVACY = """
 <tr><td>Respond to Jesus and ask for a next step</td><td>First name, a mobile or email, suburb, age band, the step you chose, your consent</td><td>A church or ministry near you can get in touch</td></tr>
 <tr><td>Register to join Always</td><td>Your name, email, optional mobile, your role, your organisation's details and what you agreed to</td><td>We can check your details and set you up</td></tr>
 <tr><td>Contact us, or scan our QR code</td><td>First name, a way to reach you, an optional organisation and note</td><td>We can reply</td></tr>
-<tr><td>Claim a church page</td><td>Your name, role and how we can confirm it</td><td>We can confirm you speak for the church</td></tr>
 <tr><td>Use the compliance check-up or API</td><td>Nothing about you. Answers are checked and the result returned; nothing is stored</td><td>You get your result</td></tr>
 <tr><td>Visit the website</td><td>No tracking cookies or advertising pixels</td><td>Nothing</td></tr></table>
 <h2>Your faith is sensitive information</h2>
@@ -284,6 +283,8 @@ def apply(DOCS):
     set_page('inbox', title='Always Connect: welcome from your phone')
     edit('inbox', 'The Always Connect inbox works', 'Your Always Connect inbox works')
 
+    gi, pi = find('claim')
+    DOCS[gi][1].pop(pi)
     set_page('privacy', title='Privacy policy', body=PRIVACY)
     gi, pi = find('privacy')
     DOCS[gi][1].insert(pi + 1, ('terms', 'Terms of use', TERMS))

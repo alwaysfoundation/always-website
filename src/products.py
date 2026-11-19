@@ -27,7 +27,7 @@ PRODUCTS = {
 }
 DEVELOPERS = ('developers', 'Developers', 'The API, SDK, MCP connector, feeds and webhooks behind every Always module.')
 # Old routes: agents live inside Always Connect; the developer page moved.
-ALIASES = {'agents': 'connect', 'build': 'developers', 'pages': 'respond'}
+ALIASES = {'agents': 'connect', 'build': 'developers', 'pages': 'respond', 'claim': 'join/church'}
 
 # slug: (route, menu name, one line, products used, story)
 SOLUTIONS = {
@@ -198,7 +198,7 @@ def footer_cols():
             f'<div><h2>Solutions</h2>{sol}</div>'
             f'<div><h2>Developers</h2>{dev}</div>'
             '<div><h2>Foundation</h2><a href="#/about">About</a><a href="#/stories">Stories</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/faq">FAQs</a></div>'
-            '<div><h2>Help</h2><a href="#/contact">Contact us</a><a href="#/docs/introduction">Docs</a><a href="#/claim">Claim your church</a><a href="#/docs/privacy">Privacy</a><a href="#/docs/terms">Terms</a></div>')
+            '<div><h2>Help</h2><a href="#/contact">Contact us</a><a href="#/docs/introduction">Docs</a><a href="#/docs/privacy">Privacy</a><a href="#/docs/terms">Terms</a></div>')
 
 
 # ---------------------------------------------------------------- Product pages
@@ -285,7 +285,7 @@ REPORTS_PAGE = product_page('reports',
 
 CONNECT_PAGE = product_page('connect',
     'When someone says yes to Jesus, Always Connect helps them find a next step near home, with a real person reaching out, and your team follows up together.',
-    [('The directory', '3,937 churches and ministries mapped across Australia, each able to claim its page.'),
+    [('The directory', '3,937 churches and ministries mapped across Australia, each able to join and manage its own page.'),
      ('Verified churches', 'We check with each church\'s denomination or network before anyone is introduced.'),
      ('A safe handoff', 'The person chooses their next step and sees who will reach out before anything is shared.'),
      ('Your team inbox', 'Accept or pass introductions from any phone, and keep walking with people.'),
@@ -293,7 +293,7 @@ CONNECT_PAGE = product_page('connect',
      ('No one dropped', 'If no one nearby can help, the Always care team reaches out.')],
     ['pages', 'app', 'reports'],
     extra=CONNECT_EXTRA,
-    secondary=('Claim your church', '#/claim'),
+    secondary=('Join as a church', '#/join/church'),
     statement='So no one walks alone.')
 
 # ---------------------------------------------------------------- Solution pages
@@ -338,7 +338,7 @@ EVANGELISTS_PAGE = solution_page('evangelists', [
 ], cta=('Join the pilot', '#/join/evangelist'))
 
 NETWORKS_PAGE = solution_page('networks', [
-    ('Ready to welcome', 'Help every church in your network claim its page, get verified and be ready to receive people.'),
+    ('Ready to welcome', 'Help every church in your network join, get verified and be ready to receive people.'),
     ('See the fruit across your network', 'Combined reports across your churches, with totals only.'),
     ('Shared compliance', 'One view of privacy and child safety obligations, so every church can stay lawful with less admin.'),
 ])

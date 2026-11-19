@@ -47,7 +47,7 @@ CONTACT = f'''<section class="sec join contact-sec"><div class="wrap">
       {QR_CARD}
       <a class="mail" href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>
       <ul class="ct-more">
-        <li><a href="#/claim">Claim your church's page</a></li>
+        <li><a href="#/join">Join Always</a></li>
         <li><a href="#/feedback">Report a problem or share an idea</a></li>
         <li><a href="#/faq">Read the FAQs</a></li>
       </ul>

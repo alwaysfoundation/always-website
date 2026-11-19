@@ -23,10 +23,10 @@ church_desk = f'''<div class="pg-desk rv" aria-label="The church inbox on the we
 </div>'''
 church_phone = phone(f'''<p class="pg-cap">Always Connect · Inbox</p><div class="pg-card hl"><div class="pg-row-h"><b>Sam</b><em class="new">New</em></div><span class="pg-mut">Parramatta · Find a church</span><div class="pg-field">04•• ••• •••</div><div class="pg-btns"><span class="pg-b">Accept</span><span class="pg-b ln">Pass</span></div></div><div class="pg-card"><div class="pg-row-h"><b>Josh</b><em class="ok">Accepted</em></div><span class="pg-mut">Harris Park · Talk with someone</span></div>''')
 
-CHURCHES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples. Free, always.</p><div class="pg-cta"><a class="btn btn-peach" href="#/claim">Claim your church</a></div></div>{mock('connect', 'mk-lg')}</div></section>
+CHURCHES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples. Free, always.</p><div class="pg-cta"><a class="btn btn-peach" href="#/join/church">Join as a church</a></div></div>{mock('connect', 'mk-lg')}</div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Three steps to welcoming people</h2>
-  {steps([('Claim your page', 'Tell us about your church and who you are. It takes about ten minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead does a 20-minute course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
+  {steps([('Join Always', 'Register your church and tell us who you are. It takes a few minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead does a 20-minute course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Always Connect, in any browser</h2><p class="pg-lead rv">A free web app for your team. Nothing to install, so your connect lead can say yes from their phone on a Sunday.</p>
@@ -36,7 +36,7 @@ CHURCHES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><di
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What your church gets</h2>
   {feats([('Your page on the map', 'Your welcome, service times, what to expect, and the next steps you offer, in your colours.'), ('Introductions near you', 'People who have already said yes to Jesus, within the area you choose.'), ('Next steps and capacity', 'Choose what you offer and how many people you can welcome each month. Pause any time.'), ('Your team', 'Invite your pastor, connect lead and youth leaders, each with the right access.'), ('Walking with', 'Keep track of everyone you are welcoming, and get a simple monthly report for your leaders.'), ('Your own tools', 'Use the free inbox, or connect your church management system through the API.')])}
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/claim">Claim your church</a><a class="btn btn-green" href="#/docs/claim">How claiming works</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/church">Join as a church</a><a class="btn btn-green" href="#/docs/joining">How joining works</a></div>
 </div></section>'''
 
 ministry_desk = f'''<div class="pg-desk rv" aria-label="The ministry dashboard on the web">
@@ -132,7 +132,7 @@ FAQ_GROUPS = [
   ('How do I sign in?', 'With one Always account, using Apple, Google, YouVersion or your email. The same account works across the Always App and every tool built on Always Platform.')]),
  ('For churches', [
   ('Does it cost anything?', 'No. Churches never pay. Larger ministries contribute according to their size.'),
-  ('How do we join?', 'Claim your church\'s page, and we verify you with your denomination or network.'),
+  ('How do we join?', 'Register at Join Always, and we verify you with your denomination or network.'),
   ('What if we can\'t welcome someone?', 'Pass, with a reason. The next church or ministry nearby is asked. If none can, our care team helps.'),
   ('Do we have to change our church software?', 'No. Use the free Always Connect inbox, in any browser, or connect your system through the API. Elvanto and Planning Center come first.'),
   ('What does welcoming now mean?', 'You\'re verified, trained, have room this month and usually reply on time. If you get busy, introductions simply pause.'),

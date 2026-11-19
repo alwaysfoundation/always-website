@@ -732,8 +732,8 @@ directory_page = f"""
   <div class="dir-list" id="dlist"></div>
   <div class="dir-more"><button class="btn btn-green" id="dmore" type="button">Show more</button></div>
   <div class="claim-note">
-    <div><h3>Is this your church?</h3><p>Claim your page to update your details, choose your next steps and start welcoming people. Free, always.</p></div>
-    <a class="btn btn-peach" href="#/claim">Claim your church</a>
+    <div><h3>Is this your church?</h3><p>Join Always to manage your page, choose your next steps and start welcoming people. Free for churches.</p></div>
+    <a class="btn btn-peach" href="#/join/church">Join as a church</a>
   </div>
 </div></section>
 """
@@ -1054,7 +1054,7 @@ header = """
     </a>
     <nav aria-label="Main" id="main-nav"><ul>
       """ + PR.menu_html() + """
-    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/claim">Claim your church</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/join">Join Always</a></div></nav>
+    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/join">Join Always</a></div></nav>
     <a class="btn btn-peach" href="#/join">Join Always</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" onclick="toggleMenu()"><span>Menu</span><i aria-hidden="true"></i></button>
   </div>
@@ -1085,6 +1085,7 @@ function route() {
   const [first, second] = h.split('/');
   const aliases = """ + json.dumps(PR.ALIASES) + """;
   if (aliases[first]) { location.replace('#/' + aliases[first]); return; }
+  if (location.hash === '#/docs/claim') { location.replace('#/docs/joining'); return; }
   let page = 'home';
   if (pages[first] && first !== 'home') page = first;
   for (const [k, id] of Object.entries(pages)) document.getElementById(id).hidden = k !== page;
