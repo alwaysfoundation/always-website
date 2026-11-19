@@ -1,7 +1,7 @@
 {
-  "name": "Always App",
-  "short_name": "Always",
-  "description": "Share Jesus and walk with people.",
+  "name": "Always Sent",
+  "short_name": "Always Sent",
+  "description": "Share Jesus. Tell your story.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

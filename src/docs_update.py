@@ -7,7 +7,7 @@ INTRO = """
 <p>Every week people respond to Jesus at concerts, camps, services, on the street and online. Always Platform makes sure that moment becomes a next step: the person chooses what would help, and a church or ministry nearby gets in touch. If no one can, our care team helps.</p>
 <h2>How the tools fit together</h2>
 <div class="dcards">
-<a href="#/docs/app"><span>Share Jesus</span><b>Always App</b><em>Share the Good News and capture a yes, at an event or in a conversation.</em></a>
+<a href="#/docs/app"><span>Share Jesus</span><b>Always Sent</b><em>Share the Good News and capture a yes, at an event or in a conversation.</em></a>
 <a href="#/docs/senders"><span>Capture every yes</span><b>Always Respond</b><em>Respond by QR code, tap, ticket or link, under your own brand.</em></a>
 <a href="#/docs/inbox"><span>Hand people on</span><b>Always Connect</b><em>Find the next best faith step nearby, and walk with people.</em></a>
 <a href="#/docs/compliance-overview"><span>Stay lawful</span><b>Always Safety</b><em>Privacy, child safety, charity and messaging rules, made clear.</em></a>
@@ -37,7 +37,7 @@ HOW = """
 """
 
 APP = """
-<p class="lead">The Always App helps every Christian share Jesus, and gives the people who say yes a safe next step.</p>
+<p class="lead">Always Sent helps every Christian share Jesus, and gives the people who say yes a safe next step.</p>
 <ul>
 <li><b>The Good News.</b> Walk through the Romans Road together, verse by verse.</li>
 <li><b>Scripture.</b> Open the Bible in the app through YouVersion. See <a href="#/docs/youversion">Scripture with YouVersion</a>.</li>
@@ -53,13 +53,13 @@ APP = """
 <li><b>Light and dark.</b> It follows your phone, or choose Light, Warm or Dark in Me.</li>
 </ul>
 <p>Most of what you do stays on your phone. See <a href="#/docs/saving">How your information is saved</a>.</p>
-<p>The Always App runs in any browser, with nothing to download. It's used by evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join as an evangelist</a>.</p>
+<p>Always Sent runs in any browser, with nothing to download. It's used by evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join as an evangelist</a>.</p>
 """
 
 
 MODULES = """
 <p class="lead">Always Platform is one platform with five modules. Your team signs in once and switches on what it needs.</p>
-<h2>Always App</h2>
+<h2>Always Sent</h2>
 <p>For sharing Jesus. A simple way to start a conversation, capture a yes with the person's consent, and open Scripture with them through YouVersion. Runs in any browser, with nothing to download.</p>
 <h2>Always Respond</h2>
 <p>A simple way for people to respond, in your colours and words: a QR code on the street or the big screen, a tap on an NFC armband, disc or ticket, a landing page, or a response card under a video. See <a href="#/docs/senders">Response pages and QR codes</a>, <a href="#/docs/taps">Taps, tickets and armbands</a> and <a href="#/docs/branding">Your own brand</a>.</p>
@@ -83,7 +83,7 @@ JOINING = """
 <h2>Who can join</h2>
 <table class="dt"><tr><th>You are</th><th>What joining means</th></tr>
 <tr><td>A church or ministry</td><td>A member of the foundation. Choose your modules; churches use them free.</td></tr>
-<tr><td>An evangelist</td><td>Use the Always App to share Jesus, with a safe next step for every yes.</td></tr>
+<tr><td>An evangelist</td><td>Use Always Sent to share Jesus, with a safe next step for every yes.</td></tr>
 <tr><td>A supporter</td><td>Pray, give or volunteer with us.</td></tr>
 <tr><td>A tech platform</td><td>Build on Always Platform, starting with Always Safety.</td></tr></table>
 <h2>How it works</h2>
@@ -219,7 +219,7 @@ TAPS = """
 """
 
 YOUVERSION = """
-<p class="lead">Always Platform draws Scripture from YouVersion Platform, the technology behind the Bible App, in Always Respond, the Always App and for developers.</p>
+<p class="lead">Always Platform draws Scripture from YouVersion Platform, the technology behind the Bible App, in Always Respond, Always Sent and for developers.</p>
 <h2>What's built</h2>
 <ul>
 <li><b>Scripture service.</b> <code>GET https://alwaysfoundation.org/api/scripture/passage?ref=ROM.5.8</code> returns the passage text, its reference, the translation and its copyright line. Passages are cached. No personal information is sent or kept.</li>
@@ -241,7 +241,7 @@ YOUVERSION = """
 """
 
 SAVING = """
-<p class="lead">The Always App is built so your faith stays yours. Most of what you do never leaves your phone, and the little that does is shared only when you tick a box to say so.</p>
+<p class="lead">Always Sent is built so your faith stays yours. Most of what you do never leaves your phone, and the little that does is shared only when you tick a box to say so.</p>
 <h2>Kept only on your phone</h2>
 <p>These live in your browser on your phone. We can&rsquo;t see them, and they&rsquo;re never sent to us:</p>
 <ul>
@@ -278,7 +278,7 @@ SAVING = """
 <li>Sell anyone&rsquo;s details, or show ads.</li>
 <li>Track what you read in the Bible or how you use the app.</li>
 <li>Put names, numbers or messages in our logs, emails or texts.</li>
-<li>Send anything with links to partner training. Those open on their own sites, and say only that you came from the Always App.</li>
+<li>Send anything with links to partner training. Those open on their own sites, and say only that you came from Always Sent.</li>
 </ul>
 <h2>Changing your mind</h2>
 <p>Email <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a> and we&rsquo;ll delete your details, and let anyone we shared them with know. Read more in our <a href="#/docs/privacy">Privacy policy</a> and <a href="#/docs/security">Security</a>.</p>
@@ -328,6 +328,15 @@ JOURNEYS = """
 <li><b>Never under 18.</b></li>
 </ul>
 
+<h2>How we&rsquo;re trialling it</h2>
+<ul class="jl">
+<li><b>Adults who choose it.</b> Only people 18 and over who tick the separate box.</li>
+<li><b>A small group of ministries first,</b> at events where people already respond through Always.</li>
+<li><b>Totals first.</b> We check counts are right and small groups stay hidden before any church sees earlier steps.</li>
+<li><b>Independent review</b> of privacy and security before it opens more widely.</li>
+<li><b>Withdraw any time,</b> and the journey is unlinked straight away.</li>
+</ul>
+
 <h2>In the Australian context</h2>
 <ul class="jl">
 <li><b>Faith is sensitive information</b> under the Australian Privacy Principles, so it needs its own yes and is used for nothing else.</li>
@@ -372,7 +381,7 @@ AGENTS = """
 GLOSSARY = """
 <dl class="gloss">
 <dt>Always Platform</dt><dd>The shared platform behind every module, with one sign-in and shared records.</dd>
-<dt>Module</dt><dd>A part of Always Platform you can switch on: Always App, Always Respond, Always Safety, Always Reports and Always Connect.</dd>
+<dt>Module</dt><dd>A part of Always Platform you can switch on: Always Sent, Always Respond, Always Safety, Always Reports and Always Connect.</dd>
 <dt>Member</dt><dd>A church or ministry that has joined the foundation and affirms the Nicene Creed.</dd>
 <dt>Response</dt><dd>Someone telling us they responded to Jesus and would like a next step, with their consent.</dd>
 <dt>Next best faith step</dt><dd>What would help most right now: usually a local church, sometimes a course, a youth group or care.</dd>
@@ -427,7 +436,7 @@ def apply(DOCS):
     if False: edit('how-it-works', '<h2>1. Someone responds</h2>', '<div class="callout"><b>Always Respond and Always Connect work together.</b> Always Respond captures the yes. Always Connect finds the next best faith step for that person, near where they live, and makes sure a real person walks with them. Often that step is a local church; sometimes it is another ministry first, like Alpha.</div>\n<h2>1. Someone responds</h2>')
     set_page('glossary', body=GLOSSARY)
     gi, _ = find('introduction')
-    DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING), ('app', 'Always App', APP), ('saving', 'How your information is saved', SAVING)]
+    DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING), ('app', 'Always Sent', APP), ('saving', 'How your information is saved', SAVING)]
 
     edit('senders', 'in Always for ministries', 'in Always Respond')
     set_page('senders', title='Response pages and QR codes')
@@ -474,7 +483,7 @@ def apply(DOCS):
     pages = {t[0]: t for _, ps in DOCS for t in ps}
     layout = [
         ('Get started', ['introduction', 'how-it-works', 'modules', 'joining', 'glossary']),
-        ('Always App', ['app', 'saving']),
+        ('Always Sent', ['app', 'saving']),
         ('Always Respond', ['senders', 'taps', 'branding', 'online']),
         ('Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming', 'always-agent']),
         ('Always Safety', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review', 'compliance-api', 'compliance-platforms']),

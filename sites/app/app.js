@@ -1,4 +1,4 @@
-/* Always App. A free web app to share Jesus and walk with people.
+/* Always Sent. A free web app to share Jesus and walk with people.
    Everything personal (prayer list, notes, people, highlights) stays on this device.
    Only a response someone chooses to send, with their consent, leaves the device, to the Always database. */
 (() => {
@@ -36,7 +36,7 @@ const P = {
   moon: '<path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10z"/>', music: '<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
   user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>', search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
   left: '<path d="M15 5l-7 7 7 7"/>', right: '<path d="M9 5l7 7-7 7"/>', down: '<path d="M6 9l6 6 6-6"/>',
-  share: '<path d="M12 3v13M7 8l5-5 5 5M5 14v6h14v-6"/>', help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/>', mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', check: '<path d="M5 12l5 5 9-10"/>', plus: '<path d="M12 5v14M5 12h14"/>',
+  share: '<path d="M12 3v13M7 8l5-5 5 5M5 14v6h14v-6"/>', bell: '<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 21h4"/>', help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/>', mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', check: '<path d="M5 12l5 5 9-10"/>', plus: '<path d="M12 5v14M5 12h14"/>',
   x: '<path d="M6 6l12 12M18 6L6 18"/>', ext: '<path d="M7 17L17 7M9 7h8v8"/>', type: '<path d="M4 7V5h16v2M9 19h6M12 5v14"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
   lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>', bookmark: '<path d="M6 3h12v18l-6-4-6 4z"/>',
   pen: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>', copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
@@ -145,8 +145,8 @@ function welcome() {
     <div class="ring" style="right:40px;top:90px;width:120px;height:120px;border:2px solid #E8A577"></div>
     <div style="color:#F8F3EA">${LOGO}</div>
     <div style="margin-top:auto" class="stack">
-      <p class="k" style="color:#E8A577">The Always App</p>
-      <h1 class="big-serif" style="font-size:40px;color:#F8F3EA">Share Jesus.<br>Walk with people.</h1>
+      <p class="k" style="color:#E8A577">Always Sent</p>
+      <h1 class="big-serif" style="font-size:40px;color:#F8F3EA">Share Jesus.<br>Tell your story.</h1>
       <p class="p" style="color:#CFE0D7;font-size:16.5px">A Bible, conversation guides, training and follow-up in one free app. Your prayer list and notes stay on this phone.</p>
       <div class="field" style="margin-top:6px"><label for="w-name" style="color:#F8F3EA">What should we call you? <span style="font-weight:500;color:#B9D0C6">(optional)</span></label><input class="input" id="w-name" autocomplete="given-name" maxlength="40" placeholder="First name"></div>
       <div class="label" style="color:#F8F3EA">Choose your Bible</div>
@@ -189,7 +189,7 @@ on(/^\/$/, async () => {
     ${(() => { const d = dueToday(); return d.length ? `<div class="sp2"></div><a class="card today" href="#/walk/p/${d[0].p.id}" style="text-decoration:none"><p class="k">Today</p><p class="h3">${esc(d[0].st)} · ${esc(d[0].p.name)}</p>${d.length > 1 ? `<p class="note">and ${d.length - 1} more step${d.length > 2 ? 's' : ''} for people you’re walking with</p>` : ''}</a>` : ''; })()}
     <div class="sp2"></div>
     ${plan ? `<a class="card" href="#/plan/${plan.id}" style="text-decoration:none"><div class="row between"><p class="k">Your reading plan</p><span class="pill">Day ${Math.min(activePlan[1].done.length + 1, plan.days)} of ${plan.days}</span></div><p class="h3">${esc(plan.title)}</p><div class="progress"><i style="width:${(activePlan[1].done.length / plan.days) * 100}%"></i></div></a>` :
-      `<a class="sent-hero sm" href="#/plan/sent30"><span class="sent-badge">30-day plan</span><p class="sent-ht">Sent</p><p class="sent-hs">A reading, a verse and one small step of faith each day.</p></a>`}
+      `<a class="sent-hero sm" href="#/plan/sent30"><span class="sent-badge">30-day plan</span><p class="sent-ht">Sent 30</p><p class="sent-hs">A reading, a verse and one small step of faith each day.</p></a>`}
     <div class="sp2"></div>
     <p class="h2">Ready for a conversation</p><div class="sp"></div>
     <div class="list">
@@ -523,11 +523,12 @@ on(/^\/learn$/, () => {
       <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">How do I start a conversation?</div><div class="s">Guides for friends of every background</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/story"><span class="ico sand">${ic('sparkle')}</span><div class="grow"><div class="t">How do I explain the Gospel?</div><div class="s">God’s story in four moments, in seven languages</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/testimony"><span class="ico peach">${ic('pen')}</span><div class="grow"><div class="t">How do I tell my story?</div><div class="s">Three prompts and a 30-second version</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/learn/dbs"><span class="ico sand">${ic('book')}</span><div class="grow"><div class="t">How do I read the Bible with a friend?</div><div class="s">Discovery Bible Study, ten stories to start</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/questions"><span class="ico">${ic('help')}</span><div class="grow"><div class="t">How do I answer hard questions?</div><div class="s">Honest, short answers</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div>
     <div class="sp2"></div>
     <a class="hero-card" href="#/learn/story" style="display:block;text-decoration:none"><p class="k" style="color:#E8A577">The heart of it</p><p class="big-serif" style="color:#F8F3EA;margin:8px 0">God’s story in four moments</p><p class="p">Created, broken, rescued, restored. Share it with anyone in a few minutes.</p></a>
-    <div class="sp"></div><a class="sent-hero" href="#/plan/sent30"><span class="sent-badge">30-day plan</span><p class="sent-ht">Sent</p><p class="sent-hs">For everyday evangelists. A reading, a verse to keep and one small step of faith each day.</p>${S.plans.sent30 ? `<div class="progress"><i style="width:${(S.plans.sent30.done.length / 30) * 100}%"></i></div>` : ''}</a>
+    <div class="sp"></div><a class="sent-hero" href="#/plan/sent30"><span class="sent-badge">30-day plan</span><p class="sent-ht">Sent 30</p><p class="sent-hs">For everyday evangelists. A reading, a verse to keep and one small step of faith each day.</p>${S.plans.sent30 ? `<div class="progress"><i style="width:${(S.plans.sent30.done.length / 30) * 100}%"></i></div>` : ''}</a>
     <div class="sp2"></div><div class="row between"><p class="h2">Learn from partners</p></div><p class="p" style="margin-top:4px">Trusted training from ministries we work with. It opens on their sites.</p><div class="sp"></div>
     <div class="ptrs">${AC.partners.map((x) => `<a class="ptr ptr-${x.tone}" href="#/learn/partner/${x.id}"><span class="ptr-mono" aria-hidden="true">${x.mono}</span><span class="ptr-tx"><span class="ptr-by">Training by</span><b>${esc(x.name)}</b><span>${esc(x.tag)}</span></span><span class="ptr-n">${x.tools.length} tools</span></a>`).join('')}</div>
     <div class="sp2"></div><div class="row between"><p class="h2">More good training</p><a class="see" href="#/learn/library">See all</a></div><p class="p" style="margin-top:4px">Well-loved resources from ministries around the world.</p><div class="sp"></div>
@@ -644,7 +645,7 @@ on(/^\/learn\/testimony\/share$/, () => {
   render(`${top('#/learn/testimony', 'Your story', `<a class="icon-btn" href="#/learn/testimony" aria-label="Edit your story">${ic('pen', 20)}</a>`)}
     <div class="seg" role="group" aria-label="Version"><button data-v="short" aria-pressed="${v.which === 'short'}" ${t.short ? '' : 'disabled'}>30 seconds</button><button data-v="full" aria-pressed="${v.which === 'full'}" ${full ? '' : 'disabled'}>Full story</button></div>
     <div class="sp"></div><article class="ts-read" id="ts-text"></article>
-    <div class="sp2"></div><div class="stack-s"><button class="btn peach" id="ts-send">${ic('share', 20)}Send to someone</button><button class="btn light" id="ts-copy">${ic('copy', 18)}Copy</button></div>
+    <div class="sp2"></div><div class="stack-s"><button class="btn peach" id="ts-send">${ic('share', 20)}Send to someone</button><button class="btn light" id="ts-copy">${ic('copy', 18)}Copy</button><button class="btn light" id="ts-card">${ic('image', 18)}Make a card</button></div>
     <p class="note" style="margin-top:12px;text-align:center">Only shared when you choose. Nothing is ever posted for you.</p>
     <div class="sp2"></div><p class="h2">Sharing your story well</p><div class="sp"></div>
     <div class="faq">${[['Ask first', 'Listen to their story before telling yours. “Can I tell you what changed for me?” goes a long way.'], ['Point to Jesus', 'Your story is about what He has done. Keep the focus on Him, not on how good or bad you were.'], ['Keep it short', 'Thirty seconds opens a door. If they want more, they’ll ask.'], ['Invite a next step', 'Offer to pray, read a passage together, or invite them to church.']].map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
@@ -653,6 +654,7 @@ on(/^\/learn\/testimony\/share$/, () => {
   show();
   $$('[data-v]').forEach((b) => (b.onclick = () => { v.which = b.dataset.v; $$('[data-v]').forEach((y) => y.setAttribute('aria-pressed', y === b)); show(); }));
   $('#ts-send').onclick = async () => { if (navigator.share) { try { await navigator.share({ text: text() }); } catch {} } else location.href = 'sms:?&body=' + encodeURIComponent(text()); };
+  $('#ts-card').onclick = () => { window.CARD = { kind: 'verse', style: 'ember', font: 'italic', size: 'portrait', align: 'left', text: (t.short || full).slice(0, 420), label: 'What Jesus has done for me' }; location.hash = '#/card'; };
   $('#ts-copy').onclick = async () => { try { await navigator.clipboard.writeText(text()); toast('Copied'); } catch { toast('Couldn’t copy on this phone'); } };
 });
 on(/^\/learn\/questions$/, () => {
@@ -838,7 +840,7 @@ function respondFlow({ mode, kind }) {
       <h1 class="big-serif" style="font-size:34px">${assist ? `${esc(f.firstName || 'They')}${f.firstName ? '’s' : '’re'} connected` : `You won’t walk alone${f.firstName ? ', ' + esc(f.firstName) : ''}.`}</h1>
       <p class="p" style="font-size:16px">${parent ? 'We’ll ask a parent or guardian to say yes first, then a safe youth group nearby will be in touch.' : kind === 'baptism' ? `${f.toChurch && f.toPartner ? 'A church near you and The Global Harvest will' : f.toPartner ? 'The Global Harvest team will' : 'A church near you will'} be in touch to talk about baptism. What a joy.` : 'Someone from a church or ministry nearby, or our care team, will be in touch soon.'}</p>
       ${assist ? `<a class="btn" href="#/walk/new?name=${encodeURIComponent(f.firstName || '')}">${ic('walk', 20)}Keep walking with them</a><a class="btn light" href="#/gather">Back to Gather</a>` :
-        `<div class="card sage" style="text-align:left"><p class="k">Start reading</p><p class="h3">The Gospel of John</p><p class="p">Meet Jesus, a chapter a day.</p><a class="btn small" href="#/plan/john21" style="margin-top:6px">Start reading</a></div><p class="note">Want the Always App for yourself? <a href="#/">Open it here</a>.</p>`}</div>`, assist ? '#/gather' : null);
+        `<div class="card sage" style="text-align:left"><p class="k">Start reading</p><p class="h3">The Gospel of John</p><p class="p">Meet Jesus, a chapter a day.</p><a class="btn small" href="#/plan/john21" style="margin-top:6px">Start reading</a></div><p class="note">Want Always Sent for yourself? <a href="#/">Open it here</a>.</p>`}</div>`, assist ? '#/gather' : null);
   };
   intro();
 }
@@ -854,8 +856,8 @@ const stepDue = (p, i) => (p.since || Date.now()) + (AC.walkDays[i] || 0) * DAY;
 function dueToday() { const end = new Date(); end.setHours(23, 59, 59, 999); const out = []; S.people.forEach((p) => AC.walkSteps.forEach((st, i) => { if (!p.steps?.[i] && stepDue(p, i) <= end.getTime()) out.push({ p, i, st }); })); return out; }
 function walkIcs(p) {
   const pad = (n) => String(n).padStart(2, '0'), d = (t) => { const x = new Date(t); return `${x.getFullYear()}${pad(x.getMonth() + 1)}${pad(x.getDate())}`; };
-  const ev = AC.walkSteps.map((st, i) => p.steps?.[i] ? '' : ['BEGIN:VEVENT', `UID:${p.id}-${i}@app.alwaysfoundation.org`, `DTSTAMP:${d(Date.now())}T000000Z`, `DTSTART;VALUE=DATE:${d(Math.max(stepDue(p, i), Date.now()))}`, `SUMMARY:${st} (${p.name})`, 'DESCRIPTION:From the Always App', 'BEGIN:VALARM', 'TRIGGER:PT9H', 'ACTION:DISPLAY', `DESCRIPTION:${st}`, 'END:VALARM', 'END:VEVENT'].join('\r\n')).filter(Boolean);
-  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Always Foundation//Always App//EN', ...ev, 'END:VCALENDAR'].join('\r\n');
+  const ev = AC.walkSteps.map((st, i) => p.steps?.[i] ? '' : ['BEGIN:VEVENT', `UID:${p.id}-${i}@app.alwaysfoundation.org`, `DTSTAMP:${d(Date.now())}T000000Z`, `DTSTART;VALUE=DATE:${d(Math.max(stepDue(p, i), Date.now()))}`, `SUMMARY:${st} (${p.name})`, 'DESCRIPTION:From Always Sent', 'BEGIN:VALARM', 'TRIGGER:PT9H', 'ACTION:DISPLAY', `DESCRIPTION:${st}`, 'END:VALARM', 'END:VEVENT'].join('\r\n')).filter(Boolean);
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Always Foundation//Always Sent//EN', ...ev, 'END:VCALENDAR'].join('\r\n');
 }
 // ---------------------------------------------------------------- Walk
 on(/^\/walk$/, () => {
@@ -898,10 +900,16 @@ on(/^\/walk\/pray$/, () => {
   render(`${top('#/walk', 'Prayer list')}<form id="pf" class="row"><input class="input grow" id="pn" placeholder="Add a name" maxlength="40" aria-label="Name to pray for"><button class="btn small" type="submit">${ic('plus', 18)}</button></form><div class="sp2"></div>
     ${open.length ? `<a class="btn peach" href="#/walk/praynow">${ic('heart', 20)}Pray now</a><div class="sp2"></div><div class="list">${open.map((p) => `<div class="li"><span class="avatar">${esc(p.name[0])}</span><div class="grow"><div class="t">${esc(p.name)}</div>${p.note ? `<div class="s">${esc(p.note)}</div>` : ''}</div><button class="btn small light" data-ans="${p.id}" aria-label="Mark prayer for ${esc(p.name)} answered">Answered</button></div>`).join('')}</div>` :
       '<div class="empty"><p class="h3">Who are you praying for?</p><p class="p">Add friends, family and people you’ve met. Pray for them by name.</p></div>'}
-    ${done.length ? `<div class="sp2"></div><p class="k">Answered prayers</p><div class="sp"></div><div class="list">${done.map((p) => `<div class="li"><span class="ico green">${ic('check', 18)}</span><div class="grow"><div class="t">${esc(p.name)}</div><div class="s">${fmtDate(p.answered)}</div></div><button class="icon-btn" data-del="${p.id}" aria-label="Remove">${ic('x', 18)}</button></div>`).join('')}</div>` : ''}`, { tab: 'walk' });
+    ${done.length ? `<div class="sp2"></div><p class="k">Answered prayers</p><div class="sp"></div><div class="list">${done.map((p) => `<div class="li"><span class="ico green">${ic('check', 18)}</span><div class="grow"><div class="t">${esc(p.name)}</div><div class="s">${fmtDate(p.answered)}</div></div><button class="icon-btn" data-del="${p.id}" aria-label="Remove">${ic('x', 18)}</button></div>`).join('')}</div>` : ''}<div class="sp2"></div><div class="card pr-rem"><div class="row"><span class="ico peach">${ic('bell')}</span><div class="grow"><p class="h3">A daily reminder to pray</p><p class="note">Adds a repeating reminder to your own calendar. Names stay on your phone.</p></div></div><div class="sp"></div><div class="row" style="gap:8px"><label class="sr" for="pr-t">Time</label><input class="input" type="time" id="pr-t" value="${S.settings.prayAt || '08:00'}" style="width:auto"><button class="btn light grow" id="pr-ics">${ic('cal', 18)}Add to calendar</button></div></div>`, { tab: 'walk' });
   $('#pf').onsubmit = (e) => { e.preventDefault(); const n = $('#pn').value.trim(); if (!n) return; S.prayer.unshift({ id: uid(), name: n, note: '', at: Date.now() }); save(); route(); };
   $$('[data-ans]').forEach((b) => (b.onclick = () => { const p = S.prayer.find((x) => x.id === b.dataset.ans); p.answered = Date.now(); save(); toast('Praise God!'); route(); }));
   $$('[data-del]').forEach((b) => (b.onclick = () => { S.prayer = S.prayer.filter((x) => x.id !== b.dataset.del); save(); route(); }));
+  $('#pr-ics').onclick = () => {
+    const t = $('#pr-t').value || '08:00'; S.settings.prayAt = t; save();
+    const d = new Date(), pad = (n) => String(n).padStart(2, '0'), day = `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Always Foundation//Always Sent//EN', 'BEGIN:VEVENT', `UID:pray-${uid()}@app.alwaysfoundation.org`, `DTSTAMP:${day}T000000Z`, `DTSTART:${day}T${t.replace(':', '')}00`, 'DURATION:PT5M', 'RRULE:FREQ=DAILY', 'SUMMARY:Pray for the people on your list', 'DESCRIPTION:Open Always Sent: https://app.alwaysfoundation.org/#/walk/praynow', 'BEGIN:VALARM', 'TRIGGER:PT0M', 'ACTION:DISPLAY', 'DESCRIPTION:Time to pray', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'pray-daily.ics'; a.click(); toast('Open the file to add it to your calendar');
+  };
 });
 on(/^\/walk\/praynow$/, () => {
   const names = S.prayer.filter((p) => !p.answered).map((p) => p.name);
@@ -923,19 +931,39 @@ on(/^\/walk\/notes$/, () => {
 });
 
 // ---------------------------------------------------------------- Connect
-on(/^\/connect$/, () => {
+on(/^\/connect$/, (m, q) => {
   render(`${top('#/', 'Find a church')}<div class="hero-card"><p class="k" style="color:#E8A577">A next step near home</p><p class="big-serif" style="color:#F8F3EA;margin:8px 0">Looking for a church?</p><p class="p">Tell us your suburb and what would help. A church or ministry nearby will be in touch, or our care team will.</p><div class="sp"></div><a class="btn peach" href="#/respond">Help me find a church</a></div>
-    <div class="sp2"></div><div class="card"><p class="h3">The church finder is coming</p><p class="p">Soon you’ll be able to see partner churches near any postcode right here, through Always Connect.</p></div>
+    <div class="sp2"></div><p class="h2">Churches near you</p><p class="p" style="margin-top:4px">Search by postcode or suburb. Listed from each church’s own website.</p><div class="sp"></div>
+    <form id="cf" class="row" role="search" style="gap:8px"><input class="input grow" id="cf-q" inputmode="search" autocomplete="postal-code" placeholder="Postcode or suburb" value="${esc(q.get('q') || S.settings.pc || '')}" aria-label="Postcode or suburb"><button class="btn" style="width:auto;padding:0 20px">Search</button></form>
+    <div class="sp"></div><div id="cf-res" aria-live="polite"></div>
     <div class="sp2"></div><div class="list">
       <a class="li" href="https://alwaysfoundation.org/#/join/church" target="_blank" rel="noopener"><span class="ico">${ic('church')}</span><div class="grow"><div class="t">Are you a church?</div><div class="s">Join Always, free for churches</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="https://alwaysfoundation.org" target="_blank" rel="noopener"><span class="ico peach">${ic('globe')}</span><div class="grow"><div class="t">About the Always Foundation</div><div class="s">Together for the Gospel</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div>`, { tab: 'home' });
+  const CH = window.AC_CHURCHES || [];
+  const find = (raw) => {
+    const t = raw.trim().toLowerCase(); if (!t) return [];
+    if (/^\d{4}$/.test(t)) { const n = +t; return CH.filter((c) => c[5]).map((c) => [Math.abs(+c[5] - n), c]).filter(([d]) => d <= 40).sort((x, y) => x[0] - y[0]).slice(0, 15).map(([, c]) => c); }
+    return CH.filter((c) => (c[3] || '').toLowerCase().includes(t) || c[0].toLowerCase().includes(t)).slice(0, 15);
+  };
+  const inviting = !!window.INVITE;
+  const show = () => {
+    const v = $('#cf-q').value, res = find(v);
+    if (/^\d{4}$/.test(v.trim())) { S.settings.pc = v.trim(); save(); }
+    $('#cf-res').innerHTML = !v.trim() ? '' : res.length ? `<div class="list">${res.map((c, i) => `<div class="li cf-li"><span class="ico ${c[1] === 'm' ? 'sand' : ''}">${ic('church')}</span><div class="grow"><div class="t">${esc(c[0])}</div><div class="s">${esc([c[3], c[4], c[5]].filter(Boolean).join(' '))}${c[2] ? ' · ' + esc(c[2]) : ''}</div>
+      <div class="cf-acts">${c[6] ? `<a class="chip" href="https://${esc(c[6])}" target="_blank" rel="noopener">${ic('ext', 14)}Website</a>` : ''}<button class="chip" data-inv="${i}">${ic('send', 14)}${inviting ? 'Invite them here' : 'Invite a friend'}</button></div></div></div>`).join('')}</div>`
+      : `<div class="card"><p class="h3">No churches found nearby yet</p><p class="p">Try a nearby suburb or postcode. Or use “Ask for help” above and a church or our care team will be in touch.</p></div>`;
+    $$('[data-inv]').forEach((bt) => (bt.onclick = () => { const c = res[+bt.dataset.inv]; window.INVITE = Object.assign(window.INVITE || {}, { church: [c[0], c[3]].filter(Boolean).join(', ') }); location.hash = '#/invite'; }));
+  };
+  $('#cf').onsubmit = (e) => { e.preventDefault(); show(); };
+  if ($('#cf-q').value) show();
 });
 
 // ---------------------------------------------------------------- Me
 const INVITE_TO = [
   ['church', 'Church on Sunday', 'church'],
   ['alpha', 'An Alpha course', 'Alpha'],
+  ['course', 'A course about Jesus', 'a short course about Jesus, like Christianity Explained'],
   ['youth', 'Youth night', 'youth'],
   ['group', 'A small group', 'my small group'],
   ['christmas', 'Christmas or Easter', 'our Christmas service'],
@@ -962,7 +990,7 @@ on(/^\/invite$/, () => {
     <div class="sp2"></div>
     <div class="field"><label for="iv-n">Friend’s first name <span class="note">(optional)</span></label><input class="input" id="iv-n" maxlength="40" autocomplete="off" value="${esc(v.name)}"></div>
     <div class="sp"></div><p class="k">Invite them to</p><div class="cs-row" role="group" aria-label="Invite them to">${INVITE_TO.map(([k, l]) => `<button class="chip" data-to="${k}" aria-pressed="${v.to === k}">${l}</button>`).join('')}</div>
-    <div class="sp"></div><div class="field"><label for="iv-c">Church or place</label><input class="input" id="iv-c" maxlength="60" placeholder="Hope Church, Parramatta" value="${esc(v.church)}"></div>
+    <div class="sp"></div><div class="field"><label for="iv-c">Church or place</label><input class="input" id="iv-c" maxlength="60" placeholder="Hope Church, Parramatta" value="${esc(v.church)}"></div><a class="see" href="#/connect" style="display:inline-flex;align-items:center;gap:6px;min-height:44px">${ic('church', 16)}Find a church near you</a>
     <div class="field"><label for="iv-w">When</label><input class="input" id="iv-w" maxlength="60" placeholder="this Sunday at 10am" value="${esc(v.when)}"></div>
     <label class="check"><input type="checkbox" id="iv-p" ${v.pickup ? 'checked' : ''}><span>Offer to pick them up</span></label>
     <div class="sp"></div><p class="k">Your message</p><div class="cs-row" role="group" aria-label="Tone">${[['warm', 'Warm'], ['casual', 'Casual'], ['simple', 'Short']].map(([k, l]) => `<button class="chip" data-tone="${k}" aria-pressed="${v.tone === k}">${l}</button>`).join('')}</div>
@@ -992,9 +1020,41 @@ on(/^\/invite$/, () => {
   $('#iv-share').onclick = async () => { remember(); if (navigator.share) { try { await navigator.share({ text: msg() }); } catch {} } else { try { await navigator.clipboard.writeText(msg()); toast('Message copied'); } catch {} } };
   $('#iv-card').onclick = () => { const it = INVITE_TO.find((x) => x[0] === v.to) || INVITE_TO[0]; window.CARD = { kind: 'invite', style: 'dawn', font: 'classic', size: 'portrait', align: 'left', kicker: v.name ? `${v.name}, you’re invited` : 'You’re invited', title: it[1], when: v.when, where: v.church }; location.hash = '#/card'; };
 });
+const DBS_Q = {
+  back: ['What are you thankful for this week?', 'What’s been hard? How can we pray for you?', 'How did you go with what you said you’d do last time?', 'Who did you share last week’s story with?'],
+  up: ['Read the passage aloud. Then read it again, slowly.', 'Retell it in your own words, as if to a friend who wasn’t here.', 'What does this passage say about God?', 'What does it say about people?'],
+  fwd: ['If this is true, how would it change the way I live this week?', 'Finish the sentence: “This week I will…”', 'Who will I share this story with?'],
+};
+on(/^\/learn\/dbs$/, () => {
+  const done = (S.dbs && S.dbs.done) || [];
+  render(`${top('#/learn', 'Read together')}<div class="faq-hero"><h2>Read the Bible with a friend.</h2><p>Discovery Bible Study is a simple way to see for yourselves what the Bible says, then put it into practice. No expert needed: everyone reads, discovers and shares.</p></div>
+    <div class="sp2"></div><p class="h2">How it works</p><div class="sp"></div>
+    <div class="faq">${[['Look back', DBS_Q.back], ['Look up', DBS_Q.up], ['Look forward', DBS_Q.fwd]].map(([t, qs]) => `<details><summary>${t}</summary><p>${qs.map(esc).join('<br>')}</p></details>`).join('')}</div>
+    <div class="sp2"></div><p class="h2">Meeting Jesus</p><p class="p" style="margin-top:4px">Ten stories to read together, one each time you meet.</p><div class="sp"></div>
+    <div class="list">${AC.dbs.map(([ref, t], i) => { const r = parseRef(ref); return `<a class="li" href="#/learn/dbs/${i}"><span class="jr-n" style="position:static;min-width:22px">${done.includes(i) ? ic('check', 16) : i + 1}</span><div class="grow"><div class="t">${esc(t)}</div><div class="s">${r ? refLabel(r) : ''}</div></div><span class="chev">${ic('right', 18)}</span></a>`; }).join('')}</div>
+    <div class="sp2"></div><a class="btn light" href="https://dbsguide.org" target="_blank" rel="noopener">${ic('ext', 18)}More at dbsguide.org</a>
+    <p class="note" style="text-align:center;margin-top:10px">Discovery Bible Study is a widely used method. We’re not affiliated with dbsguide.org.</p>`, { tab: 'learn' });
+});
+on(/^\/learn\/dbs\/(\d+)$/, async (m) => {
+  const i = +m[1], [ref, title] = AC.dbs[i] || AC.dbs[0], r = parseRef(ref);
+  S.dbs = S.dbs || { done: [], will: {} };
+  const qs = (arr) => `<ol class="dbs-q">${arr.map((q) => `<li>${esc(q)}</li>`).join('')}</ol>`;
+  render(`${top('#/learn/dbs', 'Read together')}<p class="k">Story ${i + 1} of ${AC.dbs.length}</p><h1 class="h1">${esc(title)}</h1><p class="note">${r ? refLabel(r) : ''} · ${TR[S.settings.tr].name}</p>
+    <div class="sp2"></div><p class="h3">Look back</p>${qs(DBS_Q.back)}
+    <div class="sp"></div><p class="h3">Look up</p>${qs(DBS_Q.up.slice(0, 2))}
+    <article class="ts-read dbs-text" id="dbs-text">Loading…</article>${qs(DBS_Q.up.slice(2))}
+    <div class="sp"></div><p class="h3">Look forward</p>${qs(DBS_Q.fwd)}
+    <div class="field"><label for="dbs-w">This week I will…</label><textarea class="input" id="dbs-w" rows="2" maxlength="280">${esc(S.dbs.will[i] || '')}</textarea></div>
+    <p class="note">Kept on this phone.</p><div class="sp"></div>
+    <div class="stack-s"><button class="btn" id="dbs-done">${ic('check', 18)}We read this one</button>${AC.dbs[i + 1] ? `<a class="btn light" href="#/learn/dbs/${i + 1}">Next story</a>` : ''}</div>`, { tab: 'learn' });
+  $('#dbs-w').onchange = (e) => { S.dbs.will[i] = e.target.value.trim(); save(); };
+  $('#dbs-done').onclick = () => { if (!S.dbs.done.includes(i)) S.dbs.done.push(i); S.dbs.will[i] = $('#dbs-w').value.trim(); save(); toast('Marked as read'); location.hash = AC.dbs[i + 1] ? '#/learn/dbs/' + (i + 1) : '#/learn/dbs'; };
+  try { const p = await passage(ref); const el = $('#dbs-text'); if (el) el.textContent = p.text; } catch { const el = $('#dbs-text'); if (el) el.innerHTML = `<a href="#/bible?ref=${encodeURIComponent(ref)}">Open ${r ? refLabel(r) : 'the passage'} in the Bible</a>`; }
+});
 const APP_FAQ = [
-  ['What is the Always App?', 'A free app to help you share Jesus and walk with people. It has a Bible, short guides for real conversations, training from trusted ministries, a prayer list, and a simple way to help someone take their next step.'],
-  ['Why does it exist?', 'Jesus calls every one of us to make disciples (Matthew 28:19). Many Christians want to share their faith but don’t know where to start, and many people who say yes to Jesus never find a church family. The Always App helps with both: confidence to share, and a safe next step for everyone who responds.'],
+  ['What is Always Sent?', 'A free evangelism companion for everyday Christians. It helps you share Jesus, tell your story, invite friends and walk with people. It has a Bible, short guides for real conversations, training from trusted ministries, a prayer list, and a simple way to help someone take their next step.'],
+  ['Why is it called Always Sent?', 'Jesus said, “As the Father has sent me, even so I am sending you” (John 20:21). Every Christian is sent. The app helps you live that out in everyday conversations.'],
+  ['Why does it exist?', 'Jesus calls every one of us to make disciples (Matthew 28:19). Many Christians want to share their faith but don’t know where to start, and many people who say yes to Jesus never find a church family. Always Sent helps with both: confidence to share, and a safe next step for everyone who responds.'],
   ['Who is it for?', 'Every Christian. You don’t need to be a pastor or an evangelist. Use it with a friend over coffee, at a youth event, on the street or at church.'],
   ['Is it free?', 'Yes, completely. No ads, no subscriptions and nothing to buy. It’s built by the Always Foundation, a Christian nonprofit, and shared freely with the whole Church.'],
   ['Do I need an account?', 'No. Open it and start. Add it to your home screen and it works like any other app.'],
@@ -1007,7 +1067,7 @@ const APP_FAQ = [
   ['Who is behind it?', 'The Always Foundation, an independent, member-based Christian nonprofit that brings churches and ministries together for the Gospel. The app’s code is open source.'],
 ];
 on(/^\/me\/faq$/, () => {
-  render(`${top('#/me', 'About the app')}<div class="faq-hero"><h2>Share Jesus. Walk with people.</h2><p>A free app for every Christian, so no one who says yes to Jesus walks alone.</p></div>
+  render(`${top('#/me', 'About Always Sent')}<div class="faq-hero"><h2>Always Sent</h2><p>Be equipped to share Jesus, tell your story and help someone take their next step. Free for every Christian.</p></div>
     <div class="sp2"></div><div class="faq">${APP_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div>
     <div class="sp2"></div><a class="btn light" href="mailto:hello@alwaysfoundation.org">${ic('mail', 18)}Ask us something else</a>`, { tab: 'home' });
 });
@@ -1022,19 +1082,19 @@ on(/^\/me$/, () => {
       <label class="li" for="imp" style="cursor:pointer"><span class="ico sand">${ic('share')}</span><div class="grow"><div class="t">Restore from a file</div><div class="s">Bring your data from another phone</div></div><input type="file" id="imp" accept="application/json" class="sr"></label>
       <button class="li" id="del"><span class="ico peach">${ic('trash')}</span><div class="grow"><div class="t">Delete everything</div><div class="s">Clears this app on this phone</div></div></button></div>
     <div class="sp2"></div><p class="k">About</p><div class="sp"></div><div class="list">
-      <a class="li" href="#/me/faq"><span class="ico">${ic('help')}</span><div class="grow"><div class="t">About the Always App</div><div class="s">What it is, why it exists, and common questions</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/me/faq"><span class="ico">${ic('help')}</span><div class="grow"><div class="t">About Always Sent</div><div class="s">What it is, why it exists, and common questions</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="https://alwaysfoundation.org/#/privacy" target="_blank" rel="noopener"><div class="grow"><div class="t">Privacy</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="https://alwaysfoundation.org/#/terms" target="_blank" rel="noopener"><div class="grow"><div class="t">Terms</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="mailto:hello@alwaysfoundation.org"><div class="grow"><div class="t">Contact us</div><div class="s">hello@alwaysfoundation.org</div></div><span class="chev">${ic('right', 18)}</span></a></div>
     <div class="sp2"></div><button class="btn light" id="inst" hidden>${ic('download', 18)}Add to home screen</button>
-    <p class="note" style="text-align:center;margin-top:18px">The Always App, from the Always Foundation. Together for the Gospel.<br>Bible text: World English Bible and King James Version, public domain.</p>`, { tab: 'home' });
+    <p class="note" style="text-align:center;margin-top:18px">Always Sent, from the Always Foundation. Together for the Gospel.<br>Bible text: World English Bible and King James Version, public domain.</p>`, { tab: 'home' });
   $('#mn').onchange = (e) => { S.settings.name = e.target.value.trim().slice(0, 40); save(); toast('Saved'); };
   $$('[data-tr]').forEach((b) => (b.onclick = () => { S.settings.tr = b.dataset.tr; save(); $$('[data-tr]').forEach((x) => x.setAttribute('aria-pressed', x === b)); }));
   $$('[data-sz]').forEach((b) => (b.onclick = () => { S.settings.size = Math.max(15, Math.min(30, S.settings.size + Number(b.dataset.sz))); save(); $('#szv').textContent = S.settings.size; }));
   $$('[data-th]').forEach((b) => (b.onclick = () => { S.settings.theme = b.dataset.th; save(); applyTheme(); $$('[data-th]').forEach((x) => x.setAttribute('aria-pressed', x === b)); }));
   $('#exp').onclick = () => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' })); a.download = `always-app-${today()}.json`; a.click(); };
   $('#imp').onchange = async (e) => { try { const d = JSON.parse(await e.target.files[0].text()); if (typeof d !== 'object' || !d.settings) throw 0; S = Object.assign(blank(), d); save(); applyTheme(); toast('Restored'); route(); } catch { toast('That file couldn’t be read'); } };
-  $('#del').onclick = () => { if (confirmBox('Delete everything in the Always App on this phone? This can’t be undone.')) { localStorage.removeItem(KEY); S = blank(); location.hash = '#/'; route(); } };
+  $('#del').onclick = () => { if (confirmBox('Delete everything in Always Sent on this phone? This can’t be undone.')) { localStorage.removeItem(KEY); S = blank(); location.hash = '#/'; route(); } };
   if (deferredInstall) { $('#inst').hidden = false; $('#inst').onclick = async () => { deferredInstall.prompt(); deferredInstall = null; $('#inst').hidden = true; }; }
 });
 

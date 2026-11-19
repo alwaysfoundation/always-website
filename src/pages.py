@@ -1,4 +1,4 @@
-"""Website pages: For churches, For ministries, Always App, FAQs."""
+"""Website pages: For churches, For ministries, Always Sent, FAQs."""
 import json
 import products as PR
 from mocks import mock
@@ -60,7 +60,7 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
 </div></section>
 <section class="sec pg-sec pg-night"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Your brand. Live results.</h2><p class="pg-lead rv">People respond on a page that looks like you. Your team sees totals live, and each person's details go only to the church that welcomes them.</p>
-  <ul class="pg-list rv"><li>Results for every event, tour and campus.</li><li>An inbox for the steps you offer yourself, like a youth night or a course.</li><li>Street teams and evangelists use the Always App to show their own QR.</li></ul></div>
+  <ul class="pg-list rv"><li>Results for every event, tour and campus.</li><li>An inbox for the steps you offer yourself, like a youth night or a course.</li><li>Street teams and evangelists use Always Sent to show their own QR.</li></ul></div>
   <div class="pg-mocks">{ministry_desk}<div class="pg-phone-over rv">{ministry_phone}</div></div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap pg-split">
@@ -85,7 +85,7 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/contact">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section>'''
 
-app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
+app_home = phone('<p class="pg-url">Always Sent · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 import os as _os
 from PIL import Image as _Img
@@ -99,16 +99,16 @@ def ph(name, alt, cls=''):
     return f'<figure class="ap-ph {cls}"><img src="{_shot(name)}" alt="{alt}" loading="lazy" width="390" height="844"></figure>'
 AP_QR = """<svg class="ap-qr-svg" role="img" aria-label="QR code for app.alwaysfoundation.org" viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg"><rect width="33" height="33" fill="#fff"/><path d="M2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM13 2h1v1h-1zM17 2h1v1h-1zM18 2h1v1h-1zM19 2h1v1h-1zM20 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM26 2h1v1h-1zM27 2h1v1h-1zM28 2h1v1h-1zM29 2h1v1h-1zM30 2h1v1h-1zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM12 3h1v1h-1zM18 3h1v1h-1zM21 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM8 4h1v1h-1zM10 4h1v1h-1zM11 4h1v1h-1zM14 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h1v1h-1zM27 4h1v1h-1zM28 4h1v1h-1zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM21 5h1v1h-1zM22 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM27 5h1v1h-1zM28 5h1v1h-1zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM16 6h1v1h-1zM17 6h1v1h-1zM18 6h1v1h-1zM19 6h1v1h-1zM20 6h1v1h-1zM21 6h1v1h-1zM24 6h1v1h-1zM26 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM17 7h1v1h-1zM18 7h1v1h-1zM19 7h1v1h-1zM20 7h1v1h-1zM22 7h1v1h-1zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM25 8h1v1h-1zM26 8h1v1h-1zM27 8h1v1h-1zM28 8h1v1h-1zM29 8h1v1h-1zM30 8h1v1h-1zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM18 9h1v1h-1zM21 9h1v1h-1zM2 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM15 10h1v1h-1zM19 10h1v1h-1zM21 10h1v1h-1zM22 10h1v1h-1zM23 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM29 10h1v1h-1zM30 10h1v1h-1zM2 11h1v1h-1zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM14 11h1v1h-1zM15 11h1v1h-1zM18 11h1v1h-1zM21 11h1v1h-1zM25 11h1v1h-1zM26 11h1v1h-1zM28 11h1v1h-1zM29 11h1v1h-1zM5 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM15 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM23 12h1v1h-1zM25 12h1v1h-1zM28 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM10 13h1v1h-1zM11 13h1v1h-1zM14 13h1v1h-1zM15 13h1v1h-1zM18 13h1v1h-1zM19 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM22 13h1v1h-1zM23 13h1v1h-1zM24 13h1v1h-1zM27 13h1v1h-1zM30 13h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM8 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM12 14h1v1h-1zM13 14h1v1h-1zM14 14h1v1h-1zM15 14h1v1h-1zM17 14h1v1h-1zM18 14h1v1h-1zM22 14h1v1h-1zM24 14h1v1h-1zM25 14h1v1h-1zM30 14h1v1h-1zM6 15h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM15 15h1v1h-1zM16 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM20 15h1v1h-1zM24 15h1v1h-1zM26 15h1v1h-1zM27 15h1v1h-1zM28 15h1v1h-1zM29 15h1v1h-1zM30 15h1v1h-1zM4 16h1v1h-1zM5 16h1v1h-1zM6 16h1v1h-1zM7 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM15 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM21 16h1v1h-1zM26 16h1v1h-1zM28 16h1v1h-1zM30 16h1v1h-1zM3 17h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM10 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM21 17h1v1h-1zM24 17h1v1h-1zM26 17h1v1h-1zM28 17h1v1h-1zM30 17h1v1h-1zM2 18h1v1h-1zM4 18h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM11 18h1v1h-1zM16 18h1v1h-1zM22 18h1v1h-1zM27 18h1v1h-1zM2 19h1v1h-1zM7 19h1v1h-1zM11 19h1v1h-1zM14 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM18 19h1v1h-1zM20 19h1v1h-1zM21 19h1v1h-1zM22 19h1v1h-1zM23 19h1v1h-1zM26 19h1v1h-1zM28 19h1v1h-1zM29 19h1v1h-1zM2 20h1v1h-1zM3 20h1v1h-1zM8 20h1v1h-1zM9 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM21 20h1v1h-1zM24 20h1v1h-1zM25 20h1v1h-1zM26 20h1v1h-1zM27 20h1v1h-1zM30 20h1v1h-1zM2 21h1v1h-1zM3 21h1v1h-1zM5 21h1v1h-1zM9 21h1v1h-1zM11 21h1v1h-1zM12 21h1v1h-1zM13 21h1v1h-1zM16 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM23 21h1v1h-1zM24 21h1v1h-1zM26 21h1v1h-1zM27 21h1v1h-1zM28 21h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM8 22h1v1h-1zM11 22h1v1h-1zM12 22h1v1h-1zM14 22h1v1h-1zM15 22h1v1h-1zM16 22h1v1h-1zM17 22h1v1h-1zM18 22h1v1h-1zM19 22h1v1h-1zM21 22h1v1h-1zM22 22h1v1h-1zM23 22h1v1h-1zM24 22h1v1h-1zM25 22h1v1h-1zM26 22h1v1h-1zM27 22h1v1h-1zM28 22h1v1h-1zM29 22h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM16 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM21 23h1v1h-1zM22 23h1v1h-1zM26 23h1v1h-1zM27 23h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM5 24h1v1h-1zM6 24h1v1h-1zM7 24h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM12 24h1v1h-1zM13 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM14 25h1v1h-1zM16 25h1v1h-1zM17 25h1v1h-1zM18 25h1v1h-1zM19 25h1v1h-1zM20 25h1v1h-1zM21 25h1v1h-1zM22 25h1v1h-1zM26 25h1v1h-1zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h1v1h-1zM5 26h1v1h-1zM6 26h1v1h-1zM8 26h1v1h-1zM10 26h1v1h-1zM14 26h1v1h-1zM15 26h1v1h-1zM16 26h1v1h-1zM17 26h1v1h-1zM20 26h1v1h-1zM21 26h1v1h-1zM22 26h1v1h-1zM23 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM27 26h1v1h-1zM29 26h1v1h-1zM30 26h1v1h-1zM2 27h1v1h-1zM4 27h1v1h-1zM5 27h1v1h-1zM6 27h1v1h-1zM8 27h1v1h-1zM10 27h1v1h-1zM13 27h1v1h-1zM14 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM19 27h1v1h-1zM20 27h1v1h-1zM22 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM30 27h1v1h-1zM2 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM11 28h1v1h-1zM12 28h1v1h-1zM13 28h1v1h-1zM14 28h1v1h-1zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM22 28h1v1h-1zM23 28h1v1h-1zM25 28h1v1h-1zM26 28h1v1h-1zM28 28h1v1h-1zM29 28h1v1h-1zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM13 29h1v1h-1zM15 29h1v1h-1zM17 29h1v1h-1zM20 29h1v1h-1zM21 29h1v1h-1zM24 29h1v1h-1zM25 29h1v1h-1zM26 29h1v1h-1zM27 29h1v1h-1zM28 29h1v1h-1zM30 29h1v1h-1zM2 30h1v1h-1zM3 30h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM7 30h1v1h-1zM8 30h1v1h-1zM10 30h1v1h-1zM16 30h1v1h-1zM21 30h1v1h-1zM22 30h1v1h-1zM25 30h1v1h-1zM26 30h1v1h-1z" fill="#14352F"/></svg>"""
 STEPS_APP = [
-    ('Before', 'Ready for any conversation', 'Sent, a 30-day plan for everyday evangelists, guides for friends of every background, and well-loved training from partners and ministries worldwide.', 'learn', 'The Learn screen of the Always App'),
+    ('Before', 'Ready for any conversation', 'Sent, a 30-day plan for everyday evangelists, guides for friends of every background, and well-loved training from partners and ministries worldwide.', 'learn', 'The Learn screen of Always Sent'),
     ('During', 'God&rsquo;s story, in their language', 'Created, broken, rescued, restored. Four moments you can share in a few minutes, in seven languages spoken across Australia.', 'story-zh', 'God&rsquo;s story in Simplified Chinese'),
     ('The yes', 'A next step, right there', 'Show a QR code or hand them your phone. With their consent, a church near home is introduced to welcome them.', 'gather', 'The Gather screen with a QR code'),
     ('After', 'Walk with them', 'Gentle steps over their first month, a Today card on your home screen, and reminders in your own calendar.', 'walk', 'Walking with Sam, with steps for the month'),
 ]
 APP = f'''<section class="page-hero ap-hero"><div class="wrap ap-hero-in">
-  <div class="ap-copy">{PR.mod_icon("app", "mi-lg")}<p class="pl-kick">Always App</p>
-  <h1>Share Jesus.<br>Walk with people.</h1>
-  <p>A free app for every Christian: the Bible, training to share your faith, invitations and verse cards to send, and a safe next step for everyone who says yes. Nothing to download.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="https://app.alwaysfoundation.org">Open the Always App</a><a class="btn btn-ghost" href="#/docs/app">How it works</a></div>
+  <div class="ap-copy">{PR.mod_icon("app", "mi-lg")}<p class="pl-kick">Always Sent</p>
+  <h1>Share Jesus.<br>Tell your story.</h1>
+  <p>Be equipped to share Jesus, tell your story and help someone take their next step. A free evangelism companion for every Christian, with nothing to download.</p>
+  <div class="pg-cta"><a class="btn btn-peach" href="https://app.alwaysfoundation.org">Open Always Sent</a><a class="btn btn-ghost" href="#/docs/app">How it works</a></div>
   <div class="ap-qr"><span>{AP_QR}</span><p>On a computer? Scan to open it on your phone.</p></div></div>
   <div class="ap-stage" aria-hidden="true">{ph('splash', '', 'ap-l')}{ph('home-dark', '', 'ap-c')}{ph('card', '', 'ap-r')}</div>
 </div></section>
@@ -118,17 +118,20 @@ APP = f'''<section class="page-hero ap-hero"><div class="wrap ap-hero-in">
   <ol class="ap-steps">{''.join(f'<li class="rv"><div class="ap-step-ph">{ph(img, alt)}</div><p class="ap-n"><span>{i}</span>{k}</p><h3>{t}</h3><p>{d}</p></li>' for i, (k, t, d, img, alt) in enumerate(STEPS_APP, 1))}</ol>
 </div></section>
 <section class="sec pg-sec ap-rows"><div class="wrap">
-  <div class="ap-row rv"><div class="ap-row-art ap-duo">{ph('bible', 'The Bible in light mode')}{ph('bible-dark', 'The Bible in dark mode')}</div>
-    <div class="ap-row-tx"><h2>A Bible that feels like home.</h2><p>Read, highlight, bookmark and listen, with notes kept on your phone. Dark by default, easy on the eyes at night, or choose Light or Warm.</p></div></div>
-  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('card', 'Sharing the verse of the day as a card')}</div>
+  <div class="ap-row rv"><div class="ap-row-art">{ph('testimony', 'A 30-second testimony, ready to share')}</div>
+    <div class="ap-row-tx"><h2>Tell your story.</h2><p>Three prompts help you put into words what Jesus has done in your life: before, meeting Jesus, and since. Then shape a 30-second version for everyday conversations, practise it, and send it or turn it into a card when the moment comes. It stays on your phone and is never posted for you.</p></div></div>
+  <div class="ap-row ap-flip rv"><div class="ap-row-art ap-duo">{ph('bible', 'The Bible in light mode')}{ph('bible-dark', 'The Bible in dark mode')}</div>
+    <div class="ap-row-tx"><h2>A Bible that feels like home.</h2><p>Read, highlight, bookmark and listen, with notes kept on your phone. Dark by default, easy on the eyes at night, or choose Light or Warm. Set a daily reminder to pray for the people on your list.</p></div></div>
+  <div class="ap-row rv"><div class="ap-row-art">{ph('card', 'Sharing the verse of the day as a card')}</div>
     <div class="ap-row-tx"><h2>Share the verse of the day.</h2><p>One tap turns today&rsquo;s verse, or any verse, into a beautiful card. Choose from eight backgrounds, four fonts and three shapes for posts, messages and stories. It&rsquo;s made on your phone and nothing is uploaded.</p></div></div>
-  <div class="ap-row rv"><div class="ap-row-art">{ph('invite', 'Inviting a friend to church')}</div>
-    <div class="ap-row-tx"><h2>Invite a friend to church.</h2><p>Many people visit a church for the first time because a friend asked. Choose what to invite them to, and the app writes a warm, personal message to send by text, with an invitation card to match. Your friend joins your prayer list so you can keep walking with them.</p></div></div>
-  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('sent', 'Day 3 of the Sent plan')}</div>
-    <div class="ap-row-tx"><h2>Sent: 30 days for everyday evangelists.</h2><p>Each day has a reading, a verse to keep and one small step of faith, from praying for three people by name to inviting a friend to church. Turn the day&rsquo;s verse into a card in one tap.</p></div></div>
-  <div class="ap-row rv"><div class="ap-row-art">{ph('library', 'The training library')}</div>
-    <div class="ap-row-tx"><h2>The best training, in one place.</h2><p>Our partners The Global Harvest and NeedGod.net, alongside well-loved training like Two Ways to Live, The Way of the Master, The Bridge to Life, Steps to Peace with God, Christianity Explored and Alpha. Each opens on its own site.</p></div></div>
-  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('baptism', 'Asking about baptism')}</div>
+  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('invite', 'Inviting a friend to church')}</div>
+    <div class="ap-row-tx"><h2>Invite a friend to church.</h2><p>Many people visit a church for the first time because a friend asked. Choose what to invite them to, and the app writes a warm, personal message to send by text, with an invitation card to match. Need a church to invite them to? Find one near any postcode, right in the app. Your friend joins your prayer list so you can keep walking with them.</p></div></div>
+  <div class="ap-row rv"><div class="ap-row-art">{ph('sent', 'Day 3 of the Sent plan')}</div>
+    <div class="ap-row-tx"><h2>Sent 30: a month of small steps.</h2><p>Each day has a reading, a verse to keep and one small step of faith, from praying for three people by name to inviting a friend to church. Turn the day&rsquo;s verse into a card in one tap.</p></div></div>
+  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('library', 'The training library')}</div>
+    <div class="ap-row-tx"><h2>The best training, in one place.</h2><p>Our partners The Global Harvest and NeedGod.net, alongside well-loved training like Christianity Explained, Two Ways to Live, The Way of the Master, The Bridge to Life, Steps to Peace with God and Alpha. Each opens on its own site.</p>
+    <p>Read the Bible with a friend, too: Read together walks you through a Discovery Bible Study, with ten stories of people meeting Jesus.</p></div></div>
+  <div class="ap-row rv"><div class="ap-row-art">{ph('baptism', 'Asking about baptism')}</div>
     <div class="ap-row-tx"><h2>Ready to be baptised?</h2><p>Anyone can ask. They choose who helps them take the step: a local church, a partner, or both, each by its own tick.</p></div></div>
 </div></section>
 <section class="sec pg-sec ap-trust"><div class="wrap ap-trust-in rv">
@@ -136,7 +139,7 @@ APP = f'''<section class="page-hero ap-hero"><div class="wrap ap-hero-in">
   <div><h2>Your phone, your notes.</h2><p>The people you pray for, your notes and your highlights stay on your phone. No ads and no tracking. <a href="#/docs/saving">How your information is saved</a></p></div>
 </div></section>
 <section class="sec pg-sec ap-end"><div class="wrap ap-end-in">
-  <div><h2>Open it on your phone.</h2><p>Free for every Christian. Add it to your home screen and it works like any other app.</p><div class="pg-cta"><a class="btn btn-peach" href="https://app.alwaysfoundation.org">Open the Always App</a><a class="btn btn-ghost" href="#/join/evangelist">For street teams and ministries</a></div></div>
+  <div><h2>Open it on your phone.</h2><p>Free for every Christian. Add it to your home screen and it works like any other app.</p><div class="pg-cta"><a class="btn btn-peach" href="https://app.alwaysfoundation.org">Open Always Sent</a><a class="btn btn-ghost" href="#/join/evangelist">For street teams and ministries</a></div></div>
   <span class="ap-qr-lg">{AP_QR}</span>
 </div></section>'''
 
@@ -145,14 +148,14 @@ FAQ_GROUPS = [
  ('About Always', [
   ('What is the Always Foundation?', 'A Gospel technology foundation: an independent, member-based Christian nonprofit that brings churches and Christian ministries across Australia together for the Gospel. We serve quietly in the background, building practical tools once and sharing them freely, so ministries spend less time on administration and more time making disciples.'),
   ('Are you a gospel ministry or a mercy ministry?', 'Neither, directly. We are a ministry that serves ministries. In Acts 6 the early church appointed people to carry the practical work so the apostles could devote themselves to prayer and the word, and the Gospel spread. We play that role for the wider Church: we exist to equip the saints for the work of ministry (Ephesians 4:12). We are not on the frontline. We stand behind it.'),
-  ('What does Always do for a church or ministry?', 'Three things. We equip, with the Always App and Always Respond, your own branded way for people to respond. We support, with Always Safety and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.'),
+  ('What does Always do for a church or ministry?', 'Three things. We equip, with Always Sent and Always Respond, your own branded way for people to respond. We support, with Always Safety and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.'),
   ('Who can become a member?', 'Churches and Christian ministries that affirm the Nicene Creed. Members help shape what we build and share in the benefits. Supporters can join us too, through prayer and giving.'),
-  ('What is Always Platform?', 'One open-source platform with one sign-in and shared data. Members switch on the modules they need: Always App, Always Respond, Always Safety, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.'),
+  ('What is Always Platform?', 'One open-source platform with one sign-in and shared data. Members switch on the modules they need: Always Sent, Always Respond, Always Safety, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.'),
   ('Why modules?', 'Every ministry is different. Start with the one you need, perhaps Always Safety, and add others as you grow. Because every module runs on the same platform, your team signs in once and your information works together, with nothing to move later.'),
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always Platform only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
-  ('Do I need an account?', 'Not for the Always App: open it and start, and your prayer list and notes stay on your phone. Church and ministry teams sign in with an email link for tools like Always Safety.')]),
+  ('Do I need an account?', 'Not for Always Sent: open it and start, and your prayer list and notes stay on your phone. Church and ministry teams sign in with an email link for tools like Always Safety.')]),
  ('For churches', [
   ('Does it cost anything?', 'No. Churches never pay. Larger ministries contribute according to their size.'),
   ('How do we join?', 'Register at Join Always and get ready at your own pace. We check with your denomination or network, and then you\'re a partner church.'),
@@ -170,17 +173,17 @@ FAQ_GROUPS = [
   ('Can we make the report our own?', 'Yes. Add your title, your funder\'s name and a short introduction. If a funder needs something specific, talk to us.'),
   ('Can we receive introductions ourselves?', 'Yes, for the steps you offer, like a youth night or a course.'),
   ('Can people respond online?', 'Yes. Add a response link or QR to a video description or post, or embed the response card on your website. An invisible check stops spam without puzzles.'),
-  ('How do evangelists and street teams use it?', 'With Always App, a free web app: they start a response point, show their own QR, or connect someone in a conversation with their yes.')]),
+  ('How do evangelists and street teams use it?', 'With Always Sent, a free web app: they start a response point, show their own QR, or connect someone in a conversation with their yes.')]),
  ('For people who respond', [
   ('What happens when I respond?', 'You choose a next step, see who will be in touch, and a church or ministry near you reaches out.'),
   ('What do you need from me?', 'Your first name, a mobile number and your suburb.'),
-  ('Do I need to download an app?', 'No. You respond on a simple web page. Later, you\'re welcome to try Always App in your browser to read the Bible and grow.'),
+  ('Do I need to download an app?', 'No. You respond on a simple web page. Later, you\'re welcome to try Always Sent in your browser to read the Bible and grow.'),
   ('Can I change my mind?', 'Yes, any time, from the link in your text. Your details are then deleted.'),
   ('I\'m under 18. Can I still respond?', 'Yes. If you\'re under 15, a parent or guardian says yes with you. From 15 you can decide for yourself. Young people are introduced only to youth partners, and no AI ever touches your information.')]),
- ('Always App', [
+ ('Always Sent', [
   ('Who is it for?', 'Every Christian who wants to share Jesus and walk with people, and church teams who welcome them.'),
   ('How do I get it?', 'It\'s a web app, so there\'s nothing to download. Open app.alwaysfoundation.org on any phone.'),
-  ('Is there a mobile app?', 'Not for now. The Always App and our tools for churches and ministries run in the browser on your phone, tablet or computer, and you can add it to your home screen.'),
+  ('Is there a mobile app?', 'Not for now. Always Sent and our tools for churches and ministries run in the browser on your phone, tablet or computer, and you can add it to your home screen.'),
   ('Which Bible translations are included?', 'The King James Version and the World English Bible, with more through YouVersion.'),
   ('Where are my notes and prayer list kept?', 'In your browser, on your own device. They aren\'t sent to us.')]),
  ('Privacy and safety', [
@@ -258,7 +261,7 @@ CSS = '''
   .ap-steps { grid-template-columns: 1fr; } .ap-stage { height: 470px; } .ap-stage .ap-ph { width: 190px; }
   .ap-trust-in { flex-direction: column; align-items: flex-start; } .ap-qr-lg { display: none; }
 }
-/* ---- New in the Always App ---- */
+/* ---- New in Always Sent ---- */
 .app-new-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
 .an { display: grid; align-content: start; gap: 10px; }
 .an h3 { margin-top: 8px; font: 800 20px/1.25 var(--head); color: var(--green); }
@@ -481,7 +484,7 @@ FEEDBACK = '''<section class="page-hero"><div class="wrap"><h1>Ideas and problem
       <label class="fb-kind"><input type="radio" name="kind" value="bug"><span><b>A problem</b>Something isn't working</span></label>
       <label class="fb-kind"><input type="radio" name="kind" value="missing"><span><b>A missing church</b>Add a church or ministry</span></label>
     </div>
-    <label>Where<select name="area"><option>The website</option><option>Always App</option><option>Always Connect</option><option>Always Safety</option><option>Always Respond</option><option>Somewhere else</option></select></label>
+    <label>Where<select name="area"><option>The website</option><option>Always Sent</option><option>Always Connect</option><option>Always Safety</option><option>Always Respond</option><option>Somewhere else</option></select></label>
     <label id="fb-msg-l">Tell us more<textarea name="message" rows="6" required></textarea></label>
     <label>Your email <span>Optional, if you'd like a reply</span><input name="email" type="email" autocomplete="email"></label>
     <button class="btn btn-green" type="submit">Send</button>
@@ -699,7 +702,7 @@ PLAT_WAYS = [
 
 
 PRODUCTS = [
-  ('Always App', 'Share Jesus, start a response point and walk with people.', '#/app',
+  ('Always Sent', 'Share Jesus, start a response point and walk with people.', '#/app',
    [('Connect', 'Church feed and Events'), ('Gather', 'Response pages and Handoff'), ('Bible', 'YouVersion Platform'), ('Walk', 'Kept in your browser')]),
   ('Always Connect', 'Accept or pass introductions, welcome people and keep walking with them.', '#/churches',
    [('Inbox', 'Handoff'), ('Your page', 'Church feed and partner status'), ('Leaders\' report', 'Reports')]),
@@ -712,7 +715,7 @@ def _prod(name, line, href, uses):
 BUILT_ON = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
   <p class="pl-kick rv">Built on Always Platform</p>
   <h2 class="pg-h rv">We build our own apps on it too.</h2>
-  <p class="pg-lead rv">The Always App, and our tools for churches and ministries, are free web apps that run in any browser, with nothing to download. Each one talks to the platform through the same public API and SDK that are open to you. There's no private back door: if we can build it, so can you.</p>
+  <p class="pg-lead rv">Always Sent, and our tools for churches and ministries, are free web apps that run in any browser, with nothing to download. Each one talks to the platform through the same public API and SDK that are open to you. There's no private back door: if we can build it, so can you.</p>
   <div class="pl-prods">{''.join(_prod(*p) for p in PRODUCTS)}</div>
 </div></section>'''
 
@@ -805,7 +808,7 @@ MINISTRIES += """<section class="sec pg-sec pg-green"><div class="wrap">
   <h2 class="pg-h rv">For evangelists and street teams</h2>
   <p class="pg-lead rv">Share Jesus with confidence, save every contact safely, and connect people with a local church, like Sydney Fire Evangelism.</p>
   <div class="sl-rows sl-rows-3">
-    <div class="sl-row rv"><h3>Share with confidence</h3><p>The Good News, Scripture and short training in the Always App.</p></div>
+    <div class="sl-row rv"><h3>Share with confidence</h3><p>The Good News, Scripture and short training in Always Sent.</p></div>
     <div class="sl-row rv"><h3>Save every contact safely</h3><p>Your own branded response app, with contacts kept safe in Australia.</p></div>
     <div class="sl-row rv"><h3>Connect people locally</h3><p>With their consent, pass people to a church near them, or to Alpha if they want to explore faith.</p></div>
   </div>

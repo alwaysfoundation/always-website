@@ -50,7 +50,7 @@ SYDNEYFIRE = '''
       <h2>At a glance</h2>
       <dl>
         <dt>Ministry</dt><dd>Street evangelism across Sydney</dd>
-        <dt>Uses</dt><dd>Always Respond, Always App and Always Connect</dd>
+        <dt>Uses</dt><dd>Always Respond, Always Sent and Always Connect</dd>
         <dt>Integration</dt><dd><a href="#/alpha">Alpha</a>, for people exploring faith</dd>
         <dt>Their app</dt><dd><a href="https://sydneyfire.alwaysfoundation.org">sydneyfire.alwaysfoundation.org</a></dd>
       </dl>
@@ -176,7 +176,7 @@ YOUVERSION = '''
 
     <h2>What’s next</h2>
     <ul>
-      <li><b>Sign in with YouVersion</b> in the Always App, for adults, so people can use the account they already have.</li>
+      <li><b>Sign in with YouVersion</b> in Always Sent, for adults, so people can use the account they already have.</li>
       <li><b>Reading the Bible as a next step</b>, alongside finding a church, exploring faith with Alpha, or talking with someone.</li>
     </ul>
     <p>We’re completing our YouVersion Platform registration now. Until it’s switched on, every page shows the Scripture already written into it, so no one sees a gap.</p>
@@ -187,7 +187,7 @@ YOUVERSION = '''
       <h2>At a glance</h2>
       <dl>
         <dt>Integration</dt><dd>YouVersion Platform</dd>
-        <dt>Used in</dt><dd>Always Respond and the Always App</dd>
+        <dt>Used in</dt><dd>Always Respond and Always Sent</dd>
         <dt>For developers</dt><dd>The <code>&lt;always-scripture&gt;</code> component</dd>
         <dt>Personal data sent</dt><dd>None</dd>
       </dl>

@@ -19,7 +19,7 @@ PILLARS = [
 
 # slug: (route, name, pillar, positioning, for)
 PRODUCTS = {
-    'app':        ('app',        'Always App',        'equip',   'A Bible, guides and training to share Jesus and walk with people.', 'Every Christian and evangelist'),
+    'app':        ('app',        'Always Sent',        'equip',   'An evangelism companion: share Jesus, tell your story, invite a friend.', 'Every Christian and evangelist'),
     'pages':      ('respond',    'Always Respond',    'equip',   'A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.', 'Churches, evangelists, events and ministries'),
     'compliance': ('compliance', 'Always Safety', 'support', 'Safe ministry, privacy and charity rules, made clear, with a quarterly check-up.', 'Every ministry'),
     'reports':    ('reports',    'Always Reports',    'support', 'A monthly report for your board and funders, written for you, with totals only.', 'Ministries with boards and funders'),

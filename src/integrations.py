@@ -24,7 +24,7 @@ GROUPS = [
         ('Apple and Google Wallet', 'A response link on every event pass', PLANNED),
     ]),
     ('faith', 'Scripture and next steps', 'The Bible and the right next step, right where someone says yes.', [
-        ('YouVersion', 'Scripture in Always Respond and the Always App', SOON),
+        ('YouVersion', 'Scripture in Always Respond and Always Sent', SOON),
         ('Alpha', 'Explore faith at a course nearby', LIVE),
     ]),
     ('auto', 'Automation and AI', 'Connect anything else without custom code, with ids only, never people’s details.', [
@@ -36,7 +36,7 @@ GROUPS = [
     ('platforms', 'For tech platforms', 'Build Always into your own product.', [
         ('Always Safety API', 'The open register and check-up, in your app', LIVE),
         ('Scripture component', '<always-scripture> in one line', SOON),
-        ('Sign in with YouVersion', 'For adults, in the Always App', PLANNED),
+        ('Sign in with YouVersion', 'For adults, in Always Sent', PLANNED),
     ]),
 ]
 
