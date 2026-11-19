@@ -1,6 +1,8 @@
 """Header scroll state and site-wide motion. Loaded after polish so it wins. Everything stops under reduced motion."""
 
 CSS = r'''
+.hp { transition: opacity .3s ease, transform .3s ease, visibility 0s; }
+body:not(.hp-ready) .hp:not(:focus-within) { opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .3s ease, transform .3s ease, visibility 0s .3s; }
 header { position: fixed; inset: 0 0 auto 0; z-index: 30; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
 header::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(20,54,49,.82); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); box-shadow: 0 1px 0 rgba(248,243,234,.08), 0 12px 32px rgba(10,30,27,.22); opacity: 0; transition: opacity .3s ease; pointer-events: none; }
 header .bar { transition: height .3s cubic-bezier(.2,.7,.2,1); }
@@ -66,6 +68,7 @@ JS = r'''
   function update() {
     const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
     h.classList.toggle('scrolled', y > 24);
+    document.body.classList.toggle('hp-ready', y > 360);
     h.classList.toggle('dd-open', !!h.querySelector('.dd-btn[aria-expanded="true"]'));
     if (y > 480 && y > last + 4) h.classList.add('tuck');
     else if (y < last - 4 || y < 480) h.classList.remove('tuck');

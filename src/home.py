@@ -36,7 +36,6 @@ HORIZON = '''<div class="oz-wrap">
 </svg></div>'''
 
 CSS = r'''
-.hero { padding-bottom: 0 !important; }
 .hero .oz { display: block; width: 100%; height: clamp(240px, 30vw, 440px); margin-top: clamp(-40px, -2vw, 0px); }
 .oz-wrap { overflow: hidden; }
 @media (max-width: 640px) { .hero .oz { width: 170vw; height: auto; aspect-ratio: 1440 / 440; margin-left: -32vw; margin-top: 8px; } }

@@ -1624,13 +1624,17 @@ body.on-hello .hp, body.menu-open .hp { display: none; }
 @media (max-width: 1000px) { .ft-body { grid-template-columns: minmax(0, 1fr); gap: 40px; } .ft-side { position: static; } }
 @media (max-width: 640px) { .ft-hero { padding: 128px 0 96px; } .ft-fig { margin-top: -60px; } .ft-fig img { border-radius: 18px; } }
 
+.chai-fig img { border-radius: 26px; }
+.ft-card .chai-logo { display: block; width: 140px; height: auto; margin: -6px 0 12px -10px; mix-blend-mode: multiply; }
+.cs-img.chai-tile { background: #fff; display: grid; place-items: center; }
+.cs-img.chai-tile img { width: 70%; height: auto; object-fit: contain; }
+.cs-tile:hover .cs-img.chai-tile img { transform: scale(1.03); }
 .chai-fig .chai-art { display: block; width: 100%; height: auto; aspect-ratio: 800 / 350; border-radius: 26px; box-shadow: 0 40px 80px -40px rgba(10,30,26,.45); }
 .cs-img .chai-art { width: 100%; height: 100%; display: block; }
 .chai-b { stroke-dasharray: 1000; animation: chaiGrow 2.2s cubic-bezier(.3,.6,.2,1) .3s both; }
 @keyframes chaiGrow { from { stroke-dashoffset: 1000; } }
 @media (prefers-reduced-motion: reduce) { .chai-b { animation: none; } }
 
-.hero { padding-bottom: 0 !important; }
 .hero .oz { display: block; width: 100%; height: clamp(240px, 30vw, 440px); margin-top: clamp(-40px, -2vw, 0px); }
 .oz-wrap { overflow: hidden; }
 @media (max-width: 640px) { .hero .oz { width: 170vw; height: auto; aspect-ratio: 1440 / 440; margin-left: -32vw; margin-top: 8px; } }
@@ -1767,6 +1771,8 @@ a.sl-row:hover h3, a.sl-row:focus-visible h3 { transform: translateX(4px); }
   .bt *, .bt *::before, .bt *::after, .dg-sw, .dg-sw i, .cmx-mini, .sl-row h3 { animation: none !important; transition: none !important; }
 }
 
+.hp { transition: opacity .3s ease, transform .3s ease, visibility 0s; }
+body:not(.hp-ready) .hp:not(:focus-within) { opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .3s ease, transform .3s ease, visibility 0s .3s; }
 header { position: fixed; inset: 0 0 auto 0; z-index: 30; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
 header::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(20,54,49,.82); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); box-shadow: 0 1px 0 rgba(248,243,234,.08), 0 12px 32px rgba(10,30,27,.22); opacity: 0; transition: opacity .3s ease; pointer-events: none; }
 header .bar { transition: height .3s cubic-bezier(.2,.7,.2,1); }
@@ -1853,40 +1859,6 @@ header.scrolled .hd-progress { opacity: .9; }
       </div>
     </div>
   </div>
-  <div class="oz-wrap">
-<svg class="oz" viewBox="0 0 1440 440" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Under the Southern Cross, two roads cross the Australian bush and meet at a small church with a lit door, as the sun rises">
-  <defs>
-    <linearGradient id="oz-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B4740" stop-opacity="0"/><stop offset=".5" stop-color="#2A5E52" stop-opacity=".55"/><stop offset="1" stop-color="#E8A577" stop-opacity=".5"/></linearGradient>
-    <radialGradient id="oz-haze" cx=".66" cy=".7" r=".42"><stop offset="0" stop-color="#F3CFB3" stop-opacity=".6"/><stop offset="1" stop-color="#F3CFB3" stop-opacity="0"/></radialGradient>
-    <symbol id="oz-star" viewBox="-10 -10 20 20"><path d="M0 -10 L2 -2 L10 0 L2 2 L0 10 L-2 2 L-10 0 L-2 -2Z" fill="#F8F3EA"/></symbol>
-  </defs>
-  <rect width="1440" height="440" fill="url(#oz-sky)"/>
-  <rect width="1440" height="440" fill="url(#oz-haze)"/>
-  <g class="oz-cross" transform="translate(330 40) scale(1.25)">
-    <use class="oz-s s1" href="#oz-star" x="-7" y="-7" width="14" height="14"/>
-    <use class="oz-s s2" href="#oz-star" x="-48" y="44" width="16" height="16"/>
-    <use class="oz-s s3" href="#oz-star" x="47" y="34" width="12" height="12"/>
-    <use class="oz-s s4" href="#oz-star" x="29" y="84" width="8" height="8"/>
-    <use class="oz-s s5" href="#oz-star" x="2" y="118" width="18" height="18"/>
-  </g>
-  <circle class="oz-sun" cx="950" cy="262" r="96" fill="#E8A577"/>
-  <path d="M0 292 C200 262 400 284 620 266 S1040 240 1440 262 V440 H0Z" fill="#8FB5A5" opacity=".5"/>
-  <path class="oz-rock" d="M150 284 C160 262 186 254 230 252 C290 250 330 254 352 262 C364 268 372 278 378 286 Z" fill="#B9684A" opacity=".75"/>
-  <path d="M0 326 C260 296 520 330 760 306 S1180 286 1440 308 V440 H0Z" fill="#2F6457"/>
-  <path d="M0 376 C300 346 620 382 900 356 S1300 340 1440 350 V440 H0Z" fill="#1B4740"/>
-  <g transform="translate(950 296)">
-    <rect x="-40" y="0" width="80" height="62" fill="#F8F3EA"/>
-    <path d="M-50 5 L0 -36 L50 5Z" fill="#14352F"/>
-    <rect x="-9" y="-76" width="18" height="46" fill="#F8F3EA"/>
-    <path d="M-15 -76 L0 -94 L15 -76Z" fill="#14352F"/>
-    <rect x="-1.75" y="-120" width="3.5" height="26" fill="#F8F3EA"/><rect x="-9" y="-112" width="18" height="3.5" fill="#F8F3EA"/>
-    <rect class="oz-door" x="-12" y="28" width="24" height="34" rx="12" fill="#E8A577"/>
-  </g>
-  <g fill="#14352F"><g transform="translate(1160 372) scale(1.15 1.15)"><path d="M-3 0 C-2 -22 -6 -40 -2 -58 C0 -66 -2 -74 2 -84 L6 -84 C4 -74 6 -66 4 -58 C2 -48 8 -30 5 0Z"/><path d="M0 -50 C-8 -60 -18 -66 -28 -70 L-27 -73 C-16 -70 -6 -64 2 -56Z"/><path d="M3 -64 C10 -72 18 -78 28 -80 L28 -77 C20 -74 12 -68 5 -60Z"/><ellipse cx="-32" cy="-78" rx="17" ry="9"/><ellipse cx="-20" cy="-86" rx="12" ry="7"/><ellipse cx="4" cy="-96" rx="18" ry="10"/><ellipse cx="20" cy="-90" rx="12" ry="7"/><ellipse cx="32" cy="-84" rx="15" ry="8"/></g><g transform="translate(1296 362) scale(-0.8 0.8)"><path d="M-3 0 C-2 -22 -6 -40 -2 -58 C0 -66 -2 -74 2 -84 L6 -84 C4 -74 6 -66 4 -58 C2 -48 8 -30 5 0Z"/><path d="M0 -50 C-8 -60 -18 -66 -28 -70 L-27 -73 C-16 -70 -6 -64 2 -56Z"/><path d="M3 -64 C10 -72 18 -78 28 -80 L28 -77 C20 -74 12 -68 5 -60Z"/><ellipse cx="-32" cy="-78" rx="17" ry="9"/><ellipse cx="-20" cy="-86" rx="12" ry="7"/><ellipse cx="4" cy="-96" rx="18" ry="10"/><ellipse cx="20" cy="-90" rx="12" ry="7"/><ellipse cx="32" cy="-84" rx="15" ry="8"/></g><g transform="translate(205 394) scale(-1.25 1.25)"><path d="M-3 0 C-2 -22 -6 -40 -2 -58 C0 -66 -2 -74 2 -84 L6 -84 C4 -74 6 -66 4 -58 C2 -48 8 -30 5 0Z"/><path d="M0 -50 C-8 -60 -18 -66 -28 -70 L-27 -73 C-16 -70 -6 -64 2 -56Z"/><path d="M3 -64 C10 -72 18 -78 28 -80 L28 -77 C20 -74 12 -68 5 -60Z"/><ellipse cx="-32" cy="-78" rx="17" ry="9"/><ellipse cx="-20" cy="-86" rx="12" ry="7"/><ellipse cx="4" cy="-96" rx="18" ry="10"/><ellipse cx="20" cy="-90" rx="12" ry="7"/><ellipse cx="32" cy="-84" rx="15" ry="8"/></g><g transform="translate(70 380) scale(0.7 0.7)"><path d="M-3 0 C-2 -22 -6 -40 -2 -58 C0 -66 -2 -74 2 -84 L6 -84 C4 -74 6 -66 4 -58 C2 -48 8 -30 5 0Z"/><path d="M0 -50 C-8 -60 -18 -66 -28 -70 L-27 -73 C-16 -70 -6 -64 2 -56Z"/><path d="M3 -64 C10 -72 18 -78 28 -80 L28 -77 C20 -74 12 -68 5 -60Z"/><ellipse cx="-32" cy="-78" rx="17" ry="9"/><ellipse cx="-20" cy="-86" rx="12" ry="7"/><ellipse cx="4" cy="-96" rx="18" ry="10"/><ellipse cx="20" cy="-90" rx="12" ry="7"/><ellipse cx="32" cy="-84" rx="15" ry="8"/></g></g>
-  <path d="M0 418 C340 394 760 424 1080 404 S1380 394 1440 398 V440 H0Z" fill="#14352F"/>
-  <path class="oz-road" d="M120 440 C290 404 510 380 710 374 S910 362 950 358" fill="none" stroke="#F8F3EA" stroke-width="9" stroke-linecap="round" opacity=".9"/>
-  <path class="oz-road" d="M1380 440 C1250 414 1080 390 970 370" fill="none" stroke="#F8F3EA" stroke-width="9" stroke-linecap="round" opacity=".9"/>
-</svg></div>
 </section>
 
 <section class="sec case" id="stories" aria-labelledby="stories-h">
@@ -1917,13 +1889,7 @@ header.scrolled .hd-progress { opacity: .9; }
         </div>
       </li>
       <li class="cs-tile">
-        <div class="cs-img"><svg class="chai-art" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 250" aria-hidden="true"><rect width="400" height="250" fill="#1B4740"/>
-<path class="chai-b" d="M40 210 C120 200 170 170 210 125 S300 60 360 50" fill="none" stroke="#E8A577" stroke-width="5" stroke-linecap="round"/>
-<path class="chai-b" d="M150 182 C160 150 150 125 128 104" fill="none" stroke="#8FB5A5" stroke-width="4" stroke-linecap="round"/>
-<path class="chai-b" d="M245 98 C262 120 290 128 318 124" fill="none" stroke="#8FB5A5" stroke-width="4" stroke-linecap="round"/>
-<circle cx="128" cy="104" r="9" fill="#F8F3EA"/><circle cx="318" cy="124" r="9" fill="#F8F3EA"/><circle cx="360" cy="50" r="11" fill="#E8A577"/><circle cx="40" cy="210" r="7" fill="#F8F3EA"/>
-<text x="36" y="58" fill="#F8F3EA" font-family="inherit" font-size="34" font-weight="800" letter-spacing="-1">CHAI</text>
-<text x="36" y="84" fill="#CFE0D6" font-family="inherit" font-size="15">Christians in AI</text></svg></div>
+        <div class="cs-img chai-tile"><img src="img/chai-logo.webp" alt="Christians in AI (ChAI) logo" loading="lazy"></div>
         <div class="cs-text">
           <p class="cs-name">Christians in AI (CHAI)</p>
           <h3>From decision to discipleship.</h3>
@@ -2811,13 +2777,10 @@ const ok = await verifyWebhook({
   <p class="ft-dek">At Christians in AI, Nathan Gaw shares the story of Branches, an open tool from Rejoice that has evolved into Always Connect.</p>
 </div></div>
 
-<figure class="ft-fig wrap chai-fig"><svg class="chai-art" viewBox="0 0 800 350" aria-hidden="true"><rect width="800" height="350" fill="#1B4740"/>
-<path class="chai-b" d="M300 300 C420 290 480 250 540 190 S650 90 740 70" fill="none" stroke="#E8A577" stroke-width="6" stroke-linecap="round"/>
-<path class="chai-b" d="M440 272 C455 230 440 196 410 168" fill="none" stroke="#8FB5A5" stroke-width="5" stroke-linecap="round"/>
-<path class="chai-b" d="M585 150 C605 180 645 192 685 186" fill="none" stroke="#8FB5A5" stroke-width="5" stroke-linecap="round"/>
-<circle cx="410" cy="168" r="11" fill="#F8F3EA"/><circle cx="685" cy="186" r="11" fill="#F8F3EA"/><circle cx="740" cy="70" r="14" fill="#E8A577"/><circle cx="300" cy="300" r="9" fill="#F8F3EA"/>
-<text x="60" y="110" fill="#F8F3EA" font-family="inherit" font-size="64" font-weight="800" letter-spacing="-2">CHAI</text>
-<text x="62" y="150" fill="#CFE0D6" font-family="inherit" font-size="24">Christians in AI</text></svg></figure>
+<figure class="ft-fig wrap chai-fig">
+  <img src="img/branches.webp" alt="Branches: the global Gospel response network. Open source infrastructure for what happens after someone responds to the Gospel." width="1474" height="803" loading="lazy">
+  <figcaption>Branches, before it evolved into Always Connect.</figcaption>
+</figure>
 
 <div class="wrap ft-body">
   <div class="prose ft-prose">
@@ -2851,6 +2814,7 @@ const ok = await verifyWebhook({
 
   <aside class="ft-side" aria-label="At a glance">
     <div class="ft-card">
+      <img loading="lazy" decoding="async" class="chai-logo" src="img/chai-logo.webp" alt="Christians in AI (ChAI) logo" width="240" height="180">
       <h2>At a glance</h2>
       <dl>
         <dt>Talk</dt><dd>Branches: Walking with New Believers from Decision to Discipleship</dd>
@@ -3049,7 +3013,7 @@ const ok = await verifyWebhook({
     <nav class="foot-cols" aria-label="Footer">
       <div><h2>Platform</h2><a href="#/app">Always App</a><a href="#/pages">Always Pages</a><a href="#/compliance">Always Compliance</a><a href="#/reports">Always Reports</a><a href="#/connect">Always Connect</a></div><div><h2>Solutions</h2><a href="#/churches">Churches</a><a href="#/youth">Youth ministries</a><a href="#/ministries">Events, tours and ministries</a><a href="#/evangelists">Evangelists and street teams</a><a href="#/networks">Denominations and networks</a><a href="#/platforms">Christian tech platforms</a></div><div><h2>Developers</h2><a href="#/developers">Overview</a><a href="#/docs/api">API</a><a href="#/docs/sdk">SDK</a><a href="#/docs/mcp">MCP connector</a><a href="#/docs/webhooks">Webhooks</a><a href="https://github.com/alwaysfoundation">GitHub</a></div><div><h2>Foundation</h2><a href="#/about">About</a><a href="#/stories">Stories</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/faq">FAQs</a></div><div><h2>Help</h2><a href="#/contact">Contact us</a><a href="#/docs/introduction">Docs</a><a href="#/claim">Claim your church</a><a href="#/docs/privacy">Privacy</a><a href="#/docs/terms">Terms</a></div>
     </nav>
-    <p class="photo-credit">Scripture quotations marked ESV are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Scripture quotations are not covered by our Creative Commons licence. Photos: UEN, Rejoice, Sydney Fire Evangelism, Alpha Australia, CXMMXNS and FaithTech, used with permission; some photos from Unsplash under the Unsplash License.</p>
+    <p class="photo-credit">Scripture quotations marked ESV are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Scripture quotations are not covered by our Creative Commons licence. Photos: UEN, Rejoice, Sydney Fire Evangelism, Alpha Australia, CXMMXNS, FaithTech and Christians in AI, used with permission; some photos from Unsplash under the Unsplash License.</p>
     <div class="foot-base"><span>© Always Foundation</span><a href="#/docs/privacy">Privacy</a><a href="#/docs/terms">Terms</a></div>
   </div>
   <div class="foot-mark"><svg class="foot-mark-svg" viewBox="186 250 1328 366" aria-hidden="true" focusable="false"><path fill="#F8F3EA" fill-rule="evenodd" d="M1030.8,608.4C1046.2,605.2 1061.0,596.1 1069.8,584.4C1077.9,573.6 1081.9,564.7 1101.5,514.5C1111.9,488.1 1128.3,446.2 1138.0,421.5C1147.8,396.8 1157.6,371.4 1160.0,365.2C1166.0,349.0 1167.7,350.0 1134.5,350.0C1109.8,350.0 1108.2,350.1 1106.6,351.9C1105.6,353.0 1101.7,362.3 1097.9,372.7C1094.1,383.0 1084.8,408.5 1077.3,429.2C1069.7,450.0 1063.2,467.0 1062.9,467.0C1062.5,467.0 1059.3,459.7 1055.7,450.8C1050.1,437.0 1029.3,386.6 1018.0,359.7C1016.3,355.5 1014.0,351.5 1013.0,351.0C1010.4,349.6 958.5,349.7 955.9,351.0C954.9,351.6 954.0,352.9 954.0,353.8C954.0,354.8 957.1,362.3 960.8,370.5C964.6,378.8 970.4,391.6 973.7,399.0C977.1,406.4 984.1,421.9 989.3,433.5C994.5,445.1 1006.2,470.9 1015.3,491.0C1024.3,511.1 1032.8,529.9 1034.0,532.8L1036.3,538.1L1033.5,544.6C1030.1,552.5 1024.9,557.3 1017.8,559.0C1011.6,560.5 1006.1,559.8 997.5,556.4C992.7,554.5 990.3,554.0 989.2,554.7C987.3,555.8 972.0,589.2 971.3,593.7C970.8,596.5 971.2,597.1 974.1,598.9C979.3,602.1 993.4,606.9 1001.9,608.4C1012.2,610.3 1021.6,610.3 1030.8,608.4ZM290.8,550.7C302.4,547.4 313.4,541.1 323.4,531.9L329.0,526.8L329.0,535.7C329.0,549.8 327.2,549.0 357.1,549.0C380.7,549.0 382.1,548.9 384.0,547.0C386.0,545.0 386.0,543.7 386.0,483.1C386.0,444.5 385.6,418.2 384.9,413.3C383.4,401.9 378.4,387.9 373.0,379.6C358.9,358.1 334.9,346.8 299.9,345.3C277.1,344.3 257.2,348.0 239.4,356.4C226.2,362.7 215.0,370.6 215.0,373.6C215.0,375.3 233.4,404.2 235.2,405.3C236.3,406.0 239.8,404.8 248.1,400.7C261.5,394.2 269.0,392.1 282.1,391.3C303.0,390.0 319.1,396.4 325.2,408.4C327.2,412.2 329.2,428.0 327.7,428.0C327.4,428.0 322.5,426.5 316.8,424.6C295.5,417.5 273.2,416.4 252.2,421.5C224.5,428.2 206.5,443.5 198.5,467.1C196.0,474.4 195.6,477.0 195.6,487.5C195.5,497.4 195.9,500.8 197.9,507.0C204.9,529.9 224.5,546.4 251.1,552.0C257.5,553.3 284.5,552.4 290.8,550.7ZM861.0,550.9C872.2,548.3 882.3,543.1 892.6,534.8C897.2,531.0 901.1,528.0 901.2,528.0C901.4,528.0 901.5,532.1 901.5,537.1C901.5,544.9 901.8,546.4 903.4,547.6C905.0,548.7 910.3,549.0 930.1,549.0C954.6,549.0 954.9,549.0 956.4,546.8C957.8,544.8 958.0,537.0 958.0,482.3C958.0,443.7 957.6,417.2 956.9,412.3C953.3,385.7 940.3,366.7 917.8,355.4C898.3,345.6 866.7,342.3 840.2,347.5C824.4,350.5 804.6,358.9 792.8,367.6C786.6,372.0 786.6,374.0 792.8,383.3C795.5,387.3 799.8,394.0 802.4,398.2C805.1,402.5 807.8,406.0 808.6,406.0C809.4,406.0 813.9,404.0 818.7,401.6C837.7,392.0 856.9,388.8 874.3,392.5C891.6,396.1 901.0,406.8 901.0,422.7C901.0,425.6 900.9,428.0 900.7,428.0C900.5,428.0 896.4,426.6 891.5,425.0C877.3,420.2 867.3,418.6 851.0,418.6C829.0,418.7 812.5,423.2 797.0,433.5C785.0,441.5 775.9,453.5 771.3,467.4C769.1,474.3 768.7,477.3 768.7,488.0C768.6,499.1 768.9,501.4 771.4,508.5C772.9,512.9 775.7,519.0 777.5,522.0C781.3,528.2 790.3,537.2 796.6,541.2C802.7,545.1 814.3,549.8 821.8,551.4C832.1,553.6 850.8,553.4 861.0,550.9ZM1262.7,550.6C1300.7,542.3 1323.0,511.4 1316.6,476.0C1314.6,464.6 1309.4,454.4 1302.1,447.1C1291.7,436.8 1278.0,430.6 1246.5,422.0C1221.5,415.1 1216.0,411.8 1216.0,403.5C1216.0,396.2 1221.1,392.0 1232.5,389.9C1243.3,387.9 1260.8,392.6 1275.7,401.7C1279.6,404.0 1283.8,406.0 1284.9,406.0C1286.2,406.0 1287.9,404.6 1289.4,402.2C1299.6,386.1 1307.0,373.7 1307.0,372.5C1307.0,369.2 1289.4,357.6 1276.7,352.6C1250.2,342.1 1217.5,342.8 1194.5,354.3C1173.0,365.0 1160.8,382.2 1159.4,403.8C1158.2,420.7 1162.9,434.0 1173.9,445.0C1184.4,455.4 1195.2,460.2 1237.6,473.0C1256.3,478.7 1263.4,486.5 1258.6,495.8C1254.9,503.0 1247.9,506.0 1235.0,506.0C1219.7,506.0 1204.7,500.8 1187.4,489.5C1182.2,486.1 1177.9,484.0 1176.6,484.2C1175.2,484.4 1171.1,489.3 1163.8,499.5C1149.3,519.8 1149.9,518.3 1154.1,522.6C1158.9,527.6 1172.1,536.3 1182.1,540.9C1192.1,545.6 1208.7,550.6 1218.5,551.9C1228.5,553.3 1254.1,552.5 1262.7,550.6ZM460.6,547.6C462.5,546.2 462.5,543.5 462.8,411.9C463.0,292.7 462.9,277.4 461.5,275.3L460.0,273.0L434.1,273.0C411.9,273.0 408.1,273.2 407.0,274.6C405.9,275.8 405.7,292.4 405.8,357.3C406.0,558.6 405.9,545.7 407.6,547.4C409.8,549.7 457.5,549.8 460.6,547.6ZM585.3,547.8C586.2,547.1 590.1,538.0 593.9,527.5C618.9,459.0 626.2,439.4 627.0,438.6C627.6,438.0 628.0,437.9 628.0,438.2C628.0,438.5 633.7,454.5 640.6,473.7C647.5,492.8 656.1,516.8 659.7,527.0C663.5,537.7 667.1,546.2 668.2,547.2C670.0,548.8 672.8,549.0 693.5,549.0C715.1,549.0 716.8,548.9 718.4,547.1C719.4,546.0 726.9,525.4 735.0,501.3C743.2,477.2 757.7,434.3 767.4,405.9C783.6,358.1 784.8,354.1 783.4,352.1C781.9,350.1 781.3,350.0 756.1,350.0C732.9,350.0 730.0,350.2 728.1,351.8C726.7,353.0 722.8,363.7 715.1,388.0C709.1,407.0 701.4,431.2 698.0,441.9C694.6,452.5 691.5,460.8 691.1,460.4C690.6,459.9 687.5,451.4 684.0,441.5C675.5,417.0 657.5,366.0 654.4,357.8C653.0,354.2 651.2,350.9 650.4,350.6C649.5,350.3 639.4,350.0 627.9,350.0C609.1,350.0 606.8,350.2 605.2,351.8C604.2,352.8 600.8,361.0 597.6,370.1C594.4,379.1 587.2,399.3 581.5,415.0C575.9,430.7 569.8,447.7 568.0,452.8C566.2,457.9 564.5,461.9 564.3,461.7C564.1,461.4 562.1,455.2 559.9,447.9C557.6,440.5 554.1,429.1 552.1,422.5C550.0,415.9 544.4,397.7 539.5,382.0C534.7,366.3 530.0,352.7 529.2,351.8C527.8,350.2 525.2,350.0 500.9,350.0C477.9,350.0 473.9,350.2 472.6,351.6C471.7,352.4 471.0,353.5 471.0,353.8C471.0,354.2 475.5,368.0 481.0,384.5C489.8,410.8 510.4,474.5 527.4,528.0C530.5,537.7 533.8,546.4 534.7,547.3C536.2,548.8 539.1,549.0 560.0,549.0C577.3,549.0 584.1,548.7 585.3,547.8ZM276.4,509.0C266.5,507.0 258.1,501.8 254.2,495.1C252.0,491.4 251.5,489.3 251.5,484.0C251.5,476.0 254.8,469.6 261.7,464.6C269.8,458.7 274.8,457.5 290.5,457.5C305.4,457.5 311.7,458.9 323.2,464.7L328.0,467.0L328.0,474.4C328.0,480.5 327.5,482.6 324.9,487.8C317.1,503.5 295.8,512.8 276.4,509.0ZM848.3,509.0C825.1,504.1 816.4,482.6 831.5,467.5C838.7,460.2 845.3,457.9 860.1,457.2C873.5,456.7 882.8,458.5 894.4,464.1L901.2,467.4L900.8,474.9C899.9,489.9 890.4,501.5 874.6,507.0C867.8,509.3 854.5,510.3 848.3,509.0Z"/><path fill="#EE8B54" d="M1434.5,553.6C1436.3,552.3 1436.4,549.1 1436.4,463.1L1436.5,374.0L1468.9,374.0C1497.7,374.0 1501.5,373.8 1503.2,372.3C1504.8,370.9 1505.0,368.9 1505.0,352.8C1505.0,342.3 1504.6,334.1 1504.0,332.9C1503.0,331.1 1501.5,331.0 1470.0,331.0L1437.0,331.0L1437.0,296.4C1437.0,274.5 1436.6,261.2 1436.0,259.9C1435.0,258.1 1433.7,258.0 1413.4,258.0L1392.0,258.0L1391.0,260.6C1390.4,262.0 1390.0,277.4 1390.0,297.1L1390.0,331.0L1357.7,331.0C1333.9,331.0 1325.1,331.3 1324.2,332.2C1323.3,333.1 1323.0,339.0 1323.0,352.7C1323.0,370.7 1323.1,372.0 1324.9,373.0C1326.2,373.6 1338.6,374.0 1358.4,374.0L1390.0,374.0L1390.0,462.5C1390.0,549.7 1390.0,551.0 1392.0,553.0C1393.9,554.9 1395.3,555.0 1413.3,555.0C1428.1,555.0 1433.1,554.7 1434.5,553.6Z"/></svg></div>
@@ -3556,6 +3520,7 @@ document.querySelectorAll('.sw').forEach((sw) => {
   function update() {
     const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
     h.classList.toggle('scrolled', y > 24);
+    document.body.classList.toggle('hp-ready', y > 360);
     h.classList.toggle('dd-open', !!h.querySelector('.dd-btn[aria-expanded="true"]'));
     if (y > 480 && y > last + 4) h.classList.add('tuck');
     else if (y < last - 4 || y < 480) h.classList.remove('tuck');

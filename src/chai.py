@@ -16,7 +16,7 @@ BRANCH_WIDE = '''<svg class="chai-art" viewBox="0 0 800 350" aria-hidden="true">
 <text x="60" y="110" fill="#F8F3EA" font-family="inherit" font-size="64" font-weight="800" letter-spacing="-2">CHAI</text>
 <text x="62" y="150" fill="#CFE0D6" font-family="inherit" font-size="24">Christians in AI</text></svg>'''
 
-PAGE =f'''
+PAGE = '''
 <article class="ft">
 <div class="ft-hero"><div class="wrap ft-hero-in">
   <p class="ft-kick"><a href="#/stories">Stories</a> <span aria-hidden="true">/</span> Christians in AI (CHAI)</p>
@@ -24,7 +24,10 @@ PAGE =f'''
   <p class="ft-dek">At Christians in AI, Nathan Gaw shares the story of Branches, an open tool from Rejoice that has evolved into Always Connect.</p>
 </div></div>
 
-<figure class="ft-fig wrap chai-fig">{BRANCH_WIDE}</figure>
+<figure class="ft-fig wrap chai-fig">
+  <img src="{{BRANCHES_IMG}}" alt="Branches: the global Gospel response network. Open source infrastructure for what happens after someone responds to the Gospel." width="1474" height="803" loading="lazy">
+  <figcaption>Branches, before it evolved into Always Connect.</figcaption>
+</figure>
 
 <div class="wrap ft-body">
   <div class="prose ft-prose">
@@ -58,6 +61,7 @@ PAGE =f'''
 
   <aside class="ft-side" aria-label="At a glance">
     <div class="ft-card">
+      <img class="chai-logo" src="{{CHAI_LOGO}}" alt="Christians in AI (ChAI) logo" width="240" height="180">
       <h2>At a glance</h2>
       <dl>
         <dt>Talk</dt><dd>Branches: Walking with New Believers from Decision to Discipleship</dd>
@@ -74,6 +78,11 @@ PAGE =f'''
 '''
 
 CSS = '''
+.chai-fig img { border-radius: 26px; }
+.ft-card .chai-logo { display: block; width: 140px; height: auto; margin: -6px 0 12px -10px; mix-blend-mode: multiply; }
+.cs-img.chai-tile { background: #fff; display: grid; place-items: center; }
+.cs-img.chai-tile img { width: 70%; height: auto; object-fit: contain; }
+.cs-tile:hover .cs-img.chai-tile img { transform: scale(1.03); }
 .chai-fig .chai-art { display: block; width: 100%; height: auto; aspect-ratio: 800 / 350; border-radius: 26px; box-shadow: 0 40px 80px -40px rgba(10,30,26,.45); }
 .cs-img .chai-art { width: 100%; height: 100%; display: block; }
 .chai-b { stroke-dasharray: 1000; animation: chaiGrow 2.2s cubic-bezier(.3,.6,.2,1) .3s both; }
@@ -81,8 +90,8 @@ CSS = '''
 @media (prefers-reduced-motion: reduce) { .chai-b { animation: none; } }
 '''
 
-TILE = f'''      <li class="cs-tile">
-        <div class="cs-img">{BRANCH.replace('class="chai-art"', 'class="chai-art" preserveAspectRatio="xMidYMid slice"')}</div>
+TILE = '''      <li class="cs-tile">
+        <div class="cs-img chai-tile"><img src="{{CHAI_LOGO}}" alt="Christians in AI (ChAI) logo" loading="lazy"></div>
         <div class="cs-text">
           <p class="cs-name">Christians in AI (CHAI)</p>
           <h3>From decision to discipleship.</h3>
