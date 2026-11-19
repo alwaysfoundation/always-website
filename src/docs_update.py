@@ -53,7 +53,7 @@ APP = """
 <li><b>Light and dark.</b> It follows your phone, or choose Light, Warm or Dark in Me.</li>
 </ul>
 <p>Most of what you do stays on your phone. See <a href="#/docs/saving">How your information is saved</a>.</p>
-<p>The Always App runs in any browser, with nothing to download. It's used by evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join the pilot</a>.</p>
+<p>The Always App runs in any browser, with nothing to download. It's used by evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join as an evangelist</a>.</p>
 """
 
 
@@ -83,7 +83,7 @@ JOINING = """
 <h2>Who can join</h2>
 <table class="dt"><tr><th>You are</th><th>What joining means</th></tr>
 <tr><td>A church or ministry</td><td>A member of the foundation. Choose your modules; churches use them free.</td></tr>
-<tr><td>An evangelist</td><td>Join the Always App pilot and share Jesus with a safe next step for every yes.</td></tr>
+<tr><td>An evangelist</td><td>Use the Always App to share Jesus, with a safe next step for every yes.</td></tr>
 <tr><td>A supporter</td><td>Pray, give or volunteer with us.</td></tr>
 <tr><td>A tech platform</td><td>Build on Always Platform, starting with Always Safety.</td></tr></table>
 <h2>How it works</h2>
@@ -513,6 +513,7 @@ CSS = '''
 .dtoc p { margin: 0 0 10px; font: 700 13px/1 var(--head); color: var(--clay); }
 .dtoc button { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--line); padding: 7px 0 7px 14px; min-height: 32px; color: var(--soft); font: 500 14px/1.35 var(--text, inherit); cursor: pointer; transition: color .2s ease, border-color .2s ease; }
 .dtoc button:hover, .dtoc button.on { color: var(--green); border-left-color: var(--green); }
+.prose :not(pre) > code { overflow-wrap: anywhere; }
 /* ---- Journeys page ---- */
 .js { margin: 30px 0 8px; }
 .js-steps { list-style: none; counter-reset: js; margin: 14px 0 0 !important; padding: 0 !important; display: grid; gap: 10px; }

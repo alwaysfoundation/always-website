@@ -41,13 +41,15 @@ WAY_ICON = {
 }
 
 BUILD = [
-    ('connect', 'Church feed and finder', 'Partner churches near any postcode, for your website, app or map.', 'docs/feed'),
+    ('feed', 'Church feed and finder', 'Partner churches near any postcode, for your website, app or map.', 'docs/feed'),
     ('connect', 'Responses and handoff', 'Pass people to a local partner church, with consent that travels with them.', 'docs/standard'),
     ('compliance', 'Safety infrastructure', 'The open register, change alerts and an embeddable check-up.', 'docs/compliance-platforms'),
-    ('reports', 'Webhooks', 'Hear about introductions, handoffs and rule changes as they happen.', 'docs/webhooks'),
+    ('webhooks', 'Webhooks', 'Hear about introductions, handoffs and rule changes as they happen.', 'docs/webhooks'),
     ('pages', 'Response pages and embeds', 'Branded response cards and pages you drop into your own site.', 'docs/senders'),
     ('app', 'Scripture', 'The Bible in your app through YouVersion.', 'docs/youversion'),
-    ('reports', 'Journeys across ministries', 'See the fruit across the Body, from a first yes to a church family, with totals that identify no one.', 'docs/journeys'),
+    ('platforms', 'AI assistants', 'Let assistants find partner churches through the MCP connector, using public information only.', 'docs/mcp'),
+    ('consent', 'Consent receipts', 'A record of what each person agreed to, the words they saw and who may see their details.', 'docs/consent'),
+    ('journeys', 'Journeys across ministries', 'Link one person&rsquo;s steps across ministries, only with their yes.', 'docs/journeys'),
 ]
 
 
@@ -165,7 +167,7 @@ CSS = '''
 }
 @media (max-width: 640px) {
   .dv-flow { grid-template-columns: 1fr; }
-  .dvc .sw-tabs { overflow-x: auto; } .dvc-req { flex-wrap: wrap; } .dvc-panel { padding: 16px; }
+  .dvc .sw-tabs { flex-wrap: wrap; overflow: visible; } .dvc-req { flex-wrap: wrap; } .dvc-panel { padding: 16px; }
   .dvc-out { min-height: 0; } .dvc-out code { font-size: 12px; }
   }
 @media (prefers-reduced-motion: reduce) { .dvc.go .dvc-out span { animation: none !important; } .dv-way { transition: none; } }

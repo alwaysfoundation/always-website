@@ -117,7 +117,7 @@ i.ig-building, .ig-st.ig-building::before { background: #8FB5D9; } i.ig-planned,
 .ig-rules .sl-rows-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1000px) { .ig-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ig-head { grid-template-columns: minmax(0, 1fr); gap: 10px; } .pg-green .sl-row h3 { color: var(--cream); } .pg-green .sl-row p { color: var(--on-green); } .pg-green .sl-row { border-top-color: rgba(248,243,234,.18); }
 .ig-rules .sl-rows-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .ig-grid, .pg-green .sl-row h3 { color: var(--cream); } .pg-green .sl-row p { color: var(--on-green); } .pg-green .sl-row { border-top-color: rgba(248,243,234,.18); }
+@media (max-width: 640px) { .ig-grid { grid-template-columns: minmax(0, 1fr); } .pg-green .sl-row h3 { color: var(--cream); } .pg-green .sl-row p { color: var(--on-green); } .pg-green .sl-row { border-top-color: rgba(248,243,234,.18); }
 .ig-rules .sl-rows-4 { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .ig-card { transition: none; } .ig-card:hover { transform: none; } }
 '''

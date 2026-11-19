@@ -5,7 +5,7 @@ STATES = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']
 MODULES = [('app', 'Always App'), ('pages', 'Always Respond'), ('compliance', 'Always Safety'), ('reports', 'Always Reports'), ('connect', 'Always Connect')]
 PATHS = [
     ('church', 'A church or ministry', 'Become a member and switch on the modules you need.', 'churches'),
-    ('evangelist', 'An evangelist', 'Join the Always App pilot and share Jesus with confidence.', 'evangelists'),
+    ('evangelist', 'An evangelist', 'Use the Always App to share Jesus with confidence.', 'evangelists'),
     ('supporter', 'A supporter', 'Pray, give or volunteer with us.', 'youth'),
     ('platform', 'A tech platform', 'Build on Always Platform, starting with Always Safety.', 'platforms'),
 ]
@@ -124,7 +124,7 @@ CSS = '''
 .jn-step { margin: 0; padding: 30px 30px 32px; border: 0; border-radius: 26px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(30,42,38,.05); min-width: 0; }
 .jn-step[hidden] { display: none; }
 .jn-step legend { float: left; width: 100%; display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; padding: 0; font: 800 24px/1.2 var(--head); letter-spacing: -0.02em; color: var(--green); }
-.jn-step legend + * { clear: both; }
+.jn-step legend ~ * { clear: both; }
 .jn-n { font: 400 26px/1 'Newsreader', Georgia, serif; color: var(--clay); }
 .jn-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .jn-path { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: start; padding: 18px; border-radius: 18px; border: 1.5px solid var(--line); cursor: pointer; transition: border-color .2s, background-color .2s, transform .2s cubic-bezier(.2,.8,.2,1); }
@@ -154,6 +154,7 @@ CSS = '''
 .jn-checks input:focus-visible + span { outline: 3px solid var(--peach); outline-offset: 2px; }
 .jn-check { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 15.5px; line-height: 1.5; cursor: pointer; color: var(--ink); font-weight: 400; }
 .jn-check[hidden] { display: none; }
+.jn-check > span { flex: 1; min-width: 0; white-space: normal; }
 .jn-check input { width: 22px; height: 22px; margin-top: 1px; accent-color: var(--green); flex: none; }
 .jn-check a { color: var(--green); }
 .jn-agree .btn { margin-top: 8px; }

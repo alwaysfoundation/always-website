@@ -160,7 +160,7 @@ FAQ_GROUPS = [
   ('Who on our team can see people\'s details?', 'Only the people you add to your team, and only after your church accepts an introduction.')]),
  ('For ministries and events', [
   ('Can we use our own brand?', 'Yes. Always Respond pages, QR codes, NFC taps and texts can use your colours, logo and wording.'),
-  ('Does Always work with our church management system?', 'Hand-offs into Elvanto and Planning Center are being built first, then Fluro, ChurchSuite and Breeze. See Integrations at alwaysfoundation.org/#/integrations.'),
+  ('Does Always work with our church management system?', 'Yes. Always hands people on to Elvanto, Planning Center, Fluro, ChurchSuite and Breeze. See Integrations at alwaysfoundation.org/#/integrations.'),
   ('What results do we see?', 'Totals for each event: responded, introduced, accepted and connected. Each person\'s details go only to the church that welcomes them.'),
   ('Can Always Platform help us report to our funders?', 'Yes. It writes a monthly report for you: who responded, who was introduced, who was contacted, and who is now part of a church family. Download it as a PDF or spreadsheet, or send your funder a link.'),
   ('Will our funders see people\'s details?', 'No. Reports show totals only, and small numbers are hidden so no one can be identified.'),
@@ -187,6 +187,7 @@ FAQ_GROUPS = [
   ('How do you use AI?', 'To save time on routine work, like writing your monthly report. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
   ('What is Always Safety?', 'A guide to the privacy, child safety, charity and messaging rules that apply to your ministry, with a check-up every quarter that a person at your ministry approves, and updates when the law changes. It is free for churches and is not legal advice. Try the free check-up at alwaysfoundation.org/#/compliance.'),
   ('What do Always agents do?', 'They help your team with follow-up and administration: drafting messages, setting reminders and keeping records up to date. A person approves every step, people\'s details stay in Australia, and agents never handle young people\'s information.'),
+  ('Can ministries see my journey across ministries?', 'Only if you say yes, with a separate tick you can withdraw any time. The church that welcomes you then sees your earlier steps by month, never notes. Each ministry gets a different code, and only Always links the journey. See Journeys across ministries in the docs.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
   ('How is the Always Foundation funded?', 'By supporters, and by larger ministries contributing according to their size. Churches never pay.'),
@@ -806,5 +807,5 @@ MINISTRIES += """<section class="sec pg-sec pg-green"><div class="wrap">
     <div class="sl-row rv"><h3>Save every contact safely</h3><p>Your own branded response app, with contacts kept safe in Australia.</p></div>
     <div class="sl-row rv"><h3>Connect people locally</h3><p>With their consent, pass people to a church near them, or to Alpha if they want to explore faith.</p></div>
   </div>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Join the pilot</a><a class="btn btn-ghost" href="#/sydneyfire">Sydney Fire\u2019s story</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Join as an evangelist</a><a class="btn btn-ghost" href="#/sydneyfire">Sydney Fire\u2019s story</a></div>
 </div></section>"""

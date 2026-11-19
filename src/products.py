@@ -149,6 +149,10 @@ ICON = {
     'evangelists': '<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 010 6"/>',
     'networks': '<circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M11 7l-5 9M13 7l5 9M7 18h10"/>',
     'platforms': '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
+    'feed': '<path d="M12 21s-6-5.6-6-11a6 6 0 0112 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',
+    'webhooks': '<path d="M6 16.5V11a6 6 0 0112 0v5.5l1.5 2h-15z"/><path d="M10 21h4"/>',
+    'consent': '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 14l2 2 3-4"/>',
+    'journeys': '<circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h6a3 3 0 010 6h-2a3 3 0 000 6h6"/>',
 }
 MENU_LINE = {
     'app': 'Share Jesus and walk with people', 'pages': 'Respond by QR, tap or link, in your name',
@@ -267,7 +271,7 @@ PAGES_PAGE = product_page('pages',
 
 CONNECT_EXTRA = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
   <div class="cx-pair">
-    <div class="cx rv">{mock('agents')}<h3>Follow up without the admin</h3><p>Agents draft welcome messages, reminders and records for your team. A person approves every step, and young people's details never go near AI.</p><span class="cx-note">In pilot with the foundation team</span></div>
+    <div class="cx rv">{mock('agents')}<h3>Follow up without the admin</h3><p>Agents draft welcome messages, reminders and records for your team. A person approves every step, and young people's details never go near AI.</p></div>
     <a class="cx cx-link rv" href="#/reports">{mock('reports')}<h3>See the fruit with Always Reports</h3><p>Every introduction and welcome flows into a monthly report for your board and funders, with totals only.</p><span class="cx-note">Explore Always Reports</span></a>
   </div>
 </div></section>'''
@@ -541,7 +545,7 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
 @media (max-width: 1100px) { .sx-panel { grid-template-columns: minmax(0, 1fr); } .sx-art .mk { min-height: 260px; } }
 @media (max-width: 860px) {
   .sx { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .sx-list { position: static; display: flex; overflow-x: auto; gap: 22px; padding-bottom: 6px; scrollbar-width: none; border-bottom: 1px solid rgba(248,243,234,.16); }
+  .sx-list { position: static; display: flex; flex-wrap: wrap; overflow: visible; gap: 0 20px; padding-bottom: 6px; scrollbar-width: none; border-bottom: 1px solid rgba(248,243,234,.16); }
   .sx-list::-webkit-scrollbar { display: none; }
   .sx-tab { flex: none; padding: 10px 0 14px; font-size: 18px; white-space: nowrap; }
   .sx-tab::before { left: 0; right: 0; top: auto; bottom: -1px; width: 0; height: 3px; transform: none; transition: width .25s; }
@@ -567,6 +571,7 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
 .sw-me i { width: 8px; height: 8px; border-radius: 50%; background: #8FD1A9; box-shadow: 0 0 0 4px rgba(143,209,169,.18); }
 .sw-tabs { display: flex; gap: 4px; overflow-x: auto; padding: 4px; border-radius: 16px; background: rgba(0,0,0,.18); scrollbar-width: none; }
 .sw-tabs::-webkit-scrollbar { display: none; }
+@media (max-width: 520px) { .sw-tabs { flex-wrap: wrap; } }
 .sw-tab { flex: 1 0 auto; min-height: 40px; padding: 0 14px; border: 0; border-radius: 12px; background: transparent; color: var(--on-green); font: 700 13.5px/1 var(--head); cursor: pointer; transition: background .2s, color .2s; }
 .sw-tab:hover { color: var(--cream); background: rgba(248,243,234,.06); }
 .sw-tab[aria-selected="true"] { background: var(--cream); color: var(--green); }
