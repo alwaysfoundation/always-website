@@ -621,7 +621,7 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
   .dd-panel { position: static; transform: none; width: auto; display: block; background: transparent; box-shadow: none; padding: 0 0 12px; }
   .dd-grid { grid-template-columns: 1fr; gap: 10px; }
   .dd-h { color: var(--peach); margin-top: 8px; }
-  .dd-panel a { margin: 0; padding: 6px 0; } .dd-panel a b { color: var(--cream); font-size: 17px; } .dd-panel a span { display: none; }
+  .dd-panel a { margin: 0; padding: 6px 0; } .dd-panel a b { color: var(--cream); font-size: 17px; } .dd-panel a span { display: none; } .dd-panel a .dd-tx { display: block; } .dd-panel a .dd-tx > span, .dd-panel a .dd-ic { display: none; } .dd-panel a.dd-feature, .dd-panel a.dd-story, .dd-panel .dd-h { display: none; }
   .dd-all { border: 0; padding: 8px 0 !important; color: var(--peach) !important; }
   .dd-foot { display: grid; border: 0; padding: 0; margin: 4px 0 0; gap: 0; } .dd-panel .dd-build { margin: 0; }
 }
