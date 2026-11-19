@@ -383,6 +383,7 @@ GLOSSARY = """
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to Always Platform.</dd>
 <dt>Welcoming now</dt><dd>A partner church or ministry that is trained, has room this month and answers introductions on time.</dd>
 <dt>Agents</dt><dd>A feature in Always Connect and Always Safety that helps teams with admin, with a person deciding every step.</dd>
+<dt>Journey</dt><dd>One person&rsquo;s steps across the ministries that help them, linked only with their yes. See <a href="#/docs/journeys">Journeys across ministries</a>.</dd>
 <dt>Placement</dt><dd>One way into a response page, such as a QR code on a screen or a batch of NFC armbands, so reports can show responses by channel without anyone's name.</dd>
 <dt>Developers</dt><dd>The API, SDK, MCP server and webhooks for building on Always Platform.</dd>
 </dl>
@@ -436,6 +437,9 @@ def apply(DOCS):
     edit('branding', 'In the console, set', 'In Always Respond, set')
     set_page('branding', title='Your own brand')
     set_page('results', title='Reports for your funders')
+    gi, pi = find('results')
+    _s, _t, _b = DOCS[gi][1][pi]
+    DOCS[gi][1][pi] = (_s, _t, _b + '<h2>Across ministries</h2><p>Reports count each person once, even when several ministries help them, using <a href="#/docs/journeys">journeys across ministries</a>. Only totals are shown.</p>')
     set_page('inbox', title='Welcome from your phone')
     edit('inbox', 'The Always Connect inbox works', 'Your Always Connect inbox works')
 

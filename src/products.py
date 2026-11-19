@@ -275,6 +275,7 @@ CONNECT_EXTRA = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
 REPORTS_EXTRA = '''<section class="sec pg-sec pg-green"><div class="wrap rp-defs">
   <h2 class="pg-h rv">The same four numbers, every month</h2>
   <div class="rp-row rv"><div><b>Responded</b><span>Said yes, and agreed to be contacted.</span></div><div><b>Introduced</b><span>Passed to a partner church or ministry.</span></div><div><b>Contacted</b><span>A real person got in touch.</span></div><div><b>Part of a church family</b><span>Told us themselves, a few months on.</span></div></div>
+  <p class="rp-jn rv"><b>Journeys across ministries.</b> When someone agrees, their steps are linked across every ministry that helps them, so each person is counted once. <a href="#/docs/journeys">How journeys work</a></p>
 </div></section>'''
 
 REPORTS_PAGE = product_page('reports',
@@ -478,6 +479,8 @@ CSS = MOCK_CSS + '''
 
 a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a.cx:focus-visible h3 { text-decoration: underline; text-decoration-color: var(--peach); text-underline-offset: 6px; }
 .rp-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 40px; margin-top: 40px; }
+.rp-jn { margin: 36px 0 0; max-width: 720px; font-size: 17px; line-height: 1.6; color: var(--on-green, rgba(248,243,234,.82)); }
+.rp-jn b { color: var(--cream); } .rp-jn a { color: var(--peach); font-weight: 600; margin-left: 4px; }
 .rp-row > div { padding-top: 22px; border-top: 2px solid var(--peach); display: grid; gap: 8px; }
 .rp-row b { font: 400 30px/1.15 'Newsreader', Georgia, serif; color: var(--cream); } .rp-row span { color: var(--on-green); font-size: 16px; line-height: 1.5; }
 .rp-defs .pg-h { color: var(--cream); }
