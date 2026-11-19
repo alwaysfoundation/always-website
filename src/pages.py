@@ -69,7 +69,7 @@ MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries
 </div></section>
 <section class="sec pg-sec pg-night"><div class="wrap">
   <h2 class="pg-h rv">Less administration, more ministry</h2>
-  <p class="pg-lead rv">Shared tools for the everyday work behind every ministry, so your team can spend more time on people.</p>
+  <p class="pg-lead rv">Shared tools for the everyday work behind every ministry, with agents to help with follow-up and admin, so your team can spend more time on people.</p>
   {feats([('Governance', 'Shared policies, templates and member records for boards and leaders.'), ('Compliance', 'Consent records and privacy requests, ready to export when you need them.'), ('Safeguarding', 'Child safety checklists and Working With Children Check reminders, kept in one place.'), ('Reporting', 'A monthly report for your board and funders, with totals only.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
@@ -164,6 +164,7 @@ FAQ_GROUPS = [
   ('Where is information kept?', 'In Australia, encrypted, under Australian privacy law.'),
   ('Do you sell information or use it for advertising?', 'No.'),
   ('How do you use AI?', 'To save time on routine work, like writing your monthly report. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
+  ('What do Always agents do?', 'They help your team with follow-up and administration: drafting messages, setting reminders and keeping records up to date. A person approves every step, people\'s details stay in Australia, and agents never handle young people\'s information.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
   ('How is the Always Foundation funded?', 'By supporters, and by larger ministries contributing according to their size. Churches never pay.'),
@@ -548,12 +549,12 @@ BRAND_CSS = """
 
 
 PLAT_BLOCKS = [
-  ('Find a church', 'Verified churches near any postcode, ready to welcome.', 'Church feed'),
+  ('Find a church', 'Verified churches near any postcode, ready to welcome and safe for young people.', 'Church feed'),
   ('Introduce someone', 'Pass on someone who said yes, with their permission.', 'Handoff'),
   ('Welcome them', 'Churches say yes, reach out, and keep walking with them.', 'Church inbox'),
-  ('Trust', 'Know a church is verified and safe for young people.', 'Verification'),
   ('Gather', 'Christian events across Australia, in one place.', 'Events'),
   ('See the fruit', 'Show supporters what God is doing, without sharing a single name.', 'Reports'),
+  ('Follow up and admin', 'Agents draft follow-up messages, reminders and records for your team. A person approves every step.', 'Agents'),
 ]
 
 PLAT_WAYS = [

@@ -649,7 +649,7 @@ about = """
   <div class="mv">
     <div><h3>Our vision</h3><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p style="margin-top:12px">Our values: Christ-centred. Gospel first. Built together, shared freely. People's details stay theirs.</p></div>
     <div><h3>Our name</h3><p>From Jesus' promise in the Great Commission: “I am with you always” (Matthew 28:20, ESV).</p></div>
-    <div><h3>Our posture</h3><p>We serve quietly, behind the scenes. Our tools carry the names of churches and ministries, not ours. The credit is theirs, and the glory is God's.</p></div>
+    <div><h3>Our posture</h3><p>We serve quietly, in the background. Churches and ministries lead the work, and we support them.</p></div>
   </div>
   <div class="creed">
     <div><h2>Built together. Shared freely.</h2></div>
@@ -883,6 +883,12 @@ DECK_CSS = '''
 .pb em { position: relative; font-style: normal; padding-left: 9px; line-height: 24px; color: #1A1410; }
 .pl { display: flex; justify-content: space-between; gap: 10px; padding: 8px 11px; border-radius: 9px; background: rgba(248,243,234,.1); }
 .pl b { color: var(--cream); font-weight: 700; } .pl em { font-style: normal; opacity: .7; }
+.pw-agent { display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 18px 20px; text-align: left; font: 600 12px/1.35 var(--head); color: var(--on-green); }
+.pa-t { opacity: .75; }
+.pa-m { padding: 10px 12px; border-radius: 10px 10px 10px 3px; background: rgba(248,243,234,.12); color: var(--cream); font-weight: 500; }
+.pa-b { display: flex; gap: 6px; }
+.pa-b i { font-style: normal; padding: 5px 10px; border-radius: 999px; border: 1px solid rgba(248,243,234,.3); }
+.pa-b i:first-child { background: var(--peach); border-color: var(--peach); color: #1A1410; }
 .plat-dev { margin-top: 22px; font-size: 15.5px; color: var(--on-green); opacity: .85; }
 .plat-dev a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 860px) { .shared-grid { grid-template-columns: 1fr; gap: 40px; } }
