@@ -7,7 +7,7 @@ INTRO = """
 <p>Every week people respond to Jesus at concerts, camps, services, on the street and online. Always Platform makes sure that moment becomes a next step: the person chooses what would help, and a church or ministry nearby gets in touch. If no one can, our care team helps.</p>
 <h2>How the tools fit together</h2>
 <div class="dcards">
-<a href="#/docs/app"><span>Share Jesus</span><b>Always Sent</b><em>Share the Good News and capture a yes, at an event or in a conversation.</em></a>
+<a href="#/docs/app"><span>Share Jesus</span><b>Always Sent</b><em>Share Jesus, tell your story and invite a friend.</em></a>
 <a href="#/docs/senders"><span>Capture every yes</span><b>Always Respond</b><em>Respond by QR code, tap, ticket or link, under your own brand.</em></a>
 <a href="#/docs/inbox"><span>Hand people on</span><b>Always Connect</b><em>Find the next best faith step nearby, and walk with people.</em></a>
 <a href="#/docs/compliance-overview"><span>Stay lawful</span><b>Always Safety</b><em>Privacy, child safety, charity and messaging rules, made clear.</em></a>
@@ -37,36 +37,51 @@ HOW = """
 """
 
 APP = """
-<p class="lead">Always Sent helps every Christian share Jesus, and gives the people who say yes a safe next step.</p>
+<p class="lead">Always Sent is a free evangelism companion for everyday Christians. It helps you share Jesus, tell your story and help someone take their next step.</p>
+<p>It&rsquo;s built around four steps: Learn, Share, Invite and Follow up.</p>
+<h2>Learn</h2>
 <ul>
-<li><b>The Good News.</b> Walk through the Romans Road together, verse by verse.</li>
-<li><b>Scripture.</b> Open the Bible in the app through YouVersion. See <a href="#/docs/youversion">Scripture with YouVersion</a>.</li>
-<li><b>A response point.</b> Someone can say yes on your phone or their own, with their consent, and be handed on through Always Connect.</li>
-<li><b>Conversation guides and short training</b> for sharing your story and welcoming well.</li>
-<li><b>Learn from partners.</b> Training from The Global Harvest and NeedGod.net, opening on their own sites.</li>
-<li><b>Ready to be baptised?</b> A simple way to ask a local church, a partner, or both, to help.</li>
-<li><b>Share cards.</b> Turn a verse or an invitation into a card to send, made on your phone.</li>
-<li><b>God&rsquo;s story in seven languages.</b> English, Simplified and Traditional Chinese, Vietnamese, Arabic, Korean and Tagalog.</li>
-<li><b>A rhythm for walking with people.</b> Suggested steps over someone&rsquo;s first month, a Today card, and reminders for your own calendar.</li>
-<li><b>Sent.</b> A 30-day plan for everyday evangelists: a reading, a verse to keep and one small step of faith each day.</li>
-<li><b>Training library.</b> Two Ways to Live, Steps to Peace with God, GodTools, Christianity Explored, Zúme, Dare 2 Share and Alpha, each opening on its own site.</li>
-<li><b>Light and dark.</b> It follows your phone, or choose Light, Warm or Dark in Me.</li>
+<li><b>Start here.</b> Short answers to the questions people ask first: how to start a conversation, explain the Gospel, tell your story, read the Bible with a friend, and answer hard questions.</li>
+<li><b>Sent 30.</b> A 30-day plan: a reading, a verse to keep and one small step of faith each day.</li>
+<li><b>Training from partners and trusted ministries.</b> The Global Harvest and NeedGod.net, alongside Christianity Explained, Two Ways to Live, The Way of the Master, The Bridge to Life, Steps to Peace with God, Christianity Explored, Alpha and more. Each opens on its own site.</li>
+<li><b>Read together.</b> A guided Discovery Bible Study, with ten stories of people meeting Jesus.</li>
+<li><b>The Bible.</b> The World English Bible and King James Version, to read, highlight, take notes and listen.</li>
 </ul>
-<p>Most of what you do stays on your phone. See <a href="#/docs/saving">How your information is saved</a>.</p>
-<p>Always Sent runs in any browser, with nothing to download. It's used by evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join as an evangelist</a>.</p>
+<h2>Share</h2>
+<ul>
+<li><b>Your story.</b> Three prompts (before, meeting Jesus, since), a 30-second version for everyday conversations, and a practice timer. Send it, copy it or make it a card. Nothing is ever posted for you.</li>
+<li><b>God&rsquo;s story in seven languages.</b> English, Simplified and Traditional Chinese, Vietnamese, Arabic, Korean and Tagalog.</li>
+<li><b>Conversation guides</b> for friends of every background, and the Romans Road.</li>
+<li><b>Verse of the day.</b> Share it in one tap as a card, with eight backgrounds, four fonts and three shapes.</li>
+</ul>
+<h2>Invite</h2>
+<ul>
+<li><b>Invite a friend to church.</b> Choose what to invite them to, and the app writes a personal message to send by text, with a matching card.</li>
+<li><b>Find a church.</b> Search churches near any postcode, listed from their own websites, and invite a friend there.</li>
+<li><b>A response point.</b> Show a QR code so someone can say yes on their own phone. With their consent, they&rsquo;re handed on through <a href="#/docs/how-it-works">Always Connect</a>.</li>
+<li><b>Ready to be baptised?</b> Ask a local church, a partner, or both, each by its own tick.</li>
+</ul>
+<h2>Follow up</h2>
+<ul>
+<li><b>Walk with people.</b> Suggested steps over someone&rsquo;s first month, a Today card, and reminders in your own calendar.</li>
+<li><b>Prayer list</b> with a daily reminder to pray by name.</li>
+<li><b>Field notes</b> after time on the street or at an event.</li>
+</ul>
+<p>Your notes, prayer list, people and story stay on your phone. See <a href="#/docs/saving">How your information is saved</a>. When someone is introduced to a church, Always Connect handles it, and you only see the first names of people you connected.</p>
+<p>Always Sent opens in any browser, dark by default, with nothing to download. Street teams like Sydney Fire Evangelism use their own branded version. <a href="https://app.alwaysfoundation.org">Open Always Sent</a> or <a href="#/join/evangelist">join as an evangelist</a>.</p>
 """
 
 
 MODULES = """
 <p class="lead">Always Platform is one platform with five modules. Your team signs in once and switches on what it needs.</p>
 <h2>Always Sent</h2>
-<p>For sharing Jesus. A simple way to start a conversation, capture a yes with the person's consent, and open Scripture with them through YouVersion. Runs in any browser, with nothing to download.</p>
+<p>An evangelism companion for every Christian: learn, share the Gospel and your story, invite a friend, and follow up. Runs in any browser, with nothing to download. See <a href="#/docs/app">Always Sent</a>.</p>
 <h2>Always Respond</h2>
 <p>A simple way for people to respond, in your colours and words: a QR code on the street or the big screen, a tap on an NFC armband, disc or ticket, a landing page, or a response card under a video. See <a href="#/docs/senders">Response pages and QR codes</a>, <a href="#/docs/taps">Taps, tickets and armbands</a> and <a href="#/docs/branding">Your own brand</a>.</p>
 <h2>Always Safety</h2>
 <p>A guide to the rules that apply to your ministry, with a check-up every quarter and plain updates when the law changes. Free for churches. See <a href="#/docs/compliance-overview">Always Safety</a>.</p>
 <h2>Always Reports</h2>
-<p>The report your board and funders ask for, written from what already happened, every month. See <a href="#/docs/results">Reports for your funders</a>.</p>
+<p>The report your board and funders ask for, written from what already happened, every month. With a person&rsquo;s yes, their steps across ministries are counted once. See <a href="#/docs/journeys">Journeys across ministries</a> and <a href="#/docs/results">Reports for your funders</a>.</p>
 <h2>Always Connect</h2>
 <p>The inbox where churches accept or pass introductions and keep walking with people, plus the church feed that helps anyone find a church nearby. See <a href="#/docs/inbox">Welcome from your phone</a>.</p>
 <h2>What every module shares</h2>

@@ -289,15 +289,15 @@ DOCS = [
 <p>The receipt follows ISO/IEC TS 27560 for consent records, so it can travel between any systems that implement the Always Handoff standard.</p>
 """),
   ("journey", "One journey, with consent", """
-<p class="lead">Help people take the next step without starting from scratch each time, and only with their permission.</p>
-<p>When someone responds at a second event, the ministry can see they're already connected with a church, so nobody asks the same questions twice or loses track of them.</p>
+<p class="lead">For developers: how a person&rsquo;s steps are linked across ministries, only with their permission.</p>
 <ul>
-<li>Shared only if the person agrees, and only the steps (which church, which step, when), never notes.</li>
-<li>No one can search for people or browse a list. It's not a mailing list or a CRM.</li>
-<li>Withdraw once and it stops everywhere: every church and ministry is told straight away.</li>
-<li>Never for anyone under 18. Each young person's response stands alone.</li>
+<li>Its own consent purpose, <code>share.journey</code>, separate from being introduced to a church. Refused for anyone under 18.</li>
+<li>Always links steps with a keyed fingerprint of the person&rsquo;s mobile. Each ministry gets a different code for the same person, so ministries can&rsquo;t use codes to connect records. Only Always links the journey.</li>
+<li>The church that accepted someone sees their earlier steps by month (<code>GET /v1/handoffs/:id/journey</code>), never notes or which ministries. Every view is logged.</li>
+<li>Networks see totals by state and year (<code>GET /v1/network/journeys</code>), with small groups withheld.</li>
+<li>No one can search for people or browse a list. Withdraw once and the journey is unlinked straight away.</li>
 </ul>
-<p>Moving between church systems uses the open Always Handoff standard, starting with Elvanto and Planning Center.</p>
+<p>The full design, in plain English, is in <a href="#/docs/journeys">Journeys across ministries</a>. Moving between church systems uses the open <a href="#/docs/standard">Always Handoff standard</a>.</p>
 """),
   ("standard", "The Always Handoff standard", """
 <p class="lead">An open specification for passing a person from one ministry to another, with consent attached.</p>
