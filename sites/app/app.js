@@ -174,7 +174,7 @@ on(/^\/$/, async () => {
     <div class="row between" style="padding-top:8px"><div class="logo">${LOGO}</div><a class="icon-btn" href="#/me" aria-label="Me and settings">${ic('user')}</a></div>
     <div class="hello stack-s"><p class="k">${greet}${name}</p><h1 class="big-serif">Who will you walk with today?</h1></div>
     <div class="sp"></div>
-    <a class="verse-card" href="#/bible?ref=${encodeURIComponent(votdRef())}" style="text-decoration:none;display:block"><p class="k" style="color:#E8A577">Verse of the day</p><p class="serif" data-votd>…</p><span class="ref" data-votd-ref></span></a>
+    <a class="verse-card tod-${hr < 6 || hr >= 20 ? 'night' : hr < 10 ? 'dawn' : hr < 17 ? 'day' : 'dusk'}" href="#/bible?ref=${encodeURIComponent(votdRef())}" style="text-decoration:none;display:block"><p class="k" style="color:#E8A577">Verse of the day</p><p class="serif" data-votd>…</p><span class="ref" data-votd-ref></span></a>
     <div class="sp2"></div>
     <div class="quick">
       <a class="card peach" href="#/gather"><span class="ico" style="background:rgba(30,42,38,.1);color:var(--night)">${ic('qr')}</span><div><p class="h3">Start a response point</p><p class="note" style="color:#5A3A22">Show a QR code</p></div></a>
@@ -185,7 +185,7 @@ on(/^\/$/, async () => {
     ${(() => { const d = dueToday(); return d.length ? `<div class="sp2"></div><a class="card today" href="#/walk/p/${d[0].p.id}" style="text-decoration:none"><p class="k">Today</p><p class="h3">${esc(d[0].st)} · ${esc(d[0].p.name)}</p>${d.length > 1 ? `<p class="note">and ${d.length - 1} more step${d.length > 2 ? 's' : ''} for people you’re walking with</p>` : ''}</a>` : ''; })()}
     <div class="sp2"></div>
     ${plan ? `<a class="card" href="#/plan/${plan.id}" style="text-decoration:none"><div class="row between"><p class="k">Your reading plan</p><span class="pill">Day ${Math.min(activePlan[1].done.length + 1, plan.days)} of ${plan.days}</span></div><p class="h3">${esc(plan.title)}</p><div class="progress"><i style="width:${(activePlan[1].done.length / plan.days) * 100}%"></i></div></a>` :
-      `<a class="card sage" href="#/plans" style="text-decoration:none"><p class="k">Reading plans</p><p class="h3">Start with John in 21 days</p><p class="p">Meet Jesus, a chapter a day.</p></a>`}
+      `<a class="sent-hero sm" href="#/plan/sent30"><span class="sent-badge">30-day plan</span><p class="sent-ht">Sent</p><p class="sent-hs">A reading, a verse and one small step of faith each day.</p></a>`}
     <div class="sp2"></div>
     <p class="h2">Ready for a conversation</p><div class="sp"></div>
     <div class="list">
@@ -444,11 +444,15 @@ on(/^\/plan\/([\w-]+)$/, async (m) => {
   const next = st ? Array.from({ length: p.days }, (_, i) => i + 1).find((d) => !st.done.includes(d)) : 1;
   render(`${top('#/plans')}<p class="k">Reading plan</p><h1 class="h1">${esc(p.title)}</h1><p class="p" style="margin-top:6px">${esc(p.sub)}</p><div class="sp2"></div>
     ${st ? `<div class="progress"><i style="width:${(st.done.length / p.days) * 100}%"></i></div><p class="note" style="margin-top:8px">${st.done.length} of ${p.days} days read</p><div class="sp2"></div>
-      <div class="days">${p.readings.map((r, i) => `<a class="day${st.done.includes(i + 1) ? ' done' : ''}${next === i + 1 ? ' today' : ''}" href="#/bible?ref=${encodeURIComponent(r)}&plan=${p.id}&day=${i + 1}" aria-label="Day ${i + 1}: ${esc(refLabel(parseRef(r)))}">${i + 1}</a>`).join('')}</div><div class="sp2"></div>
-      ${next ? `<a class="btn" href="#/bible?ref=${encodeURIComponent(p.readings[next - 1])}&plan=${p.id}&day=${next}">Read day ${next}: ${esc(refLabel(parseRef(p.readings[next - 1])))}</a>` : '<div class="card sage"><p class="h3">Plan complete</p><p class="p">Well done. Why not start another, or read it with a friend?</p></div>'}
+      ${next && p.items ? `<div class="sent-day"><p class="k">Day ${next}</p><p class="sent-t">${esc(p.items[next - 1].t)}</p><p class="scripture" data-scripture="${p.items[next - 1].key}"></p><div class="sent-do"><span>${ic('sparkle', 18)}</span><p><b>Today</b>${esc(p.items[next - 1].do)}</p></div>
+        <div class="row" style="margin-top:14px"><a class="btn" href="#/bible?ref=${encodeURIComponent(p.readings[next - 1])}&plan=${p.id}&day=${next}">Read ${esc(refLabel(parseRef(p.readings[next - 1])))}</a><button class="btn light small" id="sent-card" aria-label="Share this verse as a card">${ic('image', 18)}</button></div></div>` :
+      next ? `<a class="btn" href="#/bible?ref=${encodeURIComponent(p.readings[next - 1])}&plan=${p.id}&day=${next}">Read day ${next}: ${esc(refLabel(parseRef(p.readings[next - 1])))}</a>` : '<div class="card sage"><p class="h3">Plan complete</p><p class="p">Well done. Why not start another, or read it with a friend?</p></div>'}
+      <div class="sp2"></div><div class="days">${p.readings.map((r, i) => `<a class="day${st.done.includes(i + 1) ? ' done' : ''}${next === i + 1 ? ' today' : ''}" href="#/bible?ref=${encodeURIComponent(r)}&plan=${p.id}&day=${i + 1}" aria-label="Day ${i + 1}: ${esc(refLabel(parseRef(r)))}">${i + 1}</a>`).join('')}</div>
       <div class="sp"></div><button class="btn ghost" id="pl-reset">Start again</button>` :
-      `<div class="list">${p.readings.map((r, i) => `<div class="li"><span class="ico">${i + 1}</span><div class="t">${esc(refLabel(parseRef(r)))}</div></div>`).join('')}</div><div class="sp2"></div><button class="btn" id="pl-start">Start this plan</button>`}`, { tab: 'learn' });
+      `<div class="list">${p.readings.map((r, i) => `<div class="li"><span class="ico">${i + 1}</span><div class="grow"><div class="t">${p.items ? esc(p.items[i].t) : esc(refLabel(parseRef(r)))}</div>${p.items ? `<div class="s">${esc(refLabel(parseRef(r)))}</div>` : ''}</div></div>`).join('')}</div><div class="sp2"></div><button class="btn" id="pl-start">Start this plan</button>`}`, { tab: 'learn' });
   if ($('#pl-start')) $('#pl-start').onclick = () => { S.plans[p.id] = { id: p.id, start: today(), done: [] }; save(); route(); };
+  if ($('#sent-card')) $('#sent-card').onclick = async () => { const it = p.items[next - 1], v = await passage(it.key); window.CARD = { kind: 'verse', style: 'dawn', text: v.text, label: `${v.label} · ${TR[S.settings.tr].name}` }; location.hash = '#/card'; };
+  fillScripture();
   if ($('#pl-reset')) $('#pl-reset').onclick = () => { if (confirmBox('Start this plan again?')) { S.plans[p.id] = { id: p.id, start: today(), done: [] }; save(); route(); } };
 });
 const confirmBox = (t) => window.confirm(t);
@@ -458,8 +462,11 @@ on(/^\/learn$/, () => {
   const done = (c) => (S.courses[c.id] || []).length;
   render(`<div class="sp"></div><h1 class="h1">Learn</h1><p class="p" style="margin-top:6px">Grow in sharing Jesus and walking with people.</p><div class="sp2"></div>
     <a class="hero-card" href="#/learn/story" style="display:block;text-decoration:none"><p class="k" style="color:#E8A577">The heart of it</p><p class="big-serif" style="color:#F8F3EA;margin:8px 0">God’s story in four moments</p><p class="p">Created, broken, rescued, restored. Share it with anyone in a few minutes.</p></a>
+    <div class="sp"></div><a class="sent-hero" href="#/plan/sent30"><span class="sent-badge">30-day plan</span><p class="sent-ht">Sent</p><p class="sent-hs">For everyday evangelists. A reading, a verse to keep and one small step of faith each day.</p>${S.plans.sent30 ? `<div class="progress"><i style="width:${(S.plans.sent30.done.length / 30) * 100}%"></i></div>` : ''}</a>
     <div class="sp2"></div><div class="row between"><p class="h2">Learn from partners</p></div><p class="p" style="margin-top:4px">Trusted training from ministries we work with. It opens on their sites.</p><div class="sp"></div>
     <div class="ptrs">${AC.partners.map((x) => `<a class="ptr ptr-${x.tone}" href="#/learn/partner/${x.id}"><span class="ptr-mono" aria-hidden="true">${x.mono}</span><span class="ptr-tx"><span class="ptr-by">Training by</span><b>${esc(x.name)}</b><span>${esc(x.tag)}</span></span><span class="ptr-n">${x.tools.length} tools</span></a>`).join('')}</div>
+    <div class="sp2"></div><div class="row between"><p class="h2">More good training</p><a class="see" href="#/learn/library">See all</a></div><p class="p" style="margin-top:4px">Well-loved resources from ministries around the world.</p><div class="sp"></div>
+    <div class="libs">${AC.library.slice(0, 5).map((x) => `<a class="lib lib-${x.tone}" href="${x.url}${x.url.includes('?') ? '&' : '?'}utm_source=always-app&utm_medium=referral" target="_blank" rel="noopener"><span class="lib-k">${esc(x.kind)}</span><b>${esc(x.name)}</b><span class="lib-by">${esc(x.by)}</span><span class="lib-go">${ic('ext', 16)}</span></a>`).join('')}</div>
     <div class="sp2"></div><div class="list">
       <a class="li" href="#/learn/road"><span class="ico peach">${ic('book')}</span><div class="grow"><div class="t">The Romans Road</div><div class="s">Six verses that explain the Gospel</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">Conversation guides</div><div class="s">${AC.guides.length} guides for different friends</div></div><span class="chev">${ic('right', 18)}</span></a>
@@ -469,6 +476,14 @@ on(/^\/learn$/, () => {
     </div>
     <div class="sp2"></div><p class="h2">Training</p><p class="p" style="margin-top:4px">Short courses made with evangelists and churches.</p><div class="sp"></div>
     <div class="stack">${AC.courses.map((c) => `<a class="card" href="#/learn/course/${c.id}" style="text-decoration:none"><div class="row between"><p class="h3">${esc(c.title)}</p><span class="pill${done(c) === c.lessons.length ? '' : ' peach'}">${done(c) === c.lessons.length ? 'Done' : `${c.mins} min`}</span></div><p class="p">${esc(c.sub)}</p>${done(c) ? `<div class="progress"><i style="width:${(done(c) / c.lessons.length) * 100}%"></i></div>` : ''}</a>`).join('')}</div>`, { tab: 'learn' });
+});
+on(/^\/learn\/library$/, (m, q) => {
+  const kinds = ['All', ...new Set(AC.library.map((x) => x.kind))], k = q.get('k') || 'All';
+  const out = (u) => u + (u.includes('?') ? '&' : '?') + 'utm_source=always-app&utm_medium=referral';
+  render(`${top('#/learn', 'Training library')}<p class="p">Well-loved evangelism training from ministries around the world. Each opens on their own site. We’re not affiliated with them, and nothing about you is sent.</p><div class="sp"></div>
+    <div class="langs" role="group" aria-label="Kind">${kinds.map((x) => `<a href="#/learn/library?k=${encodeURIComponent(x)}" aria-pressed="${x === k}" class="lang-a">${x}</a>`).join('')}</div><div class="sp"></div>
+    <div class="stack">${AC.library.filter((x) => k === 'All' || x.kind === k).map((x) => `<a class="libc lib-${x.tone}" href="${out(x.url)}" target="_blank" rel="noopener"><div class="row between"><span class="lib-k">${esc(x.kind)}</span><span class="lib-go">${ic('ext', 18)}</span></div><p class="libc-t">${esc(x.name)}</p><p class="libc-l">${esc(x.line)}</p><span class="lib-by">${esc(x.by)}</span></a>`).join('')}</div>
+    <div class="sp2"></div><a class="card" href="#/learn" style="text-decoration:none"><p class="k">Our partners</p><p class="h3">The Global Harvest and NeedGod.net</p><p class="p">Training from ministries we work alongside in Australia.</p></a>`, { tab: 'learn' });
 });
 on(/^\/learn\/partner\/([\w-]+)$/, (m) => {
   const x = AC.partners.find((y) => y.id === m[1]); if (!x) return (location.hash = '#/learn');
