@@ -107,7 +107,7 @@ PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
 
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">What it covers</h2>
-  <p class="pg-lead rv">{sum(1 for o in REGISTER['obligations'] if not o['title'].startswith('Watch'))} obligations across four areas, plus changes we're watching,, each one linked to the law it comes from.</p>
+  <p class="pg-lead rv">{sum(1 for o in REGISTER['obligations'] if not o['title'].startswith('Watch'))} obligations across four areas, plus changes we're watching, each one linked to the law it comes from.</p>
   <div class="cv-grid">{''.join(_cover(k) for k in AREAS)}</div>
 </div></section>
 
@@ -181,7 +181,7 @@ CSS = '''
 .cmx-card li i { width: 18px; height: 18px; border-radius: 50%; flex: none; display: grid; place-items: center; }
 .cmx-card li.ok i { background: var(--green); } .cmx-card li.ok i::after { content: ''; width: 7px; height: 3.5px; border-left: 1.8px solid #fff; border-bottom: 1.8px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
 .cmx-card li.todo i { box-shadow: inset 0 0 0 2px var(--peach); } .cmx-card li.soon i { box-shadow: inset 0 0 0 2px var(--line); }
-.cmx-card li em { margin-left: auto; font: 700 11px/1 var(--head); font-style: normal; color: var(--clay); }
+.cmx-card li em { margin-left: auto; white-space: nowrap; padding-left: 8px; font: 700 11px/1 var(--head); font-style: normal; color: var(--clay); }
 .cmx-card li.soon em { color: var(--muted); }
 .cmx-card-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 4px; }
 .cmx-card-foot span { font-size: 13px; color: var(--muted); } .cmx-card-foot b { padding: 10px 16px; border-radius: 999px; background: var(--green); color: var(--cream); font: 700 13px/1 var(--head); }
@@ -222,7 +222,7 @@ CSS = '''
 .cm-kick { color: var(--clay); }
 .cm-embed { display: grid; gap: 12px; padding: 22px 24px; border-radius: 22px; background: #0F2925; color: #CFE0D7; box-shadow: 0 30px 50px -30px rgba(20,53,47,.6); min-width: 0; }
 .cm-embed-k { font: 700 12.5px/1 var(--head); color: var(--peach); }
-.cm-embed code { font: 500 13px/1.7 ui-monospace, 'SF Mono', Menlo, monospace; white-space: pre; overflow-x: auto; background: none; color: inherit; padding: 0; }
+.cm-embed code { font: 500 13px/1.7 ui-monospace, 'SF Mono', Menlo, monospace; white-space: pre-wrap; overflow-wrap: anywhere; background: none; color: inherit; padding: 0; }
 .cm-infra-rows { margin-top: 48px; }
 #infrastructure .pg-cta { margin-top: 12px; }
 @media (max-width: 900px) { .cm-infra-head { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
