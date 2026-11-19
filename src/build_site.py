@@ -312,7 +312,7 @@ DOCS = [
 <p>The standard is published as JSON Schema under CC BY 4.0. Changes go through an open RFC process, approved by the Technology Steering Committee and, where people's safety is involved, the Safeguarding, Privacy and Ethics Committee.</p>
 """),
   ("api", "Always Platform API", """
-<p class="lead">A REST API (OpenAPI 3.1) for sending responses, receiving introductions, managing a page and reading the church feed. Hosted in Sydney.</p>
+<p class="lead">A REST API (OpenAPI 3.1) for sending responses, receiving introductions, managing a page and reading the church feed.</p>
 <h2>Authentication</h2>
 <p>Integrations use scoped API tokens (<code>alw_live_…</code>), shown once, hashed at rest and revocable. Staff sign in with passkeys or an authenticator app, and send the organisation they're acting for.</p>
 <pre><code>curl https://api.alwaysfoundation.org/v1/responses \\

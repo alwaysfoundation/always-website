@@ -439,7 +439,8 @@ CSS = '''
 .prose .dflow b { display: inline; font: 800 21px/1.3 var(--head); color: var(--green); }
 .prose .dflow span { display: inline-block; margin-left: 10px; padding: 4px 10px; border-radius: 999px; background: var(--sage); color: var(--green); font: 700 12px/1.2 var(--head); vertical-align: 3px; }
 .prose .dflow p { margin: 8px 0 0; }
-.docs { grid-template-columns: 250px minmax(0, 1fr); }
+@media (min-width: 901px) { .docs { grid-template-columns: 250px minmax(0, 1fr); } }
+@media (max-width: 900px) { .docs { grid-template-columns: minmax(0, 1fr); gap: 20px; } #doc pre, #doc table { max-width: 100%; overflow-x: auto; display: block; } }
 @media (min-width: 1240px) { .docs { grid-template-columns: 240px minmax(0, 1fr) 200px; gap: 56px; } }
 .dtoc { display: none; }
 @media (min-width: 1240px) { .dtoc { display: block; position: sticky; top: 104px; align-self: start; font-size: 14px; } }

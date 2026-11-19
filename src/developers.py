@@ -157,11 +157,14 @@ CSS = '''
 .dv-go { margin-top: 6px; font: 600 15px/1 var(--head); color: var(--clay, #B55A2E); }
 .dv-build { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 32px; }
 @media (max-width: 1000px) {
-  .dv-split,   .dv-flow { grid-template-columns: 1fr 1fr; row-gap: 36px; } .dv-flow::before { display: none; }
-    .dv-ways, .dv-build { grid-template-columns: 1fr; }
+  .dv-split { grid-template-columns: 1fr; gap: 40px; }
+  .dv-cards { grid-template-columns: 1fr; }
+  .dv-flow { grid-template-columns: 1fr 1fr; row-gap: 36px; } .dv-flow::before { display: none; }
+  .dv-ways, .dv-build { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .dv-flow { grid-template-columns: 1fr; }
+  .dvc .sw-tabs { overflow-x: auto; } .dvc-req { flex-wrap: wrap; } .dvc-panel { padding: 16px; }
   .dvc-out { min-height: 0; } .dvc-out code { font-size: 12px; }
   }
 @media (prefers-reduced-motion: reduce) { .dvc.go .dvc-out span { animation: none !important; } .dv-way { transition: none; } }
