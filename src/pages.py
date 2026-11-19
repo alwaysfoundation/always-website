@@ -438,7 +438,7 @@ form.cl-form { display: grid; gap: 16px; background: none; padding: 0; border-ra
 RESEARCH_ITEMS = [
   ('Brief', 'In progress', 'What happens after a yes', 'Every week people respond to Jesus at events, services and online. We\'re studying what happens after someone says yes: where people get lost, and what helps them take a next step.', None),
   ('Standard', 'Published', 'Consent that travels with the person', 'How a consent receipt can move between ministries and systems, what it records, and why every system checks it before it acts. Built on ISO/IEC TS 27560 for consent records.', '#/docs/consent'),
-  ('Field notes', 'Published', 'Agents with a human in the loop', 'The Always Network grew out of an earlier project called Branches. Its agent checked each response and handed it to a person before anything was shared. Trialled at a youth event with UEN, it shaped how the Always Agent works today.', '#/docs/always-agent'),
+  ('Field notes', 'Published', 'Agents with a human in the loop', 'Always Connect grew out of an earlier project called Branches. Its agent checked each response and handed it to a person before anything was shared. Trialled at a youth event with UEN, it shaped how agents in Always Platform work today.', '#/docs/always-agent'),
   ('Brief', 'In progress', 'Measuring humbly', 'What we count, what we don’t, and why a person is only counted as connected when they say so themselves. Totals only, with minimum group sizes so no one can be identified.', '#/docs/results'),
 ]
 RESEARCH = '''<section class="page-hero"><div class="wrap"><h1>Research</h1><p>We learn in the open: briefs and field notes from building Always Platform with churches and ministries.</p></div></section>
@@ -603,8 +603,8 @@ PRODUCTS = [
    [('Connect', 'Church feed and Events'), ('Gather', 'Response pages and Handoff'), ('Bible', 'YouVersion Platform'), ('Walk', 'Kept in your browser')]),
   ('Always Connect', 'Accept or pass introductions, welcome people and keep walking with them.', '#/churches',
    [('Inbox', 'Handoff'), ('Your page', 'Church feed and Verification'), ('Leaders\' report', 'Reports')]),
-  ('Always for ministries', 'Branded response pages, live results, funder reports and compliance.', '#/ministries',
-   [('Response pages', 'Your own brand'), ('Live results', 'Handoff'), ('Funder reports', 'Reports'), ('Compliance', 'Consent records')]),
+  ('Always Pages', 'Response pages and QR codes under your own brand, with live results.', '#/pages',
+   [('Response pages', 'Your own brand'), ('Live results', 'Handoff'), ('Funder reports', 'Always Reports'), ('Consent records', 'Always Compliance')]),
 ]
 def _prod(name, line, href, uses):
     rows = ''.join(f'<li><b>{a}</b><span>{b}</span></li>' for a, b in uses)

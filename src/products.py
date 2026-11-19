@@ -198,7 +198,7 @@ def footer_cols():
             f'<div><h2>Solutions</h2>{sol}</div>'
             f'<div><h2>Developers</h2>{dev}</div>'
             '<div><h2>Foundation</h2><a href="#/about">About</a><a href="#/stories">Stories</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/faq">FAQs</a></div>'
-            '<div><h2>Help</h2><a href="#/contact">Contact us</a><a href="#/docs/introduction">Docs</a><a href="#/claim">Claim your church</a><a href="#/docs/privacy">Privacy</a></div>')
+            '<div><h2>Help</h2><a href="#/contact">Contact us</a><a href="#/docs/introduction">Docs</a><a href="#/claim">Claim your church</a><a href="#/docs/privacy">Privacy</a><a href="#/docs/terms">Terms</a></div>')
 
 
 # ---------------------------------------------------------------- Product pages
