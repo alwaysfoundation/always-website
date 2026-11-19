@@ -310,6 +310,7 @@ JOURNEYS = """
 <div class="jh-q"><h3>Who decides</h3><p>Sam does. When Sam responds, there&rsquo;s a separate tick to link their journey. It&rsquo;s never pre-ticked, and Sam can withdraw it any time. Without it, nothing is linked.</p></div>
 <div class="jh-q"><h3>Who sees what</h3><p>Each ministry gets a different code for Sam, so they can&rsquo;t use those codes to connect Sam&rsquo;s records. Only Always links the journey. When Sam joins a church, that church sees the earlier steps Sam agreed to share, like &ldquo;responded in February&rdquo; or &ldquo;did a course in March&rdquo;, and never other ministries&rsquo; notes or which ministries they were.</p></div>
 <p class="jh-end">Always connects the journey. Sam stays in control.</p>
+<div class="jpp"><h3>A proven approach</h3><p>Always draws on privacy-preserving record linkage, an established approach in healthcare and research. Just as health services can recognise the same patient&rsquo;s records without sharing whole databases, Always helps ministries connect a person&rsquo;s journey from evangelism to discipleship and a local church. Protected fingerprints, a different code for each ministry and Sam&rsquo;s clear yes give continuity of care, while respecting each person&rsquo;s privacy and each ministry&rsquo;s independence.</p></div>
 </section>
 <blockquote class="jbig"><p>Saying yes to Jesus shouldn&rsquo;t be the end of the story. It should be the beginning of a journey.</p></blockquote>
 
@@ -616,6 +617,9 @@ CSS = '''
 .jh-q h3 { margin: 0 0 4px !important; font: 700 16.5px/1.3 var(--head) !important; color: var(--green); }
 .jh-q p { margin: 0 !important; font-size: 16.5px; line-height: 1.6; color: var(--soft); }
 .jh-end { margin: 6px 0 0 !important; padding-top: 14px; border-top: 2px solid #E8A577; font: 700 18px/1.4 var(--head); color: var(--green); }
+.jpp { margin: 22px 0 0; padding: 18px 20px; border-radius: 18px; background: #EAF1EC; }
+.jpp h3 { margin: 0 0 6px !important; font: 700 16.5px/1.3 var(--head) !important; color: var(--green); }
+.jpp p { margin: 0 !important; font-size: 15.5px; line-height: 1.6; color: var(--soft); }
 /* journeys: calm overrides */
 .js-steps li { padding: 0 0 20px 34px !important; background: none !important; border: 0 !important; border-radius: 0 !important; font-size: 17.5px !important; }
 .js-steps li::before { content: '' !important; left: 0 !important; top: 8px !important; transform: none !important; width: 12px !important; height: 12px !important; background: #FFFDF8 !important; border: 2px solid #E8A577; box-sizing: border-box; }
