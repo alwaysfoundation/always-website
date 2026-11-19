@@ -165,7 +165,7 @@ def menu_html():
     """Platform and Solutions drop-downs for the main menu."""
     plat = '<p class="dd-h">Modules</p><div class="dd-mods">' + ''.join(
         f'<a href="#/{PRODUCTS[s][0]}" data-route="{PRODUCTS[s][0]}">{_icon(s)}<span class="dd-tx"><b>{PRODUCTS[s][1]}</b><span>{MENU_LINE[s]}</span></span></a>'
-        for s in PRODUCTS) + '</div>'
+        for s in PRODUCTS) + '</div><a class="dd-sol-foot dd-int" href="#/integrations" data-route="integrations">Works with Elvanto, Planning Center, Humanitix and more <b>Integrations</b></a>'
     feature = ('<a class="dd-feature" href="#/platform" data-route="platform"><span class="dd-f-k">Always Platform</span>'
                '<b>Five modules. One sign-in.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>'
                '<span class="dd-f-l">See how it fits together</span></a>')
@@ -191,7 +191,7 @@ SOLUTION_ROUTES = [v[0] for v in SOLUTIONS.values()]
 def footer_cols():
     plat = ''.join(f'<a href="#/{v[0]}">{v[1]}</a>' for v in PRODUCTS.values())
     sol = ''.join(f'<a href="#/{v[0]}">{v[1]}</a>' for v in SOLUTIONS.values())
-    dev = '<a href="#/developers">Overview</a><a href="#/docs/api">API</a><a href="#/docs/sdk">SDK</a><a href="#/docs/mcp">MCP connector</a><a href="#/docs/webhooks">Webhooks</a>'
+    dev = '<a href="#/developers">Overview</a><a href="#/docs/api">API</a><a href="#/docs/sdk">SDK</a><a href="#/docs/mcp">MCP connector</a><a href="#/docs/webhooks">Webhooks</a><a href="#/integrations">Integrations</a>'
     return (f'<div><h2>Platform</h2>{plat}</div>'
             f'<div><h2>Solutions</h2>{sol}</div>'
             f'<div><h2>Developers</h2>{dev}</div>'

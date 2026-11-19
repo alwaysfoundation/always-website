@@ -344,6 +344,8 @@ def apply(DOCS):
             DOCS[i] = ('Modules in use', pages)
         if g == 'The platform':
             DOCS[i] = ('Developers', pages)
+    import integrations as IG
+    DOCS.append(IG.DOCS)
     pages = {t[0]: t for _, ps in DOCS for t in ps}
     layout = [
         ('Start here', ['introduction', 'how-it-works', 'modules', 'joining', 'glossary']),
@@ -353,6 +355,7 @@ def apply(DOCS):
         ('Always Compliance', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review', 'compliance-api', 'compliance-platforms']),
         ('Always Reports', ['results']),
         ('For people', ['your-choices']),
+        ('Integrations', ['integrations', 'int-chms', 'int-messaging', 'int-automation']),
         ('Developers', ['api', 'sdk', 'youversion', 'feed', 'mcp', 'webhooks', 'consent', 'journey', 'standard']),
         ('Trust and safety', ['security', 'privacy', 'terms', 'young-people', 'ai', 'policies']),
         ('The foundation', ['governance', 'open-source', 'brand']),
@@ -402,6 +405,7 @@ CSS = '''
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .pager a { border-radius: 18px !important; transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease; }
 .pager a:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -26px rgba(10,30,26,.4); }
+@media (max-width: 760px) { .prose table.dt { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
 @media (max-width: 640px) { .prose .dcards { grid-template-columns: minmax(0, 1fr); } .pager { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .prose .dcards a, .pager a, .dtoc button { transition: none; } .prose .dcards a:hover, .pager a:hover { transform: none; } }
 .prose .br-dl .btn-green, .prose .br-dl .btn-peach { background-image: none; } .prose .br-dl .btn-green { color: var(--cream); } .prose .br-dl .btn-peach { color: var(--ink); }
