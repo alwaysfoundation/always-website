@@ -11,5 +11,6 @@ jobs:
         run: docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:v8.21.2 detect --source /repo --config /repo/.gitleaks.toml --redact --no-banner
       - uses: actions/setup-python@v5
         with: { python-version: "3.13" }
+      - run: pip install pillow
       - run: cd src && python3 build_site.py
       - run: git diff --stat --exit-code -- index.html || echo "index.html differs from a fresh build; rebuild before merging."
