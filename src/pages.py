@@ -122,7 +122,7 @@ FAQ_GROUPS = [
  ('About Always', [
   ('What is the Always Foundation?', 'An independent, member-based Christian nonprofit that brings churches and Christian ministries across Australia together for the Gospel. We serve quietly in the background, building practical tools once and sharing them freely, so ministries spend less time on administration and more time making disciples.'),
   ('Are you a gospel ministry or a mercy ministry?', 'Neither, directly. We are a ministry that serves ministries. In Acts 6 the early church appointed people to carry the practical work so the apostles could devote themselves to prayer and the word, and the Gospel spread. We play that role for the wider Church: we exist to equip the saints for the work of ministry (Ephesians 4:12). We are not on the frontline. We stand behind it.'),
-  ('What does Always do for a church or ministry?', 'Three things. We equip, with the Always App and your own branded response pages. We support, with Always Compliance and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.'),
+  ('What does Always do for a church or ministry?', 'Three things. We equip, with the Always App and Always Respond, your own branded way for people to respond. We support, with Always Compliance and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.'),
   ('Who can become a member?', 'Churches and Christian ministries that affirm the Nicene Creed. Members help shape what we build and share in the benefits. Supporters can join us too, through prayer and giving.'),
   ('What is Always Platform?', 'One open-source platform with one sign-in and shared data. Members switch on the modules they need: Always App, Always Respond, Always Compliance, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.'),
   ('Why modules?', 'Every ministry is different. Start with the one you need, perhaps Always Compliance, and add others as you grow. Because every module runs on the same platform, your team signs in once and your information works together, with nothing to move later.'),
@@ -138,7 +138,8 @@ FAQ_GROUPS = [
   ('What does welcoming now mean?', 'You\'re verified, trained, have room this month and usually reply on time. If you get busy, introductions simply pause.'),
   ('Who on our team can see people\'s details?', 'Only the people you add to your team, and only after your church accepts an introduction.')]),
  ('For ministries and events', [
-  ('Can we use our own brand?', 'Yes. Response pages, QR codes and texts can use your colours, logo and wording.'),
+  ('Can we use our own brand?', 'Yes. Always Respond pages, QR codes, NFC taps and texts can use your colours, logo and wording.'),
+  ('Does Always work with our church management system?', 'Hand-offs into Elvanto and Planning Center are being built first, then Fluro, ChurchSuite and Breeze. See Integrations at alwaysfoundation.org/#/integrations.'),
   ('What results do we see?', 'Totals for each event: responded, introduced, accepted and connected. Each person\'s details go only to the church that welcomes them.'),
   ('Can Always Platform help us report to our funders?', 'Yes. It writes a monthly report for you: who responded, who was introduced, who was contacted, and who is now part of a church family. Download it as a PDF or spreadsheet, or send your funder a link.'),
   ('Will our funders see people\'s details?', 'No. Reports show totals only, and small numbers are hidden so no one can be identified.'),
@@ -146,7 +147,6 @@ FAQ_GROUPS = [
   ('Can we make the report our own?', 'Yes. Add your title, your funder\'s name and a short introduction. If a funder needs something specific, talk to us.'),
   ('Can we receive introductions ourselves?', 'Yes, for the steps you offer, like a youth night or a course.'),
   ('Can people respond online?', 'Yes. Add a response link or QR to a video description or post, or embed the response card on your website. An invisible check stops spam without puzzles.'),
-  ('Can we list our events?', 'Yes. Add them when you sign in to Always, and they show on our Events page and in Always App.'),
   ('How do evangelists and street teams use it?', 'With Always App, a free web app: they start a response point, show their own QR, or connect someone in a conversation with their yes.')]),
  ('For people who respond', [
   ('What happens when I respond?', 'You choose a next step, see who will be in touch, and a church or ministry near you reaches out.'),
