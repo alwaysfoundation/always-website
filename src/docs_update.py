@@ -288,25 +288,50 @@ SAVING = """
 JOURNEYS = """
 <p class="lead">Someone meets Jesus at a UEN event, is discipled through The Global Harvest, does Alpha, and finds a home at a local church. Four ministries share in one person&rsquo;s journey. How can they see that it&rsquo;s the same person, and that no one was lost along the way, without any of them holding that person&rsquo;s identity or spiritual story?</p>
 
-<div class="jx" aria-label="One person, four ministries, each with its own code">
-  <div class="jx-row">
-    <div class="jx-m"><b>UEN</b><span>Said yes at an event</span><code>jny_4fQ…</code></div>
-    <div class="jx-m"><b>The Global Harvest</b><span>Discipleship</span><code>jny_Zk8…</code></div>
-    <div class="jx-m"><b>Alpha</b><span>A course</span><code>jny_r2C…</code></div>
-    <div class="jx-m"><b>Hope Church</b><span>A church family</span><code>jny_9Lw…</code></div>
+<figure class="jm" aria-labelledby="jm-cap">
+  <div class="jm-stage" aria-hidden="true">
+    <svg viewBox="0 0 640 300" class="jm-svg jm-h">
+      <path class="jm-route" d="M80 110 H560"/>
+      <g class="jm-org jm-o1"><circle cx="80" cy="110" r="30"/><text x="80" y="62">UEN</text><g class="jm-tag"><rect x="44" y="150" width="72" height="24" rx="8"/><text x="80" y="166">jny_4fQ</text></g></g>
+      <g class="jm-org jm-o2"><circle cx="240" cy="110" r="30"/><text x="240" y="62">Global Harvest</text><g class="jm-tag"><rect x="204" y="150" width="72" height="24" rx="8"/><text x="240" y="166">jny_Zk8</text></g></g>
+      <g class="jm-org jm-o3"><circle cx="400" cy="110" r="30"/><text x="400" y="62">Alpha</text><g class="jm-tag"><rect x="364" y="150" width="72" height="24" rx="8"/><text x="400" y="166">jny_r2C</text></g></g>
+      <g class="jm-org jm-o4"><circle cx="560" cy="110" r="30"/><text x="560" y="62">Hope Church</text><g class="jm-tag"><rect x="524" y="150" width="72" height="24" rx="8"/><text x="560" y="166">jny_9Lw</text></g></g>
+      <circle class="jm-sam" cx="80" cy="110" r="11"/>
+      <g class="jm-links"><path d="M80 176 V226 H560 V176"/><path d="M240 176 V226"/><path d="M400 176 V226"/></g>
+      <g class="jm-core"><rect x="200" y="214" width="240" height="44" rx="14"/><text x="320" y="242">Always links them, with Sam&rsquo;s yes</text></g>
+    </svg>
+    <svg viewBox="0 0 340 470" class="jm-svg jm-v">
+      <path class="jm-route" d="M70 40 V400"/>
+      <g class="jm-org jm-o1"><circle cx="70" cy="40" r="26"/><text x="112" y="36" class="jm-l">UEN</text><g class="jm-tag"><rect x="112" y="48" width="84" height="26" rx="8"/><text x="154" y="66">jny_4fQ</text></g></g>
+      <g class="jm-org jm-o2"><circle cx="70" cy="160" r="26"/><text x="112" y="156" class="jm-l">Global Harvest</text><g class="jm-tag"><rect x="112" y="168" width="84" height="26" rx="8"/><text x="154" y="186">jny_Zk8</text></g></g>
+      <g class="jm-org jm-o3"><circle cx="70" cy="280" r="26"/><text x="112" y="276" class="jm-l">Alpha</text><g class="jm-tag"><rect x="112" y="288" width="84" height="26" rx="8"/><text x="154" y="306">jny_r2C</text></g></g>
+      <g class="jm-org jm-o4"><circle cx="70" cy="400" r="26"/><text x="112" y="396" class="jm-l">Hope Church</text><g class="jm-tag"><rect x="112" y="408" width="84" height="26" rx="8"/><text x="154" y="426">jny_9Lw</text></g></g>
+      <circle class="jm-sam jm-sam-v" cx="70" cy="40" r="11"/>
+      <g class="jm-links"><path d="M196 61 H262 V421 H196"/><path d="M196 181 H262"/><path d="M196 301 H262"/></g>
+      <g class="jm-core"><rect x="232" y="196" width="100" height="90" rx="14"/><text x="282" y="230">Always</text><text x="282" y="252" class="jm-s">links them,</text><text x="282" y="270" class="jm-s">with Sam&rsquo;s yes</text></g>
+    </svg>
+    <div class="jm-caps"><p>Sam says yes at a UEN event</p><p>Sam is discipled through The Global Harvest</p><p>Sam does an Alpha course</p><p>Sam is welcomed at Hope Church</p><p>Each ministry sees only its own code</p></div>
   </div>
-  <div class="jx-core"><b>Always</b><span>Links the steps only with the person&rsquo;s yes. Holds the key. Shows each ministry only its own code, and only steps by month.</span></div>
+  <figcaption id="jm-cap"><button type="button" class="jm-play" aria-pressed="false">Pause</button> One person, four ministries. Each sees a different code, and only Always can link them, because Sam said yes.</figcaption>
+</figure>
+
+<div class="plain">
+<h2>In plain English</h2>
+<p>When someone becomes a Christian, several ministries often help them along the way. Today none of them can see whether that person made it to a church family, so people slip through the cracks.</p>
+<p>Always can now join those steps together, but only if the person says yes. When they do, the church that welcomes them can see what has already happened, like &ldquo;said yes in February, did a course in March&rdquo;. It can&rsquo;t see who else helped, what was said, or anything private.</p>
+<p>Each ministry gets its own code for the person, so ministries can&rsquo;t compare notes behind their back. Only Always can link the codes, and the person can stop it at any time.</p>
+<p>Everyone else, including funders and networks, only ever sees totals, like &ldquo;140 people in Victoria found a church this year&rdquo;. Young people are never linked at all.</p>
 </div>
 
 <h2>Two goals, two designs</h2>
 <p>People ask this for two different reasons, and they need different answers. We built both, kept apart.</p>
-<table>
+<table class="jt">
 <tr><th></th><th>No one lost</th><th>Seeing the fruit</th></tr>
-<tr><td>The question</td><td>Is this person being cared for, and what has already happened?</td><td>Across the Body, how many yeses become disciples?</td></tr>
-<tr><td>What it needs</td><td>A linked journey for one person</td><td>Totals only</td></tr>
-<tr><td>Who sees it</td><td>The one church or ministry now caring for them</td><td>Ministries, networks and funders</td></tr>
-<tr><td>Is it personal information?</td><td>Yes, so it needs the person&rsquo;s consent</td><td>No, it identifies no one</td></tr>
-<tr><td>Young people</td><td>Never linked</td><td>Counted, with larger minimum groups</td></tr>
+<tr><td data-label="">The question</td><td data-label="No one lost">Is this person being cared for, and what has already happened?</td><td data-label="Seeing the fruit">Across the Body, how many yeses become disciples?</td></tr>
+<tr><td data-label="">What it needs</td><td data-label="No one lost">A linked journey for one person</td><td data-label="Seeing the fruit">Totals only</td></tr>
+<tr><td data-label="">Who sees it</td><td data-label="No one lost">The one church or ministry now caring for them</td><td data-label="Seeing the fruit">Ministries, networks and funders</td></tr>
+<tr><td data-label="">Is it personal information?</td><td data-label="No one lost">Yes, so it needs the person&rsquo;s consent</td><td data-label="Seeing the fruit">No, it identifies no one</td></tr>
+<tr><td data-label="">Young people</td><td data-label="No one lost">Never linked</td><td data-label="Seeing the fruit">Counted, with larger minimum groups</td></tr>
 </table>
 
 <h2>How it works for one person</h2>
@@ -319,13 +344,13 @@ JOURNEYS = """
 </ol>
 
 <h2>What each person and ministry sees</h2>
-<table>
+<table class="jt">
 <tr><th>Who</th><th>Sees</th><th>Never sees</th></tr>
-<tr><td>Sam</td><td>Everything held about them, to download, correct or withdraw</td><td>Nothing is hidden from them</td></tr>
-<tr><td>The church caring for Sam now</td><td>Sam&rsquo;s details, their own code, earlier steps by month</td><td>Other ministries&rsquo; names, notes, exact dates</td></tr>
-<tr><td>Earlier ministries</td><td>Totals for the people they introduced</td><td>Sam&rsquo;s later steps, other ministries&rsquo; codes</td></tr>
-<tr><td>Networks and funders</td><td>Totals by state and financial year</td><td>Any person, any code, any group under 10 (20 with young people)</td></tr>
-<tr><td>Always staff</td><td>Only what&rsquo;s needed to help, with every view logged</td><td>Anything for marketing, fundraising or profiling</td></tr>
+<tr><td data-label="Who">Sam</td><td data-label="Sees">Everything held about them, to download, correct or withdraw</td><td data-label="Never sees">Nothing is hidden from them</td></tr>
+<tr><td data-label="Who">The church caring for Sam now</td><td data-label="Sees">Sam&rsquo;s details, their own code, earlier steps by month</td><td data-label="Never sees">Other ministries&rsquo; names, notes, exact dates</td></tr>
+<tr><td data-label="Who">Earlier ministries</td><td data-label="Sees">Totals for the people they introduced</td><td data-label="Never sees">Sam&rsquo;s later steps, other ministries&rsquo; codes</td></tr>
+<tr><td data-label="Who">Networks and funders</td><td data-label="Sees">Totals by state and financial year</td><td data-label="Never sees">Any person, any code, any group under 10 (20 with young people)</td></tr>
+<tr><td data-label="Who">Always staff</td><td data-label="Sees">Only what&rsquo;s needed to help, with every view logged</td><td data-label="Never sees">Anything for marketing, fundraising or profiling</td></tr>
 </table>
 
 <h2>In the Australian context</h2>
@@ -345,15 +370,15 @@ JOURNEYS = """
 <p>We&rsquo;re watching the second tranche of Privacy Act reforms and will update this design as the law changes. This page explains our approach and isn&rsquo;t legal advice. Prolegis reviews the consent wording before release.</p>
 
 <h2>How it&rsquo;s built</h2>
-<table>
+<table class="jt">
 <tr><th>Part</th><th>What it does</th></tr>
-<tr><td><code>share.journey</code></td><td>A separate consent purpose. Refused for anyone under 18.</td></tr>
-<tr><td>The link</td><td>A keyed hash of the normalised mobile, using <code>LINK_KEY</code>. Stored in the database, never returned by any API.</td></tr>
-<tr><td>Ministry codes</td><td>A keyed hash of the journey and the ministry, using <code>ORG_CODE_KEY</code>. Stable for one ministry, unrelated between ministries.</td></tr>
-<tr><td><code>GET /v1/handoffs/:id/journey</code></td><td>For the church that accepted someone: their code and earlier steps by month. Every view is audited.</td></tr>
-<tr><td><code>POST /v1/me/:token/milestones</code></td><td>The person reports baptised, small group, serving or a year on.</td></tr>
-<tr><td><code>GET /v1/network/journeys</code></td><td>Totals across every ministry by state and financial year, small numbers withheld.</td></tr>
-<tr><td>Database guards</td><td>The database itself refuses to link a minor or anyone without current consent, unlinks on withdrawal and removes empty journeys. No ministry can read journey tables directly.</td></tr>
+<tr><td data-label="Part"><code>share.journey</code></td><td data-label="What it does">A separate consent purpose. Refused for anyone under 18.</td></tr>
+<tr><td data-label="Part">The link</td><td data-label="What it does">A keyed hash of the normalised mobile, using <code>LINK_KEY</code>. Stored in the database, never returned by any API.</td></tr>
+<tr><td data-label="Part">Ministry codes</td><td data-label="What it does">A keyed hash of the journey and the ministry, using <code>ORG_CODE_KEY</code>. Stable for one ministry, unrelated between ministries.</td></tr>
+<tr><td data-label="Part"><code>GET /v1/handoffs/:id/journey</code></td><td data-label="What it does">For the church that accepted someone: their code and earlier steps by month. Every view is audited.</td></tr>
+<tr><td data-label="Part"><code>POST /v1/me/:token/milestones</code></td><td data-label="What it does">The person reports baptised, small group, serving or a year on.</td></tr>
+<tr><td data-label="Part"><code>GET /v1/network/journeys</code></td><td data-label="What it does">Totals across every ministry by state and financial year, small numbers withheld.</td></tr>
+<tr><td data-label="Part">Database guards</td><td data-label="What it does">The database itself refuses to link a minor or anyone without current consent, unlinks on withdrawal and removes empty journeys. No ministry can read journey tables directly.</td></tr>
 </table>
 <p>Tests prove each rule: minors are never linked, codes differ between ministries, a church that hasn&rsquo;t accepted someone sees nothing, withdrawal unlinks, and small totals are withheld. The Handoff standard requires receiving systems to keep codes to themselves and to honour withdrawal.</p>
 
@@ -536,6 +561,61 @@ CSS = '''
 .dtoc p { margin: 0 0 10px; font: 700 13px/1 var(--head); color: var(--clay); }
 .dtoc button { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--line); padding: 7px 0 7px 14px; min-height: 32px; color: var(--soft); font: 500 14px/1.35 var(--text, inherit); cursor: pointer; transition: color .2s ease, border-color .2s ease; }
 .dtoc button:hover, .dtoc button.on { color: var(--green); border-left-color: var(--green); }
+/* ---- Journeys page ---- */
+.jm { margin: 28px 0 10px; padding: 20px 20px 16px; border-radius: 26px; background: radial-gradient(120% 90% at 50% 0%, #22574B, #14352F); color: var(--cream); }
+.jm-svg { display: block; width: 100%; height: auto; }
+.jm-v { display: none; max-width: 340px; margin: 0 auto; }
+.jm-v text.jm-l { text-anchor: start; font-size: 17px; }
+.jm-v .jm-core text { font-size: 15px; } .jm-v .jm-core text.jm-s { font: 600 12.5px var(--head, sans-serif); }
+.jm-sam { transform-box: fill-box; transform-origin: center; }
+.jm-svg text { font: 700 15px var(--head, sans-serif); fill: #F8F3EA; text-anchor: middle; }
+.jm-route { stroke: rgba(248,243,234,.25); stroke-width: 3; stroke-dasharray: 2 10; stroke-linecap: round; fill: none; }
+.jm-org circle { fill: rgba(248,243,234,.08); stroke: rgba(248,243,234,.35); stroke-width: 2; }
+.jm-tag rect { fill: #F8F3EA; } .jm-tag text { fill: #1B4740; font: 600 12px ui-monospace, Menlo, monospace; }
+.jm-sam { fill: #E8A577; filter: drop-shadow(0 0 10px rgba(232,165,119,.9)); }
+.jm-links path { fill: none; stroke: #E8A577; stroke-width: 2; stroke-dasharray: 5 6; }
+.jm-core rect { fill: #E8A577; } .jm-core text { fill: #1E2A26; font-size: 14px; }
+.jm-caps { position: relative; height: 1.6em; margin-top: 6px; text-align: center; font: 600 16px/1.6 var(--head); }
+.jm-caps p { position: absolute; inset: 0; margin: 0; opacity: 0; color: var(--cream); }
+.jm figcaption { display: flex; gap: 12px; align-items: center; margin-top: 12px; font-size: 14px; line-height: 1.45; color: rgba(248,243,234,.75); }
+.jm-play { flex: none; min-height: 36px; padding: 0 14px; border-radius: 99px; border: 1px solid rgba(248,243,234,.35); background: none; color: var(--cream); font: 600 13px var(--head); cursor: pointer; }
+.jm-tag, .jm-links, .jm-core { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .jm-sam { animation: jmSam 14s ease-in-out infinite; }
+  .jm-o1 circle { animation: jmHi 14s infinite 0s; } .jm-o2 circle { animation: jmHi 14s infinite 2.6s; } .jm-o3 circle { animation: jmHi 14s infinite 5.2s; } .jm-o4 circle { animation: jmHi 14s infinite 7.8s; }
+  .jm-o1 .jm-tag { animation: jmTag 14s infinite 0.4s; } .jm-o2 .jm-tag { animation: jmTag 14s infinite 3s; } .jm-o3 .jm-tag { animation: jmTag 14s infinite 5.6s; } .jm-o4 .jm-tag { animation: jmTag 14s infinite 8.2s; }
+  .jm-links, .jm-core { animation: jmCore 14s infinite; }
+  .jm-caps p { animation: jmCap 14s infinite; }
+  .jm-caps p:nth-child(2) { animation-delay: 2.6s; } .jm-caps p:nth-child(3) { animation-delay: 5.2s; } .jm-caps p:nth-child(4) { animation-delay: 7.8s; } .jm-caps p:nth-child(5) { animation-name: jmCapLast; }
+  .jm.paused * { animation-play-state: paused !important; }
+}
+@media (prefers-reduced-motion: reduce) { .jm-tag, .jm-links, .jm-core { opacity: 1; } .jm-caps p:last-child { opacity: 1; } .jm-play { display: none; } }
+@keyframes jmSam { 0%, 8% { transform: translateX(0); } 18%, 26% { transform: translateX(160px); } 37%, 45% { transform: translateX(320px); } 56%, 92% { transform: translateX(480px); } 100% { transform: translateX(480px); opacity: 0; } }
+@keyframes jmSamV { 0%, 8% { transform: translateY(0); } 18%, 26% { transform: translateY(120px); } 37%, 45% { transform: translateY(240px); } 56%, 92% { transform: translateY(360px); } 100% { transform: translateY(360px); opacity: 0; } }
+@keyframes jmHi { 0% { fill: rgba(248,243,234,.08); } 3%, 14% { fill: rgba(232,165,119,.35); } 22%, 100% { fill: rgba(248,243,234,.12); } }
+@keyframes jmTag { 0% { opacity: 0; transform: translateY(6px); } 4%, 88% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
+@keyframes jmCore { 0%, 64% { opacity: 0; } 70%, 92% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes jmCap { 0% { opacity: 0; } 2%, 16% { opacity: 1; } 19%, 100% { opacity: 0; } }
+@keyframes jmCapLast { 0%, 64% { opacity: 0; } 68%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.plain { margin: 26px 0 8px; padding: 6px 26px 18px; border-radius: 22px; background: #FBEFE4; }
+.plain h2 { margin-top: 18px !important; } .plain p { font-size: 17px; }
+.jt td, .jt th { vertical-align: top; }
+@media (max-width: 700px) {
+  .jm { padding: 14px 12px 12px; margin-left: -6px; margin-right: -6px; border-radius: 20px; }
+  .jm-h { display: none; } .jm-v { display: block; }
+  .jm-sam-v { animation-name: jmSamV !important; }
+  .jm-caps { font-size: 15px; height: 3.6em; line-height: 1.4; } .jm figcaption { font-size: 13px; align-items: flex-start; }
+  .plain { padding: 4px 18px 14px; margin-left: -4px; margin-right: -4px; }
+  #doc table.jt { display: block; border: 0; background: none; overflow: visible; max-width: none; }
+  #doc table.jt tr:first-child { display: none; }
+  #doc table.jt tr { display: block; margin: 0 0 12px; padding: 14px 16px; border-radius: 16px; background: #FFFDF8; border: 1px solid var(--line); }
+  #doc table.jt td { display: block; padding: 4px 0; border: 0; }
+  #doc table.jt td::before { content: attr(data-label); display: block; font: 700 12.5px/1.3 var(--head); color: var(--clay); }
+  #doc table.jt td:first-child { font: 700 16px/1.3 var(--head); color: var(--green); padding-bottom: 6px; }
+  #doc table.jt td:first-child::before { display: none; }
+  #doc table.jt td[data-label=""]::before { display: none; }
+  #doc .jx-row { grid-template-columns: 1fr; }
+}
 .jx { margin: 30px 0 8px; padding: 22px; border-radius: 24px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.05); }
 .jx-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .jx-m { display: grid; gap: 4px; padding: 14px; border-radius: 16px; background: var(--sage); }

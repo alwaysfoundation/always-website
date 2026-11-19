@@ -1135,6 +1135,11 @@ document.getElementById('dsq').addEventListener('input', (e) => {
 });
 
 document.getElementById('dpick').addEventListener('change', (e) => { location.hash = '#/docs/' + e.target.value; });
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('.jm-play'); if (!b) return;
+  const f = b.closest('.jm'), paused = f.classList.toggle('paused');
+  b.textContent = paused ? 'Play' : 'Pause'; b.setAttribute('aria-pressed', String(paused));
+});
 
 const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
