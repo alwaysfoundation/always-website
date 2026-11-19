@@ -1104,6 +1104,7 @@ function showDoc(slug) {
     (prev ? `<a href="#/docs/${prev}"><span>Previous</span><b>${DOCS[prev].title}</b></a>` : '') +
     (next ? `<a class="next" href="#/docs/${next}"><span>Next</span><b>${DOCS[next].title}</b></a>` : '') + `</nav>` +
     `<div class="doc-meta"><span>Updated November 2026 · CC BY 4.0</span><span><a href="#/feedback">Suggest a change</a></span></div>`;
+  if (window.jvInit) setTimeout(window.jvInit, 60);
   document.querySelectorAll('.dnav a').forEach((a) => a.classList.toggle('on', a.dataset.slug === slug));
   if (!document.getElementById('dsq').value) document.querySelectorAll('.dnav details.dsec').forEach((dt) => { dt.open = !!dt.querySelector(`a[data-slug="${slug}"]`); });
   document.getElementById('dpick').value = slug in DOCS ? slug : 'introduction';
@@ -1135,11 +1136,55 @@ document.getElementById('dsq').addEventListener('input', (e) => {
 });
 
 document.getElementById('dpick').addEventListener('change', (e) => { location.hash = '#/docs/' + e.target.value; });
-document.addEventListener('click', (e) => {
-  const b = e.target.closest('.jm-play'); if (!b) return;
-  const f = b.closest('.jm'), paused = f.classList.toggle('paused');
-  b.textContent = paused ? 'Play' : 'Pause'; b.setAttribute('aria-pressed', String(paused));
-});
+// Journeys explainer: a small timeline that moves Sam through four ministries, then shows Always linking them.
+window.jvInit = () => {
+  const root = document.querySelector('[data-jv]'); if (!root || root.dataset.ready) return; root.dataset.ready = '1';
+  const stage = root.querySelector('.jv-stage'), cards = [...root.querySelectorAll('.jv-card')], orb = root.querySelector('.jv-orb');
+  const hub = root.querySelector('.jv-hub'), lines = root.querySelector('.jv-lines'), caps = [...root.querySelectorAll('.jv-cap span')];
+  const bars = [...root.querySelectorAll('.jv-prog i')], play = root.querySelector('.jv-play');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SCENE = 2800, TOTAL = SCENE * 5 + 1800;
+  let t0 = performance.now(), paused = false, pausedAt = 0, visible = true, raf;
+  const centre = (el) => { const a = el.getBoundingClientRect(), b = stage.getBoundingClientRect(); return { x: a.left - b.left + a.width / 2, y: a.top - b.top + a.height / 2, top: a.top - b.top, bottom: a.bottom - b.top }; };
+  const drawLines = () => {
+    const h = centre(hub), b = stage.getBoundingClientRect();
+    lines.setAttribute('viewBox', `0 0 ${b.width} ${b.height}`);
+    lines.innerHTML = cards.map((c) => { const p = centre(c.querySelector('.jv-code')); const mid = (p.bottom + h.top) / 2;
+      return `<path d="M${p.x} ${p.bottom + 4} C ${p.x} ${mid}, ${h.x} ${mid}, ${h.x} ${h.top - 2}"/>`; }).join('');
+    lines.querySelectorAll('path').forEach((pa) => pa.style.setProperty('--len', pa.getTotalLength() + 1));
+  };
+  const show = (scene, k) => {
+    cards.forEach((c, i) => { c.classList.toggle('on', i === scene); c.classList.toggle('coded', i < scene || (i === scene && k > .18) || scene >= 4); });
+    caps.forEach((c, i) => c.classList.toggle('on', i === Math.min(scene, 4)));
+    bars.forEach((b, i) => b.style.setProperty('--p', i < scene ? 1 : i === scene ? Math.min(k, 1) : 0));
+    hub.classList.toggle('on', scene >= 4); lines.classList.toggle('on', scene >= 4);
+  };
+  const orbAt = (scene, k) => {
+    if (scene >= 4) { orb.style.opacity = '0'; return; }
+    const ease = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    const to = centre(cards[scene].querySelector('.jv-ic')), from = scene ? centre(cards[scene - 1].querySelector('.jv-ic')) : { x: to.x, y: to.y - 30 };
+    const m = ease(Math.min(k / .35, 1)), x = from.x + (to.x - from.x) * m, y = from.y + (to.y - from.y) * m - Math.sin(m * Math.PI) * 26;
+    orb.style.transform = `translate(${x}px, ${y}px)`; orb.style.opacity = scene === 0 ? String(Math.min(k / .15, 1)) : '1';
+  };
+  const frame = (now) => {
+    if (!paused && visible) {
+      const t = (((now - t0) % TOTAL) + TOTAL) % TOTAL, scene = Math.min(Math.floor(t / SCENE), 4), k = (t - scene * SCENE) / SCENE;
+      show(scene, k); orbAt(scene, k);
+    }
+    raf = requestAnimationFrame(frame);
+  };
+  drawLines(); addEventListener('resize', drawLines);
+  if (reduce) { show(4, 1); play.hidden = true; return; }
+  new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(root);
+  play.addEventListener('click', () => {
+    paused = !paused; root.classList.toggle('paused', paused);
+    play.setAttribute('aria-pressed', String(paused)); play.setAttribute('aria-label', paused ? 'Play animation' : 'Pause animation');
+    if (paused) pausedAt = performance.now(); else t0 += performance.now() - pausedAt;
+  });
+  raf = requestAnimationFrame(frame);
+};
+
+
 
 const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -1199,7 +1244,7 @@ route();
   });
   document.querySelectorAll('.cs-dialog').forEach((d) => {
     d.querySelector('.cs-close').addEventListener('click', () => d.close());
-    d.addEventListener('click', (e) => { if (e.target === d) d.close(); });
+    d.addEventListener('click', (e) => { if (e.target === d || e.target.closest('a[href^="#/"]')) d.close(); });
   });
 })();
 

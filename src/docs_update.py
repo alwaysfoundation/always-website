@@ -288,41 +288,45 @@ SAVING = """
 JOURNEYS = """
 <p class="lead">Someone meets Jesus at a UEN event, is discipled through The Global Harvest, does Alpha, and finds a home at a local church. Four ministries share in one person&rsquo;s journey. How can they see that it&rsquo;s the same person, and that no one was lost along the way, without any of them holding that person&rsquo;s identity or spiritual story?</p>
 
-<figure class="jm" aria-labelledby="jm-cap">
-  <div class="jm-stage" aria-hidden="true">
-    <svg viewBox="0 0 640 300" class="jm-svg jm-h">
-      <path class="jm-route" d="M80 110 H560"/>
-      <g class="jm-org jm-o1"><circle cx="80" cy="110" r="30"/><text x="80" y="62">UEN</text><g class="jm-tag"><rect x="44" y="150" width="72" height="24" rx="8"/><text x="80" y="166">jny_4fQ</text></g></g>
-      <g class="jm-org jm-o2"><circle cx="240" cy="110" r="30"/><text x="240" y="62">Global Harvest</text><g class="jm-tag"><rect x="204" y="150" width="72" height="24" rx="8"/><text x="240" y="166">jny_Zk8</text></g></g>
-      <g class="jm-org jm-o3"><circle cx="400" cy="110" r="30"/><text x="400" y="62">Alpha</text><g class="jm-tag"><rect x="364" y="150" width="72" height="24" rx="8"/><text x="400" y="166">jny_r2C</text></g></g>
-      <g class="jm-org jm-o4"><circle cx="560" cy="110" r="30"/><text x="560" y="62">Hope Church</text><g class="jm-tag"><rect x="524" y="150" width="72" height="24" rx="8"/><text x="560" y="166">jny_9Lw</text></g></g>
-      <circle class="jm-sam" cx="80" cy="110" r="11"/>
-      <g class="jm-links"><path d="M80 176 V226 H560 V176"/><path d="M240 176 V226"/><path d="M400 176 V226"/></g>
-      <g class="jm-core"><rect x="200" y="214" width="240" height="44" rx="14"/><text x="320" y="242">Always links them, with Sam&rsquo;s yes</text></g>
-    </svg>
-    <svg viewBox="0 0 340 470" class="jm-svg jm-v">
-      <path class="jm-route" d="M70 40 V400"/>
-      <g class="jm-org jm-o1"><circle cx="70" cy="40" r="26"/><text x="112" y="36" class="jm-l">UEN</text><g class="jm-tag"><rect x="112" y="48" width="84" height="26" rx="8"/><text x="154" y="66">jny_4fQ</text></g></g>
-      <g class="jm-org jm-o2"><circle cx="70" cy="160" r="26"/><text x="112" y="156" class="jm-l">Global Harvest</text><g class="jm-tag"><rect x="112" y="168" width="84" height="26" rx="8"/><text x="154" y="186">jny_Zk8</text></g></g>
-      <g class="jm-org jm-o3"><circle cx="70" cy="280" r="26"/><text x="112" y="276" class="jm-l">Alpha</text><g class="jm-tag"><rect x="112" y="288" width="84" height="26" rx="8"/><text x="154" y="306">jny_r2C</text></g></g>
-      <g class="jm-org jm-o4"><circle cx="70" cy="400" r="26"/><text x="112" y="396" class="jm-l">Hope Church</text><g class="jm-tag"><rect x="112" y="408" width="84" height="26" rx="8"/><text x="154" y="426">jny_9Lw</text></g></g>
-      <circle class="jm-sam jm-sam-v" cx="70" cy="40" r="11"/>
-      <g class="jm-links"><path d="M196 61 H262 V421 H196"/><path d="M196 181 H262"/><path d="M196 301 H262"/></g>
-      <g class="jm-core"><rect x="232" y="196" width="100" height="90" rx="14"/><text x="282" y="230">Always</text><text x="282" y="252" class="jm-s">links them,</text><text x="282" y="270" class="jm-s">with Sam&rsquo;s yes</text></g>
-    </svg>
-    <div class="jm-caps"><p>Sam says yes at a UEN event</p><p>Sam is discipled through The Global Harvest</p><p>Sam does an Alpha course</p><p>Sam is welcomed at Hope Church</p><p>Each ministry sees only its own code</p></div>
+<figure class="jv" aria-labelledby="jv-cap" data-jv>
+  <div class="jv-top"><div class="jv-prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><button type="button" class="jv-play" aria-pressed="false" aria-label="Pause animation"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="jv-pa" d="M8 5v14M16 5v14"/><path class="jv-pl" d="M7 4.5v15l12-7.5z"/></svg></button></div>
+  <div class="jv-stage" aria-hidden="true">
+    <svg class="jv-lines"></svg>
+    <div class="jv-cards"><div class="jv-card" data-i="0"><span class="jv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9h12a4 4 0 0 1 3.9 4.9l-.8 3.4a2 2 0 0 1-3.4.9L15.5 16h-7l-2.2 2.2a2 2 0 0 1-3.4-.9l-.8-3.4A4 4 0 0 1 6 9z"/><path d="M8 12v2M7 13h2M16 12.5h.01M17.5 14h.01"/></svg></span><b>UEN</b><span class="jv-role">Said yes at an event</span><span class="jv-code">jny_4fQ…</span></div><div class="jv-card" data-i="1"><span class="jv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21V9"/><path d="M12 13c-3 0-5-2-5-5 3 0 5 2 5 5zM12 13c3 0 5-2 5-5-3 0-5 2-5 5zM12 9c-2 0-3.5-1.5-3.5-4C10.5 5 12 6.5 12 9zM12 9c2 0 3.5-1.5 3.5-4-2 0-3.5 1.5-3.5 4z"/></svg></span><b>The Global Harvest</b><span class="jv-role">Discipleship</span><span class="jv-code">jny_Zk8…</span></div><div class="jv-card" data-i="2"><span class="jv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9 11h6M9 14h4"/></svg></span><b>Alpha</b><span class="jv-role">A course</span><span class="jv-code">jny_r2C…</span></div><div class="jv-card" data-i="3"><span class="jv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10"/><path d="M10 21v-5h4v5"/></svg></span><b>Hope Church</b><span class="jv-role">A church family</span><span class="jv-code">jny_9Lw…</span></div></div>
+    <span class="jv-orb"><span>S</span></span>
+    <div class="jv-hub"><span class="jv-lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><span><b>Always</b> links the steps, only with Sam&rsquo;s yes</span></div>
   </div>
-  <figcaption id="jm-cap"><button type="button" class="jm-play" aria-pressed="false">Pause</button> One person, four ministries. Each sees a different code, and only Always can link them, because Sam said yes.</figcaption>
+  <p class="jv-cap" aria-live="off"><span>Sam says yes at a UEN event.</span><span>Sam is discipled through The Global Harvest.</span><span>Sam does an Alpha course.</span><span>Sam is welcomed at Hope Church.</span><span>Each ministry sees only its own code.</span></p>
+  <figcaption id="jv-cap" class="sr">An animation: one person, Sam, moves through four ministries. Each ministry gets a different code for Sam, and only Always can link them, because Sam said yes.</figcaption>
 </figure>
-
-<div class="plain">
-<h2>In plain English</h2>
-<p>When someone becomes a Christian, several ministries often help them along the way. Today none of them can see whether that person made it to a church family, so people slip through the cracks.</p>
-<p>Always can now join those steps together, but only if the person says yes. When they do, the church that welcomes them can see what has already happened, like &ldquo;said yes in February, did a course in March&rdquo;. It can&rsquo;t see who else helped, what was said, or anything private.</p>
-<p>Each ministry gets its own code for the person, so ministries can&rsquo;t compare notes behind their back. Only Always can link the codes, and the person can stop it at any time.</p>
-<p>Everyone else, including funders and networks, only ever sees totals, like &ldquo;140 people in Victoria found a church this year&rdquo;. Young people are never linked at all.</p>
+<section class="jw">
+  <h2>Why this matters</h2>
+  <p class="jw-in">Jesus left the ninety-nine to look for the one (Luke 15:4). Many Australians who come to faith meet more than one ministry along the way, and the gaps between those ministries are where people quietly go missing.</p>
+  <div class="jw-grid">
+    <div><h3>The gap between ministries</h3><p>An event, a course and a church can each do their part well and still lose someone in between. The ministry that hands a person on rarely learns whether they arrived. The church that welcomes them starts with no idea of their story.</p></div>
+    <div><h3>One Body, seen as one</h3><p>One plants, another waters, and God gives the growth (1&nbsp;Corinthians&nbsp;3:6). Today each ministry sees only its own slice, so the fruit of shared work stays invisible, or is claimed by whoever counted last.</p></div>
+    <div><h3>Honest numbers</h3><p>When four ministries each count the same person, funders see four. Journeys count each person once, so totals tell the truth about what God is doing, and giving can follow it.</p></div>
+    <div><h3>Why not just share a list</h3><p>The easy answer is a shared spreadsheet. That would put people&rsquo;s spiritual lives in many hands, and make one leak everyone&rsquo;s problem. Faith is sensitive information under Australian law, so each ministry gets only what it needs, and nothing it could join with anyone else&rsquo;s.</p></div>
+    <div><h3>Why it has to be shared</h3><p>A small church can&rsquo;t build this safely on its own, and shouldn&rsquo;t have to. Built once, with the person&rsquo;s consent at the centre, it serves every ministry freely.</p></div>
+    <div class="jw-aim"><h3>The aim</h3><p>Everyone who says yes to Jesus is known, welcomed and walked with, and their story stays theirs.</p></div>
+  </div>
+</section>
+<section class="jp">
+  <h2>In plain English</h2>
+  <div class="jp-grid">
+    <div><span class="jp-n">1</span><h3>People slip through the cracks</h3><p>Several ministries often help someone after they become a Christian. Today none of them can tell whether that person found a church family.</p></div>
+    <div><span class="jp-n">2</span><h3>Joined up, only with a yes</h3><p>If the person agrees, the church that welcomes them can see what&rsquo;s already happened, like &ldquo;said yes in February, did a course in March&rdquo;. Nothing private.</p></div>
+    <div><span class="jp-n">3</span><h3>No comparing notes</h3><p>Each ministry gets its own code for the person, so ministries can&rsquo;t match records behind their back. Only Always links them.</p></div>
+    <div><span class="jp-n">4</span><h3>Everyone else sees totals</h3><p>Funders and networks see numbers like &ldquo;140 people in Victoria found a church this year&rdquo;. Young people are never linked at all.</p></div>
+  </div>
+</section>
+<div class="jpr">
+  <div><b>Consent first</b><span>A separate yes, never pre-ticked, withdrawn any time</span></div>
+  <div><b>A code per ministry</b><span>Unrelated between ministries</span></div>
+  <div><b>Steps, not stories</b><span>Milestone and month only</span></div>
+  <div><b>Never under 18</b><span>Enforced by the database</span></div>
 </div>
-
+<aside class="jby"><span class="jby-m" aria-hidden="true">DD</span><div><b>Research and design by Daniel Dizon</b><p>Daniel contributed research to the Ethereum Foundation and to early open finance protocols, and has long worked on privacy-preserving technology: showing something is true without revealing who it&rsquo;s about. Journeys bring that thinking to the care of new believers.</p></div></aside>
 <h2>Two goals, two designs</h2>
 <p>People ask this for two different reasons, and they need different answers. We built both, kept apart.</p>
 <table class="jt">
@@ -355,18 +359,7 @@ JOURNEYS = """
 
 <h2>In the Australian context</h2>
 <p>Faith is among the most personal things we know about anyone. Australian law treats it that way, and so do we.</p>
-<ul>
-<li><b>Faith is sensitive information.</b> Under the Australian Privacy Principles, religious beliefs and affiliations are sensitive information, so they&rsquo;re collected only with consent and only when reasonably necessary (APP 3). Linking a journey has its own consent, separate from being introduced to a church.</li>
-<li><b>Used only for what the person agreed to</b> (APP 6). A journey helps the next church care well. It&rsquo;s never used for marketing, fundraising or profiling, and it&rsquo;s never sold.</li>
-<li><b>Pseudonymous isn&rsquo;t anonymous.</b> Information is personal information when someone is reasonably identifiable from it in context. A linked journey is, even without a name, so it&rsquo;s protected as personal information. Only totals are treated as de-identified, following the OAIC and CSIRO&rsquo;s De-identification Decision-Making Framework: minimum group sizes, set reporting periods and no identifiers in the reporting table.</li>
-<li><b>Kept in Australia</b> (APP 8). Journeys are stored and processed in Australia and are never sent offshore.</li>
-<li><b>Secured, and deleted when no longer needed</b> (APP 11). Names and numbers are encrypted. The link key is kept apart from the data and can be destroyed to unlink every journey at once. Unconnected details are deleted on our retention schedule.</li>
-<li><b>Yours to see and correct</b> (APPs 12 and 13). Each person has a private link to see, download, correct or withdraw.</li>
-<li><b>Breaches are reported.</b> We follow the Notifiable Data Breaches scheme and tell people and the OAIC if a breach is likely to cause serious harm.</li>
-<li><b>A higher bar than the law sets.</b> Many churches are small enough to sit outside the Privacy Act. Always applies the same principles to every journey anyway, because every person deserves the same care.</li>
-<li><b>Serious invasions of privacy.</b> Since 10 June 2025, Australians can take action for serious invasions of privacy. Designing so ministries can&rsquo;t combine records is part of honouring that.</li>
-<li><b>Children and young people.</b> No one under 18 is ever linked across ministries, whatever is ticked. This holds ahead of the Children&rsquo;s Online Privacy Code, due by 10 December 2026, and alongside the National Principles for Child Safe Organisations.</li>
-</ul>
+<div class="jau"><div class="jau-c"><span class=jau-t>APP 3</span><h3>Faith is sensitive information</h3><p>Under the Australian Privacy Principles, religious beliefs and affiliations are sensitive information, so they&rsquo;re collected only with consent and only when reasonably necessary (APP 3). Linking a journey has its own consent, separate from being introduced to a church.</p></div><div class="jau-c"><span class=jau-t>APP 6</span><h3>Used only for what the person agreed to</h3><p>(APP 6). A journey helps the next church care well. It&rsquo;s never used for marketing, fundraising or profiling, and it&rsquo;s never sold.</p></div><div class="jau-c"><h3>Pseudonymous isn&rsquo;t anonymous</h3><p>Information is personal information when someone is reasonably identifiable from it in context. A linked journey is, even without a name, so it&rsquo;s protected as personal information. Only totals are treated as de-identified, following the OAIC and CSIRO&rsquo;s De-identification Decision-Making Framework: minimum group sizes, set reporting periods and no identifiers in the reporting table.</p></div><div class="jau-c"><span class=jau-t>APP 8</span><h3>Kept in Australia</h3><p>(APP 8). Journeys are stored and processed in Australia and are never sent offshore.</p></div><div class="jau-c"><span class=jau-t>APP 11</span><h3>Secured, and deleted when no longer needed</h3><p>(APP 11). Names and numbers are encrypted. The link key is kept apart from the data and can be destroyed to unlink every journey at once. Unconnected details are deleted on our retention schedule.</p></div><div class="jau-c"><span class=jau-t>APPs 12 and 13</span><h3>Yours to see and correct</h3><p>(APPs 12 and 13). Each person has a private link to see, download, correct or withdraw.</p></div><div class="jau-c"><h3>Breaches are reported</h3><p>We follow the Notifiable Data Breaches scheme and tell people and the OAIC if a breach is likely to cause serious harm.</p></div><div class="jau-c"><h3>A higher bar than the law sets</h3><p>Many churches are small enough to sit outside the Privacy Act. Always applies the same principles to every journey anyway, because every person deserves the same care.</p></div><div class="jau-c"><h3>Serious invasions of privacy</h3><p>Since 10 June 2025, Australians can take action for serious invasions of privacy. Designing so ministries can&rsquo;t combine records is part of honouring that.</p></div><div class="jau-c"><h3>Children and young people</h3><p>No one under 18 is ever linked across ministries, whatever is ticked. This holds ahead of the Children&rsquo;s Online Privacy Code, due by 10 December 2026, and alongside the National Principles for Child Safe Organisations.</p></div></div>
 <p>We&rsquo;re watching the second tranche of Privacy Act reforms and will update this design as the law changes. This page explains our approach and isn&rsquo;t legal advice. Prolegis reviews the consent wording before release.</p>
 
 <h2>How it&rsquo;s built</h2>
@@ -562,50 +555,80 @@ CSS = '''
 .dtoc button { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--line); padding: 7px 0 7px 14px; min-height: 32px; color: var(--soft); font: 500 14px/1.35 var(--text, inherit); cursor: pointer; transition: color .2s ease, border-color .2s ease; }
 .dtoc button:hover, .dtoc button.on { color: var(--green); border-left-color: var(--green); }
 /* ---- Journeys page ---- */
-.jm { margin: 28px 0 10px; padding: 20px 20px 16px; border-radius: 26px; background: radial-gradient(120% 90% at 50% 0%, #22574B, #14352F); color: var(--cream); }
-.jm-svg { display: block; width: 100%; height: auto; }
-.jm-v { display: none; max-width: 340px; margin: 0 auto; }
-.jm-v text.jm-l { text-anchor: start; font-size: 17px; }
-.jm-v .jm-core text { font-size: 15px; } .jm-v .jm-core text.jm-s { font: 600 12.5px var(--head, sans-serif); }
-.jm-sam { transform-box: fill-box; transform-origin: center; }
-.jm-svg text { font: 700 15px var(--head, sans-serif); fill: #F8F3EA; text-anchor: middle; }
-.jm-route { stroke: rgba(248,243,234,.25); stroke-width: 3; stroke-dasharray: 2 10; stroke-linecap: round; fill: none; }
-.jm-org circle { fill: rgba(248,243,234,.08); stroke: rgba(248,243,234,.35); stroke-width: 2; }
-.jm-tag rect { fill: #F8F3EA; } .jm-tag text { fill: #1B4740; font: 600 12px ui-monospace, Menlo, monospace; }
-.jm-sam { fill: #E8A577; filter: drop-shadow(0 0 10px rgba(232,165,119,.9)); }
-.jm-links path { fill: none; stroke: #E8A577; stroke-width: 2; stroke-dasharray: 5 6; }
-.jm-core rect { fill: #E8A577; } .jm-core text { fill: #1E2A26; font-size: 14px; }
-.jm-caps { position: relative; height: 1.6em; margin-top: 6px; text-align: center; font: 600 16px/1.6 var(--head); }
-.jm-caps p { position: absolute; inset: 0; margin: 0; opacity: 0; color: var(--cream); }
-.jm figcaption { display: flex; gap: 12px; align-items: center; margin-top: 12px; font-size: 14px; line-height: 1.45; color: rgba(248,243,234,.75); }
-.jm-play { flex: none; min-height: 36px; padding: 0 14px; border-radius: 99px; border: 1px solid rgba(248,243,234,.35); background: none; color: var(--cream); font: 600 13px var(--head); cursor: pointer; }
-.jm-tag, .jm-links, .jm-core { opacity: 0; }
-@media (prefers-reduced-motion: no-preference) {
-  .jm-sam { animation: jmSam 14s ease-in-out infinite; }
-  .jm-o1 circle { animation: jmHi 14s infinite 0s; } .jm-o2 circle { animation: jmHi 14s infinite 2.6s; } .jm-o3 circle { animation: jmHi 14s infinite 5.2s; } .jm-o4 circle { animation: jmHi 14s infinite 7.8s; }
-  .jm-o1 .jm-tag { animation: jmTag 14s infinite 0.4s; } .jm-o2 .jm-tag { animation: jmTag 14s infinite 3s; } .jm-o3 .jm-tag { animation: jmTag 14s infinite 5.6s; } .jm-o4 .jm-tag { animation: jmTag 14s infinite 8.2s; }
-  .jm-links, .jm-core { animation: jmCore 14s infinite; }
-  .jm-caps p { animation: jmCap 14s infinite; }
-  .jm-caps p:nth-child(2) { animation-delay: 2.6s; } .jm-caps p:nth-child(3) { animation-delay: 5.2s; } .jm-caps p:nth-child(4) { animation-delay: 7.8s; } .jm-caps p:nth-child(5) { animation-name: jmCapLast; }
-  .jm.paused * { animation-play-state: paused !important; }
+.jw { margin: 34px 0 8px; }
+.jw-in { font-size: 18px; line-height: 1.6; color: var(--night); max-width: 62ch; }
+.jw-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 18px; }
+.jw-grid > div { padding: 20px 22px; border-radius: 20px; background: #FFFDF8; border: 1px solid rgba(20,53,47,.09); border-left: 3px solid #E8A577; }
+.jw-grid h3 { margin: 0 0 6px; font: 700 17px/1.3 var(--head); color: var(--green); }
+.jw-grid p { margin: 0; color: var(--soft); font-size: 15.5px; line-height: 1.6; }
+.jw-grid > .jw-aim { background: linear-gradient(160deg, #1D4C43, #12302A); border: 0; }
+.jw-aim h3 { color: #E8A577; } .jw-grid .jw-aim p { color: var(--cream); font-size: 17px; }
+.jby { display: flex; gap: 16px; align-items: flex-start; margin: 26px 0 8px; padding: 20px 22px; border-radius: 20px; background: #F1EADC; }
+.jby-m { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: var(--cream); font: 700 15px/1 var(--head); letter-spacing: .02em; }
+.jby b { display: block; font: 700 16px/1.3 var(--head); color: var(--green); margin-bottom: 4px; }
+.jby p { margin: 0; color: var(--soft); font-size: 15px; line-height: 1.6; }
+@media (max-width: 700px) { .jw-grid { grid-template-columns: 1fr; } }
+.jv .sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+.jv { position: relative; margin: 30px 0 12px; padding: 22px 24px 20px; border-radius: 28px; overflow: hidden; color: var(--cream);
+  background: radial-gradient(70% 60% at 85% 0%, rgba(232,165,119,.22), rgba(232,165,119,0) 60%), radial-gradient(80% 70% at 0% 100%, rgba(77,150,128,.35), rgba(77,150,128,0) 60%), linear-gradient(160deg, #1D4C43, #12302A);
+  box-shadow: 0 40px 70px -40px rgba(10,30,26,.75), inset 0 0 0 1px rgba(248,243,234,.06); }
+.jv-top { display: flex; align-items: center; gap: 14px; }
+.jv-prog { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.jv-prog i { height: 3px; border-radius: 3px; background: rgba(248,243,234,.18); overflow: hidden; position: relative; }
+.jv-prog i::after { content: ''; position: absolute; inset: 0; background: #E8A577; transform: scaleX(var(--p, 0)); transform-origin: left; }
+.jv-play { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(248,243,234,.25); background: rgba(248,243,234,.06); color: var(--cream); cursor: pointer; }
+.jv-play svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.jv-play .jv-pl { display: none; fill: currentColor; stroke: none; } .jv.paused .jv-play .jv-pl { display: block; } .jv.paused .jv-play .jv-pa { display: none; }
+.jv-play:focus-visible { outline: 3px solid #E8A577; outline-offset: 2px; }
+.jv-stage { position: relative; margin-top: 26px; padding-bottom: 96px; }
+.jv-cards { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.jv-card { display: grid; gap: 4px; align-content: start; padding: 16px 14px 14px; border-radius: 18px; background: rgba(248,243,234,.06); box-shadow: inset 0 0 0 1px rgba(248,243,234,.1); transition: background .6s ease, box-shadow .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+.jv-card.on { background: rgba(248,243,234,.13); box-shadow: inset 0 0 0 1px rgba(232,165,119,.55), 0 18px 36px -20px rgba(0,0,0,.6); transform: translateY(-4px); }
+.jv-ic { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 8px; border-radius: 12px; background: rgba(248,243,234,.1); color: #F8F3EA; transition: background .6s ease, color .6s ease; }
+.jv-card.on .jv-ic { background: #E8A577; color: #1E2A26; }
+.jv-ic svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.jv-card b { font: 700 15px/1.25 var(--head); color: #F8F3EA !important; }
+.jv-role { font-size: 13px; line-height: 1.35; color: rgba(248,243,234,.62); }
+.jv-code { justify-self: start; margin-top: 10px; padding: 4px 9px; border-radius: 8px; background: #F8F3EA; color: #1B4740; font: 600 12px/1.2 ui-monospace, 'SF Mono', Menlo, monospace; opacity: 0; transform: translateY(6px) scale(.96); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
+.jv-card.coded .jv-code { opacity: 1; transform: none; }
+.jv-orb { position: absolute; z-index: 3; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #FFD9BE, #E8A577 60%, #C9784A); color: #1E2A26; font: 800 13px/1 var(--head); box-shadow: 0 0 0 6px rgba(232,165,119,.18), 0 0 28px rgba(232,165,119,.65); opacity: 0; will-change: transform; }
+.jv-hub { position: absolute; z-index: 2; left: 50%; bottom: 8px; display: flex; align-items: center; gap: 10px; padding: 10px 18px 10px 10px; border-radius: 99px; background: #F8F3EA; color: #1E2A26; font-size: 14px; white-space: nowrap; transform: translate(-50%, 12px); opacity: 0; transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); box-shadow: 0 18px 36px -18px rgba(0,0,0,.6); }
+.jv-hub b { color: #1B4740 !important; }
+.jv-hub.on { opacity: 1; transform: translate(-50%, 0); }
+.jv-lock { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #1B4740; color: #F8F3EA; }
+.jv-lock svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.jv-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; overflow: visible; pointer-events: none; }
+.jv-lines path { fill: none; stroke: rgba(232,165,119,.75); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: var(--len); stroke-dashoffset: var(--len); transition: stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1); }
+.jv-lines.on path { stroke-dashoffset: 0; }
+.jv-cap { position: relative; height: 1.5em; margin: 14px 0 0; text-align: center; font: 600 16.5px/1.5 var(--head); }
+.jv-cap span { position: absolute; inset: 0; opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s ease; color: #F8F3EA; }
+.jv-cap span.on { opacity: 1; transform: none; }
+.jp { margin: 34px 0 6px; }
+.jp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+.jp-grid > div { padding: 20px 22px; border-radius: 20px; background: #FFFDF8; border: 1px solid var(--line); }
+.jp-n { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #FBE3D2; color: var(--clay); font: 800 14px/1 var(--head); }
+.jp-grid h3 { margin: 12px 0 6px !important; font: 800 18px/1.25 var(--head) !important; color: var(--green); }
+.jp-grid p { margin: 0 !important; font-size: 15.5px; line-height: 1.55; color: var(--soft); }
+.jpr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 18px 0 8px; border-radius: 20px; overflow: hidden; background: var(--green); }
+.jpr > div { display: grid; gap: 4px; padding: 16px 18px; border-right: 1px solid rgba(248,243,234,.1); }
+.jpr > div:last-child { border-right: 0; }
+.jpr b { font: 700 15px/1.25 var(--head); color: #F8F3EA !important; } .jpr span { font-size: 13px; line-height: 1.4; color: rgba(248,243,234,.7); }
+.jau { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
+.jau-c { position: relative; padding: 18px 20px; border-radius: 18px; background: #FFFDF8; border: 1px solid var(--line); }
+.jau-t { position: absolute; right: 14px; top: 14px; padding: 4px 8px; border-radius: 99px; background: var(--sage); color: var(--green); font: 700 11.5px/1 var(--head); }
+.jau-c h3 { margin: 0 0 6px !important; padding-right: 70px; font: 800 16.5px/1.3 var(--head) !important; color: var(--green); }
+.jau-c p { margin: 0 !important; font-size: 15px; line-height: 1.55; color: var(--soft); }
+@media (max-width: 760px) {
+  .jv { padding: 16px 14px 16px; margin-left: -6px; margin-right: -6px; border-radius: 22px; }
+  .jv-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .jv-card { padding: 13px 12px 12px; } .jv-ic { width: 34px; height: 34px; margin-bottom: 6px; }
+  .jv-stage { padding-bottom: 84px; } .jv-hub { font-size: 12.5px; white-space: normal; width: max-content; max-width: 92%; }
+  .jv-cap { font-size: 15px; height: 3em; }
+  .jp-grid, .jau { grid-template-columns: 1fr; }
+  .jpr { grid-template-columns: 1fr 1fr; } .jpr > div:nth-child(2) { border-right: 0; } .jpr > div:nth-child(-n+2) { border-bottom: 1px solid rgba(248,243,234,.1); }
 }
-@media (prefers-reduced-motion: reduce) { .jm-tag, .jm-links, .jm-core { opacity: 1; } .jm-caps p:last-child { opacity: 1; } .jm-play { display: none; } }
-@keyframes jmSam { 0%, 8% { transform: translateX(0); } 18%, 26% { transform: translateX(160px); } 37%, 45% { transform: translateX(320px); } 56%, 92% { transform: translateX(480px); } 100% { transform: translateX(480px); opacity: 0; } }
-@keyframes jmSamV { 0%, 8% { transform: translateY(0); } 18%, 26% { transform: translateY(120px); } 37%, 45% { transform: translateY(240px); } 56%, 92% { transform: translateY(360px); } 100% { transform: translateY(360px); opacity: 0; } }
-@keyframes jmHi { 0% { fill: rgba(248,243,234,.08); } 3%, 14% { fill: rgba(232,165,119,.35); } 22%, 100% { fill: rgba(248,243,234,.12); } }
-@keyframes jmTag { 0% { opacity: 0; transform: translateY(6px); } 4%, 88% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
-@keyframes jmCore { 0%, 64% { opacity: 0; } 70%, 92% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes jmCap { 0% { opacity: 0; } 2%, 16% { opacity: 1; } 19%, 100% { opacity: 0; } }
-@keyframes jmCapLast { 0%, 64% { opacity: 0; } 68%, 94% { opacity: 1; } 100% { opacity: 0; } }
-.plain { margin: 26px 0 8px; padding: 6px 26px 18px; border-radius: 22px; background: #FBEFE4; }
-.plain h2 { margin-top: 18px !important; } .plain p { font-size: 17px; }
 .jt td, .jt th { vertical-align: top; }
 @media (max-width: 700px) {
-  .jm { padding: 14px 12px 12px; margin-left: -6px; margin-right: -6px; border-radius: 20px; }
-  .jm-h { display: none; } .jm-v { display: block; }
-  .jm-sam-v { animation-name: jmSamV !important; }
-  .jm-caps { font-size: 15px; height: 3.6em; line-height: 1.4; } .jm figcaption { font-size: 13px; align-items: flex-start; }
-  .plain { padding: 4px 18px 14px; margin-left: -4px; margin-right: -4px; }
   #doc table.jt { display: block; border: 0; background: none; overflow: visible; max-width: none; }
   #doc table.jt tr:first-child { display: none; }
   #doc table.jt tr { display: block; margin: 0 0 12px; padding: 14px 16px; border-radius: 16px; background: #FFFDF8; border: 1px solid var(--line); }
