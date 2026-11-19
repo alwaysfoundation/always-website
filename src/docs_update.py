@@ -286,8 +286,7 @@ SAVING = """
 """
 
 JOURNEYS = """
-<p class="lead">Someone meets Jesus at a UEN event, is discipled through The Global Harvest, does Alpha, and finds a home at a local church. Four ministries share in one person&rsquo;s journey. How can they see that it&rsquo;s the same person, and that no one was lost along the way, without any of them holding that person&rsquo;s identity or spiritual story?</p>
-
+<p class="lead">Imagine someone goes to a Christian event and decides to follow Jesus. What happens next? Do they find a church? Does anyone help them grow? Or does everyone lose touch?</p>
 <figure class="jv" aria-labelledby="jv-cap" data-jv>
   <div class="jv-top"><div class="jv-prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><button type="button" class="jv-play" aria-pressed="false" aria-label="Pause animation"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="jv-pa" d="M8 5v14M16 5v14"/><path class="jv-pl" d="M7 4.5v15l12-7.5z"/></svg></button></div>
   <div class="jv-stage" aria-hidden="true">
@@ -299,32 +298,35 @@ JOURNEYS = """
   <p class="jv-cap" aria-live="off"><span>Sam says yes at a UEN event.</span><span>Sam is discipled through The Global Harvest.</span><span>Sam does an Alpha course.</span><span>Sam is welcomed at Hope Church.</span><span>Each ministry sees only its own code.</span></p>
   <figcaption id="jv-cap" class="sr">An animation: one person, Sam, moves through four ministries. Each ministry gets a different code for Sam, and only Always can link them, because Sam said yes.</figcaption>
 </figure>
-<section class="jw">
-  <h2>Why this matters</h2>
-  <p class="jw-in">Jesus left the ninety-nine to look for the one (Luke 15:4). Many Australians who come to faith meet more than one ministry along the way, and the gaps between those ministries are where people quietly go missing.</p>
-  <div class="jw-grid">
-    <div><h3>The gap between ministries</h3><p>An event, a course and a church can each do their part well and still lose someone in between. The ministry that hands a person on rarely learns whether they arrived. The church that welcomes them starts with no idea of their story.</p></div>
-    <div><h3>One Body, seen as one</h3><p>One plants, another waters, and God gives the growth (1&nbsp;Corinthians&nbsp;3:6). Today each ministry sees only its own slice, so the fruit of shared work stays invisible, or is claimed by whoever counted last.</p></div>
-    <div><h3>Honest numbers</h3><p>When four ministries each count the same person, funders see four. Journeys count each person once, so totals tell the truth about what God is doing, and giving can follow it.</p></div>
-    <div><h3>Why not just share a list</h3><p>The easy answer is a shared spreadsheet. That would put people&rsquo;s spiritual lives in many hands, and make one leak everyone&rsquo;s problem. Faith is sensitive information under Australian law, so each ministry gets only what it needs, and nothing it could join with anyone else&rsquo;s.</p></div>
-    <div><h3>Why it has to be shared</h3><p>A small church can&rsquo;t build this safely on its own, and shouldn&rsquo;t have to. Built once, with the person&rsquo;s consent at the centre, it serves every ministry freely.</p></div>
-    <div class="jw-aim"><h3>The aim</h3><p>Everyone who says yes to Jesus is known, welcomed and walked with, and their story stays theirs.</p></div>
+<section class="js">
+  <h2>Sam&rsquo;s story</h2>
+  <ol class="js-steps">
+    <li><b>UEN</b> helps Sam say yes to Jesus.</li>
+    <li><b>The Global Harvest</b> helps Sam grow as a disciple.</li>
+    <li><b>Alpha</b> helps Sam explore the big questions.</li>
+    <li><b>Hope Church</b> welcomes Sam into a church family.</li>
+  </ol>
+  <p class="js-turn">Normally, none of them would know they&rsquo;re helping the same person. <b>Always connects the dots, with Sam&rsquo;s permission.</b></p>
+</section>
+<section class="jo">
+  <h2>What that means</h2>
+  <div class="jo-grid">
+    <div><h3>Sam is less likely to be forgotten</h3><p>Each ministry knows where Sam has been, so no one assumes someone else has it covered.</p></div>
+    <div><h3>The church knows how to help</h3><p>Hope Church can see Sam said yes in February and did Alpha in March, so they meet Sam where Sam is.</p></div>
+    <div><h3>Ministries work together</h3><p>Each plays its part without handing private information to the others.</p></div>
+    <div><h3>We see real fruit</h3><p>Ministries and funders can see whether people actually find a church, not just attend an event. Each person is counted once.</p></div>
   </div>
 </section>
-<section class="jp">
-  <h2>In plain English</h2>
-  <div class="jp-grid">
-    <div><span class="jp-n">1</span><h3>People slip through the cracks</h3><p>Several ministries often help someone after they become a Christian. Today none of them can tell whether that person found a church family.</p></div>
-    <div><span class="jp-n">2</span><h3>Joined up, only with a yes</h3><p>If the person agrees, the church that welcomes them can see what&rsquo;s already happened, like &ldquo;said yes in February, did a course in March&rdquo;. Nothing private.</p></div>
-    <div><span class="jp-n">3</span><h3>No comparing notes</h3><p>Each ministry gets its own code for the person, so ministries can&rsquo;t match records behind their back. Only Always links them.</p></div>
-    <div><span class="jp-n">4</span><h3>Everyone else sees totals</h3><p>Funders and networks see numbers like &ldquo;140 people in Victoria found a church this year&rdquo;. Young people are never linked at all.</p></div>
-  </div>
+<blockquote class="jbig"><p>Saying yes to Jesus shouldn&rsquo;t be the end of the story. It should be the beginning of a journey, with someone walking alongside.</p></blockquote>
+<section class="jk">
+  <h2>Why not just share a list?</h2>
+  <p>Because faith is among the most personal things anyone can share, and Australian law treats it as sensitive information. A shared spreadsheet would put people&rsquo;s spiritual lives in many hands. So journeys are built the other way round:</p>
 </section>
 <div class="jpr">
-  <div><b>Consent first</b><span>A separate yes, never pre-ticked, withdrawn any time</span></div>
-  <div><b>A code per ministry</b><span>Unrelated between ministries</span></div>
-  <div><b>Steps, not stories</b><span>Milestone and month only</span></div>
-  <div><b>Never under 18</b><span>Enforced by the database</span></div>
+  <div><b>Sam says yes first</b><span>A separate tick, never pre-ticked, withdrawn any time</span></div>
+  <div><b>A different code for each ministry</b><span>So no one can match records behind Sam&rsquo;s back</span></div>
+  <div><b>Steps, not stories</b><span>What happened and the month, never notes</span></div>
+  <div><b>Never under 18</b><span>Young people are never linked, enforced by the database</span></div>
 </div>
 <aside class="jby"><span class="jby-m" aria-hidden="true">DD</span><div><b>Research and design by Daniel Dizon</b><p>Daniel contributed research to the Ethereum Foundation and to early open finance protocols, and has long worked on privacy-preserving technology: showing something is true without revealing who it&rsquo;s about. Journeys bring that thinking to the care of new believers.</p></div></aside>
 <h2>Two goals, two designs</h2>
@@ -555,19 +557,27 @@ CSS = '''
 .dtoc button { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--line); padding: 7px 0 7px 14px; min-height: 32px; color: var(--soft); font: 500 14px/1.35 var(--text, inherit); cursor: pointer; transition: color .2s ease, border-color .2s ease; }
 .dtoc button:hover, .dtoc button.on { color: var(--green); border-left-color: var(--green); }
 /* ---- Journeys page ---- */
-.jw { margin: 34px 0 8px; }
-.jw-in { font-size: 18px; line-height: 1.6; color: var(--night); max-width: 62ch; }
-.jw-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 18px; }
-.jw-grid > div { padding: 20px 22px; border-radius: 20px; background: #FFFDF8; border: 1px solid rgba(20,53,47,.09); border-left: 3px solid #E8A577; }
-.jw-grid h3 { margin: 0 0 6px; font: 700 17px/1.3 var(--head); color: var(--green); }
-.jw-grid p { margin: 0; color: var(--soft); font-size: 15.5px; line-height: 1.6; }
-.jw-grid > .jw-aim { background: linear-gradient(160deg, #1D4C43, #12302A); border: 0; }
-.jw-aim h3 { color: #E8A577; } .jw-grid .jw-aim p { color: var(--cream); font-size: 17px; }
+.js { margin: 30px 0 8px; }
+.js-steps { list-style: none; counter-reset: js; margin: 14px 0 0 !important; padding: 0 !important; display: grid; gap: 10px; }
+.js-steps li { counter-increment: js; position: relative; padding: 16px 18px 16px 58px; border-radius: 18px; background: #FFFDF8; border: 1px solid rgba(20,53,47,.09); font-size: 17px; line-height: 1.45; color: var(--soft); }
+.js-steps li::before { content: counter(js); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #F6DECB; color: #9A4A22; font: 700 13px/1 var(--head); }
+.js-steps li:not(:last-child)::after { content: ''; position: absolute; left: 29px; bottom: -11px; width: 2px; height: 12px; background: #E8A577; opacity: .6; }
+.js-steps b { color: var(--green); }
+.js-turn { margin: 18px 0 0; font-size: 18px; line-height: 1.6; color: var(--night); }
+.js-turn b { color: var(--green); }
+.jo { margin: 34px 0 8px; }
+.jo-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 14px; }
+.jo-grid > div { padding: 20px 22px; border-radius: 20px; background: #FFFDF8; border: 1px solid rgba(20,53,47,.09); border-left: 3px solid #E8A577; }
+.jo-grid h3 { margin: 0 0 6px; font: 700 17px/1.3 var(--head); color: var(--green); }
+.jo-grid p { margin: 0; color: var(--soft); font-size: 15.5px; line-height: 1.6; }
+.jbig { margin: 34px 0; padding: 30px 32px; border-radius: 26px; color: var(--cream); background: radial-gradient(70% 80% at 90% 0%, rgba(232,165,119,.25), rgba(232,165,119,0) 60%), linear-gradient(160deg, #1D4C43, #12302A); }
+.jbig p { margin: 0; font-family: var(--serif, Georgia, serif); font-size: clamp(21px, 2.6vw, 27px); line-height: 1.4; color: var(--cream); }
+.jk { margin-top: 8px; } .jk p { font-size: 17px; line-height: 1.6; }
+@media (max-width: 700px) { .jo-grid { grid-template-columns: 1fr; } .jbig { padding: 24px 22px; } }
 .jby { display: flex; gap: 16px; align-items: flex-start; margin: 26px 0 8px; padding: 20px 22px; border-radius: 20px; background: #F1EADC; }
 .jby-m { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: var(--cream); font: 700 15px/1 var(--head); letter-spacing: .02em; }
 .jby b { display: block; font: 700 16px/1.3 var(--head); color: var(--green); margin-bottom: 4px; }
 .jby p { margin: 0; color: var(--soft); font-size: 15px; line-height: 1.6; }
-@media (max-width: 700px) { .jw-grid { grid-template-columns: 1fr; } }
 .jv .sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
 .jv { position: relative; margin: 30px 0 12px; padding: 22px 24px 20px; border-radius: 28px; overflow: hidden; color: var(--cream);
   background: radial-gradient(70% 60% at 85% 0%, rgba(232,165,119,.22), rgba(232,165,119,0) 60%), radial-gradient(80% 70% at 0% 100%, rgba(77,150,128,.35), rgba(77,150,128,0) 60%), linear-gradient(160deg, #1D4C43, #12302A);
