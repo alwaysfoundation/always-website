@@ -1814,6 +1814,12 @@ body.on-hello .hp, body.menu-open .hp { display: none; }
 
 .chai-fig img { border-radius: 26px; }
 .ft-card .chai-logo { display: block; width: 140px; height: auto; margin: -6px 0 12px -10px; mix-blend-mode: multiply; }
+.cs-img.ptr-tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 28px; background: linear-gradient(150deg, #E7F0EA, #CFE2D6); color: var(--green); }
+.cs-img.ptr-tile-night { background: linear-gradient(150deg, #22302B, #34463F); color: #F8F3EA; }
+.ptr-tile-mono { display: grid; place-items: center; width: 72px; height: 72px; margin-bottom: auto; border-radius: 22px; background: var(--green); color: var(--cream); font: 800 24px/1 var(--head); }
+.ptr-tile-night .ptr-tile-mono { background: #F8D486; color: #1E2A26; }
+.ptr-tile-k { font: 600 14px/1 var(--head); color: var(--clay, #B55A2E); } .ptr-tile-night .ptr-tile-k { color: #F2B98E; }
+.ptr-tile-n { font: 800 clamp(26px, 2.6vw, 34px)/1.05 var(--head); letter-spacing: -.02em; }
 .cs-img.chai-tile { background: #fff; display: grid; place-items: center; }
 .cs-img.chai-tile img { width: 70%; height: auto; object-fit: contain; }
 .cs-tile:hover .cs-img.chai-tile img { transform: scale(1.03); }
@@ -1869,6 +1875,27 @@ i.ig-building, .ig-st.ig-building::before { background: #8FB5D9; } i.ig-planned,
 @media (max-width: 640px) { .ig-grid, .pg-green .sl-row h3 { color: var(--cream); } .pg-green .sl-row p { color: var(--on-green); } .pg-green .sl-row { border-top-color: rgba(248,243,234,.18); }
 .ig-rules .sl-rows-4 { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .ig-card { transition: none; } .ig-card:hover { transform: none; } }
+
+/* ---- Home hero ---- */
+.hx { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 64px; align-items: center; }
+.hx-copy .lede { max-width: 34ch; margin-top: 26px; font-size: clamp(19px, 1.6vw, 23px); line-height: 1.5; }
+.hx-art { position: relative; margin: 0; display: grid; gap: 18px; padding-left: 8px; }
+.hx-line { position: absolute; left: 8px; top: 30px; bottom: 60px; width: 40px; height: calc(100% - 90px); overflow: visible; }
+.hx-line path { fill: none; stroke: rgba(232,165,122,.55); stroke-width: 2; stroke-dasharray: 4 6; }
+.hx-card { position: relative; display: flex; align-items: center; gap: 16px; padding: 18px 22px 18px 18px; border-radius: 20px; background: rgba(248,243,234,.07); box-shadow: inset 0 0 0 1px rgba(248,243,234,.1); backdrop-filter: blur(6px); color: var(--cream); }
+.hx-c2 { margin-left: 28px; } .hx-c3 { margin-left: 56px; background: #FFFDF8; color: var(--green); box-shadow: 0 30px 60px -30px rgba(0,0,0,.55); }
+.hx-card b { display: block; font: 700 17px/1.3 var(--head); } .hx-card span:not(.hx-dot) { display: block; margin-top: 3px; font-size: 14px; opacity: .75; }
+.hx-dot { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--green); box-shadow: inset 0 0 0 6px rgba(232,165,122,.9); }
+.hx-c3 .hx-dot { background: var(--peach); box-shadow: 0 0 0 6px rgba(232,165,122,.22); }
+.hx-art figcaption { margin: 10px 0 0 56px; font: 700 15px/1.4 var(--head); color: var(--peach); }
+@media (prefers-reduced-motion: no-preference) {
+  .hx-card { animation: hxIn .7s cubic-bezier(.2,.8,.2,1) both; } .hx-c1 { animation-delay: .25s; } .hx-c2 { animation-delay: .75s; } .hx-c3 { animation-delay: 1.25s; }
+  .hx-art figcaption { animation: hxIn .7s ease 1.7s both; }
+  .hx-line path { stroke-dashoffset: 300; animation: hxDraw 1.6s ease .3s forwards; }
+}
+@keyframes hxIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes hxDraw { to { stroke-dashoffset: 0; } }
+@media (max-width: 900px) { .hx { grid-template-columns: 1fr; gap: 44px; } .hx-c2 { margin-left: 16px; } .hx-c3 { margin-left: 32px; } .hx-art figcaption { margin-left: 32px; } }
 
 /* ---- Home module showcase ---- */
 .ex { max-width: 760px; margin-top: 30px; padding: 26px 30px; border-radius: 24px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.06); }
@@ -2291,16 +2318,22 @@ header.scrolled .hd-progress { opacity: .9; }
 <main id="main">
 <div class="page" id="page-home"><section class="hero" id="top">
   <div class="wrap">
-    <div class="hero-copy hero-split">
-      <h1>Together for the Gospel.</h1>
-      <div class="hero-side">
-      <p class="lede">A ministry that serves ministries. As a Gospel technology foundation, we build shared tools that help churches and Christian ministries across Australia work together, so people who respond to Jesus aren&rsquo;t lost between an event and a local church, and every team has more time for the Gospel.</p>
-      <p class="hero-line">One faith. Many ministries. A shared mission.</p>
-      <div class="ctas">
-        <a class="btn btn-peach" href="#/join">Join Always</a>
-        <a class="btn btn-ghost" href="#/about">Our mission</a>
+    <div class="hero-copy hx">
+      <div class="hx-copy">
+        <h1>Together for the Gospel.</h1>
+        <p class="lede">Shared tools that help churches and ministries across Australia work as one body, so no one who says yes to Jesus walks alone.</p>
+        <div class="ctas">
+          <a class="btn btn-peach" href="#/join">Join Always</a>
+          <a class="btn btn-ghost" href="#/about">Our mission</a>
+        </div>
       </div>
-      </div>
+      <figure class="hx-art" aria-label="One person's journey: a yes at an event, an introduction to a church near home, and a welcome">
+        <svg class="hx-line" viewBox="0 0 40 300" preserveAspectRatio="none" aria-hidden="true"><path d="M20 10 V290"/></svg>
+        <div class="hx-card hx-c1"><span class="hx-dot"></span><div><b>Sam said yes to Jesus</b><span>Youth night, Parramatta</span></div></div>
+        <div class="hx-card hx-c2"><span class="hx-dot"></span><div><b>Introduced to a church near home</b><span>With Sam&rsquo;s okay, and a parent&rsquo;s</span></div></div>
+        <div class="hx-card hx-c3"><span class="hx-dot"></span><div><b>Welcomed on Sunday</b><span>A youth leader he&rsquo;d already met</span></div></div>
+        <figcaption>One faith. Many ministries. A shared mission.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -2330,6 +2363,24 @@ header.scrolled .hd-progress { opacity: .9; }
           <h3>Sydney Fire takes the Gospel to the streets.</h3>
           <p>Street evangelists using their own branded response app, live in a ministry setting.</p>
           <a class="cs-more" href="#/sydneyfire">Read the story</a>
+        </div>
+      </li>
+      <li class="cs-tile">
+        <div class="cs-img ptr-tile ptr-tile-sage" aria-hidden="true"><span class="ptr-tile-mono">GH</span><span class="ptr-tile-k">Training by</span><span class="ptr-tile-n">The Global Harvest</span></div>
+        <div class="cs-text">
+          <p class="cs-name">The Global Harvest</p>
+          <h3>From yes to baptism, together.</h3>
+          <p>Their disciple-making training now sits in the Always App, with a simple way to ask about baptism.</p>
+          <button type="button" class="cs-more" data-cs="tgh" aria-haspopup="dialog">Read the story</button>
+        </div>
+      </li>
+      <li class="cs-tile">
+        <div class="cs-img ptr-tile ptr-tile-night" aria-hidden="true"><span class="ptr-tile-mono">NG</span><span class="ptr-tile-k">Training by</span><span class="ptr-tile-n">NeedGod.net</span></div>
+        <div class="cs-text">
+          <p class="cs-name">NeedGod.net</p>
+          <h3>Gospel conversations that lead somewhere.</h3>
+          <p>Free training from the street and the live stream, one tap away, with a church near home for whoever says yes.</p>
+          <button type="button" class="cs-more" data-cs="needgod" aria-haspopup="dialog">Read the story</button>
         </div>
       </li>
       <li class="cs-tile">
@@ -2387,6 +2438,27 @@ header.scrolled .hd-progress { opacity: .9; }
         </div>
       </li>
   </ul>
+  <dialog class="cs-dialog" id="cs-tgh" aria-labelledby="cs-tgh-h">
+    <div class="cs-dlg-in">
+      <button type="button" class="cs-close" aria-label="Close">×</button>
+      <p class="cs-name">The Global Harvest</p>
+      <h3 id="cs-tgh-h">From yes to baptism, together.</h3>
+<h4>Who they are</h4><p>The Global Harvest is an Australian network helping everyday believers make disciples who make disciples, right where God has placed them. Each Good Friday, hundreds are baptised at their gatherings in several cities.</p>
+<h4>Training, one tap away</h4><p>The Always App now has a home for their tools, from the 4 Fields to the 3 Circles and the 15 Second Testimony. Each opens on their own site, credited to them, so the training stays theirs and Christians find it when they need it.</p>
+<h4>A shared way to ask about baptism</h4><p>Anyone can say they&rsquo;re ready to be baptised. They choose who helps: a local partner church, The Global Harvest, or both, each by its own tick. Young people go only to a safe local church with a parent&rsquo;s okay, and everyone&rsquo;s details stay in Australia.</p>
+<p>We&rsquo;re early in walking together, and grateful to be.</p>
+    </div>
+  </dialog>
+  <dialog class="cs-dialog" id="cs-needgod" aria-labelledby="cs-needgod-h">
+    <div class="cs-dlg-in">
+      <button type="button" class="cs-close" aria-label="Close">×</button>
+      <p class="cs-name">NeedGod.net</p>
+      <h3 id="cs-needgod-h">Gospel conversations that lead somewhere.</h3>
+<h4>Who they are</h4><p>Ryan and the NeedGod.net team share the Gospel every week in King George Square, Brisbane, and live online most days. Their library of more than 2,000 videos answers the questions people ask on the street.</p>
+<h4>Their training, in the Always App</h4><p>The Gospel script, the questions, the analogies and the live stream sit together under Learn from partners. Each link opens on NeedGod.net, and their free training is a tap away.</p>
+<h4>A church near home</h4><p>When someone says yes, the conversation shouldn&rsquo;t end on the street. With their consent, Always introduces them to a partner church near home in Australia, ready to welcome them and walk with them.</p>
+    </div>
+  </dialog>
   <dialog class="cs-dialog" id="cs-uen" aria-labelledby="cs-uen-h">
     <div class="cs-dlg-in">
       <button type="button" class="cs-close" aria-label="Close">×</button>

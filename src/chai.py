@@ -79,6 +79,12 @@ PAGE = '''
 CSS = '''
 .chai-fig img { border-radius: 26px; }
 .ft-card .chai-logo { display: block; width: 140px; height: auto; margin: -6px 0 12px -10px; mix-blend-mode: multiply; }
+.cs-img.ptr-tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 28px; background: linear-gradient(150deg, #E7F0EA, #CFE2D6); color: var(--green); }
+.cs-img.ptr-tile-night { background: linear-gradient(150deg, #22302B, #34463F); color: #F8F3EA; }
+.ptr-tile-mono { display: grid; place-items: center; width: 72px; height: 72px; margin-bottom: auto; border-radius: 22px; background: var(--green); color: var(--cream); font: 800 24px/1 var(--head); }
+.ptr-tile-night .ptr-tile-mono { background: #F8D486; color: #1E2A26; }
+.ptr-tile-k { font: 600 14px/1 var(--head); color: var(--clay, #B55A2E); } .ptr-tile-night .ptr-tile-k { color: #F2B98E; }
+.ptr-tile-n { font: 800 clamp(26px, 2.6vw, 34px)/1.05 var(--head); letter-spacing: -.02em; }
 .cs-img.chai-tile { background: #fff; display: grid; place-items: center; }
 .cs-img.chai-tile img { width: 70%; height: auto; object-fit: contain; }
 .cs-tile:hover .cs-img.chai-tile img { transform: scale(1.03); }
