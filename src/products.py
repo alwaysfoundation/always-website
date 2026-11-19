@@ -19,19 +19,21 @@ PILLARS = [
 
 # slug: (route, name, pillar, positioning, for)
 PRODUCTS = {
-    'app':        ('app',        'Always App',        'equip',   'Everything a Christian needs to share Jesus and walk with people.', 'Every Christian and evangelist'),
+    'app':        ('app',        'Always App',        'equip',   'A Bible, guides and training to share Jesus and walk with people.', 'Every Christian and evangelist'),
     'pages':      ('respond',    'Always Respond',    'equip',   'A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.', 'Churches, evangelists, events and ministries'),
     'compliance': ('compliance', 'Always Safety', 'support', 'Safe ministry, privacy and charity rules, made clear, with a quarterly check-up.', 'Every ministry'),
     'reports':    ('reports',    'Always Reports',    'support', 'A monthly report for your board and funders, written for you, with totals only.', 'Ministries with boards and funders'),
     'connect':    ('connect',    'Always Connect',    'connect', 'Find a local church, hand people on safely, and follow up together.', 'Churches, ministries and events'),
 }
+# Where each module stands today, shown wherever it is offered.
+STATUS = {'app': 'Available now', 'pages': 'In pilot', 'connect': 'In pilot', 'compliance': 'Available now', 'reports': 'In development'}
 DEVELOPERS = ('developers', 'Developers', 'The API, SDK, MCP connector, feeds and webhooks behind every Always module.')
 # Old routes: agents live inside Always Connect; the developer page moved.
 ALIASES = {'agents': 'connect', 'build': 'developers', 'pages': 'respond', 'claim': 'join/church', 'events': 'stories', 'research': 'stories', 'brand': 'docs/brand', 'directory': 'join/church', 'evangelists': 'ministries', 'platforms': 'networks'}
 
 # slug: (route, menu name, one line, products used, story)
 SOLUTIONS = {
-    'churches':   ('churches',   'Churches',   'Welcome people near you who have said yes to Jesus, and help them grow as disciples.', ['connect', 'pages', 'reports', 'compliance'], None),
+    'churches':   ('churches',   'Churches',   'Welcome people near you who have said yes to Jesus, with less admin for your volunteers.', ['connect', 'pages', 'reports', 'compliance'], None),
     'youth':      ('youth',      'Youth',      'Keep young people safe, stay compliant, and give every young person a safe next step.', ['compliance', 'pages', 'connect', 'reports'], ('UEN', 'A Christian gaming ministry that tried Always Platform at youth events.')),
     'ministries': ('ministries', 'Ministries', 'Events, tours, evangelists and street teams: a next step near home for everyone who responds, and the fruit to show for it.', ['pages', 'app', 'connect', 'reports'], ('Sydney Fire Evangelism', 'Street evangelists using their own branded response app.')),
     'networks':   ('networks',   'Networks',   'Denominations, networks and the tech platforms that serve them: every church ready to welcome, with totals only.', ['connect', 'reports', 'compliance'], ('Love is Our Weapon', 'Our first Always Safety user, ready to roll it out to youth ministries and churches.')),
@@ -83,7 +85,7 @@ def bento_tile(slug):
     route, name, pillar, line, _ = PRODUCTS[slug]
     return (f'<a class="bt bt-{slug} rv" href="#/{route}">{mock(slug)}'
             f'<div class="bt-body"><span class="bt-k btv-{slug}">{VERBS[slug]}</span>'
-            f'<h3>{name}</h3><p>{line}</p></div></a>')
+            f'<h3>{name}</h3><p>{line}</p><span class="st st-{STATUS[slug].split()[-1].lower()}">{STATUS[slug]}</span></div></a>')
 
 
 def product_bento():
@@ -212,6 +214,7 @@ def _works_with(slugs):
 def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Join Always', '#/join'), secondary=None, feats_title='What you get', statement=None, feats_html=None):
     import showcase as SC
     route, name, pillar, line, who = PRODUCTS[slug]
+    status = status or STATUS.get(slug)
     badge = f'<p class="pd-status">{status}</p>' if status else ''
     sec = f'<a class="btn btn-ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
     stmt = f'<section class="sec pd-statement"><div class="wrap"><p class="rv">{statement}</p></div></section>' if statement else ''
@@ -372,6 +375,9 @@ CSS = MOCK_CSS + '''
 /* ---- Product line ---- */
 .pd-line { font: 700 clamp(20px, 2.2vw, 26px)/1.35 var(--head); color: var(--peach); max-width: 34ch; margin-top: 14px; }
 .pd-hero p:not(.pd-line):not(.pl-kick):not(.pd-status) { max-width: 52ch; }
+.st { display: inline-block; align-self: start; width: max-content; margin-top: 12px; padding: 5px 11px; border-radius: 999px; font: 600 13px/1.2 var(--head); background: #E5F0EA; color: #1B4740; }
+.st-pilot { background: #FBE9DD; color: #7A3E1D; }
+.st-development { background: #ECEAE4; color: #4A4A44; }
 .pd-status { display: inline-block; margin-top: 16px; padding: 8px 14px; border-radius: 999px; background: rgba(248,243,234,.12); font: 600 14px/1 var(--head); color: var(--cream); }
 .pd-with { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
 .pd-link { display: grid; gap: 6px; padding: 22px; border-radius: 18px; background: #FFFDF8; color: inherit; text-decoration: none; transition: transform .15s ease; }

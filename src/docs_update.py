@@ -247,6 +247,7 @@ AGENTS = """
 <ul>
 <li>A person approves every action that affects someone who responded.</li>
 <li>It sees only what its task needs, and every action is logged.</li>
+<li>A person's details go to one church or ministry, only with their consent. Other ministries never see them.</li>
 <li>Young people's information is kept out of it entirely.</li>
 <li>No one's information is used to train AI.</li>
 </ul>

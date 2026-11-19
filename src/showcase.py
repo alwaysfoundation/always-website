@@ -24,7 +24,7 @@ def _panel(i, s):
     a, b = CHIPS[s]
     return (f'<div class="msx-panel msx-{TONE[s]}" role="tabpanel" id="msx-p-{s}" aria-labelledby="msx-t-{s}"{"" if i == 0 else " hidden"}>'
             f'<div class="msx-art"><span class="msx-chip msx-c1">{a}</span>{mock(s, "mk-lg")}<span class="msx-chip msx-c2">{b}</span></div>'
-            f'<div class="msx-cap"><p><b>{name}.</b> {line}</p><a href="#/{route}">Explore {name}</a></div></div>')
+            f'<div class="msx-cap"><p><b>{name}.</b> {line} <span class="st st-{PR.STATUS[s].split()[-1].lower()}">{PR.STATUS[s]}</span></p><a href="#/{route}">Explore {name}</a></div></div>')
 
 
 def home_showcase():
@@ -61,6 +61,13 @@ def closing(slug):
 
 CSS = r'''
 /* ---- Home module showcase ---- */
+.ex { max-width: 760px; margin-top: 30px; padding: 26px 30px; border-radius: 24px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.06); }
+.ex-k { font: 700 15px/1.2 var(--head); color: var(--peach-d, #B55A2E); margin-bottom: 10px; }
+.ex p { font-size: 17px; line-height: 1.6; }
+.ex .ex-f { margin-top: 14px; font-size: 15px; color: var(--muted); }
+.ex .ex-f a { color: var(--green); font-weight: 600; text-underline-offset: 3px; }
+.msx-cap .st { margin: 0 0 0 6px; vertical-align: 2px; }
+@media (max-width: 640px) { .ex { padding: 22px; } }
 .msx { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 28px; margin-top: 48px; align-items: stretch; }
 .msx-tabs { display: grid; gap: 6px; align-content: start; }
 .msx-tab { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; width: 100%; min-height: 76px; padding: 14px 16px; border: 0; border-radius: 20px; background: transparent; text-align: left; cursor: pointer; color: inherit; font: inherit; overflow: hidden; transition: background .3s ease; }

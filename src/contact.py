@@ -79,7 +79,7 @@ HELPER = f'''<div class="hp" id="hp">
     <ul class="hp-opts">{''.join(f'<li><a href="{h}">{t}</a></li>' for t, h in HELP_OPTIONS)}</ul>
     <p class="hp-foot">Or email <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a></p>
   </div>
-  <button type="button" class="hp-btn" aria-expanded="false" aria-controls="hp-panel"><span class="hp-dot" aria-hidden="true"></span>Need a hand?</button>
+  <button type="button" class="hp-btn" aria-expanded="false" aria-controls="hp-panel"><span class="hp-dot" aria-hidden="true"></span><svg class="hp-q" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 9.2a2.9 2.9 0 1 1 4.1 2.6c-.8.4-1.3 1-1.3 1.9v.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.3" fill="currentColor"/></svg><span class="hp-lbl">Need a hand?</span></button>
 </div>'''
 
 CSS = '''
@@ -149,7 +149,17 @@ CSS = '''
 .hp-opts a:hover, .hp-opts a:focus-visible { background: var(--green); color: var(--cream); border-color: var(--green); }
 .hp-foot { margin: 12px 2px 0; font-size: 13.5px; color: var(--muted); } .hp-foot a { color: var(--clay); }
 body.on-hello .hp, body.menu-open .hp { display: none; }
-@media (max-width: 640px) { .hp { right: 14px; bottom: 14px; } .hp-btn { min-height: 46px; padding: 0 16px 0 14px; } }
+.hp { transition: transform .3s ease, opacity .3s ease; }
+.hp-q { display: none; width: 22px; height: 22px; }
+.hp.tuck:not(:has([aria-expanded="true"])) { transform: translateY(calc(100% + 24px)); opacity: 0; pointer-events: none; }
+@media (max-width: 640px) {
+  .hp { right: 12px; bottom: 12px; }
+  .hp-btn { width: 48px; height: 48px; min-height: 48px; padding: 0; justify-content: center; }
+  .hp-btn .hp-dot { display: none; }
+  .hp-q { display: block; }
+  .hp-lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) { .hp { transition: none; } }
 @media (prefers-reduced-motion: reduce) { .hp-panel:not([hidden]) { animation: none; } }
 
 /* ---- Full-screen code ---- */
@@ -176,6 +186,13 @@ JS = r'''
   panel.querySelectorAll('.hp-opts a').forEach((a) => a.addEventListener('click', () => set(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) set(false, true); });
   document.addEventListener('click', (e) => { if (!panel.hidden && !e.target.closest('.hp')) set(false); });
+  // Tuck away while someone scrolls down through the page, so it never sits over what they're reading.
+  const box = btn.closest('.hp'); let last = scrollY, idle;
+  addEventListener('scroll', () => {
+    const y = scrollY; if (Math.abs(y - last) < 6) return;
+    box.classList.toggle('tuck', y > last && y > 200); last = y;
+    clearTimeout(idle); idle = setTimeout(() => box.classList.remove('tuck'), 1200);
+  }, { passive: true });
 })();
 
 // Join form: one box for email or mobile, chips for who they are, the note optional
