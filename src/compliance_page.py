@@ -88,13 +88,13 @@ PAGE = f'''<section class="page-hero cm-hero"><div class="wrap pg-split">
     <div class="sl-row rv"><h3>A record your board approves</h3><p>A quarterly check-up approved by a person, ready to share with funders, a denomination or an insurer.</p></div>
     <div class="sl-row rv"><h3>Free for churches</h3><p>Platforms and larger ministries contribute according to their size.</p></div>
   </div>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/compliance-platforms">Read the guide</a><a class="btn btn-ghost-dark" href="#/join" data-join-interest="Always Compliance">Talk to us</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/compliance-platforms">Read the guide</a><a class="btn btn-ghost-dark" href="#/contact/compliance">Talk to us</a></div>
 </div></section>
 
 <section class="sec pg-sec"><div class="wrap cm-end">
   <h2 class="pg-h rv">Get your check-up every quarter</h2>
   <p class="pg-lead rv">Free for churches. Larger ministries contribute according to their size. One sign-in with every Always product.</p>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join" data-join-interest="Always Compliance">Join Always</a><a class="btn btn-ghost-dark" href="#/compliance/check">Try the check-up first</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/contact/compliance">Join Always</a><a class="btn btn-ghost-dark" href="#/compliance/check">Try the check-up first</a></div>
 </div></section>
 '''
 
@@ -297,7 +297,7 @@ JS = '''
       <div class="cw-items">${items.map(card).join('')}</div>
       ${watching.length ? `<div class="cw-watch"><b>On the horizon.</b> ${watching.map((w) => esc(w.summary)).join(' ')}</div>` : ''}
       <p class="cw-notice">Register ${esc(R.version)} (${esc(R.status)}). ${esc(R.notice)} Nothing you entered has been sent or saved.</p>
-      <div class="cw-nav"><button class="btn btn-ghost-dark" type="button" data-edit>Change my answers</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost-dark" type="button" data-print>Print or save as PDF</button><a class="btn btn-peach" href="#/join" data-join-interest="Always Compliance">Get this every quarter</a></span></div>`;
+      <div class="cw-nav"><button class="btn btn-ghost-dark" type="button" data-edit>Change my answers</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost-dark" type="button" data-print>Print or save as PDF</button><a class="btn btn-peach" href="#/contact/compliance">Get this every quarter</a></span></div>`;
   }
   rep.addEventListener('click', (e) => { if (e.target.closest('[data-edit]')) step(2); if (e.target.closest('[data-print]')) window.print(); });
 
@@ -307,7 +307,7 @@ JS = '''
 // Join links that set the interest
 document.addEventListener('click', (e) => {
   const a = e.target.closest('[data-join-interest]'); if (!a) return;
-  setTimeout(() => { const s = document.querySelector('#contact-form select[name="interest"]'); if (s) s.value = a.dataset.joinInterest; }, 50);
+  setTimeout(() => window.alwaysSetInterest?.(a.dataset.joinInterest), 50);
 });
 '''.replace('__COMPLIANCE__', json.dumps(_slim, ensure_ascii=False))
 

@@ -10,6 +10,7 @@ import compliance_page as CP
 import products as PR
 import polish as PO
 import developers as DV
+import contact as CF
 def _swap(h, marker, new):
     i = h.find(marker); a = h.rfind('<section', 0, i); b = h.find('</section>', i) + 10
     return h[:a] + new + h[b:]
@@ -1008,8 +1009,8 @@ header = """
     </a>
     <nav aria-label="Main" id="main-nav"><ul>
       """ + PR.menu_html() + """
-    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/claim">Claim your church</a><a href="#/feedback">Ideas and problems</a></div><a class="btn btn-peach nav-cta" href="#/join">Join Always</a></div></nav>
-    <a class="btn btn-peach" href="#/join">Join Always</a>
+    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/claim">Claim your church</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/contact">Join Always</a></div></nav>
+    <a class="btn btn-peach" href="#/contact">Join Always</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" onclick="toggleMenu()"><span>Menu</span><i aria-hidden="true"></i></button>
   </div>
 </header>
@@ -1032,8 +1033,8 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => e
 function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io ? io.observe(el) : el.classList.add('in'); }); }
 
 // Router
-const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers'""" + ''.join(f", {k}: 'page-{k}'" for k in PR.NEW_PAGES) + """ };
-const anchors = { join: 'join', how: 'heart', stories: 'stories' };
+const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact'""" + ''.join(f", {k}: 'page-{k}'" for k in PR.NEW_PAGES) + """ };
+const anchors = { how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
   const [first, second] = h.split('/');
@@ -1050,7 +1051,8 @@ function route() {
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
   const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
-  if (page !== 'docs') document.title = titles[page];
+  document.body.classList.toggle('on-hello', page === 'hello');
+  if (page !== 'docs') document.title = titles[page] || 'Always Foundation';
   watch(document.getElementById(pages[page]));
 }
 window.addEventListener('hashchange', route);
@@ -1083,20 +1085,7 @@ document.getElementById('dpick').addEventListener('change', (e) => { location.ha
 
 const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-// Contact form
 const LIVE = /(^|\\.)alwaysfoundation\\.org$/.test(location.hostname);
-const FORM_ENDPOINT = LIVE ? '/api/forms/join' : ''; // On the live site, messages go to the foundation inbox.
-const form = document.getElementById('contact-form');
-const status = document.getElementById('form-status');
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  if (!form.checkValidity()) { status.textContent = 'Please add your name, a valid email address and a message.'; return; }
-  if (!FORM_ENDPOINT) { status.textContent = 'The form is not connected yet. Please email hello@alwaysfoundation.org for now.'; return; }
-  const b = form.querySelector('button'); b.disabled = true; b.textContent = 'Sending…';
-  try { const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) }); if (!r.ok) throw 0; form.reset(); status.textContent = 'Message sent. We will be in touch soon.'; }
-  catch { status.textContent = 'Your message could not be sent. Please email hello@alwaysfoundation.org.'; }
-  finally { b.disabled = false; b.textContent = 'Send message'; }
-});
 function evf(){const s=document.getElementById('ev-s').value,k=document.getElementById('ev-k').value;let n=0;document.querySelectorAll('#ev-list .ev').forEach((e)=>{const on=(!s||e.dataset.s===s)&&(!k||e.dataset.k===k);e.hidden=!on;if(on)n++;});document.getElementById('ev-empty').hidden=n>0;}
 ['ev-s','ev-k'].forEach((id)=>document.getElementById(id).addEventListener('change',evf));
 
@@ -1165,11 +1154,11 @@ route();
 
 document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('click', () => {
   const f = document.getElementById('contact-form'); if (!f) return;
-  const s = f.querySelector('select[name="interest"]'); if (s) s.value = b.dataset.interest;
+  window.alwaysSetInterest?.(b.dataset.interest);
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + CP.JS + extras.JS + PR.MENU_JS
+""" + CP.JS + extras.JS + PR.MENU_JS + CF.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """
@@ -1199,7 +1188,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{PO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{PO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
@@ -1219,10 +1208,13 @@ doc = f"""<!DOCTYPE html>
 <div class="page" id="page-brand" hidden>{P.BRAND}</div>
 <div class="page" id="page-platform" hidden>{PR.PLATFORM_OVERVIEW}</div>
 <div class="page" id="page-developers" hidden>{DV.PAGE}</div>
+<div class="page" id="page-hello" hidden>{CF.HELLO}</div>
+<div class="page" id="page-contact" hidden>{CF.CONTACT}</div>
 {''.join(f'<div class="page" id="page-{k}" hidden>{v}</div>' for k, v in PR.NEW_PAGES.items())}
 <div class="page" id="page-compliance" hidden>{CP.PAGE}</div>
 </main>
 {footer}
+{CF.HELPER}
 <script>{script}</script>
 </body>
 </html>
