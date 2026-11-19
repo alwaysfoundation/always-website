@@ -49,16 +49,28 @@ ICONS = {
     'platforms': '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/>',
 }
 
-def _card(name, line, status, group='chms'):
-    cls = {LIVE: 'ig-live', SOON: 'ig-soon', BUILDING: 'ig-building', PLANNED: 'ig-planned'}[status]
+LOGOS = {
+    'Planning Center': ['planningcenter.svg'], 'WhatsApp': ['whatsapp.svg'], 'Eventbrite': ['eventbrite.svg'],
+    'Apple and Google Wallet': ['apple.svg', 'googlewallet.svg'], 'Alpha': ['../alpha-logo.png'], 'Zapier': ['zapier.svg'],
+    'Make': ['make.svg'], 'n8n': ['n8n.svg'], 'AI assistants (MCP)': ['mcp.svg'], 'Email': ['aws.svg'],
+}
+INITIALS = {'Elvanto': 'E', 'Fluro': 'F', 'ChurchSuite': 'CS', 'Breeze': 'B', 'Humanitix': 'H', 'YouVersion': 'YV', 'Sign in with YouVersion': 'YV'}
+
+def _mark(name, group):
+    if name in LOGOS:
+        return '<span class="ig-mark ig-logo" aria-hidden="true">' + ''.join(f'<img src="img/logos/{f}" alt="" loading="lazy">' for f in LOGOS[name]) + '</span>'
+    if name in INITIALS:
+        return f'<span class="ig-mark ig-ini" aria-hidden="true">{INITIALS[name]}</span>'
     icon = f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{ICONS[group]}</svg>'
-    return f'<li class="ig-card rv"><span class="ig-mark" aria-hidden="true">{icon}</span><span class="ig-tx"><b>{name}</b><span>{line}</span></span><span class="ig-st {cls}">{status}</span></li>'
+    return f'<span class="ig-mark" aria-hidden="true">{icon}</span>'
+
+def _card(name, line, status, group='chms'):
+    return f'<li class="ig-card rv">{_mark(name, group)}<span class="ig-tx"><b>{name}</b><span>{line}</span></span></li>'
 
 PAGE = '''<section class="page-hero ig-hero"><div class="wrap">
   <p class="pl-kick">Integrations</p>
   <h1>Works with the tools you already use.</h1>
   <p>Always hands people on to your church management system, your messages and your events, with consent travelling the whole way. Your data stays yours, and personal data stays in Australia.</p>
-  <ul class="ig-legend"><li><i class="ig-live"></i>Live</li><li><i class="ig-soon"></i>Switching on</li><li><i class="ig-building"></i>Building</li><li><i class="ig-planned"></i>Planned</li></ul>
 </div></section>
 <section class="sec pg-sec ig-sec"><div class="wrap">
 ''' + ''.join(f'''  <div class="ig-group" id="ig-{k}">
@@ -93,6 +105,9 @@ i.ig-building, .ig-st.ig-building::before { background: #8FB5D9; } i.ig-planned,
 .ig-card { display: grid; grid-template-columns: 44px minmax(0, 1fr); grid-template-rows: auto auto; gap: 4px 14px; padding: 18px; border-radius: 20px; background: #FFFDF8; border: 1px solid var(--line); transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease, border-color .25s ease; }
 .ig-card:hover { transform: translateY(-2px); border-color: rgba(27,71,64,.2); box-shadow: 0 18px 36px -26px rgba(10,30,26,.4); }
 .ig-mark svg { width: 22px; height: 22px; }
+.ig-mark.ig-logo { background: #fff; box-shadow: inset 0 0 0 1px rgba(27,71,64,.1); gap: 3px; grid-auto-flow: column; padding: 0 9px; width: auto; min-width: 44px; justify-self: start; }
+.ig-mark.ig-logo img { width: 24px; height: 24px; object-fit: contain; display: block; }
+.ig-mark.ig-ini { background: linear-gradient(155deg, #E6F0E9, #D3E4D9); box-shadow: inset 0 0 0 1px rgba(27,71,64,.07); }
 .ig-mark { grid-row: 1 / 3; width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; background: var(--sage); color: var(--green); font: 800 15px/1 var(--head); letter-spacing: -0.02em; }
 .ig-tx b { display: block; font: 800 17px/1.25 var(--head); color: var(--green); }
 .ig-tx span { display: block; margin-top: 3px; font-size: 14.5px; line-height: 1.45; color: var(--soft); }
