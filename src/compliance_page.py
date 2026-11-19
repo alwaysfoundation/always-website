@@ -113,7 +113,7 @@ PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
 
 <section class="sec pg-sec" id="check" aria-labelledby="check-h"><div class="wrap">
   <h2 class="pg-h rv" id="check-h">Try the free check-up</h2>
-  <p class="pg-lead rv">About ten minutes. You don't need an account, and nothing you enter is sent or saved.</p>
+  <p class="pg-lead rv">About ten minutes. You don't need an account, and nothing you enter is sent or saved unless you choose to save it.</p>
   <div class="cw" id="cw">
     <ol class="cw-progress" aria-label="Check-up steps"><li data-step="1" class="on">Your ministry</li><li data-step="2">What you do</li><li data-step="3">Your results</li></ol>
     <form id="cw-profile" class="cw-step" data-step="1" novalidate></form>
@@ -291,12 +291,6 @@ CSS = '''
 .cw-watch { margin-top: 24px; padding: 18px 20px; border-radius: 18px; background: var(--paper, #F6F1E8); font-size: 15px; }
 .cw-notice { margin-top: 24px; font-size: 14px; color: var(--muted); }
 @media (max-width: 720px) { .cw fieldset { grid-template-columns: 1fr; } .cw .cw-opts { grid-column: 1; grid-row: auto; justify-content: flex-start; } .cw-sum { grid-template-columns: 1fr 1fr; } }
-@media print {
-  body * { visibility: hidden !important; }
-  #cw-report, #cw-report * { visibility: visible !important; }
-  #cw-report { position: absolute; inset: 0 auto auto 0; width: 100%; }
-  #cw-report .cw-nav { display: none !important; }
-}
 '''
 
 _slim = {
@@ -400,25 +394,25 @@ JS = '''
     renderReport(); step(3);
   });
 
+  const flat = (it) => ({ title: it.o.title, summary: it.o.summary, guidance: it.o.guidance, area: it.o.area, status: it.status, strength: it.strength, missing: it.missing, unanswered: it.unanswered, law: it.law, commences: it.o.commences });
+  let last = null;
+
   function renderReport() {
     const { items, watching } = assess(profile, answers, new Date());
-    const n = (s) => items.filter((i) => i.status === s).length;
-    const card = (it) => `<article class="cw-item"><div class="cw-head"><h4>${esc(it.o.title)}</h4><span class="cw-tag ${it.status}">${LABEL[it.status]}${it.status === 'upcoming' && it.o.commences ? ' ' + new Date(it.o.commences).toLocaleDateString('en-AU', { month: 'long', year: 'numeric' }) : ''}</span></div>
-      <p class="cw-str">${it.strength === 'required' ? 'Required for your ministry' : 'Good practice for your ministry'}</p>
-      <p>${esc(it.o.summary)}</p>
-      ${it.missing.length ? `<ul>${it.missing.map((m) => `<li>Not yet: ${esc(m)}</li>`).join('')}</ul>` : ''}
-      ${it.unanswered.length && it.status !== 'upcoming' ? `<ul>${it.unanswered.map((m) => `<li>To check: ${esc(m)}</li>`).join('')}</ul>` : ''}
-      ${it.status !== 'met' ? `<p><b>What to do:</b> ${esc(it.o.guidance)}</p>` : ''}
-      <p class="cw-law">Source: ${it.law.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a>`).join(', ')}</p></article>`;
-    rep.innerHTML = `<h3 class="pg-h" style="font-size:28px;margin:0 0 8px">Your check-up</h3>
-      <p class="pg-lead" style="margin:0 0 20px">${items.length} obligations apply to your ministry. Here is where you stand today.</p>
-      <div class="cw-sum"><div class="att"><b>${n('attention')}</b><span>Need attention</span></div><div><b>${n('check')}</b><span>To check</span></div><div class="up"><b>${n('upcoming')}</b><span>Coming</span></div><div><b>${n('met')}</b><span>Done</span></div></div>
-      <div class="cw-items">${items.map(card).join('')}</div>
-      ${watching.length ? `<div class="cw-watch"><b>On the horizon.</b> ${watching.map((w) => esc(w.summary)).join(' ')}</div>` : ''}
-      <p class="cw-notice">Register ${esc(R.version)} (${esc(R.status)}). ${esc(R.notice)} Nothing you entered has been sent or saved.</p>
-      <div class="cw-nav"><button class="btn btn-ghost-dark" type="button" data-edit>Change my answers</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost-dark" type="button" data-print>Print or save as PDF</button><a class="btn btn-peach" href="#/contact/compliance">Get this every quarter</a></span></div>`;
+    last = { items: items.map(flat), watching: watching.map((w) => ({ title: w.title, summary: w.summary })), version: R.version, status: R.status, notice: R.notice };
+    rep.innerHTML = window.AlwaysCompliance.report(last, { local: true });
   }
-  rep.addEventListener('click', (e) => { if (e.target.closest('[data-edit]')) step(2); if (e.target.closest('[data-print]')) window.print(); });
+  rep.addEventListener('click', (e) => {
+    if (e.target.closest('[data-edit]')) step(2);
+    if (e.target.closest('[data-print]')) window.AlwaysCompliance.printBoard(last, rep.querySelector('#cw-name')?.value || '');
+    if (e.target.closest('[data-save]')) window.AlwaysCompliance.startSave({ profile, answers, name: rep.querySelector('#cw-name')?.value || '' });
+  });
+
+  // Coming back from the signed-in area to update answers.
+  try {
+    const pre = JSON.parse(sessionStorage.getItem('always.cw.prefill') || 'null');
+    if (pre) { sessionStorage.removeItem('always.cw.prefill'); profile = pre.profile || {}; answers = pre.answers || {}; }
+  } catch {}
 
   renderProfile();
 })();

@@ -7,6 +7,7 @@ css = open(os.path.join(ROOT,'base.css')).read()
 home = open(os.path.join(ROOT,'main.html')).read()
 import extras, pages as P, re as _re
 import compliance_page as CP
+import compliance_account as CA
 import products as PR
 import polish as PO
 import developers as DV
@@ -528,6 +529,8 @@ import chai as CH
 import stories as ST
 import integrations as IG
 PR.NEW_PAGES['integrations'] = IG.PAGE
+PR.NEW_PAGES['mycompliance'] = CA.PAGE
+PR.TITLES['mycompliance'] = 'Your compliance · Always Foundation'
 PR.TITLES['integrations'] = 'Integrations · Always Foundation'
 PR.NEW_PAGES['sydneyfire'] = ST.SYDNEYFIRE
 PR.NEW_PAGES['alpha'] = ST.ALPHA
@@ -1072,6 +1075,7 @@ function route() {
   const aliases = """ + json.dumps(PR.ALIASES) + """;
   if (aliases[first]) { location.replace('#/' + aliases[first]); return; }
   if (location.hash === '#/docs/claim') { location.replace('#/docs/joining'); return; }
+  if (location.hash.startsWith('#/compliance/my')) { location.replace('#/mycompliance'); return; }
   let page = 'home';
   if (pages[first] && first !== 'home') page = first;
   for (const [k, id] of Object.entries(pages)) document.getElementById(id).hidden = k !== page;
@@ -1190,7 +1194,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + CP.JS + extras.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS + HM.JS + SC.JS
+""" + CA.JS + CP.JS + extras.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS + HM.JS + SC.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """
@@ -1220,7 +1224,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{ST.CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{ST.CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>

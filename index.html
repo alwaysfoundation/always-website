@@ -752,11 +752,90 @@ em.new { background: #FDF0D9; color: #7A4B07; } em.ok { background: var(--sage);
 .cw-watch { margin-top: 24px; padding: 18px 20px; border-radius: 18px; background: var(--paper, #F6F1E8); font-size: 15px; }
 .cw-notice { margin-top: 24px; font-size: 14px; color: var(--muted); }
 @media (max-width: 720px) { .cw fieldset { grid-template-columns: 1fr; } .cw .cw-opts { grid-column: 1; grid-row: auto; justify-content: flex-start; } .cw-sum { grid-template-columns: 1fr 1fr; } }
+
+.cw-next { margin: 28px 0 8px; }
+.cw-next h4, .cw-more-h { font: 800 20px/1.2 var(--head); color: var(--ink, #1E2B27); margin: 0 0 6px; letter-spacing: -.01em; }
+.cw-next > p { margin: 0 0 16px; color: #4B5B55; }
+.cw-steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 12px; }
+.cw-steps > li { counter-increment: s; position: relative; padding: 18px 20px 18px 64px; background: #fff; border: 1px solid #E6E1D6; border-radius: 18px; }
+.cw-steps > li::before { content: counter(s); position: absolute; left: 18px; top: 18px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: 800 15px/1 var(--head); background: #E9F0EC; color: #1D4A42; }
+.cw-steps > li.att::before { background: #FBE6D8; color: #A14E22; }
+.cw-steps h5 { font: 700 16px/1.35 var(--head); margin: 2px 0 6px; color: #1E2B27; }
+.cw-steps p { margin: 0 0 8px; color: #3E4C47; font-size: 15px; line-height: 1.55; }
+.cw-steps ul { margin: 0 0 8px; padding-left: 18px; color: #3E4C47; font-size: 14.5px; }
+.cw-steps .cw-law { font-size: 13.5px; margin: 0; }
+.cw-steps .cw-law a { min-height: 44px; display: inline-flex; align-items: center; }
+.cw-clear { padding: 18px 20px; border-radius: 18px; background: #E9F0EC; color: #1D4A42; font-weight: 600; }
+.cw-more { margin: 22px 0 0; border-top: 1px solid #E6E1D6; padding-top: 6px; }
+.cw-more summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font: 700 16px/1.3 var(--head); color: #1D4A42; }
+.cw-more[open] summary { margin-bottom: 12px; }
+.cw-then { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 30px 0 8px; }
+.cw-then > div { background: #fff; border: 1px solid #E6E1D6; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.cw-then h5 { font: 800 17px/1.25 var(--head); margin: 0; color: #1E2B27; }
+.cw-then p { margin: 0; color: #4B5B55; font-size: 14.5px; line-height: 1.55; flex: 1; }
+.cw-then .btn { align-self: flex-start; }
+.cw-then .cw-save { background: #1D4A42; border-color: #1D4A42; }
+.cw-then .cw-save h5, .cw-then .cw-save p { color: #F4EFE6; }
+.cw-name { display: grid; gap: 6px; margin: 0 0 6px; }
+.cw-name label { font: 600 14px/1.3 var(--head); color: #1E2B27; }
+.cw-name input, .cmy input[type=email], .cmy input[type=text], .cmy select { font: 500 16px/1.3 inherit; padding: 12px 14px; min-height: 48px; border: 1.5px solid #D5CFC2; border-radius: 12px; background: #fff; color: #1E2B27; width: 100%; max-width: 420px; box-sizing: border-box; }
+.cw-name input:focus, .cmy input:focus, .cmy select:focus { outline: 3px solid #E8A477; outline-offset: 1px; border-color: #1D4A42; }
+@media (max-width: 860px) { .cw-then { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .cw-steps > li { padding: 16px 16px 16px 56px; } .cw-steps > li::before { left: 14px; top: 16px; } }
+
+/* Signed-in area */
+.cmy-hero { padding-bottom: 36px; }
+.cmy-kick { font: 700 15px/1.2 var(--head); color: #E8A477; margin: 0 0 10px; }
+.cmy-h { font: 800 clamp(36px, 6vw, 60px)/1.02 var(--head); letter-spacing: -.03em; margin: 0 0 14px; color: #F4EFE6; }
+.cmy-lead { font-size: 18px; line-height: 1.55; color: #CFE0D7; max-width: 620px; margin: 0; }
+.cmy { max-width: 760px; }
+.cmy-card { background: #fff; border: 1px solid #E6E1D6; border-radius: 24px; padding: 28px; display: grid; gap: 14px; }
+.cmy-card h2 { font: 800 24px/1.2 var(--head); margin: 0; color: #1E2B27; letter-spacing: -.01em; }
+.cmy-card p { margin: 0; color: #4B5B55; line-height: 1.6; }
+.cmy-card form { display: grid; gap: 14px; background: transparent; border-radius: 0; padding: 0; color: inherit; }
+.cmy-card .btn-ghost-dark { color: #1D4A42; }
+.cmy .cmy-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.cmy .cw-opt { position: relative; }
+.cmy .cw-opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.cmy .cw-opt span { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid rgba(27,71,64,.25); font: 600 15px/1 var(--head); color: var(--green); background: #fff; }
+.cmy .cw-opt input:checked + span { background: var(--green); border-color: var(--green); color: var(--cream); }
+.cmy .cw-opt input:focus-visible + span { outline: 3px solid var(--peach); outline-offset: 2px; }
+.cmy-field { display: grid; gap: 6px; }
+.cmy-field label, .cmy-field legend { font: 600 14px/1.3 var(--head); color: #1E2B27; }
+.cmy-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.cmy-code { letter-spacing: .3em; font-variant-numeric: tabular-nums; max-width: 220px !important; }
+.cmy-err { color: #A14E22; font-weight: 600; min-height: 1.2em; margin: 0; }
+.cmy-note { font-size: 14px; color: #6B7A74 !important; }
+.cmy-steps { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.cmy-steps li { padding: 6px 12px; border-radius: 99px; background: #EFEBE3; font: 600 13px/1.3 var(--head); color: #6B7A74; }
+.cmy-steps li.on { background: #1D4A42; color: #F4EFE6; }
+.cmy-steps li.done { background: #E9F0EC; color: #1D4A42; }
+.cmy-q { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; padding: 16px 0; border-top: 1px solid #EFEBE3; }
+.cmy-q b { font: 700 16px/1.3 var(--head); color: #1E2B27; }
+.cmy-q span { color: #6B7A74; font-size: 14px; }
+.cmy-badge { font: 700 12.5px/1 var(--head); padding: 7px 10px; border-radius: 99px; background: #FBE6D8; color: #A14E22; }
+.cmy-badge.ok { background: #E9F0EC; color: #1D4A42; }
+.cmy-gap { height: 16px; }
+
+/* Board summary: printed on its own */
+#cw-board { display: none; }
 @media print {
-  body * { visibility: hidden !important; }
-  #cw-report, #cw-report * { visibility: visible !important; }
-  #cw-report { position: absolute; inset: 0 auto auto 0; width: 100%; }
-  #cw-report .cw-nav { display: none !important; }
+  body.printing-board > *:not(#cw-board) { display: none !important; }
+  body.printing-board #cw-board, body.printing-board #cw-board * { visibility: visible !important; }
+  body.printing-board #cw-board { display: block !important; color: #000; font: 11pt/1.45 Georgia, serif; }
+  #cw-board h1 { font: 700 20pt/1.2 Georgia, serif; margin: 0 0 4pt; }
+  #cw-board .b-sub { margin: 0 0 14pt; color: #333; }
+  #cw-board .b-sum { display: flex; gap: 18pt; margin: 0 0 14pt; }
+  #cw-board .b-sum div { border: 1pt solid #999; padding: 6pt 10pt; }
+  #cw-board .b-sum b { font-size: 16pt; display: block; }
+  #cw-board table { width: 100%; border-collapse: collapse; margin: 0 0 14pt; }
+  #cw-board th, #cw-board td { text-align: left; border-bottom: .5pt solid #bbb; padding: 4pt 6pt 4pt 0; vertical-align: top; font-size: 10pt; }
+  #cw-board td:nth-child(3) { white-space: nowrap; }
+  #cw-board tr { break-inside: avoid; }
+  #cw-board .b-sign { break-inside: avoid; display: flex; gap: 24pt; margin: 22pt 0 12pt; }
+  #cw-board .b-sign div { flex: 1; border-top: 1pt solid #000; padding-top: 4pt; font-size: 9.5pt; }
+  #cw-board .b-note { font-size: 8.5pt; color: #444; }
+  @page { margin: 16mm; }
 }
 
 /* ---- Product screens ---- */
@@ -2943,7 +3022,13 @@ const ok = await verifyWebhook({
     <div class="sl-row rv"><h3>Young people first</h3><p>No one under 18 goes to a messaging or marketing tool, only to their youth partner.</p></div>
   </div>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/integrations">Read the integration docs</a><a class="btn btn-ghost" href="#/contact">Suggest an integration</a></div>
-</div></section></div><div class="page" id="page-sydneyfire" hidden>
+</div></section></div><div class="page" id="page-mycompliance" hidden><section class="page-hero cmy-hero"><div class="wrap">
+  <p class="cmy-kick">Always Compliance</p>
+  <h1 class="cmy-h" id="cmy-title">Your compliance</h1>
+  <p class="cmy-lead" id="cmy-lead">Save your check-up, approve it each quarter, and hear when a rule that applies to you changes.</p>
+</div></section>
+<section class="sec pg-sec cmy-sec"><div class="wrap"><div class="cmy" id="cmy" aria-live="polite"></div></div></section>
+</div><div class="page" id="page-sydneyfire" hidden>
 <article class="ft">
 <div class="ft-hero"><div class="wrap ft-hero-in">
   <p class="ft-kick"><a href="#/stories">Stories</a> <span aria-hidden="true">/</span> Sydney Fire Evangelism</p>
@@ -3312,7 +3397,7 @@ const ok = await verifyWebhook({
 
 <section class="sec pg-sec" id="check" aria-labelledby="check-h"><div class="wrap">
   <h2 class="pg-h rv" id="check-h">Try the free check-up</h2>
-  <p class="pg-lead rv">About ten minutes. You don't need an account, and nothing you enter is sent or saved.</p>
+  <p class="pg-lead rv">About ten minutes. You don't need an account, and nothing you enter is sent or saved unless you choose to save it.</p>
   <div class="cw" id="cw">
     <ol class="cw-progress" aria-label="Check-up steps"><li data-step="1" class="on">Your ministry</li><li data-step="2">What you do</li><li data-step="3">Your results</li></ol>
     <form id="cw-profile" class="cw-step" data-step="1" novalidate><input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"></form>
@@ -3383,7 +3468,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => e
 function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io ? io.observe(el) : el.classList.add('in'); }); }
 
 // Router
-const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', feedback: 'page-feedback', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact', join: 'page-join', respond: 'page-respond', reports: 'page-reports', connect: 'page-connect', youth: 'page-youth', networks: 'page-networks', integrations: 'page-integrations', sydneyfire: 'page-sydneyfire', alpha: 'page-alpha', youversion: 'page-youversion', chai: 'page-chai', faithtech: 'page-faithtech' };
+const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', feedback: 'page-feedback', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact', join: 'page-join', respond: 'page-respond', reports: 'page-reports', connect: 'page-connect', youth: 'page-youth', networks: 'page-networks', integrations: 'page-integrations', mycompliance: 'page-mycompliance', sydneyfire: 'page-sydneyfire', alpha: 'page-alpha', youversion: 'page-youversion', chai: 'page-chai', faithtech: 'page-faithtech' };
 const anchors = { how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\/?/, '');
@@ -3391,6 +3476,7 @@ function route() {
   const aliases = {"agents": "connect", "build": "developers", "pages": "respond", "claim": "join/church", "events": "stories", "research": "stories", "brand": "docs/brand", "directory": "join/church", "evangelists": "ministries", "platforms": "networks"};
   if (aliases[first]) { location.replace('#/' + aliases[first]); return; }
   if (location.hash === '#/docs/claim') { location.replace('#/docs/joining'); return; }
+  if (location.hash.startsWith('#/compliance/my')) { location.replace('#/mycompliance'); return; }
   let page = 'home';
   if (pages[first] && first !== 'home') page = first;
   for (const [k, id] of Object.entries(pages)) document.getElementById(id).hidden = k !== page;
@@ -3401,7 +3487,7 @@ function route() {
   if (page === 'compliance' && ['check', 'problem', 'infrastructure'].includes(second)) { requestAnimationFrame(() => document.getElementById(second).scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = second === 'check' ? 'Free compliance check-up · Always Foundation' : 'Always Compliance · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...{"app": "Always App · Always Foundation", "respond": "Always Respond · Always Foundation", "compliance": "Always Compliance · Always Foundation", "reports": "Always Reports · Always Foundation", "connect": "Always Connect · Always Foundation", "churches": "For churches · Always Foundation", "youth": "For youth · Always Foundation", "ministries": "For ministries · Always Foundation", "networks": "For networks · Always Foundation", "platform": "Always Platform · Always Foundation", "developers": "Developers · Always Foundation", "contact": "Contact · Always Foundation", "join": "Join Always · Always Foundation", "hello": "Let's stay in touch · Always Foundation", "integrations": "Integrations · Always Foundation", "youversion": "YouVersion integration · Always Foundation", "sydneyfire": "Sydney Fire Evangelism · Always Foundation", "alpha": "Alpha integration · Always Foundation", "chai": "Christians in AI: Branches · Always Foundation", "faithtech": "FaithTech Australia · Always Foundation"} };
+  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...{"app": "Always App · Always Foundation", "respond": "Always Respond · Always Foundation", "compliance": "Always Compliance · Always Foundation", "reports": "Always Reports · Always Foundation", "connect": "Always Connect · Always Foundation", "churches": "For churches · Always Foundation", "youth": "For youth · Always Foundation", "ministries": "For ministries · Always Foundation", "networks": "For networks · Always Foundation", "platform": "Always Platform · Always Foundation", "developers": "Developers · Always Foundation", "contact": "Contact · Always Foundation", "join": "Join Always · Always Foundation", "hello": "Let's stay in touch · Always Foundation", "mycompliance": "Your compliance · Always Foundation", "integrations": "Integrations · Always Foundation", "youversion": "YouVersion integration · Always Foundation", "sydneyfire": "Sydney Fire Evangelism · Always Foundation", "alpha": "Alpha integration · Always Foundation", "chai": "Christians in AI: Branches · Always Foundation", "faithtech": "FaithTech Australia · Always Foundation"} };
   document.body.classList.toggle('on-hello', page === 'hello');
   if (page !== 'docs') document.title = titles[page] || 'Always Foundation';
   watch(document.getElementById(pages[page]));
@@ -3510,6 +3596,251 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
 
+// ---------------------------------------------------------------- Always Compliance: results, board summary, account
+(() => {
+  const CFG = {"on": false, "url": "https://scoitzteqsvomsghtxfe.supabase.co", "key": "sb_publishable_Wcgql0VPiQ54KREb48X_Ew_dk1U5yy-"};
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const LABEL = { met: 'Done', attention: 'Needs attention', check: 'To check', upcoming: 'Coming' };
+  const AREA = { privacy: 'Privacy', child_safety: 'Child safety', charity: 'Charity', messages: 'Emails and texts' };
+  const quarterOf = (d) => `${d.getFullYear()} Q${Math.floor(d.getMonth() / 3) + 1}`;
+  const count = (items, s) => items.filter((i) => i.status === s).length;
+  const lawLinks = (law) => (law || []).map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a>`).join(', ');
+
+  function card(it) {
+    const when = it.status === 'upcoming' && it.commences ? ' ' + new Date(it.commences).toLocaleDateString('en-AU', { month: 'long', year: 'numeric' }) : '';
+    return `<article class="cw-item"><div class="cw-head"><h4>${esc(it.title)}</h4><span class="cw-tag ${it.status}">${LABEL[it.status]}${when}</span></div>
+      <p class="cw-str">${it.strength === 'required' ? 'Required for your ministry' : 'Good practice for your ministry'}</p>
+      <p>${esc(it.summary)}</p>
+      ${it.status !== 'met' && it.status !== 'upcoming' ? `<p><b>What to do:</b> ${esc(it.guidance)}</p>` : ''}
+      <p class="cw-law">Source: ${lawLinks(it.law)}</p></article>`;
+  }
+
+  function nextSteps(items) {
+    const todo = items.filter((i) => i.status === 'attention' || i.status === 'check');
+    if (!todo.length) return '<div class="cw-clear">Nothing needs doing right now. Check again next quarter, or when a rule changes.</div>';
+    return `<ol class="cw-steps">${todo.map((it) => `<li class="${it.status === 'attention' ? 'att' : ''}">
+      <h5>${esc(it.title)}</h5>
+      <p>${esc(it.guidance)}</p>
+      ${it.missing.length ? `<ul>${it.missing.map((m) => `<li>Not yet: ${esc(m)}</li>`).join('')}</ul>` : ''}
+      ${it.unanswered.length ? `<ul>${it.unanswered.map((m) => `<li>Check: ${esc(m)}</li>`).join('')}</ul>` : ''}
+      <p class="cw-law">Read the rule: ${lawLinks(it.law)}</p></li>`).join('')}</ol>`;
+  }
+
+  /** The results view, shared by the free check-up and the signed-in area. */
+  function report(a, opts = {}) {
+    const items = a.items, todo = count(items, 'attention') + count(items, 'check');
+    const saveCard = CFG.on
+      ? `<div class="cw-save"><h5>Save it and check in each quarter</h5><p>We'll remind you each quarter and tell you when a rule that applies to you changes. Sign in with an email link, no password.</p><button class="btn btn-peach" type="button" data-save>Save my results</button></div>`
+      : `<div class="cw-save"><h5>Get this every quarter</h5><p>Saving and quarterly reminders are opening soon. Tell us you're interested and we'll set you up first.</p><a class="btn btn-peach" href="#/contact/compliance">Tell me when it opens</a></div>`;
+    return `<h3 class="pg-h" style="font-size:28px;margin:0 0 8px">Your check-up</h3>
+      <p class="pg-lead" style="margin:0 0 20px">${items.length} obligations apply to your ministry. ${todo ? `${todo} ${todo === 1 ? 'needs' : 'need'} a look.` : 'You are on top of them.'}</p>
+      <div class="cw-sum"><div class="att"><b>${count(items, 'attention')}</b><span>Need attention</span></div><div><b>${count(items, 'check')}</b><span>To check</span></div><div class="up"><b>${count(items, 'upcoming')}</b><span>Coming</span></div><div><b>${count(items, 'met')}</b><span>Done</span></div></div>
+      <section class="cw-next" aria-labelledby="cw-next-h"><h4 id="cw-next-h">Your next steps</h4><p>Most important first. Each one links to the rule it comes from.</p>${nextSteps(items)}</section>
+      <details class="cw-more"><summary>Everything that applies to you (${items.length})</summary><div class="cw-items">${items.map(card).join('')}</div>
+        ${a.watching.length ? `<div class="cw-watch"><b>On the horizon.</b> ${a.watching.map((w) => esc(w.summary)).join(' ')}</div>` : ''}</details>
+      ${opts.local ? `<div class="cw-then">
+        <div><h5>A summary for your board</h5><div class="cw-name"><label for="cw-name">Ministry name</label><input id="cw-name" type="text" autocomplete="organization" maxlength="120" placeholder="Optional"></div><p>One page with where you stand and space to sign. It's made on your device.</p><button class="btn btn-ghost-dark" type="button" data-print>Download board summary</button></div>
+        ${saveCard}
+        <div><h5>Join Always</h5><p>Free for churches. One sign-in for every Always module, from compliance to reports.</p><a class="btn btn-ghost-dark" href="#/join/church" data-join-interest="compliance">Join Always</a></div>
+      </div>` : ''}
+      <p class="cw-notice">Register ${esc(a.version)} (${esc(a.status)}). ${esc(a.notice)}${opts.local ? ' Nothing you entered has been sent or saved.' : ''}</p>
+      ${opts.local ? '<div class="cw-nav"><button class="btn btn-ghost-dark" type="button" data-edit>Change my answers</button><span></span></div>' : ''}`;
+  }
+
+  /** One printable page, built on the device. Uses the browser's own Save as PDF. */
+  function printBoard(a, name) {
+    if (!a) return;
+    let el = document.getElementById('cw-board');
+    if (!el) { el = document.createElement('div'); el.id = 'cw-board'; document.body.appendChild(el); }
+    const d = new Date(), items = a.items;
+    el.innerHTML = `<h1>${esc(name || 'Our ministry')}: compliance check-up</h1>
+      <p class="b-sub">${esc(quarterOf(d))} · prepared ${d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} with Always Compliance</p>
+      <div class="b-sum"><div><b>${items.length}</b>apply</div><div><b>${count(items, 'met')}</b>done</div><div><b>${count(items, 'attention') + count(items, 'check')}</b>need a look</div><div><b>${count(items, 'upcoming')}</b>coming</div></div>
+      <table><thead><tr><th>Area</th><th>Obligation</th><th>Status</th><th>Next step</th></tr></thead><tbody>
+      ${items.map((i) => `<tr><td>${esc(AREA[i.area] || '')}</td><td>${esc(i.title)}</td><td>${esc(LABEL[i.status])}</td><td>${i.status === 'met' || i.status === 'upcoming' ? '' : esc(i.guidance)}</td></tr>`).join('')}
+      </tbody></table>
+      <div class="b-sign"><div>Reviewed by</div><div>Role</div><div>Date</div></div>
+      <p class="b-note">Register ${esc(a.version)}. ${esc(a.notice)}</p>`;
+    document.body.classList.add('printing-board');
+    const done = () => { document.body.classList.remove('printing-board'); removeEventListener('afterprint', done); };
+    addEventListener('afterprint', done);
+    window.print();
+    setTimeout(done, 1500);
+  }
+
+  // ---------------------------------------------------------------- Account (email link, Supabase Auth in Sydney)
+  const KEY = 'always.session', PENDING = 'always.cw.pending', ORG = 'always.org';
+  const store = {
+    get: (k) => { try { return JSON.parse(sessionStorage.getItem(k) || 'null'); } catch { return null; } },
+    set: (k, v) => { try { v == null ? sessionStorage.removeItem(k) : sessionStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  };
+  const session = () => { const s = store.get(KEY); return s && s.expires_at * 1000 > Date.now() + 30_000 ? s : null; };
+
+  async function auth(path, body) {
+    const r = await fetch(`${CFG.url}/auth/v1/${path}`, { method: 'POST', headers: { apikey: CFG.key, 'content-type': 'application/json' }, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error(r.status === 429 ? 'Too many tries. Please wait a minute and try again.' : 'That didn’t work. Check the code and try again.');
+    return r.status === 204 ? {} : r.json();
+  }
+  async function api(method, path, body) {
+    const s = session(); if (!s) throw new Error('signed_out');
+    const headers = { authorization: `Bearer ${s.access_token}`, 'content-type': 'application/json' };
+    const org = store.get(ORG); if (org && !path.startsWith('/v1/account/')) headers['x-always-org'] = org.id;
+    const r = await fetch(`/api${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined });
+    if (r.status === 401) { store.set(KEY, null); throw new Error('signed_out'); }
+    if (!r.ok) { const e = new Error((await r.json().catch(() => ({}))).error || `http_${r.status}`); e.status = r.status; throw e; }
+    return r.json();
+  }
+
+  function startSave(pending) {
+    store.set(PENDING, pending);
+    location.hash = '#/mycompliance';
+  }
+
+  // A magic link lands as #access_token=...&expires_at=...
+  if (/^#access_token=/.test(location.hash)) {
+    const q = new URLSearchParams(location.hash.slice(1));
+    store.set(KEY, { access_token: q.get('access_token'), refresh_token: q.get('refresh_token'), expires_at: Number(q.get('expires_at')) || Math.floor(Date.now() / 1000) + 3600 });
+    history.replaceState(null, '', '#/mycompliance');
+  }
+
+  const root = () => document.getElementById('cmy');
+  const steps = (n) => `<ol class="cmy-steps" aria-label="Getting set up">${['Sign in', 'Your ministry', 'Your compliance'].map((t, i) => `<li class="${i + 1 === n ? 'on' : i + 1 < n ? 'done' : ''}"${i + 1 === n ? ' aria-current="step"' : ''}>${t}</li>`).join('')}</ol>`;
+
+  function viewClosed() {
+    root().innerHTML = `<div class="cmy-card"><h2>Opening soon</h2><p>Saving your check-up and quarterly reminders are nearly ready. You can use the free check-up now, and download a summary for your board.</p>
+      <div class="cmy-row"><a class="btn btn-peach" href="#/compliance/check">Start the free check-up</a><a class="btn btn-ghost-dark" href="#/contact/compliance">Tell me when it opens</a></div></div>`;
+  }
+
+  function viewEmail(msg = '') {
+    root().innerHTML = `<div class="cmy-card">${steps(1)}<h2>Sign in with your email</h2><p>We'll email you a link and a six-digit code. No password to remember.</p>
+      <form id="cmy-email" novalidate><input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="cmy-field"><label for="cmy-e">Email address</label><input id="cmy-e" type="email" autocomplete="email" required></div>
+      <p class="cmy-err" role="alert">${esc(msg)}</p><div class="cmy-row"><button class="btn btn-peach" type="submit">Email me a sign-in link</button></div>
+      <p class="cmy-note">Your email is kept in Australia and used only for your account and compliance reminders.</p></form></div>`;
+    root().querySelector('#cmy-email').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = root().querySelector('#cmy-e').value.trim(), err = root().querySelector('.cmy-err');
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = 'Please enter a valid email address.'; return; }
+      e.submitter && (e.submitter.disabled = true);
+      try { await auth('otp', { email, create_user: true }); viewCode(email); }
+      catch (x) { err.textContent = x.message; e.submitter && (e.submitter.disabled = false); }
+    });
+    root().querySelector('#cmy-e').focus();
+  }
+
+  function viewCode(email) {
+    root().innerHTML = `<div class="cmy-card">${steps(1)}<h2>Check your email</h2><p>We sent a link and a code to <b>${esc(email)}</b>. Open the link on this device, or type the code here.</p>
+      <form id="cmy-code" novalidate><input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="cmy-field"><label for="cmy-c">Six-digit code</label><input id="cmy-c" class="cmy-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required></div>
+      <p class="cmy-err" role="alert"></p><div class="cmy-row"><button class="btn btn-peach" type="submit">Sign in</button><button class="btn btn-ghost-dark" type="button" data-back>Use a different email</button></div></form></div>`;
+    root().querySelector('[data-back]').addEventListener('click', () => viewEmail());
+    root().querySelector('#cmy-code').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const token = root().querySelector('#cmy-c').value.replace(/\D/g, ''), err = root().querySelector('.cmy-err');
+      if (token.length !== 6) { err.textContent = 'The code has six digits.'; return; }
+      try {
+        const s = await auth('verify', { type: 'email', email, token });
+        store.set(KEY, { access_token: s.access_token, refresh_token: s.refresh_token, expires_at: s.expires_at || Math.floor(Date.now() / 1000) + (s.expires_in || 3600) });
+        load();
+      } catch (x) { err.textContent = x.message; }
+    });
+    root().querySelector('#cmy-c').focus();
+  }
+
+  function viewNewOrg(msg = '') {
+    const pending = store.get(PENDING), st = pending?.profile?.states?.[0] || '';
+    root().innerHTML = `<div class="cmy-card">${steps(2)}<h2>Tell us about your ministry</h2><p>This sets up your space on Always, with you as its admin.</p>
+      <form id="cmy-org" novalidate><input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+        <div class="cmy-field"><label for="cmy-n">Church or ministry name</label><input id="cmy-n" type="text" autocomplete="organization" maxlength="120" required value="${esc(pending?.name || '')}"></div>
+        <fieldset class="cmy-field" style="border:0;padding:0;margin:0"><legend>What kind of organisation is it?</legend><div class="cmy-opts"><label class="cw-opt"><input type="radio" name="kind" value="church" checked><span>A church</span></label><label class="cw-opt"><input type="radio" name="kind" value="ministry"><span>A ministry</span></label></div></fieldset>
+        <div class="cmy-row"><div class="cmy-field"><label for="cmy-s">Main state or territory</label><select id="cmy-s" required>${['', 'NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT'].map((s) => `<option value="${s}" ${s === st ? 'selected' : ''}>${s || 'Choose'}</option>`).join('')}</select></div>
+        <div class="cmy-field"><label for="cmy-p">Postcode</label><input id="cmy-p" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" style="max-width:140px"></div></div>
+        <p class="cmy-err" role="alert">${esc(msg)}</p><div class="cmy-row"><button class="btn btn-peach" type="submit">Continue</button></div>
+        <p class="cmy-note">This doesn't make you a partner church in Always Connect. That's a separate step, whenever you're ready.</p></form></div>`;
+    root().querySelector('#cmy-org').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = e.target, err = root().querySelector('.cmy-err');
+      const body = { displayName: f.querySelector('#cmy-n').value.trim(), kind: f.querySelector('input[name=kind]:checked').value, state: f.querySelector('#cmy-s').value };
+      const pc = f.querySelector('#cmy-p').value.trim(); if (pc) body.postcode = pc;
+      if (body.displayName.length < 2) { err.textContent = 'Please enter your church or ministry name.'; return; }
+      if (!body.state) { err.textContent = 'Please choose a state or territory.'; return; }
+      if (pc && !/^\d{4}$/.test(pc)) { err.textContent = 'A postcode has four digits.'; return; }
+      try { const o = await api('POST', '/v1/account/orgs', body); store.set(ORG, o); load(); }
+      catch (x) { err.textContent = x.message === 'email_linked_to_another_account' ? 'That email is already linked to another account. Please contact us.' : 'Something went wrong. Please try again.'; }
+    });
+  }
+
+  async function savePending() {
+    const p = store.get(PENDING); if (!p) return;
+    await api('PUT', '/v1/compliance/profile', p.profile);
+    const answers = Object.entries(p.answers || {}).filter(([, v]) => ['yes', 'no', 'unsure', 'not_applicable'].includes(v)).map(([evidenceId, answer]) => ({ evidenceId, answer }));
+    if (answers.length) await api('PUT', '/v1/compliance/answers', { answers });
+    store.set(PENDING, null);
+  }
+
+  async function viewDashboard(orgs) {
+    const org = store.get(ORG);
+    document.getElementById('cmy-title').textContent = org.name;
+    document.getElementById('cmy-lead').textContent = 'Your compliance, kept up to date each quarter.';
+    let a = null, history = [];
+    try { a = await api('GET', '/v1/compliance/assessment'); } catch (x) { if (x.status !== 409) throw x; }
+    if (!a) {
+      root().innerHTML = `<div class="cmy-card">${steps(3)}<h2>Take your first check-up</h2><p>About ten minutes. When you finish, choose Save my results.</p><div class="cmy-row"><a class="btn btn-peach" href="#/compliance/check">Start the check-up</a></div></div>`;
+      return;
+    }
+    try { history = (await api('GET', '/v1/compliance/assessments')).assessments; } catch {}
+    const result = { items: a.items, watching: a.watching, version: a.registerVersion, status: a.registerStatus, notice: a.notice };
+    const rows = history.map((h) => `<div class="cmy-q"><div><b>${esc(h.quarter)}</b><br><span>Register ${esc(h.register_version)}</span></div>
+      ${h.approved_at ? `<span class="cmy-badge ok">Approved ${new Date(h.approved_at).toLocaleDateString('en-AU')}</span>` : `<button class="btn btn-peach" type="button" data-approve="${esc(h.id)}">Review and approve</button>`}</div>`).join('');
+    root().innerHTML = `<div class="cmy-card"><h2>Where you stand today</h2>
+      <div class="cmy-row"><button class="btn btn-ghost-dark" type="button" data-update>Update my answers</button><button class="btn btn-ghost-dark" type="button" data-board>Download board summary</button>${orgs.length > 1 ? '<button class="btn btn-ghost-dark" type="button" data-switch>Switch ministry</button>' : ''}<button class="btn btn-ghost-dark" type="button" data-out>Sign out</button></div></div>
+      <div class="cmy-gap"></div><div class="cw">${report(result)}</div>
+      <div class="cmy-gap"></div><div class="cmy-card"><h2>Each quarter</h2><p>At the start of every quarter we draft your check-up and email you. Someone at your ministry reviews and approves it for your board.</p>${rows || '<p class="cmy-note">Your first quarterly check-up will appear here at the start of next quarter.</p>'}</div>`;
+    const c = root();
+    c.querySelector('[data-update]').addEventListener('click', async () => {
+      const st = await api('GET', '/v1/compliance/profile');
+      sessionStorage.setItem('always.cw.prefill', JSON.stringify({ profile: st.profile, answers: st.answers }));
+      store.set(PENDING, null); location.hash = '#/compliance/check'; location.reload();
+    });
+    c.querySelector('[data-board]').addEventListener('click', () => printBoard(result, org.name));
+    c.querySelector('[data-out]').addEventListener('click', () => { store.set(KEY, null); store.set(ORG, null); load(); });
+    c.querySelector('[data-switch]')?.addEventListener('click', () => { store.set(ORG, null); viewPick(orgs); });
+    c.querySelectorAll('[data-approve]').forEach((b) => b.addEventListener('click', async () => {
+      b.disabled = true;
+      try { await api('POST', `/v1/compliance/assessments/${b.dataset.approve}/approve`); load(); } catch { b.disabled = false; }
+    }));
+  }
+
+  function viewPick(orgs) {
+    root().innerHTML = `<div class="cmy-card"><h2>Choose a ministry</h2>${orgs.map((o) => `<div class="cmy-q"><b>${esc(o.name)}</b><button class="btn btn-ghost-dark" type="button" data-org="${esc(o.id)}">Open</button></div>`).join('')}
+      <div class="cmy-row"><button class="btn btn-ghost-dark" type="button" data-new>Add another ministry</button></div></div>`;
+    root().querySelectorAll('[data-org]').forEach((b) => b.addEventListener('click', () => { store.set(ORG, orgs.find((o) => o.id === b.dataset.org)); load(); }));
+    root().querySelector('[data-new]').addEventListener('click', () => viewNewOrg());
+  }
+
+  async function load() {
+    if (!root()) return;
+    if (!CFG.on) return viewClosed();
+    if (!session()) return viewEmail();
+    root().innerHTML = '<div class="cmy-card"><p>Loading…</p></div>';
+    try {
+      const { orgs } = await api('GET', '/v1/account/orgs');
+      if (!orgs.length) return viewNewOrg();
+      const current = store.get(ORG);
+      if (!current || !orgs.some((o) => o.id === current.id)) {
+        if (orgs.length === 1) store.set(ORG, orgs[0]); else return viewPick(orgs);
+      }
+      await savePending();
+      await viewDashboard(orgs);
+    } catch (x) {
+      if (x.message === 'signed_out') return viewEmail('Your session ended. Please sign in again.');
+      root().innerHTML = '<div class="cmy-card"><h2>We couldn’t load your compliance</h2><p>Please try again in a moment.</p><div class="cmy-row"><button class="btn btn-peach" type="button" onclick="location.reload()">Try again</button></div></div>';
+    }
+  }
+
+  window.AlwaysCompliance = { report, printBoard, startSave };
+  addEventListener('hashchange', () => { if (location.hash.startsWith('#/mycompliance')) load(); });
+  if (location.hash.startsWith('#/mycompliance')) load();
+})();
+
 // ---------------------------------------------------------------- Always Compliance check-up
 (() => {
   const R = {"version": "2026.11.0", "status": "draft", "notice": "Draft for legal review. A plain-English guide to common obligations for Australian churches and Christian ministries. It is not legal advice.", "profileQuestions": [{"id": "states", "type": "states", "label": "Where do you run activities?", "help": "Choose every state or territory where you meet, run programs or have staff."}, {"id": "collectsPersonalInfo", "type": "boolean", "label": "Do you keep people's names or contact details?", "help": "For example a members list, newsletter list, rosters or response cards."}, {"id": "turnoverOver3m", "type": "boolean", "label": "Is your annual turnover more than $3 million?", "help": "This is the Privacy Act threshold."}, {"id": "providesHealthService", "type": "boolean", "label": "Do you provide counselling or other health services?", "help": "Organisations that provide a health service are covered by the Privacy Act whatever their size."}, {"id": "usesOverseasServices", "type": "boolean", "label": "Do you store or send people's details outside Australia?", "help": "For example an email or database service hosted overseas."}, {"id": "worksWithChildren", "type": "boolean", "label": "Do you run programs for under-18s, or do adults in your ministry have contact with children?", "help": "Kids church, youth groups, camps, school ministry or family events."}, {"id": "onlineServicesForChildren", "type": "boolean", "label": "Do young people use any of your apps, websites or online groups?", "help": "For example a youth group chat, sign-up page or app."}, {"id": "sendsEmailOrSms", "type": "boolean", "label": "Do you send emails or texts about your events, programs or appeals?", "help": "Newsletters, event invitations and giving appeals all count."}, {"id": "acncRegistered", "type": "boolean", "label": "Are you a registered charity with the ACNC?", "help": "Check the ACNC Charity Register if unsure."}, {"id": "basicReligiousCharity", "type": "boolean", "label": "Are you a Basic Religious Charity?", "help": "A charity whose only purpose is advancing religion, that is not incorporated and does not have DGR status. Your ACNC record says if you are one."}, {"id": "acncMediumOrLarge", "type": "boolean", "label": "Is your annual revenue $500,000 or more?", "help": "Charities with revenue of $500,000 or more are medium or large under ACNC rules."}], "obligations": [{"id": "privacy-policy", "area": "privacy", "jurisdiction": "CTH", "title": "Have a clear, up-to-date privacy policy", "summary": "Explain in plain words what personal information you collect, why, how you keep it safe, and how people can access it or complain.", "law": [{"name": "Privacy Act 1988 (Cth), Australian Privacy Principle 1", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles"}], "status": "in_force", "appliesWhen": {"field": "collectsPersonalInfo", "is": true}, "requiredWhen": {"any": [{"field": "turnoverOver3m", "is": true}, {"field": "providesHealthService", "is": true}]}, "evidence": [{"id": "pp-published", "kind": "document", "prompt": "Your privacy policy is published where people can find it, such as your website."}, {"id": "pp-reviewed", "kind": "question", "prompt": "Someone has reviewed the privacy policy in the last 12 months."}], "guidance": "Start from the Always template, adjust it to what you actually collect, and publish it on your website."}, {"id": "collection-notice", "area": "privacy", "jurisdiction": "CTH", "title": "Tell people why you're collecting their details", "summary": "When you collect someone's details, tell them who you are, why you need them, and who you might share them with.", "law": [{"name": "Privacy Act 1988 (Cth), Australian Privacy Principle 5", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles"}], "status": "in_force", "appliesWhen": {"field": "collectsPersonalInfo", "is": true}, "requiredWhen": {"any": [{"field": "turnoverOver3m", "is": true}, {"field": "providesHealthService", "is": true}]}, "evidence": [{"id": "cn-forms", "kind": "question", "prompt": "Your forms and response cards say why you collect details and who sees them."}, {"id": "cn-consent-records", "kind": "platform", "check": "consent_records", "prompt": "Consent is recorded with what the person agreed to and when."}], "guidance": "Add a short notice to every form. Always response pages include one by default."}, {"id": "use-and-disclosure", "area": "privacy", "jurisdiction": "CTH", "title": "Only use details for the reason you collected them", "summary": "Use and share personal information only for the purpose people expected, unless they agree to something else.", "law": [{"name": "Privacy Act 1988 (Cth), Australian Privacy Principle 6", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles"}], "status": "in_force", "appliesWhen": {"field": "collectsPersonalInfo", "is": true}, "requiredWhen": {"any": [{"field": "turnoverOver3m", "is": true}, {"field": "providesHealthService", "is": true}]}, "evidence": [{"id": "ud-sharing-rule", "kind": "question", "prompt": "Your team knows not to share people's details with others without permission."}, {"id": "ud-access", "kind": "platform", "check": "access_controls", "prompt": "Only the right people in your team can see each person's details."}], "guidance": "Agree a simple sharing rule with your team and limit who can see contact lists."}, {"id": "data-security", "area": "privacy", "jurisdiction": "CTH", "title": "Keep personal information safe, and delete it when it's no longer needed", "summary": "Take reasonable steps to protect details from misuse, loss and unauthorised access, and destroy or de-identify them when you no longer need them.", "law": [{"name": "Privacy Act 1988 (Cth), Australian Privacy Principle 11", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles"}], "status": "in_force", "appliesWhen": {"field": "collectsPersonalInfo", "is": true}, "requiredWhen": {"any": [{"field": "turnoverOver3m", "is": true}, {"field": "providesHealthService", "is": true}]}, "evidence": [{"id": "ds-mfa", "kind": "question", "prompt": "Accounts that hold people's details use strong passwords and two-step sign-in."}, {"id": "ds-retention", "kind": "platform", "check": "retention_schedule", "prompt": "Details are deleted on a set schedule."}, {"id": "ds-old-lists", "kind": "question", "prompt": "Old spreadsheets and paper lists are deleted or shredded when no longer needed."}], "guidance": "Turn on two-step sign-in, move lists out of personal spreadsheets, and set a deletion schedule."}, {"id": "access-and-correction", "area": "privacy", "jurisdiction": "CTH", "title": "Let people see and correct their details", "summary": "When someone asks, give them access to the information you hold about them and correct it if it's wrong, within a reasonable time.", "law": [{"name": "Privacy Act 1988 (Cth), Australian Privacy Principles 12 and 13", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles"}], "status": "in_force", "appliesWhen": {"field": "collectsPersonalInfo", "is": true}, "requiredWhen": {"any": [{"field": "turnoverOver3m", "is": true}, {"field": "providesHealthService", "is": true}]}, "evidence": [{"id": "ac-contact", "kind": "question", "prompt": "People know who to contact to see or correct their details."}], "guidance": "Name a privacy contact in your privacy policy and reply to requests promptly."}, {"id": "overseas-disclosure", "area": "privacy", "jurisdiction": "CTH", "title": "Take care when details go overseas", "summary": "Before personal information is sent or stored outside Australia, take reasonable steps to make sure it is protected to Australian standards.", "law": [{"name": "Privacy Act 1988 (Cth), Australian Privacy Principle 8", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles"}], "status": "in_force", "appliesWhen": {"all": [{"field": "collectsPersonalInfo", "is": true}, {"field": "usesOverseasServices", "is": true}]}, "requiredWhen": {"any": [{"field": "turnoverOver3m", "is": true}, {"field": "providesHealthService", "is": true}]}, "evidence": [{"id": "od-list", "kind": "question", "prompt": "You know which of your services store people's details overseas."}, {"id": "od-australia", "kind": "platform", "check": "data_in_australia", "prompt": "Details held in Always stay in Australia."}], "guidance": "List the services you use, prefer Australian hosting, and mention any overseas storage in your privacy policy."}, {"id": "data-breach-response", "area": "privacy", "jurisdiction": "CTH", "title": "Be ready for a data breach", "summary": "If personal information is lost or accessed without permission, assess it quickly. If serious harm is likely, tell the people affected and the OAIC.", "law": [{"name": "Privacy Act 1988 (Cth), Part IIIC (Notifiable Data Breaches)", "url": "https://www.oaic.gov.au/privacy/notifiable-data-breaches"}], "status": "in_force", "appliesWhen": {"field": "collectsPersonalInfo", "is": true}, "requiredWhen": {"any": [{"field": "turnoverOver3m", "is": true}, {"field": "providesHealthService", "is": true}]}, "evidence": [{"id": "db-plan", "kind": "document", "prompt": "You have a written data breach response plan and know who leads it."}], "guidance": "Use the Always one-page breach plan: who to call, how to assess, and when to notify."}, {"id": "serious-invasion-of-privacy", "area": "privacy", "jurisdiction": "CTH", "title": "Respect people's privacy, whatever your size", "summary": "People can take legal action for a serious invasion of their privacy, even against organisations the Privacy Act doesn't otherwise cover.", "law": [{"name": "Privacy Act 1988 (Cth), Schedule 2 (statutory tort, from 10 June 2025)", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles"}], "status": "in_force", "appliesWhen": {"field": "collectsPersonalInfo", "is": true}, "evidence": [{"id": "sip-photos", "kind": "question", "prompt": "You ask before sharing photos, stories or prayer requests that identify someone."}], "guidance": "Ask before you share. Take extra care with prayer requests, testimonies and photos of children."}, {"id": "childrens-online-privacy-code", "area": "privacy", "jurisdiction": "CTH", "title": "Get ready for the Children's Online Privacy Code", "summary": "A new code will set stricter rules for online services likely to be used by children, such as privacy-by-default settings, data minimisation and clearer consent.", "law": [{"name": "Privacy (Children's Online Privacy) Code 2026, to be registered by 10 December 2026", "url": "https://www.oaic.gov.au/privacy/privacy-registers/privacy-codes/childrens-online-privacy-code"}], "status": "upcoming", "commences": "2026-12-10", "appliesWhen": {"field": "onlineServicesForChildren", "is": true}, "requiredWhen": {"any": [{"field": "turnoverOver3m", "is": true}, {"field": "providesHealthService", "is": true}]}, "evidence": [{"id": "copc-inventory", "kind": "question", "prompt": "You have listed the apps, sites and groups young people use with you."}, {"id": "copc-minors", "kind": "platform", "check": "minors_rules", "prompt": "Age rules are enforced before anything else, with parent confirmation where needed."}], "guidance": "List your online spaces for young people, collect as little as possible, and set privacy to the highest setting by default."}, {"id": "privacy-reform-tranche-2", "area": "privacy", "jurisdiction": "CTH", "title": "Watch: second round of Privacy Act reform", "summary": "The Government released an exposure draft of the Privacy Amendment (Personal Data Protection) Bill 2026 on 31 August 2026. It may change core privacy obligations.", "law": [{"name": "Privacy Amendment (Personal Data Protection) Bill 2026 (exposure draft)", "url": "https://www.ag.gov.au/rights-and-protections/privacy"}], "status": "watch", "appliesWhen": {"field": "collectsPersonalInfo", "is": true}, "evidence": [], "guidance": "No action yet. We'll tell you if it becomes law and what changes."}, {"id": "spam-identify-sender", "area": "messages", "jurisdiction": "CTH", "title": "Say who you are in every email and text", "summary": "Marketing emails and texts must identify your organisation and include contact details. Registered charities and religious organisations have some exemptions, but must still identify themselves.", "law": [{"name": "Spam Act 2003 (Cth), section 17", "url": "https://www.acma.gov.au/avoid-sending-spam"}], "status": "in_force", "appliesWhen": {"field": "sendsEmailOrSms", "is": true}, "evidence": [{"id": "spam-sender", "kind": "question", "prompt": "Every email and text names your ministry and how to contact you."}], "guidance": "Add your ministry's name and contact details to your email footer and text templates."}, {"id": "spam-consent-unsubscribe", "area": "messages", "jurisdiction": "CTH", "title": "Ask permission, and make it easy to unsubscribe", "summary": "Commercial messages need consent and a working unsubscribe that is honoured within 5 working days. Charities and religious organisations may be exempt for some messages about their own work, but it remains good practice.", "law": [{"name": "Spam Act 2003 (Cth), sections 16 and 18", "url": "https://www.acma.gov.au/avoid-sending-spam"}], "status": "in_force", "appliesWhen": {"field": "sendsEmailOrSms", "is": true}, "requiredWhen": {"field": "acncRegistered", "is": false}, "evidence": [{"id": "spam-optin", "kind": "question", "prompt": "People choose to join your email and text lists."}, {"id": "spam-unsub", "kind": "question", "prompt": "Every message has an unsubscribe link, and requests are actioned within 5 working days."}], "guidance": "Use an email tool with built-in unsubscribe and keep a record of when people signed up."}, {"id": "acnc-annual-reporting", "area": "charity", "jurisdiction": "CTH", "title": "Submit your Annual Information Statement", "summary": "Registered charities submit an Annual Information Statement each year, within six months after the end of their reporting period (31 December for a 30 June year). Medium and large charities also submit a financial report, unless they are a Basic Religious Charity.", "law": [{"name": "Australian Charities and Not-for-profits Commission Act 2012 (Cth), Part 3-2", "url": "https://www.acnc.gov.au/for-charities/manage-your-charity/obligations-acnc/reporting-annually-acnc"}], "status": "in_force", "appliesWhen": {"field": "acncRegistered", "is": true}, "evidence": [{"id": "acnc-ais", "kind": "question", "prompt": "Your last Annual Information Statement was submitted on time."}, {"id": "acnc-financial", "kind": "question", "prompt": "If you're medium or large and not a Basic Religious Charity, your financial report was submitted with it.", "onlyWhen": {"all": [{"field": "acncMediumOrLarge", "is": true}, {"field": "basicReligiousCharity", "is": false}]}}], "guidance": "Put the due date in your board calendar and start three months early."}, {"id": "acnc-duty-to-notify", "area": "charity", "jurisdiction": "CTH", "title": "Tell the ACNC about changes", "summary": "Tell the ACNC when your name, address, responsible people or governing document change.", "law": [{"name": "Australian Charities and Not-for-profits Commission Act 2012 (Cth), Division 65", "url": "https://www.acnc.gov.au/for-charities/manage-your-charity/obligations-acnc"}], "status": "in_force", "appliesWhen": {"field": "acncRegistered", "is": true}, "evidence": [{"id": "acnc-details-current", "kind": "question", "prompt": "Your ACNC record lists your current board members and address."}], "guidance": "Check your ACNC record after every board change."}, {"id": "acnc-governance-standards", "area": "charity", "jurisdiction": "CTH", "title": "Meet the ACNC Governance Standards", "summary": "Charities must run for their charitable purpose, be accountable to members, comply with Australian laws, have suitable responsible people who meet their duties, and manage conflicts. Basic Religious Charities are exempt.", "law": [{"name": "Australian Charities and Not-for-profits Commission Regulations, Governance Standards", "url": "https://www.acnc.gov.au/for-charities/manage-your-charity/governance-hub/governance-standards"}], "status": "in_force", "appliesWhen": {"all": [{"field": "acncRegistered", "is": true}, {"field": "basicReligiousCharity", "is": false}]}, "evidence": [{"id": "gs-conflicts", "kind": "question", "prompt": "Board members declare conflicts of interest and these are recorded."}, {"id": "gs-duties", "kind": "question", "prompt": "Board members understand their duties and have checked they're not disqualified."}, {"id": "gs-minutes", "kind": "document", "prompt": "Board minutes are kept."}], "guidance": "Use the Always board pack: conflicts register, duties checklist and minutes template."}, {"id": "acnc-records", "area": "charity", "jurisdiction": "CTH", "title": "Keep financial and operational records for 7 years", "summary": "Keep written records that explain your finances and activities, for 7 years.", "law": [{"name": "Australian Charities and Not-for-profits Commission Act 2012 (Cth), section 55-5", "url": "https://www.acnc.gov.au/for-charities/manage-your-charity/obligations-acnc"}], "status": "in_force", "appliesWhen": {"field": "acncRegistered", "is": true}, "evidence": [{"id": "rec-kept", "kind": "question", "prompt": "Financial and operational records are kept for 7 years."}], "guidance": "Keep records in a shared, backed-up folder your treasurer and secretary can both reach."}, {"id": "working-with-children-checks", "area": "child_safety", "jurisdiction": "STATES", "title": "Working with children checks for staff and volunteers", "summary": "People in child-related work or volunteering need the check for the state or territory where they serve. Checks don't transfer between states.", "law": [{"name": "NSW Working with Children Check", "url": "https://ocg.nsw.gov.au/working-children-check", "jurisdiction": "NSW"}, {"name": "Victoria Working with Children Check", "url": "https://www.workingwithchildren.vic.gov.au", "jurisdiction": "VIC"}, {"name": "Queensland blue card", "url": "https://www.bluecard.qld.gov.au", "jurisdiction": "QLD"}, {"name": "SA Working with Children Check", "url": "https://www.sa.gov.au/topics/rights-and-law/rights-and-responsibilities/screening-checks", "jurisdiction": "SA"}, {"name": "WA Working with Children Check", "url": "https://workingwithchildren.wa.gov.au", "jurisdiction": "WA"}, {"name": "Tasmania Registration to Work with Vulnerable People", "url": "https://www.justice.tas.gov.au", "jurisdiction": "TAS"}, {"name": "ACT Working with Vulnerable People registration", "url": "https://www.accesscanberra.act.gov.au/business-and-work/working-with-vulnerable-people", "jurisdiction": "ACT"}, {"name": "NT Working with Children Clearance (Ochre Card)", "url": "https://nt.gov.au/emergency/child-safety/apply-for-a-working-with-children-clearance", "jurisdiction": "NT"}], "status": "in_force", "appliesWhen": {"field": "worksWithChildren", "is": true}, "evidence": [{"id": "wwcc-register", "kind": "question", "prompt": "You keep a register of everyone in child-related roles, with their check number and expiry date."}, {"id": "wwcc-verified", "kind": "question", "prompt": "Each check is verified with the state screening unit before the person starts."}], "guidance": "Keep one register for all states, verify each check online, and set reminders before expiry."}, {"id": "child-safe-standards-nsw", "area": "child_safety", "jurisdiction": "NSW", "title": "NSW Child Safe Standards", "summary": "Religious bodies in NSW that provide services to children, or where adults have contact with children, must implement the 10 Child Safe Standards under the Child Safe Scheme.", "law": [{"name": "Children's Guardian Act 2019 (NSW), Child Safe Scheme", "url": "https://ocg.nsw.gov.au/child-safe-scheme/sector-specific/faith-based-organisations"}], "status": "in_force", "appliesWhen": {"all": [{"field": "worksWithChildren", "is": true}, {"field": "states", "includesAny": ["NSW"]}]}, "evidence": [{"id": "cs-nsw-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct."}, {"id": "cs-nsw-selfassess", "kind": "question", "prompt": "You've assessed yourself against the 10 Child Safe Standards in the last 12 months."}, {"id": "cs-nsw-rcs", "kind": "question", "prompt": "Your leaders know how to report under the Reportable Conduct Scheme."}], "guidance": "Use the Office of the Children's Guardian guide for faith-based organisations and keep your self-assessment on file."}, {"id": "child-safe-standards-vic", "area": "child_safety", "jurisdiction": "VIC", "title": "Victorian Child Safe Standards", "summary": "Religious bodies in Victoria must implement the Child Safe Standards, in force since 1 July 2022.", "law": [{"name": "Child Wellbeing and Safety Act 2005 (Vic), Child Safe Standards", "url": "https://ccyp.vic.gov.au/child-safe-standards/"}], "status": "in_force", "appliesWhen": {"all": [{"field": "worksWithChildren", "is": true}, {"field": "states", "includesAny": ["VIC"]}]}, "evidence": [{"id": "cs-vic-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct."}, {"id": "cs-vic-selfassess", "kind": "question", "prompt": "You've assessed yourself against the Child Safe Standards in the last 12 months."}], "guidance": "Follow the Commission for Children and Young People's guide to the standards."}, {"id": "child-safe-standards-qld", "area": "child_safety", "jurisdiction": "QLD", "title": "Queensland Child Safe Standards", "summary": "Religious bodies are in scope of Queensland's Child Safe Standards, which began on 1 October 2025, along with a Reportable Conduct Scheme.", "law": [{"name": "Child Safe Organisations Act 2024 (Qld)", "url": "https://www.legislation.qld.gov.au/view/whole/html/inforce/current/act-2024-049"}], "status": "in_force", "appliesWhen": {"all": [{"field": "worksWithChildren", "is": true}, {"field": "states", "includesAny": ["QLD"]}]}, "evidence": [{"id": "cs-qld-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct."}, {"id": "cs-qld-selfassess", "kind": "question", "prompt": "You've assessed yourself against the 10 Child Safe Standards and the Universal Principle."}, {"id": "cs-qld-rcs", "kind": "question", "prompt": "Your leaders know how to report under the Queensland Reportable Conduct Scheme."}], "guidance": "Use the Queensland Family and Child Commission's guidelines for implementing the standards."}, {"id": "child-safe-standards-act", "area": "child_safety", "jurisdiction": "ACT", "title": "ACT Child Safe Standards", "summary": "Since 1 August 2024, organisations in the ACT that provide services for children and young people, including religious bodies, must implement the ACT Child Safe Standards.", "law": [{"name": "Human Rights Commission Act 2005 (ACT), Part 5A", "url": "https://hrc.act.gov.au/childrenyoungpeople/act-child-safe-standards"}], "status": "in_force", "appliesWhen": {"all": [{"field": "worksWithChildren", "is": true}, {"field": "states", "includesAny": ["ACT"]}]}, "evidence": [{"id": "cs-act-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct."}, {"id": "cs-act-selfassess", "kind": "question", "prompt": "You've assessed yourself against the ACT Child Safe Standards."}], "guidance": "Use the ACT Human Rights Commission's implementation resources."}, {"id": "child-safe-standards-tas", "area": "child_safety", "jurisdiction": "TAS", "title": "Tasmanian Child and Youth Safe Standards", "summary": "Tasmania has legislated Child and Youth Safe Standards as part of its Child and Youth Safe Organisations Framework.", "law": [{"name": "Child and Youth Safe Organisations Act 2023 (Tas)", "url": "https://www.justice.tas.gov.au/carcru/child-and-youth-safe-organisations-framework/child-and-youth-safe-standards"}], "status": "in_force", "appliesWhen": {"all": [{"field": "worksWithChildren", "is": true}, {"field": "states", "includesAny": ["TAS"]}]}, "evidence": [{"id": "cs-tas-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct."}, {"id": "cs-tas-selfassess", "kind": "question", "prompt": "You've assessed yourself against the Child and Youth Safe Standards."}], "guidance": "Check the Tasmanian framework for when your type of organisation must comply."}, {"id": "child-safe-national-principles", "area": "child_safety", "jurisdiction": "STATES", "title": "National Principles for Child Safe Organisations", "summary": "Every state and territory has endorsed the 10 National Principles. In SA, WA and the NT, follow them alongside your local requirements.", "law": [{"name": "National Principles for Child Safe Organisations", "url": "https://www.humanrights.gov.au/national-principles-child-safe-organisations"}], "status": "in_force", "appliesWhen": {"all": [{"field": "worksWithChildren", "is": true}, {"field": "states", "includesAny": ["SA", "WA", "NT"]}]}, "recommendedOnly": true, "evidence": [{"id": "np-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct."}, {"id": "np-selfassess", "kind": "question", "prompt": "You've used the Australian Human Rights Commission's self-assessment tool."}], "guidance": "Start with the Australian Human Rights Commission's free self-assessment tool and code of conduct template."}]};
@@ -3604,25 +3935,25 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
     renderReport(); step(3);
   });
 
+  const flat = (it) => ({ title: it.o.title, summary: it.o.summary, guidance: it.o.guidance, area: it.o.area, status: it.status, strength: it.strength, missing: it.missing, unanswered: it.unanswered, law: it.law, commences: it.o.commences });
+  let last = null;
+
   function renderReport() {
     const { items, watching } = assess(profile, answers, new Date());
-    const n = (s) => items.filter((i) => i.status === s).length;
-    const card = (it) => `<article class="cw-item"><div class="cw-head"><h4>${esc(it.o.title)}</h4><span class="cw-tag ${it.status}">${LABEL[it.status]}${it.status === 'upcoming' && it.o.commences ? ' ' + new Date(it.o.commences).toLocaleDateString('en-AU', { month: 'long', year: 'numeric' }) : ''}</span></div>
-      <p class="cw-str">${it.strength === 'required' ? 'Required for your ministry' : 'Good practice for your ministry'}</p>
-      <p>${esc(it.o.summary)}</p>
-      ${it.missing.length ? `<ul>${it.missing.map((m) => `<li>Not yet: ${esc(m)}</li>`).join('')}</ul>` : ''}
-      ${it.unanswered.length && it.status !== 'upcoming' ? `<ul>${it.unanswered.map((m) => `<li>To check: ${esc(m)}</li>`).join('')}</ul>` : ''}
-      ${it.status !== 'met' ? `<p><b>What to do:</b> ${esc(it.o.guidance)}</p>` : ''}
-      <p class="cw-law">Source: ${it.law.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a>`).join(', ')}</p></article>`;
-    rep.innerHTML = `<h3 class="pg-h" style="font-size:28px;margin:0 0 8px">Your check-up</h3>
-      <p class="pg-lead" style="margin:0 0 20px">${items.length} obligations apply to your ministry. Here is where you stand today.</p>
-      <div class="cw-sum"><div class="att"><b>${n('attention')}</b><span>Need attention</span></div><div><b>${n('check')}</b><span>To check</span></div><div class="up"><b>${n('upcoming')}</b><span>Coming</span></div><div><b>${n('met')}</b><span>Done</span></div></div>
-      <div class="cw-items">${items.map(card).join('')}</div>
-      ${watching.length ? `<div class="cw-watch"><b>On the horizon.</b> ${watching.map((w) => esc(w.summary)).join(' ')}</div>` : ''}
-      <p class="cw-notice">Register ${esc(R.version)} (${esc(R.status)}). ${esc(R.notice)} Nothing you entered has been sent or saved.</p>
-      <div class="cw-nav"><button class="btn btn-ghost-dark" type="button" data-edit>Change my answers</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost-dark" type="button" data-print>Print or save as PDF</button><a class="btn btn-peach" href="#/contact/compliance">Get this every quarter</a></span></div>`;
+    last = { items: items.map(flat), watching: watching.map((w) => ({ title: w.title, summary: w.summary })), version: R.version, status: R.status, notice: R.notice };
+    rep.innerHTML = window.AlwaysCompliance.report(last, { local: true });
   }
-  rep.addEventListener('click', (e) => { if (e.target.closest('[data-edit]')) step(2); if (e.target.closest('[data-print]')) window.print(); });
+  rep.addEventListener('click', (e) => {
+    if (e.target.closest('[data-edit]')) step(2);
+    if (e.target.closest('[data-print]')) window.AlwaysCompliance.printBoard(last, rep.querySelector('#cw-name')?.value || '');
+    if (e.target.closest('[data-save]')) window.AlwaysCompliance.startSave({ profile, answers, name: rep.querySelector('#cw-name')?.value || '' });
+  });
+
+  // Coming back from the signed-in area to update answers.
+  try {
+    const pre = JSON.parse(sessionStorage.getItem('always.cw.prefill') || 'null');
+    if (pre) { sessionStorage.removeItem('always.cw.prefill'); profile = pre.profile || {}; answers = pre.answers || {}; }
+  } catch {}
 
   renderProfile();
 })();
