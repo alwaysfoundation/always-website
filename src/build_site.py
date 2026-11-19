@@ -12,7 +12,7 @@ def _swap(h, marker, new):
     i = h.find(marker); a = h.rfind('<section', 0, i); b = h.find('</section>', i) + 10
     return h[:a] + new + h[b:]
 home = _swap(home, 'class="sec map"', '')
-home = home.replace('{{PILLARS}}', PR.pillar_grid()).replace('{{SOLUTIONS}}', PR.solutions_grid())
+home = home.replace('{{PILLARS}}', PR.product_bento()).replace('{{SOLUTIONS}}', PR.solutions_grid())
 import base64 as _b
 import io as _io
 from PIL import Image as _Im

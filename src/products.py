@@ -9,6 +9,7 @@ Every product's one-line positioning is defined once here and reused on the home
 the Platform page, the product page, solution pages, the menu and the footer.
 """
 from html import escape
+from mocks import mock, CSS as MOCK_CSS
 
 PILLARS = [
     ('equip', 'Equip', 'Resources for every ministry.'),
@@ -54,8 +55,9 @@ def product_card(slug):
 
 
 def solution_card(slug):
-    route, name, line, _, _ = SOLUTIONS[slug]
-    return f'<a class="sl-card rv" href="#/{route}"><h3>{name}</h3><p>{line}</p></a>'
+    route, name, line, uses, _ = SOLUTIONS[slug]
+    chips = ''.join(f'<span>{PRODUCTS[u][1].replace("Always ", "")}</span>' for u in uses)
+    return f'<a class="sl-card rv" href="#/{route}"><h3>{name}</h3><p>{line}</p><div class="sl-uses">{chips}</div></a>'
 
 
 def pillar_grid():
@@ -65,6 +67,28 @@ def pillar_grid():
         items = ''.join(f'<li><a href="#/{PRODUCTS[s][0]}"><b>{PRODUCTS[s][1]}</b><span>{PRODUCTS[s][3]}</span></a></li>' for s in PRODUCTS if PRODUCTS[s][2] == key)
         cards.append(f'<article class="pl-pillar rv pl-{key}"><h3>{name}</h3><p class="pl-ptag">{tagline}</p><ul>{items}</ul></article>')
     return '<div class="pl-pillars">' + ''.join(cards) + '</div>'
+
+
+BENTO = ['app', 'pages', 'compliance', 'reports', 'connect', 'agents', 'build']
+
+
+def bento_tile(slug):
+    route, name, pillar, line, _ = PRODUCTS[slug]
+    return (f'<a class="bt bt-{slug} rv" href="#/{route}">{mock(slug)}'
+            f'<div class="bt-body"><span class="bt-pill btp-{pillar}">{PILLAR_NAME[pillar]}</span>'
+            f'<h3>{name}</h3><p>{line}</p></div></a>')
+
+
+def product_bento():
+    return '<div class="bento">' + ''.join(bento_tile(s) for s in BENTO) + '</div>'
+
+
+def switcher():
+    """Platform hero: one sign-in, every product a tab."""
+    tabs = ''.join(f'<button type="button" role="tab" class="sw-tab" id="sw-t-{s}" aria-controls="sw-p-{s}" aria-selected="{str(s == "pages").lower()}" tabindex="{0 if s == "pages" else -1}">{PRODUCTS[s][1].replace("Always ", "")}</button>' for s in BENTO)
+    panels = ''.join(f'<div class="sw-panel" role="tabpanel" id="sw-p-{s}" aria-labelledby="sw-t-{s}"{"" if s == "pages" else " hidden"}>{mock(s)}<p class="sw-line"><b>{PRODUCTS[s][1]}</b> {PRODUCTS[s][3]} <a href="#/{PRODUCTS[s][0]}">Explore</a></p></div>' for s in BENTO)
+    return (f'<div class="sw"><div class="sw-bar"><span class="sw-me"><i></i>Signed in to Always</span></div>'
+            f'<div class="sw-tabs" role="tablist" aria-label="Always products">{tabs}</div>{panels}</div>')
 
 
 def solutions_grid():
@@ -111,17 +135,20 @@ def _works_with(slugs):
     return '<div class="pd-with">' + ''.join(product_link(s) for s in slugs) + '</div>'
 
 
-def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Join Always', '#/join'), secondary=None, feats_title='What you get'):
+def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Join Always', '#/join'), secondary=None, feats_title='What you get', statement=None):
     route, name, pillar, line, who = PRODUCTS[slug]
     badge = f'<p class="pd-status">{status}</p>' if status else ''
     sec = f'<a class="btn btn-ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
-    return f'''<section class="page-hero pd-hero"><div class="wrap">
-  <p class="pl-kick">Always Platform: {PILLAR_NAME[pillar]}</p>
+    stmt = f'<section class="sec pd-statement"><div class="wrap"><p class="rv">{statement}</p></div></section>' if statement else ''
+    return f'''<section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div><p class="pl-kick">Always Platform: {PILLAR_NAME[pillar]}</p>
   <h1>{name}</h1>
   <p class="pd-line">{line}</p>
   <p>{intro}</p>{badge}
-  <div class="pg-cta"><a class="btn btn-peach" href="{primary[1]}">{primary[0]}</a>{sec}</div>
+  <div class="pg-cta"><a class="btn btn-peach" href="{primary[1]}">{primary[0]}</a>{sec}</div></div>
+  {mock(slug, 'mk-lg')}
 </div></section>
+{stmt}
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">{feats_title}</h2>
   {_feats(feats)}
@@ -137,8 +164,7 @@ def product_page(slug, intro, feats, works_with, extra='', status=None, primary=
 PAGES_BRAND = '''<section class="sec pg-sec pg-green"><div class="wrap pd-brand">
   <div class="rv"><h2 class="pg-h">Your name. Your look. Your people.</h2>
   <p class="pg-lead">Every page carries your logo, colours and words, on your own link. People meet your ministry, not ours. We stay in the background.</p></div>
-  <div class="pd-brand-mock rv" aria-hidden="true"><div class="pbm-top"><span class="pbm-logo"></span><span class="pbm-name">Your ministry</span></div>
-  <p class="pbm-h">Today I said yes to Jesus</p><span class="pbm-in"></span><span class="pbm-in"></span><span class="pbm-btn">Take my next step</span></div>
+  <div class="pbt rv" aria-hidden="true"><div class="pbt-card" style="--b:#6B4FA0;--ink:#3A2A5C"><div class="pbt-top"><span></span><b>Your youth group</b></div><p>Tonight I said yes</p><i></i><i></i><em>Count me in</em></div><div class="pbt-card" style="--b:#C2562E;--ink:#5A2412"><div class="pbt-top"><span></span><b>Your street team</b></div><p>Want to know more?</p><i></i><i></i><em>Stay in touch</em></div><div class="pbt-card" style="--b:#1F6F78;--ink:#0F3A3F"><div class="pbt-top"><span></span><b>Your tour</b></div><p>Find a church near you</p><i></i><i></i><em>Take my next step</em></div></div>
 </div></section>'''
 
 PAGES_PAGE = product_page('pages',
@@ -152,7 +178,8 @@ PAGES_PAGE = product_page('pages',
     ['connect', 'app', 'reports'],
     extra=PAGES_BRAND,
     feats_title='Wherever people respond',
-    secondary=('Read the guide', '#/docs/senders'))
+    secondary=('Read the guide', '#/docs/senders'),
+    statement='Every yes deserves a next step, in your name.')
 
 REPORTS_PAGE = product_page('reports',
     'Answer to donors, a foundation or a denomination? Always Reports writes your report each month from what already happened. Nothing extra to enter.',
@@ -163,7 +190,8 @@ REPORTS_PAGE = product_page('reports',
      ('Definitions you can trust', 'Responded, introduced, contacted and now part of a church family, defined the same way every month.'),
      ('Across events and campuses', 'One report, or one for each event, tour or campus.')],
     ['pages', 'connect', 'compliance'],
-    secondary=('See what\'s in a report', '#/docs/reports'))
+    secondary=('See what\'s in a report', '#/docs/reports'),
+    statement='Show the fruit, without showing the people.')
 
 CONNECT_PAGE = product_page('connect',
     'When someone says yes to Jesus, Always Connect helps them find a next step near home, often a local church and sometimes another ministry, with a real person reaching out.',
@@ -174,7 +202,8 @@ CONNECT_PAGE = product_page('connect',
      ('Next steps beyond church', 'People exploring faith can choose Alpha. Others may need a youth group or a care team.'),
      ('No one dropped', 'If no one nearby can help, the Always care team reaches out.')],
     ['pages', 'app', 'agents'],
-    secondary=('Claim your church', '#/claim'))
+    secondary=('Claim your church', '#/claim'),
+    statement='So no one walks alone.')
 
 AGENTS_PAGE = product_page('agents',
     'Always Agents take on the repetitive work of follow-up and administration, so your team can spend its time with people. Every agent works for a person, and a person approves every step.',
@@ -185,7 +214,8 @@ AGENTS_PAGE = product_page('agents',
      ('Kept in Australia', 'People\'s details are stored and processed in Australia.'),
      ('Every step recorded', 'An audit trail shows what each agent suggested and who approved it.')],
     ['connect', 'reports', 'compliance'],
-    status='Now in pilot with the foundation team.')
+    status='Now in pilot with the foundation team.',
+    statement='Less admin. More time with people.')
 
 # ---------------------------------------------------------------- Solution pages
 
@@ -240,16 +270,18 @@ PLATFORMS_PAGE = solution_page('platforms', [
 
 # ---------------------------------------------------------------- Platform overview
 
-PLATFORM_OVERVIEW = f'''<section class="page-hero"><div class="wrap">
-  <p class="pl-kick">Always Platform</p>
-  <h1>Seven products. One platform. Shared freely.</h1>
-  <p>Always Platform is the open-source technology behind every Always product. Ministries use the products; developers and partner platforms can build on the same foundation.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/build">For developers</a></div>
+PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-split">
+  <div><p class="pl-kick">Always Platform</p>
+  <h1>Seven products. One sign-in. Shared freely.</h1>
+  <p>The open-source technology behind every Always product. Your team signs in once and uses whichever tools your ministry needs.</p>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/build">For developers</a></div></div>
+  {switcher()}
 </div></section>
-<section class="sec pg-sec"><div class="wrap">
+<section class="sec pd-statement"><div class="wrap"><p class="rv">Built once. Shared with every church and ministry.</p></div></section>
+<section class="sec pg-sec pf-products"><div class="wrap">
   <h2 class="pg-h rv">The products</h2>
-  <p class="pg-lead rv">Grouped by how they help: equip, support and connect ministries, with agents to lighten the load and open tools to build on.</p>
-  {pillar_grid()}
+  <p class="pg-lead rv">Equip, support and connect ministries, with agents to lighten the load and open tools to build on.</p>
+  {product_bento()}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Who it's for</h2>
@@ -260,7 +292,7 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero"><div class="wrap">
   <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free for churches', 'Larger ministries contribute according to their size.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', "People's details stay here."), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'Agents help with the work. People make the calls.')])}</div>
 </div></section>'''
 
-CSS = '''
+CSS = MOCK_CSS + '''
 /* ---- Product line ---- */
 .pd-line { font: 700 clamp(20px, 2.2vw, 26px)/1.35 var(--head); color: var(--peach); max-width: 34ch; margin-top: 14px; }
 .pd-hero p:not(.pd-line):not(.pl-kick):not(.pd-status) { max-width: 52ch; }
@@ -296,13 +328,77 @@ CSS = '''
 @media (max-width: 1000px) { .pl-pillars { grid-template-columns: 1fr 1fr; } .pl-pillar, .pl-pillar.pl-agents, .pl-pillar.pl-build { grid-column: auto; } .sl-grid, .pd-with { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .pl-pillars, .sl-grid, .pd-with { grid-template-columns: 1fr; } }
 
-.pd-brand { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.pd-brand { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
 .pd-brand .pg-h, .pd-brand .pg-lead { color: var(--cream); } .pd-brand .pg-lead { color: var(--on-green); }
+.pbt { display: flex; justify-content: center; align-items: center; }
+.pbt-card { width: 190px; flex: none; background: #FFFDF8; border-radius: 22px; padding: 16px; display: grid; gap: 9px; box-shadow: 0 30px 50px -26px rgba(0,0,0,.55); }
+.pbt-card:nth-child(1) { transform: rotate(-6deg) translate(18px, 14px); }
+.pbt-card:nth-child(2) { position: relative; z-index: 1; transform: translateY(-10px); }
+.pbt-card:nth-child(3) { transform: rotate(6deg) translate(-18px, 14px); }
+.pbt-top { display: flex; align-items: center; gap: 7px; } .pbt-top span { width: 18px; height: 18px; border-radius: 6px; background: var(--b); } .pbt-top b { font: 700 11px/1 var(--head); color: var(--ink); }
+.pd-brand .pbt-card p { margin: 2px 0; font: 800 16px/1.15 var(--head); color: var(--ink); max-width: none; }
+.pbt-card i { height: 28px; border-radius: 9px; border: 1.5px solid #E7E1DA; }
+.pbt-card em { font: 700 11px/1 var(--head); font-style: normal; text-align: center; padding: 10px; border-radius: 999px; background: var(--b); color: #fff; }
+@media (max-width: 1100px) { .pbt-card { width: 160px; } }
+@media (max-width: 520px) { .pbt-card { width: 128px; padding: 12px; } .pd-brand .pbt-card p { font-size: 13px; } .pbt-card:nth-child(1) { transform: rotate(-6deg) translate(26px, 12px); } .pbt-card:nth-child(3) { transform: rotate(6deg) translate(-26px, 12px); } }
 .pd-brand-mock { justify-self: center; width: min(300px, 100%); background: #FFFDF8; border-radius: 28px; padding: 22px; display: grid; gap: 12px; box-shadow: 0 30px 60px -24px rgba(0,0,0,.45); }
 .pbm-top { display: flex; align-items: center; gap: 10px; } .pbm-logo { width: 30px; height: 30px; border-radius: 9px; background: #6B4FA0; }
 .pbm-name { font: 700 15px/1 var(--head); color: #3A2A5C; } .pbm-h { margin: 6px 0 2px; font: 800 22px/1.15 var(--head); color: #3A2A5C; }
 .pbm-in { height: 40px; border-radius: 12px; border: 1.5px solid #E2DCEC; } .pbm-btn { margin-top: 4px; padding: 13px; border-radius: 999px; background: #6B4FA0; color: #fff; font: 700 15px/1 var(--head); text-align: center; }
-@media (max-width: 800px) { .pd-brand { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 900px) { .pd-brand { grid-template-columns: minmax(0, 1fr); gap: 40px; } }
+
+/* ---- Bento ---- */
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; margin-top: 44px; }
+.bt { grid-column: span 2; display: grid; grid-template-rows: auto 1fr; background: var(--paper); border-radius: 28px; padding: 10px; color: inherit; text-decoration: none; box-shadow: 0 1px 0 rgba(30,42,38,.04); transition: transform .25s ease, box-shadow .25s ease; }
+.bt-app, .bt-pages, .bt-agents, .bt-build { grid-column: span 3; }
+.bt .mk { min-height: 250px; }
+.bt-body { padding: 20px 18px 16px; display: grid; align-content: start; gap: 8px; }
+.bt h3 { margin: 0; font: 800 23px/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
+.bt p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--soft); max-width: 44ch; }
+.bt-pill { justify-self: start; font: 700 12px/1 var(--head); padding: 6px 10px; border-radius: 999px; background: var(--sage-2); color: var(--green); }
+.btp-equip { background: var(--peach-soft); color: var(--clay); } .btp-agents { background: #E9E4F1; color: #4E3F73; } .btp-connect { background: #EFE5D1; color: #6E5520; } .btp-build { background: #DCE7E2; color: var(--green-deep); }
+.bt:hover, .bt:focus-visible { transform: translateY(-3px); box-shadow: 0 26px 50px -30px rgba(20,53,47,.45); }
+.bt:hover .mk-card, .bt:focus-visible .mk-card { transform: translateY(-3px); }
+.mk-card { transition: transform .35s ease; }
+@media (max-width: 1000px) { .bento { grid-template-columns: 1fr 1fr; } .bt, .bt-app, .bt-pages, .bt-agents, .bt-build { grid-column: auto; } .bt-build { grid-column: span 2; } }
+@media (max-width: 640px) { .bento { grid-template-columns: 1fr; } .bt-build { grid-column: auto; } .bt .mk { min-height: 210px; } }
+.heart .bento { margin-top: 48px; }
+
+/* ---- Statement (deck style) ---- */
+.pd-statement { padding: 120px 0; background: var(--cream); }
+.pd-statement p { margin: 0 auto; max-width: 22ch; text-align: center; font: 400 clamp(34px, 4.6vw, 64px)/1.12 'Newsreader', Georgia, serif; letter-spacing: -0.02em; color: var(--green); }
+@media (max-width: 640px) { .pd-statement { padding: 80px 0; } }
+
+/* ---- Product and platform heroes ---- */
+.pd-split, .pf-split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 64px; align-items: center; }
+.pd-hero h1 { font-size: clamp(48px, 6vw, 88px); }
+@media (max-width: 960px) { .pd-split, .pf-split { grid-template-columns: minmax(0, 1fr); gap: 44px; } }
+.pf-hero h1 { font-size: clamp(44px, 5.2vw, 76px); }
+.sw { min-width: 0; }
+.sw { background: rgba(248,243,234,.07); border-radius: 30px; padding: 14px; box-shadow: inset 0 0 0 1px rgba(248,243,234,.12), 0 40px 80px -40px rgba(0,0,0,.5); }
+.sw-bar { display: flex; justify-content: space-between; padding: 6px 8px 12px; }
+.sw-me { display: inline-flex; align-items: center; gap: 8px; font: 600 13px/1 var(--head); color: var(--on-green); }
+.sw-me i { width: 8px; height: 8px; border-radius: 50%; background: #8FD1A9; box-shadow: 0 0 0 4px rgba(143,209,169,.18); }
+.sw-tabs { display: flex; gap: 4px; overflow-x: auto; padding: 4px; border-radius: 16px; background: rgba(0,0,0,.18); scrollbar-width: none; }
+.sw-tabs::-webkit-scrollbar { display: none; }
+.sw-tab { flex: 1 0 auto; min-height: 40px; padding: 0 14px; border: 0; border-radius: 12px; background: transparent; color: var(--on-green); font: 700 13.5px/1 var(--head); cursor: pointer; transition: background .2s, color .2s; }
+.sw-tab:hover { color: var(--cream); background: rgba(248,243,234,.06); }
+.sw-tab[aria-selected="true"] { background: var(--cream); color: var(--green); }
+.sw-tab:focus-visible { outline: 2px solid var(--peach); outline-offset: 2px; }
+.sw-panel { margin-top: 12px; }
+.sw-panel .mk { min-height: 300px; border-radius: 22px; }
+.sw-panel:not([hidden]) .mk-card, .sw-panel:not([hidden]) .mk-conn { animation: swIn .45s cubic-bezier(.2,.8,.2,1); }
+@keyframes swIn { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+.page-hero .sw-line { margin: 0; padding: 16px 8px 6px; font-size: 15.5px; line-height: 1.5; color: var(--on-green); max-width: none; }
+.sw-line b { color: var(--cream); font-family: var(--head); margin-right: 4px; }
+.sw-line a { color: var(--peach); font-weight: 600; margin-left: 4px; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .sw-panel .mk-card, .sw-panel .mk-conn { animation: none !important; } .bt, .mk-card { transition: none; } }
+
+/* ---- Solution chips ---- */
+.sl-card { padding: 26px 24px 22px; gap: 10px; transition: transform .25s ease, box-shadow .25s ease; }
+.sl-card:hover, .sl-card:focus-visible { box-shadow: 0 26px 50px -30px rgba(0,0,0,.4); }
+.sl-uses { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; padding-top: 14px; border-top: 1px solid var(--line); }
+.sl-uses span { font: 700 11.5px/1 var(--head); padding: 6px 9px; border-radius: 999px; background: var(--sage-2); color: var(--green); }
 
 /* ---- Menu drop-downs ---- */
 .dd { position: relative; }
@@ -335,6 +431,12 @@ CSS = '''
 '''
 
 MENU_JS = '''
+// Platform hero product switcher (tabs with arrow keys)
+document.querySelectorAll('.sw').forEach((sw) => {
+  const tabs = [...sw.querySelectorAll('.sw-tab')];
+  const pick = (t, focus) => { tabs.forEach((x) => { const on = x === t; x.setAttribute('aria-selected', String(on)); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; }); if (focus) t.focus(); t.scrollIntoView({ block: 'nearest', inline: 'nearest' }); };
+  tabs.forEach((t, i) => { t.addEventListener('click', () => pick(t)); t.addEventListener('keydown', (e) => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); } }); });
+});
 // Menu drop-downs: click to open, Escape or outside click to close
 (() => {
   const btns = [...document.querySelectorAll('.dd-btn')];
