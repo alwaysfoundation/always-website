@@ -7,6 +7,7 @@ visitor enters is sent anywhere or saved.
 import json
 import os
 from html import escape
+import products as PR
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 REGISTER = json.load(open(os.path.join(ROOT, 'compliance-register.json')))
@@ -42,6 +43,7 @@ STATES = [
 
 PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
   <div>
+    {PR.mod_icon("compliance", "mi-lg")}
     <p class="pl-kick">Always Safety</p>
     <h1>Safe ministry, made clear.</h1>
     <p class="pd-line">Know exactly what applies to your ministry, approve a simple check-up each quarter, and hear when the law changes.</p>

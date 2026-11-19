@@ -191,7 +191,7 @@ MENU_CSS = r'''
   .dd-sol-foot b::after { content: ' \2192'; }
   .dd-sol-foot:hover { background: rgba(27,71,64,.05); }
   .dd-layout-sol { grid-template-columns: minmax(0, 1fr) 260px; }
-  .dd-story .dd-story-img { display: block !important; height: 120px; margin: -8px -8px 6px; border-radius: 14px; background: url(img/sydneyfire-street.webp) center / cover; filter: grayscale(.2); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .dd-story .dd-story-img { display: block !important; height: 120px; margin: -8px -8px 6px; border-radius: 14px; background: url(img/uen-event.webp) center / cover; filter: grayscale(.2); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
   .dd-story:hover .dd-story-img { transform: scale(1.02); }
 }
 @media (max-width: 860px) { .dd-sol-foot, .dd-story-img { display: none !important; } }

@@ -49,7 +49,7 @@ def for_name(name):
 
 def product_link(slug, cls='pd-link'):
     route, name, _, line, _ = PRODUCTS[slug]
-    return f'<a class="{cls}" href="#/{route}"><b>{name}</b><span>{line}</span></a>'
+    return f'<a class="{cls}" href="#/{route}">{mod_icon(slug)}<b>{name}</b><span>{line}</span></a>'
 
 
 def product_card(slug):
@@ -84,7 +84,7 @@ BENTO = ['app', 'pages', 'compliance', 'reports', 'connect']
 def bento_tile(slug):
     route, name, pillar, line, _ = PRODUCTS[slug]
     return (f'<a class="bt bt-{slug} rv" href="#/{route}">{mock(slug)}'
-            f'<div class="bt-body"><span class="bt-k btv-{slug}">{VERBS[slug]}</span>'
+            f'<div class="bt-body"><span class="bt-hd">{mod_icon(slug, "mi-sm")}<span class="bt-k btv-{slug}">{VERBS[slug]}</span></span>'
             f'<h3>{name}</h3><p>{line}</p><span class="st st-{STATUS[slug].split()[-1].lower()}">{STATUS[slug]}</span></div></a>')
 
 
@@ -95,7 +95,7 @@ def product_bento():
 
 
 def platform_diagram():
-    groups = ''.join(f'<a class="dg-mod dg-m-{s}" href="#/{PRODUCTS[s][0]}"><span class="dg-sw" aria-hidden="true"><i></i></span><b>{PRODUCTS[s][1]}</b><span>{VERBS[s]}</span></a>' for s in PRODUCTS)
+    groups = ''.join(f'<a class="dg-mod dg-m-{s}" href="#/{PRODUCTS[s][0]}">{mod_icon(s)}<b>{PRODUCTS[s][1]}</b><span>{VERBS[s]}</span></a>' for s in PRODUCTS)
     return f'''<figure class="dg rv" aria-label="How Always Platform fits together">
   <div class="dg-top"><b>Your church or ministry</b><span>Your team, your people, your brand</span></div>
   <div class="dg-mods">{groups}</div>
@@ -159,6 +159,11 @@ MENU_LINE = {
 }
 
 
+def mod_icon(k, cls=''):
+    """The one module icon used everywhere: a sage tile with a green line icon."""
+    return f'<span class="mi{(" " + cls) if cls else ""}" aria-hidden="true"><svg viewBox="0 0 24 24">{ICON[k]}</svg></span>'
+
+
 def _icon(k):
     return f'<span class="dd-ic dd-ic-{k}" aria-hidden="true"><svg viewBox="0 0 24 24">{ICON[k]}</svg></span>'
 
@@ -172,8 +177,8 @@ def menu_html():
                '<b>Five modules. One sign-in.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>'
                '<span class="dd-f-l">See how it fits together</span></a>')
     sol = ''.join(f'<a href="#/{r}" data-route="{r}">{_icon(k)}<span class="dd-tx"><b>{n}</b><span>{MENU_LINE[k]}</span></span></a>' for k, (r, n, l, _, _) in SOLUTIONS.items())
-    story = ('<a class="dd-story" href="#/sydneyfire"><span class="dd-story-img" aria-hidden="true"></span><span class="dd-f-k">Story</span><b>Sydney Fire Evangelism</b>'
-             '<span>Street evangelists with their own branded response app.</span><span class="dd-f-l">Read the story</span></a>')
+    story = ('<a class="dd-story" href="#/stories" data-open-cs="uen"><span class="dd-story-img" aria-hidden="true"></span><span class="dd-f-k">Story</span><b>UEN</b>'
+             '<span>A Christian gaming ministry that helped found Always Platform.</span><span class="dd-f-l">Read the story</span></a>')
     return (
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button>'
         f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-layout">{feature}<div class="dd-grid">{plat}</div></div></div></li>'
@@ -219,7 +224,7 @@ def product_page(slug, intro, feats, works_with, extra='', status=None, primary=
     sec = f'<a class="btn btn-ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
     stmt = f'<section class="sec pd-statement"><div class="wrap"><p class="rv">{statement}</p></div></section>' if statement else ''
     return f'''<section class="page-hero pd-hero"><div class="wrap pd-split">
-  <div><p class="pl-kick">A module of Always Platform</p>
+  <div>{mod_icon(slug, "mi-lg")}<p class="pl-kick">A module of Always Platform</p>
   <h1>{name}</h1>
   <p class="pd-line">{line}</p>
   <p>{intro}</p>{badge}
@@ -378,8 +383,17 @@ CSS = MOCK_CSS + '''
 .st { display: inline-block; align-self: start; width: max-content; margin-top: 12px; padding: 5px 11px; border-radius: 999px; font: 600 13px/1.2 var(--head); background: #E5F0EA; color: #1B4740; }
 .st-pilot { background: #FBE9DD; color: #7A3E1D; }
 .st-development { background: #ECEAE4; color: #4A4A44; }
+.pd-hero p.pd-status { font-size: 14px; line-height: 1; }
 .pd-status { display: inline-block; margin-top: 16px; padding: 8px 14px; border-radius: 999px; background: rgba(248,243,234,.12); font: 600 14px/1 var(--head); color: var(--cream); }
 .pd-with { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.mi { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 14px; background: var(--sage); color: var(--green); }
+.mi svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.mi-sm { width: 32px; height: 32px; border-radius: 10px; } .mi-sm svg { width: 17px; height: 17px; }
+.mi-lg { width: 56px; height: 56px; border-radius: 18px; margin-bottom: 18px; } .mi-lg svg { width: 28px; height: 28px; }
+.pd-hero .mi-lg, .pl-dark .mi-lg { background: rgba(248,243,234,.12); color: var(--cream); }
+.bt-hd { display: flex; align-items: center; gap: 10px; }
+.dg-mod .mi { margin-bottom: 6px; }
+.pd-link .mi { margin-bottom: 6px; }
 .pd-link { display: grid; gap: 6px; padding: 22px; border-radius: 18px; background: #FFFDF8; color: inherit; text-decoration: none; transition: transform .15s ease; }
 .pd-link b { font: 700 18px/1.2 var(--head); color: var(--green); } .pd-link span { font-size: 15px; color: var(--soft); line-height: 1.5; }
 .pd-link:hover, .pd-link:focus-visible { transform: translateY(-2px); }
@@ -482,7 +496,7 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
 .dg-support .dg-pillar { color: var(--green-2); } .dg-connect .dg-pillar { color: #85651F; }
 .dg-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
 .dg-mod { position: relative; display: grid; gap: 6px; padding: 18px 18px 20px; border-radius: 18px; background: #FFFDF8; color: inherit; text-decoration: none; box-shadow: 0 14px 28px -24px rgba(20,53,47,.5); transition: transform .2s ease; }
-.dg-mod b { font: 800 18px/1.2 var(--head); color: var(--green); padding-right: 40px; } .dg-mod > span:last-child { font-size: 14.5px; color: var(--soft); }
+.dg-mod b { font: 800 18px/1.2 var(--head); color: var(--green); } .dg-mod > span:last-child { font-size: 14.5px; color: var(--soft); }
 .dg-mod:hover, .dg-mod:focus-visible { transform: translateY(-2px); }
 .dg-sw { position: absolute; top: 18px; right: 16px; width: 32px; height: 18px; border-radius: 99px; background: var(--green); }
 .dg-sw i { position: absolute; top: 3px; right: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--cream); }
@@ -656,9 +670,7 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
   .dd-tx { display: grid; gap: 2px; }
   .dd-tx b { font: 700 15px/1.25 var(--head); color: var(--green); }
   .dd-tx span { font-size: 13px; line-height: 1.4; color: var(--soft); }
-  .dd-ic { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: var(--peach-soft); color: var(--clay); transition: transform .2s cubic-bezier(.2,.8,.2,1); }
-  .dd-ic-compliance, .dd-ic-reports { background: var(--sage); color: var(--green); }
-  .dd-ic-connect { background: #EFE5D1; color: #85651F; }
+  .dd-ic { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: var(--sage); color: var(--green); transition: transform .2s cubic-bezier(.2,.8,.2,1); }
   .dd-list .dd-ic { background: var(--sage-2); color: var(--green); }
   .dd-ic svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
   .dd-mods a:hover .dd-ic, .dd-mods a:focus-visible .dd-ic, .dd-col a:hover .dd-ic, .dd-list a:hover .dd-ic, .dd-col a:focus-visible .dd-ic, .dd-list a:focus-visible .dd-ic { transform: scale(1.08) rotate(-3deg); }

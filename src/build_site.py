@@ -1181,6 +1181,11 @@ route();
     d.querySelectorAll('img[data-from]').forEach((im) => { if (!im.src) { const src = document.querySelector('img[data-key="' + im.dataset.from + '"]'); if (src) im.src = src.src; } });
     d.showModal(); d.querySelector('.cs-close').focus();
   }));
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('[data-open-cs]'); if (!a) return;
+    e.preventDefault(); if (location.hash !== '#/' && location.hash !== '') location.hash = '#/';
+    setTimeout(() => document.querySelector('.cs-more[data-cs="' + a.dataset.openCs + '"]')?.click(), 350);
+  });
   document.querySelectorAll('.cs-dialog').forEach((d) => {
     d.querySelector('.cs-close').addEventListener('click', () => d.close());
     d.addEventListener('click', (e) => { if (e.target === d) d.close(); });
