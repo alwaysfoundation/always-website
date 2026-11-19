@@ -668,32 +668,43 @@ nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; te
 """
 
 about = """
-<section class="page-hero"><div class="wrap"><h1>About the Always Foundation</h1><p>Together for the Gospel. We bring churches and Christian ministries together, providing the tools, resources and connections they need to serve Christ and their communities.</p></div></section>
-<section class="sec" style="padding-top:96px"><div class="wrap">
-  <div class="about-grid">
-    <div><h2>Why we exist</h2>
-      <p>Always Foundation is a new initiative. We are being established now, and we are testing our first tools with churches and ministries.</p>
-      <p>Across Australia, churches and ministries are sharing the Gospel, making disciples and serving their communities. Jesus sent His Church to “go therefore and make disciples of all nations” (Matthew 28:19, ESV), and no single church or ministry carries that alone.</p>
-      <p>Yet many ministries each build and pay for the same tools, carry heavy administration, and struggle to pass people on to one another safely. Too many people respond to Jesus and never find a church family. We exist to support their work, so ministries can devote more of their time and resources to what matters most.</p></div>
-    <div><h2>How we help</h2>
-      <p><b>Equip.</b> Free, open-source technology and practical tools for churches and Christian organisations, including the Always App for every Christian who shares the Gospel.</p>
-      <p><b>Support.</b> Shared tools for governance, compliance, safeguarding and reporting that make everyday operations simpler.</p>
-      <p><b>Connect.</b> Common standards and a connected network that help ministries work together, share resources and connect people with local churches.</p>
-      <p>All of it runs on Always Platform, our open-source technology. Our focus is Australia, and the Church in other nations is free to use it too.</p></div>
+<section class="page-hero ab-hero"><div class="wrap"><h1>A ministry that serves ministries.</h1><p>Always Foundation brings churches and Christian ministries across Australia together, with shared tools, standards and connections, so they can give more of themselves to the Gospel.</p></div></section>
+<div class="wrap ab-photos" aria-hidden="false">
+  <figure class="rv"><img src="{{AB1}}" alt="A UEN esports event with players on stage and an audience watching large screens" loading="lazy"></figure>
+  <figure class="rv"><img src="{{AB2}}" alt="A crowd in a Sydney city square with hands raised in worship" loading="lazy"></figure>
+  <figure class="rv"><img src="{{AB3}}" alt="Members of the Rejoice team talking and laughing together outdoors" loading="lazy"></figure>
+</div>
+<section class="sec ab-sec"><div class="wrap">
+  <div class="ab-why">
+    <div class="rv"><p class="tag">Why we exist</p><p class="ab-big">Too many people say yes to Jesus and never find a church family.</p></div>
+    <div class="rv">
+      <p>Across Australia, churches and ministries are sharing the Gospel, making disciples and serving their communities. Jesus sent His Church to \u201cgo therefore and make disciples of all nations\u201d (Matthew 28:19, ESV), and no single church or ministry carries that alone.</p>
+      <p>Yet many ministries each build and pay for the same tools, carry heavy administration, and struggle to pass people on to one another safely. We exist to carry that practical work together, so ministries can devote more of their time to what matters most.</p>
+      <p>Always Foundation is new. We are being established now, and we are testing our first tools with churches and ministries.</p>
+    </div>
   </div>
-  <div class="mv">
-    <div><h3>Our vision</h3><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p style="margin-top:12px">Our values: Christ-centred. Gospel first. Built together, shared freely. People's details stay theirs.</p></div>
-    <div><h3>Our name</h3><p>From Jesus' promise in the Great Commission: “I am with you always” (Matthew 28:20, ESV).</p></div>
-    <div><h3>Our posture</h3><p>A ministry that serves ministries. Like those appointed in Acts 6 to carry the practical work, we serve quietly in the background, so churches and ministries can give themselves to the Gospel. We are not on the frontline. We stand behind it.</p></div>
+  <div class="ab-help">
+    <div class="rv"><p class="tag">How we help</p><h2 class="ab-h">Five modules on one platform, shared freely.</h2><p class="ab-lede">Free for churches. Open source. Kept in Australia.</p><a class="btn btn-green" href="#/platform">See Always Platform</a></div>
+    <ul class="ab-mods rv">{{MODS}}</ul>
   </div>
-  <div class="creed">
-    <div><h2>Built together. Shared freely.</h2></div>
+</div></section>
+<section class="sec ab-band"><div class="wrap">
+  <div class="ab-three">
+    <div class="rv"><p class="ab-k">Our name</p><p class="ab-verse">\u201cI am with you always.\u201d</p><p>From Jesus\u2019 promise in the Great Commission (Matthew 28:20, ESV).</p></div>
+    <div class="rv"><p class="ab-k">Our posture</p><p>Like those appointed in Acts 6 to carry the practical work, we serve quietly in the background, so churches and ministries can give themselves to the Gospel. We are not on the frontline. We stand behind it.</p></div>
+    <div class="rv"><p class="ab-k">Our vision</p><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p>Christ-centred. Gospel first. Built together, shared freely. People\u2019s details stay theirs.</p></div>
+  </div>
+</div></section>
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div class="creed rv">
+    <div><h2>Built together. Shared freely.</h2><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join Always</a></div>
     <div><p>Always Foundation is an independent, member-based Christian nonprofit. Our members help shape what we build, contribute to common standards and share in the benefits. Churches use it free, and larger ministries contribute according to their size.</p>
     <p style="margin-top:16px">Members affirm the Nicene Creed (AD 381), so churches across denominations can serve together on the historic faith. The foundation is being established as an Australian not-for-profit company limited by guarantee, to register as a charity with the ACNC.</p></div>
   </div>
-</div>
 </div></section>
 """
+about = about.replace('{{AB1}}', _photo('uen-event.jpg')).replace('{{AB2}}', _photo('sydneyfire-street.jpg')).replace('{{AB3}}', _photo('rejoice-team.jpg'))
+about = about.replace('{{MODS}}', ''.join(f'<li><a href="#/{PR.PRODUCTS[k][0]}"><span>{PR.VERBS[k]}</span><b>{PR.PRODUCTS[k][1]}</b><i aria-hidden="true"></i></a></li>' for k in ['app', 'pages', 'compliance', 'reports', 'connect']))
 
 directory_page = f"""
 <section class="page-hero"><div class="wrap"><h1>The directory</h1><p>{COUNT:,} evangelical and Pentecostal churches and ministries across Australia, and growing every week.</p></div></section>
@@ -1211,7 +1222,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{HM.CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{HM.CSS}{HM.ABOUT_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>

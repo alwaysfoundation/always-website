@@ -1699,6 +1699,39 @@ body.on-hello .hp, body.menu-open .hp { display: none; }
   .cs-tile.active:hover .cs-img > img { transform: none; }
 }
 
+.ab-hero h1 { max-width: 14ch; }
+.ab-hero { padding-bottom: 180px; }
+.ab-photos { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 18px; margin-top: -120px; position: relative; z-index: 2; }
+.ab-photos figure { margin: 0; border-radius: 24px; overflow: hidden; height: clamp(220px, 24vw, 320px); box-shadow: 0 30px 60px -30px rgba(10,30,26,.45); background: var(--night); }
+.ab-photos figure:nth-child(2) { transform: translateY(28px); }
+.ab-photos img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+.ab-photos figure:hover img { transform: scale(1.04); }
+.ab-sec { padding-top: clamp(96px, 10vw, 140px); }
+.ab-why { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+.ab-big { margin: 0; font: 400 clamp(30px, 3.4vw, 46px)/1.18 'Newsreader', Georgia, serif; color: var(--green); letter-spacing: -0.01em; }
+.ab-why p:not(.ab-big):not(.tag) { margin: 0 0 18px; font-size: 18.5px; line-height: 1.65; color: var(--soft); }
+.ab-help { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(40px, 6vw, 96px); margin-top: clamp(80px, 9vw, 128px); padding-top: clamp(56px, 6vw, 80px); border-top: 1px solid var(--line); align-items: start; }
+.ab-h { margin: 0; font-size: clamp(32px, 3.6vw, 48px); letter-spacing: -0.035em; color: var(--green); line-height: 1.05; }
+.ab-lede { margin: 18px 0 28px; font-size: 18.5px; color: var(--soft); }
+.ab-mods { list-style: none; margin: 0; padding: 0; }
+.ab-mods a { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 20px; align-items: center; padding: 22px 4px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; transition: padding .3s cubic-bezier(.2,.7,.2,1), background .3s ease; }
+.ab-mods li:first-child a { border-top: 1px solid var(--line); }
+.ab-mods span { font: 700 13.5px/1.2 var(--head); color: var(--clay); }
+.ab-mods b { grid-row: 2; font: 800 clamp(22px, 2.2vw, 28px)/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
+.ab-mods i { grid-row: 1 / 3; grid-column: 2; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(27,71,64,.22); position: relative; transition: background .25s ease, border-color .25s ease, transform .3s ease; }
+.ab-mods i::after { content: ''; position: absolute; inset: 0; margin: auto; width: 14px; height: 14px; background: var(--green); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.ab-mods a:hover, .ab-mods a:focus-visible { padding-left: 14px; }
+.ab-mods a:hover i, .ab-mods a:focus-visible i { background: var(--green); border-color: var(--green); }
+.ab-mods a:hover i::after, .ab-mods a:focus-visible i::after { background: var(--cream); }
+.ab-band { background: var(--sage); }
+.ab-three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); }
+.ab-three > div { padding-top: 22px; border-top: 2px solid var(--green); }
+.ab-k { margin: 0 0 14px; font: 700 14px/1.2 var(--head); color: var(--clay); }
+.ab-verse { margin: 0 0 12px !important; font: 400 clamp(26px, 2.6vw, 34px)/1.2 'Newsreader', Georgia, serif !important; color: var(--green) !important; }
+.ab-three p:not(.ab-k) { margin: 0 0 12px; font-size: 17px; line-height: 1.6; color: var(--ink); }
+@media (max-width: 900px) { .ab-why, .ab-help, .ab-three { grid-template-columns: minmax(0, 1fr); } .ab-photos { grid-template-columns: 1fr 1fr; } .ab-photos figure:first-child { grid-column: 1 / -1; } .ab-photos figure:nth-child(2) { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ab-photos img, .ab-mods a, .ab-mods i { transition: none; } .ab-photos figure:hover img { transform: none; } }
+
 /* ---- Quiet rows in place of card grids ---- */
 .pg-feats { column-gap: 48px; row-gap: 0; }
 .pg-feats .pg-feat, .pg-sage .pg-feats .pg-feat { background: none; border-radius: 0; padding: 28px 0 32px; border-top: 1px solid rgba(27,71,64,.16); box-shadow: none; }
@@ -2099,30 +2132,39 @@ header.scrolled .hd-progress { opacity: .9; }
 </section>
 </div>
 <div class="page" id="page-about" hidden>
-<section class="page-hero"><div class="wrap"><h1>About the Always Foundation</h1><p>Together for the Gospel. We bring churches and Christian ministries together, providing the tools, resources and connections they need to serve Christ and their communities.</p></div></section>
-<section class="sec" style="padding-top:96px"><div class="wrap">
-  <div class="about-grid">
-    <div><h2>Why we exist</h2>
-      <p>Always Foundation is a new initiative. We are being established now, and we are testing our first tools with churches and ministries.</p>
+<section class="page-hero ab-hero"><div class="wrap"><h1>A ministry that serves ministries.</h1><p>Always Foundation brings churches and Christian ministries across Australia together, with shared tools, standards and connections, so they can give more of themselves to the Gospel.</p></div></section>
+<div class="wrap ab-photos" aria-hidden="false">
+  <figure class="rv"><img src="img/uen-event.webp" alt="A UEN esports event with players on stage and an audience watching large screens" loading="lazy"></figure>
+  <figure class="rv"><img src="img/sydneyfire-street.webp" alt="A crowd in a Sydney city square with hands raised in worship" loading="lazy"></figure>
+  <figure class="rv"><img src="img/rejoice-team.webp" alt="Members of the Rejoice team talking and laughing together outdoors" loading="lazy"></figure>
+</div>
+<section class="sec ab-sec"><div class="wrap">
+  <div class="ab-why">
+    <div class="rv"><p class="tag">Why we exist</p><p class="ab-big">Too many people say yes to Jesus and never find a church family.</p></div>
+    <div class="rv">
       <p>Across Australia, churches and ministries are sharing the Gospel, making disciples and serving their communities. Jesus sent His Church to “go therefore and make disciples of all nations” (Matthew 28:19, ESV), and no single church or ministry carries that alone.</p>
-      <p>Yet many ministries each build and pay for the same tools, carry heavy administration, and struggle to pass people on to one another safely. Too many people respond to Jesus and never find a church family. We exist to support their work, so ministries can devote more of their time and resources to what matters most.</p></div>
-    <div><h2>How we help</h2>
-      <p><b>Equip.</b> Free, open-source technology and practical tools for churches and Christian organisations, including the Always App for every Christian who shares the Gospel.</p>
-      <p><b>Support.</b> Shared tools for governance, compliance, safeguarding and reporting that make everyday operations simpler.</p>
-      <p><b>Connect.</b> Common standards and a connected network that help ministries work together, share resources and connect people with local churches.</p>
-      <p>All of it runs on Always Platform, our open-source technology. Our focus is Australia, and the Church in other nations is free to use it too.</p></div>
+      <p>Yet many ministries each build and pay for the same tools, carry heavy administration, and struggle to pass people on to one another safely. We exist to carry that practical work together, so ministries can devote more of their time to what matters most.</p>
+      <p>Always Foundation is new. We are being established now, and we are testing our first tools with churches and ministries.</p>
+    </div>
   </div>
-  <div class="mv">
-    <div><h3>Our vision</h3><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p style="margin-top:12px">Our values: Christ-centred. Gospel first. Built together, shared freely. People's details stay theirs.</p></div>
-    <div><h3>Our name</h3><p>From Jesus' promise in the Great Commission: “I am with you always” (Matthew 28:20, ESV).</p></div>
-    <div><h3>Our posture</h3><p>A ministry that serves ministries. Like those appointed in Acts 6 to carry the practical work, we serve quietly in the background, so churches and ministries can give themselves to the Gospel. We are not on the frontline. We stand behind it.</p></div>
+  <div class="ab-help">
+    <div class="rv"><p class="tag">How we help</p><h2 class="ab-h">Five modules on one platform, shared freely.</h2><p class="ab-lede">Free for churches. Open source. Kept in Australia.</p><a class="btn btn-green" href="#/platform">See Always Platform</a></div>
+    <ul class="ab-mods rv"><li><a href="#/app"><span>Share Jesus</span><b>Always App</b><i aria-hidden="true"></i></a></li><li><a href="#/pages"><span>Capture every yes</span><b>Always Pages</b><i aria-hidden="true"></i></a></li><li><a href="#/compliance"><span>Stay lawful</span><b>Always Compliance</b><i aria-hidden="true"></i></a></li><li><a href="#/reports"><span>Show the fruit</span><b>Always Reports</b><i aria-hidden="true"></i></a></li><li><a href="#/connect"><span>Hand people on</span><b>Always Connect</b><i aria-hidden="true"></i></a></li></ul>
   </div>
-  <div class="creed">
-    <div><h2>Built together. Shared freely.</h2></div>
+</div></section>
+<section class="sec ab-band"><div class="wrap">
+  <div class="ab-three">
+    <div class="rv"><p class="ab-k">Our name</p><p class="ab-verse">“I am with you always.”</p><p>From Jesus’ promise in the Great Commission (Matthew 28:20, ESV).</p></div>
+    <div class="rv"><p class="ab-k">Our posture</p><p>Like those appointed in Acts 6 to carry the practical work, we serve quietly in the background, so churches and ministries can give themselves to the Gospel. We are not on the frontline. We stand behind it.</p></div>
+    <div class="rv"><p class="ab-k">Our vision</p><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p>Christ-centred. Gospel first. Built together, shared freely. People’s details stay theirs.</p></div>
+  </div>
+</div></section>
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div class="creed rv">
+    <div><h2>Built together. Shared freely.</h2><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join Always</a></div>
     <div><p>Always Foundation is an independent, member-based Christian nonprofit. Our members help shape what we build, contribute to common standards and share in the benefits. Churches use it free, and larger ministries contribute according to their size.</p>
     <p style="margin-top:16px">Members affirm the Nicene Creed (AD 381), so churches across denominations can serve together on the historic faith. The foundation is being established as an Australian not-for-profit company limited by guarantee, to register as a charity with the ACNC.</p></div>
   </div>
-</div>
 </div></section>
 </div>
 <div class="page" id="page-docs" hidden>

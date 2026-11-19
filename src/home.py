@@ -135,3 +135,38 @@ JS = r'''
   addEventListener('resize', sync); sync();
 })();
 '''
+
+ABOUT_CSS = r'''
+.ab-hero h1 { max-width: 14ch; }
+.ab-hero { padding-bottom: 180px; }
+.ab-photos { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 18px; margin-top: -120px; position: relative; z-index: 2; }
+.ab-photos figure { margin: 0; border-radius: 24px; overflow: hidden; height: clamp(220px, 24vw, 320px); box-shadow: 0 30px 60px -30px rgba(10,30,26,.45); background: var(--night); }
+.ab-photos figure:nth-child(2) { transform: translateY(28px); }
+.ab-photos img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+.ab-photos figure:hover img { transform: scale(1.04); }
+.ab-sec { padding-top: clamp(96px, 10vw, 140px); }
+.ab-why { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+.ab-big { margin: 0; font: 400 clamp(30px, 3.4vw, 46px)/1.18 'Newsreader', Georgia, serif; color: var(--green); letter-spacing: -0.01em; }
+.ab-why p:not(.ab-big):not(.tag) { margin: 0 0 18px; font-size: 18.5px; line-height: 1.65; color: var(--soft); }
+.ab-help { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(40px, 6vw, 96px); margin-top: clamp(80px, 9vw, 128px); padding-top: clamp(56px, 6vw, 80px); border-top: 1px solid var(--line); align-items: start; }
+.ab-h { margin: 0; font-size: clamp(32px, 3.6vw, 48px); letter-spacing: -0.035em; color: var(--green); line-height: 1.05; }
+.ab-lede { margin: 18px 0 28px; font-size: 18.5px; color: var(--soft); }
+.ab-mods { list-style: none; margin: 0; padding: 0; }
+.ab-mods a { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 20px; align-items: center; padding: 22px 4px; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; transition: padding .3s cubic-bezier(.2,.7,.2,1), background .3s ease; }
+.ab-mods li:first-child a { border-top: 1px solid var(--line); }
+.ab-mods span { font: 700 13.5px/1.2 var(--head); color: var(--clay); }
+.ab-mods b { grid-row: 2; font: 800 clamp(22px, 2.2vw, 28px)/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
+.ab-mods i { grid-row: 1 / 3; grid-column: 2; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(27,71,64,.22); position: relative; transition: background .25s ease, border-color .25s ease, transform .3s ease; }
+.ab-mods i::after { content: ''; position: absolute; inset: 0; margin: auto; width: 14px; height: 14px; background: var(--green); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.ab-mods a:hover, .ab-mods a:focus-visible { padding-left: 14px; }
+.ab-mods a:hover i, .ab-mods a:focus-visible i { background: var(--green); border-color: var(--green); }
+.ab-mods a:hover i::after, .ab-mods a:focus-visible i::after { background: var(--cream); }
+.ab-band { background: var(--sage); }
+.ab-three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); }
+.ab-three > div { padding-top: 22px; border-top: 2px solid var(--green); }
+.ab-k { margin: 0 0 14px; font: 700 14px/1.2 var(--head); color: var(--clay); }
+.ab-verse { margin: 0 0 12px !important; font: 400 clamp(26px, 2.6vw, 34px)/1.2 'Newsreader', Georgia, serif !important; color: var(--green) !important; }
+.ab-three p:not(.ab-k) { margin: 0 0 12px; font-size: 17px; line-height: 1.6; color: var(--ink); }
+@media (max-width: 900px) { .ab-why, .ab-help, .ab-three { grid-template-columns: minmax(0, 1fr); } .ab-photos { grid-template-columns: 1fr 1fr; } .ab-photos figure:first-child { grid-column: 1 / -1; } .ab-photos figure:nth-child(2) { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ab-photos img, .ab-mods a, .ab-mods i { transition: none; } .ab-photos figure:hover img { transform: none; } }
+'''
