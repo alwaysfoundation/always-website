@@ -5,7 +5,7 @@ REVIEW = '<p class="doc-review">This draft is being reviewed by our lawyers befo
 INTRO = """
 <p class="lead">Always Foundation is a ministry that serves ministries. We build shared tools for churches and Christian ministries across Australia, so no one who says yes to Jesus walks alone.</p>
 <p>Every week people respond to Jesus at concerts, camps, services, on the street and online. Always Platform makes sure that moment becomes a next step: the person chooses what would help, and a church or ministry nearby gets in touch. If no one can, our care team helps.</p>
-<h2>Five modules, one platform</h2>
+<h2>How the tools fit together</h2>
 <div class="dcards">
 <a href="#/docs/app"><span>Share Jesus</span><b>Always App</b><em>Share the Good News and capture a yes, at an event or in a conversation.</em></a>
 <a href="#/docs/senders"><span>Capture every yes</span><b>Always Respond</b><em>Respond by QR code, tap, ticket or link, under your own brand.</em></a>

@@ -61,24 +61,27 @@ def closing(slug):
 
 CSS = r'''
 /* ---- Home hero ---- */
-.hx2 { position: relative; overflow: hidden; isolation: isolate; }
-.hx2-in { position: relative; display: grid; justify-items: center; text-align: center; padding: clamp(40px, 8vh, 110px) 0 clamp(56px, 9vh, 120px); }
-.hx2 h1 { margin: 0; font-size: clamp(60px, 10.5vw, 172px); line-height: .9; letter-spacing: -.045em; max-width: 11ch; }
-.hw { display: inline-block; overflow: hidden; padding: 0 .02em .12em; margin-bottom: -.12em; vertical-align: top; }
-.hw > span { display: inline-block; }
-.hx2 .lede { max-width: 36ch; margin: 34px auto 0; font-size: clamp(19px, 1.6vw, 23px); line-height: 1.5; }
-.hx2 .ctas { justify-content: center; margin-top: 34px; }
-.hx2-dawn { position: absolute; inset: -20% -10% auto; height: 140%; z-index: -1; pointer-events: none;
-  background: radial-gradient(38% 30% at 50% 66%, rgba(232,165,119,.34), rgba(232,165,119,0) 72%), radial-gradient(70% 45% at 50% 78%, rgba(232,165,119,.10), rgba(232,165,119,0) 70%); }
+.hx2 { position: relative; overflow: hidden; isolation: isolate; padding-top: clamp(104px, 15vh, 170px) !important; padding-bottom: clamp(48px, 7vw, 96px) !important; }
+.hx2-in { position: relative; display: grid; justify-items: center; text-align: center; padding-top: clamp(0px, 4vh, 60px); padding-bottom: clamp(0px, 3vh, 40px); }
+.hx2 h1 { margin: 0; font-size: clamp(54px, 10.5vw, 172px); line-height: .92; letter-spacing: -.045em; max-width: 11ch; }
+.hw { display: inline-block; white-space: nowrap; overflow: hidden; padding: .04em .015em .14em; margin: -.04em 0 -.14em; vertical-align: top; }
+.hxc { display: inline-block; position: static; }
+.hx2 .lede { max-width: 34ch; margin: 30px auto 0; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.5; color: rgba(248,243,234,.82); }
+.hx2 .ctas { justify-content: center; margin-top: 32px; }
+.hx2-light { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.hx2-light i { position: absolute; left: 50%; top: -30%; width: min(1100px, 120vw); aspect-ratio: 1; border-radius: 50%; transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(248,243,234,.11), rgba(248,243,234,.04) 45%, rgba(248,243,234,0) 70%); }
+.hx2-light i + i { top: auto; bottom: -55%; width: min(900px, 110vw); background: radial-gradient(closest-side, rgba(77,150,128,.35), rgba(77,150,128,0) 70%); }
 @media (prefers-reduced-motion: no-preference) {
-  .hw > span { transform: translateY(105%); filter: blur(10px); opacity: 0; animation: hxWord 1.1s cubic-bezier(.2,.75,.15,1) forwards; animation-delay: calc(.15s + var(--i) * .14s); }
+  .hxc { transform: translateY(105%) rotate(8deg); transform-origin: 0 100%; filter: blur(6px); opacity: 0; animation: hxChar 1s cubic-bezier(.16,.8,.2,1) forwards; animation-delay: calc(.25s + var(--c) * .04s); }
   .hx2 .lede, .hx2 .ctas { opacity: 0; animation: hxFade .9s ease forwards; }
-  .hx2 .lede { animation-delay: .95s; } .hx2 .ctas { animation-delay: 1.15s; }
-  .hx2-dawn { opacity: 0; transform: translateY(8%); animation: hxDawn 2.4s cubic-bezier(.2,.7,.2,1) .4s forwards; }
+  .hx2 .lede { animation-delay: 1s; } .hx2 .ctas { animation-delay: 1.2s; }
+  .hx2-light i { opacity: 0; animation: hxLight 2.2s ease .1s forwards; } .hx2-light i + i { animation-delay: .6s; }
 }
-@keyframes hxWord { to { transform: none; filter: none; opacity: 1; } }
+@keyframes hxChar { 60% { filter: blur(0); } to { transform: none; filter: none; opacity: 1; } }
 @keyframes hxFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-@keyframes hxDawn { to { opacity: 1; transform: none; } }
+@keyframes hxLight { to { opacity: 1; } }
+@media (max-width: 640px) { .hx2 { padding-top: 112px !important; padding-bottom: 40px !important; } .hx2-in { padding-top: 8px; padding-bottom: 0; } .hx2 .ctas { flex-wrap: wrap; } }
 
 /* ---- Home module showcase ---- */
 .ex { max-width: 760px; margin-top: 30px; padding: 26px 30px; border-radius: 24px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.06); }

@@ -174,7 +174,7 @@ def menu_html():
         f'<a href="#/{PRODUCTS[s][0]}" data-route="{PRODUCTS[s][0]}">{_icon(s)}<span class="dd-tx"><b>{PRODUCTS[s][1]}</b><span>{MENU_LINE[s]}</span></span></a>'
         for s in PRODUCTS) + '</div><a class="dd-sol-foot dd-int" href="#/integrations" data-route="integrations">Works with Elvanto, Planning Center, Humanitix and more <b>Integrations</b></a>'
     feature = ('<a class="dd-feature" href="#/platform" data-route="platform"><span class="dd-f-k">Always Platform</span>'
-               '<b>Five modules. One sign-in.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>'
+               '<b>Built once. Shared freely.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>'
                '<span class="dd-f-l">See how it fits together</span></a>')
     sol = ''.join(f'<a href="#/{r}" data-route="{r}">{_icon(k)}<span class="dd-tx"><b>{n}</b><span>{MENU_LINE[k]}</span></span></a>' for k, (r, n, l, _, _) in SOLUTIONS.items())
     story = ('<a class="dd-story" href="#/stories" data-open-cs="uen"><span class="dd-story-img" aria-hidden="true"></span><span class="dd-f-k">Story</span><b>UEN</b>'
@@ -349,7 +349,7 @@ NETWORKS_PAGE = solution_page('networks', [
 
 PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-split">
   <div><p class="pl-kick">Always Platform</p>
-  <h1>Five modules. One sign-in. Shared freely.</h1>
+  <h1>Built once. Shared by every ministry.</h1>
   <p>One open-source platform with shared data and one sign-in. Your team switches on the modules your ministry needs, and developers can build on the same foundation.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/developers">For developers</a></div></div>
   {switcher()}

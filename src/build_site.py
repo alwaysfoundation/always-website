@@ -702,7 +702,7 @@ about = """
     </div>
   </div>
   <div class="ab-help">
-    <div class="rv"><p class="tag">How we help</p><h2 class="ab-h">Five modules on one platform, shared freely.</h2><p class="ab-lede">Free for churches. Open source. Kept in Australia.</p><a class="btn btn-green" href="#/platform">See Always Platform</a></div>
+    <div class="rv"><p class="tag">How we help</p><h2 class="ab-h">Practical tools, built once and shared freely.</h2><p class="ab-lede">Free for churches. Open source. Kept in Australia.</p><a class="btn btn-green" href="#/platform">See Always Platform</a></div>
     <ul class="ab-mods rv">{{MODS}}</ul>
   </div>
 </div></section>
@@ -1262,7 +1262,6 @@ U = 'https://images.unsplash.com/'
 PHOTOS = [  # (photo id, where: (page id, anchor inside it))
   ('photo-1790805370091-2c237d73bf16', ('page-churches', '<section class="sec pg-sec')),
   ('photo-1663162550932-f67b561e656f', ('page-ministries', '<section class="sec pg-sec')),
-  ('photo-1775400713633-e4b2b3577fb7', ('page-app', '<section class="sec pg-sec')),
 ]
 for _pid, (_page, _anchor) in PHOTOS:
     _p = doc.index(f'id="{_page}"'); _i = doc.find(_anchor, _p)

@@ -87,49 +87,55 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
 
 app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
-APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div>{PR.mod_icon("app", "mi-lg")}<p class="pl-kick">A module of Always Platform</p><h1>Always App</h1><p class="pd-line">A Bible, guides and training to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="https://app.alwaysfoundation.org" style="margin-top:28px">Open the Always App</a></div>
-  <div class="pg-hero-ph">{app_home}</div>
+import os as _os
+from PIL import Image as _Img
+def _shot(name):
+    src = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'img', 'app', name + '.png')
+    out_dir = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'img', 'app'); _os.makedirs(out_dir, exist_ok=True)
+    im = _Img.open(src).convert('RGB'); im = im.resize((520, round(im.height * 520 / im.width)), _Img.LANCZOS)
+    im.save(_os.path.join(out_dir, name + '.webp'), 'WEBP', quality=80, method=6)
+    return 'img/app/' + name + '.webp'
+def ph(name, alt, cls=''):
+    return f'<figure class="ap-ph {cls}"><img src="{_shot(name)}" alt="{alt}" loading="lazy" width="390" height="844"></figure>'
+AP_QR = """<svg class="ap-qr-svg" role="img" aria-label="QR code for app.alwaysfoundation.org" viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg"><rect width="33" height="33" fill="#fff"/><path d="M2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM13 2h1v1h-1zM17 2h1v1h-1zM18 2h1v1h-1zM19 2h1v1h-1zM20 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM26 2h1v1h-1zM27 2h1v1h-1zM28 2h1v1h-1zM29 2h1v1h-1zM30 2h1v1h-1zM2 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM12 3h1v1h-1zM18 3h1v1h-1zM21 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM8 4h1v1h-1zM10 4h1v1h-1zM11 4h1v1h-1zM14 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h1v1h-1zM27 4h1v1h-1zM28 4h1v1h-1zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM21 5h1v1h-1zM22 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM27 5h1v1h-1zM28 5h1v1h-1zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1zM12 6h1v1h-1zM16 6h1v1h-1zM17 6h1v1h-1zM18 6h1v1h-1zM19 6h1v1h-1zM20 6h1v1h-1zM21 6h1v1h-1zM24 6h1v1h-1zM26 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM17 7h1v1h-1zM18 7h1v1h-1zM19 7h1v1h-1zM20 7h1v1h-1zM22 7h1v1h-1zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM25 8h1v1h-1zM26 8h1v1h-1zM27 8h1v1h-1zM28 8h1v1h-1zM29 8h1v1h-1zM30 8h1v1h-1zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM18 9h1v1h-1zM21 9h1v1h-1zM2 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM15 10h1v1h-1zM19 10h1v1h-1zM21 10h1v1h-1zM22 10h1v1h-1zM23 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM29 10h1v1h-1zM30 10h1v1h-1zM2 11h1v1h-1zM3 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM14 11h1v1h-1zM15 11h1v1h-1zM18 11h1v1h-1zM21 11h1v1h-1zM25 11h1v1h-1zM26 11h1v1h-1zM28 11h1v1h-1zM29 11h1v1h-1zM5 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM15 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM23 12h1v1h-1zM25 12h1v1h-1zM28 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM10 13h1v1h-1zM11 13h1v1h-1zM14 13h1v1h-1zM15 13h1v1h-1zM18 13h1v1h-1zM19 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM22 13h1v1h-1zM23 13h1v1h-1zM24 13h1v1h-1zM27 13h1v1h-1zM30 13h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM8 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM12 14h1v1h-1zM13 14h1v1h-1zM14 14h1v1h-1zM15 14h1v1h-1zM17 14h1v1h-1zM18 14h1v1h-1zM22 14h1v1h-1zM24 14h1v1h-1zM25 14h1v1h-1zM30 14h1v1h-1zM6 15h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM15 15h1v1h-1zM16 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM20 15h1v1h-1zM24 15h1v1h-1zM26 15h1v1h-1zM27 15h1v1h-1zM28 15h1v1h-1zM29 15h1v1h-1zM30 15h1v1h-1zM4 16h1v1h-1zM5 16h1v1h-1zM6 16h1v1h-1zM7 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM15 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM21 16h1v1h-1zM26 16h1v1h-1zM28 16h1v1h-1zM30 16h1v1h-1zM3 17h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM10 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM21 17h1v1h-1zM24 17h1v1h-1zM26 17h1v1h-1zM28 17h1v1h-1zM30 17h1v1h-1zM2 18h1v1h-1zM4 18h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM11 18h1v1h-1zM16 18h1v1h-1zM22 18h1v1h-1zM27 18h1v1h-1zM2 19h1v1h-1zM7 19h1v1h-1zM11 19h1v1h-1zM14 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM18 19h1v1h-1zM20 19h1v1h-1zM21 19h1v1h-1zM22 19h1v1h-1zM23 19h1v1h-1zM26 19h1v1h-1zM28 19h1v1h-1zM29 19h1v1h-1zM2 20h1v1h-1zM3 20h1v1h-1zM8 20h1v1h-1zM9 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM21 20h1v1h-1zM24 20h1v1h-1zM25 20h1v1h-1zM26 20h1v1h-1zM27 20h1v1h-1zM30 20h1v1h-1zM2 21h1v1h-1zM3 21h1v1h-1zM5 21h1v1h-1zM9 21h1v1h-1zM11 21h1v1h-1zM12 21h1v1h-1zM13 21h1v1h-1zM16 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM22 21h1v1h-1zM23 21h1v1h-1zM24 21h1v1h-1zM26 21h1v1h-1zM27 21h1v1h-1zM28 21h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM8 22h1v1h-1zM11 22h1v1h-1zM12 22h1v1h-1zM14 22h1v1h-1zM15 22h1v1h-1zM16 22h1v1h-1zM17 22h1v1h-1zM18 22h1v1h-1zM19 22h1v1h-1zM21 22h1v1h-1zM22 22h1v1h-1zM23 22h1v1h-1zM24 22h1v1h-1zM25 22h1v1h-1zM26 22h1v1h-1zM27 22h1v1h-1zM28 22h1v1h-1zM29 22h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM16 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM21 23h1v1h-1zM22 23h1v1h-1zM26 23h1v1h-1zM27 23h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM5 24h1v1h-1zM6 24h1v1h-1zM7 24h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM12 24h1v1h-1zM13 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM14 25h1v1h-1zM16 25h1v1h-1zM17 25h1v1h-1zM18 25h1v1h-1zM19 25h1v1h-1zM20 25h1v1h-1zM21 25h1v1h-1zM22 25h1v1h-1zM26 25h1v1h-1zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h1v1h-1zM5 26h1v1h-1zM6 26h1v1h-1zM8 26h1v1h-1zM10 26h1v1h-1zM14 26h1v1h-1zM15 26h1v1h-1zM16 26h1v1h-1zM17 26h1v1h-1zM20 26h1v1h-1zM21 26h1v1h-1zM22 26h1v1h-1zM23 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM27 26h1v1h-1zM29 26h1v1h-1zM30 26h1v1h-1zM2 27h1v1h-1zM4 27h1v1h-1zM5 27h1v1h-1zM6 27h1v1h-1zM8 27h1v1h-1zM10 27h1v1h-1zM13 27h1v1h-1zM14 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM19 27h1v1h-1zM20 27h1v1h-1zM22 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM30 27h1v1h-1zM2 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM11 28h1v1h-1zM12 28h1v1h-1zM13 28h1v1h-1zM14 28h1v1h-1zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM22 28h1v1h-1zM23 28h1v1h-1zM25 28h1v1h-1zM26 28h1v1h-1zM28 28h1v1h-1zM29 28h1v1h-1zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM13 29h1v1h-1zM15 29h1v1h-1zM17 29h1v1h-1zM20 29h1v1h-1zM21 29h1v1h-1zM24 29h1v1h-1zM25 29h1v1h-1zM26 29h1v1h-1zM27 29h1v1h-1zM28 29h1v1h-1zM30 29h1v1h-1zM2 30h1v1h-1zM3 30h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM7 30h1v1h-1zM8 30h1v1h-1zM10 30h1v1h-1zM16 30h1v1h-1zM21 30h1v1h-1zM22 30h1v1h-1zM25 30h1v1h-1zM26 30h1v1h-1z" fill="#14352F"/></svg>"""
+STEPS_APP = [
+    ('Before', 'Ready for any conversation', 'Guides for friends of every background, your own story in three minutes, and training from partners like The Global Harvest and NeedGod.net.', 'learn', 'The Learn screen of the Always App'),
+    ('During', 'God&rsquo;s story, in their language', 'Created, broken, rescued, restored. Four moments you can share in a few minutes, in seven languages spoken across Australia.', 'story-zh', 'God&rsquo;s story in Simplified Chinese'),
+    ('The yes', 'A next step, right there', 'Show a QR code or hand them your phone. With their consent, a church near home is introduced to welcome them.', 'gather', 'The Gather screen with a QR code'),
+    ('After', 'Walk with them', 'Gentle steps over their first month, a Today card on your home screen, and reminders in your own calendar.', 'walk', 'Walking with Sam, with steps for the month'),
+]
+APP = f'''<section class="page-hero ap-hero"><div class="wrap ap-hero-in">
+  <div class="ap-copy">{PR.mod_icon("app", "mi-lg")}<p class="pl-kick">Always App</p>
+  <h1>Share Jesus.<br>Walk with people.</h1>
+  <p>A Bible, God&rsquo;s story in seven languages, training and a gentle way to walk with people who say yes. Free, and nothing to download.</p>
+  <div class="pg-cta"><a class="btn btn-peach" href="https://app.alwaysfoundation.org">Open the Always App</a><a class="btn btn-ghost" href="#/docs/app">How it works</a></div>
+  <div class="ap-qr"><span>{AP_QR}</span><p>On a computer? Scan to open it on your phone.</p></div></div>
+  <div class="ap-stage" aria-hidden="true">{ph('story-zh', '', 'ap-l')}{ph('home', '', 'ap-c')}{ph('card', '', 'ap-r')}</div>
 </div></section>
-<section class="sec pg-sec"><div class="wrap">
-  <h2 class="pg-h rv">What's inside</h2>
-  <p class="pg-lead rv">A free web app with everything you need to share Jesus. Nothing to download: open <a href="https://app.alwaysfoundation.org">app.alwaysfoundation.org</a> on your phone and add it to your home screen.</p>
-  <div class="pg-minis">
-    {mini('Bible', '<p class="pg-cap">John 3 · WEB</p><span class="pg-big">3</span><p class="pg-read"><sup>16</sup> <mark>For God so loved the world, that he gave his one and only Son…</mark></p>')}
-    {mini('Learn', '<p class="pg-cap">The Always path</p>' + ''.join(f'<div class="pg-path"><i class="s{i}"></i><b>0{i+1} / {s}</b></div>' for i, s in enumerate(['Understand', 'Live', 'Share', 'Walk'])))}
-    {mini('Gather', '<p class="pg-serif sm">Someone said yes to Jesus. Give them a next step.</p><div class="pg-tile">Show a QR code</div><div class="pg-card">Connect someone now</div>')}
-    {mini('Walk', '<p class="pg-cap">Walking with Sam</p>' + ''.join(f'<div class="pg-tick{" done" if d else ""}"><i></i>{t}</div>' for t, d in [('Send a welcome message', 1), ('Share John 3', 1), ('Coffee this week', 0), ('Church together', 0)]))}
-    {mini('Connect', '<p class="pg-cap">Near you</p><div class="pg-mapbox"></div><div class="pg-card">Hope Church Parramatta</div><div class="pg-card">City worship night · Fri</div>')}
-  </div>
-  <p class="pg-built rv">Built on <a href="#/platform">Always Platform</a>. Connect uses the church feed and events. Gather uses Always Respond and Always Connect. The Bible has KJV and WEB built in, with more translations through the YouVersion Platform.</p>
+<section class="sec pg-sec ap-journey"><div class="wrap">
+  <h2 class="pg-h rv">From hello to home.</h2>
+  <p class="pg-lead rv">One app for the whole conversation, from the first hello to a church family.</p>
+  <ol class="ap-steps">{''.join(f'<li class="rv"><div class="ap-step-ph">{ph(img, alt)}</div><p class="ap-n"><span>{i}</span>{k}</p><h3>{t}</h3><p>{d}</p></li>' for i, (k, t, d, img, alt) in enumerate(STEPS_APP, 1))}</ol>
 </div></section>
-<section class="sec pg-sec app-new"><div class="wrap">
-  <h2 class="pg-h rv">New in the Always App</h2>
-  <p class="pg-lead rv">Simple tools for the moments that matter, all made on your phone.</p>
-  <div class="app-new-grid">
-    <div class="an rv an-card"><div class="an-art" aria-hidden="true"><div class="an-share"><span class="an-k">You&rsquo;re invited</span><span class="an-t">Come as you are</span><span class="an-s">Tuesdays at 7pm</span></div></div><h3>Share cards</h3><p>Turn a verse or an invitation into a beautiful card, ready to send. Made on your phone, nothing uploaded.</p></div>
-    <div class="an rv"><div class="an-art" aria-hidden="true"><div class="an-langs"><span>English</span><span lang="zh-Hans">简体中文</span><span lang="zh-Hant">繁體中文</span><span lang="vi">Tiếng Việt</span><span lang="ar" dir="rtl">العربية</span><span lang="ko">한국어</span><span>Tagalog</span></div></div><h3>God&rsquo;s story in seven languages</h3><p>Created, broken, rescued, restored, in languages spoken across Australia, so more people hear it in their heart language.</p></div>
-    <div class="an rv"><div class="an-art" aria-hidden="true"><div class="an-today"><span class="an-k">Today</span><b>Pray for Sam by name</b><span class="an-s">Coffee on Saturday</span></div></div><h3>A rhythm for walking with people</h3><p>Gentle steps over someone&rsquo;s first month, a Today card on your home screen, and reminders you can add to your own calendar.</p></div>
-    <div class="an rv"><div class="an-art" aria-hidden="true"><div class="an-ptrs"><span class="an-mono">GH</span><span class="an-mono an-ng">NG</span></div></div><h3>Learn from partners</h3><p>Training from The Global Harvest and NeedGod.net, credited and one tap away, opening on their own sites.</p></div>
-    <div class="an rv"><div class="an-art" aria-hidden="true"><div class="an-today"><span class="an-k">Baptism</span><b>Ready to be baptised?</b><span class="an-s">A local church, a partner, or both</span></div></div><h3>A simple way to ask about baptism</h3><p>Someone chooses who helps them take the step, each by its own tick. Young people go only to a safe local church.</p></div>
-    <div class="an rv"><div class="an-art an-dark" aria-hidden="true"><div class="an-modes"><i></i><i></i></div></div><h3>Light and dark</h3><p>It follows your phone, or choose Light, Warm or Dark. Your notes and people stay on your phone either way.</p></div>
-  </div>
+<section class="sec pg-sec ap-rows"><div class="wrap">
+  <div class="ap-row rv"><div class="ap-row-art ap-duo">{ph('bible', 'The Bible in light mode')}{ph('bible-dark', 'The Bible in dark mode')}</div>
+    <div class="ap-row-tx"><h2>A Bible that feels like home.</h2><p>Read, highlight, bookmark and listen, with notes kept on your phone. It follows your phone&rsquo;s light or dark setting, or choose Light, Warm or Dark.</p></div></div>
+  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('card', 'Making an invitation card')}</div>
+    <div class="ap-row-tx"><h2>Share cards in seconds.</h2><p>Turn a verse or an invitation into a beautiful card in four styles, ready to send in any message. It&rsquo;s made on your phone and nothing is uploaded.</p></div></div>
+  <div class="ap-row rv"><div class="ap-row-art">{ph('partner', 'Training by NeedGod.net')}</div>
+    <div class="ap-row-tx"><h2>Learn from people who do it every week.</h2><p>Training from The Global Harvest and NeedGod.net sits beside our own guides, credited to them and opening on their own sites.</p></div></div>
+  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('baptism', 'Asking about baptism')}</div>
+    <div class="ap-row-tx"><h2>Ready to be baptised?</h2><p>Anyone can ask. They choose who helps them take the step: a local church, a partner, or both, each by its own tick.</p></div></div>
 </div></section>
-<section class="sec pg-sec pg-sage"><div class="wrap">
-  <h2 class="pg-h rv">Made for evangelists, and for everyone</h2>
-  {feats([('A beautiful Bible', 'KJV and WEB built in, more through YouVersion. Highlight, share verses as images, listen with soft music and a sleep timer.'), ('Conversation guides', 'How to share with someone with no faith, a Muslim friend, a Jehovah\'s Witness, a Buddhist and more.'), ('Altar calls and the street', 'Start a response point in seconds, coach the moment, and connect people with their yes.'), ('Prayer list and field notes', 'Pray for people by name and keep short notes after a conversation. They stay in your browser, on your own device.'), ('Church team inbox', 'Connect leads accept introductions in Always Connect, on the web.'), ('Private by design', 'Your prayer list, notes and plans stay on your own device. No ads.')])}
+<section class="sec pg-sec ap-trust"><div class="wrap ap-trust-in rv">
+  <span class="ap-lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+  <div><h2>Your phone, your notes.</h2><p>The people you pray for, your notes and your highlights stay on your phone. No ads and no tracking. <a href="#/docs/saving">How your information is saved</a></p></div>
 </div></section>
-<section class="sec pg-sec"><div class="wrap">
-  <h2 class="pg-h rv">Training</h2>
-  <p class="pg-lead rv">Short, free courses you can do in any browser, made with evangelists and churches, plus training from partners like The Global Harvest and NeedGod.net.</p>
-  {feats([('Sharing your story', 'Tell how Jesus changed your life, in three minutes, in your own words.'), ('Leading someone to Jesus', 'What to say, how to pray, and what to do next when someone says yes.'), ('Welcoming well', 'For church connect leads: the first call, the first coffee, the first Sunday.'), ('Safe ministry with young people', 'Child safe practice for youth leaders and events.'), ('Conversations across faiths', 'Listening well and sharing gently with friends of other beliefs.'), ('Walking with someone', 'The first months of following Jesus: Bible, prayer, church and friends.')])}
-</div></section>
-<section class="sec pg-sec pg-sage"><div class="wrap">
-  <h2 class="pg-h rv">Tools for your team</h2>
-  <p class="pg-lead rv">Running a street team, an outreach or a tour? Get your own branded response app on Always Platform, like Sydney Fire Evangelism's, and use the same open tools we use, free.</p>
-  {feats([('Response pages and QR codes', 'People say yes on a page with your name on it, and get a next step near home.'), ('Find a church near me', 'Add our church finder to your website or app in one line.'), ('Your own branded app', 'Like Sydney Fire Evangelism: your logo, your next steps, and contacts saved safely in Australia.'), ('Agents for follow-up', 'Reminders and message drafts after outreach. A person approves every step.'), ('Reports for funders', 'Monthly reports written for you, with totals only.'), ('Open source', 'Every tool is open, so you can check it, improve it or run it yourself.')])}
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Get started</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
+<section class="sec pg-sec ap-end"><div class="wrap ap-end-in">
+  <div><h2>Open it on your phone.</h2><p>Free for every Christian. Add it to your home screen and it works like any other app.</p><div class="pg-cta"><a class="btn btn-peach" href="https://app.alwaysfoundation.org">Open the Always App</a><a class="btn btn-ghost" href="#/join/evangelist">For street teams and ministries</a></div></div>
+  <span class="ap-qr-lg">{AP_QR}</span>
 </div></section>'''
+
 
 FAQ_GROUPS = [
  ('About Always', [
@@ -191,6 +197,62 @@ FAQ = '<section class="page-hero"><div class="wrap"><h1>FAQs</h1><p>Short answer
   '<div class="pg-faq-more"><h3>Still have a question?</h3><p>We\'d love to hear from you, and to book a catch-up call. <a href="#/contact">Get in touch</a> or email <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p></div></div></div></section>'
 
 CSS = '''
+/* ---- App page ---- */
+.ap-hero { overflow: hidden; }
+.ap-hero-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 40px; align-items: center; }
+.ap-copy h1 { font-size: clamp(44px, 5.4vw, 82px); line-height: .95; letter-spacing: -.04em; }
+.ap-copy > p:not(.pl-kick) { max-width: 42ch; margin-top: 22px; font-size: 19px; line-height: 1.55; }
+.ap-qr { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
+.ap-qr span { flex: none; width: 76px; height: 76px; padding: 6px; border-radius: 14px; background: #fff; line-height: 0; }
+.ap-qr svg, .ap-qr-lg svg { width: 100%; height: 100%; }
+.page-hero .ap-qr p { margin: 0; max-width: 22ch; font-size: 14.5px; opacity: .75; }
+.ap-ph { margin: 0; border-radius: 42px; padding: 9px; background: #0E1613; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.08), 0 40px 80px -36px rgba(0,0,0,.65); }
+.ap-ph img { display: block; width: 100%; height: auto; border-radius: 34px; }
+.ap-stage { position: relative; height: clamp(520px, 52vw, 680px); }
+.ap-stage .ap-ph { position: absolute; top: 50%; width: clamp(200px, 19vw, 280px); }
+.ap-c { left: 50%; z-index: 3; transform: translate(-50%, -50%); }
+.ap-l { left: 50%; z-index: 1; transform: translate(-118%, -46%) rotate(-7deg); opacity: .92; }
+.ap-r { left: 50%; z-index: 2; transform: translate(18%, -44%) rotate(6deg); opacity: .95; }
+@media (prefers-reduced-motion: no-preference) {
+  .ap-stage .ap-ph { animation: apIn 1s cubic-bezier(.2,.75,.15,1) both; }
+  .ap-c { animation-delay: .1s !important; } .ap-l { animation-delay: .3s !important; } .ap-r { animation-delay: .45s !important; }
+}
+@keyframes apIn { from { opacity: 0; margin-top: 40px; } to { margin-top: 0; } }
+.ap-steps { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 44px 0 0; padding: 0; }
+.ap-step-ph { padding: 26px 26px 0; border-radius: 28px 28px 0 0; background: linear-gradient(170deg, #E7F0EA, #D5E5DB); height: 340px; overflow: hidden; }
+.ap-steps li:nth-child(2) .ap-step-ph { background: linear-gradient(170deg, #F8E6D6, #F1D2B9); }
+.ap-steps li:nth-child(3) .ap-step-ph { background: linear-gradient(170deg, #1F5248, #14352F); }
+.ap-steps li:nth-child(4) .ap-step-ph { background: linear-gradient(170deg, #EFE6D6, #E4D6BE); }
+.ap-step-ph .ap-ph { border-radius: 34px 34px 0 0; padding-bottom: 0; } .ap-step-ph .ap-ph img { border-radius: 26px 26px 0 0; }
+.ap-n { display: flex; align-items: center; gap: 10px; margin-top: 22px; font: 700 14px/1 var(--head); color: var(--clay, #A4562A); }
+.ap-n span { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--green); color: var(--cream); font-size: 13px; }
+.ap-steps h3 { margin-top: 10px; font: 800 21px/1.25 var(--head); color: var(--green); }
+.ap-steps li > p:last-child { margin-top: 8px; font-size: 15.5px; line-height: 1.55; color: var(--soft); }
+.ap-rows .wrap { display: grid; gap: clamp(64px, 9vw, 120px); }
+.ap-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.ap-flip .ap-row-art { order: 2; }
+.ap-row-art { display: grid; place-items: center; padding: clamp(32px, 4vw, 56px); border-radius: 36px; background: radial-gradient(80% 70% at 50% 30%, #E9F1EB, #D6E5DB); }
+.ap-flip .ap-row-art { background: radial-gradient(80% 70% at 50% 30%, #FBEBDD, #F2D6C0); }
+.ap-row-art .ap-ph { width: min(260px, 64%); }
+.ap-duo { grid-template-columns: 1fr 1fr; gap: 18px; } .ap-duo .ap-ph { width: 100%; } .ap-duo .ap-ph + .ap-ph { transform: translateY(36px); }
+.ap-row-tx h2 { font: 800 clamp(32px, 3.6vw, 48px)/1.05 var(--head); letter-spacing: -.03em; color: var(--green); }
+.ap-row-tx p { margin-top: 18px; max-width: 44ch; font-size: 18px; line-height: 1.6; color: var(--soft); }
+.ap-trust-in { display: flex; gap: 22px; align-items: center; padding: 34px 38px; border-radius: 28px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.05); }
+.ap-lock { display: grid; place-items: center; flex: none; width: 60px; height: 60px; border-radius: 20px; background: var(--green); color: var(--cream); } .ap-lock svg { width: 28px; height: 28px; }
+.ap-trust h2 { font: 800 26px/1.2 var(--head); color: var(--green); } .ap-trust p { margin-top: 6px; font-size: 16.5px; line-height: 1.55; color: var(--soft); } .ap-trust a { color: var(--green); font-weight: 600; }
+.ap-end { background: var(--green); color: var(--cream); }
+.ap-end-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; }
+.ap-end h2 { font: 800 clamp(36px, 4.4vw, 60px)/1 var(--head); letter-spacing: -.035em; color: var(--cream); }
+.ap-end p { margin-top: 16px; max-width: 40ch; font-size: 18px; line-height: 1.55; color: rgba(248,243,234,.78); }
+.ap-qr-lg { display: block; width: 180px; height: 180px; padding: 14px; border-radius: 24px; background: #fff; line-height: 0; }
+@media (max-width: 1000px) {
+  .ap-hero-in, .ap-row, .ap-end-in { grid-template-columns: 1fr; } .ap-flip .ap-row-art { order: 0; }
+  .ap-steps { grid-template-columns: 1fr 1fr; } .ap-stage { height: 560px; } .ap-qr { display: none; }
+}
+@media (max-width: 600px) {
+  .ap-steps { grid-template-columns: 1fr; } .ap-stage { height: 470px; } .ap-stage .ap-ph { width: 190px; }
+  .ap-trust-in { flex-direction: column; align-items: flex-start; } .ap-qr-lg { display: none; }
+}
 /* ---- New in the Always App ---- */
 .app-new-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
 .an { display: grid; align-content: start; gap: 10px; }
