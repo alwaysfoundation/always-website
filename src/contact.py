@@ -110,7 +110,8 @@ CSS = '''
 .qr-svg { width: 100%; height: auto; display: block; shape-rendering: crispEdges; }
 .cf-qr b { display: block; font: 700 16px/1.3 var(--head); color: var(--cream); }
 .cf-qr span { display: block; margin-top: 4px; font-size: 14.5px; line-height: 1.45; opacity: .85; }
-.cf-qr-actions { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; }
+.cf-qr-actions { display: flex; align-items: center; gap: 18px; margin-top: 10px; flex-wrap: wrap; }
+.cf-qr-actions > a, .cf-qr-actions > button { display: inline-flex; align-items: center; margin: 0; border: 0; box-shadow: none; vertical-align: middle; }
 .cf-qr-actions a, .cf-qr-actions button { background: none; border: 0; padding: 0; min-height: 32px; font: 700 14px/1 var(--head); color: var(--peach); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
 
 /* ---- Home invitation ---- */

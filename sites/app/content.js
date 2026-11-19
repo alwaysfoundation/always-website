@@ -1,6 +1,34 @@
 // Always App content. Bible references are loaded from the translation the person has chosen (KJV or WEB, both public domain).
 // Refs: 'BOOK chapter verse' or 'BOOK chapter verse-verse'.
 window.AC = {
+
+  // Partner training. We link out to each partner's own pages and credit them; their content stays theirs.
+  partners: [
+    { id: 'tgh', name: 'The Global Harvest', short: 'Global Harvest', mono: 'GH', tone: 'sage', tag: 'Make disciples who make disciples',
+      about: 'An Australian network helping everyday believers share Jesus, baptise and gather new believers, right where they live.',
+      join: { label: 'Join the Harvest Network', url: 'https://theglobalharvest.com/join/' },
+      tools: [
+        { t: 'The 4 Fields', s: 'A simple map of disciple-making, from a first conversation to a new church.', url: 'https://theglobalharvest.com/global-harvest-4-fields/' },
+        { t: '15 Second Testimony', s: 'Your before and after with Jesus, short enough for any moment.', url: 'https://theglobalharvest.com/15-second-testimony/' },
+        { t: 'The 3 Circles', s: 'Draw the Gospel on a napkin in a few minutes.', url: 'https://theglobalharvest.com/circles/' },
+        { t: 'The 411', s: 'A way to start Gospel conversations with people you meet.', url: 'https://theglobalharvest.com/the-411/' },
+        { t: 'Discovery Bible Study', s: 'Read, discuss and obey Scripture together in a small group.', url: 'https://theglobalharvest.com/discovery-bible-study/' },
+        { t: 'Healthy Church Circle', s: 'What a healthy gathering of believers looks like.', url: 'https://theglobalharvest.com/healthy-church-circle/' },
+        { t: 'MAWL', s: 'Model, assist, watch, leave: how to train others.', url: 'https://theglobalharvest.com/mawl/' },
+      ] },
+    { id: 'needgod', name: 'NeedGod.net', short: 'NeedGod.net', mono: 'NG', tone: 'night', tag: 'Gospel conversations, on the street and online',
+      about: 'Ryan and the NeedGod.net team share the Gospel every week in Brisbane and online, and offer free training so you can too.',
+      join: { label: 'Apply for free training', url: 'https://training.needgod.net' },
+      tools: [
+        { t: 'The Gospel script', s: 'A full Gospel conversation, step by step.', url: 'https://www.needgod.net/script' },
+        { t: 'Questions only', s: 'The same conversation as a short list of questions.', url: 'https://www.needgod.net/scriptquestions' },
+        { t: 'Common analogies', s: 'A video of everyday pictures that help the Gospel land.', url: 'https://www.youtube.com/watch?v=mPTVgRuKj60' },
+        { t: 'Watch live', s: 'Real Gospel conversations, streamed most days of the week.', url: 'https://www.youtube.com/needGodnet' },
+        { t: 'Search 2,000+ videos', s: 'Find the moment a question was answered.', url: 'https://www.needgod.net/videos' },
+        { t: 'Street evangelism in Brisbane', s: 'Join the team in King George Square and learn by watching.', url: 'https://www.needgod.net/outreaches' },
+        { t: 'Gospels of John', s: 'Free tracts and Gospels to give away.', url: 'https://tracts.needgod.net' },
+      ] },
+  ],
   votd: ['JHN 3 16', 'PSA 23 1', 'ROM 8 28', 'PHP 4 6-7', 'ISA 41 10', 'JER 29 11', 'MAT 11 28', 'PRO 3 5-6', 'ROM 5 8', '2CO 5 17', 'EPH 2 8-9', 'JHN 14 6', 'PSA 46 1', 'LAM 3 22-23', 'MAT 28 19-20', '1JN 1 9', 'ROM 12 2', 'GAL 2 20', 'PSA 119 105', 'JHN 10 10', 'ISA 40 31', 'HEB 11 1', 'MAT 5 16', 'JHN 15 5', 'ROM 10 9', 'PSA 139 14', 'COL 3 23', '1PE 5 7', 'JHN 8 12', 'PSA 34 18', 'MAT 6 33', 'ROM 15 13', 'JAS 1 5', 'PSA 27 1', 'JHN 1 12', 'EPH 3 20', '2TI 1 7', 'PSA 121 1-2', 'LUK 19 10', 'MIC 6 8', 'ROM 6 23', 'JHN 16 33', 'ISA 53 5', 'PHP 1 6', '1CO 13 4', 'HEB 13 8', 'PSA 37 4', 'MAT 9 37-38', 'ACT 1 8', 'REV 21 4'],
 
   story: [

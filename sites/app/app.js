@@ -37,7 +37,7 @@ const P = {
   user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>', search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
   left: '<path d="M15 5l-7 7 7 7"/>', right: '<path d="M9 5l7 7-7 7"/>', down: '<path d="M6 9l6 6 6-6"/>',
   share: '<path d="M12 3v13M7 8l5-5 5 5M5 14v6h14v-6"/>', check: '<path d="M5 12l5 5 9-10"/>', plus: '<path d="M12 5v14M5 12h14"/>',
-  x: '<path d="M6 6l12 12M18 6L6 18"/>', type: '<path d="M4 7V5h16v2M9 19h6M12 5v14"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
+  x: '<path d="M6 6l12 12M18 6L6 18"/>', ext: '<path d="M7 17L17 7M9 7h8v8"/>', type: '<path d="M4 7V5h16v2M9 19h6M12 5v14"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
   lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>', bookmark: '<path d="M6 3h12v18l-6-4-6 4z"/>',
   pen: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>', copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
   image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>', headphones: '<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/>',
@@ -185,6 +185,7 @@ on(/^\/$/, async () => {
       <a class="li" href="#/gather/moment"><span class="ico peach">${ic('flame')}</span><div class="grow"><div class="t">Leading the moment</div><div class="s">When someone says yes to Jesus</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">Conversation guides</div><div class="s">No faith, Muslim, Buddhist, and more</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/connect"><span class="ico sand">${ic('church')}</span><div class="grow"><div class="t">Find a church</div><div class="s">A next step near home</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/baptism"><span class="ico peach">${ic('sparkle')}</span><div class="grow"><div class="t">Ready to be baptised?</div><div class="s">Ask a church to help you take the step</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div>`, { tab: 'home' });
   passage(votdRef()).then((p) => { const v = $('[data-votd]'); if (v) { v.textContent = `“${p.text}”`; $('[data-votd-ref]').textContent = `${p.label} · ${TR[S.settings.tr].name}`; } }).catch(() => {});
 });
@@ -418,6 +419,8 @@ on(/^\/learn$/, () => {
   const done = (c) => (S.courses[c.id] || []).length;
   render(`<div class="sp"></div><h1 class="h1">Learn</h1><p class="p" style="margin-top:6px">Grow in sharing Jesus and walking with people.</p><div class="sp2"></div>
     <a class="hero-card" href="#/learn/story" style="display:block;text-decoration:none"><p class="k" style="color:#E8A577">The heart of it</p><p class="big-serif" style="color:#F8F3EA;margin:8px 0">God’s story in four moments</p><p class="p">Created, broken, rescued, restored. Share it with anyone in a few minutes.</p></a>
+    <div class="sp2"></div><div class="row between"><p class="h2">Learn from partners</p></div><p class="p" style="margin-top:4px">Trusted training from ministries we work with. It opens on their sites.</p><div class="sp"></div>
+    <div class="ptrs">${AC.partners.map((x) => `<a class="ptr ptr-${x.tone}" href="#/learn/partner/${x.id}"><span class="ptr-mono" aria-hidden="true">${x.mono}</span><span class="ptr-tx"><span class="ptr-by">Training by</span><b>${esc(x.name)}</b><span>${esc(x.tag)}</span></span><span class="ptr-n">${x.tools.length} tools</span></a>`).join('')}</div>
     <div class="sp2"></div><div class="list">
       <a class="li" href="#/learn/road"><span class="ico peach">${ic('book')}</span><div class="grow"><div class="t">The Romans Road</div><div class="s">Six verses that explain the Gospel</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">Conversation guides</div><div class="s">${AC.guides.length} guides for different friends</div></div><span class="chev">${ic('right', 18)}</span></a>
@@ -427,6 +430,16 @@ on(/^\/learn$/, () => {
     </div>
     <div class="sp2"></div><p class="h2">Training</p><p class="p" style="margin-top:4px">Short courses made with evangelists and churches.</p><div class="sp"></div>
     <div class="stack">${AC.courses.map((c) => `<a class="card" href="#/learn/course/${c.id}" style="text-decoration:none"><div class="row between"><p class="h3">${esc(c.title)}</p><span class="pill${done(c) === c.lessons.length ? '' : ' peach'}">${done(c) === c.lessons.length ? 'Done' : `${c.mins} min`}</span></div><p class="p">${esc(c.sub)}</p>${done(c) ? `<div class="progress"><i style="width:${(done(c) / c.lessons.length) * 100}%"></i></div>` : ''}</a>`).join('')}</div>`, { tab: 'learn' });
+});
+on(/^\/learn\/partner\/([\w-]+)$/, (m) => {
+  const x = AC.partners.find((y) => y.id === m[1]); if (!x) return (location.hash = '#/learn');
+  const out = (u) => u + (u.includes('?') ? '&' : '?') + 'utm_source=always-app&utm_medium=referral';
+  render(`${top('#/learn')}<div class="ptr-hero ptr-${x.tone}"><span class="ptr-mono lg" aria-hidden="true">${x.mono}</span><p class="ptr-by">Training by</p><h1 class="h1">${esc(x.name)}</h1><p class="p">${esc(x.about)}</p></div>
+    <div class="sp2"></div><div class="list">${x.tools.map((t, i) => `<a class="li" href="${out(t.url)}" target="_blank" rel="noopener"><span class="ico ${['', 'peach', 'sand'][i % 3]}">${i + 1}</span><div class="grow"><div class="t">${esc(t.t)}</div><div class="s">${esc(t.s)}</div></div><span class="chev">${ic('ext', 17)}</span></a>`).join('')}</div>
+    <div class="sp2"></div><a class="btn" href="${out(x.join.url)}" target="_blank" rel="noopener">${esc(x.join.label)}</a>
+    ${x.id === 'tgh' ? `<div class="sp2"></div><a class="card sage" href="#/baptism" style="text-decoration:none;display:block"><p class="k">Baptism</p><p class="h3">Ready to be baptised?</p><p class="p">Ask a local church, ${esc(x.name)}, or both, to help you take that step.</p></a>` : ''}
+    <div class="sp2"></div><a class="card" href="#/connect" style="text-decoration:none;display:block"><p class="k">After a conversation</p><p class="h3">Help them find a church</p><p class="p">Partner churches near home, ready to welcome someone who said yes.</p></a>
+    <p class="note" style="margin-top:16px">${esc(x.name)}’s training belongs to them. Links open on their site, and nothing about you is sent with them.</p>`, { tab: 'learn' });
 });
 on(/^\/learn\/story$/, () => {
   const tones = [['var(--sage)', 'var(--ink)'], ['var(--sand)', 'var(--ink)'], ['#1B4740', '#F8F3EA'], ['var(--peach)', '#1E2A26']];
@@ -550,7 +563,8 @@ on(/^\/gather\/people$/, () => {
 });
 
 // ---------------------------------------------------------------- Respond flow (shared by Connect someone now and the public QR page)
-const STEP_LABEL = { church: 'Find a church', youth: 'Youth group', talk: 'Talk with someone', explore: 'Explore faith' };
+const STEP_LABEL = { church: 'Find a church', youth: 'Youth group', talk: 'Talk with someone', explore: 'Explore faith', baptism: 'Baptism' };
+const BAPTISM_WORDING = 'always-app-baptism-2026-11-v1';
 function respondFlow({ mode, kind }) {
   const assist = mode === 'assist';
   const f = {};
@@ -561,10 +575,10 @@ function respondFlow({ mode, kind }) {
   const intro = () => {
     if (assist) return age();
     shell(`<div class="sp2"></div><div class="stack">
-      <p class="k">${kind === 'yes' ? 'Welcome to the family' : 'Hello'}</p>
-      <h1 class="big-serif" style="font-size:36px">${kind === 'yes' ? 'You said yes to Jesus. You won’t walk alone.' : 'Take a next step with Jesus.'}</h1>
-      <p class="p" style="font-size:16.5px">${kind === 'yes' ? 'This is the best decision anyone can make. We’d love to help you find a church nearby to welcome you and walk with you.' : 'Whether you’re curious, have questions, or are ready to find a church, we’d love to help.'}</p>
-      <div class="card sage"><p class="scripture" data-scripture="${kind === 'yes' ? '2CO 5 17' : 'MAT 11 28'}"></p></div>
+      <p class="k">${kind === 'baptism' ? 'Baptism' : kind === 'yes' ? 'Welcome to the family' : 'Hello'}</p>
+      <h1 class="big-serif" style="font-size:36px">${kind === 'baptism' ? 'Ready to be baptised?' : kind === 'yes' ? 'You said yes to Jesus. You won’t walk alone.' : 'Take a next step with Jesus.'}</h1>
+      <p class="p" style="font-size:16.5px">${kind === 'baptism' ? 'Baptism is a joyful step of following Jesus. Tell us a little about you, and choose who you’d like to help you take it.' : kind === 'yes' ? 'This is the best decision anyone can make. We’d love to help you find a church nearby to welcome you and walk with you.' : 'Whether you’re curious, have questions, or are ready to find a church, we’d love to help.'}</p>
+      <div class="card sage"><p class="scripture" data-scripture="${kind === 'baptism' ? 'ACT 2 38' : kind === 'yes' ? '2CO 5 17' : 'MAT 11 28'}"></p></div>
       <button class="btn peach" id="r-go">Get started</button><p class="note" style="text-align:center">About a minute. Your details are kept in Australia and never sold.</p></div>`);
     $('#r-go').onclick = age;
   };
@@ -578,7 +592,7 @@ function respondFlow({ mode, kind }) {
       <div class="sp2"></div><button class="btn" id="a-next" disabled>Next</button>`, back);
     $$('input[name=age]').forEach((i) => (i.onchange = () => ($('#a-next').disabled = false)));
     if (f.ageBand) { const r = $(`input[name=age][value="${f.ageBand}"]`); if (r) { r.checked = true; $('#a-next').disabled = false; } }
-    $('#a-next').onclick = () => { f.ageBand = $('input[name=age]:checked').value; step(); };
+    $('#a-next').onclick = () => { f.ageBand = $('input[name=age]:checked').value; if (kind === 'baptism') { f.step = 'baptism'; details(); } else step(); };
   };
   const step = () => {
     const adult = f.ageBand === '18+';
@@ -598,7 +612,7 @@ function respondFlow({ mode, kind }) {
         <div class="row" style="align-items:flex-start"><div class="field" style="width:120px"><label for="d-pc">Postcode</label><input class="input" id="d-pc" inputmode="numeric" maxlength="4" placeholder="2000"></div><div class="field grow"><label for="d-sub">Suburb</label><input class="input" id="d-sub" autocapitalize="words" maxlength="60"></div></div>
         <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden"><label>Website<input id="d-hp" tabindex="-1" autocomplete="off"></label></div>
         <p class="err" id="d-err" role="alert"></p><div class="row"><button class="btn light" type="button" id="d-back">Back</button><button class="btn" type="submit">Next</button></div></form>`, back);
-    $('#d-back').onclick = step;
+    $('#d-back').onclick = kind === 'baptism' ? age : step;
     $('#d-form').onsubmit = (e) => {
       e.preventDefault();
       const v = (id) => ($('#' + id)?.value || '').trim();
@@ -614,6 +628,7 @@ function respondFlow({ mode, kind }) {
     };
   };
   const consent = () => {
+    if (kind === 'baptism') return consentBaptism();
     const u13 = f.ageBand === 'under13';
     shell(`${bar(4)}<div class="sp2"></div>${assist ? `<div class="card peach"><p class="h3">Hand your phone to ${esc(f.firstName || 'them')}</p><p style="margin:0">This choice is theirs to make.</p></div><div class="sp2"></div>` : ''}<h1 class="h1">Your yes, your choice</h1><div class="sp2"></div>
       <div class="stack-s"><div class="check"><input type="checkbox" id="c-connect"><label for="c-connect"><b>Connect me.</b> I’m happy for the Always Foundation to keep my first name, mobile and suburb, so they can get in touch and help me find a church or ministry near me.</label></div>
@@ -636,18 +651,51 @@ function respondFlow({ mode, kind }) {
       } catch { $('#c-err').textContent = 'That didn’t send. Please check the connection and try again.'; $('#c-send').disabled = false; $('#c-send').textContent = 'Send'; }
     };
   };
+  const consentBaptism = () => {
+    const u13 = f.ageBand === 'under13', adult = f.ageBand === '18+';
+    const partner = AC.partners.find((x) => x.id === 'tgh');
+    shell(`${bar(4)}<div class="sp2"></div><h1 class="h1">Who should help you take this step?</h1><p class="p" style="margin-top:6px">${adult ? 'Choose one or both. Each only hears from you if you tick it.' : 'A safe local church or youth group near you will help, with your parent or guardian.'}</p><div class="sp2"></div>
+      <div class="stack-s">
+        <div class="check"><input type="checkbox" id="b-church"><label for="b-church"><b>A local church near me.</b> Share my first name, mobile and suburb with one partner church nearby, so they can talk with me about baptism.</label></div>
+        ${adult ? `<div class="check"><input type="checkbox" id="b-tgh"><label for="b-tgh"><b>${esc(partner.name)}.</b> Share my first name, mobile and suburb with ${esc(partner.name)}, so their team can talk with me about baptism.</label></div>` : ''}
+        <div class="check" id="b-near-w" style="display:none"><input type="checkbox" id="b-near" checked><label for="b-near"><b>Try the next church nearby</b> if the first can’t help.</label></div>
+        ${u13 ? '<div class="check"><input type="checkbox" id="c-assent"><label for="c-assent"><b>My child agrees too.</b> I’ve talked with my child and they’d like to talk with a church about baptism.</label></div>' : ''}</div>
+      <p class="note" style="margin-top:12px">Your faith is personal, so nothing is shared without your tick. Details are kept in Australia, never sold, and deleted after 90 days. To change your mind, email hello@alwaysfoundation.org.</p>
+      <p class="err" id="c-err" role="alert"></p><div class="row"><button class="btn light" id="c-back">Back</button><button class="btn peach" id="c-send" disabled>Send</button></div>`, back);
+    const upd = () => {
+      const ch = $('#b-church').checked, tg = !!$('#b-tgh')?.checked;
+      $('#b-near-w').style.display = ch ? '' : 'none';
+      $('#c-send').disabled = !(ch || tg) || (u13 && !$('#c-assent').checked);
+    };
+    ['b-church', 'b-tgh', 'c-assent'].forEach((id) => $('#' + id)?.addEventListener('change', upd));
+    $('#c-back').onclick = details;
+    $('#c-send').onclick = async () => {
+      $('#c-send').disabled = true; $('#c-send').textContent = 'Sending…';
+      const ch = $('#b-church').checked, tg = adult && !!$('#b-tgh')?.checked;
+      f.toChurch = ch; f.toPartner = tg;
+      const body = { source: SOURCE, firstName: f.firstName, mobile: f.mobile, parentMobile: f.parentMobile, suburb: f.suburb, postcode: f.postcode, ageBand: f.ageBand, step: 'baptism', website: f.hp,
+        consent: { shareWith: tg ? ['tgh'] : [], connect: ch, allowNextNearby: ch && $('#b-near').checked, notifySender: false, wordingVersion: BAPTISM_WORDING, party: u13 ? 'parent' : 'self', childAssent: u13 ? !!$('#c-assent')?.checked : false } };
+      try {
+        const r = await fetch(SAVE_URL, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(15000) });
+        if (!r.ok) throw new Error('http_' + r.status);
+        if (assist) { S.connected.unshift({ name: f.firstName, step: 'baptism', at: Date.now() }); S.connected = S.connected.slice(0, 200); save(); }
+        done();
+      } catch { $('#c-err').textContent = 'That didn’t send. Please check the connection and try again.'; $('#c-send').disabled = false; $('#c-send').textContent = 'Send'; }
+    };
+  };
   const done = () => {
     const parent = f.ageBand === '13-14';
     shell(`<div class="sp2"></div><div class="stack" style="text-align:center"><span class="ico green" style="width:72px;height:72px;border-radius:50%;margin:0 auto">${ic('check', 34)}</span>
       <h1 class="big-serif" style="font-size:34px">${assist ? `${esc(f.firstName || 'They')}${f.firstName ? '’s' : '’re'} connected` : `You won’t walk alone${f.firstName ? ', ' + esc(f.firstName) : ''}.`}</h1>
-      <p class="p" style="font-size:16px">${parent ? 'We’ll ask a parent or guardian to say yes first, then a safe youth group nearby will be in touch.' : 'Someone from a church or ministry nearby, or our care team, will be in touch soon.'}</p>
+      <p class="p" style="font-size:16px">${parent ? 'We’ll ask a parent or guardian to say yes first, then a safe youth group nearby will be in touch.' : kind === 'baptism' ? `${f.toChurch && f.toPartner ? 'A church near you and The Global Harvest will' : f.toPartner ? 'The Global Harvest team will' : 'A church near you will'} be in touch to talk about baptism. What a joy.` : 'Someone from a church or ministry nearby, or our care team, will be in touch soon.'}</p>
       ${assist ? `<a class="btn" href="#/walk/new?name=${encodeURIComponent(f.firstName || '')}">${ic('walk', 20)}Keep walking with them</a><a class="btn light" href="#/gather">Back to Gather</a>` :
         `<div class="card sage" style="text-align:left"><p class="k">Start reading</p><p class="h3">The Gospel of John</p><p class="p">Meet Jesus, a chapter a day.</p><a class="btn small" href="#/plan/john21" style="margin-top:6px">Start reading</a></div><p class="note">Want the Always App for yourself? <a href="#/">Open it here</a>.</p>`}</div>`, assist ? '#/gather' : null);
   };
   intro();
 }
 on(/^\/gather\/connect$/, () => respondFlow({ mode: 'assist' }));
-on(/^\/respond\/(yes|step)$/, (m) => respondFlow({ mode: 'self', kind: m[1] }));
+on(/^\/respond\/(yes|step|baptism)$/, (m) => respondFlow({ mode: 'self', kind: m[1] }));
+on(/^\/baptism$/, () => respondFlow({ mode: 'self', kind: 'baptism' }));
 on(/^\/respond$/, () => respondFlow({ mode: 'self', kind: 'step' }));
 
 // ---------------------------------------------------------------- Walk
