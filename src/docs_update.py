@@ -43,7 +43,11 @@ APP = """
 <li><b>Scripture.</b> Open the Bible in the app through YouVersion. See <a href="#/docs/youversion">Scripture with YouVersion</a>.</li>
 <li><b>A response point.</b> Someone can say yes on your phone or their own, with their consent, and be handed on through Always Connect.</li>
 <li><b>Conversation guides and short training</b> for sharing your story and welcoming well.</li>
+<li><b>Learn from partners.</b> Training from The Global Harvest and NeedGod.net, opening on their own sites.</li>
+<li><b>Ready to be baptised?</b> A simple way to ask a local church, a partner, or both, to help.</li>
+<li><b>Light and dark.</b> It follows your phone, or choose Light, Warm or Dark in Me.</li>
 </ul>
+<p>Most of what you do stays on your phone. See <a href="#/docs/saving">How your information is saved</a>.</p>
 <p>The Always App runs in any browser, with nothing to download. It's used by evangelists and street teams, starting with Sydney Fire Evangelism. <a href="#/join/evangelist">Join the pilot</a>.</p>
 """
 
@@ -231,6 +235,51 @@ YOUVERSION = """
 <p>YouVersion provides Scripture and, later, confirms who someone is. Always Platform holds which church they belong to and what they agreed to share. No response, consent or church details are sent to YouVersion, and personal information stays in Australia. Young people won't use YouVersion sign-in through Always.</p>
 """
 
+SAVING = """
+<p class="lead">The Always App is built so your faith stays yours. Most of what you do never leaves your phone, and the little that does is shared only when you tick a box to say so.</p>
+<h2>Kept only on your phone</h2>
+<p>These live in your browser on your phone. We can&rsquo;t see them, and they&rsquo;re never sent to us:</p>
+<ul>
+<li>People you&rsquo;re walking with, and your notes about them</li>
+<li>Your prayer list and answered prayers</li>
+<li>Highlights, bookmarks, Bible notes and reading plans</li>
+<li>Field notes, your story and your settings</li>
+<li>First names of people you helped connect, so you can keep walking with them</li>
+</ul>
+<p>From <b>Me</b>, you can download all of it as a file, and restore it on a new phone. Clearing the app&rsquo;s data in your browser removes it completely.</p>
+<h2>Shared only when someone says yes</h2>
+<p>When someone responds, or asks about baptism, they choose what happens next. Nothing is sent until they tick a box that says who it&rsquo;s for.</p>
+<table>
+<tr><th>What we keep</th><th>Why</th></tr>
+<tr><td>First name, mobile, suburb and postcode</td><td>So one church or ministry nearby can get in touch</td></tr>
+<tr><td>Age band</td><td>So young people are kept safe. It&rsquo;s always asked first.</td></tr>
+<tr><td>The step they chose, and who they ticked</td><td>So the right church, or a partner they chose, is the one who hears</td></tr>
+<tr><td>Which consent wording they saw</td><td>So their yes can be shown, and withdrawn</td></tr>
+</table>
+<h2>Young people</h2>
+<ul>
+<li>Under 13: we keep no child&rsquo;s details. A parent or guardian fills it in.</li>
+<li>Under 15: a parent or guardian confirms before anyone gets in touch.</li>
+<li>Under 18: they go only to a safe local church or youth group, never to another partner, and never to AI.</li>
+</ul>
+<h2>Where it&rsquo;s kept, and for how long</h2>
+<ul>
+<li>Stored and processed in Sydney, encrypted while it travels and while it&rsquo;s stored.</li>
+<li>Deleted after 90 days, or straight away if someone asks.</li>
+<li>Seen only by the people who need it: our care team, the one church that welcomes them, and a partner only if they ticked it.</li>
+</ul>
+<h2>What we never do</h2>
+<ul>
+<li>Sell anyone&rsquo;s details, or show ads.</li>
+<li>Track what you read in the Bible or how you use the app.</li>
+<li>Put names, numbers or messages in our logs, emails or texts.</li>
+<li>Send anything with links to partner training. Those open on their own sites, and say only that you came from the Always App.</li>
+</ul>
+<h2>Changing your mind</h2>
+<p>Email <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a> and we&rsquo;ll delete your details, and let anyone we shared them with know. Read more in our <a href="#/docs/privacy">Privacy policy</a> and <a href="#/docs/security">Security</a>.</p>
+<p>Always Platform is open source, so anyone can check that it works the way we say.</p>
+"""
+
 AGENTS = """
 <p class="lead">Agents are a feature inside Always Connect and Always Safety. They help people do the admin around a welcome, so there's more time for the welcome itself.</p>
 <p>A person always decides what happens next. An agent never contacts someone who responded to Jesus on its own.</p>
@@ -311,7 +360,7 @@ def apply(DOCS):
     if False: edit('how-it-works', '<h2>1. Someone responds</h2>', '<div class="callout"><b>Always Respond and Always Connect work together.</b> Always Respond captures the yes. Always Connect finds the next best faith step for that person, near where they live, and makes sure a real person walks with them. Often that step is a local church; sometimes it is another ministry first, like Alpha.</div>\n<h2>1. Someone responds</h2>')
     set_page('glossary', body=GLOSSARY)
     gi, _ = find('introduction')
-    DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING), ('app', 'Always App', APP)]
+    DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING), ('app', 'Always App', APP), ('saving', 'How your information is saved', SAVING)]
 
     edit('senders', 'in Always for ministries', 'in Always Respond')
     set_page('senders', title='Response pages and QR codes')
@@ -353,7 +402,7 @@ def apply(DOCS):
     pages = {t[0]: t for _, ps in DOCS for t in ps}
     layout = [
         ('Start here', ['introduction', 'how-it-works', 'modules', 'joining', 'glossary']),
-        ('Always App', ['app']),
+        ('Always App', ['app', 'saving']),
         ('Always Respond', ['senders', 'taps', 'branding', 'online']),
         ('Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming', 'always-agent']),
         ('Always Safety', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review', 'compliance-api', 'compliance-platforms']),
