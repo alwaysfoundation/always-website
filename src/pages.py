@@ -75,23 +75,18 @@ MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony, sermon or post? Add a response link or QR code. Anyone in Australia can say yes and meet a church near them.</p></div>
-  <pre class="pg-code rv"><code>&lt;always-response
-  page="testimony-video"&gt;
-&lt;/always-response&gt;
-
-or link to
-always.au/r/testimony-video</code></pre>
+  <div class="pg-link-card rv" aria-hidden="true"><span class="plc-k">Your response link</span><b>always.au/r/testimony</b><span class="plc-qr"></span><span class="plc-f">Add it under a video, in a post, or as a QR code on screen.</span></div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Built for events of every size</h2>
-  {feats([('Response pages and QR codes', 'For the big screen, printed cards, video descriptions and short links.'), ('Leading the moment', 'Simple wording for the altar call: invite, pray, respond, welcome.'), ('Your team', 'Response team leads, evangelists and youth leaders, each with the right access.'), ('Safe for young people', 'Young people are introduced only to verified youth partners. Under 15s need a parent to confirm.'), ('Reports for funders', 'A monthly report with clear definitions, ready for donors, foundations and your board.'), ('Open API and SDK', 'Add the response card to your own app or website.')])}
+  {feats([('Response pages and QR codes', 'For the big screen, printed cards, video descriptions and short links.'), ('Leading the moment', 'Simple wording for the altar call: invite, pray, respond, welcome.'), ('Your team', 'Response team leads, evangelists and youth leaders, each with the right access.'), ('Safe for young people', 'Young people are introduced only to verified youth partners. Under 15s need a parent to confirm.'), ('Reports for funders', 'A monthly report with clear definitions, ready for donors, foundations and your board.'), ('Agents for follow-up', 'Help your team with reminders, messages and records. A person approves every step.')])}
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section>'''
 
 app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><h1>For evangelists</h1><p>Infrastructure and tools for everyone who shares the Gospel: the Always App, your own branded response app, training and follow-up. All free, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><h1>For evangelists</h1><p>Free tools for everyone who shares the Gospel: the Always App, your own branded response app, training and follow-up, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
@@ -116,9 +111,9 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
   {feats([('Sharing your story', 'Tell how Jesus changed your life, in three minutes, in your own words.'), ('Leading someone to Jesus', 'What to say, how to pray, and what to do next when someone says yes.'), ('Welcoming well', 'For church connect leads: the first call, the first coffee, the first Sunday.'), ('Safe ministry with young people', 'Child safe practice for youth leaders and events.'), ('Conversations across faiths', 'Listening well and sharing gently with friends of other beliefs.'), ('Walking with someone', 'The first months of following Jesus: Bible, prayer, church and friends.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
-  <h2 class="pg-h rv">Infrastructure for your evangelism</h2>
+  <h2 class="pg-h rv">Tools for your team</h2>
   <p class="pg-lead rv">Running a street team, an outreach or a tour? Get your own branded response app on Always Platform, like Sydney Fire Evangelism's, and use the same open tools we use, free.</p>
-  {feats([('Response pages and QR codes', 'People say yes on a page with your name on it, and get a next step near home.'), ('Find a church near me', 'Add our church finder to your website or app in one line.'), ('Church feed and API', 'Verified churches ready to welcome people, for your own tools.'), ('AI assistants', 'Use Always Platform from Claude and other assistants to find churches and events, with no personal data involved.'), ('Reports for funders', 'Monthly reports written for you, with totals only.'), ('Open source', 'Every tool is open, so you can check it, improve it or run it yourself.')])}
+  {feats([('Response pages and QR codes', 'People say yes on a page with your name on it, and get a next step near home.'), ('Find a church near me', 'Add our church finder to your website or app in one line.'), ('Your own branded app', 'Like Sydney Fire Evangelism: your logo, your next steps, and contacts saved safely in Australia.'), ('Agents for follow-up', 'Reminders and message drafts after outreach. A person approves every step.'), ('Reports for funders', 'Monthly reports written for you, with totals only.'), ('Open source', 'Every tool is open, so you can check it, improve it or run it yourself.')])}
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Join the pilot</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
 </div></section>'''
 
@@ -193,6 +188,15 @@ CSS = '''
 .pg-step h3, .pg-feat h3 { font: 800 23px/1.2 var(--head); letter-spacing: -0.02em; margin: 10px 0 8px; }
 .pg-step p, .pg-feat p { margin: 0; font-size: 16.5px; line-height: 1.55; color: var(--soft); }
 .pg-feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+.pg-night .pg-feat h3, .pg-green .pg-feat h3 { color: var(--green); }
+.pg-night .pg-feat p, .pg-green .pg-feat p { color: var(--soft); }
+@media (min-width: 1081px) { .pg-feats:has(> .pg-feat:nth-child(4):last-child) { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 640px) { .pg-link-card { justify-self: start; } }
+.pg-link-card { background: #FFFDF8; border-radius: 22px; padding: 26px; display: grid; gap: 8px; max-width: 380px; justify-self: end; width: 100%; box-shadow: 0 20px 40px -24px rgba(27,71,64,.35); }
+.pg-link-card .plc-k { font: 600 13px/1 var(--head); color: var(--muted); }
+.pg-link-card b { font: 700 20px/1.3 var(--head); color: var(--green); }
+.pg-link-card .plc-qr { width: 96px; height: 96px; border-radius: 12px; margin: 8px 0; background: repeating-conic-gradient(var(--green) 0 25%, #FFFDF8 0 50%) 0 0 / 16px 16px; opacity: .85; }
+.pg-link-card .plc-f { font-size: 14.5px; color: var(--soft); line-height: 1.5; }
 .pg-feat { background: var(--paper); border-radius: 24px; padding: 26px; }
 .pg-sage .pg-feat { background: var(--paper); }
 .pg-feat h3 { margin-top: 0; }
@@ -609,7 +613,7 @@ BUILT_ON = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
 </div></section>'''
 
 PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-badge">Always Platform</p><h1>One platform for the Great Commission.</h1><p>Open infrastructure for the Gospel, behind the Always App and every tool we make. Use it to build your own app, plug in our API, or ask an AI assistant.</p>
+  <div><p class="pl-badge">Always Platform</p><h1>The technology behind it all.</h1><p>Always Platform is the free, open-source technology behind the Always App and every tool we make. Developers can build on it too.</p>
   <div class="pl-ctas"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/join">Talk to us</a></div></div>
   <pre class="pl-code" aria-label="Example code"><code><span class="c">// Find churches welcoming people near 2150</span>
 <span class="k">import</span> {{ AlwaysClient }} <span class="k">from</span> <span class="s">'@always/sdk'</span>;
@@ -642,7 +646,7 @@ PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
 <section class="sec pg-sec pg-green"><div class="wrap">
   <p class="pl-kick rv">What never changes</p>
   <h2 class="pg-h rv">A gift to the Church.</h2>
-  <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free', 'For every church, ministry and developer.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', 'People\'s details stay here.'), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'AI helps with the work. People make the calls.')])}</div>
+  <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free for churches', 'Larger ministries contribute according to their size.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', 'People\'s details stay here.'), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'AI helps with the work. People make the calls.')])}</div>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/join">Talk to us</a></div>
 </div></section>'''
 
