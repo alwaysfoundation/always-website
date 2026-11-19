@@ -4,7 +4,7 @@ JS = r'''
 // Tiles come alive on hover or keyboard focus; on touch screens, when they scroll into view.
 (() => {
   if (!matchMedia('(hover: none)').matches || !('IntersectionObserver' in window)) return;
-  const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('live', e.isIntersecting)), { threshold: 0.6 });
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('is-live', e.isIntersecting)), { threshold: 0.6 });
   document.querySelectorAll('.bt, .cmx-tile, .dg-mod').forEach((t) => io.observe(t));
 })();
 '''
@@ -53,43 +53,43 @@ CSS = '''
 
 /* ---- Tiles that respond ---- */
 .bt .mk-card, .bt .mk-conn { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
-.bt:hover .mk-card, .bt:focus-visible .mk-card, .bt.live .mk-card, .bt:hover .mk-conn, .bt.live .mk-conn { transform: translateY(-4px) scale(1.02); }
+.bt:hover .mk-card, .bt:focus-visible .mk-card, .bt.is-live .mk-card, .bt:hover .mk-conn, .bt.is-live .mk-conn { transform: translateY(-4px) scale(1.02); }
 .bt .mk { transition: background-color .4s ease; }
 /* App: pray, and the tabs move on */
 .mk-app .mk-pill { transition: background-color .3s, color .3s; }
-.bt:hover .mk-app .mk-pill:first-child, .bt:focus-visible .mk-app .mk-pill:first-child, .bt.live .mk-app .mk-pill:first-child { background: var(--peach); color: var(--night); }
+.bt:hover .mk-app .mk-pill:first-child, .bt:focus-visible .mk-app .mk-pill:first-child, .bt.is-live .mk-app .mk-pill:first-child { background: var(--peach); color: var(--night); }
 .mk-tabs i { transition: background-color .3s; }
-.bt:hover .mk-tabs i.on, .bt.live .mk-tabs i.on { background: var(--line); }
-.bt:hover .mk-tabs i:nth-child(2), .bt.live .mk-tabs i:nth-child(2) { background: var(--peach); }
+.bt:hover .mk-tabs i.on, .bt.is-live .mk-tabs i.on { background: var(--line); }
+.bt:hover .mk-tabs i:nth-child(2), .bt.is-live .mk-tabs i:nth-child(2) { background: var(--peach); }
 /* Pages: your brand, any colour */
 @keyframes brandCycle { 0%, 100% { background: #6B4FA0; } 33% { background: #C2562E; } 66% { background: #1F6F78; } }
-.bt:hover .mk-pages .mk-logo, .bt:hover .mk-pages .mk-btn, .bt:focus-visible .mk-pages .mk-logo, .bt:focus-visible .mk-pages .mk-btn, .bt.live .mk-pages .mk-logo, .bt.live .mk-pages .mk-btn { animation: brandCycle 3.6s ease-in-out infinite; }
+.bt:hover .mk-pages .mk-logo, .bt:hover .mk-pages .mk-btn, .bt:focus-visible .mk-pages .mk-logo, .bt:focus-visible .mk-pages .mk-btn, .bt.is-live .mk-pages .mk-logo, .bt.is-live .mk-pages .mk-btn { animation: brandCycle 3.6s ease-in-out infinite; }
 /* Compliance: the last item gets done */
 .mk-comp i.due, .mk-comp li em { transition: all .35s ease; }
-.bt:hover .mk-comp i.due, .bt:focus-visible .mk-comp i.due, .bt.live .mk-comp i.due { background: var(--green); box-shadow: none; }
-.bt:hover .mk-comp li em, .bt:focus-visible .mk-comp li em, .bt.live .mk-comp li em { opacity: 0; transform: translateX(6px); }
+.bt:hover .mk-comp i.due, .bt:focus-visible .mk-comp i.due, .bt.is-live .mk-comp i.due { background: var(--green); box-shadow: none; }
+.bt:hover .mk-comp li em, .bt:focus-visible .mk-comp li em, .bt.is-live .mk-comp li em { opacity: 0; transform: translateX(6px); }
 /* Reports: the month fills in */
 @keyframes barGrow { from { width: 0; } }
-.bt:hover .mk-bar::before, .bt:focus-visible .mk-bar::before, .bt.live .mk-bar::before { animation: barGrow .9s cubic-bezier(.2,.8,.2,1) both; }
-.bt:hover .mk-bar:nth-child(3)::before, .bt.live .mk-bar:nth-child(3)::before { animation-delay: .08s; }
-.bt:hover .mk-bar:nth-child(4)::before, .bt.live .mk-bar:nth-child(4)::before { animation-delay: .16s; }
-.bt:hover .mk-bar:nth-child(5)::before, .bt.live .mk-bar:nth-child(5)::before { animation-delay: .24s; }
+.bt:hover .mk-bar::before, .bt:focus-visible .mk-bar::before, .bt.is-live .mk-bar::before { animation: barGrow .9s cubic-bezier(.2,.8,.2,1) both; }
+.bt:hover .mk-bar:nth-child(3)::before, .bt.is-live .mk-bar:nth-child(3)::before { animation-delay: .08s; }
+.bt:hover .mk-bar:nth-child(4)::before, .bt.is-live .mk-bar:nth-child(4)::before { animation-delay: .16s; }
+.bt:hover .mk-bar:nth-child(5)::before, .bt.is-live .mk-bar:nth-child(5)::before { animation-delay: .24s; }
 /* Connect: the hand-off happens */
 @keyframes linkFlow { to { background-position: 0 16px; } }
-.bt:hover .mk-link, .bt:focus-visible .mk-link, .bt.live .mk-link { animation: linkFlow .6s linear infinite; }
+.bt:hover .mk-link, .bt:focus-visible .mk-link, .bt.is-live .mk-link { animation: linkFlow .6s linear infinite; }
 .mk-church .mk-pill:first-child { transition: box-shadow .3s; }
-.bt:hover .mk-church .mk-pill:first-child, .bt.live .mk-church .mk-pill:first-child { box-shadow: 0 0 0 4px rgba(232,165,119,.45); }
+.bt:hover .mk-church .mk-pill:first-child, .bt.is-live .mk-church .mk-pill:first-child { box-shadow: 0 0 0 4px rgba(232,165,119,.45); }
 /* Build: a blinking caret */
 @keyframes caret { 50% { opacity: 0; } }
 .mk-code code::after { content: ''; display: inline-block; width: 7px; height: 13px; margin-left: 2px; vertical-align: -2px; background: var(--peach); opacity: 0; }
-.bt:hover .mk-code code::after, .dev-band:hover .mk-code code::after, .bt.live .mk-code code::after { opacity: 1; animation: caret 1s steps(1) infinite; }
+.bt:hover .mk-code code::after, .dev-band:hover .mk-code code::after, .bt.is-live .mk-code code::after { opacity: 1; animation: caret 1s steps(1) infinite; }
 /* Platform diagram: switches flick */
 .dg-sw { transition: background-color .25s; } .dg-sw i { transition: right .25s cubic-bezier(.2,.8,.2,1); }
 .dg-mod:hover .dg-sw, .dg-mod:focus-visible .dg-sw { background: var(--peach); }
 .dg-mod:hover .dg-sw i, .dg-mod:focus-visible .dg-sw i { right: 17px; }
 /* Compliance page tiles */
 .cmx-mini { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
-.cmx-tile:hover .cmx-mini, .cmx-tile.live .cmx-mini { transform: translateY(-4px) scale(1.02); }
+.cmx-tile:hover .cmx-mini, .cmx-tile.is-live .cmx-mini { transform: translateY(-4px) scale(1.02); }
 .cmx-card li.todo i { transition: all .35s; }
 .cmx-card:hover li.todo i { background: var(--green); box-shadow: none; }
 /* Solution rows */
