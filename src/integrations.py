@@ -31,10 +31,10 @@ GROUPS = [
         ('Zapier', 'Triggers for introductions and connections', PLANNED),
         ('Make', 'The same, for Make scenarios', PLANNED),
         ('n8n', 'Self-host in Australia to keep it onshore', PLANNED),
-        ('AI assistants (MCP)', 'Public church and compliance information', BUILDING),
+        ('AI assistants (MCP)', 'Public church and safety information', BUILDING),
     ]),
     ('platforms', 'For tech platforms', 'Build Always into your own product.', [
-        ('Always Compliance API', 'The open register and check-up, in your app', LIVE),
+        ('Always Safety API', 'The open register and check-up, in your app', LIVE),
         ('Scripture component', '<always-scripture> in one line', SOON),
         ('Sign in with YouVersion', 'For adults, in the Always App', PLANNED),
     ]),
@@ -116,7 +116,7 @@ DOCS = ("Integrations", [
 <tr><td><a href="#/docs/taps">Events, tickets and passes</a></td><td>NFC and QR</td><td>Humanitix, Eventbrite, Ticketek, Oztix, Moshtix, Apple and Google Wallet</td></tr>
 <tr><td>Scripture and next steps</td><td><a href="#/docs/youversion">YouVersion</a> (switching on), <a href="#/alpha">Alpha</a></td><td>—</td></tr>
 <tr><td><a href="#/docs/int-automation">Automation and AI</a></td><td>—</td><td>Zapier, Make, n8n; MCP server (building)</td></tr>
-<tr><td>For tech platforms</td><td><a href="#/docs/compliance-api">Compliance API</a>, <a href="#/docs/youversion">Scripture component</a></td><td>Sign in with YouVersion</td></tr></table>
+<tr><td>For tech platforms</td><td><a href="#/docs/compliance-api">Safety API</a>, <a href="#/docs/youversion">Scripture component</a></td><td>Sign in with YouVersion</td></tr></table>
 <h2>The rules for every integration</h2>
 <ul>
 <li><b>Consent travels.</b> A person's details go only where they agreed, and a withdrawal reaches every system that holds them.</li>
@@ -159,7 +159,7 @@ DOCS = ("Integrations", [
 <li><b>Zapier and Make.</b> Triggers when an introduction arrives, is accepted, or someone connects. Look up the details inside Always, with permission.</li>
 <li><b>n8n.</b> The same triggers, and you can run n8n yourself in Australia to keep everything onshore.</li>
 <li><b>Webhooks.</b> Signed CloudEvents for developers. See <a href="#/docs/webhooks">Webhooks</a>.</li>
-<li><b>AI assistants.</b> The Always MCP server shares public church and compliance information only. See <a href="#/docs/mcp">Always for AI assistants</a>.</li>
+<li><b>AI assistants.</b> The Always MCP server shares public church and safety information only. See <a href="#/docs/mcp">Always for AI assistants</a>.</li>
 </ul>
 """),
 ])

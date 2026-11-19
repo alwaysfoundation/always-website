@@ -1,4 +1,4 @@
-"""Always Compliance: marketing page, free check-up (onboarding) and docs.
+"""Always Safety: marketing page, free check-up (onboarding) and docs.
 
 The register is copied from always-platform/spec/compliance/register.json, so the
 check-up in the browser uses exactly the same rules as the platform. Nothing the
@@ -42,8 +42,8 @@ STATES = [
 
 PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
   <div>
-    <p class="pl-kick">Always Compliance</p>
-    <h1>Compliance, made clear.</h1>
+    <p class="pl-kick">Always Safety</p>
+    <h1>Safe ministry, made clear.</h1>
     <p class="pd-line">Know exactly what applies to your ministry, approve a simple check-up each quarter, and hear when the law changes.</p>
     <div class="pg-cta"><a class="btn btn-peach" href="#/compliance/check">Start your free check-up</a><a class="btn btn-ghost" href="#/compliance/how">How it works</a></div>
     <p class="cm-fine">Free for churches. About ten minutes. A guide to common obligations, not legal advice.</p>
@@ -139,7 +139,7 @@ CSS = '''
 @media (max-width: 640px) { .cv-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .cv-card { transition: none; } .cv-card:hover { transform: none; } }
 
-/* ---- Always Compliance, productised ---- */
+/* ---- Always Safety, productised ---- */
 .cmx-hero h1 { font-size: clamp(48px, 6.2vw, 92px); }
 .cmx-card { justify-self: end; width: min(400px, 100%); background: #FFFDF8; color: var(--ink); border-radius: 26px; padding: 22px; display: grid; gap: 16px; box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); }
 .cmx-card-top { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
@@ -278,7 +278,7 @@ _slim = {
 }
 
 JS = '''
-// ---------------------------------------------------------------- Always Compliance check-up
+// ---------------------------------------------------------------- Always Safety check-up
 (() => {
   const R = __COMPLIANCE__;
   const root = document.getElementById('cw'); if (!root) return;
@@ -414,10 +414,10 @@ def _register_table():
         rows.append(f'<tr><td><b>{escape(o["title"])}</b><br><span class="dt-sub">{escape(o["summary"])}</span></td><td>{area_name[o["area"]]}</td><td>{where}</td><td>{status}</td><td>{law}</td></tr>')
     return '<div class="dt-wrap"><table class="dt"><thead><tr><th>Obligation</th><th>Area</th><th>Where</th><th>Status</th><th>Source</th></tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>'
 
-DOCS = ("Always Compliance", [
-  ("compliance-overview", "Always Compliance", f"""
-<p class="lead">Always Compliance helps churches and Christian ministries stay on top of privacy, child safety, charity and messaging rules, with a check-up every quarter and plain-English updates when the law changes.</p>
-<div class="callout">Always Compliance is a guide to common obligations. It is not legal advice. For advice about your situation, talk to a lawyer.</div>
+DOCS = ("Always Safety", [
+  ("compliance-overview", "Always Safety", f"""
+<p class="lead">Always Safety helps churches and Christian ministries stay on top of privacy, child safety, charity and messaging rules, with a check-up every quarter and plain-English updates when the law changes.</p>
+<div class="callout">Always Safety is a guide to common obligations. It is not legal advice. For advice about your situation, talk to a lawyer.</div>
 <h2>What you get</h2>
 <ul>
 <li><b>A clear picture.</b> Which rules apply to you, based on where you work and what you do.</li>
@@ -429,7 +429,7 @@ DOCS = ("Always Compliance", [
 <ol>
 <li>Try the <a href="#/compliance/check">free check-up</a>. It takes about ten minutes, and nothing is saved.</li>
 <li><a href="#/join">Join Always</a> as a church or ministry.</li>
-<li>Sign in to Always and open <b>Compliance</b>, answer the profile questions and save your answers.</li>
+<li>Sign in to Always and open <b>Safety</b>, answer the profile questions and save your answers.</li>
 <li>Each quarter, review your check-up, update anything that has changed, and approve it.</li>
 </ol>
 <h2>What the results mean</h2>
@@ -443,10 +443,10 @@ DOCS = ("Always Compliance", [
 <h2>What Always does for you</h2>
 <p>If you use Always for response cards and contact details, some evidence is filled in automatically, because Always Platform enforces it in code: consent records, access controls, a deletion schedule, age rules for young people, and keeping details in Australia.</p>
 <h2>Privacy</h2>
-<p>Always Compliance stores facts about your organisation and your answers. It doesn't store anyone's personal details. Only your team can see your answers.</p>
+<p>Always Safety stores facts about your organisation and your answers. It doesn't store anyone's personal details. Only your team can see your answers.</p>
 """),
   ("compliance-register", "Every obligation", f"""
-<p class="lead">The list of obligations Always Compliance checks. It's open data under CC BY 4.0: anyone can use it.</p>
+<p class="lead">The list of obligations Always Safety checks. It's open data under CC BY 4.0: anyone can use it.</p>
 <p>Version <b>{escape(REGISTER['version'])}</b>, as of {escape(REGISTER['asOf'])}. Status: <b>{escape(REGISTER['status'])}</b>. {escape(REGISTER['notice'])}</p>
 {_register_table()}
 <p>Download the full register as JSON from the <a href="https://github.com/alwaysfoundation/always-platform/blob/main/spec/compliance/register.json">always-platform repository</a>, or call <code>GET /v1/compliance/register</code>.</p>
@@ -461,7 +461,7 @@ DOCS = ("Always Compliance", [
 </ol>
 <div class="callout">Found something wrong or missing? <a href="#/feedback">Tell us</a>. We read every message.</div>
 """),
-  ("compliance-api", "Compliance API", """
+  ("compliance-api", "Safety API", """
 <p class="lead">Use the register and the check-up in your own tools. The register is public; member data needs sign-in.</p>
 <h2>Public</h2>
 <table class="dt"><thead><tr><th>Call</th><th>What it does</th></tr></thead><tbody>
@@ -490,7 +490,7 @@ DOCS = ("Always Compliance", [
 <p>The engine is also in the open-source <code>@always/core</code> package as <code>assess()</code>.</p>
 """),
   ("compliance-platforms", "For platforms", """
-<p class="lead">Build Always Compliance, a module of Always Platform, into your own product. The register, the check-up and the embed are live now, free, and need no sign-in.</p>
+<p class="lead">Build Always Safety, a module of Always Platform, into your own product. The register, the check-up and the embed are live now, free, and need no sign-in.</p>
 <h2>Embed the check-up</h2>
 <pre><code>&lt;script type="module" src="https://alwaysfoundation.org/sdk/v0/compliance-widget.js"&gt;&lt;/script&gt;
 &lt;always-compliance-check accent="#5B67D8"&gt;&lt;/always-compliance-check&gt;</code></pre>

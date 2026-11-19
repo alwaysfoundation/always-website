@@ -21,7 +21,7 @@ PILLARS = [
 PRODUCTS = {
     'app':        ('app',        'Always App',        'equip',   'Everything a Christian needs to share Jesus and walk with people.', 'Every Christian and evangelist'),
     'pages':      ('respond',    'Always Respond',    'equip',   'A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.', 'Churches, evangelists, events and ministries'),
-    'compliance': ('compliance', 'Always Compliance', 'support', 'Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.', 'Every ministry'),
+    'compliance': ('compliance', 'Always Safety', 'support', 'Safe ministry, privacy and charity rules, made clear, with a quarterly check-up.', 'Every ministry'),
     'reports':    ('reports',    'Always Reports',    'support', 'A monthly report for your board and funders, written for you, with totals only.', 'Ministries with boards and funders'),
     'connect':    ('connect',    'Always Connect',    'connect', 'Find a local church, hand people on safely, and follow up together.', 'Churches, ministries and events'),
 }
@@ -34,7 +34,7 @@ SOLUTIONS = {
     'churches':   ('churches',   'Churches',   'Welcome people near you who have said yes to Jesus, and help them grow as disciples.', ['connect', 'pages', 'reports', 'compliance'], None),
     'youth':      ('youth',      'Youth',      'Keep young people safe, stay compliant, and give every young person a safe next step.', ['compliance', 'pages', 'connect', 'reports'], ('UEN', 'A Christian gaming ministry that tried Always Platform at youth events.')),
     'ministries': ('ministries', 'Ministries', 'Events, tours, evangelists and street teams: a next step near home for everyone who responds, and the fruit to show for it.', ['pages', 'app', 'connect', 'reports'], ('Sydney Fire Evangelism', 'Street evangelists using their own branded response app.')),
-    'networks':   ('networks',   'Networks',   'Denominations, networks and the tech platforms that serve them: every church ready to welcome, with totals only.', ['connect', 'reports', 'compliance'], ('Love is Our Weapon', 'Our first Always Compliance user, ready to roll it out to youth ministries and churches.')),
+    'networks':   ('networks',   'Networks',   'Denominations, networks and the tech platforms that serve them: every church ready to welcome, with totals only.', ['connect', 'reports', 'compliance'], ('Love is Our Weapon', 'Our first Always Safety user, ready to roll it out to youth ministries and churches.')),
 }
 
 VERBS = {'app': 'Share Jesus', 'pages': 'Capture every yes', 'compliance': 'Stay lawful', 'reports': 'Show the fruit', 'connect': 'Hand people on'}
@@ -329,13 +329,13 @@ YOUTH_PAGE = solution_page('youth', [
     ('Stay lawful and compliant', 'Child Safe Standards, working with children checks and privacy, with a quarterly check-up your board approves.'),
     ('Welcome young people safely', 'Age comes first. Under-15s need a parent to confirm, and young people are introduced only to youth partners.'),
     ('Show the fruit', 'Monthly reports for your board and funders, with totals only.'),
-], cta=('Try the free compliance check-up', '#/compliance/check'))
+], cta=('Try the free safety check-up-up', '#/compliance/check'))
 
 NETWORKS_PAGE = solution_page('networks', [
     ('Ready to welcome', 'Help every church in your network join, get ready at their own pace and become partner churches.'),
     ('See the fruit across your network', 'Combined reports across your churches, with totals only.'),
-    ('Shared compliance', 'One view of privacy and child safety obligations, so every church can stay lawful with less admin.'),
-    ('Build it into your platform', 'Tech platforms can add the Always Compliance check-up and a safe handoff to local churches through the open API.'),
+    ('Shared safety', 'One view of privacy and child safety obligations, so every church can stay lawful with less admin.'),
+    ('Build it into your platform', 'Tech platforms can add the Always Safety check-up and a safe handoff to local churches through the open API.'),
 ])
 
 # ---------------------------------------------------------------- Platform overview

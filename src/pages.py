@@ -71,8 +71,8 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
 <section class="sec pg-sec pg-night"><div class="wrap">
   <h2 class="pg-h rv">Less administration, more ministry</h2>
   <p class="pg-lead rv">Shared tools for the everyday work behind every ministry, with agents to help with follow-up and admin, so your team can spend more time on people.</p>
-  {feats([('Governance', 'Shared policies, templates and member records for boards and leaders.'), ('Compliance', 'Consent records and privacy requests, ready to export when you need them.'), ('Safeguarding', 'Child safety checklists and Working With Children Check reminders, kept in one place.'), ('Reporting', 'A monthly report for your board and funders, with totals only.')])}
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/compliance/check">Try the free compliance check-up</a><a class="btn btn-ghost" href="#/compliance">About Always Compliance</a></div>
+  {feats([('Governance', 'Shared policies, templates and member records for boards and leaders.'), ('Consent and privacy', 'Consent records and privacy requests, ready to export when you need them.'), ('Safeguarding', 'Child safety checklists and Working With Children Check reminders, kept in one place.'), ('Reporting', 'A monthly report for your board and funders, with totals only.')])}
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/compliance/check">Try the free safety check-up-up</a><a class="btn btn-ghost" href="#/compliance">About Always Safety</a></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony, sermon or post? Add a response link or QR code. Anyone in Australia can say yes and meet a church near them.</p></div>
@@ -122,14 +122,14 @@ FAQ_GROUPS = [
  ('About Always', [
   ('What is the Always Foundation?', 'A Gospel technology foundation: an independent, member-based Christian nonprofit that brings churches and Christian ministries across Australia together for the Gospel. We serve quietly in the background, building practical tools once and sharing them freely, so ministries spend less time on administration and more time making disciples.'),
   ('Are you a gospel ministry or a mercy ministry?', 'Neither, directly. We are a ministry that serves ministries. In Acts 6 the early church appointed people to carry the practical work so the apostles could devote themselves to prayer and the word, and the Gospel spread. We play that role for the wider Church: we exist to equip the saints for the work of ministry (Ephesians 4:12). We are not on the frontline. We stand behind it.'),
-  ('What does Always do for a church or ministry?', 'Three things. We equip, with the Always App and Always Respond, your own branded way for people to respond. We support, with Always Compliance and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.'),
+  ('What does Always do for a church or ministry?', 'Three things. We equip, with the Always App and Always Respond, your own branded way for people to respond. We support, with Always Safety and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.'),
   ('Who can become a member?', 'Churches and Christian ministries that affirm the Nicene Creed. Members help shape what we build and share in the benefits. Supporters can join us too, through prayer and giving.'),
-  ('What is Always Platform?', 'One open-source platform with one sign-in and shared data. Members switch on the modules they need: Always App, Always Respond, Always Compliance, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.'),
-  ('Why modules?', 'Every ministry is different. Start with the one you need, perhaps Always Compliance, and add others as you grow. Because every module runs on the same platform, your team signs in once and your information works together, with nothing to move later.'),
+  ('What is Always Platform?', 'One open-source platform with one sign-in and shared data. Members switch on the modules they need: Always App, Always Respond, Always Safety, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.'),
+  ('Why modules?', 'Every ministry is different. Start with the one you need, perhaps Always Safety, and add others as you grow. Because every module runs on the same platform, your team signs in once and your information works together, with nothing to move later.'),
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always Platform only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
-  ('Do I need an account?', 'Not for the Always App: open it and start, and your prayer list and notes stay on your phone. Church and ministry teams sign in with an email link for tools like Always Compliance.')]),
+  ('Do I need an account?', 'Not for the Always App: open it and start, and your prayer list and notes stay on your phone. Church and ministry teams sign in with an email link for tools like Always Safety.')]),
  ('For churches', [
   ('Does it cost anything?', 'No. Churches never pay. Larger ministries contribute according to their size.'),
   ('How do we join?', 'Register at Join Always and get ready at your own pace. We check with your denomination or network, and then you\'re a partner church.'),
@@ -143,7 +143,7 @@ FAQ_GROUPS = [
   ('What results do we see?', 'Totals for each event: responded, introduced, accepted and connected. Each person\'s details go only to the church that welcomes them.'),
   ('Can Always Platform help us report to our funders?', 'Yes. It writes a monthly report for you: who responded, who was introduced, who was contacted, and who is now part of a church family. Download it as a PDF or spreadsheet, or send your funder a link.'),
   ('Will our funders see people\'s details?', 'No. Reports show totals only, and small numbers are hidden so no one can be identified.'),
-  ('Can Always Platform help with privacy and child safety paperwork?', 'Yes. Your Compliance tab keeps your consent records, privacy requests, child safety checklists and Working With Children Check reminders, ready to export.'),
+  ('Can Always Platform help with privacy and child safety paperwork?', 'Yes. Your Safety tab keeps your consent records, privacy requests, child safety checklists and Working With Children Check reminders, ready to export.'),
   ('Can we make the report our own?', 'Yes. Add your title, your funder\'s name and a short introduction. If a funder needs something specific, talk to us.'),
   ('Can we receive introductions ourselves?', 'Yes, for the steps you offer, like a youth night or a course.'),
   ('Can people respond online?', 'Yes. Add a response link or QR to a video description or post, or embed the response card on your website. An invisible check stops spam without puzzles.'),
@@ -164,7 +164,7 @@ FAQ_GROUPS = [
   ('Where is information kept?', 'In Australia, encrypted, under Australian privacy law.'),
   ('Do you sell information or use it for advertising?', 'No.'),
   ('How do you use AI?', 'To save time on routine work, like writing your monthly report. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
-  ('What is Always Compliance?', 'A guide to the privacy, child safety, charity and messaging rules that apply to your ministry, with a check-up every quarter that a person at your ministry approves, and updates when the law changes. It is free for churches and is not legal advice. Try the free check-up at alwaysfoundation.org/#/compliance.'),
+  ('What is Always Safety?', 'A guide to the privacy, child safety, charity and messaging rules that apply to your ministry, with a check-up every quarter that a person at your ministry approves, and updates when the law changes. It is free for churches and is not legal advice. Try the free check-up at alwaysfoundation.org/#/compliance.'),
   ('What do Always agents do?', 'They help your team with follow-up and administration: drafting messages, setting reminders and keeping records up to date. A person approves every step, people\'s details stay in Australia, and agents never handle young people\'s information.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
@@ -381,7 +381,7 @@ FEEDBACK = '''<section class="page-hero"><div class="wrap"><h1>Ideas and problem
       <label class="fb-kind"><input type="radio" name="kind" value="bug"><span><b>A problem</b>Something isn't working</span></label>
       <label class="fb-kind"><input type="radio" name="kind" value="missing"><span><b>A missing church</b>Add a church or ministry</span></label>
     </div>
-    <label>Where<select name="area"><option>The website</option><option>Always App</option><option>Always Connect</option><option>Always Compliance</option><option>Always Respond</option><option>Somewhere else</option></select></label>
+    <label>Where<select name="area"><option>The website</option><option>Always App</option><option>Always Connect</option><option>Always Safety</option><option>Always Respond</option><option>Somewhere else</option></select></label>
     <label id="fb-msg-l">Tell us more<textarea name="message" rows="6" required></textarea></label>
     <label>Your email <span>Optional, if you'd like a reply</span><input name="email" type="email" autocomplete="email"></label>
     <button class="btn btn-green" type="submit">Send</button>
@@ -604,7 +604,7 @@ PRODUCTS = [
   ('Always Connect', 'Accept or pass introductions, welcome people and keep walking with them.', '#/churches',
    [('Inbox', 'Handoff'), ('Your page', 'Church feed and partner status'), ('Leaders\' report', 'Reports')]),
   ('Always Respond', 'Response pages and QR codes under your own brand, with live results.', '#/respond',
-   [('Response pages', 'Your own brand'), ('Live results', 'Handoff'), ('Funder reports', 'Always Reports'), ('Consent records', 'Always Compliance')]),
+   [('Response pages', 'Your own brand'), ('Live results', 'Handoff'), ('Funder reports', 'Always Reports'), ('Consent records', 'Always Safety')]),
 ]
 def _prod(name, line, href, uses):
     rows = ''.join(f'<li><b>{a}</b><span>{b}</span></li>' for a, b in uses)

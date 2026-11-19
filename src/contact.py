@@ -3,9 +3,9 @@ import json
 import qr
 
 # Preset: (role, topic shown above the form)
-PRESETS = {'church': ['Church or ministry', ''], 'compliance': ['Church or ministry', 'Always Compliance'], 'reports': ['Church or ministry', 'Always Reports'],
+PRESETS = {'church': ['Church or ministry', ''], 'compliance': ['Church or ministry', 'Always Safety'], 'reports': ['Church or ministry', 'Always Reports'],
            'pilot': ['Evangelist', 'The Always App pilot'], 'evangelist': ['Evangelist', ''], 'supporter': ['Supporter', ''],
-           'developer': ['Developer or tech platform', ''], 'platform': ['Developer or tech platform', 'Always Compliance for platforms'], 'other': ['Something else', '']}
+           'developer': ['Developer or tech platform', ''], 'platform': ['Developer or tech platform', 'Always Safety for platforms'], 'other': ['Something else', '']}
 
 CHIPS = [
     ('Church or ministry', 'Church or ministry'),
@@ -67,7 +67,7 @@ HELLO = f'''<section class="hello"><div class="hello-card">
 HELP_OPTIONS = [
     ("I'm from a church", '#/churches'),
     ('I run a ministry, event or tour', '#/ministries'),
-    ('I need help with compliance', '#/compliance/check'),
+    ('I need help with Always Safety', '#/compliance/check'),
     ("I'm a developer", '#/developers'),
     ("I'd like to talk to someone", '#/contact'),
 ]

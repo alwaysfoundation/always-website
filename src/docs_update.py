@@ -10,7 +10,7 @@ INTRO = """
 <a href="#/docs/app"><span>Share Jesus</span><b>Always App</b><em>Share the Good News and capture a yes, at an event or in a conversation.</em></a>
 <a href="#/docs/senders"><span>Capture every yes</span><b>Always Respond</b><em>Respond by QR code, tap, ticket or link, under your own brand.</em></a>
 <a href="#/docs/inbox"><span>Hand people on</span><b>Always Connect</b><em>Find the next best faith step nearby, and walk with people.</em></a>
-<a href="#/docs/compliance-overview"><span>Stay lawful</span><b>Always Compliance</b><em>Privacy, child safety, charity and messaging rules, made clear.</em></a>
+<a href="#/docs/compliance-overview"><span>Stay lawful</span><b>Always Safety</b><em>Privacy, child safety, charity and messaging rules, made clear.</em></a>
 <a href="#/docs/results"><span>Show the fruit</span><b>Always Reports</b><em>The report your board and funders ask for, with totals only.</em></a>
 <a href="#/developers"><span>Build on it</span><b>Developers</b><em>The API, SDK, MCP server, Scripture and webhooks.</em></a>
 </div>
@@ -19,7 +19,7 @@ INTRO = """
 <li><b>New here?</b> Read <a href="#/docs/how-it-works">How it works</a>.</li>
 <li><b>A church or ministry?</b> <a href="#/docs/joining">Join Always</a>. Free for churches.</li>
 <li><b>Someone who responded?</b> See <a href="#/docs/your-choices">Your choices and your privacy</a>.</li>
-<li><b>A developer?</b> Start with the <a href="#/docs/api">API</a> or <a href="#/docs/compliance-api">Compliance API</a>.</li>
+<li><b>A developer?</b> Start with the <a href="#/docs/api">API</a> or <a href="#/docs/compliance-api">Safety API</a>.</li>
 </ul>
 """
 
@@ -54,8 +54,8 @@ MODULES = """
 <p>For sharing Jesus. A simple way to start a conversation, capture a yes with the person's consent, and open Scripture with them through YouVersion. Runs in any browser, with nothing to download.</p>
 <h2>Always Respond</h2>
 <p>A simple way for people to respond, in your colours and words: a QR code on the street or the big screen, a tap on an NFC armband, disc or ticket, a landing page, or a response card under a video. See <a href="#/docs/senders">Response pages and QR codes</a>, <a href="#/docs/taps">Taps, tickets and armbands</a> and <a href="#/docs/branding">Your own brand</a>.</p>
-<h2>Always Compliance</h2>
-<p>A guide to the rules that apply to your ministry, with a check-up every quarter and plain updates when the law changes. Free for churches. See <a href="#/docs/compliance-overview">Always Compliance</a>.</p>
+<h2>Always Safety</h2>
+<p>A guide to the rules that apply to your ministry, with a check-up every quarter and plain updates when the law changes. Free for churches. See <a href="#/docs/compliance-overview">Always Safety</a>.</p>
 <h2>Always Reports</h2>
 <p>The report your board and funders ask for, written from what already happened, every month. See <a href="#/docs/results">Reports for your funders</a>.</p>
 <h2>Always Connect</h2>
@@ -76,7 +76,7 @@ JOINING = """
 <tr><td>A church or ministry</td><td>A member of the foundation. Choose your modules; churches use them free.</td></tr>
 <tr><td>An evangelist</td><td>Join the Always App pilot and share Jesus with a safe next step for every yes.</td></tr>
 <tr><td>A supporter</td><td>Pray, give or volunteer with us.</td></tr>
-<tr><td>A tech platform</td><td>Build on Always Platform, starting with Always Compliance.</td></tr></table>
+<tr><td>A tech platform</td><td>Build on Always Platform, starting with Always Safety.</td></tr></table>
 <h2>How it works</h2>
 <ol>
 <li><b>Register</b> at <a href="#/join">Join Always</a>.</li>
@@ -97,7 +97,7 @@ PRIVACY = """
 <tr><td>Respond to Jesus and ask for a next step</td><td>First name, a mobile or email, suburb, age band, the step you chose, your consent</td><td>A church or ministry near you can get in touch</td></tr>
 <tr><td>Register to join Always</td><td>Your name, email, optional mobile, your role, your organisation's details and what you agreed to</td><td>We can check your details and set you up</td></tr>
 <tr><td>Contact us, or scan our QR code</td><td>First name, a way to reach you, an optional organisation and note</td><td>We can reply</td></tr>
-<tr><td>Use the compliance check-up or API</td><td>Nothing about you. Answers are checked and the result returned; nothing is stored</td><td>You get your result</td></tr>
+<tr><td>Use the safety check-up-up or API</td><td>Nothing about you. Answers are checked and the result returned; nothing is stored</td><td>You get your result</td></tr>
 <tr><td>Visit the website</td><td>No tracking cookies or advertising pixels</td><td>Nothing</td></tr></table>
 <h2>Your faith is sensitive information</h2>
 <p>Saying yes to Jesus is about your religious beliefs, which Australian privacy law treats as sensitive. So we never share it without your clear permission, and only for the purpose you agreed to.</p>
@@ -160,8 +160,8 @@ TERMS = """
 <li>Keep API keys secret. Delete what you hold about a person when you receive a withdrawal.</li>
 <li>Don't suggest the foundation endorses or verifies your product without asking us.</li>
 </ul>
-<h2>Always Compliance is a guide</h2>
-<p>Always Compliance and the check-up help you understand your obligations. They are not legal advice. Check your obligations with your own adviser.</p>
+<h2>Always Safety is a guide</h2>
+<p>Always Safety and the check-up help you understand your obligations. They are not legal advice. Check your obligations with your own adviser.</p>
 <h2>Things nobody may do</h2>
 <ul>
 <li>Break the law, or use Always Platform to harass, deceive or harm anyone.</li>
@@ -232,14 +232,14 @@ YOUVERSION = """
 """
 
 AGENTS = """
-<p class="lead">Agents are a feature inside Always Connect and Always Compliance. They help people do the admin around a welcome, so there's more time for the welcome itself.</p>
+<p class="lead">Agents are a feature inside Always Connect and Always Safety. They help people do the admin around a welcome, so there's more time for the welcome itself.</p>
 <p>A person always decides what happens next. An agent never contacts someone who responded to Jesus on its own.</p>
 <h2>In Always Connect</h2>
 <ul>
 <li><b>Checks new responses</b> for missing details and anything a trained person should see first.</li>
 <li><b>Reminds teams</b> of anyone waiting to hear back, and drafts a first text for a person to edit and send.</li>
 </ul>
-<h2>In Always Compliance</h2>
+<h2>In Always Safety</h2>
 <ul>
 <li><b>Prepares the quarterly check-up</b> and flags changes in the law, for a person at your ministry to approve.</li>
 </ul>
@@ -256,7 +256,7 @@ AGENTS = """
 GLOSSARY = """
 <dl class="gloss">
 <dt>Always Platform</dt><dd>The shared platform behind every module, with one sign-in and shared records.</dd>
-<dt>Module</dt><dd>A part of Always Platform you can switch on: Always App, Always Respond, Always Compliance, Always Reports and Always Connect.</dd>
+<dt>Module</dt><dd>A part of Always Platform you can switch on: Always App, Always Respond, Always Safety, Always Reports and Always Connect.</dd>
 <dt>Member</dt><dd>A church or ministry that has joined the foundation and affirms the Nicene Creed.</dd>
 <dt>Response</dt><dd>Someone telling us they responded to Jesus and would like a next step, with their consent.</dd>
 <dt>Next best faith step</dt><dd>What would help most right now: usually a local church, sometimes a course, a youth group or care.</dd>
@@ -266,7 +266,7 @@ GLOSSARY = """
 <dt>Consent receipt</dt><dd>A record of what the person agreed to, who may see their details, and the exact words they saw.</dd>
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to Always Platform.</dd>
 <dt>Welcoming now</dt><dd>A partner church or ministry that is trained, has room this month and answers introductions on time.</dd>
-<dt>Agents</dt><dd>A feature in Always Connect and Always Compliance that helps teams with admin, with a person deciding every step.</dd>
+<dt>Agents</dt><dd>A feature in Always Connect and Always Safety that helps teams with admin, with a person deciding every step.</dd>
 <dt>Placement</dt><dd>One way into a response page, such as a QR code on a screen or a batch of NFC armbands, so reports can show responses by channel without anyone's name.</dd>
 <dt>Developers</dt><dd>The API, SDK, MCP server and webhooks for building on Always Platform.</dd>
 </dl>
@@ -333,7 +333,7 @@ def apply(DOCS):
     gi, pi = find('privacy')
     DOCS[gi][1].insert(pi + 1, ('terms', 'Terms of use', TERMS))
     set_page('always-agent', title='Agents', body=AGENTS)
-    edit('ai', 'The <a href="#/docs/always-agent">Always Agent</a> helps', '<a href="#/docs/always-agent">Agents</a> in Always Connect and Always Compliance help')
+    edit('ai', 'The <a href="#/docs/always-agent">Always Agent</a> helps', '<a href="#/docs/always-agent">Agents</a> in Always Connect and Always Safety help')
     edit('policies', '<td>Privacy Policy</td>', '<td><a href="#/docs/privacy">Privacy Policy</a></td>')
     edit('policies', '<td>Terms of Use</td>', '<td><a href="#/docs/terms">Terms of Use</a></td>')
     edit('policies', 'Full policies are published', 'The Privacy Policy and Terms of Use are published here. The others are published')
@@ -355,7 +355,7 @@ def apply(DOCS):
         ('Always App', ['app']),
         ('Always Respond', ['senders', 'taps', 'branding', 'online']),
         ('Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming', 'always-agent']),
-        ('Always Compliance', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review', 'compliance-api', 'compliance-platforms']),
+        ('Always Safety', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review', 'compliance-api', 'compliance-platforms']),
         ('Always Reports', ['results']),
         ('For people', ['your-choices']),
         ('Integrations', ['integrations', 'int-chms', 'int-messaging', 'int-automation']),

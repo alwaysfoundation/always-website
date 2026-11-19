@@ -2,7 +2,7 @@
 from html import escape
 
 SNIPPETS = [
-    ('api', 'API', 'REST, OpenAPI 3.1, hosted in Sydney', 'docs/api', 'API=https://api.alwaysfoundation.org\n\n# Churches near Parramatta\ncurl $API/v1/directory?q=parramatta\n\n# The open compliance register\ncurl $API/v1/compliance/register'),
+    ('api', 'API', 'REST, OpenAPI 3.1, hosted in Sydney', 'docs/api', 'API=https://api.alwaysfoundation.org\n\n# Churches near Parramatta\ncurl $API/v1/directory?q=parramatta\n\n# The open register\ncurl $API/v1/compliance/register'),
     ('sdk', 'SDK', 'TypeScript, for any app or site', 'docs/sdk', "import { AlwaysClient } from '@always/sdk';\n\nconst always = new AlwaysClient();\nconst { items } = await always.directory.search({\n  q: 'parramatta', kind: 'church',\n});"),
     ('mcp', 'MCP', 'For Claude and other AI assistants', 'docs/mcp', '# Add as a custom connector\nhttps://api.alwaysfoundation.org/mcp\n\n# Tools: find_churches, verify_church,\n#        list_events, how_always_works'),
     ('webhooks', 'Webhooks', 'Signed CloudEvents, ids only', 'docs/webhooks', "import { verifyWebhook } from '@always/sdk';\n\nconst ok = await verifyWebhook({\n  secret, body, timestamp, signature,\n});"),
@@ -10,14 +10,14 @@ SNIPPETS = [
 
 WAYS = [
     ('The API', 'Send responses, receive introductions, manage a church page and read the church feed. Scoped tokens, shown once, revocable.', 'docs/api', 'API reference'),
-    ('The SDK', 'A TypeScript client, a drop-in response card, the compliance check-up and guardrails that fail closed.', 'docs/sdk', 'SDK guide'),
+    ('The SDK', 'A TypeScript client, a drop-in response card, the safety check-up-up and guardrails that fail closed.', 'docs/sdk', 'SDK guide'),
     ('The MCP connector', 'Let AI assistants find churches, see which are partner churches and list events, using public information only.', 'docs/mcp', 'Connect an assistant'),
 ]
 
 BUILD = [
     ('Church feed and finder', 'Partner churches near any postcode, for your website, app or map.', 'docs/feed'),
     ('Responses and handoff', 'Pass people to a local partner church, with consent that travels with them.', 'docs/standard'),
-    ('Compliance infrastructure', 'The open register, change alerts and an embeddable check-up.', 'docs/compliance-platforms'),
+    ('Safety infrastructure', 'The open register, change alerts and an embeddable check-up.', 'docs/compliance-platforms'),
     ('Webhooks', 'Hear about introductions, handoffs and rule changes as they happen.', 'docs/webhooks'),
     ('Response pages and embeds', 'Branded response cards and pages you drop into your own site.', 'docs/senders'),
     ('Scripture', 'The Bible in your app through YouVersion.', 'docs/youversion'),

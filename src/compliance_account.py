@@ -1,4 +1,4 @@
-"""Always Compliance: results, the board summary, and the signed-in area (#/mycompliance)."""
+"""Always Safety: results, the board summary, and the signed-in area (#/mycompliance)."""
 import json
 import os
 
@@ -8,8 +8,8 @@ SUPABASE_URL = 'https://scoitzteqsvomsghtxfe.supabase.co'
 SUPABASE_KEY = 'sb_publishable_Wcgql0VPiQ54KREb48X_Ew_dk1U5yy-'
 
 PAGE = '''<section class="page-hero cmy-hero"><div class="wrap">
-  <p class="cmy-kick">Always Compliance</p>
-  <h1 class="cmy-h" id="cmy-title">Your compliance</h1>
+  <p class="cmy-kick">Always Safety</p>
+  <h1 class="cmy-h" id="cmy-title">Your safety check-up</h1>
   <p class="cmy-lead" id="cmy-lead">Save your check-up, approve it each quarter, and hear when a rule that applies to you changes.</p>
 </div></section>
 <section class="sec pg-sec cmy-sec"><div class="wrap"><div class="cmy" id="cmy" aria-live="polite"></div></div></section>
@@ -105,7 +105,7 @@ CSS = '''
 _cfg = json.dumps({'on': ACCOUNTS_ON, 'url': SUPABASE_URL, 'key': SUPABASE_KEY})
 
 JS = r'''
-// ---------------------------------------------------------------- Always Compliance: results, board summary, account
+// ---------------------------------------------------------------- Always Safety: results, board summary, account
 (() => {
   const CFG = __CFG__;
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -150,7 +150,7 @@ JS = r'''
       ${opts.local ? `<div class="cw-then">
         <div><h5>A summary for your board</h5><div class="cw-name"><label for="cw-name">Ministry name</label><input id="cw-name" type="text" autocomplete="organization" maxlength="120" placeholder="Optional"></div><p>One page with where you stand and space to sign. It's made on your device.</p><button class="btn btn-ghost-dark" type="button" data-print>Download board summary</button></div>
         ${saveCard}
-        <div><h5>Join Always</h5><p>Free for churches. One sign-in for every Always module, from compliance to reports.</p><a class="btn btn-ghost-dark" href="#/join/church" data-join-interest="compliance">Join Always</a></div>
+        <div><h5>Join Always</h5><p>Free for churches. One sign-in for every Always module, from safety to reports.</p><a class="btn btn-ghost-dark" href="#/join/church" data-join-interest="compliance">Join Always</a></div>
       </div>` : ''}
       <p class="cw-notice">Register ${esc(a.version)} (${esc(a.status)}). ${esc(a.notice)}${opts.local ? ' Nothing you entered has been sent or saved.' : ''}</p>
       ${opts.local ? '<div class="cw-nav"><button class="btn btn-ghost-dark" type="button" data-edit>Change my answers</button><span></span></div>' : ''}`;
@@ -162,8 +162,8 @@ JS = r'''
     let el = document.getElementById('cw-board');
     if (!el) { el = document.createElement('div'); el.id = 'cw-board'; document.body.appendChild(el); }
     const d = new Date(), items = a.items;
-    el.innerHTML = `<h1>${esc(name || 'Our ministry')}: compliance check-up</h1>
-      <p class="b-sub">${esc(quarterOf(d))} · prepared ${d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} with Always Compliance</p>
+    el.innerHTML = `<h1>${esc(name || 'Our ministry')}: safety check-up</h1>
+      <p class="b-sub">${esc(quarterOf(d))} · prepared ${d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} with Always Safety</p>
       <div class="b-sum"><div><b>${items.length}</b>apply</div><div><b>${count(items, 'met')}</b>done</div><div><b>${count(items, 'attention') + count(items, 'check')}</b>need a look</div><div><b>${count(items, 'upcoming')}</b>coming</div></div>
       <table><thead><tr><th>Area</th><th>Obligation</th><th>Status</th><th>Next step</th></tr></thead><tbody>
       ${items.map((i) => `<tr><td>${esc(AREA[i.area] || '')}</td><td>${esc(i.title)}</td><td>${esc(LABEL[i.status])}</td><td>${i.status === 'met' || i.status === 'upcoming' ? '' : esc(i.guidance)}</td></tr>`).join('')}
@@ -213,7 +213,7 @@ JS = r'''
   }
 
   const root = () => document.getElementById('cmy');
-  const steps = (n) => `<ol class="cmy-steps" aria-label="Getting set up">${['Sign in', 'Your ministry', 'Your compliance'].map((t, i) => `<li class="${i + 1 === n ? 'on' : i + 1 < n ? 'done' : ''}"${i + 1 === n ? ' aria-current="step"' : ''}>${t}</li>`).join('')}</ol>`;
+  const steps = (n) => `<ol class="cmy-steps" aria-label="Getting set up">${['Sign in', 'Your ministry', 'Your check-up'].map((t, i) => `<li class="${i + 1 === n ? 'on' : i + 1 < n ? 'done' : ''}"${i + 1 === n ? ' aria-current="step"' : ''}>${t}</li>`).join('')}</ol>`;
 
   function viewClosed() {
     root().innerHTML = `<div class="cmy-card"><h2>Opening soon</h2><p>Saving your check-up and quarterly reminders are nearly ready. You can use the free check-up now, and download a summary for your board.</p>
@@ -224,7 +224,7 @@ JS = r'''
     root().innerHTML = `<div class="cmy-card">${steps(1)}<h2>Sign in with your email</h2><p>We'll email you a link and a six-digit code. No password to remember.</p>
       <form id="cmy-email" novalidate><div class="cmy-field"><label for="cmy-e">Email address</label><input id="cmy-e" type="email" autocomplete="email" required></div>
       <p class="cmy-err" role="alert">${esc(msg)}</p><div class="cmy-row"><button class="btn btn-peach" type="submit">Email me a sign-in link</button></div>
-      <p class="cmy-note">Your email is kept in Australia and used only for your account and compliance reminders.</p></form></div>`;
+      <p class="cmy-note">Your email is kept in Australia and used only for your account and safety reminders.</p></form></div>`;
     root().querySelector('#cmy-email').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = root().querySelector('#cmy-e').value.trim(), err = root().querySelector('.cmy-err');
@@ -288,7 +288,7 @@ JS = r'''
   async function viewDashboard(orgs) {
     const org = store.get(ORG);
     document.getElementById('cmy-title').textContent = org.name;
-    document.getElementById('cmy-lead').textContent = 'Your compliance, kept up to date each quarter.';
+    document.getElementById('cmy-lead').textContent = 'Your safety check-up, kept up to date each quarter.';
     let a = null, history = [];
     try { a = await api('GET', '/v1/compliance/assessment'); } catch (x) { if (x.status !== 409) throw x; }
     if (!a) {
@@ -341,7 +341,7 @@ JS = r'''
       await viewDashboard(orgs);
     } catch (x) {
       if (x.message === 'signed_out') return viewEmail('Your session ended. Please sign in again.');
-      root().innerHTML = '<div class="cmy-card"><h2>We couldn’t load your compliance</h2><p>Please try again in a moment.</p><div class="cmy-row"><button class="btn btn-peach" type="button" onclick="location.reload()">Try again</button></div></div>';
+      root().innerHTML = '<div class="cmy-card"><h2>We couldn’t load your safety check-up</h2><p>Please try again in a moment.</p><div class="cmy-row"><button class="btn btn-peach" type="button" onclick="location.reload()">Try again</button></div></div>';
     }
   }
 

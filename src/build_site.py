@@ -241,9 +241,9 @@ DOCS = [
 <h2>Fair credit</h2>
 <p>Each ministry sees what happened to the people it introduced, and each church sees the people it welcomed. Every number is counted once, using the same definitions across the whole network, so reports from different ministries can be compared fairly.</p>
 """),
-  ("compliance", "Compliance made simple", """
+  ("compliance", "Safe ministry, made simple", """
 <p class="lead">The privacy and child safety paperwork, kept for you as you go.</p>
-<p>Each church and ministry gets a Compliance tab with records you can export when your board, denomination or insurer asks.</p>
+<p>Each church and ministry gets a Safety tab with records you can export when your board, denomination or insurer asks.</p>
 <ul>
 <li><b>Consent register</b>: every permission, what it covered, the wording shown, and any withdrawal.</li>
 <li><b>Privacy requests</b>: people see, download, correct or delete their details from their own link.</li>
@@ -253,7 +253,7 @@ DOCS = [
 <li><b>Audit trail</b>: a tamper-evident log of who opened what, and why.</li>
 <li><b>Annual reporting</b>: activity totals ready for your ACNC return.</li>
 </ul>
-<p>The Compliance tab shows records and dates, never people's details. Child safety incidents stay in your own safeguarding system, kept for at least 45 years as the Royal Commission recommended.</p>
+<p>The Safety tab shows records and dates, never people's details. Child safety incidents stay in your own safeguarding system, kept for at least 45 years as the Royal Commission recommended.</p>
 <p><small>Always Platform helps you keep good records. It isn't legal advice; check your obligations with your own adviser.</small></p>
 """),
  ]),
@@ -530,7 +530,7 @@ import stories as ST
 import integrations as IG
 PR.NEW_PAGES['integrations'] = IG.PAGE
 PR.NEW_PAGES['mycompliance'] = CA.PAGE
-PR.TITLES['mycompliance'] = 'Your compliance · Always Foundation'
+PR.TITLES['mycompliance'] = 'Your safety check-up · Always Foundation'
 PR.TITLES['integrations'] = 'Integrations · Always Foundation'
 PR.NEW_PAGES['sydneyfire'] = ST.SYDNEYFIRE
 PR.NEW_PAGES['alpha'] = ST.ALPHA
@@ -1083,10 +1083,10 @@ function route() {
   document.querySelectorAll('nav a[data-route]').forEach((a) => { if (a.dataset.route === page) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   if (page === 'docs') showDoc(second || 'introduction');
   if (page === 'feedback' && second === 'missing') { document.querySelector('#fb-form input[value=missing]').checked = true; fbKind(); }
-  if (page === 'compliance' && ['check', 'problem', 'how', 'covers', 'infrastructure'].includes(second)) { requestAnimationFrame(() => document.getElementById(second).scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = second === 'check' ? 'Free compliance check-up · Always Foundation' : 'Always Compliance · Always Foundation'; return; }
+  if (page === 'compliance' && ['check', 'problem', 'how', 'covers', 'infrastructure'].includes(second)) { requestAnimationFrame(() => document.getElementById(second).scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = second === 'check' ? 'Free safety check-up-up · Always Foundation' : 'Always Safety · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
+  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Safety · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
   document.body.classList.toggle('on-hello', page === 'hello');
   if (page !== 'docs') document.title = titles[page] || 'Always Foundation';
   watch(document.getElementById(pages[page]));

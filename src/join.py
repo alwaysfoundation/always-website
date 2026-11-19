@@ -2,12 +2,12 @@
 from products import ICON
 
 STATES = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']
-MODULES = [('app', 'Always App'), ('pages', 'Always Respond'), ('compliance', 'Always Compliance'), ('reports', 'Always Reports'), ('connect', 'Always Connect')]
+MODULES = [('app', 'Always App'), ('pages', 'Always Respond'), ('compliance', 'Always Safety'), ('reports', 'Always Reports'), ('connect', 'Always Connect')]
 PATHS = [
     ('church', 'A church or ministry', 'Become a member and switch on the modules you need.', 'churches'),
     ('evangelist', 'An evangelist', 'Join the Always App pilot and share Jesus with confidence.', 'evangelists'),
     ('supporter', 'A supporter', 'Pray, give or volunteer with us.', 'youth'),
-    ('platform', 'A tech platform', 'Build on Always Platform, starting with Always Compliance.', 'platforms'),
+    ('platform', 'A tech platform', 'Build on Always Platform, starting with Always Safety.', 'platforms'),
 ]
 
 
@@ -84,7 +84,7 @@ PAGE = f'''<section class="page-hero jn-hero"><div class="wrap">
         <label>Website<input name="platformSite" type="url" inputmode="url" placeholder="https://" data-required="platform"></label>
       </div>
       <p class="jn-q">What would you like to build with? <em>optional</em></p>
-      {_checks('build', [('compliance', 'Always Compliance infrastructure'), ('feed', 'The church feed'), ('handoff', 'Handoff to local churches'), ('mcp', 'The MCP connector')])}
+      {_checks('build', [('compliance', 'Always Safety infrastructure'), ('feed', 'The church feed'), ('handoff', 'Handoff to local churches'), ('mcp', 'The MCP connector')])}
     </fieldset>
 
     <fieldset class="jn-step jn-agree">

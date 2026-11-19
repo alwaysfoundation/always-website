@@ -25,7 +25,7 @@ CSS = '''
 .pg-steps .pg-step span { display: block; font: 400 44px/1 'Newsreader', Georgia, serif; color: var(--clay); margin-bottom: 18px; }
 .pg-steps .pg-step h3 { margin-top: 0; }
 
-/* ---- Compliance steps, same language ---- */
+/* ---- Safety steps, same language ---- */
 .cm-steps { column-gap: 40px; row-gap: 0; }
 .cm-steps li { background: none; border-radius: 0; padding: 26px 0 0; border-top: 2px solid var(--green); }
 .cm-steps li::before { content: counter(s, decimal-leading-zero); display: block; width: auto; height: auto; background: none; border-radius: 0; font: 400 44px/1 'Newsreader', Georgia, serif; color: var(--clay); margin-bottom: 18px; }

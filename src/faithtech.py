@@ -23,13 +23,13 @@ PAGE = '''
 
     <h2>What's open to builders</h2>
     <ul>
-      <li><b>Always Compliance</b>, live now. A check-up for privacy, child safety, charity and messaging rules, as a hosted API and a drop-in widget. Nothing about the person using it is stored.</li>
+      <li><b>Always Safety</b>, live now. A check-up for privacy, child safety, charity and messaging rules, as a hosted API and a drop-in widget. Nothing about the person using it is stored.</li>
       <li><b>Church feed and finder.</b> Partner churches near a postcode, and whether they are welcoming now, for your site, app or AI tool.</li>
       <li><b>Response pages and handoff.</b> Pass a consenting person to a local church through the API and SDK, with consent attached.</li>
       <li><b>MCP server.</b> Let an AI assistant find churches and explain Always Platform accurately, using public information only.</li>
       <li><b>Webhooks</b> for the moments that matter, carrying ids only, never personal details.</li>
     </ul>
-    <p>Compliance is live today. The rest opens to builders as the Always API launches; the <a href="#/developers">Developers</a> page shows what's ready.</p>
+    <p>Always Safety is live today. The rest opens to builders as the Always API launches; the <a href="#/developers">Developers</a> page shows what's ready.</p>
 
     <blockquote class="ft-pull">Builders use Always Platform on the same terms as everyone else: free, open source, with no special rights for anyone.</blockquote>
 
@@ -43,12 +43,12 @@ PAGE = '''
     <p>A few examples of how a team might use it:</p>
     <ul>
       <li>A prayer or Bible app adds "Find a church near me" in a line of code.</li>
-      <li>A youth events tool checks its compliance before its first event.</li>
+      <li>A youth events tool checks its safety obligations before its first event.</li>
       <li>An outreach app hands every yes to a local partner church, with consent, instead of a spreadsheet.</li>
     </ul>
 
     <h2>Start building</h2>
-    <p>Bring an idea to a FaithTech gathering, a hackathon, or your own weekend. Read the <a href="#/docs/compliance-api">Compliance API docs</a>, look through <a href="#/developers">Developers</a>, or register as a tech platform and we'll help you get set up.</p>
+    <p>Bring an idea to a FaithTech gathering, a hackathon, or your own weekend. Read the <a href="#/docs/compliance-api">Safety API docs</a>, look through <a href="#/developers">Developers</a>, or register as a tech platform and we'll help you get set up.</p>
   </div>
 
   <aside class="ft-side" aria-label="At a glance">
@@ -58,7 +58,7 @@ PAGE = '''
         <dt>For</dt><dd>FaithTech Australia, and Christian builders and founders everywhere</dd>
         <dt>Cost</dt><dd>Free</dd>
         <dt>Licence</dt><dd>Apache 2.0 code, CC BY 4.0 docs</dd>
-        <dt>Live now</dt><dd>Always Compliance API and widget</dd>
+        <dt>Live now</dt><dd>Always Safety API and widget</dd>
         <dt>Data</dt><dd>Kept in Australia</dd>
       </dl>
       <a class="btn btn-peach" href="#/join/platform">Register as a tech platform</a>
