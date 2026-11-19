@@ -306,11 +306,11 @@ JOURNEYS = """
 </ul>
 <section class="jh">
 <h2>How does Always connect the dots?</h2>
-<div class="jh-q"><h3>How Always recognises Sam</h3><p>When Sam responds through a ministry, Always turns Sam&rsquo;s mobile number into a private fingerprint that only Always can read. If Sam later responds somewhere else with the same number, Always recognises it&rsquo;s the same journey.</p></div>
+<div class="jh-q"><h3>How Always recognises Sam</h3><p>When Sam responds through a ministry, Always turns Sam&rsquo;s mobile number into a private fingerprint that only Always can use to match records. If Sam later responds somewhere else with the same number, Always recognises it&rsquo;s the same journey.</p></div>
 <div class="jh-q"><h3>Who decides</h3><p>Sam does. When Sam responds, there&rsquo;s a separate tick to link their journey. It&rsquo;s never pre-ticked, and Sam can withdraw it any time. Without it, nothing is linked.</p></div>
 <div class="jh-q"><h3>Who sees what</h3><p>Each ministry gets a different code for Sam, so they can&rsquo;t use those codes to connect Sam&rsquo;s records. Only Always links the journey. When Sam joins a church, that church sees the earlier steps Sam agreed to share, like &ldquo;responded in February&rdquo; or &ldquo;did a course in March&rdquo;, and never other ministries&rsquo; notes or which ministries they were.</p></div>
 <p class="jh-end">Always connects the journey. Sam stays in control.</p>
-<div class="jpp"><h3>A proven approach</h3><p>Always draws on privacy-preserving record linkage, an established approach in healthcare and research. Just as health services can recognise the same patient&rsquo;s records without sharing whole databases, Always helps ministries connect a person&rsquo;s journey from evangelism to discipleship and a local church. Protected fingerprints, a different code for each ministry and Sam&rsquo;s clear yes give continuity of care, while respecting each person&rsquo;s privacy and each ministry&rsquo;s independence.</p></div>
+<div class="jpp"><h3>Built on an established approach</h3><p>Always draws on privacy-preserving record linkage, an established approach in healthcare and research. Just as health services can recognise the same patient&rsquo;s records without sharing whole databases, Always helps ministries connect a person&rsquo;s journey from evangelism to discipleship and a local church. Protected fingerprints, a different code for each ministry and Sam&rsquo;s clear yes give continuity of care, while respecting each person&rsquo;s privacy and each ministry&rsquo;s independence.</p></div>
 </section>
 <blockquote class="jbig"><p>Saying yes to Jesus shouldn&rsquo;t be the end of the story. It should be the beginning of a journey.</p></blockquote>
 
