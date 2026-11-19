@@ -424,6 +424,9 @@ def brand_body(DOCS):
     old = next(t[2] for g, ps in DOCS for t in ps if t[0] == 'brand')
     return '<p class="lead">How Always looks and sounds. Use it freely when you talk about Always.</p>' + b + '<h2>Trademark</h2>' + old
 
+ALIAS = {}
+
+
 def apply(DOCS):
     def find(slug):
         for gi, (_, pages) in enumerate(DOCS):
@@ -497,21 +500,41 @@ def apply(DOCS):
     DOCS.append(IG.DOCS)
     pages = {t[0]: t for _, ps in DOCS for t in ps}
     layout = [
-        ('Get started', ['introduction', 'how-it-works', 'modules', 'joining', 'glossary']),
-        ('Always Sent', ['app', 'saving']),
-        ('Always Respond', ['senders', 'taps', 'branding', 'online']),
-        ('Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming', 'always-agent']),
-        ('Always Safety', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review', 'compliance-api', 'compliance-platforms']),
-        ('Always Reports', ['results', 'journeys']),
-        ('Integrations', ['integrations', 'int-chms', 'int-messaging', 'int-automation']),
-        ('Developers', ['api', 'sdk', 'standard', 'consent', 'journey', 'webhooks', 'feed', 'mcp', 'youversion']),
-        ('Trust and privacy', ['security', 'privacy', 'your-choices', 'young-people', 'ai', 'terms', 'policies']),
-        ('The foundation', ['governance', 'open-source', 'brand']),
+        ('Get started', [('introduction', 'Welcome', ['introduction']), ('how-it-works', 'How it works', ['how-it-works', 'modules']), ('joining', 'Join Always', ['joining']), ('glossary', 'Glossary', ['glossary'])]),
+        ('Always Sent', [('app', 'Always Sent', ['app', 'saving'])]),
+        ('Always Respond', [('senders', 'Always Respond', ['senders', 'taps', 'branding', 'online'])]),
+        ('Always Connect', [('inbox', 'Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming']), ('always-agent', 'Agents', ['always-agent'])]),
+        ('Always Safety', [('compliance-overview', 'Always Safety', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review']), ('compliance-api', 'Safety API for platforms', ['compliance-api', 'compliance-platforms'])]),
+        ('Always Reports', [('results', 'Reports for your funders', ['results']), ('journeys', 'Journeys across ministries', ['journeys', 'journey'])]),
+        ('Integrations', [('integrations', 'Integrations', ['integrations', 'int-chms', 'int-messaging', 'int-automation'])]),
+        ('Developers', [('api', 'API and webhooks', ['api', 'webhooks']), ('sdk', 'SDK', ['sdk']), ('standard', 'Handoff standard and consent', ['standard', 'consent']), ('feed', 'Church feed and AI assistants', ['feed', 'mcp']), ('youversion', 'Scripture with YouVersion', ['youversion'])]),
+        ('Trust and privacy', [('privacy', 'Privacy', ['privacy', 'your-choices']), ('security', 'Security and AI', ['security', 'ai']), ('young-people', 'Children and young people', ['young-people']), ('terms', 'Terms and policies', ['terms', 'policies'])]),
+        ('The foundation', [('governance', 'Governance and open source', ['governance', 'open-source']), ('brand', 'Brand and logo', ['brand'])]),
     ]
-    used = {sl for _, sls in layout for sl in sls}
+    import re as _re
+    used = [sl for _, ps in layout for _, _, sls in ps for sl in sls]
     missing = [sl for sl in pages if sl not in used]
     assert not missing, missing
-    DOCS[:] = [(g, [pages[sl] for sl in sls]) for g, sls in layout]
+    def demote(h):
+        h = _re.sub(r'<(/?)h3\b', r'<\1h4', h)
+        h = _re.sub(r'<(/?)h2\b', r'<\1h3', h)
+        return h.replace('<p class="lead">', '<p>')
+    ALIAS.clear()
+    out = []
+    for g, ps in layout:
+        items = []
+        for slug, title, sls in ps:
+            parts = []
+            for k, sl in enumerate(sls):
+                _s, t, b = pages[sl]
+                if k == 0:
+                    parts.append(b.strip())
+                else:
+                    parts.append(f'<h2 id="s-{sl}">{t}</h2>' + demote(b.strip()))
+                    ALIAS[sl] = [slug, 's-' + sl]
+            items.append((slug, title, '\n'.join(parts)))
+        out.append((g, items))
+    DOCS[:] = out
     return DOCS
 
 

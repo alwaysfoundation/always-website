@@ -552,6 +552,12 @@ nav_html = ''
 pages_json = {}
 order = []
 for group, pages in DOCS:
+    if len(pages) == 1:
+        slug, title, body = pages[0]
+        nav_html += f'<div class="dsec dsolo"><ul><li><a href="#/docs/{slug}" data-slug="{slug}">{esc(title)}</a></li></ul></div>'
+        pages_json[slug] = {'title': title, 'group': group, 'html': body.strip()}
+        order.append(slug)
+        continue
     nav_html += f'<details class="dsec"><summary class="dgroup">{esc(group)}<span class="dcount">{len(pages)}</span></summary><ul>'
     for slug, title, body in pages:
         nav_html += f'<li><a href="#/docs/{slug}" data-slug="{slug}">{esc(title)}</a></li>'
@@ -656,9 +662,30 @@ nav a[aria-current="page"] { color: var(--cream); text-decoration: underline; te
   .about-grid, .creed { grid-template-columns: 1fr; gap: 32px; }
   .mv { grid-template-columns: 1fr; }
 }
+.dbar, .dnav-head, .dscrim { display: none; }
+.dnav .dsolo { border-top: 1px solid var(--line); }
+.dnav .dsolo a { font: 700 15px/1.3 var(--head); color: var(--green); padding: 13px 12px; }
+.dnav .dsolo a.on { color: var(--cream); }
 @media (max-width: 860px) {
-  .dnav { display: none; }
-  .dpick { display: block; width: 100%; height: 54px; border-radius: 14px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); padding: 0 14px; font-size: 16px; }
+  .docs { padding-top: 20px; }
+  .dbar { position: sticky; top: 10px; z-index: 30; display: flex; align-items: center; gap: 12px; width: 100%; min-height: 60px; margin-bottom: 18px; padding: 10px 12px 10px 10px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,253,248,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 12px 30px -20px rgba(20,53,47,.5); color: var(--ink); text-align: left; cursor: pointer; }
+  .dbar-ic { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--green); color: var(--cream); }
+  .dbar-tx { display: grid; min-width: 0; flex: 1; }
+  .dbar-k { font: 600 12.5px/1.2 var(--head); color: var(--clay); }
+  .dbar-tx b { font: 700 16px/1.3 var(--head); color: var(--green); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dbar-go { flex: none; font: 600 14px/1 var(--head); color: var(--soft); }
+  .dnav { display: block; position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 1002; max-height: 86vh; margin: 0; padding: 0 20px calc(24px + env(safe-area-inset-bottom)); overflow: auto; background: var(--cream); border-radius: 26px 26px 0 0; box-shadow: 0 -30px 60px -20px rgba(10,30,26,.45); transform: translateY(105%); visibility: hidden; transition: transform .35s cubic-bezier(.2,.7,.2,1), visibility .35s; }
+  .docs.nav-open .dnav { transform: none; visibility: visible; }
+  .dnav-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; margin: 0 -20px 10px; padding: 18px 20px 12px; background: var(--cream); }
+  .dnav-head::before { content: ''; position: absolute; top: 8px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: 4px; background: rgba(20,53,47,.18); }
+  .dnav-head b { font: 800 20px/1 var(--head); color: var(--green); }
+  .dnav-x { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--paper); color: var(--ink); }
+  .dnav .dgroup { margin: 0; padding: 14px 4px; font-size: 15px; color: var(--green); }
+  .dnav details.dsec { border-top: 1px solid var(--line); }
+  .dnav a { min-height: 44px; display: flex; align-items: center; font-size: 16px; }
+  .dscrim { display: block; position: fixed; inset: 0; z-index: 1001; background: rgba(10,25,22,.45); opacity: 0; transition: opacity .3s; }
+  .docs.nav-open .dscrim { opacity: 1; }
+  .dscrim[hidden] { display: none; }
 }
 .menu-btn, .nav-foot { display: none; }
 @media (max-width: 1020px) {
@@ -740,12 +767,14 @@ docs_page = f"""
     <a href="#/docs/privacy"><b>Privacy</b><span>Your story is yours</span></a>
   </nav></div></section>
 <div class="wrap docs">
-  <aside class="dnav" aria-label="Docs">
+  <div class="dscrim" id="dscrim" hidden></div>
+  <aside class="dnav" id="dnav" aria-label="Docs">
+    <div class="dnav-head"><b>Contents</b><button type="button" class="dnav-x" id="dnav-x" aria-label="Close contents"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
     <label class="skip" for="dsq">Search the docs</label>
     <input class="dsearch" id="dsq" type="search" placeholder="Search the docs">
     <div id="dnavlist">{nav_html}</div>
   </aside>
-  <div style="min-width:0"><label class="skip" for="dpick">Choose a page</label><select class="dpick" id="dpick">{picker}</select>
+  <div style="min-width:0"><button type="button" class="dbar" id="dbar" aria-expanded="false" aria-controls="dnav"><span class="dbar-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><span class="dbar-tx"><span class="dbar-k" id="dbar-g">Docs</span><b id="dbar-t">Welcome</b></span><span class="dbar-go">Contents</span></button>
   <article class="prose" id="doc"></article></div>
   <aside class="dtoc" id="dtoc" aria-label="On this page"></aside>
 </div>
@@ -1063,6 +1092,7 @@ script = """
 
 const DOCS = __DOCS__;
 const ORDER = __ORDER__;
+const ALIAS = __ALIAS__;
 document.body.classList.remove('no-js');
 
 // Reveal on scroll
@@ -1098,6 +1128,7 @@ window.addEventListener('hashchange', route);
 
 // Docs
 function showDoc(slug) {
+  if (ALIAS[slug]) { const [to, anchor] = ALIAS[slug]; history.replaceState(null, '', '#/docs/' + to); showDoc(to); setTimeout(() => document.getElementById(anchor)?.scrollIntoView({ block: 'start' }), 80); return; }
   const d = DOCS[slug] || DOCS.introduction;
   document.getElementById('page-docs')?.classList.toggle('in-doc', d !== DOCS.introduction);
   const i = ORDER.indexOf(slug in DOCS ? slug : 'introduction');
@@ -1111,7 +1142,7 @@ function showDoc(slug) {
   if (window.jvInit) setTimeout(window.jvInit, 60);
   document.querySelectorAll('.dnav a').forEach((a) => a.classList.toggle('on', a.dataset.slug === slug));
   if (!document.getElementById('dsq').value) document.querySelectorAll('.dnav details.dsec').forEach((dt) => { dt.open = !!dt.querySelector(`a[data-slug="${slug}"]`); });
-  document.getElementById('dpick').value = slug in DOCS ? slug : 'introduction';
+  document.getElementById('dbar-t').textContent = d.title; document.getElementById('dbar-g').textContent = d.group; closeDocNav();
   document.title = d.title + ' · Always docs';
   const toc = document.getElementById('dtoc'), hs = [...document.querySelectorAll('#doc h2')];
   toc.innerHTML = '';
@@ -1132,6 +1163,7 @@ document.getElementById('dsq').addEventListener('input', (e) => {
     const hit = !q || DOCS[slug].title.toLowerCase().includes(q) || DOCS[slug].html.toLowerCase().includes(q);
     li.hidden = !hit;
   });
+  document.querySelectorAll('.dnav .dsolo').forEach((dv) => { dv.hidden = !!dv.querySelector('li').hidden; });
   document.querySelectorAll('.dnav details.dsec').forEach((dt) => {
     const any = [...dt.querySelectorAll('li')].some((li) => !li.hidden);
     dt.hidden = !any; if (q) dt.open = any;
@@ -1139,7 +1171,12 @@ document.getElementById('dsq').addEventListener('input', (e) => {
   if (!q) { const cur = document.querySelector('.dnav a.on'); document.querySelectorAll('.dnav details.dsec').forEach((dt) => { dt.hidden = false; dt.open = !!(cur && dt.contains(cur)); }); }
 });
 
-document.getElementById('dpick').addEventListener('change', (e) => { location.hash = '#/docs/' + e.target.value; });
+function closeDocNav() { const w = document.querySelector('.docs'); if (!w || !w.classList.contains('nav-open')) return; w.classList.remove('nav-open'); document.getElementById('dbar').setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; setTimeout(() => { document.getElementById('dscrim').hidden = true; }, 320); }
+function openDocNav() { const w = document.querySelector('.docs'); document.getElementById('dscrim').hidden = false; requestAnimationFrame(() => w.classList.add('nav-open')); document.getElementById('dbar').setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; setTimeout(() => document.querySelector('.dnav a.on')?.scrollIntoView({ block: 'center' }), 360); }
+document.getElementById('dbar').addEventListener('click', openDocNav);
+document.getElementById('dnav-x').addEventListener('click', closeDocNav);
+document.getElementById('dscrim').addEventListener('click', closeDocNav);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDocNav(); });
 // Journeys explainer: a small timeline that moves Sam through four ministries, then shows Always linking them.
 window.jvInit = () => {
   const root = document.querySelector('[data-jv]'); if (!root || root.dataset.ready) return; root.dataset.ready = '1';
@@ -1260,7 +1297,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
 """ + CA.JS + CP.JS + extras.JS + DV.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS + HM.JS + SC.JS
-script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
+script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order)).replace('__ALIAS__', json.dumps(DU.ALIAS))
 
 footer = """
 <footer>

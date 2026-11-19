@@ -76,8 +76,7 @@ def _console():
 PAGE = f'''<section class="page-hero dv-hero"><div class="wrap dv-split">
   <div class="dv-copy"><p class="pl-kick">Developers</p>
   <h1>Build with the Body.</h1>
-  <p>The same open-source API, SDK and AI connector every Always module runs on. Help people who say yes to Jesus find a local church, from your own website, app or event.</p>
-  <p class="dv-pilot"><i aria-hidden="true"></i>Keys are free for churches and ministries.</p>
+  <p>The same open-source API, SDK and AI connector every Always module runs on. Help people who say yes to Jesus find a local church, from your own website, app or event. Free for churches and ministries.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/docs/api">Read the docs</a><a class="btn btn-ghost" href="#/join/platform">Ask for a key</a></div></div>
   {_console()}
 </div></section>
