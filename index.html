@@ -1663,6 +1663,100 @@ i.ig-building, .ig-st.ig-building::before { background: #8FB5D9; } i.ig-planned,
 .ig-rules .sl-rows-4 { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .ig-card { transition: none; } .ig-card:hover { transform: none; } }
 
+/* ---- Home module showcase ---- */
+.msx { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 28px; margin-top: 48px; align-items: stretch; }
+.msx-tabs { display: grid; gap: 6px; align-content: start; }
+.msx-tab { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; width: 100%; min-height: 76px; padding: 14px 16px; border: 0; border-radius: 20px; background: transparent; text-align: left; cursor: pointer; color: inherit; font: inherit; overflow: hidden; transition: background .3s ease; }
+.msx-tab:hover { background: rgba(27,71,64,.05); }
+.msx-tab[aria-selected="true"] { background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.06), 0 18px 36px -28px rgba(10,30,26,.45); }
+.msx-tab:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+.msx-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--sage); color: var(--green); flex: none; }
+.msx-ic .dd-ic { background: none !important; width: auto; height: auto; }
+.msx-ic svg { width: 22px; height: 22px; }
+.msx-tab[aria-selected="true"] .msx-ic { background: var(--green); color: var(--cream); }
+.msx-tt { display: grid; gap: 2px; }
+.msx-verb { font: 700 12.5px/1.2 var(--head); color: var(--clay); }
+.msx-tt b { font: 800 19px/1.2 var(--head); color: var(--green); letter-spacing: -0.015em; }
+.msx-bar { position: absolute; left: 16px; right: 16px; bottom: 8px; height: 2px; border-radius: 2px; background: rgba(27,71,64,.08); opacity: 0; }
+.msx-bar::after { content: ''; position: absolute; inset: 0; border-radius: 2px; background: var(--peach); transform: scaleX(0); transform-origin: 0 50%; }
+.msx.auto .msx-tab[aria-selected="true"] .msx-bar { opacity: 1; }
+.msx.auto .msx-tab[aria-selected="true"] .msx-bar::after { animation: msxBar var(--msx-t, 7s) linear forwards; }
+.msx.paused .msx-tab[aria-selected="true"] .msx-bar::after { animation-play-state: paused; }
+@keyframes msxBar { to { transform: scaleX(1); } }
+.msx-stage { position: relative; min-height: 560px; }
+.msx-panel { position: absolute; inset: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; border-radius: 32px; overflow: hidden; }
+.msx-panel[hidden] { display: none; }
+.msx-panel:not([hidden]) { animation: msxIn .55s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes msxIn { from { opacity: 0; transform: translateY(10px) scale(.99); } }
+.msx-peach { background: radial-gradient(120% 90% at 70% 10%, #FBE7D8 0%, #F3D9C4 55%, #EBC9AE 100%); }
+.msx-sage { background: radial-gradient(120% 90% at 70% 10%, #E6F0EA 0%, #D3E4DA 55%, #C2D8CB 100%); }
+.msx-sand { background: radial-gradient(120% 90% at 70% 10%, #F4EDE0 0%, #E9DFCC 55%, #DDD0B6 100%); }
+.msx-art { position: relative; display: grid; place-items: center; padding: 56px 40px 24px; }
+.msx-art .mk, .pd-stage .mk { background: transparent !important; box-shadow: none !important; padding: 0 !important; }
+.msx-art .mk { transform: scale(1.25); transform-origin: center; }
+
+.msx-ic .dd-ic, .md-mod .dd-ic { display: grid !important; place-items: center; color: inherit !important; }
+.msx-ic svg * { stroke: currentColor; }
+.msx-art .mk::before, .msx-art .mk::after, .pd-stage .mk::before, .pd-stage .mk::after { display: none !important; }
+.msx-tab[aria-selected="true"] .msx-ic { color: var(--cream); }
+.msx-art .mk-card, .pd-stage .mk-card { box-shadow: 0 1px 0 rgba(30,42,38,.04), 0 22px 36px -24px rgba(20,53,47,.32) !important; }
+.msx-chip { position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; background: rgba(255,253,248,.92); backdrop-filter: blur(6px); box-shadow: 0 14px 30px -18px rgba(10,30,26,.45); font: 700 13.5px/1.2 var(--head); color: var(--green); white-space: nowrap; }
+.msx-chip::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--peach); }
+.msx-c1 { left: 7%; top: 12%; animation: msxFloat 6s ease-in-out infinite; }
+.msx-c2 { right: 7%; bottom: 10%; animation: msxFloat 6s ease-in-out 3s infinite; }
+@keyframes msxFloat { 50% { transform: translateY(-6px); } }
+.msx-cap { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 0 16px 16px; padding: 18px 22px; border-radius: 20px; background: rgba(255,253,248,.82); backdrop-filter: blur(8px); }
+.msx-cap p { margin: 0; font-size: 16.5px; line-height: 1.5; color: var(--ink); max-width: 60ch; }
+.msx-cap b { color: var(--green); }
+.msx-cap a { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 14px; background: var(--green); color: var(--cream); font: 700 15px/1 var(--head); text-decoration: none; transition: transform .2s ease; }
+.msx-cap a:hover { transform: translateY(-1px); }
+@media (max-width: 1000px) {
+  .msx { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .msx-tabs { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 8px; padding-bottom: 4px; scrollbar-width: none; margin: 0 -22px; padding-inline: 22px; }
+  .msx-tabs::-webkit-scrollbar { display: none; }
+  .msx-tab { flex: none; width: auto; min-height: 60px; grid-template-columns: 36px auto; padding: 10px 16px 10px 10px; scroll-snap-align: start; background: rgba(27,71,64,.05); }
+  .msx-ic { width: 36px; height: 36px; border-radius: 11px; }
+  .msx-tt b { font-size: 16px; }
+  .msx-stage { min-height: 520px; }
+}
+@media (max-width: 640px) {
+  .msx-stage { min-height: 500px; }
+  .msx-art { padding: 64px 14px 14px; }
+  .msx-art .mk { transform: scale(1); }
+  .msx-chip { font-size: 12px; padding: 7px 11px; }
+  .msx-c1 { left: 12px; top: 14px; } .msx-c2 { right: 12px; bottom: 6px; }
+  .msx-cap { flex-direction: column; align-items: flex-start; gap: 12px; margin: 0 10px 10px; padding: 16px; }
+}
+
+/* ---- Module pages ---- */
+.pd-stage { position: relative; display: grid; place-items: center; min-height: 440px; padding: 56px 36px; border-radius: 32px; box-shadow: 0 40px 80px -40px rgba(0,0,0,.45); }
+.pd-stage .mk { transform: scale(1.15); }
+.pd-hero .pd-stage .mk { animation: none; }
+.md-feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 36px; }
+.md-feat { position: relative; padding: 26px 24px 26px; border-radius: 24px; background: #FFFDF8; border: 1px solid var(--line); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease; }
+.md-feat:hover { transform: translateY(-3px); border-color: rgba(27,71,64,.2); box-shadow: 0 24px 44px -30px rgba(10,30,26,.4); }
+.md-ck { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--sage); color: var(--green); margin-bottom: 18px; }
+.md-ck svg { width: 18px; height: 18px; }
+.md-feat h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: -0.015em; color: var(--green); }
+.md-feat p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--soft); }
+.md-with { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.md-mod { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; padding: 20px; border-radius: 22px; background: #FFFDF8; color: inherit; text-decoration: none; transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease; }
+.md-mod:hover, .md-mod:focus-visible { transform: translateY(-2px); box-shadow: 0 20px 40px -28px rgba(10,30,26,.45); }
+.md-mod b { display: block; margin-top: 2px; font: 800 18px/1.2 var(--head); color: var(--green); }
+.md-mod em { display: block; margin-top: 6px; font-style: normal; font-size: 14.5px; line-height: 1.5; color: var(--soft); }
+.md-close { padding-top: 0; }
+.md-close-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; padding: clamp(32px, 4vw, 52px); border-radius: 32px; background: var(--green); color: var(--cream); position: relative; overflow: hidden; }
+.md-close-in::after { content: ''; position: absolute; right: -10%; top: -60%; width: 60%; height: 220%; background: radial-gradient(closest-side, rgba(232,165,119,.2), rgba(232,165,119,0)); pointer-events: none; }
+.md-close-in h2 { margin: 0; font-size: clamp(30px, 3.4vw, 46px); letter-spacing: -0.035em; color: var(--cream); }
+.md-close-in p { margin: 10px 0 0; font-size: 17px; color: var(--on-green); max-width: 50ch; }
+.md-close-in .pg-cta { position: relative; z-index: 1; margin: 0; }
+@media (max-width: 1000px) { .md-feats, .md-with { grid-template-columns: repeat(2, minmax(0, 1fr)); } .md-close-in { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) { .md-feats, .md-with { grid-template-columns: minmax(0, 1fr); } .pd-stage { min-height: 360px; padding: 64px 14px 40px; } .pd-stage .mk { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .msx-panel:not([hidden]), .msx-chip, .msx.auto .msx-tab[aria-selected="true"] .msx-bar::after { animation: none !important; }
+  .md-feat, .md-mod, .msx-tab, .msx-cap a { transition: none; } .md-feat:hover, .md-mod:hover { transform: none; }
+}
+
 .hero .oz { display: block; width: 100%; height: clamp(240px, 30vw, 440px); margin-top: clamp(-40px, -2vw, 0px); }
 .oz-wrap { overflow: hidden; }
 @media (max-width: 640px) { .hero .oz { width: 170vw; height: auto; aspect-ratio: 1440 / 440; margin-left: -32vw; margin-top: 8px; } }
@@ -2139,18 +2233,18 @@ header.scrolled .hd-progress { opacity: .9; }
     <p class="tag rv">How we help: Always Platform</p>
     <h2 class="sec-title rv" id="heart-h">Five modules. One sign-in.</h2>
     <p class="sec-lede rv">We equip, support and connect churches and ministries with practical tools, built once and shared freely, with agents to help with follow-up and admin while a person decides every step. Your team signs in once and switches on what it needs.</p>
-    <div class="bento"><a class="bt bt-app rv" href="#/app"><div class="mk mk-app " aria-hidden="true"><div class="mk-card mk-app"><span class="mk-k">Verse for today</span>
+    <div class="msx rv" data-msx><div class="msx-tabs" role="tablist" aria-label="Always Platform modules"><button type="button" role="tab" class="msx-tab" id="msx-t-app" aria-controls="msx-p-app" aria-selected="true" tabindex="0"><span class="msx-ic"><span class="dd-ic dd-ic-app" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.5 18h3"/></svg></span></span><span class="msx-tt"><span class="msx-verb">Share Jesus</span><b>Always App</b></span><i class="msx-bar" aria-hidden="true"></i></button><button type="button" role="tab" class="msx-tab" id="msx-t-pages" aria-controls="msx-p-pages" aria-selected="false" tabindex="-1"><span class="msx-ic"><span class="dd-ic dd-ic-pages" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/></svg></span></span><span class="msx-tt"><span class="msx-verb">Capture every yes</span><b>Always Respond</b></span><i class="msx-bar" aria-hidden="true"></i></button><button type="button" role="tab" class="msx-tab" id="msx-t-connect" aria-controls="msx-p-connect" aria-selected="false" tabindex="-1"><span class="msx-ic"><span class="dd-ic dd-ic-connect" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="3"/><circle cx="17.5" cy="12" r="3"/><path d="M9.5 12h5"/></svg></span></span><span class="msx-tt"><span class="msx-verb">Hand people on</span><b>Always Connect</b></span><i class="msx-bar" aria-hidden="true"></i></button><button type="button" role="tab" class="msx-tab" id="msx-t-compliance" aria-controls="msx-p-compliance" aria-selected="false" tabindex="-1"><span class="msx-ic"><span class="dd-ic dd-ic-compliance" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span></span><span class="msx-tt"><span class="msx-verb">Stay lawful</span><b>Always Compliance</b></span><i class="msx-bar" aria-hidden="true"></i></button><button type="button" role="tab" class="msx-tab" id="msx-t-reports" aria-controls="msx-p-reports" aria-selected="false" tabindex="-1"><span class="msx-ic"><span class="dd-ic dd-ic-reports" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M10 20V6M15 20v-7M20 20V9"/></svg></span></span><span class="msx-tt"><span class="msx-verb">Show the fruit</span><b>Always Reports</b></span><i class="msx-bar" aria-hidden="true"></i></button></div><div class="msx-stage"><div class="msx-panel msx-peach" role="tabpanel" id="msx-p-app" aria-labelledby="msx-t-app"><div class="msx-art"><span class="msx-chip msx-c1">The Good News, verse by verse</span><div class="mk mk-app mk-lg" aria-hidden="true"><div class="mk-card mk-app"><span class="mk-k">Verse for today</span>
 <p class="mk-verse">“I am with you always.”</p><span class="mk-cite">Matthew 28:20</span>
 <div class="mk-row"><span class="mk-pill">Pray</span><span class="mk-pill mk-pill-o">Share</span></div>
-<div class="mk-tabs"><i class="on"></i><i></i><i></i><i></i></div></div></div><div class="bt-body"><span class="bt-k btv-app">Share Jesus</span><h3>Always App</h3><p>Everything a Christian needs to share Jesus and walk with people.</p></div></a><a class="bt bt-pages rv" href="#/respond"><div class="mk mk-pages " aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
+<div class="mk-tabs"><i class="on"></i><i></i><i></i><i></i></div></div></div><span class="msx-chip msx-c2">Runs in any browser</span></div><div class="msx-cap"><p><b>Always App.</b> Everything a Christian needs to share Jesus and walk with people.</p><a href="#/app">Explore Always App</a></div></div><div class="msx-panel msx-peach" role="tabpanel" id="msx-p-pages" aria-labelledby="msx-t-pages" hidden><div class="msx-art"><span class="msx-chip msx-c1">QR code, tap or link</span><div class="mk mk-pages mk-lg" aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
 <p class="mk-h">Today I said yes to Jesus</p><span class="mk-in">First name</span><span class="mk-in">Suburb</span>
-<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><div class="bt-body"><span class="bt-k btv-pages">Capture every yes</span><h3>Always Respond</h3><p>A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.</p></div></a><a class="bt bt-compliance rv" href="#/compliance"><div class="mk mk-compliance " aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
-<ul><li><i class="ok"></i>Privacy</li><li><i class="ok"></i>Child safety</li><li><i class="ok"></i>Charity reporting</li><li><i class="due"></i>Messaging rules<em>Review</em></li></ul>
-<span class="mk-foot">Approved by your board</span></div></div><div class="bt-body"><span class="bt-k btv-compliance">Stay lawful</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p></div></a><a class="bt bt-reports rv" href="#/reports"><div class="mk mk-reports " aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
-<div class="mk-bar" style="--w:94%"><span>Responded</span></div><div class="mk-bar" style="--w:72%"><span>Introduced</span></div>
-<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><div class="bt-body"><span class="bt-k btv-reports">Show the fruit</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p></div></a><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><span class="msx-chip msx-c2">Your name, your colours</span></div><div class="msx-cap"><p><b>Always Respond.</b> A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.</p><a href="#/respond">Explore Always Respond</a></div></div><div class="msx-panel msx-sand" role="tabpanel" id="msx-p-connect" aria-labelledby="msx-t-connect" hidden><div class="msx-art"><span class="msx-chip msx-c1">Verified churches nearby</span><div class="mk mk-connect mk-lg" aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
 <span class="mk-link" aria-hidden="true"></span>
-<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-k btv-connect">Hand people on</span><h3>Always Connect</h3><p>Find a local church, hand people on safely, and follow up together.</p></div></a></div>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><span class="msx-chip msx-c2">Consent travels with them</span></div><div class="msx-cap"><p><b>Always Connect.</b> Find a local church, hand people on safely, and follow up together.</p><a href="#/connect">Explore Always Connect</a></div></div><div class="msx-panel msx-sage" role="tabpanel" id="msx-p-compliance" aria-labelledby="msx-t-compliance" hidden><div class="msx-art"><span class="msx-chip msx-c1">A check-up every quarter</span><div class="mk mk-compliance mk-lg" aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
+<ul><li><i class="ok"></i>Privacy</li><li><i class="ok"></i>Child safety</li><li><i class="ok"></i>Charity reporting</li><li><i class="due"></i>Messaging rules<em>Review</em></li></ul>
+<span class="mk-foot">Approved by your board</span></div></div><span class="msx-chip msx-c2">State by state</span></div><div class="msx-cap"><p><b>Always Compliance.</b> Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p><a href="#/compliance">Explore Always Compliance</a></div></div><div class="msx-panel msx-sage" role="tabpanel" id="msx-p-reports" aria-labelledby="msx-t-reports" hidden><div class="msx-art"><span class="msx-chip msx-c1">Totals only, never names</span><div class="mk mk-reports mk-lg" aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
+<div class="mk-bar" style="--w:94%"><span>Responded</span></div><div class="mk-bar" style="--w:72%"><span>Introduced</span></div>
+<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><span class="msx-chip msx-c2">Written for you, monthly</span></div><div class="msx-cap"><p><b>Always Reports.</b> A monthly report for your board and funders, written for you, with totals only.</p><a href="#/reports">Explore Always Reports</a></div></div></div></div>
     <div class="ctas rv"><a class="btn btn-peach" href="#/platform">See Always Platform</a></div>
   </div>
 </section>
@@ -2636,9 +2730,9 @@ const ok = await verifyWebhook({
   <p class="pd-line">A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.</p>
   <p>Wherever someone says yes to Jesus, give them a simple page that looks like you. One scan or tap, from a QR code, an NFC armband or a ticket, takes them from a moment online, on the street or in the room to a real next step.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/docs/senders">Read the guide</a></div></div>
-  <div class="mk mk-pages mk-lg" aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
+  <div class="pd-stage msx-peach"><span class="msx-chip msx-c1">QR code, tap or link</span><div class="mk mk-pages mk-lg" aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
 <p class="mk-h">Today I said yes to Jesus</p><span class="mk-in">First name</span><span class="mk-in">Suburb</span>
-<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div>
+<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><span class="msx-chip msx-c2">Your name, your colours</span></div>
 </div></section>
 <section class="sec pd-statement"><div class="wrap"><p class="rv">Every yes deserves a next step, in your name.</p></div></section>
 <section class="sec pg-sec rs-sec"><div class="wrap">
@@ -2669,21 +2763,22 @@ const ok = await verifyWebhook({
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Works with</h2>
   <p class="pg-lead rv">Every Always module runs on Always Platform, with one sign-in for your team.</p>
-  <div class="pd-with"><a class="pd-link" href="#/connect"><b>Always Connect</b><span>Find a local church, hand people on safely, and follow up together.</span></a><a class="pd-link" href="#/app"><b>Always App</b><span>Everything a Christian needs to share Jesus and walk with people.</span></a><a class="pd-link" href="#/reports"><b>Always Reports</b><span>A monthly report for your board and funders, written for you, with totals only.</span></a></div>
-</div></section></div><div class="page" id="page-reports" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div class="md-with"><a class="md-mod rv" href="#/connect"><span class="msx-ic"><span class="dd-ic dd-ic-connect" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="3"/><circle cx="17.5" cy="12" r="3"/><path d="M9.5 12h5"/></svg></span></span><span><span class="msx-verb">Hand people on</span><b>Always Connect</b><em>Find a local church, hand people on safely, and follow up together.</em></span></a><a class="md-mod rv" href="#/app"><span class="msx-ic"><span class="dd-ic dd-ic-app" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.5 18h3"/></svg></span></span><span><span class="msx-verb">Share Jesus</span><b>Always App</b><em>Everything a Christian needs to share Jesus and walk with people.</em></span></a><a class="md-mod rv" href="#/reports"><span class="msx-ic"><span class="dd-ic dd-ic-reports" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M10 20V6M15 20v-7M20 20V9"/></svg></span></span><span><span class="msx-verb">Show the fruit</span><b>Always Reports</b><em>A monthly report for your board and funders, written for you, with totals only.</em></span></a></div>
+</div></section>
+<section class="sec md-close"><div class="wrap"><div class="md-close-in rv"><div><h2>Switch on Always Respond.</h2><p>Free for churches. One sign-in for your whole team, and your people’s details kept in Australia.</p></div><div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/contact">Talk to us</a></div></div></div></section></div><div class="page" id="page-reports" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
   <div><p class="pl-kick">A module of Always Platform</p>
   <h1>Always Reports</h1>
   <p class="pd-line">A monthly report for your board and funders, written for you, with totals only.</p>
   <p>Answer to donors, a foundation or a denomination? Always Reports writes your report each month from what already happened in Always Respond and Always Connect. Nothing extra to enter.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/docs/results">See what's in a report</a></div></div>
-  <div class="mk mk-reports mk-lg" aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
+  <div class="pd-stage msx-sage"><span class="msx-chip msx-c1">Totals only, never names</span><div class="mk mk-reports mk-lg" aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
 <div class="mk-bar" style="--w:94%"><span>Responded</span></div><div class="mk-bar" style="--w:72%"><span>Introduced</span></div>
-<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div>
+<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><span class="msx-chip msx-c2">Written for you, monthly</span></div>
 </div></section>
 <section class="sec pd-statement"><div class="wrap"><p class="rv">Show the fruit, without showing the people.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What you get</h2>
-  <div class="pg-feats"><div class="pg-feat rv"><h3>Written for you</h3><p>A clear monthly report, ready for your board and funders.</p></div><div class="pg-feat rv"><h3>Totals only</h3><p>No names. Small numbers are hidden so no one can be identified.</p></div><div class="pg-feat rv"><h3>Your words</h3><p>Use your funder's titles and the outcomes they care about.</p></div><div class="pg-feat rv"><h3>Download or share</h3><p>PDF, spreadsheet, or a link you can switch off.</p></div><div class="pg-feat rv"><h3>Across events and campuses</h3><p>One report, or one for each event, tour or campus.</p></div><div class="pg-feat rv"><h3>Across a network</h3><p>Denominations and networks can see combined totals across their churches.</p></div></div>
+  <div class="md-feats"><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Written for you</h3><p>A clear monthly report, ready for your board and funders.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Totals only</h3><p>No names. Small numbers are hidden so no one can be identified.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Your words</h3><p>Use your funder's titles and the outcomes they care about.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Download or share</h3><p>PDF, spreadsheet, or a link you can switch off.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Across events and campuses</h3><p>One report, or one for each event, tour or campus.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Across a network</h3><p>Denominations and networks can see combined totals across their churches.</p></div></div>
 </div></section>
 <section class="sec pg-sec pg-green"><div class="wrap rp-defs">
   <h2 class="pg-h rv">The same four numbers, every month</h2>
@@ -2692,21 +2787,22 @@ const ok = await verifyWebhook({
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Works with</h2>
   <p class="pg-lead rv">Every Always module runs on Always Platform, with one sign-in for your team.</p>
-  <div class="pd-with"><a class="pd-link" href="#/respond"><b>Always Respond</b><span>A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.</span></a><a class="pd-link" href="#/connect"><b>Always Connect</b><span>Find a local church, hand people on safely, and follow up together.</span></a><a class="pd-link" href="#/compliance"><b>Always Compliance</b><span>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</span></a></div>
-</div></section></div><div class="page" id="page-connect" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div class="md-with"><a class="md-mod rv" href="#/respond"><span class="msx-ic"><span class="dd-ic dd-ic-pages" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/></svg></span></span><span><span class="msx-verb">Capture every yes</span><b>Always Respond</b><em>A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.</em></span></a><a class="md-mod rv" href="#/connect"><span class="msx-ic"><span class="dd-ic dd-ic-connect" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="3"/><circle cx="17.5" cy="12" r="3"/><path d="M9.5 12h5"/></svg></span></span><span><span class="msx-verb">Hand people on</span><b>Always Connect</b><em>Find a local church, hand people on safely, and follow up together.</em></span></a><a class="md-mod rv" href="#/compliance"><span class="msx-ic"><span class="dd-ic dd-ic-compliance" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span></span><span><span class="msx-verb">Stay lawful</span><b>Always Compliance</b><em>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</em></span></a></div>
+</div></section>
+<section class="sec md-close"><div class="wrap"><div class="md-close-in rv"><div><h2>Switch on Always Reports.</h2><p>Free for churches. One sign-in for your whole team, and your people’s details kept in Australia.</p></div><div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/contact">Talk to us</a></div></div></div></section></div><div class="page" id="page-connect" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
   <div><p class="pl-kick">A module of Always Platform</p>
   <h1>Always Connect</h1>
   <p class="pd-line">Find a local church, hand people on safely, and follow up together.</p>
   <p>When someone says yes to Jesus, Always Connect helps them find a next step near home, with a real person reaching out, and your team follows up together.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/join/church">Join as a church</a></div></div>
-  <div class="mk mk-connect mk-lg" aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+  <div class="pd-stage msx-sand"><span class="msx-chip msx-c1">Verified churches nearby</span><div class="mk mk-connect mk-lg" aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
 <span class="mk-link" aria-hidden="true"></span>
-<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><span class="msx-chip msx-c2">Consent travels with them</span></div>
 </div></section>
 <section class="sec pd-statement"><div class="wrap"><p class="rv">So no one walks alone.</p></div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What you get</h2>
-  <div class="pg-feats"><div class="pg-feat rv"><h3>The directory</h3><p>3,937 churches and ministries mapped across Australia, each able to join and manage its own page.</p></div><div class="pg-feat rv"><h3>Verified churches</h3><p>We check with each church's denomination or network before anyone is introduced.</p></div><div class="pg-feat rv"><h3>A safe handoff</h3><p>The person chooses their next step and sees who will reach out before anything is shared.</p></div><div class="pg-feat rv"><h3>Your team inbox</h3><p>Accept or pass introductions from any phone, and keep walking with people.</p></div><div class="pg-feat rv"><h3>Next steps beyond church</h3><p>People exploring faith can choose Alpha. Others may need a youth group or a care team.</p></div><div class="pg-feat rv"><h3>No one dropped</h3><p>If no one nearby can help, the Always care team reaches out.</p></div></div>
+  <div class="md-feats"><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>The directory</h3><p>3,937 churches and ministries mapped across Australia, each able to join and manage its own page.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Verified churches</h3><p>We check with each church's denomination or network before anyone is introduced.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>A safe handoff</h3><p>The person chooses their next step and sees who will reach out before anything is shared.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Your team inbox</h3><p>Accept or pass introductions from any phone, and keep walking with people.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Next steps beyond church</h3><p>People exploring faith can choose Alpha. Others may need a youth group or a care team.</p></div><div class="md-feat rv"><span class="md-ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>No one dropped</h3><p>If no one nearby can help, the Always care team reaches out.</p></div></div>
 </div></section>
 <section class="sec pg-sec nb-sec"><div class="wrap">
   <p class="pl-kick rv">Always Respond + Always Connect</p>
@@ -2732,8 +2828,9 @@ const ok = await verifyWebhook({
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Works with</h2>
   <p class="pg-lead rv">Every Always module runs on Always Platform, with one sign-in for your team.</p>
-  <div class="pd-with"><a class="pd-link" href="#/respond"><b>Always Respond</b><span>A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.</span></a><a class="pd-link" href="#/app"><b>Always App</b><span>Everything a Christian needs to share Jesus and walk with people.</span></a><a class="pd-link" href="#/reports"><b>Always Reports</b><span>A monthly report for your board and funders, written for you, with totals only.</span></a></div>
-</div></section></div><div class="page" id="page-youth" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div class="md-with"><a class="md-mod rv" href="#/respond"><span class="msx-ic"><span class="dd-ic dd-ic-pages" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/></svg></span></span><span><span class="msx-verb">Capture every yes</span><b>Always Respond</b><em>A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.</em></span></a><a class="md-mod rv" href="#/app"><span class="msx-ic"><span class="dd-ic dd-ic-app" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.5 18h3"/></svg></span></span><span><span class="msx-verb">Share Jesus</span><b>Always App</b><em>Everything a Christian needs to share Jesus and walk with people.</em></span></a><a class="md-mod rv" href="#/reports"><span class="msx-ic"><span class="dd-ic dd-ic-reports" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M10 20V6M15 20v-7M20 20V9"/></svg></span></span><span><span class="msx-verb">Show the fruit</span><b>Always Reports</b><em>A monthly report for your board and funders, written for you, with totals only.</em></span></a></div>
+</div></section>
+<section class="sec md-close"><div class="wrap"><div class="md-close-in rv"><div><h2>Switch on Always Connect.</h2><p>Free for churches. One sign-in for your whole team, and your people’s details kept in Australia.</p></div><div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/contact">Talk to us</a></div></div></div></section></div><div class="page" id="page-youth" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
   <div><p class="pl-kick">Solutions</p>
   <h1>For youth</h1>
   <p>Keep young people safe, stay compliant, and give every young person a safe next step.</p>
@@ -3816,6 +3913,46 @@ document.querySelectorAll('.sw').forEach((sw) => {
   }
   track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
   addEventListener('resize', sync); sync();
+})();
+
+(function () {
+  document.querySelectorAll('[data-msx]').forEach((root) => {
+    const tabs = [...root.querySelectorAll('.msx-tab')];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer = null, inView = false, hold = false;
+    const T = 7000;
+    function show(n, focus) {
+      i = (n + tabs.length) % tabs.length;
+      tabs.forEach((t, k) => {
+        const on = k === i;
+        t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+        if (on) { const bar = t.querySelector('.msx-bar'); bar.replaceWith(bar.cloneNode(true)); }
+      });
+      if (focus) tabs[i].focus();
+      schedule();
+    }
+    function schedule() {
+      clearTimeout(timer);
+      const auto = !reduce && inView && !hold;
+      root.classList.toggle('auto', !reduce);
+      root.classList.toggle('paused', !auto);
+      if (auto) timer = setTimeout(() => show(i + 1), T);
+    }
+    tabs.forEach((t, k) => {
+      t.addEventListener('click', () => { hold = true; show(k); });
+      t.addEventListener('keydown', (e) => {
+        if (['ArrowDown', 'ArrowRight'].includes(e.key)) { e.preventDefault(); hold = true; show(i + 1, true); }
+        if (['ArrowUp', 'ArrowLeft'].includes(e.key)) { e.preventDefault(); hold = true; show(i - 1, true); }
+      });
+    });
+    root.addEventListener('mouseenter', () => { hold = true; schedule(); });
+    root.addEventListener('mouseleave', () => { hold = false; schedule(); });
+    root.addEventListener('focusin', () => { hold = true; schedule(); });
+    if ('IntersectionObserver' in window) new IntersectionObserver((es) => { inView = es[0].isIntersecting; schedule(); }, { threshold: 0.35 }).observe(root);
+    root.style.setProperty('--msx-t', T + 'ms');
+    schedule();
+  });
 })();
 </script>
 </body>

@@ -210,6 +210,7 @@ def _works_with(slugs):
 
 
 def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Join Always', '#/join'), secondary=None, feats_title='What you get', statement=None, feats_html=None):
+    import showcase as SC
     route, name, pillar, line, who = PRODUCTS[slug]
     badge = f'<p class="pd-status">{status}</p>' if status else ''
     sec = f'<a class="btn btn-ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
@@ -220,19 +221,20 @@ def product_page(slug, intro, feats, works_with, extra='', status=None, primary=
   <p class="pd-line">{line}</p>
   <p>{intro}</p>{badge}
   <div class="pg-cta"><a class="btn btn-peach" href="{primary[1]}">{primary[0]}</a>{sec}</div></div>
-  {mock(slug, 'mk-lg')}
+  {SC.stage(slug)}
 </div></section>
 {stmt}
 {feats_html or f'''<section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">{feats_title}</h2>
-  {_feats(feats)}
+  {SC.feats(feats)}
 </div></section>'''}
 {extra}
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Works with</h2>
   <p class="pg-lead rv">Every Always module runs on Always Platform, with one sign-in for your team.</p>
-  {_works_with(works_with)}
-</div></section>'''
+  {SC.works_with(works_with)}
+</div></section>
+{SC.closing(slug)}'''
 
 
 PAGES_BRAND = '''<section class="sec pg-sec pg-green"><div class="wrap pd-brand">
