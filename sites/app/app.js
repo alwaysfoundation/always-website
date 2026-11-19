@@ -16,7 +16,7 @@ const WORDING = 'always-app-2026-11-v1';
 
 // ---------------------------------------------------------------- State (on this device only)
 const KEY = 'always.app.v1';
-const blank = () => ({ onboarded: false, settings: { tr: 'web', size: 20, theme: 'light', name: '' }, pos: { b: 43, c: 1 }, hl: {}, notes: {}, marks: [], plans: {}, courses: {}, people: [], prayer: [], fieldNotes: [], points: [], connected: [], testimony: { before: '', meet: '', since: '' } });
+const blank = () => ({ onboarded: false, settings: { tr: 'web', size: 20, theme: 'auto', name: '' }, pos: { b: 43, c: 1 }, hl: {}, notes: {}, marks: [], plans: {}, courses: {}, people: [], prayer: [], fieldNotes: [], points: [], connected: [], testimony: { before: '', meet: '', since: '' } });
 let S;
 try { S = Object.assign(blank(), JSON.parse(localStorage.getItem(KEY) || '{}')); } catch { S = blank(); }
 S.settings = Object.assign(blank().settings, S.settings);
@@ -100,7 +100,13 @@ const votdRef = () => AC.votd[dayOfYear() % AC.votd.length];
 // ---------------------------------------------------------------- Shell
 const app = $('#app');
 let cleanup = [];
-function applyTheme() { document.documentElement.dataset.theme = S.settings.theme; document.body.dataset.theme = S.settings.theme; const m = $('meta[name=theme-color]'); if (m) m.content = S.settings.theme === 'dark' ? '#13201C' : '#F8F3EA'; }
+const darkMQ = matchMedia('(prefers-color-scheme: dark)');
+function applyTheme() {
+  const t = S.settings.theme === 'auto' || !S.settings.theme ? (darkMQ.matches ? 'dark' : 'light') : S.settings.theme;
+  document.documentElement.dataset.theme = t; document.body.dataset.theme = t;
+  const m = $('meta[name=theme-color]'); if (m) m.content = t === 'dark' ? '#13201C' : t === 'sepia' ? '#F3E9D7' : '#F8F3EA';
+}
+darkMQ.addEventListener?.('change', () => { if (S.settings.theme === 'auto') applyTheme(); });
 function toast(msg) { $$('.toast').forEach((t) => t.remove()); const t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 2600); }
 function tabs(active) {
   const t = (id, label, icon, href) => `<a class="tab" href="${href}" ${active === id ? 'aria-current="page"' : ''}>${ic(icon, 23, active === id ? 2.3 : 1.9)}${label}</a>`;
@@ -165,7 +171,7 @@ on(/^\/$/, async () => {
   await loadBooks();
   const pos = BOOKS[S.pos.b - 1];
   render(`
-    <div class="row between" style="padding-top:8px"><div style="color:var(--green)">${LOGO}</div><a class="icon-btn" href="#/me" aria-label="Me and settings">${ic('user')}</a></div>
+    <div class="row between" style="padding-top:8px"><div class="logo">${LOGO}</div><a class="icon-btn" href="#/me" aria-label="Me and settings">${ic('user')}</a></div>
     <div class="hello stack-s"><p class="k">${greet}${name}</p><h1 class="big-serif">Who will you walk with today?</h1></div>
     <div class="sp"></div>
     <a class="verse-card" href="#/bible?ref=${encodeURIComponent(votdRef())}" style="text-decoration:none;display:block"><p class="k" style="color:#E8A577">Verse of the day</p><p class="serif" data-votd>…</p><span class="ref" data-votd-ref></span></a>
@@ -240,7 +246,7 @@ function textSheet() {
   const d = sheet(`<p class="h3" style="margin-bottom:12px">Text</p>
     <div class="row between"><span class="label">Size</span><div class="row"><button class="chip" data-sz="-2" aria-label="Smaller text">A−</button><button class="chip" data-sz="2" aria-label="Larger text">A+</button></div></div>
     <div class="sp2"></div><span class="label">Background</span><div class="sp"></div>
-    <div class="seg" role="group" aria-label="Theme">${[['light', 'Light'], ['sepia', 'Warm'], ['dark', 'Dark']].map(([k, l]) => `<button data-th="${k}" aria-pressed="${S.settings.theme === k}">${l}</button>`).join('')}</div>`);
+    <div class="seg" role="group" aria-label="Theme">${[['auto', 'Auto'], ['light', 'Light'], ['sepia', 'Warm'], ['dark', 'Dark']].map(([k, l]) => `<button data-th="${k}" aria-pressed="${S.settings.theme === k}">${l}</button>`).join('')}</div>`);
   $$('[data-sz]', d).forEach((b) => (b.onclick = () => { S.settings.size = Math.max(15, Math.min(30, S.settings.size + Number(b.dataset.sz))); save(); $('#reader')?.style.setProperty('--rs', S.settings.size + 'px'); }));
   $$('[data-th]', d).forEach((b) => (b.onclick = () => { S.settings.theme = b.dataset.th; save(); applyTheme(); $$('[data-th]', d).forEach((x) => x.setAttribute('aria-pressed', x === b)); }));
 }
@@ -571,7 +577,7 @@ function respondFlow({ mode, kind }) {
   const back = assist ? '#/gather' : null;
   const mobileOk = (v) => /^(\+?61|0)4\d{8}$/.test(String(v).replace(/[\s()-]/g, ''));
   const bar = (n) => `<div class="step-bar" aria-hidden="true"><i style="width:${n * 25}%"></i></div><p class="note" style="margin-top:8px">Step ${n} of 4</p>`;
-  const shell = (body, bk) => render(`${bk ? top(bk) : `<div class="row between" style="padding-top:10px"><div style="color:var(--green)">${LOGO}</div><span class="pill">Always Foundation</span></div>`}${body}`, { tab: assist ? 'gather' : null, cls: assist ? '' : 'respond' });
+  const shell = (body, bk) => render(`${bk ? top(bk) : `<div class="row between" style="padding-top:10px"><div class="logo">${LOGO}</div><span class="pill">Always Foundation</span></div>`}${body}`, { tab: assist ? 'gather' : null, cls: assist ? '' : 'respond' });
   const intro = () => {
     if (assist) return age();
     shell(`<div class="sp2"></div><div class="stack">
@@ -777,7 +783,7 @@ on(/^\/me$/, () => {
     <p class="k">Reading</p><div class="sp"></div><div class="card">
       <div class="row between"><span class="label">Bible</span><div class="seg" role="group" aria-label="Translation">${Object.entries(TR).map(([k, t]) => `<button data-tr="${k}" aria-pressed="${S.settings.tr === k}">${t.name}</button>`).join('')}</div></div>
       <div class="row between"><span class="label">Text size</span><div class="row"><button class="chip" data-sz="-2" aria-label="Smaller">A−</button><span id="szv" class="note">${S.settings.size}</span><button class="chip" data-sz="2" aria-label="Larger">A+</button></div></div>
-      <div class="row between wrap"><span class="label">Theme</span><div class="seg" role="group" aria-label="Theme">${[['light', 'Light'], ['sepia', 'Warm'], ['dark', 'Dark']].map(([k, l]) => `<button data-th="${k}" aria-pressed="${S.settings.theme === k}">${l}</button>`).join('')}</div></div></div>
+      <div class="row between wrap"><span class="label">Theme</span><div class="seg" role="group" aria-label="Theme">${[['auto', 'Auto'], ['light', 'Light'], ['sepia', 'Warm'], ['dark', 'Dark']].map(([k, l]) => `<button data-th="${k}" aria-pressed="${S.settings.theme === k}">${l}</button>`).join('')}</div></div></div>
     <div class="sp2"></div><p class="k">Your data</p><div class="sp"></div><div class="card sage"><div class="row"><span class="ico green">${ic('lock')}</span><p class="p grow" style="color:var(--ink)">Your prayer list, notes, people and highlights are stored only on this phone. We can’t see them. No ads, no tracking.</p></div></div><div class="sp"></div>
     <div class="list"><button class="li" id="exp"><span class="ico">${ic('download')}</span><div class="grow"><div class="t">Download my data</div><div class="s">A file you can keep or move to another phone</div></div></button>
       <label class="li" for="imp" style="cursor:pointer"><span class="ico sand">${ic('share')}</span><div class="grow"><div class="t">Restore from a file</div><div class="s">Bring your data from another phone</div></div><input type="file" id="imp" accept="application/json" class="sr"></label>
