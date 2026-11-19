@@ -87,7 +87,7 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
 app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-kick">Always Platform: Equip</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><p class="pl-kick">Equip module, Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
@@ -120,9 +120,12 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
 
 FAQ_GROUPS = [
  ('About Always', [
-  ('What is the Always Foundation?', 'An independent, member-based Christian nonprofit that brings churches and Christian ministries together. We equip them with free, open-source tools, support them with shared tools for governance, compliance, safeguarding and reporting, and connect them as one network.'),
+  ('What is the Always Foundation?', 'An independent, member-based Christian nonprofit that brings churches and Christian ministries across Australia together for the Gospel. We serve quietly in the background, building practical tools once and sharing them freely, so ministries spend less time on administration and more time making disciples.'),
+  ('Are you a gospel ministry or a mercy ministry?', 'Neither, directly. We are a ministry that serves ministries. In Acts 6 the early church appointed people to carry the practical work so the apostles could devote themselves to prayer and the word, and the Gospel spread. We play that role for the wider Church: we exist to equip the saints for the work of ministry (Ephesians 4:12). We are not on the frontline. We stand behind it.'),
+  ('What does Always do for a church or ministry?', 'Three things. We equip, with the Always App and your own branded response pages. We support, with Always Compliance and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.'),
   ('Who can become a member?', 'Churches and Christian ministries that affirm the Nicene Creed. Members help shape what we build and share in the benefits. Supporters can join us too, through prayer and giving.'),
-  ('What is Always Platform?', 'One open-source platform with one sign-in. Members switch on the modules they need: Always App, Always Pages, Always Compliance, Always Reports and Always Connect. Developers can build on it too.'),
+  ('What is Always Platform?', 'One open-source platform with one sign-in and shared data. Members switch on the modules they need: Always App, Always Pages, Always Compliance, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.'),
+  ('Why modules?', 'Every ministry is different. Start with the one you need, perhaps Always Compliance, and add others as you grow. Because every module runs on the same platform, your team signs in once and your information works together, with nothing to move later.'),
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always Platform only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
@@ -172,7 +175,7 @@ FAQ_GROUPS = [
 FAQ = '<section class="page-hero"><div class="wrap"><h1>FAQs</h1><p>Short answers to the questions we hear most.</p></div></section><section class="sec pg-sec"><div class="wrap pg-faq">' + \
   '<nav class="pg-faq-nav" aria-label="FAQ topics">' + ''.join(f'<a href="#faq-{i}" data-faq="{i}">{g}</a>' for i, (g, _) in enumerate(FAQ_GROUPS)) + '</nav><div>' + \
   ''.join(f'<div class="pg-faq-g" id="faq-{i}"><h2>{g}</h2>' + ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in qs) + '</div>' for i, (g, qs) in enumerate(FAQ_GROUPS)) + \
-  '<div class="pg-faq-more"><h3>Still have a question?</h3><p>Email <b>hello@alwaysfoundation.org</b>. We\'d love to book a catch-up call.</p></div></div></div></section>'
+  '<div class="pg-faq-more"><h3>Still have a question?</h3><p>We\'d love to hear from you, and to book a catch-up call. <a href="#/contact">Get in touch</a> or email <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p></div></div></div></section>'
 
 CSS = '''
 .pg-code { background: var(--night, #1E2A26); color: #E4EEE7; border-radius: 22px; padding: 26px 28px; font: 500 15.5px/1.7 ui-monospace, Menlo, monospace; margin: 0; overflow-x: auto; }

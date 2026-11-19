@@ -91,6 +91,23 @@ def product_bento():
     return '<div class="bento">' + ''.join(bento_tile(s) for s in BENTO) + '</div>'
 
 
+VERBS = {'app': 'Share Jesus', 'pages': 'Capture every yes', 'compliance': 'Stay lawful', 'reports': 'Show the fruit', 'connect': 'Hand people on'}
+
+
+def platform_diagram():
+    groups = ''.join(
+        f'<div class="dg-group dg-{key}"><span class="dg-pillar">{name}</span><div class="dg-row">'
+        + ''.join(f'<a class="dg-mod" href="#/{PRODUCTS[s][0]}"><span class="dg-sw" aria-hidden="true"><i></i></span><b>{PRODUCTS[s][1]}</b><span>{VERBS[s]}</span></a>' for s in PRODUCTS if PRODUCTS[s][2] == key)
+        + '</div></div>'
+        for key, name, _ in PILLARS)
+    return f'''<figure class="dg rv" aria-label="How Always Platform fits together">
+  <div class="dg-top"><b>Your church or ministry</b><span>Your team, your people, your brand</span></div>
+  <div class="dg-mods">{groups}</div>
+  <div class="dg-base"><b>Always Platform</b><ul><li>One sign-in</li><li>Shared data, with consent</li><li>Kept in Australia</li><li>Open source</li></ul></div>
+  <a class="dg-dev" href="#/developers"><b>Developers</b><span>Build on the same foundation with the API, SDK and MCP connector</span></a>
+</figure>'''
+
+
 def developers_band():
     return (f'<a class="dev-band rv" href="#/{DEVELOPERS[0]}"><div><span class="bt-k">Underneath it all</span><h3>Build on Always Platform</h3>'
             f'<p>{DEVELOPERS[2]}</p></div>{mock("build")}</a>')
@@ -158,7 +175,7 @@ def product_page(slug, intro, feats, works_with, extra='', status=None, primary=
     sec = f'<a class="btn btn-ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
     stmt = f'<section class="sec pd-statement"><div class="wrap"><p class="rv">{statement}</p></div></section>' if statement else ''
     return f'''<section class="page-hero pd-hero"><div class="wrap pd-split">
-  <div><p class="pl-kick">Always Platform: {PILLAR_NAME[pillar]}</p>
+  <div><p class="pl-kick">{PILLAR_NAME[pillar]} module, Always Platform</p>
   <h1>{name}</h1>
   <p class="pd-line">{line}</p>
   <p>{intro}</p>{badge}
@@ -298,7 +315,11 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-s
   <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/developers">For developers</a></div></div>
   {switcher()}
 </div></section>
-<section class="sec pd-statement"><div class="wrap"><p class="rv">Built once. Shared with every church and ministry.</p></div></section>
+<section class="sec pg-sec dg-sec"><div class="wrap">
+  <h2 class="pg-h rv">One platform. Switch on what you need.</h2>
+  <p class="pg-lead rv">Every module runs on the same foundation, so your team signs in once and your information works together. Start with one module and add more as you grow.</p>
+  {platform_diagram()}
+</div></section>
 <section class="sec pg-sec pf-products"><div class="wrap">
   <h2 class="pg-h rv">The modules</h2>
   <p class="pg-lead rv">Equip, support and connect ministries, with agents to help with follow-up and admin wherever they're needed.</p>
@@ -409,6 +430,30 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
 .dd-note { font-size: 13.5px; color: var(--soft); padding: 10px 0; }
 @media (max-width: 900px) { .rp-row { grid-template-columns: 1fr 1fr; row-gap: 28px; } .dd-note { display: none; } }
 @media (max-width: 520px) { .rp-row { grid-template-columns: 1fr; } }
+
+/* ---- Platform diagram ---- */
+.dg { margin: 48px 0 0; display: grid; gap: 14px; }
+.dg-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 26px; border-radius: 22px; background: #FFFDF8; border: 1px dashed rgba(27,71,64,.3); }
+.dg-top b { font: 800 20px/1.2 var(--head); color: var(--green); } .dg-top span { color: var(--soft); font-size: 15px; }
+.dg-mods { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 14px; }
+.dg-group { display: grid; gap: 10px; align-content: start; padding: 14px; border-radius: 24px; background: var(--peach-soft); }
+.dg-support { background: var(--sage); } .dg-connect { background: #EFE5D1; }
+.dg-pillar { font: 700 13px/1 var(--head); color: var(--clay); padding: 4px 6px 0; }
+.dg-support .dg-pillar { color: var(--green-2); } .dg-connect .dg-pillar { color: #85651F; }
+.dg-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.dg-mod { position: relative; display: grid; gap: 6px; padding: 18px 18px 20px; border-radius: 18px; background: #FFFDF8; color: inherit; text-decoration: none; box-shadow: 0 14px 28px -24px rgba(20,53,47,.5); transition: transform .2s ease; }
+.dg-mod b { font: 800 18px/1.2 var(--head); color: var(--green); padding-right: 40px; } .dg-mod > span:last-child { font-size: 14.5px; color: var(--soft); }
+.dg-mod:hover, .dg-mod:focus-visible { transform: translateY(-2px); }
+.dg-sw { position: absolute; top: 18px; right: 16px; width: 32px; height: 18px; border-radius: 99px; background: var(--green); }
+.dg-sw i { position: absolute; top: 3px; right: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--cream); }
+.dg-base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 24px 28px; border-radius: 22px; background: var(--green); color: var(--cream); }
+.dg-base b { font: 800 22px/1 var(--head); letter-spacing: -0.02em; }
+.dg-base ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.dg-base li { font-size: 15px; color: var(--on-green); padding-left: 16px; position: relative; } .dg-base li::before { content: ''; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--peach); }
+.dg-dev { display: flex; gap: 16px; align-items: baseline; padding: 16px 28px; border-radius: 18px; background: var(--green-deep); color: var(--on-green); text-decoration: none; }
+.dg-dev b { color: var(--cream); font: 800 16px/1 var(--head); } .dg-dev span { font-size: 14.5px; }
+.dg-dev:hover b, .dg-dev:focus-visible b { text-decoration: underline; text-decoration-color: var(--peach); text-underline-offset: 5px; }
+@media (max-width: 900px) { .dg-mods { grid-template-columns: 1fr; } .dg-top { flex-direction: column; align-items: start; gap: 4px; } .dg-dev { flex-direction: column; gap: 6px; } }
 
 /* ---- Statement (deck style) ---- */
 .pd-statement { padding: 120px 0; background: var(--cream); }

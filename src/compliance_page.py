@@ -26,7 +26,7 @@ STATES = [
 
 PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
   <div>
-    <p class="pl-kick">Always Compliance</p>
+    <p class="pl-kick">Always Compliance, a module of Always Platform</p>
     <h1>Compliance, made clear.</h1>
     <p class="pd-line">Know exactly what applies to your ministry, approve a simple check-up each quarter, and hear when the law changes.</p>
     <div class="pg-cta"><a class="btn btn-peach" href="#/compliance/check">Start your free check-up</a><a class="btn btn-ghost" href="#/compliance/problem">See the problem we solve</a></div>
@@ -120,7 +120,7 @@ PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
   <p class="pg-lead rv">Give your users the same clear view of the rules without leaving your app: the open register, change alerts and a check-up you can embed. Love is Our Weapon is our first user.</p>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/compliance-platforms">Read the guide</a><a class="btn btn-ghost-dark" href="#/contact/compliance">Talk to us</a></div></div>
   <div class="cm-embed rv" aria-hidden="true"><span class="cm-embed-k">Add the check-up to any page</span><code>&lt;script type="module"
-  src="…/sdk/v0/compliance-widget.js"&gt;&lt;/script&gt;
+  src="https://alwaysfoundation.org/sdk/v0/compliance-widget.js"&gt;&lt;/script&gt;
 &lt;always-compliance-check&gt;
 &lt;/always-compliance-check&gt;</code></div></div>
 </div></section>
@@ -484,27 +484,30 @@ DOCS = ("Always Compliance", [
 <p>The engine is also in the open-source <code>@always/core</code> package as <code>assess()</code>.</p>
 """),
   ("compliance-platforms", "For platforms", """
-<p class="lead">Build Always Compliance into your own product. The register, the check-up and the embed are free and need no sign-in. Change alerts need an Always account.</p>
+<p class="lead">Build Always Compliance, a module of Always Platform, into your own product. The register, the check-up and the embed are live now, free, and need no sign-in.</p>
 <h2>Embed the check-up</h2>
-<pre><code>&lt;script type="module" src="https://cdn.alwaysfoundation.org/sdk/v0/compliance-widget.js"&gt;&lt;/script&gt;
+<pre><code>&lt;script type="module" src="https://alwaysfoundation.org/sdk/v0/compliance-widget.js"&gt;&lt;/script&gt;
 &lt;always-compliance-check accent="#5B67D8"&gt;&lt;/always-compliance-check&gt;</code></pre>
-<p>Answers stay in the browser and nothing is stored. Listen for the <code>always-compliance-result</code> event to see the totals.</p>
-<h2>Hear when the rules change</h2>
-<p>Add a webhook endpoint as an admin, or with a token that has the <code>webhooks</code> scope. Keep the secret it returns: it is shown once.</p>
-<pre><code>curl -X POST https://api.alwaysfoundation.org/v1/webhooks \\
-  -H "authorization: Bearer $ALWAYS_TOKEN" -H "x-always-org: $ORG_ID" \\
-  -H 'content-type: application/json' \\
-  -d '{"url":"https://your-app.example/hooks/always",
-       "events":["always.compliance.obligations.affected"]}'</code></pre>
-<table class="dt"><thead><tr><th>Event</th><th>When</th></tr></thead><tbody>
-<tr><td><code>always.compliance.register.published</code></td><td>A new version is published, with what changed</td></tr>
-<tr><td><code>always.compliance.obligations.affected</code></td><td>A change affects obligations that apply to you</td></tr>
+<p>Set <code>accent</code> to your brand colour. Listen for the <code>always-compliance-result</code> event to see the totals. Nothing is stored.</p>
+<h2>Call it from your own code</h2>
+<table class="dt"><thead><tr><th>Call</th><th>What it does</th></tr></thead><tbody>
+<tr><td><code>GET https://alwaysfoundation.org/api/compliance/register</code></td><td>The open register: every obligation, with its official source. Send <code>If-None-Match</code> with the ETag to check for a new version.</td></tr>
+<tr><td><code>POST https://alwaysfoundation.org/api/compliance/check</code></td><td>Send a ministry's profile, and answers if you have them. Get back what applies, what's in place and what needs attention.</td></tr>
 </tbody></table>
-<p>Deliveries are signed CloudEvents. Check each one with <code>verifyWebhook</code> from <code>@always/sdk</code>. They carry register facts, never people's details.</p>
+<pre><code>curl -X POST https://alwaysfoundation.org/api/compliance/check \\
+  -H 'content-type: application/json' \\
+  -d '{"profile":{"states":["NSW"],"collectsPersonalInfo":true,"turnoverOver3m":false,
+       "providesHealthService":false,"usesOverseasServices":false,"worksWithChildren":true,
+       "onlineServicesForChildren":false,"sendsEmailOrSms":true,"acncRegistered":true,
+       "basicReligiousCharity":true,"acncMediumOrLarge":false},
+       "answers":{"wwcc-register":"yes"}}'</code></pre>
+<p>Both are open to any website (CORS), carry organisation facts only, and store nothing. Answers use <code>yes</code>, <code>no</code>, <code>unsure</code> or <code>not_applicable</code>, keyed by the evidence ids in the register.</p>
+<h2>Hear when the rules change</h2>
+<p>Signed change alerts, and saved quarterly check-ups, come with an Always account on the Always API. <a href="#/contact/compliance">Talk to us</a> to be among the first.</p>
 <h2>Compliant by default</h2>
 <pre><code>import { ageGuard, requireConsent, personalDataProblems, spamActProblems } from '@always/sdk';
 
-if (!ageGuard(person.ageBand).aiAllowed) skipAi();   // no AI for under-18s
+if (!ageGuard(person.ageBand).aiAllowed) skipAi();
 requireConsent(person.consent, 'connect.church');    // throws without consent
 personalDataProblems(notificationText);              // [] when there are no emails or phone numbers
 spamActProblems({ consented, sender, unsubscribeUrl, body });</code></pre>

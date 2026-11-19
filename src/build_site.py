@@ -668,7 +668,7 @@ about = """
   <div class="mv">
     <div><h3>Our vision</h3><p>One faith. Many ministries. A shared mission: the Gospel going further across Australia, and more people worshipping Jesus.</p><p style="margin-top:12px">Our values: Christ-centred. Gospel first. Built together, shared freely. People's details stay theirs.</p></div>
     <div><h3>Our name</h3><p>From Jesus' promise in the Great Commission: “I am with you always” (Matthew 28:20, ESV).</p></div>
-    <div><h3>Our posture</h3><p>We serve quietly, in the background. Churches and ministries lead the work, and we support them.</p></div>
+    <div><h3>Our posture</h3><p>A ministry that serves ministries. Like those appointed in Acts 6 to carry the practical work, we serve quietly in the background, so churches and ministries can give themselves to the Gospel. We are not on the frontline. We stand behind it.</p></div>
   </div>
   <div class="creed">
     <div><h2>Built together. Shared freely.</h2></div>
