@@ -20,8 +20,9 @@ AREAS = {
 
 PAGE = f'''<section class="page-hero cm-hero"><div class="wrap pg-split">
   <div>
-    <p class="pl-kick">Support: Always Compliance</p>
-    <h1>Privacy, child safety and charity rules, made clear.</h1>
+    <p class="pl-kick">Always Platform: Support</p>
+    <h1>Always Compliance</h1>
+    <p class="pd-line">Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p>
     <p>Know where your ministry stands, approve a simple check-up every quarter, and hear when the law changes.</p>
     <div class="pg-cta"><a class="btn btn-peach" href="#/compliance/check">Start your free check-up</a><a class="btn btn-ghost" href="#/docs/compliance-overview">How it works</a></div>
     <p class="cm-fine">Free for churches. A guide to common obligations, not legal advice.</p>
@@ -73,7 +74,7 @@ PAGE = f'''<section class="page-hero cm-hero"><div class="wrap pg-split">
 
 <section class="sec pg-sec"><div class="wrap cm-end">
   <h2 class="pg-h rv">Get your check-up every quarter</h2>
-  <p class="pg-lead rv">Free for churches. Larger ministries contribute according to their size. Part of Always for churches and ministries.</p>
+  <p class="pg-lead rv">Free for churches. Larger ministries contribute according to their size. One sign-in with every Always product.</p>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join" data-join-interest="Always Compliance">Join Always</a><a class="btn btn-ghost-dark" href="#/compliance/check">Try the check-up first</a></div>
 </div></section>
 '''
@@ -309,7 +310,7 @@ DOCS = ("Always Compliance", [
 <ol>
 <li>Try the <a href="#/compliance/check">free check-up</a>. It takes about ten minutes, and nothing is saved.</li>
 <li><a href="#/join">Join Always</a> as a church or ministry.</li>
-<li>In Always for churches and ministries, open <b>Compliance</b>, answer the profile questions and save your answers.</li>
+<li>Sign in to Always and open <b>Compliance</b>, answer the profile questions and save your answers.</li>
 <li>Each quarter, review the draft check-up, update anything that has changed, and approve it.</li>
 </ol>
 <h2>What the results mean</h2>
