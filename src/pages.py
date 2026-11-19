@@ -377,7 +377,7 @@ FEEDBACK = '''<section class="page-hero"><div class="wrap"><h1>Ideas and problem
       <label class="fb-kind"><input type="radio" name="kind" value="bug"><span><b>A problem</b>Something isn't working</span></label>
       <label class="fb-kind"><input type="radio" name="kind" value="missing"><span><b>A missing church</b>Add a church or ministry</span></label>
     </div>
-    <label>Where<select name="area"><option>The website</option><option>Always App</option><option>Always Connect</option><option>Always Compliance</option><option>Always Pages</option><option>Always Reports</option><option>Somewhere else</option></select></label>
+    <label>Where<select name="area"><option>The website</option><option>Always App</option><option>Always Connect</option><option>Always Compliance</option><option>Always Pages</option><option>Somewhere else</option></select></label>
     <label id="fb-msg-l">Tell us more<textarea name="message" rows="6" required></textarea></label>
     <label>Your email <span>Optional, if you'd like a reply</span><input name="email" type="email" autocomplete="email"></label>
     <button class="btn btn-green" type="submit">Send</button>
@@ -613,7 +613,7 @@ BUILT_ON = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
 </div></section>'''
 
 PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-kick">Always Platform: Build</p><h1>Always Build</h1><p class="pd-line">The API, SDK, feeds and AI connector, for developers and partner platforms.</p><p>The same open-source foundation every Always product runs on, ready for your own website, app or platform.</p>
+  <div><p class="pl-kick">Always Platform</p><h1>For developers</h1><p class="pd-line">The API, SDK, feeds and AI connector behind every Always product, open to build on.</p><p>The same open-source foundation every Always product runs on, ready for your own website, app or platform.</p>
   <div class="pl-ctas"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/join">Talk to us</a></div></div>
   <pre class="pl-code" aria-label="Example code"><code><span class="c">// Find churches welcoming people near 2150</span>
 <span class="k">import</span> {{ AlwaysClient }} <span class="k">from</span> <span class="s">'@always/sdk'</span>;

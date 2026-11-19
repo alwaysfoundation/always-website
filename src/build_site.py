@@ -1035,6 +1035,8 @@ const anchors = { join: 'join', how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
   const [first, second] = h.split('/');
+  const aliases = """ + json.dumps(PR.ALIASES) + """;
+  if (aliases[first]) { location.replace('#/' + aliases[first]); return; }
   let page = 'home';
   if (pages[first] && first !== 'home') page = first;
   for (const [k, id] of Object.entries(pages)) document.getElementById(id).hidden = k !== page;
@@ -1045,7 +1047,7 @@ function route() {
   if (page === 'compliance' && second === 'check') { requestAnimationFrame(() => document.getElementById('check').scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = 'Free compliance check-up · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', build: 'Always Build · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
+  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', build: 'For developers · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
   if (page !== 'docs') document.title = titles[page];
   watch(document.getElementById(pages[page]));
 }

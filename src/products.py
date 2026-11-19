@@ -16,27 +16,26 @@ PILLARS = [
     ('support', 'Support', 'More time for ministry.'),
     ('connect', 'Connect', 'One body. Many members.'),
 ]
-BUILD_LINE = 'Build on Always Platform'
 
 # slug: (route, name, pillar, positioning, for)
 PRODUCTS = {
     'app':        ('app',        'Always App',        'equip',   'Everything a Christian needs to share Jesus and walk with people.', 'Every Christian and evangelist'),
     'pages':      ('pages',      'Always Pages',      'equip',   'Your own branded response pages, from the street to the altar call to online.', 'Churches, evangelists, events and ministries'),
     'compliance': ('compliance', 'Always Compliance', 'support', 'Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.', 'Every ministry'),
-    'reports':    ('reports',    'Always Reports',    'support', 'A monthly report for your board and funders, written for you, with totals only.', 'Ministries with boards and funders'),
-    'connect':    ('connect',    'Always Connect',    'connect', 'The church directory and a safe, consent-based handoff, so no one walks alone.', 'Churches, ministries and events'),
-    'agents':     ('agents',     'Always Agents',     'support',  'Help with follow-up and admin. A person approves every step.', 'Ministry teams'),
-    'build':      ('build',      'Always Build',      'build',   'The API, SDK, feeds and AI connector, for developers and partner platforms.', 'Developers and Christian tech platforms'),
+    'connect':    ('connect',    'Always Connect',    'connect', 'Find a local church, hand people on safely, follow up together, and see the fruit.', 'Churches, ministries and events'),
 }
+DEVELOPERS = ('build', 'For developers', 'The API, SDK, feeds and AI connector behind every Always product, open to build on.')
+# Old product routes now live inside Always Connect.
+ALIASES = {'reports': 'connect', 'agents': 'connect'}
 
 # slug: (route, menu name, one line, products used, story)
 SOLUTIONS = {
-    'churches':   ('churches',    'Churches',                     'Welcome people near you who have said yes to Jesus, and help them grow as disciples.', ['connect', 'pages', 'reports', 'compliance'], None),
-    'youth':      ('youth',       'Youth ministries',             'Keep young people safe, stay compliant, and give every young person a safe next step.', ['compliance', 'pages', 'connect', 'reports'], ('UEN', 'A Christian gaming ministry that tried Always Platform at youth events.')),
-    'ministries': ('ministries',  'Events, tours and ministries', 'Give everyone who responds a next step near home, and show funders the fruit.', ['pages', 'connect', 'reports', 'agents'], ('CXMMXNS', 'A worship tour giving every response a next step across Australia.')),
-    'evangelists':('evangelists', 'Evangelists and street teams', 'Share Jesus with confidence, save every contact safely, and connect people with a local church.', ['app', 'pages', 'connect', 'agents'], ('Sydney Fire Evangelism', 'Street evangelists using their own branded response app.')),
-    'networks':   ('networks',    'Denominations and networks',   'Help every church be ready to welcome, and see the fruit across your network, with totals only.', ['connect', 'reports', 'compliance', 'build'], None),
-    'platforms':  ('platforms',   'Christian tech platforms',     'Build compliance, handoff and church data into your own product, on open standards.', ['build', 'compliance', 'connect'], ('Love is Our Weapon', 'Our first Always Compliance user, ready to roll it out to youth ministries and churches.')),
+    'churches':   ('churches',    'Churches',                     'Welcome people near you who have said yes to Jesus, and help them grow as disciples.', ['connect', 'pages', 'compliance'], None),
+    'youth':      ('youth',       'Youth ministries',             'Keep young people safe, stay compliant, and give every young person a safe next step.', ['compliance', 'pages', 'connect'], ('UEN', 'A Christian gaming ministry that tried Always Platform at youth events.')),
+    'ministries': ('ministries',  'Events, tours and ministries', 'Give everyone who responds a next step near home, and show funders the fruit.', ['pages', 'connect'], ('CXMMXNS', 'A worship tour giving every response a next step across Australia.')),
+    'evangelists':('evangelists', 'Evangelists and street teams', 'Share Jesus with confidence, save every contact safely, and connect people with a local church.', ['app', 'pages', 'connect'], ('Sydney Fire Evangelism', 'Street evangelists using their own branded response app.')),
+    'networks':   ('networks',    'Denominations and networks',   'Help every church be ready to welcome, and see the fruit across your network, with totals only.', ['connect', 'compliance'], None),
+    'platforms':  ('platforms',   'Christian tech platforms',     'Build compliance, handoff and church data into your own product, on open standards.', ['compliance', 'connect'], ('Love is Our Weapon', 'Our first Always Compliance user, ready to roll it out to youth ministries and churches.')),
 }
 
 PILLAR_NAME = {k: n for k, n, _ in PILLARS} | {'build': 'Build'}
@@ -77,7 +76,7 @@ def pillar_grid():
     return '<div class="pl-pillars">' + ''.join(cards) + '</div>'
 
 
-BENTO = ['app', 'pages', 'compliance', 'reports', 'agents', 'connect', 'build']
+BENTO = ['app', 'pages', 'compliance', 'connect']
 
 
 def bento_tile(slug):
@@ -89,6 +88,11 @@ def bento_tile(slug):
 
 def product_bento():
     return '<div class="bento">' + ''.join(bento_tile(s) for s in BENTO) + '</div>'
+
+
+def developers_band():
+    return (f'<a class="dev-band rv" href="#/{DEVELOPERS[0]}"><div><span class="bt-k">Underneath it all</span><h3>{DEVELOPERS[1]}</h3>'
+            f'<p>{DEVELOPERS[2]}</p></div>{mock("build")}</a>')
 
 
 def switcher():
@@ -108,8 +112,7 @@ def menu_html():
     plat = ''.join(
         f'<div class="dd-col"><p class="dd-h">{name}</p>' + ''.join(f'<a href="#/{PRODUCTS[s][0]}" data-route="{PRODUCTS[s][0]}"><b>{PRODUCTS[s][1]}</b><span>{PRODUCTS[s][3]}</span></a>' for s in PRODUCTS if PRODUCTS[s][2] == key) + '</div>'
         for key, name, _ in PILLARS)
-    b = PRODUCTS['build']
-    build_row = (f'<a class="dd-build" href="#/{b[0]}" data-route="{b[0]}"><b>{b[1]}</b><span>{BUILD_LINE}: {b[3][0].lower() + b[3][1:]}</span></a>')
+    build_row = f'<a class="dd-build" href="#/{DEVELOPERS[0]}" data-route="{DEVELOPERS[0]}"><b>{DEVELOPERS[1]}</b><span>{DEVELOPERS[2]}</span></a>'
     sol = ''.join(f'<a href="#/{r}" data-route="{r}"><b>{n}</b><span>{l}</span></a>' for r, n, l, _, _ in SOLUTIONS.values())
     return (
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button>'
@@ -122,12 +125,12 @@ def menu_html():
     )
 
 
-PRODUCT_ROUTES = [v[0] for v in PRODUCTS.values()] + ['platform']
+PRODUCT_ROUTES = [v[0] for v in PRODUCTS.values()] + ['platform', DEVELOPERS[0]] + list(ALIASES)
 SOLUTION_ROUTES = [v[0] for v in SOLUTIONS.values()]
 
 
 def footer_cols():
-    plat = ''.join(f'<a href="#/{v[0]}">{v[1]}</a>' for v in PRODUCTS.values())
+    plat = ''.join(f'<a href="#/{v[0]}">{v[1]}</a>' for v in PRODUCTS.values()) + f'<a href="#/{DEVELOPERS[0]}">{DEVELOPERS[1]}</a>'
     sol = ''.join(f'<a href="#/{v[0]}">{v[1]}</a>' for v in SOLUTIONS.values())
     return (f'<div><h2>Platform</h2>{plat}</div>'
             f'<div><h2>Solutions</h2>{sol}</div>'
@@ -185,47 +188,31 @@ PAGES_PAGE = product_page('pages',
      ('Comments and embeds', 'A link for comments and posts, or a form you embed in your own website or app.'),
      ('Online to in person', 'Every response can become a welcome from a local church or ministry, with consent.'),
      ('Safe by design', 'Consent recorded on every form. Age asked first. Live totals with no names on screen.')],
-    ['connect', 'app', 'reports'],
+    ['connect', 'app', 'compliance'],
     extra=PAGES_BRAND,
     feats_title='Wherever people respond',
     secondary=('Read the guide', '#/docs/senders'),
     statement='Every yes deserves a next step, in your name.')
 
-REPORTS_PAGE = product_page('reports',
-    'Answer to donors, a foundation or a denomination? Always Reports writes your report each month from what already happened. Nothing extra to enter.',
-    [('Written for you', 'A clear monthly report, ready for your board and funders.'),
-     ('Totals only', 'No names. Small numbers are hidden so no one can be identified.'),
-     ('Your words', "Use your funder's titles and the outcomes they care about."),
-     ('Download or share', 'PDF, spreadsheet, or a link you can switch off.'),
-     ('Definitions you can trust', 'Responded, introduced, contacted and now part of a church family, defined the same way every month.'),
-     ('Across events and campuses', 'One report, or one for each event, tour or campus.')],
-    ['pages', 'connect', 'compliance'],
-    secondary=('See what\'s in a report', '#/docs/reports'),
-    statement='Show the fruit, without showing the people.')
+CONNECT_EXTRA = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
+  <div class="cx-pair">
+    <div class="cx rv">{mock('reports')}<h3>See the fruit</h3><p>A monthly report for your board and funders, written for you from what already happened. Totals only: small numbers are hidden so no one can be identified.</p><a class="cm-link" href="#/docs/reports">What's in a report</a></div>
+    <div class="cx rv">{mock('agents')}<h3>Follow up without the admin</h3><p>Agents draft welcome messages, reminders and records for your team. A person approves every step, and young people's details never go near AI.</p><span class="cx-note">In pilot with the foundation team</span></div>
+  </div>
+</div></section>'''
 
 CONNECT_PAGE = product_page('connect',
-    'When someone says yes to Jesus, Always Connect helps them find a next step near home, often a local church and sometimes another ministry, with a real person reaching out.',
+    'When someone says yes to Jesus, Always Connect helps them find a next step near home, with a real person reaching out. Your team follows up together and can show the fruit, without showing the people.',
     [('The directory', '3,937 churches and ministries mapped across Australia, each able to claim its page.'),
      ('Verified churches', 'We check with each church\'s denomination or network before anyone is introduced.'),
      ('A safe handoff', 'The person chooses their next step and sees who will reach out before anything is shared.'),
      ('Your team inbox', 'Accept or pass introductions from any phone, and keep walking with people.'),
      ('Next steps beyond church', 'People exploring faith can choose Alpha. Others may need a youth group or a care team.'),
      ('No one dropped', 'If no one nearby can help, the Always care team reaches out.')],
-    ['pages', 'app', 'agents'],
+    ['pages', 'app', 'compliance'],
+    extra=CONNECT_EXTRA,
     secondary=('Claim your church', '#/claim'),
     statement='So no one walks alone.')
-
-AGENTS_PAGE = product_page('agents',
-    'Always Agents take on the repetitive work of follow-up and administration, so your team can spend its time with people. Every agent works for a person, and a person approves every step.',
-    [('Follow-up agent', 'Drafts welcome messages and reminders after an event, for your team to check and send.'),
-     ('Admin agent', 'Keeps records up to date and prepares drafts for your reports and compliance check-up.'),
-     ('A person decides', 'Agents suggest. Your team approves, edits or ignores every step.'),
-     ('Never with young people\'s details', 'Young people\'s information is kept out of AI entirely.'),
-     ('Kept in Australia', 'People\'s details are stored and processed in Australia.'),
-     ('Every step recorded', 'An audit trail shows what each agent suggested and who approved it.')],
-    ['connect', 'reports', 'compliance'],
-    status='Now in pilot with the foundation team.',
-    statement='Less admin. More time with people.')
 
 # ---------------------------------------------------------------- Solution pages
 
@@ -278,13 +265,13 @@ PLATFORMS_PAGE = solution_page('platforms', [
     ('Compliance inside your product', 'Use the open Always Compliance register and check-up API, so your users stay lawful without leaving your app.'),
     ('A safe handoff to local churches', 'Pass people to a verified church or ministry near them, with consent that travels with the data.'),
     ('Open standards, Australian data', 'Open-source code, the Always Handoff standard, and personal data kept in Australia.'),
-], cta=('Explore Always Build', '#/build'))
+], cta=('For developers', '#/build'))
 
 # ---------------------------------------------------------------- Platform overview
 
 PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-split">
   <div><p class="pl-kick">Always Platform</p>
-  <h1>Seven products. One sign-in. Shared freely.</h1>
+  <h1>Four products. One sign-in. Shared freely.</h1>
   <p>The open-source technology behind every Always product. Your team signs in once and uses whichever tools your ministry needs.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/build">For developers</a></div></div>
   {switcher()}
@@ -292,8 +279,9 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-s
 <section class="sec pd-statement"><div class="wrap"><p class="rv">Built once. Shared with every church and ministry.</p></div></section>
 <section class="sec pg-sec pf-products"><div class="wrap">
   <h2 class="pg-h rv">The products</h2>
-  <p class="pg-lead rv">Equip, support and connect ministries. Underneath it all, Always Build lets developers and partner platforms build on the same foundation.</p>
+  <p class="pg-lead rv">Equip, support and connect ministries, with agents to help with follow-up and admin wherever they're needed.</p>
   {product_bento()}
+  {developers_band()}
 </div></section>
 <section class="sec pg-sec solutions-home"><div class="wrap">
   <h2 class="pg-h rv">Who it's for</h2>
@@ -362,7 +350,7 @@ CSS = MOCK_CSS + '''
 /* ---- Bento ---- */
 .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; margin-top: 44px; }
 .bt { grid-column: span 2; display: grid; grid-template-rows: auto 1fr; background: var(--paper); border-radius: 28px; padding: 10px; color: inherit; text-decoration: none; box-shadow: 0 1px 0 rgba(30,42,38,.04); transition: transform .25s ease, box-shadow .25s ease; }
-.bt-app, .bt-pages, .bt-connect, .bt-build { grid-column: span 3; }
+.bt-app, .bt-pages, .bt-compliance, .bt-connect { grid-column: span 3; }
 .bt .mk { min-height: 250px; }
 .bt-body { padding: 20px 18px 16px; display: grid; align-content: start; gap: 8px; }
 .bt h3 { margin: 0; font: 800 23px/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
@@ -372,9 +360,24 @@ CSS = MOCK_CSS + '''
 .bt:hover, .bt:focus-visible { transform: translateY(-3px); box-shadow: 0 26px 50px -30px rgba(20,53,47,.45); }
 .bt:hover .mk-card, .bt:focus-visible .mk-card { transform: translateY(-3px); }
 .mk-card { transition: transform .35s ease; }
-@media (max-width: 1000px) { .bento { grid-template-columns: 1fr 1fr; } .bt, .bt-app, .bt-pages, .bt-connect, .bt-build { grid-column: auto; } .bt-build { grid-column: span 2; } }
-@media (max-width: 640px) { .bento { grid-template-columns: 1fr; } .bt-build { grid-column: auto; } .bt .mk { min-height: 210px; } }
+@media (max-width: 1000px) { .bento { grid-template-columns: 1fr 1fr; } .bt, .bt-app, .bt-pages, .bt-compliance, .bt-connect { grid-column: auto; } }
+@media (max-width: 640px) { .bento { grid-template-columns: 1fr; } .bt .mk { min-height: 210px; } }
 .heart .bento { margin-top: 48px; }
+
+/* ---- Developers band and Connect pair ---- */
+.dev-band { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; margin-top: 18px; padding: 14px 14px 14px 36px; border-radius: 28px; background: var(--green-deep); color: var(--on-green); text-decoration: none; }
+.dev-band h3 { margin: 8px 0 8px; font: 800 26px/1.15 var(--head); color: var(--cream); letter-spacing: -0.02em; }
+.dev-band p { margin: 0; max-width: 40ch; font-size: 16px; line-height: 1.55; } .dev-band .bt-k { color: var(--peach); }
+.dev-band .mk { min-height: 220px; } .dev-band:hover h3, .dev-band:focus-visible h3 { text-decoration: underline; text-decoration-color: var(--peach); text-underline-offset: 6px; }
+.cx-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.cx { background: var(--paper); border-radius: 28px; padding: 10px 10px 26px; }
+.cx h3 { margin: 22px 18px 8px; font: 800 24px/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
+.cx p { margin: 0 18px; font-size: 16px; line-height: 1.55; color: var(--soft); max-width: 46ch; }
+.cx .cm-link, .cx-note { display: inline-block; margin: 14px 18px 0; font: 700 14px/1 var(--head); color: var(--clay); }
+.cx .mk { height: 250px; min-height: 0; }
+@media (max-width: 800px) { .dev-band, .cx-pair { grid-template-columns: minmax(0, 1fr); } .dev-band { padding: 28px 14px 14px; } .dev-band > div { padding: 0 14px; } }
+
+.pg-sage .pl-never div { border-top-color: rgba(27,71,64,.16); } .pg-sage .pl-never b { color: var(--green); } .pg-sage .pl-never span { color: var(--soft); }
 
 /* ---- Statement (deck style) ---- */
 .pd-statement { padding: 120px 0; background: var(--cream); }
@@ -495,7 +498,7 @@ document.querySelectorAll('.sw').forEach((sw) => {
 '''.replace('__PRODUCT_ROUTES__', repr(PRODUCT_ROUTES).replace("'", '"')).replace('__SOLUTION_ROUTES__', repr(SOLUTION_ROUTES).replace("'", '"'))
 
 NEW_PAGES = {
-    'pages': PAGES_PAGE, 'reports': REPORTS_PAGE, 'connect': CONNECT_PAGE, 'agents': AGENTS_PAGE,
+    'pages': PAGES_PAGE, 'connect': CONNECT_PAGE,
     'youth': YOUTH_PAGE, 'evangelists': EVANGELISTS_PAGE, 'networks': NETWORKS_PAGE, 'platforms': PLATFORMS_PAGE,
 }
 TITLES = {r: f'{n} · Always Foundation' for r, n, *_ in PRODUCTS.values()}
