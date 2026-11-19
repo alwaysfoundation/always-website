@@ -58,7 +58,7 @@ INITIALS = {'Elvanto': 'E', 'Fluro': 'F', 'ChurchSuite': 'CS', 'Breeze': 'B', 'H
 
 def _mark(name, group):
     if name in LOGOS:
-        return '<span class="ig-mark ig-logo" aria-hidden="true">' + ''.join(f'<img src="img/logos/{f}" alt="" loading="lazy">' for f in LOGOS[name]) + '</span>'
+        return '<span class="ig-mark ig-logo" aria-hidden="true">' + ''.join(f'<img src="img/{f[3:] if f.startswith("../") else "logo-" + f.lower()}" alt="" loading="lazy">' for f in LOGOS[name]) + '</span>'
     if name in INITIALS:
         return f'<span class="ig-mark ig-ini" aria-hidden="true">{INITIALS[name]}</span>'
     icon = f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{ICONS[group]}</svg>'

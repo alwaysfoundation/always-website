@@ -181,7 +181,7 @@ def menu_html():
                '<b>Built once. Shared freely.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>'
                '<span class="dd-f-l">See how it fits together</span></a>')
     sol = ''.join(f'<a href="#/{r}" data-route="{r}">{_icon(k)}<span class="dd-tx"><b>{n}</b><span>{MENU_LINE[k]}</span></span></a>' for k, (r, n, l, _, _) in SOLUTIONS.items())
-    story = ('<a class="dd-story" href="#/stories" data-open-cs="uen"><span class="dd-story-img" aria-hidden="true"></span><span class="dd-f-k">Story</span><b>UEN</b>'
+    story = ('<a class="dd-story" href="#/uen"><span class="dd-story-img" aria-hidden="true"></span><span class="dd-f-k">Story</span><b>UEN</b>'
              '<span>A Christian gaming ministry that helped found Always Platform.</span><span class="dd-f-l">Read the story</span></a>')
     return (
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button>'

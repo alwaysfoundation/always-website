@@ -526,6 +526,8 @@ DOCS.insert(1, CP.DOCS)
 import docs_update as DU
 import faithtech as FT
 import chai as CH
+import story_pages as SP
+home, _sp_pages, _sp_titles = SP.build(home)
 import stories as ST
 import integrations as IG
 PR.NEW_PAGES['integrations'] = IG.PAGE
@@ -539,6 +541,7 @@ PR.TITLES['youversion'] = 'YouVersion integration · Always Foundation'
 PR.TITLES['sydneyfire'] = 'Sydney Fire Evangelism · Always Foundation'
 PR.TITLES['alpha'] = 'Alpha integration · Always Foundation'
 PR.NEW_PAGES['chai'] = CH.PAGE
+PR.NEW_PAGES.update(_sp_pages); PR.TITLES.update(_sp_titles)
 PR.TITLES['chai'] = 'Christians in AI: Branches · Always Foundation'
 import home as HM
 PR.NEW_PAGES['faithtech'] = FT.PAGE
@@ -1285,7 +1288,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{ST.CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
