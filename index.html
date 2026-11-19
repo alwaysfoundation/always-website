@@ -904,11 +904,33 @@ form.cl-form { display: grid; gap: 16px; background: none; padding: 0; border-ra
 .sw-line a { color: var(--peach); font-weight: 600; margin-left: 4px; white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .sw-panel .mk-card, .sw-panel .mk-conn { animation: none !important; } .bt, .mk-card { transition: none; } }
 
-/* ---- Solution chips ---- */
-.sl-card { padding: 26px 24px 22px; gap: 10px; transition: transform .25s ease, box-shadow .25s ease; }
-.sl-card:hover, .sl-card:focus-visible { box-shadow: 0 26px 50px -30px rgba(0,0,0,.4); }
-.sl-uses { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; padding-top: 14px; border-top: 1px solid var(--line); }
-.sl-uses span { font: 700 11.5px/1 var(--head); padding: 6px 9px; border-radius: 999px; background: var(--sage-2); color: var(--green); }
+/* ---- Solutions as quiet rows ---- */
+.sl-rows { --sl-ink: var(--green); --sl-soft: var(--soft); --sl-with: var(--clay); --sl-line: rgba(27,71,64,.16);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 48px; margin-top: 40px; }
+.solutions-home .sl-rows { --sl-ink: var(--cream); --sl-soft: var(--on-green); --sl-with: var(--peach); --sl-line: rgba(248,243,234,.16); }
+.sl-row { display: grid; align-content: start; gap: 10px; padding: 30px 0 36px; border-top: 1px solid var(--sl-line); color: inherit; text-decoration: none; }
+.sl-row h3 { margin: 0; font: 800 clamp(22px, 2vw, 26px)/1.15 var(--head); letter-spacing: -0.02em; color: var(--sl-ink); transition: color .2s; }
+.sl-row p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--sl-soft); max-width: 36ch; }
+.sl-with { margin-top: 4px; font: 400 17px/1.4 'Newsreader', Georgia, serif; font-style: italic; color: var(--sl-with); }
+.sl-row:hover h3, .sl-row:focus-visible h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; text-decoration-color: var(--sl-with); }
+.sl-row:focus-visible { outline: 2px solid var(--peach); outline-offset: 6px; border-radius: 4px; }
+.solutions-home .pg-h { color: var(--cream); }
+@media (max-width: 1000px) { .sl-rows { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .sl-rows { grid-template-columns: 1fr; } .sl-row { padding: 26px 0 30px; } }
+.bento-even { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.bento-even .bt { grid-column: auto; }
+.bento-even.bento-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bento-even.bento-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .bento-even.bento-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bento-even.bento-3 .bt:last-child { grid-column: span 2; } }
+@media (max-width: 640px) { .bento-even.bento-4, .bento-even.bento-3 { grid-template-columns: 1fr; } .bento-even.bento-3 .bt:last-child { grid-column: auto; } }
+.bt .mk { height: 260px; min-height: 0; }
+.bt .mk > .mk-card, .bt .mk > .mk-conn { zoom: .9; }
+.bt .mk-in + .mk-in { display: none; }
+@media (max-width: 640px) { .bt .mk { height: 230px; } }
+.sl-story-sec p.sl-story-k { font: 700 15px/1.2 var(--head); color: var(--clay); margin-bottom: 18px; letter-spacing: 0; }
+.sl-story-cta { text-align: center; margin-top: 32px; }
+.bt-k { font: 700 13px/1 var(--head); color: var(--clay); background: none !important; padding: 0; }
+.bt-k.btp-support, .bt-k.btp-build { color: var(--green-2); } .bt-k.btp-agents { color: #5B4A86; } .bt-k.btp-connect { color: #85651F; }
 
 /* ---- Menu drop-downs ---- */
 .dd { position: relative; }
@@ -1281,24 +1303,24 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
     <div class="bento"><a class="bt bt-app rv" href="#/app"><div class="mk mk-app " aria-hidden="true"><div class="mk-card mk-app"><span class="mk-k">Verse for today</span>
 <p class="mk-verse">“I am with you always.”</p><span class="mk-cite">Matthew 28:20</span>
 <div class="mk-row"><span class="mk-pill">Pray</span><span class="mk-pill mk-pill-o">Share</span></div>
-<div class="mk-tabs"><i class="on"></i><i></i><i></i><i></i></div></div></div><div class="bt-body"><span class="bt-pill btp-equip">Equip</span><h3>Always App</h3><p>Everything a Christian needs to share Jesus and walk with people.</p></div></a><a class="bt bt-pages rv" href="#/pages"><div class="mk mk-pages " aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
+<div class="mk-tabs"><i class="on"></i><i></i><i></i><i></i></div></div></div><div class="bt-body"><span class="bt-k btp-equip">Equip</span><h3>Always App</h3><p>Everything a Christian needs to share Jesus and walk with people.</p></div></a><a class="bt bt-pages rv" href="#/pages"><div class="mk mk-pages " aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
 <p class="mk-h">Today I said yes to Jesus</p><span class="mk-in">First name</span><span class="mk-in">Suburb</span>
-<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><div class="bt-body"><span class="bt-pill btp-equip">Equip</span><h3>Always Pages</h3><p>Your own branded response pages, from the street to the altar call to online.</p></div></a><a class="bt bt-compliance rv" href="#/compliance"><div class="mk mk-compliance " aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
+<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><div class="bt-body"><span class="bt-k btp-equip">Equip</span><h3>Always Pages</h3><p>Your own branded response pages, from the street to the altar call to online.</p></div></a><a class="bt bt-compliance rv" href="#/compliance"><div class="mk mk-compliance " aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
 <ul><li><i class="ok"></i>Privacy</li><li><i class="ok"></i>Child safety</li><li><i class="ok"></i>Charity reporting</li><li><i class="due"></i>Messaging rules<em>Review</em></li></ul>
-<span class="mk-foot">Approved by your board</span></div></div><div class="bt-body"><span class="bt-pill btp-support">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p></div></a><a class="bt bt-reports rv" href="#/reports"><div class="mk mk-reports " aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
+<span class="mk-foot">Approved by your board</span></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p></div></a><a class="bt bt-reports rv" href="#/reports"><div class="mk mk-reports " aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
 <div class="mk-bar" style="--w:94%"><span>Responded</span></div><div class="mk-bar" style="--w:72%"><span>Introduced</span></div>
-<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><div class="bt-body"><span class="bt-pill btp-support">Support</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p></div></a><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p></div></a><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
 <span class="mk-link" aria-hidden="true"></span>
-<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-pill btp-connect">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p></div></a><a class="bt bt-agents rv" href="#/agents"><div class="mk mk-agents " aria-hidden="true"><div class="mk-card mk-agent"><span class="mk-k">Draft for your team</span>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-k btp-connect">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p></div></a><a class="bt bt-agents rv" href="#/agents"><div class="mk mk-agents " aria-hidden="true"><div class="mk-card mk-agent"><span class="mk-k">Draft for your team</span>
 <p class="mk-msg">Hi Sam, great to meet you on Friday. Youth night is Tuesday at 7. Would you like to come?</p>
 <div class="mk-row"><span class="mk-pill">Approve</span><span class="mk-pill mk-pill-o">Edit</span></div>
-<span class="mk-foot">A person approves every step</span></div></div><div class="bt-body"><span class="bt-pill btp-agents">Agents</span><h3>Always Agents</h3><p>Help with follow-up and admin. A person approves every step.</p></div></a><a class="bt bt-build rv" href="#/build"><div class="mk mk-build " aria-hidden="true"><div class="mk-card mk-code"><div class="mk-dots"><i></i><i></i><i></i></div>
+<span class="mk-foot">A person approves every step</span></div></div><div class="bt-body"><span class="bt-k btp-agents">Agents</span><h3>Always Agents</h3><p>Help with follow-up and admin. A person approves every step.</p></div></a><a class="bt bt-build rv" href="#/build"><div class="mk mk-build " aria-hidden="true"><div class="mk-card mk-code"><div class="mk-dots"><i></i><i></i><i></i></div>
 <code><span class="c">// churches welcoming near 2150</span>
 <span class="k">const</span> {{ items }} = <span class="k">await</span>
   always.feed.churches({{
     postcode: <span class="s">'2150'</span>,
     welcoming: <span class="k">true</span>,
-  }});</code></div></div><div class="bt-body"><span class="bt-pill btp-build">Build</span><h3>Always Build</h3><p>The API, SDK, feeds and AI connector, for developers and partner platforms.</p></div></a></div>
+  }});</code></div></div><div class="bt-body"><span class="bt-k btp-build">Build</span><h3>Always Build</h3><p>The API, SDK, feeds and AI connector, for developers and partner platforms.</p></div></a></div>
     <div class="ctas rv"><a class="btn btn-peach" href="#/platform">See Always Platform</a></div>
   </div>
 </section>
@@ -1423,7 +1445,7 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
     <p class="tag rv">Who it's for</p>
     <h2 class="sec-title rv" id="sol-h">For every part of the body.</h2>
     <p class="sec-lede rv">Churches, youth ministries, evangelists, events, networks and the Christian tech platforms that serve them.</p>
-    <div class="sl-grid"><a class="sl-card rv" href="#/churches"><h3>Churches</h3><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples.</p><div class="sl-uses"><span>Connect</span><span>Pages</span><span>Reports</span><span>Compliance</span></div></a><a class="sl-card rv" href="#/youth"><h3>Youth ministries</h3><p>Keep young people safe, stay compliant, and give every young person a safe next step.</p><div class="sl-uses"><span>Compliance</span><span>Pages</span><span>Connect</span><span>Reports</span></div></a><a class="sl-card rv" href="#/ministries"><h3>Events, tours and ministries</h3><p>Give everyone who responds a next step near home, and show funders the fruit.</p><div class="sl-uses"><span>Pages</span><span>Connect</span><span>Reports</span><span>Agents</span></div></a><a class="sl-card rv" href="#/evangelists"><h3>Evangelists and street teams</h3><p>Share Jesus with confidence, save every contact safely, and connect people with a local church.</p><div class="sl-uses"><span>App</span><span>Pages</span><span>Connect</span><span>Agents</span></div></a><a class="sl-card rv" href="#/networks"><h3>Denominations and networks</h3><p>Help every church be ready to welcome, and see the fruit across your network, with totals only.</p><div class="sl-uses"><span>Connect</span><span>Reports</span><span>Compliance</span><span>Build</span></div></a><a class="sl-card rv" href="#/platforms"><h3>Christian tech platforms</h3><p>Build compliance, handoff and church data into your own product, on open standards.</p><div class="sl-uses"><span>Build</span><span>Compliance</span><span>Connect</span></div></a></div>
+    <div class="sl-rows"><a class="sl-row rv" href="#/churches"><h3>Churches</h3><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples.</p><span class="sl-with">With Always Connect, Pages, Reports and Compliance</span></a><a class="sl-row rv" href="#/youth"><h3>Youth ministries</h3><p>Keep young people safe, stay compliant, and give every young person a safe next step.</p><span class="sl-with">With Always Compliance, Pages, Connect and Reports</span></a><a class="sl-row rv" href="#/ministries"><h3>Events, tours and ministries</h3><p>Give everyone who responds a next step near home, and show funders the fruit.</p><span class="sl-with">With Always Pages, Connect, Reports and Agents</span></a><a class="sl-row rv" href="#/evangelists"><h3>Evangelists and street teams</h3><p>Share Jesus with confidence, save every contact safely, and connect people with a local church.</p><span class="sl-with">With Always App, Pages, Connect and Agents</span></a><a class="sl-row rv" href="#/networks"><h3>Denominations and networks</h3><p>Help every church be ready to welcome, and see the fruit across your network, with totals only.</p><span class="sl-with">With Always Connect, Reports, Compliance and Build</span></a><a class="sl-row rv" href="#/platforms"><h3>Christian tech platforms</h3><p>Build compliance, handoff and church data into your own product, on open standards.</p><span class="sl-with">With Always Build, Compliance and Connect</span></a></div>
   </div>
 </section>
 
@@ -1762,30 +1784,30 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
   <div class="bento"><a class="bt bt-app rv" href="#/app"><div class="mk mk-app " aria-hidden="true"><div class="mk-card mk-app"><span class="mk-k">Verse for today</span>
 <p class="mk-verse">“I am with you always.”</p><span class="mk-cite">Matthew 28:20</span>
 <div class="mk-row"><span class="mk-pill">Pray</span><span class="mk-pill mk-pill-o">Share</span></div>
-<div class="mk-tabs"><i class="on"></i><i></i><i></i><i></i></div></div></div><div class="bt-body"><span class="bt-pill btp-equip">Equip</span><h3>Always App</h3><p>Everything a Christian needs to share Jesus and walk with people.</p></div></a><a class="bt bt-pages rv" href="#/pages"><div class="mk mk-pages " aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
+<div class="mk-tabs"><i class="on"></i><i></i><i></i><i></i></div></div></div><div class="bt-body"><span class="bt-k btp-equip">Equip</span><h3>Always App</h3><p>Everything a Christian needs to share Jesus and walk with people.</p></div></a><a class="bt bt-pages rv" href="#/pages"><div class="mk mk-pages " aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
 <p class="mk-h">Today I said yes to Jesus</p><span class="mk-in">First name</span><span class="mk-in">Suburb</span>
-<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><div class="bt-body"><span class="bt-pill btp-equip">Equip</span><h3>Always Pages</h3><p>Your own branded response pages, from the street to the altar call to online.</p></div></a><a class="bt bt-compliance rv" href="#/compliance"><div class="mk mk-compliance " aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
+<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><div class="bt-body"><span class="bt-k btp-equip">Equip</span><h3>Always Pages</h3><p>Your own branded response pages, from the street to the altar call to online.</p></div></a><a class="bt bt-compliance rv" href="#/compliance"><div class="mk mk-compliance " aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
 <ul><li><i class="ok"></i>Privacy</li><li><i class="ok"></i>Child safety</li><li><i class="ok"></i>Charity reporting</li><li><i class="due"></i>Messaging rules<em>Review</em></li></ul>
-<span class="mk-foot">Approved by your board</span></div></div><div class="bt-body"><span class="bt-pill btp-support">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p></div></a><a class="bt bt-reports rv" href="#/reports"><div class="mk mk-reports " aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
+<span class="mk-foot">Approved by your board</span></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p></div></a><a class="bt bt-reports rv" href="#/reports"><div class="mk mk-reports " aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
 <div class="mk-bar" style="--w:94%"><span>Responded</span></div><div class="mk-bar" style="--w:72%"><span>Introduced</span></div>
-<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><div class="bt-body"><span class="bt-pill btp-support">Support</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p></div></a><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p></div></a><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
 <span class="mk-link" aria-hidden="true"></span>
-<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-pill btp-connect">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p></div></a><a class="bt bt-agents rv" href="#/agents"><div class="mk mk-agents " aria-hidden="true"><div class="mk-card mk-agent"><span class="mk-k">Draft for your team</span>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-k btp-connect">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p></div></a><a class="bt bt-agents rv" href="#/agents"><div class="mk mk-agents " aria-hidden="true"><div class="mk-card mk-agent"><span class="mk-k">Draft for your team</span>
 <p class="mk-msg">Hi Sam, great to meet you on Friday. Youth night is Tuesday at 7. Would you like to come?</p>
 <div class="mk-row"><span class="mk-pill">Approve</span><span class="mk-pill mk-pill-o">Edit</span></div>
-<span class="mk-foot">A person approves every step</span></div></div><div class="bt-body"><span class="bt-pill btp-agents">Agents</span><h3>Always Agents</h3><p>Help with follow-up and admin. A person approves every step.</p></div></a><a class="bt bt-build rv" href="#/build"><div class="mk mk-build " aria-hidden="true"><div class="mk-card mk-code"><div class="mk-dots"><i></i><i></i><i></i></div>
+<span class="mk-foot">A person approves every step</span></div></div><div class="bt-body"><span class="bt-k btp-agents">Agents</span><h3>Always Agents</h3><p>Help with follow-up and admin. A person approves every step.</p></div></a><a class="bt bt-build rv" href="#/build"><div class="mk mk-build " aria-hidden="true"><div class="mk-card mk-code"><div class="mk-dots"><i></i><i></i><i></i></div>
 <code><span class="c">// churches welcoming near 2150</span>
 <span class="k">const</span> {{ items }} = <span class="k">await</span>
   always.feed.churches({{
     postcode: <span class="s">'2150'</span>,
     welcoming: <span class="k">true</span>,
-  }});</code></div></div><div class="bt-body"><span class="bt-pill btp-build">Build</span><h3>Always Build</h3><p>The API, SDK, feeds and AI connector, for developers and partner platforms.</p></div></a></div>
+  }});</code></div></div><div class="bt-body"><span class="bt-k btp-build">Build</span><h3>Always Build</h3><p>The API, SDK, feeds and AI connector, for developers and partner platforms.</p></div></a></div>
+</div></section>
+<section class="sec pg-sec solutions-home"><div class="wrap">
+  <h2 class="pg-h rv">Who it's for</h2>
+  <div class="sl-rows"><a class="sl-row rv" href="#/churches"><h3>Churches</h3><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples.</p><span class="sl-with">With Always Connect, Pages, Reports and Compliance</span></a><a class="sl-row rv" href="#/youth"><h3>Youth ministries</h3><p>Keep young people safe, stay compliant, and give every young person a safe next step.</p><span class="sl-with">With Always Compliance, Pages, Connect and Reports</span></a><a class="sl-row rv" href="#/ministries"><h3>Events, tours and ministries</h3><p>Give everyone who responds a next step near home, and show funders the fruit.</p><span class="sl-with">With Always Pages, Connect, Reports and Agents</span></a><a class="sl-row rv" href="#/evangelists"><h3>Evangelists and street teams</h3><p>Share Jesus with confidence, save every contact safely, and connect people with a local church.</p><span class="sl-with">With Always App, Pages, Connect and Agents</span></a><a class="sl-row rv" href="#/networks"><h3>Denominations and networks</h3><p>Help every church be ready to welcome, and see the fruit across your network, with totals only.</p><span class="sl-with">With Always Connect, Reports, Compliance and Build</span></a><a class="sl-row rv" href="#/platforms"><h3>Christian tech platforms</h3><p>Build compliance, handoff and church data into your own product, on open standards.</p><span class="sl-with">With Always Build, Compliance and Connect</span></a></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
-  <h2 class="pg-h rv">Who it's for</h2>
-  <div class="sl-grid"><a class="sl-card rv" href="#/churches"><h3>Churches</h3><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples.</p><div class="sl-uses"><span>Connect</span><span>Pages</span><span>Reports</span><span>Compliance</span></div></a><a class="sl-card rv" href="#/youth"><h3>Youth ministries</h3><p>Keep young people safe, stay compliant, and give every young person a safe next step.</p><div class="sl-uses"><span>Compliance</span><span>Pages</span><span>Connect</span><span>Reports</span></div></a><a class="sl-card rv" href="#/ministries"><h3>Events, tours and ministries</h3><p>Give everyone who responds a next step near home, and show funders the fruit.</p><div class="sl-uses"><span>Pages</span><span>Connect</span><span>Reports</span><span>Agents</span></div></a><a class="sl-card rv" href="#/evangelists"><h3>Evangelists and street teams</h3><p>Share Jesus with confidence, save every contact safely, and connect people with a local church.</p><div class="sl-uses"><span>App</span><span>Pages</span><span>Connect</span><span>Agents</span></div></a><a class="sl-card rv" href="#/networks"><h3>Denominations and networks</h3><p>Help every church be ready to welcome, and see the fruit across your network, with totals only.</p><div class="sl-uses"><span>Connect</span><span>Reports</span><span>Compliance</span><span>Build</span></div></a><a class="sl-card rv" href="#/platforms"><h3>Christian tech platforms</h3><p>Build compliance, handoff and church data into your own product, on open standards.</p><div class="sl-uses"><span>Build</span><span>Compliance</span><span>Connect</span></div></a></div>
-</div></section>
-<section class="sec pg-sec pg-green"><div class="wrap">
   <h2 class="pg-h rv">What never changes</h2>
   <div class="pl-never"><div class="rv"><b>Free for churches</b><span>Larger ministries contribute according to their size.</span></div><div class="rv"><b>Open</b><span>Every line is public, to check and build on.</span></div><div class="rv"><b>Permission first</b><span>Nothing about a person moves without their yes.</span></div><div class="rv"><b>Kept in Australia</b><span>People's details stay here.</span></div><div class="rv"><b>Safe for young people</b><span>No AI and no sharing for anyone under 18.</span></div><div class="rv"><b>People decide</b><span>Agents help with the work. People make the calls.</span></div></div>
 </div></section></div>
@@ -1916,71 +1938,128 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
   <h2 class="pg-h rv">Works with</h2>
   <p class="pg-lead rv">Every Always product runs on Always Platform, with one sign-in for your team.</p>
   <div class="pd-with"><a class="pd-link" href="#/connect"><b>Always Connect</b><span>The church directory and a safe, consent-based handoff, so no one walks alone.</span></a><a class="pd-link" href="#/reports"><b>Always Reports</b><span>A monthly report for your board and funders, written for you, with totals only.</span></a><a class="pd-link" href="#/compliance"><b>Always Compliance</b><span>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</span></a></div>
-</div></section></div><div class="page" id="page-youth" hidden><section class="page-hero"><div class="wrap">
-  <p class="pl-kick">Solutions</p>
+</div></section></div><div class="page" id="page-youth" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div><p class="pl-kick">Solutions</p>
   <h1>For youth ministries</h1>
   <p>Keep young people safe, stay compliant, and give every young person a safe next step.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/compliance/check">Try the free compliance check-up</a></div>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/compliance/check">Try the free compliance check-up</a></div></div>
+  <div class="mk mk-compliance mk-lg" aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
+<ul><li><i class="ok"></i>Privacy</li><li><i class="ok"></i>Child safety</li><li><i class="ok"></i>Charity reporting</li><li><i class="due"></i>Messaging rules<em>Review</em></li></ul>
+<span class="mk-foot">Approved by your board</span></div></div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What you can do</h2>
-  <div class="pg-feats"><div class="pg-feat rv"><h3>Stay lawful and compliant</h3><p>Child Safe Standards, working with children checks and privacy, with a quarterly check-up your board approves.</p></div><div class="pg-feat rv"><h3>Welcome young people safely</h3><p>Age comes first. Under-15s need a parent to confirm, and young people are introduced only to verified youth partners.</p></div><div class="pg-feat rv"><h3>Show the fruit</h3><p>Monthly reports for your board and funders, with totals only.</p></div></div>
+  <div class="sl-rows sl-rows-3"><div class="sl-row rv"><h3>Stay lawful and compliant</h3><p>Child Safe Standards, working with children checks and privacy, with a quarterly check-up your board approves.</p></div><div class="sl-row rv"><h3>Welcome young people safely</h3><p>Age comes first. Under-15s need a parent to confirm, and young people are introduced only to verified youth partners.</p></div><div class="sl-row rv"><h3>Show the fruit</h3><p>Monthly reports for your board and funders, with totals only.</p></div></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Products you'll use</h2>
-  <div class="pd-grid"><a class="pd-card rv" href="#/compliance"><span class="pd-pill">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p><span class="pd-for">For every ministry</span></a><a class="pd-card rv" href="#/pages"><span class="pd-pill">Equip</span><h3>Always Pages</h3><p>Your own branded response pages, from the street to the altar call to online.</p><span class="pd-for">For churches, evangelists, events and ministries</span></a><a class="pd-card rv" href="#/connect"><span class="pd-pill">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p><span class="pd-for">For churches, ministries and events</span></a><a class="pd-card rv" href="#/reports"><span class="pd-pill">Support</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p><span class="pd-for">For ministries with boards and funders</span></a></div>
+  <div class="bento bento-even bento-4"><a class="bt bt-compliance rv" href="#/compliance"><div class="mk mk-compliance " aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
+<ul><li><i class="ok"></i>Privacy</li><li><i class="ok"></i>Child safety</li><li><i class="ok"></i>Charity reporting</li><li><i class="due"></i>Messaging rules<em>Review</em></li></ul>
+<span class="mk-foot">Approved by your board</span></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p></div></a><a class="bt bt-pages rv" href="#/pages"><div class="mk mk-pages " aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
+<p class="mk-h">Today I said yes to Jesus</p><span class="mk-in">First name</span><span class="mk-in">Suburb</span>
+<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><div class="bt-body"><span class="bt-k btp-equip">Equip</span><h3>Always Pages</h3><p>Your own branded response pages, from the street to the altar call to online.</p></div></a><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<span class="mk-link" aria-hidden="true"></span>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-k btp-connect">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p></div></a><a class="bt bt-reports rv" href="#/reports"><div class="mk mk-reports " aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
+<div class="mk-bar" style="--w:94%"><span>Responded</span></div><div class="mk-bar" style="--w:72%"><span>Introduced</span></div>
+<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p></div></a></div>
 </div></section>
-<section class="sec pg-sec"><div class="wrap sl-story rv">
-  <p class="pl-kick">Story</p><h2 class="pg-h">UEN</h2><p class="pg-lead">A Christian gaming ministry that tried Always Platform at youth events.</p>
-  <a class="btn btn-ghost-dark" href="#/stories">Read the stories</a>
-</div></section></div><div class="page" id="page-evangelists" hidden><section class="page-hero"><div class="wrap">
-  <p class="pl-kick">Solutions</p>
+<section class="sec pd-statement sl-story-sec"><div class="wrap">
+  <p class="sl-story-k rv">UEN</p><p class="rv">A Christian gaming ministry that tried Always Platform at youth events.</p>
+  <div class="sl-story-cta rv"><a class="btn btn-ghost-dark" href="#/stories">Read the stories</a></div>
+</div></section></div><div class="page" id="page-evangelists" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div><p class="pl-kick">Solutions</p>
   <h1>For evangelists and street teams</h1>
   <p>Share Jesus with confidence, save every contact safely, and connect people with a local church.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join the pilot</a></div>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join the pilot</a></div></div>
+  <div class="mk mk-app mk-lg" aria-hidden="true"><div class="mk-card mk-app"><span class="mk-k">Verse for today</span>
+<p class="mk-verse">“I am with you always.”</p><span class="mk-cite">Matthew 28:20</span>
+<div class="mk-row"><span class="mk-pill">Pray</span><span class="mk-pill mk-pill-o">Share</span></div>
+<div class="mk-tabs"><i class="on"></i><i></i><i></i><i></i></div></div></div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What you can do</h2>
-  <div class="pg-feats"><div class="pg-feat rv"><h3>Share with confidence</h3><p>Bible, conversation guides and short training in the Always App.</p></div><div class="pg-feat rv"><h3>Save every contact safely</h3><p>Your own branded response app, like Sydney Fire's, with contacts kept safe in Australia.</p></div><div class="pg-feat rv"><h3>Connect people locally</h3><p>With their consent, pass people to a church near them or to Alpha if they want to explore faith.</p></div></div>
+  <div class="sl-rows sl-rows-3"><div class="sl-row rv"><h3>Share with confidence</h3><p>Bible, conversation guides and short training in the Always App.</p></div><div class="sl-row rv"><h3>Save every contact safely</h3><p>Your own branded response app, like Sydney Fire's, with contacts kept safe in Australia.</p></div><div class="sl-row rv"><h3>Connect people locally</h3><p>With their consent, pass people to a church near them or to Alpha if they want to explore faith.</p></div></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Products you'll use</h2>
-  <div class="pd-grid"><a class="pd-card rv" href="#/app"><span class="pd-pill">Equip</span><h3>Always App</h3><p>Everything a Christian needs to share Jesus and walk with people.</p><span class="pd-for">For every Christian and evangelist</span></a><a class="pd-card rv" href="#/pages"><span class="pd-pill">Equip</span><h3>Always Pages</h3><p>Your own branded response pages, from the street to the altar call to online.</p><span class="pd-for">For churches, evangelists, events and ministries</span></a><a class="pd-card rv" href="#/connect"><span class="pd-pill">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p><span class="pd-for">For churches, ministries and events</span></a><a class="pd-card rv" href="#/agents"><span class="pd-pill">Agents</span><h3>Always Agents</h3><p>Help with follow-up and admin. A person approves every step.</p><span class="pd-for">For ministry teams</span></a></div>
+  <div class="bento bento-even bento-4"><a class="bt bt-app rv" href="#/app"><div class="mk mk-app " aria-hidden="true"><div class="mk-card mk-app"><span class="mk-k">Verse for today</span>
+<p class="mk-verse">“I am with you always.”</p><span class="mk-cite">Matthew 28:20</span>
+<div class="mk-row"><span class="mk-pill">Pray</span><span class="mk-pill mk-pill-o">Share</span></div>
+<div class="mk-tabs"><i class="on"></i><i></i><i></i><i></i></div></div></div><div class="bt-body"><span class="bt-k btp-equip">Equip</span><h3>Always App</h3><p>Everything a Christian needs to share Jesus and walk with people.</p></div></a><a class="bt bt-pages rv" href="#/pages"><div class="mk mk-pages " aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
+<p class="mk-h">Today I said yes to Jesus</p><span class="mk-in">First name</span><span class="mk-in">Suburb</span>
+<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div><div class="bt-body"><span class="bt-k btp-equip">Equip</span><h3>Always Pages</h3><p>Your own branded response pages, from the street to the altar call to online.</p></div></a><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<span class="mk-link" aria-hidden="true"></span>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-k btp-connect">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p></div></a><a class="bt bt-agents rv" href="#/agents"><div class="mk mk-agents " aria-hidden="true"><div class="mk-card mk-agent"><span class="mk-k">Draft for your team</span>
+<p class="mk-msg">Hi Sam, great to meet you on Friday. Youth night is Tuesday at 7. Would you like to come?</p>
+<div class="mk-row"><span class="mk-pill">Approve</span><span class="mk-pill mk-pill-o">Edit</span></div>
+<span class="mk-foot">A person approves every step</span></div></div><div class="bt-body"><span class="bt-k btp-agents">Agents</span><h3>Always Agents</h3><p>Help with follow-up and admin. A person approves every step.</p></div></a></div>
 </div></section>
-<section class="sec pg-sec"><div class="wrap sl-story rv">
-  <p class="pl-kick">Story</p><h2 class="pg-h">Sydney Fire Evangelism</h2><p class="pg-lead">Street evangelists using their own branded response app.</p>
-  <a class="btn btn-ghost-dark" href="#/stories">Read the stories</a>
-</div></section></div><div class="page" id="page-networks" hidden><section class="page-hero"><div class="wrap">
-  <p class="pl-kick">Solutions</p>
+<section class="sec pd-statement sl-story-sec"><div class="wrap">
+  <p class="sl-story-k rv">Sydney Fire Evangelism</p><p class="rv">Street evangelists using their own branded response app.</p>
+  <div class="sl-story-cta rv"><a class="btn btn-ghost-dark" href="#/stories">Read the stories</a></div>
+</div></section></div><div class="page" id="page-networks" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div><p class="pl-kick">Solutions</p>
   <h1>For denominations and networks</h1>
   <p>Help every church be ready to welcome, and see the fruit across your network, with totals only.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Talk to us</a></div>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Talk to us</a></div></div>
+  <div class="mk mk-connect mk-lg" aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<span class="mk-link" aria-hidden="true"></span>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What you can do</h2>
-  <div class="pg-feats"><div class="pg-feat rv"><h3>Ready to welcome</h3><p>Help every church in your network claim its page, get verified and be ready to receive people.</p></div><div class="pg-feat rv"><h3>See the fruit across your network</h3><p>Combined reports across your churches, with totals only.</p></div><div class="pg-feat rv"><h3>Shared compliance</h3><p>One view of privacy and child safety obligations, so every church can stay lawful with less admin.</p></div></div>
+  <div class="sl-rows sl-rows-3"><div class="sl-row rv"><h3>Ready to welcome</h3><p>Help every church in your network claim its page, get verified and be ready to receive people.</p></div><div class="sl-row rv"><h3>See the fruit across your network</h3><p>Combined reports across your churches, with totals only.</p></div><div class="sl-row rv"><h3>Shared compliance</h3><p>One view of privacy and child safety obligations, so every church can stay lawful with less admin.</p></div></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Products you'll use</h2>
-  <div class="pd-grid"><a class="pd-card rv" href="#/connect"><span class="pd-pill">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p><span class="pd-for">For churches, ministries and events</span></a><a class="pd-card rv" href="#/reports"><span class="pd-pill">Support</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p><span class="pd-for">For ministries with boards and funders</span></a><a class="pd-card rv" href="#/compliance"><span class="pd-pill">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p><span class="pd-for">For every ministry</span></a><a class="pd-card rv" href="#/build"><span class="pd-pill">Build</span><h3>Always Build</h3><p>The API, SDK, feeds and AI connector, for developers and partner platforms.</p><span class="pd-for">For developers and Christian tech platforms</span></a></div>
+  <div class="bento bento-even bento-4"><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<span class="mk-link" aria-hidden="true"></span>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-k btp-connect">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p></div></a><a class="bt bt-reports rv" href="#/reports"><div class="mk mk-reports " aria-hidden="true"><div class="mk-card mk-rep"><div class="mk-top"><b>This month</b><span class="mk-chip">Totals only</span></div>
+<div class="mk-bar" style="--w:94%"><span>Responded</span></div><div class="mk-bar" style="--w:72%"><span>Introduced</span></div>
+<div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Reports</h3><p>A monthly report for your board and funders, written for you, with totals only.</p></div></a><a class="bt bt-compliance rv" href="#/compliance"><div class="mk mk-compliance " aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
+<ul><li><i class="ok"></i>Privacy</li><li><i class="ok"></i>Child safety</li><li><i class="ok"></i>Charity reporting</li><li><i class="due"></i>Messaging rules<em>Review</em></li></ul>
+<span class="mk-foot">Approved by your board</span></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p></div></a><a class="bt bt-build rv" href="#/build"><div class="mk mk-build " aria-hidden="true"><div class="mk-card mk-code"><div class="mk-dots"><i></i><i></i><i></i></div>
+<code><span class="c">// churches welcoming near 2150</span>
+<span class="k">const</span> {{ items }} = <span class="k">await</span>
+  always.feed.churches({{
+    postcode: <span class="s">'2150'</span>,
+    welcoming: <span class="k">true</span>,
+  }});</code></div></div><div class="bt-body"><span class="bt-k btp-build">Build</span><h3>Always Build</h3><p>The API, SDK, feeds and AI connector, for developers and partner platforms.</p></div></a></div>
 </div></section>
-</div><div class="page" id="page-platforms" hidden><section class="page-hero"><div class="wrap">
-  <p class="pl-kick">Solutions</p>
-  <h1>For christian tech platforms</h1>
+</div><div class="page" id="page-platforms" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div><p class="pl-kick">Solutions</p>
+  <h1>For Christian tech platforms</h1>
   <p>Build compliance, handoff and church data into your own product, on open standards.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/build">Explore Always Build</a></div>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/build">Explore Always Build</a></div></div>
+  <div class="mk mk-build mk-lg" aria-hidden="true"><div class="mk-card mk-code"><div class="mk-dots"><i></i><i></i><i></i></div>
+<code><span class="c">// churches welcoming near 2150</span>
+<span class="k">const</span> {{ items }} = <span class="k">await</span>
+  always.feed.churches({{
+    postcode: <span class="s">'2150'</span>,
+    welcoming: <span class="k">true</span>,
+  }});</code></div></div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What you can do</h2>
-  <div class="pg-feats"><div class="pg-feat rv"><h3>Compliance inside your product</h3><p>Use the open Always Compliance register and check-up API, so your users stay lawful without leaving your app.</p></div><div class="pg-feat rv"><h3>A safe handoff to local churches</h3><p>Pass people to a verified church or ministry near them, with consent that travels with the data.</p></div><div class="pg-feat rv"><h3>Open standards, Australian data</h3><p>Open-source code, the Always Handoff standard, and personal data kept in Australia.</p></div></div>
+  <div class="sl-rows sl-rows-3"><div class="sl-row rv"><h3>Compliance inside your product</h3><p>Use the open Always Compliance register and check-up API, so your users stay lawful without leaving your app.</p></div><div class="sl-row rv"><h3>A safe handoff to local churches</h3><p>Pass people to a verified church or ministry near them, with consent that travels with the data.</p></div><div class="sl-row rv"><h3>Open standards, Australian data</h3><p>Open-source code, the Always Handoff standard, and personal data kept in Australia.</p></div></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Products you'll use</h2>
-  <div class="pd-grid"><a class="pd-card rv" href="#/build"><span class="pd-pill">Build</span><h3>Always Build</h3><p>The API, SDK, feeds and AI connector, for developers and partner platforms.</p><span class="pd-for">For developers and Christian tech platforms</span></a><a class="pd-card rv" href="#/compliance"><span class="pd-pill">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p><span class="pd-for">For every ministry</span></a><a class="pd-card rv" href="#/connect"><span class="pd-pill">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p><span class="pd-for">For churches, ministries and events</span></a></div>
+  <div class="bento bento-even bento-3"><a class="bt bt-build rv" href="#/build"><div class="mk mk-build " aria-hidden="true"><div class="mk-card mk-code"><div class="mk-dots"><i></i><i></i><i></i></div>
+<code><span class="c">// churches welcoming near 2150</span>
+<span class="k">const</span> {{ items }} = <span class="k">await</span>
+  always.feed.churches({{
+    postcode: <span class="s">'2150'</span>,
+    welcoming: <span class="k">true</span>,
+  }});</code></div></div><div class="bt-body"><span class="bt-k btp-build">Build</span><h3>Always Build</h3><p>The API, SDK, feeds and AI connector, for developers and partner platforms.</p></div></a><a class="bt bt-compliance rv" href="#/compliance"><div class="mk mk-compliance " aria-hidden="true"><div class="mk-card mk-comp"><div class="mk-top"><b>Quarterly check-up</b><span class="mk-chip">Ready</span></div>
+<ul><li><i class="ok"></i>Privacy</li><li><i class="ok"></i>Child safety</li><li><i class="ok"></i>Charity reporting</li><li><i class="due"></i>Messaging rules<em>Review</em></li></ul>
+<span class="mk-foot">Approved by your board</span></div></div><div class="bt-body"><span class="bt-k btp-support">Support</span><h3>Always Compliance</h3><p>Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.</p></div></a><a class="bt bt-connect rv" href="#/connect"><div class="mk mk-connect " aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<span class="mk-link" aria-hidden="true"></span>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div><div class="bt-body"><span class="bt-k btp-connect">Connect</span><h3>Always Connect</h3><p>The church directory and a safe, consent-based handoff, so no one walks alone.</p></div></a></div>
 </div></section>
-<section class="sec pg-sec"><div class="wrap sl-story rv">
-  <p class="pl-kick">Story</p><h2 class="pg-h">Love is Our Weapon</h2><p class="pg-lead">Our first Always Compliance user, ready to roll it out to youth ministries and churches.</p>
-  <a class="btn btn-ghost-dark" href="#/stories">Read the stories</a>
+<section class="sec pd-statement sl-story-sec"><div class="wrap">
+  <p class="sl-story-k rv">Love is Our Weapon</p><p class="rv">Our first Always Compliance user, ready to roll it out to youth ministries and churches.</p>
+  <div class="sl-story-cta rv"><a class="btn btn-ghost-dark" href="#/stories">Read the stories</a></div>
 </div></section></div>
 <div class="page" id="page-compliance" hidden><section class="page-hero cm-hero"><div class="wrap pg-split">
   <div>
@@ -2084,7 +2163,7 @@ function route() {
   if (page === 'compliance' && second === 'check') { requestAnimationFrame(() => document.getElementById('check').scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = 'Free compliance check-up · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', build: 'Always Build · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...{"app": "Always App · Always Foundation", "pages": "Always Pages · Always Foundation", "compliance": "Always Compliance · Always Foundation", "reports": "Always Reports · Always Foundation", "connect": "Always Connect · Always Foundation", "agents": "Always Agents · Always Foundation", "build": "Always Build · Always Foundation", "churches": "For churches · Always Foundation", "youth": "For youth ministries · Always Foundation", "ministries": "For events, tours and ministries · Always Foundation", "evangelists": "For evangelists and street teams · Always Foundation", "networks": "For denominations and networks · Always Foundation", "platforms": "For christian tech platforms · Always Foundation", "platform": "Always Platform · Always Foundation"} };
+  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', build: 'Always Build · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...{"app": "Always App · Always Foundation", "pages": "Always Pages · Always Foundation", "compliance": "Always Compliance · Always Foundation", "reports": "Always Reports · Always Foundation", "connect": "Always Connect · Always Foundation", "agents": "Always Agents · Always Foundation", "build": "Always Build · Always Foundation", "churches": "For churches · Always Foundation", "youth": "For youth ministries · Always Foundation", "ministries": "For events, tours and ministries · Always Foundation", "evangelists": "For evangelists and street teams · Always Foundation", "networks": "For denominations and networks · Always Foundation", "platforms": "For Christian tech platforms · Always Foundation", "platform": "Always Platform · Always Foundation"} };
   if (page !== 'docs') document.title = titles[page];
   watch(document.getElementById(pages[page]));
 }

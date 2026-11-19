@@ -43,6 +43,10 @@ SOLUTIONS = {
 PILLAR_NAME = {k: n for k, n, _ in PILLARS}
 
 
+def for_name(name):
+    return 'For ' + (name if name.startswith('Christian') else name[0].lower() + name[1:])
+
+
 def product_link(slug, cls='pd-link'):
     route, name, _, line, _ = PRODUCTS[slug]
     return f'<a class="{cls}" href="#/{route}"><b>{name}</b><span>{line}</span></a>'
@@ -54,10 +58,15 @@ def product_card(slug):
             f'<h3>{name}</h3><p>{line}</p><span class="pd-for">For {who[0].lower() + who[1:]}</span></a>')
 
 
+def _and(items):
+    return items[0] if len(items) == 1 else ', '.join(items[:-1]) + ' and ' + items[-1]
+
+
 def solution_card(slug):
     route, name, line, uses, _ = SOLUTIONS[slug]
-    chips = ''.join(f'<span>{PRODUCTS[u][1].replace("Always ", "")}</span>' for u in uses)
-    return f'<a class="sl-card rv" href="#/{route}"><h3>{name}</h3><p>{line}</p><div class="sl-uses">{chips}</div></a>'
+    names = [PRODUCTS[u][1].replace('Always ', '') for u in uses]
+    return (f'<a class="sl-row rv" href="#/{route}"><h3>{name}</h3><p>{line}</p>'
+            f'<span class="sl-with">With Always {_and(names)}</span></a>')
 
 
 def pillar_grid():
@@ -75,7 +84,7 @@ BENTO = ['app', 'pages', 'compliance', 'reports', 'connect', 'agents', 'build']
 def bento_tile(slug):
     route, name, pillar, line, _ = PRODUCTS[slug]
     return (f'<a class="bt bt-{slug} rv" href="#/{route}">{mock(slug)}'
-            f'<div class="bt-body"><span class="bt-pill btp-{pillar}">{PILLAR_NAME[pillar]}</span>'
+            f'<div class="bt-body"><span class="bt-k btp-{pillar}">{PILLAR_NAME[pillar]}</span>'
             f'<h3>{name}</h3><p>{line}</p></div></a>')
 
 
@@ -92,7 +101,7 @@ def switcher():
 
 
 def solutions_grid():
-    return '<div class="sl-grid">' + ''.join(solution_card(s) for s in SOLUTIONS) + '</div>'
+    return '<div class="sl-rows">' + ''.join(solution_card(s) for s in SOLUTIONS) + '</div>'
 
 
 def menu_html():
@@ -223,23 +232,25 @@ def solution_page(slug, outcomes, cta=('Talk to us', '#/join')):
     route, name, line, uses, story = SOLUTIONS[slug]
     story_html = ''
     if story:
-        story_html = f'''<section class="sec pg-sec"><div class="wrap sl-story rv">
-  <p class="pl-kick">Story</p><h2 class="pg-h">{story[0]}</h2><p class="pg-lead">{story[1]}</p>
-  <a class="btn btn-ghost-dark" href="#/stories">Read the stories</a>
+        story_html = f'''<section class="sec pd-statement sl-story-sec"><div class="wrap">
+  <p class="sl-story-k rv">{story[0]}</p><p class="rv">{story[1]}</p>
+  <div class="sl-story-cta rv"><a class="btn btn-ghost-dark" href="#/stories">Read the stories</a></div>
 </div></section>'''
-    return f'''<section class="page-hero"><div class="wrap">
-  <p class="pl-kick">Solutions</p>
-  <h1>For {name[0].lower() + name[1:]}</h1>
+    rows = ''.join(f'<div class="sl-row rv"><h3>{t}</h3><p>{d}</p></div>' for t, d in outcomes)
+    return f'''<section class="page-hero pd-hero"><div class="wrap pd-split">
+  <div><p class="pl-kick">Solutions</p>
+  <h1>{for_name(name)}</h1>
   <p>{line}</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="{cta[1]}">{cta[0]}</a></div>
+  <div class="pg-cta"><a class="btn btn-peach" href="{cta[1]}">{cta[0]}</a></div></div>
+  {mock(uses[0], 'mk-lg')}
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">What you can do</h2>
-  {_feats(outcomes)}
+  <div class="sl-rows sl-rows-{len(outcomes)}">{rows}</div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Products you'll use</h2>
-  <div class="pd-grid">{''.join(product_card(s) for s in uses)}</div>
+  <div class="bento bento-even bento-{len(uses)}">{''.join(bento_tile(s) for s in uses)}</div>
 </div></section>
 {story_html}'''
 
@@ -283,11 +294,11 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-s
   <p class="pg-lead rv">Equip, support and connect ministries, with agents to lighten the load and open tools to build on.</p>
   {product_bento()}
 </div></section>
-<section class="sec pg-sec pg-sage"><div class="wrap">
+<section class="sec pg-sec solutions-home"><div class="wrap">
   <h2 class="pg-h rv">Who it's for</h2>
   {solutions_grid()}
 </div></section>
-<section class="sec pg-sec pg-green"><div class="wrap">
+<section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">What never changes</h2>
   <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free for churches', 'Larger ministries contribute according to their size.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', "People's details stay here."), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'Agents help with the work. People make the calls.')])}</div>
 </div></section>'''
@@ -394,11 +405,33 @@ CSS = MOCK_CSS + '''
 .sw-line a { color: var(--peach); font-weight: 600; margin-left: 4px; white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .sw-panel .mk-card, .sw-panel .mk-conn { animation: none !important; } .bt, .mk-card { transition: none; } }
 
-/* ---- Solution chips ---- */
-.sl-card { padding: 26px 24px 22px; gap: 10px; transition: transform .25s ease, box-shadow .25s ease; }
-.sl-card:hover, .sl-card:focus-visible { box-shadow: 0 26px 50px -30px rgba(0,0,0,.4); }
-.sl-uses { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; padding-top: 14px; border-top: 1px solid var(--line); }
-.sl-uses span { font: 700 11.5px/1 var(--head); padding: 6px 9px; border-radius: 999px; background: var(--sage-2); color: var(--green); }
+/* ---- Solutions as quiet rows ---- */
+.sl-rows { --sl-ink: var(--green); --sl-soft: var(--soft); --sl-with: var(--clay); --sl-line: rgba(27,71,64,.16);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 48px; margin-top: 40px; }
+.solutions-home .sl-rows { --sl-ink: var(--cream); --sl-soft: var(--on-green); --sl-with: var(--peach); --sl-line: rgba(248,243,234,.16); }
+.sl-row { display: grid; align-content: start; gap: 10px; padding: 30px 0 36px; border-top: 1px solid var(--sl-line); color: inherit; text-decoration: none; }
+.sl-row h3 { margin: 0; font: 800 clamp(22px, 2vw, 26px)/1.15 var(--head); letter-spacing: -0.02em; color: var(--sl-ink); transition: color .2s; }
+.sl-row p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--sl-soft); max-width: 36ch; }
+.sl-with { margin-top: 4px; font: 400 17px/1.4 'Newsreader', Georgia, serif; font-style: italic; color: var(--sl-with); }
+.sl-row:hover h3, .sl-row:focus-visible h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; text-decoration-color: var(--sl-with); }
+.sl-row:focus-visible { outline: 2px solid var(--peach); outline-offset: 6px; border-radius: 4px; }
+.solutions-home .pg-h { color: var(--cream); }
+@media (max-width: 1000px) { .sl-rows { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .sl-rows { grid-template-columns: 1fr; } .sl-row { padding: 26px 0 30px; } }
+.bento-even { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.bento-even .bt { grid-column: auto; }
+.bento-even.bento-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bento-even.bento-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .bento-even.bento-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bento-even.bento-3 .bt:last-child { grid-column: span 2; } }
+@media (max-width: 640px) { .bento-even.bento-4, .bento-even.bento-3 { grid-template-columns: 1fr; } .bento-even.bento-3 .bt:last-child { grid-column: auto; } }
+.bt .mk { height: 260px; min-height: 0; }
+.bt .mk > .mk-card, .bt .mk > .mk-conn { zoom: .9; }
+.bt .mk-in + .mk-in { display: none; }
+@media (max-width: 640px) { .bt .mk { height: 230px; } }
+.sl-story-sec p.sl-story-k { font: 700 15px/1.2 var(--head); color: var(--clay); margin-bottom: 18px; letter-spacing: 0; }
+.sl-story-cta { text-align: center; margin-top: 32px; }
+.bt-k { font: 700 13px/1 var(--head); color: var(--clay); background: none !important; padding: 0; }
+.bt-k.btp-support, .bt-k.btp-build { color: var(--green-2); } .bt-k.btp-agents { color: #5B4A86; } .bt-k.btp-connect { color: #85651F; }
 
 /* ---- Menu drop-downs ---- */
 .dd { position: relative; }
@@ -461,5 +494,5 @@ NEW_PAGES = {
     'youth': YOUTH_PAGE, 'evangelists': EVANGELISTS_PAGE, 'networks': NETWORKS_PAGE, 'platforms': PLATFORMS_PAGE,
 }
 TITLES = {r: f'{n} · Always Foundation' for r, n, *_ in PRODUCTS.values()}
-TITLES.update({r: f'For {n[0].lower() + n[1:]} · Always Foundation' for r, n, *_ in SOLUTIONS.values()})
+TITLES.update({r: f'{for_name(n)} · Always Foundation' for r, n, *_ in SOLUTIONS.values()})
 TITLES['platform'] = 'Always Platform · Always Foundation'
