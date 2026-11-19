@@ -337,7 +337,7 @@ YOUTH_PAGE = solution_page('youth', [
     ('Stay lawful and compliant', 'Child Safe Standards, working with children checks and privacy, with a quarterly check-up your board approves.'),
     ('Welcome young people safely', 'Age comes first. Under-15s need a parent to confirm, and young people are introduced only to youth partners.'),
     ('Show the fruit', 'Monthly reports for your board and funders, with totals only.'),
-], cta=('Try the free safety check-up-up', '#/compliance/check'))
+], cta=('Try the free safety check-up', '#/compliance/check'))
 
 NETWORKS_PAGE = solution_page('networks', [
     ('Ready to welcome', 'Help every church in your network join, get ready at their own pace and become partner churches.'),

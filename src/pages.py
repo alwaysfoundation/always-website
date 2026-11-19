@@ -73,7 +73,7 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
   <h2 class="pg-h rv">Less administration, more ministry</h2>
   <p class="pg-lead rv">Shared tools for the everyday work behind every ministry, with agents to help with follow-up and admin, so your team can spend more time on people.</p>
   {feats([('Governance', 'Shared policies, templates and member records for boards and leaders.'), ('Consent and privacy', 'Consent records and privacy requests, ready to export when you need them.'), ('Safeguarding', 'Child safety checklists and Working With Children Check reminders, kept in one place.'), ('Reporting', 'A monthly report for your board and funders, with totals only.')])}
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/compliance/check">Try the free safety check-up-up</a><a class="btn btn-ghost" href="#/compliance">About Always Safety</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/compliance/check">Try the free safety check-up</a><a class="btn btn-ghost" href="#/compliance">About Always Safety</a></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony, sermon or post? Add a response link or QR code. Anyone in Australia can say yes and meet a church near them.</p></div>

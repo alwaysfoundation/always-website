@@ -97,7 +97,7 @@ PRIVACY = """
 <tr><td>Respond to Jesus and ask for a next step</td><td>First name, a mobile or email, suburb, age band, the step you chose, your consent</td><td>A church or ministry near you can get in touch</td></tr>
 <tr><td>Register to join Always</td><td>Your name, email, optional mobile, your role, your organisation's details and what you agreed to</td><td>We can check your details and set you up</td></tr>
 <tr><td>Contact us, or scan our QR code</td><td>First name, a way to reach you, an optional organisation and note</td><td>We can reply</td></tr>
-<tr><td>Use the safety check-up-up or API</td><td>Nothing about you. Answers are checked and the result returned; nothing is stored</td><td>You get your result</td></tr>
+<tr><td>Use the safety check-up or API</td><td>Nothing about you. Answers are checked and the result returned; nothing is stored</td><td>You get your result</td></tr>
 <tr><td>Visit the website</td><td>No tracking cookies or advertising pixels</td><td>Nothing</td></tr></table>
 <h2>Your faith is sensitive information</h2>
 <p>Saying yes to Jesus is about your religious beliefs, which Australian privacy law treats as sensitive. So we never share it without your clear permission, and only for the purpose you agreed to.</p>

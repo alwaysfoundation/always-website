@@ -690,7 +690,7 @@ about = """
 <div class="wrap ab-photos" aria-hidden="false">
   <figure class="rv"><img src="{{AB1}}" alt="A UEN esports event with players on stage and an audience watching large screens" loading="lazy"></figure>
   <figure class="rv"><img src="{{AB2}}" alt="A crowd in a Sydney city square with hands raised in worship" loading="lazy"></figure>
-  <figure class="rv"><img src="{{AB3}}" alt="Members of the Rejoice team talking and laughing together outdoors" loading="lazy"></figure>
+  <figure class="rv"><img src="{{AB3}}" alt="A woman pausing on a busy Sydney street, from Alpha Australia's For everyone, everywhere campaign" loading="lazy" style="object-position:16% 40%"></figure>
 </div>
 <section class="sec ab-sec"><div class="wrap">
   <div class="ab-why">
@@ -721,7 +721,7 @@ about = """
   </div>
 </div></section>
 """
-about = about.replace('{{AB1}}', _photo('uen-event.jpg')).replace('{{AB2}}', _photo('sydneyfire-street.jpg')).replace('{{AB3}}', _photo('rejoice-team.jpg'))
+about = about.replace('{{AB1}}', _photo('uen-event.jpg')).replace('{{AB2}}', _photo('sydneyfire-street.jpg')).replace('{{AB3}}', _photo('alpha-photo.jpg'))
 about = about.replace('{{MODS}}', ''.join(f'<li><a href="#/{PR.PRODUCTS[k][0]}"><span>{PR.VERBS[k]}</span><b>{PR.PRODUCTS[k][1]}</b><i aria-hidden="true"></i></a></li>' for k in ['app', 'pages', 'compliance', 'reports', 'connect']))
 
 
@@ -1083,7 +1083,7 @@ function route() {
   document.querySelectorAll('nav a[data-route]').forEach((a) => { if (a.dataset.route === page) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   if (page === 'docs') showDoc(second || 'introduction');
   if (page === 'feedback' && second === 'missing') { document.querySelector('#fb-form input[value=missing]').checked = true; fbKind(); }
-  if (page === 'compliance' && ['check', 'problem', 'how', 'covers', 'infrastructure'].includes(second)) { requestAnimationFrame(() => document.getElementById(second).scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = second === 'check' ? 'Free safety check-up-up · Always Foundation' : 'Always Safety · Always Foundation'; return; }
+  if (page === 'compliance' && ['check', 'problem', 'how', 'covers', 'infrastructure'].includes(second)) { requestAnimationFrame(() => document.getElementById(second).scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = second === 'check' ? 'Free safety check-up · Always Foundation' : 'Always Safety · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
   const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Safety · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };

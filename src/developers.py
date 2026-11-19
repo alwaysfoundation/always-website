@@ -10,7 +10,7 @@ SNIPPETS = [
 
 WAYS = [
     ('The API', 'Send responses, receive introductions, manage a church page and read the church feed. Scoped tokens, shown once, revocable.', 'docs/api', 'API reference'),
-    ('The SDK', 'A TypeScript client, a drop-in response card, the safety check-up-up and guardrails that fail closed.', 'docs/sdk', 'SDK guide'),
+    ('The SDK', 'A TypeScript client, a drop-in response card, the safety check-up and guardrails that fail closed.', 'docs/sdk', 'SDK guide'),
     ('The MCP connector', 'Let AI assistants find churches, see which are partner churches and list events, using public information only.', 'docs/mcp', 'Connect an assistant'),
 ]
 
