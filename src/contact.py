@@ -2,18 +2,22 @@
 import json
 import qr
 
-PRESETS = {'church': 'Joining as a church or ministry', 'compliance': 'Always Compliance', 'pilot': 'Joining the Always App pilot', 'supporter': 'Praying for and supporting the work', 'developer': 'Building with us (developers)', 'other': 'Something else'}
+# Preset: (role, topic shown above the form)
+PRESETS = {'church': ['Church or ministry', ''], 'compliance': ['Church or ministry', 'Always Compliance'], 'reports': ['Church or ministry', 'Always Reports'],
+           'pilot': ['Evangelist', 'The Always App pilot'], 'evangelist': ['Evangelist', ''], 'supporter': ['Supporter', ''],
+           'developer': ['Developer or tech platform', ''], 'platform': ['Developer or tech platform', 'Always Compliance for platforms'], 'other': ['Something else', '']}
 
 CHIPS = [
-    ('Joining as a church or ministry', 'Church or ministry'),
-    ('Always Compliance', 'Always Compliance'),
-    ('Joining the Always App pilot', 'App pilot'),
-    ('Praying for and supporting the work', 'Supporter'),
-    ('Building with us (developers)', 'Developer'),
+    ('Church or ministry', 'Church or ministry'),
+    ('Evangelist', 'Evangelist'),
+    ('Supporter', 'Supporter'),
+    ('Developer or tech platform', 'Developer or tech platform'),
     ('Something else', 'Something else'),
 ]
 
 FORM = f'''<form id="contact-form" class="rv cf" novalidate>
+      <p class="cf-topic" id="cf-topic" hidden>About <b></b> <button type="button" aria-label="Remove topic">&times;</button></p>
+      <input type="hidden" name="topic" value="">
       <fieldset class="cf-chips"><legend>I'm getting in touch as</legend>
         {''.join(f'<label><input type="radio" name="interest" value="{v}"{" checked" if i == 0 else ""}><span>{l}</span></label>' for i, (v, l) in enumerate(CHIPS))}
       </fieldset>
@@ -88,6 +92,9 @@ CSS = '''
 .cf-chips span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid rgba(248,243,234,.28); font: 600 15px/1 var(--head); transition: background .15s, color .15s, border-color .15s; }
 .cf-chips input:checked + span { background: var(--cream); color: var(--green); border-color: var(--cream); }
 .cf-chips input:focus-visible + span { outline: 2px solid var(--peach); outline-offset: 2px; }
+.cf-topic { margin: 0; display: inline-flex; align-items: center; gap: 8px; justify-self: start; padding: 8px 8px 8px 14px; border-radius: 12px; background: rgba(248,243,234,.1); font-size: 14.5px; }
+.cf-topic[hidden] { display: none; } .cf-topic b { color: var(--cream); }
+.cf-topic button { width: 28px; height: 28px; border: 0; border-radius: 50%; background: rgba(248,243,234,.14); color: var(--cream); font-size: 18px; line-height: 1; cursor: pointer; }
 .cf-opt { font-weight: 400; opacity: .7; font-size: 13px; margin-left: 4px; }
 .cf-org[hidden] { display: none; }
 .cf-note summary { cursor: pointer; font-weight: 600; font-size: 15px; min-height: 32px; display: flex; align-items: center; gap: 4px; }
@@ -177,7 +184,7 @@ JS = r'''
   const status = document.getElementById('form-status');
   const LIVE = /(^|\.)alwaysfoundation\.org$/.test(location.hostname);
   const org = form.querySelector('.cf-org');
-  const ORG = ['Joining as a church or ministry', 'Always Compliance', 'Joining the Always App pilot'];
+  const ORG = ['Church or ministry', 'Developer or tech platform'];
   const sync = () => { const v = form.querySelector('input[name=interest]:checked')?.value; org.hidden = !ORG.includes(v); };
   form.querySelectorAll('input[name=interest]').forEach((r) => r.addEventListener('change', sync)); sync();
   window.alwaysSetInterest = (v) => { const r = [...form.querySelectorAll('input[name=interest]')].find((x) => x.value === v); if (r) { r.checked = true; sync(); } };
@@ -189,7 +196,7 @@ JS = r'''
     const contact = String(d.contact || '').trim(), digits = contact.replace(/[\s()-]/g, '');
     const isEmail = EMAIL.test(contact), isMobile = MOBILE.test(digits);
     if (!String(d.name || '').trim() || !(isEmail || isMobile)) { status.textContent = 'Please add your first name and an email address or Australian mobile number.'; return; }
-    const body = { interest: d.interest, name: d.name, ...(isEmail ? { email: contact } : { mobile: digits }), organisation: org.hidden ? '' : d.organisation, message: d.message, company_site: d.company_site };
+    const body = { interest: d.interest, topic: d.topic, name: d.name, ...(isEmail ? { email: contact } : { mobile: digits }), organisation: org.hidden ? '' : d.organisation, message: d.message, company_site: d.company_site };
     if (!LIVE) { status.textContent = 'The form is not connected on this preview. Please email hello@alwaysfoundation.org.'; return; }
     const b = form.querySelector('button[type=submit]'); b.disabled = true; b.textContent = 'Sending…';
     try {
@@ -204,7 +211,10 @@ JS = r'''
     }
   });
   const PRESETS = __PRESETS__;
-  const preset = () => { const m = location.hash.match(/^#\/contact\/([a-z]+)/); if (m && PRESETS[m[1]]) window.alwaysSetInterest(PRESETS[m[1]]); };
+  const topicEl = document.getElementById('cf-topic');
+  const setTopic = (t) => { form.elements.topic.value = t; topicEl.hidden = !t; topicEl.querySelector('b').textContent = t; };
+  topicEl.querySelector('button').addEventListener('click', () => setTopic(''));
+  const preset = () => { const m = location.hash.match(/^#\/contact\/([a-z]+)/); if (m && PRESETS[m[1]]) { window.alwaysSetInterest(PRESETS[m[1]][0]); setTopic(PRESETS[m[1]][1]); } };
   window.addEventListener('hashchange', preset); preset();
   const share = document.getElementById('cf-share');
   share?.addEventListener('click', async () => {

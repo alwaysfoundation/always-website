@@ -27,7 +27,7 @@ PRODUCTS = {
 }
 DEVELOPERS = ('developers', 'Developers', 'The API, SDK, MCP connector, feeds and webhooks behind every Always module.')
 # Old routes: agents live inside Always Connect; the developer page moved.
-ALIASES = {'agents': 'connect', 'build': 'developers', 'join': 'contact'}
+ALIASES = {'agents': 'connect', 'build': 'developers'}
 
 # slug: (route, menu name, one line, products used, story)
 SOLUTIONS = {
@@ -297,7 +297,7 @@ CONNECT_PAGE = product_page('connect',
 
 # ---------------------------------------------------------------- Solution pages
 
-def solution_page(slug, outcomes, cta=('Talk to us', '#/join')):
+def solution_page(slug, outcomes, cta=('Talk to us', '#/contact')):
     route, name, line, uses, story = SOLUTIONS[slug]
     story_html = ''
     if story:
@@ -334,7 +334,7 @@ EVANGELISTS_PAGE = solution_page('evangelists', [
     ('Share with confidence', 'Bible, conversation guides and short training in the Always App.'),
     ('Save every contact safely', 'Your own branded response app, like Sydney Fire\'s, with contacts kept safe in Australia.'),
     ('Connect people locally', 'With their consent, pass people to a church near them or to Alpha if they want to explore faith.'),
-], cta=('Join the pilot', '#/join'))
+], cta=('Join the pilot', '#/join/evangelist'))
 
 NETWORKS_PAGE = solution_page('networks', [
     ('Ready to welcome', 'Help every church in your network claim its page, get verified and be ready to receive people.'),
@@ -718,4 +718,5 @@ TITLES.update({r: f'{for_name(n)} · Always Foundation' for r, n, *_ in SOLUTION
 TITLES['platform'] = 'Always Platform · Always Foundation'
 TITLES['developers'] = 'Developers · Always Foundation'
 TITLES['contact'] = 'Contact · Always Foundation'
+TITLES['join'] = 'Join Always · Always Foundation'
 TITLES['hello'] = "Let's stay in touch · Always Foundation"

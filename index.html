@@ -1463,6 +1463,9 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
 .cf-chips span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid rgba(248,243,234,.28); font: 600 15px/1 var(--head); transition: background .15s, color .15s, border-color .15s; }
 .cf-chips input:checked + span { background: var(--cream); color: var(--green); border-color: var(--cream); }
 .cf-chips input:focus-visible + span { outline: 2px solid var(--peach); outline-offset: 2px; }
+.cf-topic { margin: 0; display: inline-flex; align-items: center; gap: 8px; justify-self: start; padding: 8px 8px 8px 14px; border-radius: 12px; background: rgba(248,243,234,.1); font-size: 14.5px; }
+.cf-topic[hidden] { display: none; } .cf-topic b { color: var(--cream); }
+.cf-topic button { width: 28px; height: 28px; border: 0; border-radius: 50%; background: rgba(248,243,234,.14); color: var(--cream); font-size: 18px; line-height: 1; cursor: pointer; }
 .cf-opt { font-weight: 400; opacity: .7; font-size: 13px; margin-left: 4px; }
 .cf-org[hidden] { display: none; }
 .cf-note summary { cursor: pointer; font-weight: 600; font-size: 15px; min-height: 32px; display: flex; align-items: center; gap: 4px; }
@@ -1530,6 +1533,61 @@ body.on-hello .hp, body.menu-open .hp { display: none; }
 .hello-url { margin: 0; font: 400 22px/1.3 'Newsreader', Georgia, serif; opacity: .9; }
 .hello-back { display: inline-block; margin-top: 22px; color: var(--peach); font: 700 15px/1 var(--head); }
 @media (max-width: 640px) { .cf-qr { grid-template-columns: 88px minmax(0, 1fr); } }
+
+/* ---- Join Always ---- */
+.jn-hero { padding-bottom: 72px; }
+.jn-sec { background: var(--cream); padding-top: 64px; }
+.jn-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: start; }
+#join-form.jn { max-width: none; display: grid; gap: 18px; padding: 0; margin: 0; background: transparent; border-radius: 0; color: var(--ink); box-shadow: none; }
+.jn-aside { position: sticky; top: 110px; padding: 28px 26px; border-radius: 26px; background: var(--green); color: var(--on-green); }
+.jn-aside h2 { margin: 0 0 18px; font: 800 22px/1.2 var(--head); color: var(--cream); }
+.jn-aside ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.jn-aside li { display: grid; gap: 4px; padding-top: 14px; border-top: 1px solid rgba(248,243,234,.16); }
+.jn-aside li span { font: 400 22px/1 'Newsreader', Georgia, serif; color: var(--peach); }
+.jn-aside li b { color: var(--cream); font: 700 16px/1.3 var(--head); } .jn-aside li p { margin: 0; font-size: 14.5px; line-height: 1.5; }
+.jn-aside-q { margin: 22px 0 0; font-size: 14.5px; } .jn-aside-q a { color: var(--peach); font-weight: 600; }
+@media (max-width: 1000px) { .jn-wrap { grid-template-columns: minmax(0, 1fr); } .jn-aside { position: static; } }
+.jn-step { margin: 0; padding: 30px 30px 32px; border: 0; border-radius: 26px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(30,42,38,.05); min-width: 0; }
+.jn-step[hidden] { display: none; }
+.jn-step legend { float: left; width: 100%; display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; padding: 0; font: 800 24px/1.2 var(--head); letter-spacing: -0.02em; color: var(--green); }
+.jn-step legend + * { clear: both; }
+.jn-n { font: 400 26px/1 'Newsreader', Georgia, serif; color: var(--clay); }
+.jn-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.jn-path { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: start; padding: 18px; border-radius: 18px; border: 1.5px solid var(--line); cursor: pointer; transition: border-color .2s, background-color .2s, transform .2s cubic-bezier(.2,.8,.2,1); }
+.jn-path input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.jn-path .jn-ic { grid-row: span 2; }
+.jn-path b { font: 800 17px/1.25 var(--head); color: var(--green); } .jn-path span:not(.jn-ic) { font-size: 14.5px; line-height: 1.45; color: var(--soft); }
+.jn-path:hover { transform: translateY(-2px); }
+.jn-path:has(input:checked) { border-color: var(--green); background: var(--sage-2); }
+.jn-path:has(input:focus-visible) { outline: 3px solid var(--peach); outline-offset: 2px; }
+.jn-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 13px; background: var(--peach-soft); color: var(--clay); }
+.jn-path:has(input:checked) .jn-ic { background: var(--green); color: var(--cream); }
+.jn-ic svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.jn-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; }
+.jn-grid label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; font-weight: 600; font-size: 14.5px; color: var(--ink); }
+.jn-grid label > input, .jn-grid label > select, .jn-grid label > .jn-sel { flex-basis: 100%; }
+.jn-grid label[hidden] { display: none; }
+.jn em { font-style: normal; font-weight: 400; color: var(--muted); font-size: 13px; }
+.jn input:not([type=checkbox]):not([type=radio]), .jn select { width: 100%; min-height: 48px; padding: 0 14px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff; font: 400 16px var(--text); color: var(--ink); }
+.jn input:focus-visible, .jn select:focus-visible { outline: 3px solid var(--peach); outline-offset: 1px; border-color: var(--green); }
+.jn-sel { display: block; }
+.jn-q { margin: 22px 0 10px; font-weight: 600; font-size: 14.5px; }
+.jn-checks { display: flex; flex-wrap: wrap; gap: 8px; }
+.jn-checks label { position: relative; display: inline-flex; cursor: pointer; }
+.jn-checks input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.jn-checks span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); font: 600 14.5px/1 var(--head); color: var(--green); transition: background-color .15s, color .15s, border-color .15s; }
+.jn-checks input:checked + span { background: var(--green); color: var(--cream); border-color: var(--green); }
+.jn-checks input:focus-visible + span { outline: 3px solid var(--peach); outline-offset: 2px; }
+.jn-check { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; font-size: 15.5px; line-height: 1.5; cursor: pointer; color: var(--ink); font-weight: 400; }
+.jn-check[hidden] { display: none; }
+.jn-check input { width: 22px; height: 22px; margin-top: 1px; accent-color: var(--green); flex: none; }
+.jn-check a { color: var(--green); }
+.jn-agree .btn { margin-top: 8px; }
+.jn-status { margin: 12px 0 0; color: var(--clay); font-size: 14.5px; min-height: 1.4em; }
+.jn-done { padding: 56px 32px; border-radius: 26px; background: #FFFDF8; text-align: center; display: grid; gap: 10px; }
+.jn-done h2 { margin: 0; font: 400 clamp(32px, 4vw, 46px)/1.15 'Newsreader', Georgia, serif; color: var(--green); }
+.jn-done p { margin: 0 auto; max-width: 46ch; color: var(--soft); font-size: 17px; }
+@media (max-width: 720px) { .jn-paths, .jn-grid { grid-template-columns: minmax(0, 1fr); } .jn-step { padding: 24px 20px; } }
 
 /* ---- Quiet rows in place of card grids ---- */
 .pg-feats { column-gap: 48px; row-gap: 0; }
@@ -1633,8 +1691,8 @@ a.sl-row:hover h3, a.sl-row:focus-visible h3 { transform: translateX(4px); }
     </a>
     <nav aria-label="Main" id="main-nav"><ul>
       <li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button><div class="dd-panel dd-wide" id="dd-platform"><div class="dd-layout"><a class="dd-feature" href="#/platform" data-route="platform"><span class="dd-f-k">Always Platform</span><b>Five modules. One sign-in.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="dd-f-l">See how it fits together</span></a><div class="dd-grid"><p class="dd-h">Modules</p><div class="dd-mods"><a href="#/app" data-route="app"><span class="dd-ic dd-ic-app" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.5 18h3"/></svg></span><span class="dd-tx"><b>Always App</b><span>Share Jesus and walk with people</span></span></a><a href="#/pages" data-route="pages"><span class="dd-ic dd-ic-pages" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/></svg></span><span class="dd-tx"><b>Always Pages</b><span>Branded response pages and QR codes</span></span></a><a href="#/compliance" data-route="compliance"><span class="dd-ic dd-ic-compliance" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="dd-tx"><b>Always Compliance</b><span>Stay lawful, state by state</span></span></a><a href="#/reports" data-route="reports"><span class="dd-ic dd-ic-reports" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M10 20V6M15 20v-7M20 20V9"/></svg></span><span class="dd-tx"><b>Always Reports</b><span>Monthly reports for funders</span></span></a><a href="#/connect" data-route="connect"><span class="dd-ic dd-ic-connect" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="3"/><circle cx="17.5" cy="12" r="3"/><path d="M9.5 12h5"/></svg></span><span class="dd-tx"><b>Always Connect</b><span>Hand people on to a local church</span></span></a></div></div></div></div></li><li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-solutions" data-group="solutions">Solutions</button><div class="dd-panel dd-wide dd-sol" id="dd-solutions"><div class="dd-layout dd-layout-sol"><div class="dd-list"><a href="#/churches" data-route="churches"><span class="dd-ic dd-ic-churches" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v4M10 5h4"/><path d="M5 21v-8l7-5 7 5v8"/><path d="M10 21v-4h4v4"/></svg></span><span class="dd-tx"><b>Churches</b><span>Welcome people near you</span></span></a><a href="#/youth" data-route="youth"><span class="dd-ic dd-ic-youth" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5 5.6.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.6-.8z"/></svg></span><span class="dd-tx"><b>Youth ministries</b><span>Safe, compliant, welcoming</span></span></a><a href="#/ministries" data-route="ministries"><span class="dd-ic dd-ic-ministries" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 002-2h12a2 2 0 002 2v8a2 2 0 00-2 2H6a2 2 0 00-2-2z"/><path d="M12 9v6"/></svg></span><span class="dd-tx"><b>Events, tours and ministries</b><span>A next step for every response</span></span></a><a href="#/evangelists" data-route="evangelists"><span class="dd-ic dd-ic-evangelists" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 010 6"/></svg></span><span class="dd-tx"><b>Evangelists and street teams</b><span>Share and connect with confidence</span></span></a><a href="#/networks" data-route="networks"><span class="dd-ic dd-ic-networks" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M11 7l-5 9M13 7l5 9M7 18h10"/></svg></span><span class="dd-tx"><b>Denominations and networks</b><span>Ready to welcome, together</span></span></a><a href="#/platforms" data-route="platforms"><span class="dd-ic dd-ic-platforms" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><span class="dd-tx"><b>Christian tech platforms</b><span>Build on open standards</span></span></a></div><a class="dd-story" href="#/stories"><span class="dd-f-k">Story</span><b>Sydney Fire Evangelism</b><span>Street evangelists with their own branded response app.</span><span class="dd-f-l">Read the stories</span></a></div></div></li><li><a href="#/developers" data-route="developers">Developers</a></li><li><a href="#/stories" data-route="stories">Stories</a></li><li><a href="#/docs/introduction" data-route="docs">Docs</a></li><li><a href="#/about" data-route="about">About</a></li>
-    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/claim">Claim your church</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/contact">Join Always</a></div></nav>
-    <a class="btn btn-peach" href="#/contact">Join Always</a>
+    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/claim">Claim your church</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/join">Join Always</a></div></nav>
+    <a class="btn btn-peach" href="#/join">Join Always</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" onclick="toggleMenu()"><span>Menu</span><i aria-hidden="true"></i></button>
   </div>
 </header>
@@ -1841,8 +1899,8 @@ a.sl-row:hover h3, a.sl-row:focus-visible h3 { transform: translateX(4px); }
       <p class="join-fine">An independent, member-based Christian nonprofit. Free for churches; larger ministries contribute according to their size. <a href="#/about">How we work</a></p>
     </div>
     <div class="join-paths rv">
-      <a href="#/contact/church"><b>Become a member</b><span>For churches and Christian ministries</span></a>
-      <a href="#/contact/supporter"><b>Support our mission</b><span>Pray, give or volunteer</span></a>
+      <a href="#/join/church"><b>Become a member</b><span>For churches and Christian ministries</span></a>
+      <a href="#/join/supporter"><b>Support our mission</b><span>Pray, give or volunteer</span></a>
       <a href="#/contact"><b>Get in touch</b><span>Anything else, or meet us in person</span></a>
       <p class="sv">“The harvest is plentiful, but the laborers are few” <cite>Matthew 9:37</cite></p>
     </div>
@@ -1953,10 +2011,10 @@ a.sl-row:hover h3, a.sl-row:focus-visible h3 { transform: translateX(4px); }
 <section class="sec pg-sec"><div class="wrap sl-end">
   <h2 class="pg-h rv">Planning an event or a tour?</h2>
   <p class="pg-lead rv">We'd love to hear about it, and help everyone who responds find a next step near home.</p>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/contact">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section></div>
 <div class="page" id="page-app" hidden><section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-kick">A module of Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><p class="pl-kick">A module of Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join/evangelist" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph"><div class="pg-phone "><div class="pg-screen"><p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div></div></div></div>
 </div></section>
 <figure class="photo-band"><img src="https://images.unsplash.com/photo-1775400713633-e4b2b3577fb7?w=1800&q=75&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1775400713633-e4b2b3577fb7?w=900&q=75&auto=format&fit=crop 900w, https://images.unsplash.com/photo-1775400713633-e4b2b3577fb7?w=1800&q=75&auto=format&fit=crop 1800w" sizes="100vw" alt="" loading="lazy" onerror="this.parentNode.remove()"></figure>
@@ -1985,7 +2043,7 @@ a.sl-row:hover h3, a.sl-row:focus-visible h3 { transform: translateX(4px); }
   <h2 class="pg-h rv">Tools for your team</h2>
   <p class="pg-lead rv">Running a street team, an outreach or a tour? Get your own branded response app on Always Platform, like Sydney Fire Evangelism's, and use the same open tools we use, free.</p>
   <div class="pg-feats"><div class="pg-feat rv"><h3>Response pages and QR codes</h3><p>People say yes on a page with your name on it, and get a next step near home.</p></div><div class="pg-feat rv"><h3>Find a church near me</h3><p>Add our church finder to your website or app in one line.</p></div><div class="pg-feat rv"><h3>Your own branded app</h3><p>Like Sydney Fire Evangelism: your logo, your next steps, and contacts saved safely in Australia.</p></div><div class="pg-feat rv"><h3>Agents for follow-up</h3><p>Reminders and message drafts after outreach. A person approves every step.</p></div><div class="pg-feat rv"><h3>Reports for funders</h3><p>Monthly reports written for you, with totals only.</p></div><div class="pg-feat rv"><h3>Open source</h3><p>Every tool is open, so you can check it, improve it or run it yourself.</p></div></div>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Join the pilot</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Join the pilot</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
 </div></section></div>
 <div class="page" id="page-faq" hidden><section class="page-hero"><div class="wrap"><h1>FAQs</h1><p>Short answers to the questions we hear most.</p></div></section><section class="sec pg-sec"><div class="wrap pg-faq"><nav class="pg-faq-nav" aria-label="FAQ topics"><a href="#faq-0" data-faq="0">About Always</a><a href="#faq-1" data-faq="1">For churches</a><a href="#faq-2" data-faq="2">For ministries and events</a><a href="#faq-3" data-faq="3">For people who respond</a><a href="#faq-4" data-faq="4">Always App</a><a href="#faq-5" data-faq="5">Privacy and safety</a><a href="#faq-6" data-faq="6">Supporters and builders</a></nav><div><div class="pg-faq-g" id="faq-0"><h2>About Always</h2><details><summary>What is the Always Foundation?</summary><p>An independent, member-based Christian nonprofit that brings churches and Christian ministries across Australia together for the Gospel. We serve quietly in the background, building practical tools once and sharing them freely, so ministries spend less time on administration and more time making disciples.</p></details><details><summary>Are you a gospel ministry or a mercy ministry?</summary><p>Neither, directly. We are a ministry that serves ministries. In Acts 6 the early church appointed people to carry the practical work so the apostles could devote themselves to prayer and the word, and the Gospel spread. We play that role for the wider Church: we exist to equip the saints for the work of ministry (Ephesians 4:12). We are not on the frontline. We stand behind it.</p></details><details><summary>What does Always do for a church or ministry?</summary><p>Three things. We equip, with the Always App and your own branded response pages. We support, with Always Compliance and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.</p></details><details><summary>Who can become a member?</summary><p>Churches and Christian ministries that affirm the Nicene Creed. Members help shape what we build and share in the benefits. Supporters can join us too, through prayer and giving.</p></details><details><summary>What is Always Platform?</summary><p>One open-source platform with one sign-in and shared data. Members switch on the modules they need: Always App, Always Pages, Always Compliance, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.</p></details><details><summary>Why modules?</summary><p>Every ministry is different. Start with the one you need, perhaps Always Compliance, and add others as you grow. Because every module runs on the same platform, your team signs in once and your information works together, with nothing to move later.</p></details><details><summary>Who runs it?</summary><p>The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.</p></details><details><summary>Is it only for one denomination?</summary><p>No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.</p></details><details><summary>Is Always Platform only in Australia?</summary><p>Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.</p></details><details><summary>How do I sign in?</summary><p>With one Always account, using Apple, Google, YouVersion or your email. The same account works across the Always App and every tool built on Always Platform.</p></details></div><div class="pg-faq-g" id="faq-1"><h2>For churches</h2><details><summary>Does it cost anything?</summary><p>No. Churches never pay. Larger ministries contribute according to their size.</p></details><details><summary>How do we join?</summary><p>Claim your church's page, and we verify you with your denomination or network.</p></details><details><summary>What if we can't welcome someone?</summary><p>Pass, with a reason. The next church or ministry nearby is asked. If none can, our care team helps.</p></details><details><summary>Do we have to change our church software?</summary><p>No. Use the free Always Connect inbox, in any browser, or connect your system through the API. Elvanto and Planning Center come first.</p></details><details><summary>What does welcoming now mean?</summary><p>You're verified, trained, have room this month and usually reply on time. If you get busy, introductions simply pause.</p></details><details><summary>Who on our team can see people's details?</summary><p>Only the people you add to your team, and only after your church accepts an introduction.</p></details></div><div class="pg-faq-g" id="faq-2"><h2>For ministries and events</h2><details><summary>Can we use our own brand?</summary><p>Yes. Response pages, QR codes and texts can use your colours, logo and wording.</p></details><details><summary>What results do we see?</summary><p>Totals for each event: responded, introduced, accepted and connected. Each person's details go only to the church that welcomes them.</p></details><details><summary>Can Always Platform help us report to our funders?</summary><p>Yes. It writes a monthly report for you: who responded, who was introduced, who was contacted, and who is now part of a church family. Download it as a PDF or spreadsheet, or send your funder a link.</p></details><details><summary>Will our funders see people's details?</summary><p>No. Reports show totals only, and small numbers are hidden so no one can be identified.</p></details><details><summary>Can Always Platform help with privacy and child safety paperwork?</summary><p>Yes. Your Compliance tab keeps your consent records, privacy requests, child safety checklists and Working With Children Check reminders, ready to export.</p></details><details><summary>Can we make the report our own?</summary><p>Yes. Add your title, your funder's name and a short introduction. If a funder needs something specific, talk to us.</p></details><details><summary>Can we receive introductions ourselves?</summary><p>Yes, for the steps you offer, like a youth night or a course.</p></details><details><summary>Can people respond online?</summary><p>Yes. Add a response link or QR to a video description or post, or embed the response card on your website. An invisible check stops spam without puzzles.</p></details><details><summary>Can we list our events?</summary><p>Yes. Add them when you sign in to Always, and they show on our Events page and in Always App.</p></details><details><summary>How do evangelists and street teams use it?</summary><p>With Always App, a free web app: they start a response point, show their own QR, or connect someone in a conversation with their yes.</p></details></div><div class="pg-faq-g" id="faq-3"><h2>For people who respond</h2><details><summary>What happens when I respond?</summary><p>You choose a next step, see who will be in touch, and a church or ministry near you reaches out.</p></details><details><summary>What do you need from me?</summary><p>Your first name, a mobile number and your suburb.</p></details><details><summary>Do I need to download an app?</summary><p>No. You respond on a simple web page. Later, you're welcome to try Always App in your browser to read the Bible and grow.</p></details><details><summary>Can I change my mind?</summary><p>Yes, any time, from the link in your text. Your details are then deleted.</p></details><details><summary>I'm under 18. Can I still respond?</summary><p>Yes. If you're under 15, a parent or guardian says yes with you. From 15 you can decide for yourself. Young people are introduced only to verified youth partners, and no AI ever touches your information.</p></details></div><div class="pg-faq-g" id="faq-4"><h2>Always App</h2><details><summary>Who is it for?</summary><p>Every Christian who wants to share Jesus and walk with people, and church teams who welcome them.</p></details><details><summary>How do I get it?</summary><p>It's a web app, so there's nothing to download. It's in pilot: join through the form on our home page.</p></details><details><summary>Is there a mobile app?</summary><p>Not for now. The Always App and our tools for churches and ministries run in the browser on your phone, tablet or computer, and you can add it to your home screen.</p></details><details><summary>Which Bible translations are included?</summary><p>The King James Version and the World English Bible, with more through YouVersion.</p></details><details><summary>Where are my notes and prayer list kept?</summary><p>In your browser, on your own device. They aren't sent to us.</p></details></div><div class="pg-faq-g" id="faq-5"><h2>Privacy and safety</h2><details><summary>Where is information kept?</summary><p>In Australia, encrypted, under Australian privacy law.</p></details><details><summary>Do you sell information or use it for advertising?</summary><p>No.</p></details><details><summary>How do you use AI?</summary><p>To save time on routine work, like writing your monthly report. Every welcome comes from a real person, and young people's information is kept out of AI entirely.</p></details><details><summary>What is Always Compliance?</summary><p>A guide to the privacy, child safety, charity and messaging rules that apply to your ministry, with a check-up every quarter that a person at your ministry approves, and updates when the law changes. It is free for churches and is not legal advice. Try the free check-up at alwaysfoundation.org/#/compliance.</p></details><details><summary>What do Always agents do?</summary><p>They help your team with follow-up and administration: drafting messages, setting reminders and keeping records up to date. A person approves every step, people's details stay in Australia, and agents never handle young people's information.</p></details><details><summary>How do I report a concern?</summary><p>Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.</p></details></div><div class="pg-faq-g" id="faq-6"><h2>Supporters and builders</h2><details><summary>How is the Always Foundation funded?</summary><p>By supporters, and by larger ministries contributing according to their size. Churches never pay.</p></details><details><summary>How can I support the work?</summary><p>Pray with us, and get in touch at hello@alwaysfoundation.org to book a catch-up call.</p></details><details><summary>Can developers build on Always Platform?</summary><p>Yes. The API, SDK and open standard are open source under Apache 2.0, with docs under CC BY 4.0. An MCP server for AI assistants is coming, and it never sees a person's details.</p></details></div><div class="pg-faq-more"><h3>Still have a question?</h3><p>We'd love to hear from you, and to book a catch-up call. <a href="#/contact">Get in touch</a> or email <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p></div></div></div></section></div>
 <div class="page" id="page-events" hidden><section class="page-hero"><div class="wrap"><h1>Events</h1><p>Christian events across Australia: worship nights, concerts, outreach, youth camps, courses and training. Go together, and bring someone.</p></div></section>
@@ -2231,7 +2289,7 @@ const ok = await verifyWebhook({
 <section class="sec pg-sec"><div class="wrap sl-end">
   <h2 class="pg-h rv">Building for churches or ministries?</h2>
   <p class="pg-lead rv">Tell us what you're making. We'll help you get started and keep it safe for the people it serves.</p>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Talk to us</a><a class="btn btn-green" href="#/docs/introduction">Browse the docs</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/contact/developer">Talk to us</a><a class="btn btn-green" href="#/docs/introduction">Browse the docs</a></div>
 </div></section></div>
 <div class="page" id="page-hello" hidden><section class="hello"><div class="hello-card">
   <p class="hello-k">Always Foundation</p>
@@ -2259,8 +2317,10 @@ const ok = await verifyWebhook({
       </ul>
     </div>
     <form id="contact-form" class="rv cf" novalidate><input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <p class="cf-topic" id="cf-topic" hidden>About <b></b> <button type="button" aria-label="Remove topic">&times;</button></p>
+      <input type="hidden" name="topic" value="">
       <fieldset class="cf-chips"><legend>I'm getting in touch as</legend>
-        <label><input type="radio" name="interest" value="Joining as a church or ministry" checked><span>Church or ministry</span></label><label><input type="radio" name="interest" value="Always Compliance"><span>Always Compliance</span></label><label><input type="radio" name="interest" value="Joining the Always App pilot"><span>App pilot</span></label><label><input type="radio" name="interest" value="Praying for and supporting the work"><span>Supporter</span></label><label><input type="radio" name="interest" value="Building with us (developers)"><span>Developer</span></label><label><input type="radio" name="interest" value="Something else"><span>Something else</span></label>
+        <label><input type="radio" name="interest" value="Church or ministry" checked><span>Church or ministry</span></label><label><input type="radio" name="interest" value="Evangelist"><span>Evangelist</span></label><label><input type="radio" name="interest" value="Supporter"><span>Supporter</span></label><label><input type="radio" name="interest" value="Developer or tech platform"><span>Developer or tech platform</span></label><label><input type="radio" name="interest" value="Something else"><span>Something else</span></label>
       </fieldset>
       <div class="row2">
         <label>First name<input name="name" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" required></label>
@@ -2273,6 +2333,88 @@ const ok = await verifyWebhook({
       <p class="cf-fine">We'll only use this to get in touch. <a href="#/docs/privacy">Privacy</a></p>
       <p class="status" id="form-status" role="status" aria-live="polite"></p>
     </form>
+</div></section></div>
+<div class="page" id="page-join" hidden><section class="page-hero jn-hero"><div class="wrap">
+  <p class="pl-kick">Join Always</p>
+  <h1>Be part of Always.</h1>
+  <p>Register in a few minutes. We'll verify your details and switch on what you need. Free for churches.</p>
+</div></section>
+<section class="sec jn-sec"><div class="wrap jn-wrap">
+  <form id="join-form" class="jn" novalidate><input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+    <fieldset class="jn-step">
+      <legend><span class="jn-n">01</span>I'm joining as</legend>
+      <div class="jn-paths">
+        <label class="jn-path"><input type="radio" name="path" value="church" checked><span class="jn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v4M10 5h4"/><path d="M5 21v-8l7-5 7 5v8"/><path d="M10 21v-4h4v4"/></svg></span><b>A church or ministry</b><span>Become a member and switch on the modules you need.</span></label><label class="jn-path"><input type="radio" name="path" value="evangelist"><span class="jn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 010 6"/></svg></span><b>An evangelist</b><span>Join the Always App pilot and share Jesus with confidence.</span></label><label class="jn-path"><input type="radio" name="path" value="supporter"><span class="jn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5 5.6.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.6-.8z"/></svg></span><b>A supporter</b><span>Pray, give or volunteer with us.</span></label><label class="jn-path"><input type="radio" name="path" value="platform"><span class="jn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><b>A tech platform</b><span>Build on Always Platform, starting with Always Compliance.</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="jn-step">
+      <legend><span class="jn-n">02</span>About you</legend>
+      <div class="jn-grid">
+        <label>Your name<input name="name" autocomplete="name" required></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Mobile <em>optional</em><input name="mobile" type="tel" inputmode="tel" autocomplete="tel"></label>
+        <label data-for="church platform">Your role<input name="role" autocomplete="organization-title" placeholder="For example pastor, administrator, CTO" data-required="church platform"></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="jn-step" data-for="church">
+      <legend><span class="jn-n">03</span>Your church or ministry</legend>
+      <div class="jn-grid">
+        <label>Name<input name="organisation" autocomplete="organization" data-required="church"></label>
+        <label>Type<select name="orgType" data-required="church"><option value="">Choose</option><option>Church</option><option>Ministry or charity</option><option>Denomination or network</option><option>Event or tour</option><option>Youth ministry</option></select></label>
+        <label>Website <em>optional</em><input name="website" type="url" inputmode="url" placeholder="https://"></label>
+        <label>Denomination or network <em>optional</em><input name="denomination"></label>
+      </div>
+      <p class="jn-q">Where do you serve?</p>
+      <div class="jn-checks"><label><input type="checkbox" name="states" value="NSW"><span>NSW</span></label><label><input type="checkbox" name="states" value="VIC"><span>VIC</span></label><label><input type="checkbox" name="states" value="QLD"><span>QLD</span></label><label><input type="checkbox" name="states" value="WA"><span>WA</span></label><label><input type="checkbox" name="states" value="SA"><span>SA</span></label><label><input type="checkbox" name="states" value="TAS"><span>TAS</span></label><label><input type="checkbox" name="states" value="ACT"><span>ACT</span></label><label><input type="checkbox" name="states" value="NT"><span>NT</span></label></div>
+      <p class="jn-q">Which modules would help? <em>optional</em></p>
+      <div class="jn-checks"><label><input type="checkbox" name="modules" value="app"><span>Always App</span></label><label><input type="checkbox" name="modules" value="pages"><span>Always Pages</span></label><label><input type="checkbox" name="modules" value="compliance"><span>Always Compliance</span></label><label><input type="checkbox" name="modules" value="reports"><span>Always Reports</span></label><label><input type="checkbox" name="modules" value="connect"><span>Always Connect</span></label></div>
+    </fieldset>
+
+    <fieldset class="jn-step" data-for="evangelist">
+      <legend><span class="jn-n">03</span>Your ministry</legend>
+      <div class="jn-grid">
+        <label>State<span class="jn-sel"><select data-required="evangelist" name="evState"><option value="">Choose</option><option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option></select></span></label>
+        <label>Your church <em>optional</em><input name="church"></label>
+        <label>Street team or ministry <em>optional</em><input name="team"></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="jn-step" data-for="supporter">
+      <legend><span class="jn-n">03</span>How you'd like to help</legend>
+      <div class="jn-checks"><label><input type="checkbox" name="support" value="pray"><span>Pray</span></label><label><input type="checkbox" name="support" value="give"><span>Give</span></label><label><input type="checkbox" name="support" value="volunteer"><span>Volunteer</span></label></div>
+      <div class="jn-grid"><label>State <em>optional</em><span class="jn-sel"><select name="supState"><option value="">Choose (optional)</option><option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option></select></span></label></div>
+    </fieldset>
+
+    <fieldset class="jn-step" data-for="platform">
+      <legend><span class="jn-n">03</span>Your platform</legend>
+      <div class="jn-grid">
+        <label>Platform name<input name="platform" data-required="platform"></label>
+        <label>Website<input name="platformSite" type="url" inputmode="url" placeholder="https://" data-required="platform"></label>
+      </div>
+      <p class="jn-q">What would you like to build with? <em>optional</em></p>
+      <div class="jn-checks"><label><input type="checkbox" name="build" value="compliance"><span>Always Compliance infrastructure</span></label><label><input type="checkbox" name="build" value="feed"><span>The church feed</span></label><label><input type="checkbox" name="build" value="handoff"><span>Handoff to local churches</span></label><label><input type="checkbox" name="build" value="mcp"><span>The MCP connector</span></label></div>
+    </fieldset>
+
+    <fieldset class="jn-step jn-agree">
+      <legend><span class="jn-n jn-n-last">04</span>Agree and send</legend>
+      <label class="jn-check" data-for="church"><input type="checkbox" name="creed" value="yes" data-required="church"><span>We affirm the <a href="#/docs/governance" target="_blank" rel="noopener">Nicene Creed</a>.</span></label>
+      <label class="jn-check"><input type="checkbox" name="terms" value="yes" required><span>I agree to the <a href="#/docs/terms" target="_blank" rel="noopener">terms of use</a> and <a href="#/docs/privacy" target="_blank" rel="noopener">privacy policy</a>.</span></label>
+      <input class="cf-hp" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-peach" type="submit">Register</button>
+      <p class="jn-status" id="jn-status" role="status" aria-live="polite"></p>
+    </fieldset>
+  </form>
+  <aside class="jn-aside">
+    <h2>What happens next</h2>
+    <ol>
+      <li><span>01</span><b>We check your details</b><p>For churches and ministries, usually with your denomination or network.</p></li>
+      <li><span>02</span><b>We switch on what you need</b><p>The modules you chose, with one sign-in for your team.</p></li>
+      <li><span>03</span><b>You're part of Always</b><p>Free for churches. Larger ministries contribute according to their size.</p></li>
+    </ol>
+    <p class="jn-aside-q">Questions first? <a href="#/contact">Get in touch</a></p>
+  </aside>
 </div></section></div>
 <div class="page" id="page-pages" hidden><section class="page-hero pd-hero"><div class="wrap pd-split">
   <div><p class="pl-kick">A module of Always Platform</p>
@@ -2383,7 +2525,7 @@ const ok = await verifyWebhook({
   <div><p class="pl-kick">Solutions</p>
   <h1>For evangelists and street teams</h1>
   <p>Share Jesus with confidence, save every contact safely, and connect people with a local church.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join the pilot</a></div></div>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/join/evangelist">Join the pilot</a></div></div>
   <div class="mk mk-app mk-lg" aria-hidden="true"><div class="mk-card mk-app"><span class="mk-k">Verse for today</span>
 <p class="mk-verse">“I am with you always.”</p><span class="mk-cite">Matthew 28:20</span>
 <div class="mk-row"><span class="mk-pill">Pray</span><span class="mk-pill mk-pill-o">Share</span></div>
@@ -2411,7 +2553,7 @@ const ok = await verifyWebhook({
   <div><p class="pl-kick">Solutions</p>
   <h1>For denominations and networks</h1>
   <p>Help every church be ready to welcome, and see the fruit across your network, with totals only.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Talk to us</a></div></div>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/contact">Talk to us</a></div></div>
   <div class="mk mk-connect mk-lg" aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
 <span class="mk-link" aria-hidden="true"></span>
 <div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div>
@@ -2598,12 +2740,12 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => e
 function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io ? io.observe(el) : el.classList.add('in'); }); }
 
 // Router
-const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact', pages: 'page-pages', reports: 'page-reports', connect: 'page-connect', youth: 'page-youth', evangelists: 'page-evangelists', networks: 'page-networks', platforms: 'page-platforms' };
+const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact', join: 'page-join', pages: 'page-pages', reports: 'page-reports', connect: 'page-connect', youth: 'page-youth', evangelists: 'page-evangelists', networks: 'page-networks', platforms: 'page-platforms' };
 const anchors = { how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\/?/, '');
   const [first, second] = h.split('/');
-  const aliases = {"agents": "connect", "build": "developers", "join": "contact"};
+  const aliases = {"agents": "connect", "build": "developers"};
   if (aliases[first]) { location.replace('#/' + aliases[first]); return; }
   let page = 'home';
   if (pages[first] && first !== 'home') page = first;
@@ -2615,7 +2757,7 @@ function route() {
   if (page === 'compliance' && ['check', 'problem', 'infrastructure'].includes(second)) { requestAnimationFrame(() => document.getElementById(second).scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = second === 'check' ? 'Free compliance check-up · Always Foundation' : 'Always Compliance · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...{"app": "Always App · Always Foundation", "pages": "Always Pages · Always Foundation", "compliance": "Always Compliance · Always Foundation", "reports": "Always Reports · Always Foundation", "connect": "Always Connect · Always Foundation", "churches": "For churches · Always Foundation", "youth": "For youth ministries · Always Foundation", "ministries": "For events, tours and ministries · Always Foundation", "evangelists": "For evangelists and street teams · Always Foundation", "networks": "For denominations and networks · Always Foundation", "platforms": "For Christian tech platforms · Always Foundation", "platform": "Always Platform · Always Foundation", "developers": "Developers · Always Foundation", "contact": "Contact · Always Foundation", "hello": "Let's stay in touch · Always Foundation"} };
+  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...{"app": "Always App · Always Foundation", "pages": "Always Pages · Always Foundation", "compliance": "Always Compliance · Always Foundation", "reports": "Always Reports · Always Foundation", "connect": "Always Connect · Always Foundation", "churches": "For churches · Always Foundation", "youth": "For youth ministries · Always Foundation", "ministries": "For events, tours and ministries · Always Foundation", "evangelists": "For evangelists and street teams · Always Foundation", "networks": "For denominations and networks · Always Foundation", "platforms": "For Christian tech platforms · Always Foundation", "platform": "Always Platform · Always Foundation", "developers": "Developers · Always Foundation", "contact": "Contact · Always Foundation", "join": "Join Always · Always Foundation", "hello": "Let's stay in touch · Always Foundation"} };
   document.body.classList.toggle('on-hello', page === 'hello');
   if (page !== 'docs') document.title = titles[page] || 'Always Foundation';
   watch(document.getElementById(pages[page]));
@@ -2975,7 +3117,7 @@ document.querySelectorAll('.sw').forEach((sw) => {
   const status = document.getElementById('form-status');
   const LIVE = /(^|\.)alwaysfoundation\.org$/.test(location.hostname);
   const org = form.querySelector('.cf-org');
-  const ORG = ['Joining as a church or ministry', 'Always Compliance', 'Joining the Always App pilot'];
+  const ORG = ['Church or ministry', 'Developer or tech platform'];
   const sync = () => { const v = form.querySelector('input[name=interest]:checked')?.value; org.hidden = !ORG.includes(v); };
   form.querySelectorAll('input[name=interest]').forEach((r) => r.addEventListener('change', sync)); sync();
   window.alwaysSetInterest = (v) => { const r = [...form.querySelectorAll('input[name=interest]')].find((x) => x.value === v); if (r) { r.checked = true; sync(); } };
@@ -2987,7 +3129,7 @@ document.querySelectorAll('.sw').forEach((sw) => {
     const contact = String(d.contact || '').trim(), digits = contact.replace(/[\s()-]/g, '');
     const isEmail = EMAIL.test(contact), isMobile = MOBILE.test(digits);
     if (!String(d.name || '').trim() || !(isEmail || isMobile)) { status.textContent = 'Please add your first name and an email address or Australian mobile number.'; return; }
-    const body = { interest: d.interest, name: d.name, ...(isEmail ? { email: contact } : { mobile: digits }), organisation: org.hidden ? '' : d.organisation, message: d.message, company_site: d.company_site };
+    const body = { interest: d.interest, topic: d.topic, name: d.name, ...(isEmail ? { email: contact } : { mobile: digits }), organisation: org.hidden ? '' : d.organisation, message: d.message, company_site: d.company_site };
     if (!LIVE) { status.textContent = 'The form is not connected on this preview. Please email hello@alwaysfoundation.org.'; return; }
     const b = form.querySelector('button[type=submit]'); b.disabled = true; b.textContent = 'Sending…';
     try {
@@ -3001,13 +3143,64 @@ document.querySelectorAll('.sw').forEach((sw) => {
       b.disabled = false; b.textContent = 'Stay in touch';
     }
   });
-  const PRESETS = {"church": "Joining as a church or ministry", "compliance": "Always Compliance", "pilot": "Joining the Always App pilot", "supporter": "Praying for and supporting the work", "developer": "Building with us (developers)", "other": "Something else"};
-  const preset = () => { const m = location.hash.match(/^#\/contact\/([a-z]+)/); if (m && PRESETS[m[1]]) window.alwaysSetInterest(PRESETS[m[1]]); };
+  const PRESETS = {"church": ["Church or ministry", ""], "compliance": ["Church or ministry", "Always Compliance"], "reports": ["Church or ministry", "Always Reports"], "pilot": ["Evangelist", "The Always App pilot"], "evangelist": ["Evangelist", ""], "supporter": ["Supporter", ""], "developer": ["Developer or tech platform", ""], "platform": ["Developer or tech platform", "Always Compliance for platforms"], "other": ["Something else", ""]};
+  const topicEl = document.getElementById('cf-topic');
+  const setTopic = (t) => { form.elements.topic.value = t; topicEl.hidden = !t; topicEl.querySelector('b').textContent = t; };
+  topicEl.querySelector('button').addEventListener('click', () => setTopic(''));
+  const preset = () => { const m = location.hash.match(/^#\/contact\/([a-z]+)/); if (m && PRESETS[m[1]]) { window.alwaysSetInterest(PRESETS[m[1]][0]); setTopic(PRESETS[m[1]][1]); } };
   window.addEventListener('hashchange', preset); preset();
   const share = document.getElementById('cf-share');
   share?.addEventListener('click', async () => {
     const url = 'https://alwaysfoundation.org/#/contact';
     try { if (navigator.share) await navigator.share({ title: 'Always Foundation', text: "Let's stay in touch", url }); else { await navigator.clipboard.writeText(url); share.textContent = 'Link copied'; } } catch {}
+  });
+})();
+
+// Join Always: show the fields for the chosen path; only those are required and sent.
+(() => {
+  const form = document.getElementById('join-form');
+  if (!form) return;
+  const status = document.getElementById('jn-status');
+  const path = () => form.querySelector('input[name=path]:checked').value;
+  const sync = () => {
+    const p = path();
+    form.querySelectorAll('[data-for]').forEach((el) => { el.hidden = !el.dataset.for.split(' ').includes(p); });
+  };
+  form.querySelectorAll('input[name=path]').forEach((r) => r.addEventListener('change', sync));
+  const preset = () => { const m = location.hash.match(/^#\/join\/(church|evangelist|supporter|platform)/); if (m) { form.querySelector(`input[name=path][value=${m[1]}]`).checked = true; } sync(); };
+  window.addEventListener('hashchange', preset); preset();
+  const LABEL = { church: 'Church or ministry', evangelist: 'Evangelist', supporter: 'Supporter', platform: 'Tech platform' };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const p = path();
+    const need = [...form.querySelectorAll('[required], [data-required]')].filter((el) => !el.closest('[hidden]') && (!el.dataset.required || el.dataset.required.split(' ').includes(p)));
+    const empty = need.find((el) => (el.type === 'checkbox' ? !el.checked : !String(el.value).trim()));
+    const email = form.elements.email.value.trim();
+    if (empty) { status.textContent = 'Please complete the highlighted details and tick the agreement.'; empty.focus(); return; }
+    if (!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)) { status.textContent = 'Please check your email address.'; form.elements.email.focus(); return; }
+    if (p === 'church' && !form.querySelector('input[name=states]:checked')) { status.textContent = 'Please choose where you serve.'; form.querySelector('input[name=states]').focus(); return; }
+    const data = { path: LABEL[p] };
+    const fd = new FormData(form);
+    for (const [k, v] of fd) {
+      const el = form.elements[k]; const node = el instanceof RadioNodeList ? el[0] : el;
+      if (k === 'path' || (node && node.closest && node.closest('[hidden]'))) continue;
+      if (!String(v).trim()) continue;
+      data[k] = data[k] ? data[k] + ', ' + v : v;
+    }
+    const LIVE = /(^|\.)alwaysfoundation\.org$/.test(location.hostname);
+    if (!LIVE) { status.textContent = 'Registration is not connected on this preview. Please email hello@alwaysfoundation.org.'; return; }
+    const b = form.querySelector('button[type=submit]'); b.disabled = true; b.textContent = 'Sending…';
+    try {
+      const r = await fetch('/api/forms/register', { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(data) });
+      if (!r.ok) throw 0;
+      const first = String(data.name).trim().split(/\s+/)[0].replace(/[<>&"]/g, '');
+      const done = document.createElement('div'); done.className = 'jn-done'; done.tabIndex = -1;
+      done.innerHTML = `<h2>Thank you, ${first}.</h2><p>We've received your registration. We'll verify your details and be in touch.</p>`;
+      form.replaceWith(done); done.focus();
+    } catch {
+      status.textContent = 'That didn\'t send. Please try again, or email hello@alwaysfoundation.org.';
+      b.disabled = false; b.textContent = 'Register';
+    }
   });
 })();
 

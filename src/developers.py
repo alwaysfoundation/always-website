@@ -66,7 +66,7 @@ PAGE = f'''<section class="page-hero pf-hero"><div class="wrap pf-split">
 <section class="sec pg-sec"><div class="wrap sl-end">
   <h2 class="pg-h rv">Building for churches or ministries?</h2>
   <p class="pg-lead rv">Tell us what you're making. We'll help you get started and keep it safe for the people it serves.</p>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Talk to us</a><a class="btn btn-green" href="#/docs/introduction">Browse the docs</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/contact/developer">Talk to us</a><a class="btn btn-green" href="#/docs/introduction">Browse the docs</a></div>
 </div></section>'''
 
 CSS = '''

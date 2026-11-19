@@ -81,13 +81,13 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
 <section class="sec pg-sec"><div class="wrap sl-end">
   <h2 class="pg-h rv">Planning an event or a tour?</h2>
   <p class="pg-lead rv">We'd love to hear about it, and help everyone who responds find a next step near home.</p>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/contact">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section>'''
 
 app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-kick">A module of Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><p class="pl-kick">A module of Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join/evangelist" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
@@ -115,7 +115,7 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
   <h2 class="pg-h rv">Tools for your team</h2>
   <p class="pg-lead rv">Running a street team, an outreach or a tour? Get your own branded response app on Always Platform, like Sydney Fire Evangelism's, and use the same open tools we use, free.</p>
   {feats([('Response pages and QR codes', 'People say yes on a page with your name on it, and get a next step near home.'), ('Find a church near me', 'Add our church finder to your website or app in one line.'), ('Your own branded app', 'Like Sydney Fire Evangelism: your logo, your next steps, and contacts saved safely in Australia.'), ('Agents for follow-up', 'Reminders and message drafts after outreach. A person approves every step.'), ('Reports for funders', 'Monthly reports written for you, with totals only.'), ('Open source', 'Every tool is open, so you can check it, improve it or run it yourself.')])}
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Join the pilot</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Join the pilot</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
 </div></section>'''
 
 FAQ_GROUPS = [
@@ -618,7 +618,7 @@ BUILT_ON = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
 
 PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
   <div><p class="pl-kick">Always Platform</p><h1>For developers</h1><p class="pd-line">The API, SDK, feeds and AI connector behind every Always product, open to build on.</p><p>The same open-source foundation every Always product runs on, ready for your own website, app or platform.</p>
-  <div class="pl-ctas"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/join">Talk to us</a></div></div>
+  <div class="pl-ctas"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/contact">Talk to us</a></div></div>
   <pre class="pl-code" aria-label="Example code"><code><span class="c">// Find churches welcoming people near 2150</span>
 <span class="k">import</span> {{ AlwaysClient }} <span class="k">from</span> <span class="s">'@always/sdk'</span>;
 
@@ -651,7 +651,7 @@ PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
   <p class="pl-kick rv">What never changes</p>
   <h2 class="pg-h rv">A gift to the Church.</h2>
   <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free for churches', 'Larger ministries contribute according to their size.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', 'People\'s details stay here.'), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'AI helps with the work. People make the calls.')])}</div>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/join">Talk to us</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/contact">Talk to us</a></div>
 </div></section>'''
 
 PLATFORM_CSS = """
