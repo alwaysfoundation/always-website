@@ -15,14 +15,18 @@ import base64 as _b
 import io as _io
 from PIL import Image as _Im
 def _photo(name, maxw=800, q=64):
+  """Resize to WebP, write to /img beside index.html, return the relative URL (served by the Worker, cached)."""
   im = _Im.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', name)).convert('RGB')
   if im.width > maxw: im = im.resize((maxw, round(im.height * maxw / im.width)), _Im.LANCZOS)
-  buf = _io.BytesIO(); im.save(buf, 'WEBP', quality=q, method=6)
-  return 'data:image/webp;base64,' + _b.b64encode(buf.getvalue()).decode()
+  out = os.path.splitext(name)[0] + '.webp'
+  os.makedirs(os.path.join(ROOT, '..', 'img'), exist_ok=True)
+  im.save(os.path.join(ROOT, '..', 'img', out), 'WEBP', quality=q, method=6)
+  return 'img/' + out
 home = home.replace('{{UEN_STUDIO}}', _photo('uen-studio.jpg'))
 home = home.replace('{{CXMMXNS_IMG}}', _photo('cxmmxns-tour.jpg'))
 home = home.replace('{{ALPHA_IMG}}', _photo('alpha-photo.jpg'))
-home = home.replace('{{ALPHA_LOGO}}', 'data:image/png;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), 'rb').read()).decode())
+import shutil as _sh; os.makedirs(os.path.join(ROOT, '..', 'img'), exist_ok=True); _sh.copyfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), os.path.join(ROOT, '..', 'img', 'alpha-logo.png'))
+home = home.replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png')
 home = home.replace('{{SYDNEYFIRE_IMG}}', _photo('sydneyfire-street.jpg'))
 home = home.replace('{{REJOICE_IMG}}', _photo('rejoice-team.jpg'))
 home = home.replace('{{UEN_IMG}}', _photo('uen-event.jpg'))
@@ -875,6 +879,8 @@ DECK_CSS = '''
 .shared-list li { padding: 24px 26px; border-radius: 20px; background: #FFFDF8; }
 .shared-list h3 { margin: 0; font-size: 21px; color: var(--green); }
 .shared-list p { margin: 6px 0 0; color: var(--soft); font-size: 16px; line-height: 1.55; }
+.join-fine { margin-top: 16px; font-size: 15px; line-height: 1.55; color: var(--on-green); opacity: .85; max-width: 44ch; }
+.join-fine a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
 .join-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .join-ctas .btn { min-height: 48px; cursor: pointer; font: inherit; font-weight: 600; }
 .join-ctas .btn-ghost { background: transparent; color: var(--cream); border: 1.5px solid rgba(248,243,234,.55); }
@@ -1242,5 +1248,6 @@ doc = doc.replace('{{CREDIT}}', 'Scripture quotations marked ESV are from the ES
 doc = doc.replace('</style>', '.photo-band{margin:0;height:min(52vh,480px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>', 1)
 _svg = lambda n: 'data:image/svg+xml;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', n), 'rb').read()).decode()
 doc = doc.replace('{{LOGO}}', _svg('always-foundation-logo.svg')).replace('{{LOGO_REV}}', _svg('always-foundation-logo-reverse.svg'))
+doc = _re2.sub(r'<img (?![^>]*loading=)([^>]*src="img/)', r'<img loading="lazy" decoding="async" \1', doc)
 open(os.path.join(ROOT,'index.html'), 'w').write(doc)
 print('pages', len(order), 'bytes', len(doc))
