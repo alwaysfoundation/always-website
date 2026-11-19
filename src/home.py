@@ -72,10 +72,9 @@ CSS = r'''
 .cs-img.chai-tile { background: #fff; display: block; }
 .cs-img.chai-tile > img { object-fit: contain; width: 46%; height: 100%; margin-left: 50%; }
 .cs-text { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; max-width: 460px; min-height: inherit; padding: clamp(28px, 4vw, 44px) !important; background: none; }
-.cs-pill { display: inline-block; padding: 6px 12px; border-radius: 999px; background: rgba(248,243,234,.9); color: var(--green); font: 700 12.5px/1 var(--head); margin-bottom: 18px; }
 .cs-name { color: var(--peach) !important; font-size: 14px !important; }
 .cs-name .cs-logo { border-radius: 6px; background: #fff; }
-.cs-text h3 { margin-top: 10px !important; font-size: clamp(28px, 3vw, 40px) !important; line-height: 1.04 !important; letter-spacing: -0.03em !important; color: var(--cream) !important; text-wrap: balance; }
+.cs-text h3 { margin-top: 12px !important; font-size: clamp(28px, 3vw, 40px) !important; line-height: 1.04 !important; letter-spacing: -0.03em !important; color: var(--cream) !important; text-wrap: balance; }
 .cs-text > p:not(.cs-name) { margin-top: 16px !important; color: rgba(248,243,234,.85) !important; font-size: 16.5px !important; max-width: 40ch; }
 .cs-more { margin-top: 26px !important; padding: 0 20px !important; min-height: 46px; display: inline-flex; align-items: center; gap: 10px; border-radius: 14px; background: var(--cream) !important; color: var(--green) !important; text-decoration: none !important; font: 700 15px/1 var(--head); transition: transform .2s ease, box-shadow .2s ease; }
 .cs-more::after { content: ''; width: 14px; height: 14px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8h11M9 4l4 4-4 4' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; transition: transform .2s ease; }
