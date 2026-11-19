@@ -1,0 +1,407 @@
+{
+  "$schema": "../schemas/compliance-register.schema.json",
+  "name": "Always Compliance register",
+  "version": "2026.11.0",
+  "status": "draft",
+  "asOf": "2026-11-19",
+  "notice": "Draft for legal review. A plain-English guide to common obligations for Australian churches and Christian ministries. It is not legal advice.",
+  "licence": "CC-BY-4.0",
+  "profileQuestions": [
+    { "id": "states", "type": "states", "label": "Where do you run activities?", "help": "Choose every state or territory where you meet, run programs or have staff." },
+    { "id": "collectsPersonalInfo", "type": "boolean", "label": "Do you keep people's names or contact details?", "help": "For example a members list, newsletter list, rosters or response cards." },
+    { "id": "turnoverOver3m", "type": "boolean", "label": "Is your annual turnover more than $3 million?", "help": "This is the Privacy Act threshold." },
+    { "id": "providesHealthService", "type": "boolean", "label": "Do you provide counselling or other health services?", "help": "Organisations that provide a health service are covered by the Privacy Act whatever their size." },
+    { "id": "usesOverseasServices", "type": "boolean", "label": "Do you store or send people's details outside Australia?", "help": "For example an email or database service hosted overseas." },
+    { "id": "worksWithChildren", "type": "boolean", "label": "Do you run programs for under-18s, or do adults in your ministry have contact with children?", "help": "Kids church, youth groups, camps, school ministry or family events." },
+    { "id": "onlineServicesForChildren", "type": "boolean", "label": "Do young people use any of your apps, websites or online groups?", "help": "For example a youth group chat, sign-up page or app." },
+    { "id": "sendsEmailOrSms", "type": "boolean", "label": "Do you send emails or texts about your events, programs or appeals?", "help": "Newsletters, event invitations and giving appeals all count." },
+    { "id": "acncRegistered", "type": "boolean", "label": "Are you a registered charity with the ACNC?", "help": "Check the ACNC Charity Register if unsure." },
+    { "id": "basicReligiousCharity", "type": "boolean", "label": "Are you a Basic Religious Charity?", "help": "A charity whose only purpose is advancing religion, that is not incorporated and does not have DGR status. Your ACNC record says if you are one." },
+    { "id": "acncMediumOrLarge", "type": "boolean", "label": "Is your annual revenue $500,000 or more?", "help": "Charities with revenue of $500,000 or more are medium or large under ACNC rules." }
+  ],
+  "obligations": [
+    {
+      "id": "privacy-policy",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Have a clear, up-to-date privacy policy",
+      "summary": "Explain in plain words what personal information you collect, why, how you keep it safe, and how people can access it or complain.",
+      "law": [{ "name": "Privacy Act 1988 (Cth), Australian Privacy Principle 1", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "collectsPersonalInfo", "is": true },
+      "requiredWhen": { "any": [{ "field": "turnoverOver3m", "is": true }, { "field": "providesHealthService", "is": true }] },
+      "evidence": [
+        { "id": "pp-published", "kind": "document", "prompt": "Your privacy policy is published where people can find it, such as your website." },
+        { "id": "pp-reviewed", "kind": "question", "prompt": "Someone has reviewed the privacy policy in the last 12 months." }
+      ],
+      "guidance": "Start from the Always template, adjust it to what you actually collect, and publish it on your website.",
+      "confidence": "draft"
+    },
+    {
+      "id": "collection-notice",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Tell people why you're collecting their details",
+      "summary": "When you collect someone's details, tell them who you are, why you need them, and who you might share them with.",
+      "law": [{ "name": "Privacy Act 1988 (Cth), Australian Privacy Principle 5", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "collectsPersonalInfo", "is": true },
+      "requiredWhen": { "any": [{ "field": "turnoverOver3m", "is": true }, { "field": "providesHealthService", "is": true }] },
+      "evidence": [
+        { "id": "cn-forms", "kind": "question", "prompt": "Your forms and response cards say why you collect details and who sees them." },
+        { "id": "cn-consent-records", "kind": "platform", "check": "consent_records", "prompt": "Consent is recorded with what the person agreed to and when." }
+      ],
+      "guidance": "Add a short notice to every form. Always response pages include one by default.",
+      "confidence": "draft"
+    },
+    {
+      "id": "use-and-disclosure",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Only use details for the reason you collected them",
+      "summary": "Use and share personal information only for the purpose people expected, unless they agree to something else.",
+      "law": [{ "name": "Privacy Act 1988 (Cth), Australian Privacy Principle 6", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "collectsPersonalInfo", "is": true },
+      "requiredWhen": { "any": [{ "field": "turnoverOver3m", "is": true }, { "field": "providesHealthService", "is": true }] },
+      "evidence": [
+        { "id": "ud-sharing-rule", "kind": "question", "prompt": "Your team knows not to share people's details with others without permission." },
+        { "id": "ud-access", "kind": "platform", "check": "access_controls", "prompt": "Only the right people in your team can see each person's details." }
+      ],
+      "guidance": "Agree a simple sharing rule with your team and limit who can see contact lists.",
+      "confidence": "draft"
+    },
+    {
+      "id": "data-security",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Keep personal information safe, and delete it when it's no longer needed",
+      "summary": "Take reasonable steps to protect details from misuse, loss and unauthorised access, and destroy or de-identify them when you no longer need them.",
+      "law": [{ "name": "Privacy Act 1988 (Cth), Australian Privacy Principle 11", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "collectsPersonalInfo", "is": true },
+      "requiredWhen": { "any": [{ "field": "turnoverOver3m", "is": true }, { "field": "providesHealthService", "is": true }] },
+      "evidence": [
+        { "id": "ds-mfa", "kind": "question", "prompt": "Accounts that hold people's details use strong passwords and two-step sign-in." },
+        { "id": "ds-retention", "kind": "platform", "check": "retention_schedule", "prompt": "Details are deleted on a set schedule." },
+        { "id": "ds-old-lists", "kind": "question", "prompt": "Old spreadsheets and paper lists are deleted or shredded when no longer needed." }
+      ],
+      "guidance": "Turn on two-step sign-in, move lists out of personal spreadsheets, and set a deletion schedule.",
+      "confidence": "draft"
+    },
+    {
+      "id": "access-and-correction",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Let people see and correct their details",
+      "summary": "When someone asks, give them access to the information you hold about them and correct it if it's wrong, within a reasonable time.",
+      "law": [{ "name": "Privacy Act 1988 (Cth), Australian Privacy Principles 12 and 13", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "collectsPersonalInfo", "is": true },
+      "requiredWhen": { "any": [{ "field": "turnoverOver3m", "is": true }, { "field": "providesHealthService", "is": true }] },
+      "evidence": [
+        { "id": "ac-contact", "kind": "question", "prompt": "People know who to contact to see or correct their details." }
+      ],
+      "guidance": "Name a privacy contact in your privacy policy and reply to requests promptly.",
+      "confidence": "draft"
+    },
+    {
+      "id": "overseas-disclosure",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Take care when details go overseas",
+      "summary": "Before personal information is sent or stored outside Australia, take reasonable steps to make sure it is protected to Australian standards.",
+      "law": [{ "name": "Privacy Act 1988 (Cth), Australian Privacy Principle 8", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles" }],
+      "status": "in_force",
+      "appliesWhen": { "all": [{ "field": "collectsPersonalInfo", "is": true }, { "field": "usesOverseasServices", "is": true }] },
+      "requiredWhen": { "any": [{ "field": "turnoverOver3m", "is": true }, { "field": "providesHealthService", "is": true }] },
+      "evidence": [
+        { "id": "od-list", "kind": "question", "prompt": "You know which of your services store people's details overseas." },
+        { "id": "od-australia", "kind": "platform", "check": "data_in_australia", "prompt": "Details held in Always stay in Australia." }
+      ],
+      "guidance": "List the services you use, prefer Australian hosting, and mention any overseas storage in your privacy policy.",
+      "confidence": "draft"
+    },
+    {
+      "id": "data-breach-response",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Be ready for a data breach",
+      "summary": "If personal information is lost or accessed without permission, assess it quickly. If serious harm is likely, tell the people affected and the OAIC.",
+      "law": [{ "name": "Privacy Act 1988 (Cth), Part IIIC (Notifiable Data Breaches)", "url": "https://www.oaic.gov.au/privacy/notifiable-data-breaches" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "collectsPersonalInfo", "is": true },
+      "requiredWhen": { "any": [{ "field": "turnoverOver3m", "is": true }, { "field": "providesHealthService", "is": true }] },
+      "evidence": [
+        { "id": "db-plan", "kind": "document", "prompt": "You have a written data breach response plan and know who leads it." }
+      ],
+      "guidance": "Use the Always one-page breach plan: who to call, how to assess, and when to notify.",
+      "confidence": "draft"
+    },
+    {
+      "id": "serious-invasion-of-privacy",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Respect people's privacy, whatever your size",
+      "summary": "People can take legal action for a serious invasion of their privacy, even against organisations the Privacy Act doesn't otherwise cover.",
+      "law": [{ "name": "Privacy Act 1988 (Cth), Schedule 2 (statutory tort, from 10 June 2025)", "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "collectsPersonalInfo", "is": true },
+      "evidence": [
+        { "id": "sip-photos", "kind": "question", "prompt": "You ask before sharing photos, stories or prayer requests that identify someone." }
+      ],
+      "guidance": "Ask before you share. Take extra care with prayer requests, testimonies and photos of children.",
+      "confidence": "draft"
+    },
+    {
+      "id": "childrens-online-privacy-code",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Get ready for the Children's Online Privacy Code",
+      "summary": "A new code will set stricter rules for online services likely to be used by children, such as privacy-by-default settings, data minimisation and clearer consent.",
+      "law": [{ "name": "Privacy (Children's Online Privacy) Code 2026, to be registered by 10 December 2026", "url": "https://www.oaic.gov.au/privacy/privacy-registers/privacy-codes/childrens-online-privacy-code" }],
+      "status": "upcoming",
+      "commences": "2026-12-10",
+      "appliesWhen": { "field": "onlineServicesForChildren", "is": true },
+      "requiredWhen": { "any": [{ "field": "turnoverOver3m", "is": true }, { "field": "providesHealthService", "is": true }] },
+      "evidence": [
+        { "id": "copc-inventory", "kind": "question", "prompt": "You have listed the apps, sites and groups young people use with you." },
+        { "id": "copc-minors", "kind": "platform", "check": "minors_rules", "prompt": "Age rules are enforced before anything else, with parent confirmation where needed." }
+      ],
+      "guidance": "List your online spaces for young people, collect as little as possible, and set privacy to the highest setting by default.",
+      "confidence": "draft"
+    },
+    {
+      "id": "privacy-reform-tranche-2",
+      "area": "privacy",
+      "jurisdiction": "CTH",
+      "title": "Watch: second round of Privacy Act reform",
+      "summary": "The Government released an exposure draft of the Privacy Amendment (Personal Data Protection) Bill 2026 on 31 August 2026. It may change core privacy obligations.",
+      "law": [{ "name": "Privacy Amendment (Personal Data Protection) Bill 2026 (exposure draft)", "url": "https://www.ag.gov.au/rights-and-protections/privacy" }],
+      "status": "watch",
+      "appliesWhen": { "field": "collectsPersonalInfo", "is": true },
+      "evidence": [],
+      "guidance": "No action yet. We'll tell you if it becomes law and what changes.",
+      "confidence": "draft"
+    },
+    {
+      "id": "spam-identify-sender",
+      "area": "messages",
+      "jurisdiction": "CTH",
+      "title": "Say who you are in every email and text",
+      "summary": "Marketing emails and texts must identify your organisation and include contact details. Registered charities and religious organisations have some exemptions, but must still identify themselves.",
+      "law": [{ "name": "Spam Act 2003 (Cth), section 17", "url": "https://www.acma.gov.au/avoid-sending-spam" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "sendsEmailOrSms", "is": true },
+      "evidence": [
+        { "id": "spam-sender", "kind": "question", "prompt": "Every email and text names your ministry and how to contact you." }
+      ],
+      "guidance": "Add your ministry's name and contact details to your email footer and text templates.",
+      "confidence": "draft"
+    },
+    {
+      "id": "spam-consent-unsubscribe",
+      "area": "messages",
+      "jurisdiction": "CTH",
+      "title": "Ask permission, and make it easy to unsubscribe",
+      "summary": "Commercial messages need consent and a working unsubscribe that is honoured within 5 working days. Charities and religious organisations may be exempt for some messages about their own work, but it remains good practice.",
+      "law": [{ "name": "Spam Act 2003 (Cth), sections 16 and 18", "url": "https://www.acma.gov.au/avoid-sending-spam" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "sendsEmailOrSms", "is": true },
+      "requiredWhen": { "field": "acncRegistered", "is": false },
+      "evidence": [
+        { "id": "spam-optin", "kind": "question", "prompt": "People choose to join your email and text lists." },
+        { "id": "spam-unsub", "kind": "question", "prompt": "Every message has an unsubscribe link, and requests are actioned within 5 working days." }
+      ],
+      "guidance": "Use an email tool with built-in unsubscribe and keep a record of when people signed up.",
+      "confidence": "draft"
+    },
+    {
+      "id": "acnc-annual-reporting",
+      "area": "charity",
+      "jurisdiction": "CTH",
+      "title": "Submit your Annual Information Statement",
+      "summary": "Registered charities submit an Annual Information Statement each year, within six months after the end of their reporting period (31 December for a 30 June year). Medium and large charities also submit a financial report, unless they are a Basic Religious Charity.",
+      "law": [{ "name": "Australian Charities and Not-for-profits Commission Act 2012 (Cth), Part 3-2", "url": "https://www.acnc.gov.au/for-charities/manage-your-charity/obligations-acnc/reporting-annually-acnc" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "acncRegistered", "is": true },
+      "evidence": [
+        { "id": "acnc-ais", "kind": "question", "prompt": "Your last Annual Information Statement was submitted on time." },
+        { "id": "acnc-financial", "kind": "question", "prompt": "If you're medium or large and not a Basic Religious Charity, your financial report was submitted with it.", "onlyWhen": { "all": [{ "field": "acncMediumOrLarge", "is": true }, { "field": "basicReligiousCharity", "is": false }] } }
+      ],
+      "guidance": "Put the due date in your board calendar and start three months early.",
+      "confidence": "draft"
+    },
+    {
+      "id": "acnc-duty-to-notify",
+      "area": "charity",
+      "jurisdiction": "CTH",
+      "title": "Tell the ACNC about changes",
+      "summary": "Tell the ACNC when your name, address, responsible people or governing document change.",
+      "law": [{ "name": "Australian Charities and Not-for-profits Commission Act 2012 (Cth), Division 65", "url": "https://www.acnc.gov.au/for-charities/manage-your-charity/obligations-acnc" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "acncRegistered", "is": true },
+      "evidence": [
+        { "id": "acnc-details-current", "kind": "question", "prompt": "Your ACNC record lists your current board members and address." }
+      ],
+      "guidance": "Check your ACNC record after every board change.",
+      "confidence": "draft"
+    },
+    {
+      "id": "acnc-governance-standards",
+      "area": "charity",
+      "jurisdiction": "CTH",
+      "title": "Meet the ACNC Governance Standards",
+      "summary": "Charities must run for their charitable purpose, be accountable to members, comply with Australian laws, have suitable responsible people who meet their duties, and manage conflicts. Basic Religious Charities are exempt.",
+      "law": [{ "name": "Australian Charities and Not-for-profits Commission Regulations, Governance Standards", "url": "https://www.acnc.gov.au/for-charities/manage-your-charity/governance-hub/governance-standards" }],
+      "status": "in_force",
+      "appliesWhen": { "all": [{ "field": "acncRegistered", "is": true }, { "field": "basicReligiousCharity", "is": false }] },
+      "evidence": [
+        { "id": "gs-conflicts", "kind": "question", "prompt": "Board members declare conflicts of interest and these are recorded." },
+        { "id": "gs-duties", "kind": "question", "prompt": "Board members understand their duties and have checked they're not disqualified." },
+        { "id": "gs-minutes", "kind": "document", "prompt": "Board minutes are kept." }
+      ],
+      "guidance": "Use the Always board pack: conflicts register, duties checklist and minutes template.",
+      "confidence": "draft"
+    },
+    {
+      "id": "acnc-records",
+      "area": "charity",
+      "jurisdiction": "CTH",
+      "title": "Keep financial and operational records for 7 years",
+      "summary": "Keep written records that explain your finances and activities, for 7 years.",
+      "law": [{ "name": "Australian Charities and Not-for-profits Commission Act 2012 (Cth), section 55-5", "url": "https://www.acnc.gov.au/for-charities/manage-your-charity/obligations-acnc" }],
+      "status": "in_force",
+      "appliesWhen": { "field": "acncRegistered", "is": true },
+      "evidence": [
+        { "id": "rec-kept", "kind": "question", "prompt": "Financial and operational records are kept for 7 years." }
+      ],
+      "guidance": "Keep records in a shared, backed-up folder your treasurer and secretary can both reach.",
+      "confidence": "draft"
+    },
+    {
+      "id": "working-with-children-checks",
+      "area": "child_safety",
+      "jurisdiction": "STATES",
+      "title": "Working with children checks for staff and volunteers",
+      "summary": "People in child-related work or volunteering need the check for the state or territory where they serve. Checks don't transfer between states.",
+      "law": [
+        { "name": "NSW Working with Children Check", "url": "https://ocg.nsw.gov.au/working-children-check", "jurisdiction": "NSW" },
+        { "name": "Victoria Working with Children Check", "url": "https://www.workingwithchildren.vic.gov.au", "jurisdiction": "VIC" },
+        { "name": "Queensland blue card", "url": "https://www.bluecard.qld.gov.au", "jurisdiction": "QLD" },
+        { "name": "SA Working with Children Check", "url": "https://www.sa.gov.au/topics/rights-and-law/rights-and-responsibilities/screening-checks", "jurisdiction": "SA" },
+        { "name": "WA Working with Children Check", "url": "https://workingwithchildren.wa.gov.au", "jurisdiction": "WA" },
+        { "name": "Tasmania Registration to Work with Vulnerable People", "url": "https://www.justice.tas.gov.au", "jurisdiction": "TAS" },
+        { "name": "ACT Working with Vulnerable People registration", "url": "https://www.accesscanberra.act.gov.au/business-and-work/working-with-vulnerable-people", "jurisdiction": "ACT" },
+        { "name": "NT Working with Children Clearance (Ochre Card)", "url": "https://nt.gov.au/emergency/child-safety/apply-for-a-working-with-children-clearance", "jurisdiction": "NT" }
+      ],
+      "status": "in_force",
+      "appliesWhen": { "field": "worksWithChildren", "is": true },
+      "evidence": [
+        { "id": "wwcc-register", "kind": "question", "prompt": "You keep a register of everyone in child-related roles, with their check number and expiry date." },
+        { "id": "wwcc-verified", "kind": "question", "prompt": "Each check is verified with the state screening unit before the person starts." }
+      ],
+      "guidance": "Keep one register for all states, verify each check online, and set reminders before expiry.",
+      "confidence": "draft"
+    },
+    {
+      "id": "child-safe-standards-nsw",
+      "area": "child_safety",
+      "jurisdiction": "NSW",
+      "title": "NSW Child Safe Standards",
+      "summary": "Religious bodies in NSW that provide services to children, or where adults have contact with children, must implement the 10 Child Safe Standards under the Child Safe Scheme.",
+      "law": [{ "name": "Children's Guardian Act 2019 (NSW), Child Safe Scheme", "url": "https://ocg.nsw.gov.au/child-safe-scheme/sector-specific/faith-based-organisations" }],
+      "status": "in_force",
+      "appliesWhen": { "all": [{ "field": "worksWithChildren", "is": true }, { "field": "states", "includesAny": ["NSW"] }] },
+      "evidence": [
+        { "id": "cs-nsw-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct." },
+        { "id": "cs-nsw-selfassess", "kind": "question", "prompt": "You've assessed yourself against the 10 Child Safe Standards in the last 12 months." },
+        { "id": "cs-nsw-rcs", "kind": "question", "prompt": "Your leaders know how to report under the Reportable Conduct Scheme." }
+      ],
+      "guidance": "Use the Office of the Children's Guardian guide for faith-based organisations and keep your self-assessment on file.",
+      "confidence": "draft"
+    },
+    {
+      "id": "child-safe-standards-vic",
+      "area": "child_safety",
+      "jurisdiction": "VIC",
+      "title": "Victorian Child Safe Standards",
+      "summary": "Religious bodies in Victoria must implement the Child Safe Standards, in force since 1 July 2022.",
+      "law": [{ "name": "Child Wellbeing and Safety Act 2005 (Vic), Child Safe Standards", "url": "https://ccyp.vic.gov.au/child-safe-standards/" }],
+      "status": "in_force",
+      "appliesWhen": { "all": [{ "field": "worksWithChildren", "is": true }, { "field": "states", "includesAny": ["VIC"] }] },
+      "evidence": [
+        { "id": "cs-vic-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct." },
+        { "id": "cs-vic-selfassess", "kind": "question", "prompt": "You've assessed yourself against the Child Safe Standards in the last 12 months." }
+      ],
+      "guidance": "Follow the Commission for Children and Young People's guide to the standards.",
+      "confidence": "draft"
+    },
+    {
+      "id": "child-safe-standards-qld",
+      "area": "child_safety",
+      "jurisdiction": "QLD",
+      "title": "Queensland Child Safe Standards",
+      "summary": "Religious bodies are in scope of Queensland's Child Safe Standards, which began on 1 October 2025, along with a Reportable Conduct Scheme.",
+      "law": [{ "name": "Child Safe Organisations Act 2024 (Qld)", "url": "https://www.legislation.qld.gov.au/view/whole/html/inforce/current/act-2024-049" }],
+      "status": "in_force",
+      "appliesWhen": { "all": [{ "field": "worksWithChildren", "is": true }, { "field": "states", "includesAny": ["QLD"] }] },
+      "evidence": [
+        { "id": "cs-qld-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct." },
+        { "id": "cs-qld-selfassess", "kind": "question", "prompt": "You've assessed yourself against the 10 Child Safe Standards and the Universal Principle." },
+        { "id": "cs-qld-rcs", "kind": "question", "prompt": "Your leaders know how to report under the Queensland Reportable Conduct Scheme." }
+      ],
+      "guidance": "Use the Queensland Family and Child Commission's guidelines for implementing the standards.",
+      "confidence": "draft"
+    },
+    {
+      "id": "child-safe-standards-act",
+      "area": "child_safety",
+      "jurisdiction": "ACT",
+      "title": "ACT Child Safe Standards",
+      "summary": "Since 1 August 2024, organisations in the ACT that provide services for children and young people, including religious bodies, must implement the ACT Child Safe Standards.",
+      "law": [{ "name": "Human Rights Commission Act 2005 (ACT), Part 5A", "url": "https://hrc.act.gov.au/childrenyoungpeople/act-child-safe-standards" }],
+      "status": "in_force",
+      "appliesWhen": { "all": [{ "field": "worksWithChildren", "is": true }, { "field": "states", "includesAny": ["ACT"] }] },
+      "evidence": [
+        { "id": "cs-act-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct." },
+        { "id": "cs-act-selfassess", "kind": "question", "prompt": "You've assessed yourself against the ACT Child Safe Standards." }
+      ],
+      "guidance": "Use the ACT Human Rights Commission's implementation resources.",
+      "confidence": "draft"
+    },
+    {
+      "id": "child-safe-standards-tas",
+      "area": "child_safety",
+      "jurisdiction": "TAS",
+      "title": "Tasmanian Child and Youth Safe Standards",
+      "summary": "Tasmania has legislated Child and Youth Safe Standards as part of its Child and Youth Safe Organisations Framework.",
+      "law": [{ "name": "Child and Youth Safe Organisations Act 2023 (Tas)", "url": "https://www.justice.tas.gov.au/carcru/child-and-youth-safe-organisations-framework/child-and-youth-safe-standards" }],
+      "status": "in_force",
+      "appliesWhen": { "all": [{ "field": "worksWithChildren", "is": true }, { "field": "states", "includesAny": ["TAS"] }] },
+      "evidence": [
+        { "id": "cs-tas-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct." },
+        { "id": "cs-tas-selfassess", "kind": "question", "prompt": "You've assessed yourself against the Child and Youth Safe Standards." }
+      ],
+      "guidance": "Check the Tasmanian framework for when your type of organisation must comply.",
+      "confidence": "verify"
+    },
+    {
+      "id": "child-safe-national-principles",
+      "area": "child_safety",
+      "jurisdiction": "STATES",
+      "title": "National Principles for Child Safe Organisations",
+      "summary": "Every state and territory has endorsed the 10 National Principles. In SA, WA and the NT, follow them alongside your local requirements.",
+      "law": [{ "name": "National Principles for Child Safe Organisations", "url": "https://www.humanrights.gov.au/national-principles-child-safe-organisations" }],
+      "status": "in_force",
+      "appliesWhen": { "all": [{ "field": "worksWithChildren", "is": true }, { "field": "states", "includesAny": ["SA", "WA", "NT"] }] },
+      "recommendedOnly": true,
+      "evidence": [
+        { "id": "np-policy", "kind": "document", "prompt": "You have a child safe policy and code of conduct." },
+        { "id": "np-selfassess", "kind": "question", "prompt": "You've used the Australian Human Rights Commission's self-assessment tool." }
+      ],
+      "guidance": "Start with the Australian Human Rights Commission's free self-assessment tool and code of conduct template.",
+      "confidence": "verify"
+    }
+  ]
+}

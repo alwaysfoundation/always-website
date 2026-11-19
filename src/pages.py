@@ -71,6 +71,7 @@ MINISTRIES = f'''<section class="page-hero"><div class="wrap"><h1>For ministries
   <h2 class="pg-h rv">Less administration, more ministry</h2>
   <p class="pg-lead rv">Shared tools for the everyday work behind every ministry, with agents to help with follow-up and admin, so your team can spend more time on people.</p>
   {feats([('Governance', 'Shared policies, templates and member records for boards and leaders.'), ('Compliance', 'Consent records and privacy requests, ready to export when you need them.'), ('Safeguarding', 'Child safety checklists and Working With Children Check reminders, kept in one place.'), ('Reporting', 'A monthly report for your board and funders, with totals only.')])}
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/compliance/check">Try the free compliance check-up</a><a class="btn btn-ghost" href="#/compliance">About Always Compliance</a></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony, sermon or post? Add a response link or QR code. Anyone in Australia can say yes and meet a church near them.</p></div>
@@ -164,6 +165,7 @@ FAQ_GROUPS = [
   ('Where is information kept?', 'In Australia, encrypted, under Australian privacy law.'),
   ('Do you sell information or use it for advertising?', 'No.'),
   ('How do you use AI?', 'To save time on routine work, like writing your monthly report. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
+  ('What is Always Compliance?', 'A guide to the privacy, child safety, charity and messaging rules that apply to your ministry, with a check-up every quarter that a person at your ministry approves, and updates when the law changes. It is free for churches and is not legal advice. Try the free check-up at alwaysfoundation.org/#/compliance.'),
   ('What do Always agents do?', 'They help your team with follow-up and administration: drafting messages, setting reminders and keeping records up to date. A person approves every step, people\'s details stay in Australia, and agents never handle young people\'s information.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [

@@ -6,6 +6,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 css = open(os.path.join(ROOT,'base.css')).read()
 home = open(os.path.join(ROOT,'main.html')).read()
 import extras, pages as P, re as _re
+import compliance_page as CP
 def _swap(h, marker, new):
     i = h.find(marker); a = h.rfind('<section', 0, i); b = h.find('</section>', i) + 10
     return h[:a] + new + h[b:]
@@ -500,6 +501,7 @@ const ok = await verifyWebhook({
 
 def esc(s): return html.escape(s, quote=True)
 
+DOCS.insert(1, CP.DOCS)
 nav_html = ''
 pages_json = {}
 order = []
@@ -512,6 +514,13 @@ for group, pages in DOCS:
     nav_html += '</ul>'
 
 extra_css = """
+.dt-wrap { overflow-x: auto; margin: 20px 0; }
+.dt { width: 100%; border-collapse: collapse; font-size: 15px; margin: 18px 0; }
+.dt th, .dt td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid rgba(27,71,64,.12); }
+.dt th { font: 700 13.5px/1.3 var(--head); color: var(--green); background: rgba(27,71,64,.05); }
+.dt .dt-sub { color: var(--muted); font-size: 14px; }
+.dt a { color: var(--green); }
+
 .brand svg.wm { width: auto; height: 34px; }
 footer .brand svg.wm { height: 28px; }
 @media (max-width: 480px) { header .brand svg.wm { height: 26px; } header .brand { font-size: 21px; } }
@@ -989,6 +998,7 @@ header = """
     <nav aria-label="Main" id="main-nav"><ul>
       <li><a href="#/churches" data-route="churches">Churches</a></li>
       <li><a href="#/ministries" data-route="ministries">Ministries</a></li>
+      <li><a href="#/compliance" data-route="compliance">Compliance</a></li>
       <li><a href="#/app" data-route="app">Evangelists</a></li>
       <li><a href="#/platform" data-route="platform">Platform</a></li>
       <li><a href="#/stories" data-route="stories">Stories</a></li>
@@ -1017,7 +1027,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => e
 function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io ? io.observe(el) : el.classList.add('in'); }); }
 
 // Router
-const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform' };
+const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform', compliance: 'page-compliance' };
 const anchors = { join: 'join', how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
@@ -1029,9 +1039,10 @@ function route() {
   document.querySelectorAll('nav a[data-route]').forEach((a) => { if (a.dataset.route === page) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   if (page === 'docs') showDoc(second || 'introduction');
   if (page === 'feedback' && second === 'missing') { document.querySelector('#fb-form input[value=missing]').checked = true; fbKind(); }
+  if (page === 'compliance' && second === 'check') { requestAnimationFrame(() => document.getElementById('check').scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = 'Free compliance check-up · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Go and make disciples', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'For evangelists · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation' };
+  const titles = { home: 'Always Foundation · Go and make disciples', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'For evangelists · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation' };
   if (page !== 'docs') document.title = titles[page];
   watch(document.getElementById(pages[page]));
 }
@@ -1151,7 +1162,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + extras.JS
+""" + CP.JS + extras.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """
@@ -1161,7 +1172,7 @@ footer = """
     <p class="foot-line">Together for the Gospel. Bringing churches and Christian ministries together across Australia.</p>
     <a class="foot-mail" href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a></div>
     <nav class="foot-cols" aria-label="Footer">
-      <div><h2>For you</h2><a href="#/churches">Churches</a><a href="#/ministries">Ministries</a><a href="#/app">Evangelists</a><a href="#/events">Events</a><a href="#/claim">Claim your church</a></div>
+      <div><h2>For you</h2><a href="#/churches">Churches</a><a href="#/ministries">Ministries</a><a href="#/app">Evangelists</a><a href="#/compliance">Compliance</a><a href="#/events">Events</a><a href="#/claim">Claim your church</a></div>
       <div><h2>Build</h2><a href="#/platform">Always Platform</a><a href="#/docs/introduction">Docs</a><a href="#/docs/feed">Church feed</a><a href="#/docs/mcp">AI assistants</a><a href="https://github.com/alwaysfoundation">Open source</a></div>
       <div><h2>Foundation</h2><a href="#/about">About</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/faq">FAQs</a></div>
       <div><h2>Help</h2><a href="#/feedback">Ideas and problems</a><a href="#/docs/privacy">Privacy</a><a href="#/docs/young-people">Keeping young people safe</a></div>
@@ -1184,7 +1195,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{DECK_CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{DECK_CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
@@ -1203,6 +1214,7 @@ doc = f"""<!DOCTYPE html>
 <div class="page" id="page-research" hidden>{P.RESEARCH}</div>
 <div class="page" id="page-brand" hidden>{P.BRAND}</div>
 <div class="page" id="page-platform" hidden>{P.PLATFORM}</div>
+<div class="page" id="page-compliance" hidden>{CP.PAGE}</div>
 </main>
 {footer}
 <script>{script}</script>
