@@ -183,16 +183,25 @@ TAPS = """
 """
 
 YOUVERSION = """
-<p class="lead">YouVersion Platform opens the technology behind the Bible App to ministries. We plan to use it in Always Respond and the Always App.</p>
-<p>This is planned, not yet live.</p>
-<h2>What we plan</h2>
+<p class="lead">Always Platform draws Scripture from YouVersion Platform, the technology behind the Bible App, in Always Respond, the Always App and for developers.</p>
+<h2>What's built</h2>
+<ul>
+<li><b>Scripture service.</b> <code>GET https://alwaysfoundation.org/api/scripture/passage?ref=ROM.5.8</code> returns the passage text, its reference, the translation and its copyright line. Passages are cached. No personal information is sent or kept.</li>
+<li><b>The Good News in Always Respond.</b> The Romans Road draws each verse from YouVersion, starting with Sydney Fire's app.</li>
+<li><b>A Bible reader.</b> "Start reading John" opens the Gospel inside the app, chapter by chapter.</li>
+<li><b>A component for developers.</b> <code>&lt;always-scripture&gt;</code> shows a passage in any site or app.</li>
+</ul>
+<pre><code>&lt;script type="module" src="https://alwaysfoundation.org/sdk/v0/scripture.js"&gt;&lt;/script&gt;
+&lt;always-scripture ref="JHN.3.16"&gt;"For God so loved the world..." John 3:16&lt;/always-scripture&gt;</code></pre>
+<p>Put the verse inside the element as a fallback: it stays if Scripture can't be fetched. References use USFM, like <code>ROM.5.8</code> or <code>JHN.1</code>. Add <code>bible="111"</code> to choose a translation by its YouVersion id.</p>
+<p>The service switches on when our YouVersion Platform registration is complete. Until then it answers <code>503 not_configured</code>, and pages show the Scripture written into them.</p>
+<h2>What's next</h2>
 <ol>
-<li><b>Scripture at the moment someone responds.</b> The Good News, reading plans and verses on a response page, in the person's own language and translation.</li>
-<li><b>A Scripture component for developers.</b> One part of the Always SDK that shows Scripture alongside a response, built on YouVersion's own SDKs.</li>
-<li><b>Sign in with YouVersion, for adults.</b> People can use the account they already have. If they agree, Always Platform records their home church.</li>
+<li><b>Sign in with YouVersion, for adults.</b> People can use the account they already have. If they agree, Always Platform records their home church. YouVersion never sees it.</li>
+<li><b>Reading the Bible as a next step</b>, alongside finding a church, exploring faith and talking with someone.</li>
 </ol>
 <h2>What stays separate</h2>
-<p>YouVersion provides Scripture and confirms who someone is. Always Platform holds which church they belong to and what they agreed to share. No response, consent or church details are sent to YouVersion, and personal information stays in Australia.</p>
+<p>YouVersion provides Scripture and, later, confirms who someone is. Always Platform holds which church they belong to and what they agreed to share. No response, consent or church details are sent to YouVersion, and personal information stays in Australia. Young people won't use YouVersion sign-in through Always.</p>
 """
 
 AGENTS = """

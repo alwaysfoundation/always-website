@@ -87,6 +87,10 @@ a { color: inherit; }
 .linkbtn { background: none; border: 0; color: var(--mute); font: 600 14px/1 Archivo, sans-serif; text-decoration: underline; min-height: 44px; padding: 0; cursor: pointer; }
 .bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; color: var(--mute); font-size: 14px; }
 .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #2a1213; color: #ff9da1; font-size: 13px; font-weight: 700; margin-left: 6px; }
+.rd-text { margin-top: 18px; padding: 24px 22px; border-radius: 22px; background: var(--paper); color: var(--ink); font-size: 18px; line-height: 1.7; }
+.rd-text p { margin: 0 0 12px; }
+.rd-text .note { color: #6b655d; }
+.rd-text a { color: var(--red-d); font-weight: 800; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .rr-bar { height: 4px; border-radius: 4px; background: var(--line); margin-top: 10px; overflow: hidden; }
 .rr-bar i { display: block; height: 100%; width: 16.7%; background: var(--red); border-radius: 4px; transition: width .4s cubic-bezier(.2,.7,.2,1); }
@@ -137,12 +141,12 @@ a { color: inherit; }
   <div class="rr-bar" aria-hidden="true"><i id="rr-fill"></i></div>
   <h2 id="gospel-h" class="sr">The Good News, from the book of Romans</h2>
   <div class="rr" id="rr" aria-live="polite">
-    <article class="rr-card on"><p class="rr-k">We all fall short</p><blockquote>“For all have sinned and fall short of the glory of God.”</blockquote><cite>Romans 3:23</cite></article>
-    <article class="rr-card"><p class="rr-k">Sin costs us everything</p><blockquote>“For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.”</blockquote><cite>Romans 6:23</cite></article>
-    <article class="rr-card"><p class="rr-k">God loves you</p><blockquote>“But God shows his love for us in that while we were still sinners, Christ died for us.”</blockquote><cite>Romans 5:8</cite></article>
-    <article class="rr-card"><p class="rr-k">Believe and confess</p><blockquote>“If you confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved.”</blockquote><cite>Romans 10:9</cite></article>
-    <article class="rr-card"><p class="rr-k">Anyone can call on Him</p><blockquote>“For ‘everyone who calls on the name of the Lord will be saved.’”</blockquote><cite>Romans 10:13</cite></article>
-    <article class="rr-card rr-last"><p class="rr-k">Peace with God</p><blockquote>“Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ.”</blockquote><cite>Romans 5:1</cite>
+    <article class="rr-card on" data-ref="ROM.3.23"><p class="rr-k">We all fall short</p><blockquote>“For all have sinned and fall short of the glory of God.”</blockquote><cite>Romans 3:23</cite></article>
+    <article class="rr-card" data-ref="ROM.6.23"><p class="rr-k">Sin costs us everything</p><blockquote>“For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.”</blockquote><cite>Romans 6:23</cite></article>
+    <article class="rr-card" data-ref="ROM.5.8"><p class="rr-k">God loves you</p><blockquote>“But God shows his love for us in that while we were still sinners, Christ died for us.”</blockquote><cite>Romans 5:8</cite></article>
+    <article class="rr-card" data-ref="ROM.10.9"><p class="rr-k">Believe and confess</p><blockquote>“If you confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved.”</blockquote><cite>Romans 10:9</cite></article>
+    <article class="rr-card" data-ref="ROM.10.13"><p class="rr-k">Anyone can call on Him</p><blockquote>“For ‘everyone who calls on the name of the Lord will be saved.’”</blockquote><cite>Romans 10:13</cite></article>
+    <article class="rr-card rr-last" data-ref="ROM.5.1"><p class="rr-k">Peace with God</p><blockquote>“Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ.”</blockquote><cite>Romans 5:1</cite>
       <div class="rr-pray"><b>Want to say yes to Jesus?</b> You can pray something like this: Jesus, I believe You died for me and rose again. Forgive me. I give You my life. Amen.</div>
     </article>
   </div>
@@ -151,9 +155,19 @@ a { color: inherit; }
   <div class="stack hidden" id="rr-route">
     <button class="btn btn-red" data-start="yes">I said yes to Jesus</button>
     <button class="btn btn-line" data-start="talk">I have questions</button>
+    <button class="btn btn-line" data-go="reader">Start reading the Bible</button>
     <button class="btn btn-line" id="rr-again">Read it again</button>
   </div>
-  <p class="foot">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.</p>
+  <p class="foot" id="rr-credit">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.</p>
+</section>
+
+<!-- Bible reader -->
+<section class="screen" id="reader" aria-labelledby="reader-h">
+  <div class="top"><button class="back" data-go="home">← Back</button><span class="step-count" id="rd-ver"></span></div>
+  <h2 id="reader-h" style="margin-top:22px">John <span id="rd-ch">1</span></h2>
+  <div class="rd-text" id="rd-text" aria-live="polite"><p class="note">Loading…</p></div>
+  <div class="rr-nav"><button class="btn btn-line" id="rd-prev" disabled>Previous</button><button class="btn btn-red" id="rd-next">Next chapter</button></div>
+  <p class="foot" id="rd-credit"></p>
 </section>
 
 <!-- 1. Age (minors rules first) -->
@@ -231,7 +245,7 @@ a { color: inherit; }
   <p class="lead" id="done-lead">Someone from Sydney Fire will be in touch soon to say hello and help you find a church near you.</p>
   <div class="verse"><p>“Therefore, if anyone is in Christ, he is a new creation. The old has passed away; behold, the new has come.”</p><span>2 Corinthians 5:17 (ESV)</span></div>
   <a class="alpha-card hidden" id="alpha-find" href="https://alpha.org.au/try/find/" rel="noopener" target="_blank"><img src="/alpha.png" alt="" width="48" height="48"><span><b>Find an Alpha near you</b><small>See Alpha courses near you, in person or online.</small></span></a>
-  <div class="stack"><a class="btn btn-red" href="https://www.bible.com/bible/59/JHN.1.ESV" rel="noopener" target="_blank">Start reading John</a><button class="btn btn-line" data-go="home">Done</button></div>
+  <div class="stack"><button class="btn btn-red" data-go="reader">Start reading John</button><button class="btn btn-line" data-go="home">Done</button></div>
 </section>
 
 <!-- Not sent: nothing kept on this phone -->
@@ -391,6 +405,53 @@ a { color: inherit; }
     $('rr').addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
     $('rr').addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1)); x0 = null; });
   })();
+
+
+  // Scripture from YouVersion Platform, through Always Platform. Only Bible text is fetched; nothing about the person is sent.
+  // If it can't be reached, the ESV text already in the page stays.
+  const SCRIPTURE = 'https://alwaysfoundation.org/api/scripture/passage';
+  const passage = (ref) => fetch(SCRIPTURE + '?ref=' + encodeURIComponent(ref), { signal: AbortSignal.timeout(8000) }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+  let rrLive = false;
+  async function liveRomansRoad() {
+    if (rrLive) return;
+    try {
+      const cards = [...document.querySelectorAll('.rr-card[data-ref]')];
+      const got = await Promise.all(cards.map((c) => passage(c.dataset.ref)));
+      if (got.some((g) => !g.text)) return;
+      cards.forEach((c, n) => {
+        c.querySelector('blockquote').textContent = '\u201c' + got[n].text + '\u201d';
+        c.querySelector('cite').textContent = got[n].reference + (got[n].bible.abbreviation ? ' (' + got[n].bible.abbreviation + ')' : '');
+      });
+      $('rr-credit').textContent = [got[0].bible.copyright, 'Scripture via YouVersion'].filter(Boolean).join(' \u00b7 ');
+      rrLive = true;
+    } catch (e) { /* keep the ESV text */ }
+  }
+  document.querySelector('[data-go=gospel]').addEventListener('click', liveRomansRoad);
+
+  let chapter = 1;
+  async function readJohn(n) {
+    chapter = Math.max(1, Math.min(21, n));
+    $('rd-ch').textContent = chapter;
+    $('rd-prev').disabled = chapter === 1;
+    $('rd-next').disabled = chapter === 21;
+    $('rd-text').innerHTML = '<p class="note">Loading\u2026</p>';
+    try {
+      const p = await passage('JHN.' + chapter);
+      $('rd-text').textContent = '';
+      p.text.split(/(?<=[.!?\u201d])\s+(?=\d)/).forEach((para) => { const el = document.createElement('p'); el.textContent = para; $('rd-text').appendChild(el); });
+      $('rd-ver').textContent = p.bible.abbreviation || '';
+      $('rd-credit').textContent = [p.bible.copyright, 'Scripture via YouVersion'].filter(Boolean).join(' \u00b7 ');
+    } catch (e) {
+      $('rd-text').innerHTML = '';
+      const a = document.createElement('a'); a.href = 'https://www.bible.com/bible/59/JHN.' + chapter + '.ESV'; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Read John ' + chapter + ' in the Bible App';
+      const p = document.createElement('p'); p.appendChild(a); $('rd-text').appendChild(p);
+      $('rd-ver').textContent = ''; $('rd-credit').textContent = '';
+    }
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('[data-go=reader]').forEach((b) => b.addEventListener('click', () => readJohn(1)));
+  $('rd-prev').addEventListener('click', () => readJohn(chapter - 1));
+  $('rd-next').addEventListener('click', () => readJohn(chapter + 1));
 
   // Details helpers: format mobiles, show the state from the postcode, move on when a field is complete.
   const STATE = (pc) => { const n = +pc; if (/^0[89]/.test(pc)) return 'NT'; if (/^02/.test(pc)) return 'ACT'; if (n >= 1000 && n <= 2999) return (n >= 2600 && n <= 2618) || (n >= 2900 && n <= 2920) ? 'ACT' : 'NSW'; if (n >= 3000 && n <= 3999) return 'VIC'; if (n >= 4000 && n <= 4999) return 'QLD'; if (n >= 5000 && n <= 5999) return 'SA'; if (n >= 6000 && n <= 6999) return 'WA'; if (n >= 7000 && n <= 7999) return 'TAS'; return ''; };

@@ -138,3 +138,74 @@ CSS = '''
 @media (max-width: 760px) { .st-steps { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .st-card, .st-card i { transition: none; } .st-card:hover { transform: none; } }
 '''
+
+YOUVERSION = '''
+<article class="ft">
+<div class="ft-hero"><div class="wrap ft-hero-in">
+  <p class="ft-kick"><a href="#/stories">Stories</a> <span aria-hidden="true">/</span> Integration</p>
+  <h1>Scripture at every yes: Always Platform and YouVersion</h1>
+  <p class="ft-dek">Always Platform brings Scripture from YouVersion Platform to the moment people respond, so they can read God’s Word in their own language, right where they said yes.</p>
+</div></div>
+
+<figure class="ft-fig wrap">
+  <img src="{{YV_IMG}}" alt="YouVersion Platform: build for eternal impact with the YouVersion Platform" width="1642" height="884" loading="lazy">
+  <figcaption>Image: YouVersion, used with permission.</figcaption>
+</figure>
+
+<div class="wrap ft-body">
+  <div class="prose ft-prose">
+    <p class="ft-lead">The moment someone says yes to Jesus is the moment they most need His Word. YouVersion has spent years making the Bible available to everyone. Always Platform makes sure it’s there at every response.</p>
+
+    <h2>Why YouVersion</h2>
+    <p>YouVersion, the team behind the Bible App, has opened its Bible technology to ministries through YouVersion Platform, free for ministry use. It brings licensed translations in hundreds of languages, which matters in a country where so many people pray in more than one language.</p>
+
+    <h2>What we built</h2>
+    <ol class="st-steps">
+      <li><b>A Scripture service</b><span>Always Platform fetches passages from YouVersion and caches them. Only Bible text is ever requested.</span></li>
+      <li><b>The Good News, live</b><span>The Romans Road in Always Respond, starting with Sydney Fire’s app, now draws each verse from YouVersion.</span></li>
+      <li><b>A Bible reader</b><span>“Start reading John” opens the Gospel inside the app, chapter by chapter, instead of sending people away.</span></li>
+    </ol>
+    <p>For developers, one line adds Scripture to any church or ministry app:</p>
+    <pre><code>&lt;script type="module" src="https://alwaysfoundation.org/sdk/v0/scripture.js"&gt;&lt;/script&gt;
+&lt;always-scripture ref="ROM.5.8"&gt;&lt;/always-scripture&gt;</code></pre>
+
+    <blockquote class="ft-pull">“So faith comes from hearing, and hearing through the word of Christ.”<cite>Romans 10:17</cite></blockquote>
+
+    <h2>What stays separate</h2>
+    <p>YouVersion provides Scripture. Always Platform holds what a person agreed to share and which church welcomes them. No response, consent or church details are sent to YouVersion, and personal information stays in Australia.</p>
+
+    <h2>What’s next</h2>
+    <ul>
+      <li><b>Sign in with YouVersion</b> in the Always App, for adults, so people can use the account they already have.</li>
+      <li><b>Reading the Bible as a next step</b>, alongside finding a church, exploring faith with Alpha, or talking with someone.</li>
+    </ul>
+    <p>We’re completing our YouVersion Platform registration now. Until it’s switched on, every page shows the Scripture already written into it, so no one sees a gap.</p>
+  </div>
+
+  <aside class="ft-side" aria-label="At a glance">
+    <div class="ft-card">
+      <h2>At a glance</h2>
+      <dl>
+        <dt>Integration</dt><dd>YouVersion Platform</dd>
+        <dt>Used in</dt><dd>Always Respond and the Always App</dd>
+        <dt>For developers</dt><dd>The <code>&lt;always-scripture&gt;</code> component</dd>
+        <dt>Personal data sent</dt><dd>None</dd>
+      </dl>
+      <a class="btn btn-peach" href="#/docs/youversion">Read the docs</a>
+      <a class="ft-link" href="#/sydneyfire">See it in Sydney Fire’s app</a>
+    </div>
+  </aside>
+</div>
+</article>
+'''
+
+YV_TILE = '''      <li class="cs-tile">
+        <div class="cs-img"><img src="{{YV_IMG}}" alt="YouVersion Platform" loading="lazy" style="object-position:60% 50%"></div>
+        <div class="cs-text">
+          <p class="cs-name">YouVersion</p>
+          <h3>Scripture at every yes.</h3>
+          <p>Scripture from YouVersion Platform, right where people say yes to Jesus.</p>
+          <a class="cs-more" href="#/youversion">Read the story</a>
+        </div>
+      </li>
+'''
