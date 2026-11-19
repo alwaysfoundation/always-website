@@ -295,7 +295,26 @@ main > * { animation: pageIn .32s ease both; }
 .langs button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: var(--cream); }
 .story-refs { margin: 0; font: 600 13px var(--head); opacity: .7; }
 .story-card[dir="rtl"] { text-align: right; }
-.card-preview { border-radius: 22px; overflow: hidden; box-shadow: 0 24px 50px -30px rgba(20,53,47,.6); aspect-ratio: 4 / 5; }
+.card-preview { border-radius: 22px; overflow: hidden; box-shadow: 0 24px 50px -30px rgba(0,0,0,.6); aspect-ratio: 4 / 5; margin: 0 auto; max-width: 100%; transition: max-width .3s ease; }
+.card-preview.cp-square { aspect-ratio: 1; max-width: 88%; }
+.card-preview.cp-story { aspect-ratio: 9 / 16; max-width: 62%; }
+.card-studio-sw, .swatches { flex-wrap: wrap; }
+#app .swatches[aria-label="Background"] { display: grid; grid-template-columns: repeat(4, 48px); justify-content: space-between; row-gap: 12px; margin-top: 8px; }
+.cs-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.cs-row .chip { min-height: 44px; padding: 0 16px; }
+.cs-row .chip[aria-pressed="true"] { background: var(--green); color: var(--cream, #F8F3EA); border-color: var(--green); }
+.cs-two { display: grid; grid-template-columns: 1fr auto; gap: 14px; margin-top: 14px; }
+.vc-share { position: absolute; right: 14px; bottom: 14px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.14); color: #F8F3EA; border: 1px solid rgba(255,255,255,.22); backdrop-filter: blur(6px); }
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 12px; align-items: center; min-height: 52px; padding: 12px 0; font: 700 16px/1.35 Manrope, sans-serif; color: var(--ink); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; font: 400 24px/1 Manrope, sans-serif; color: var(--peach-ink, #C46A3C); transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { margin: 0 0 16px; color: var(--soft); font-size: 15.5px; line-height: 1.6; }
+.faq-hero { padding: 22px; border-radius: 22px; background: radial-gradient(90% 80% at 100% 0%, rgba(232,165,119,.28), rgba(232,165,119,0) 60%), linear-gradient(160deg, #1F5248, #0F2A24); color: #F8F3EA; }
+.faq-hero h2 { margin: 0 0 6px; font: 800 24px/1.2 Manrope, sans-serif; color: #F8F3EA; }
+.faq-hero p { margin: 0; color: rgba(248,243,234,.82); line-height: 1.55; }
 .card-preview canvas { width: 100%; height: 100%; display: block; }
 .swatches { display: flex; gap: 12px; justify-content: center; }
 .swatches button { position: relative; width: 48px; height: 48px; border-radius: 50%; border: 3px solid var(--bg); box-shadow: 0 0 0 1.5px var(--line); padding: 0; }

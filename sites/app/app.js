@@ -1,6 +1,6 @@
 /* Always App. A free web app to share Jesus and walk with people.
    Everything personal (prayer list, notes, people, highlights) stays on this device.
-   Only a response someone chooses to send, with their consent, leaves the device, to the Always database in Sydney. */
+   Only a response someone chooses to send, with their consent, leaves the device, to the Always database. */
 (() => {
 'use strict';
 const AC = window.AC;
@@ -16,7 +16,7 @@ const WORDING = 'always-app-2026-11-v1';
 
 // ---------------------------------------------------------------- State (on this device only)
 const KEY = 'always.app.v1';
-const blank = () => ({ onboarded: false, settings: { tr: 'web', size: 20, theme: 'auto', name: '' }, pos: { b: 43, c: 1 }, hl: {}, notes: {}, marks: [], plans: {}, courses: {}, people: [], prayer: [], fieldNotes: [], points: [], connected: [], testimony: { before: '', meet: '', since: '' } });
+const blank = () => ({ onboarded: false, settings: { tr: 'web', size: 20, theme: 'dark', name: '' }, pos: { b: 43, c: 1 }, hl: {}, notes: {}, marks: [], plans: {}, courses: {}, people: [], prayer: [], fieldNotes: [], points: [], connected: [], testimony: { before: '', meet: '', since: '' } });
 let S;
 try { S = Object.assign(blank(), JSON.parse(localStorage.getItem(KEY) || '{}')); } catch { S = blank(); }
 S.settings = Object.assign(blank().settings, S.settings);
@@ -36,7 +36,7 @@ const P = {
   moon: '<path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10z"/>', music: '<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
   user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>', search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
   left: '<path d="M15 5l-7 7 7 7"/>', right: '<path d="M9 5l7 7-7 7"/>', down: '<path d="M6 9l6 6 6-6"/>',
-  share: '<path d="M12 3v13M7 8l5-5 5 5M5 14v6h14v-6"/>', check: '<path d="M5 12l5 5 9-10"/>', plus: '<path d="M12 5v14M5 12h14"/>',
+  share: '<path d="M12 3v13M7 8l5-5 5 5M5 14v6h14v-6"/>', help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/>', mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', check: '<path d="M5 12l5 5 9-10"/>', plus: '<path d="M12 5v14M5 12h14"/>',
   x: '<path d="M6 6l12 12M18 6L6 18"/>', ext: '<path d="M7 17L17 7M9 7h8v8"/>', type: '<path d="M4 7V5h16v2M9 19h6M12 5v14"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
   lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>', bookmark: '<path d="M6 3h12v18l-6-4-6 4z"/>',
   pen: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>', copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
@@ -174,7 +174,7 @@ on(/^\/$/, async () => {
     <div class="row between" style="padding-top:8px"><div class="logo">${LOGO}</div><a class="icon-btn" href="#/me" aria-label="Me and settings">${ic('user')}</a></div>
     <div class="hello stack-s"><p class="k">${greet}${name}</p><h1 class="big-serif">Who will you walk with today?</h1></div>
     <div class="sp"></div>
-    <a class="verse-card tod-${hr < 6 || hr >= 20 ? 'night' : hr < 10 ? 'dawn' : hr < 17 ? 'day' : 'dusk'}" href="#/bible?ref=${encodeURIComponent(votdRef())}" style="text-decoration:none;display:block"><p class="k" style="color:#E8A577">Verse of the day</p><p class="serif" data-votd>…</p><span class="ref" data-votd-ref></span></a>
+    <div style="position:relative"><a class="verse-card tod-${hr < 6 || hr >= 20 ? 'night' : hr < 10 ? 'dawn' : hr < 17 ? 'day' : 'dusk'}" href="#/bible?ref=${encodeURIComponent(votdRef())}" style="text-decoration:none;display:block"><p class="k" style="color:#E8A577">Verse of the day</p><p class="serif" data-votd>…</p><span class="ref" data-votd-ref></span></a><a class="vc-share" href="#/card" onclick="window.CARD=null" aria-label="Share the verse of the day">${ic('share', 19)}</a></div>
     <div class="sp2"></div>
     <div class="quick">
       <a class="card peach" href="#/gather"><span class="ico" style="background:rgba(30,42,38,.1);color:var(--night)">${ic('qr')}</span><div><p class="h3">Start a response point</p><p class="note" style="color:#5A3A22">Show a QR code</p></div></a>
@@ -189,6 +189,7 @@ on(/^\/$/, async () => {
     <div class="sp2"></div>
     <p class="h2">Ready for a conversation</p><div class="sp"></div>
     <div class="list">
+      <a class="li" href="#/invite" onclick="window.INVITE=null"><span class="ico sand">${ic('send')}</span><div class="grow"><div class="t">Invite a friend to church</div><div class="s">A personal message, ready to send</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/gather/moment"><span class="ico peach">${ic('flame')}</span><div class="grow"><div class="t">Leading the moment</div><div class="s">When someone says yes to Jesus</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">Conversation guides</div><div class="s">No faith, Muslim, Buddhist, and more</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/connect"><span class="ico sand">${ic('church')}</span><div class="grow"><div class="t">Find a church</div><div class="s">A next step near home</div></div><span class="chev">${ic('right', 18)}</span></a>
@@ -280,44 +281,96 @@ function noteSheet(k, label) {
   if ($('#note-d')) $('#note-d').onclick = () => { delete S.notes[k]; save(); closeSheet(); route(); };
 }
 function verseImage(text, label) { window.CARD = { kind: 'verse', text, label: `${label} · ${TR[S.settings.tr].name}` }; closeSheet(); location.hash = '#/card'; }
+const LOGO_D = ["M1030.8,608.4C1046.2,605.2 1061.0,596.1 1069.8,584.4C1077.9,573.6 1081.9,564.7 1101.5,514.5C1111.9,488.1 1128.3,446.2 1138.0,421.5C1147.8,396.8 1157.6,371.4 1160.0,365.2C1166.0,349.0 1167.7,350.0 1134.5,350.0C1109.8,350.0 1108.2,350.1 1106.6,351.9C1105.6,353.0 1101.7,362.3 1097.9,372.7C1094.1,383.0 1084.8,408.5 1077.3,429.2C1069.7,450.0 1063.2,467.0 1062.9,467.0C1062.5,467.0 1059.3,459.7 1055.7,450.8C1050.1,437.0 1029.3,386.6 1018.0,359.7C1016.3,355.5 1014.0,351.5 1013.0,351.0C1010.4,349.6 958.5,349.7 955.9,351.0C954.9,351.6 954.0,352.9 954.0,353.8C954.0,354.8 957.1,362.3 960.8,370.5C964.6,378.8 970.4,391.6 973.7,399.0C977.1,406.4 984.1,421.9 989.3,433.5C994.5,445.1 1006.2,470.9 1015.3,491.0C1024.3,511.1 1032.8,529.9 1034.0,532.8L1036.3,538.1L1033.5,544.6C1030.1,552.5 1024.9,557.3 1017.8,559.0C1011.6,560.5 1006.1,559.8 997.5,556.4C992.7,554.5 990.3,554.0 989.2,554.7C987.3,555.8 972.0,589.2 971.3,593.7C970.8,596.5 971.2,597.1 974.1,598.9C979.3,602.1 993.4,606.9 1001.9,608.4C1012.2,610.3 1021.6,610.3 1030.8,608.4ZM290.8,550.7C302.4,547.4 313.4,541.1 323.4,531.9L329.0,526.8L329.0,535.7C329.0,549.8 327.2,549.0 357.1,549.0C380.7,549.0 382.1,548.9 384.0,547.0C386.0,545.0 386.0,543.7 386.0,483.1C386.0,444.5 385.6,418.2 384.9,413.3C383.4,401.9 378.4,387.9 373.0,379.6C358.9,358.1 334.9,346.8 299.9,345.3C277.1,344.3 257.2,348.0 239.4,356.4C226.2,362.7 215.0,370.6 215.0,373.6C215.0,375.3 233.4,404.2 235.2,405.3C236.3,406.0 239.8,404.8 248.1,400.7C261.5,394.2 269.0,392.1 282.1,391.3C303.0,390.0 319.1,396.4 325.2,408.4C327.2,412.2 329.2,428.0 327.7,428.0C327.4,428.0 322.5,426.5 316.8,424.6C295.5,417.5 273.2,416.4 252.2,421.5C224.5,428.2 206.5,443.5 198.5,467.1C196.0,474.4 195.6,477.0 195.6,487.5C195.5,497.4 195.9,500.8 197.9,507.0C204.9,529.9 224.5,546.4 251.1,552.0C257.5,553.3 284.5,552.4 290.8,550.7ZM861.0,550.9C872.2,548.3 882.3,543.1 892.6,534.8C897.2,531.0 901.1,528.0 901.2,528.0C901.4,528.0 901.5,532.1 901.5,537.1C901.5,544.9 901.8,546.4 903.4,547.6C905.0,548.7 910.3,549.0 930.1,549.0C954.6,549.0 954.9,549.0 956.4,546.8C957.8,544.8 958.0,537.0 958.0,482.3C958.0,443.7 957.6,417.2 956.9,412.3C953.3,385.7 940.3,366.7 917.8,355.4C898.3,345.6 866.7,342.3 840.2,347.5C824.4,350.5 804.6,358.9 792.8,367.6C786.6,372.0 786.6,374.0 792.8,383.3C795.5,387.3 799.8,394.0 802.4,398.2C805.1,402.5 807.8,406.0 808.6,406.0C809.4,406.0 813.9,404.0 818.7,401.6C837.7,392.0 856.9,388.8 874.3,392.5C891.6,396.1 901.0,406.8 901.0,422.7C901.0,425.6 900.9,428.0 900.7,428.0C900.5,428.0 896.4,426.6 891.5,425.0C877.3,420.2 867.3,418.6 851.0,418.6C829.0,418.7 812.5,423.2 797.0,433.5C785.0,441.5 775.9,453.5 771.3,467.4C769.1,474.3 768.7,477.3 768.7,488.0C768.6,499.1 768.9,501.4 771.4,508.5C772.9,512.9 775.7,519.0 777.5,522.0C781.3,528.2 790.3,537.2 796.6,541.2C802.7,545.1 814.3,549.8 821.8,551.4C832.1,553.6 850.8,553.4 861.0,550.9ZM1262.7,550.6C1300.7,542.3 1323.0,511.4 1316.6,476.0C1314.6,464.6 1309.4,454.4 1302.1,447.1C1291.7,436.8 1278.0,430.6 1246.5,422.0C1221.5,415.1 1216.0,411.8 1216.0,403.5C1216.0,396.2 1221.1,392.0 1232.5,389.9C1243.3,387.9 1260.8,392.6 1275.7,401.7C1279.6,404.0 1283.8,406.0 1284.9,406.0C1286.2,406.0 1287.9,404.6 1289.4,402.2C1299.6,386.1 1307.0,373.7 1307.0,372.5C1307.0,369.2 1289.4,357.6 1276.7,352.6C1250.2,342.1 1217.5,342.8 1194.5,354.3C1173.0,365.0 1160.8,382.2 1159.4,403.8C1158.2,420.7 1162.9,434.0 1173.9,445.0C1184.4,455.4 1195.2,460.2 1237.6,473.0C1256.3,478.7 1263.4,486.5 1258.6,495.8C1254.9,503.0 1247.9,506.0 1235.0,506.0C1219.7,506.0 1204.7,500.8 1187.4,489.5C1182.2,486.1 1177.9,484.0 1176.6,484.2C1175.2,484.4 1171.1,489.3 1163.8,499.5C1149.3,519.8 1149.9,518.3 1154.1,522.6C1158.9,527.6 1172.1,536.3 1182.1,540.9C1192.1,545.6 1208.7,550.6 1218.5,551.9C1228.5,553.3 1254.1,552.5 1262.7,550.6ZM460.6,547.6C462.5,546.2 462.5,543.5 462.8,411.9C463.0,292.7 462.9,277.4 461.5,275.3L460.0,273.0L434.1,273.0C411.9,273.0 408.1,273.2 407.0,274.6C405.9,275.8 405.7,292.4 405.8,357.3C406.0,558.6 405.9,545.7 407.6,547.4C409.8,549.7 457.5,549.8 460.6,547.6ZM585.3,547.8C586.2,547.1 590.1,538.0 593.9,527.5C618.9,459.0 626.2,439.4 627.0,438.6C627.6,438.0 628.0,437.9 628.0,438.2C628.0,438.5 633.7,454.5 640.6,473.7C647.5,492.8 656.1,516.8 659.7,527.0C663.5,537.7 667.1,546.2 668.2,547.2C670.0,548.8 672.8,549.0 693.5,549.0C715.1,549.0 716.8,548.9 718.4,547.1C719.4,546.0 726.9,525.4 735.0,501.3C743.2,477.2 757.7,434.3 767.4,405.9C783.6,358.1 784.8,354.1 783.4,352.1C781.9,350.1 781.3,350.0 756.1,350.0C732.9,350.0 730.0,350.2 728.1,351.8C726.7,353.0 722.8,363.7 715.1,388.0C709.1,407.0 701.4,431.2 698.0,441.9C694.6,452.5 691.5,460.8 691.1,460.4C690.6,459.9 687.5,451.4 684.0,441.5C675.5,417.0 657.5,366.0 654.4,357.8C653.0,354.2 651.2,350.9 650.4,350.6C649.5,350.3 639.4,350.0 627.9,350.0C609.1,350.0 606.8,350.2 605.2,351.8C604.2,352.8 600.8,361.0 597.6,370.1C594.4,379.1 587.2,399.3 581.5,415.0C575.9,430.7 569.8,447.7 568.0,452.8C566.2,457.9 564.5,461.9 564.3,461.7C564.1,461.4 562.1,455.2 559.9,447.9C557.6,440.5 554.1,429.1 552.1,422.5C550.0,415.9 544.4,397.7 539.5,382.0C534.7,366.3 530.0,352.7 529.2,351.8C527.8,350.2 525.2,350.0 500.9,350.0C477.9,350.0 473.9,350.2 472.6,351.6C471.7,352.4 471.0,353.5 471.0,353.8C471.0,354.2 475.5,368.0 481.0,384.5C489.8,410.8 510.4,474.5 527.4,528.0C530.5,537.7 533.8,546.4 534.7,547.3C536.2,548.8 539.1,549.0 560.0,549.0C577.3,549.0 584.1,548.7 585.3,547.8ZM276.4,509.0C266.5,507.0 258.1,501.8 254.2,495.1C252.0,491.4 251.5,489.3 251.5,484.0C251.5,476.0 254.8,469.6 261.7,464.6C269.8,458.7 274.8,457.5 290.5,457.5C305.4,457.5 311.7,458.9 323.2,464.7L328.0,467.0L328.0,474.4C328.0,480.5 327.5,482.6 324.9,487.8C317.1,503.5 295.8,512.8 276.4,509.0ZM848.3,509.0C825.1,504.1 816.4,482.6 831.5,467.5C838.7,460.2 845.3,457.9 860.1,457.2C873.5,456.7 882.8,458.5 894.4,464.1L901.2,467.4L900.8,474.9C899.9,489.9 890.4,501.5 874.6,507.0C867.8,509.3 854.5,510.3 848.3,509.0Z", "M1434.5,553.6C1436.3,552.3 1436.4,549.1 1436.4,463.1L1436.5,374.0L1468.9,374.0C1497.7,374.0 1501.5,373.8 1503.2,372.3C1504.8,370.9 1505.0,368.9 1505.0,352.8C1505.0,342.3 1504.6,334.1 1504.0,332.9C1503.0,331.1 1501.5,331.0 1470.0,331.0L1437.0,331.0L1437.0,296.4C1437.0,274.5 1436.6,261.2 1436.0,259.9C1435.0,258.1 1433.7,258.0 1413.4,258.0L1392.0,258.0L1391.0,260.6C1390.4,262.0 1390.0,277.4 1390.0,297.1L1390.0,331.0L1357.7,331.0C1333.9,331.0 1325.1,331.3 1324.2,332.2C1323.3,333.1 1323.0,339.0 1323.0,352.7C1323.0,370.7 1323.1,372.0 1324.9,373.0C1326.2,373.6 1338.6,374.0 1358.4,374.0L1390.0,374.0L1390.0,462.5C1390.0,549.7 1390.0,551.0 1392.0,553.0C1393.9,554.9 1395.3,555.0 1413.3,555.0C1428.1,555.0 1433.1,554.7 1434.5,553.6Z", "M571.5,696.5C575.6,694.9 580.1,690.8 582.2,686.7C584.3,682.8 584.5,680.9 584.8,661.8L585.2,641.0L578.1,641.0L571.0,641.0L571.0,658.5C571.0,681.8 569.7,685.0 560.1,685.0C557.3,685.0 555.3,684.3 553.3,682.6L550.5,680.2L550.0,660.8L549.5,641.5L542.8,641.2L536.0,640.9L536.0,660.2C536.0,670.8 536.5,681.2 537.1,683.3C539.0,690.3 545.7,696.1 553.6,697.8C557.5,698.6 568.2,697.8 571.5,696.5ZM1207.0,696.8C1219.8,693.0 1228.4,678.0 1225.8,664.0C1223.2,649.9 1213.1,641.2 1198.5,640.2C1185.8,639.4 1175.5,645.3 1170.0,656.5C1166.5,663.7 1166.6,675.4 1170.3,682.6C1177.1,695.9 1191.4,701.4 1207.0,696.8ZM329.8,696.8C330.6,696.0 331.0,692.1 331.0,685.8L331.0,676.0L342.0,676.0L353.0,676.0L353.0,670.0L353.0,664.0L342.0,664.0L331.0,664.0L331.0,658.5L331.0,653.0L343.0,653.0L355.0,653.0L355.0,647.0L355.0,641.0L336.0,641.0L317.0,641.0L317.0,668.8C317.0,684.1 317.3,697.0 317.7,697.3C318.8,698.5 328.5,698.1 329.8,696.8ZM456.6,696.1C480.0,685.5 479.4,651.0 455.6,642.1C436.5,635.0 417.1,646.9 415.3,666.8C414.2,678.8 420.9,690.7 431.5,695.6C438.0,698.7 450.4,698.9 456.6,696.1ZM660.7,697.1C661.6,697.0 662.0,692.6 662.2,680.2L662.5,663.5L673.9,679.8C680.1,688.7 686.1,696.5 687.1,697.1C688.2,697.6 691.4,698.0 694.3,697.8L699.5,697.5L699.8,669.2L700.0,641.0L693.0,641.0L686.0,641.0L685.8,657.6L685.5,674.2L674.1,657.6L662.6,640.9L655.6,641.2L648.5,641.5L648.2,668.5C647.9,699.1 647.8,698.6 655.5,697.6C657.7,697.3 660.1,697.1 660.7,697.1ZM799.5,694.5C806.0,691.5 810.6,687.1 813.1,681.5C817.3,671.9 816.5,661.1 810.8,652.6C808.6,649.1 806.2,647.3 801.2,644.8C794.6,641.5 794.5,641.5 779.5,641.5L764.5,641.5L764.2,668.9C764.0,690.2 764.3,696.6 765.2,697.2C765.9,697.7 772.8,697.8 780.5,697.5C792.2,697.0 795.3,696.5 799.5,694.5ZM885.7,696.7C885.8,696.6 886.7,694.2 887.7,691.5L889.6,686.5L900.5,686.5L911.4,686.5L913.4,691.7C914.7,695.0 916.2,697.1 917.5,697.4C921.3,698.5 929.1,698.0 929.5,696.8C929.8,696.1 925.1,683.4 919.2,668.5L908.3,641.5L900.9,641.2L893.4,640.9L888.0,654.2C885.1,661.5 880.0,674.0 876.8,681.9C872.2,693.2 871.2,696.5 872.2,697.2C873.2,697.9 884.9,697.4 885.7,696.7ZM1011.8,696.8C1012.7,695.9 1013.0,689.5 1013.0,674.3L1013.0,653.0L1021.0,653.0L1029.0,653.0L1029.0,647.0L1029.0,641.0L1005.8,641.2L982.5,641.5L982.2,647.2L981.9,652.9L990.2,653.2L998.5,653.5L998.1,674.3C997.9,689.7 998.1,695.4 999.0,696.5C1000.5,698.3 1010.1,698.5 1011.8,696.8ZM1101.9,697.4L1105.0,696.7L1104.8,669.1L1104.5,641.5L1097.5,641.5L1090.5,641.5L1090.2,668.8L1090.0,696.1L1092.2,697.0C1095.0,698.1 1097.8,698.2 1101.9,697.4ZM1308.0,680.5L1308.5,663.5L1320.6,680.5L1332.6,697.5L1338.6,697.6C1341.8,697.7 1345.0,697.3 1345.7,696.8C1346.5,696.1 1346.8,688.6 1346.7,668.7L1346.5,641.5L1339.5,641.5L1332.5,641.5L1332.0,657.5L1331.5,673.5L1323.4,662.0C1319.0,655.7 1313.8,648.3 1312.0,645.7L1308.6,640.9L1301.5,641.2L1294.5,641.5L1294.2,668.4C1294.0,687.9 1294.3,695.6 1295.1,696.7C1296.0,697.7 1298.0,698.0 1301.9,697.8L1307.5,697.5L1308.0,680.5ZM436.8,683.5C433.6,681.7 430.4,676.7 429.5,671.9C427.9,663.1 434.0,654.2 442.4,653.3C457.6,651.5 465.7,670.1 454.5,681.0C451.5,683.9 450.2,684.4 445.3,684.7C441.4,684.9 438.6,684.5 436.8,683.5ZM778.4,683.7C778.2,683.0 778.1,675.9 778.2,668.0L778.5,653.5L785.2,653.6C796.1,653.7 801.0,658.6 801.0,669.7C801.0,674.9 800.6,676.3 798.3,679.1C796.8,680.8 794.1,682.9 792.3,683.6C788.1,685.4 779.1,685.4 778.4,683.7ZM1188.6,683.1C1178.2,676.2 1179.1,660.2 1190.2,654.4C1197.1,650.8 1207.0,654.2 1210.4,661.3C1214.0,669.1 1211.0,679.4 1204.0,683.1C1199.5,685.6 1192.3,685.5 1188.6,683.1ZM894.7,674.2C894.1,673.2 900.1,657.7 900.8,658.5C902.0,659.6 906.8,673.9 906.2,674.4C905.4,675.3 895.2,675.1 894.7,674.2Z"];
 const CARD_STYLES = {
-  forest: { bg: ['#1F5248', '#12302A'], glow: '#2C6A5C', ink: '#F8F3EA', accent: '#E8A577', label: 'Forest' },
-  dawn: { bg: ['#F2B48A', '#E08E5E'], glow: '#F8D2B4', ink: '#1E2A26', accent: '#1B4740', label: 'Dawn' },
-  paper: { bg: ['#FBF6EC', '#EFE5D3'], glow: '#FFFFFF', ink: '#1B4740', accent: '#A4562A', label: 'Paper' },
-  night: { bg: ['#22302B', '#101A17'], glow: '#34463F', ink: '#F8F3EA', accent: '#F8D486', label: 'Night' },
+  forest: { bg: ['#1F5248', '#0F2A24'], glow: '#2F6E5F', ink: '#F8F3EA', accent: '#E8A577', pat: 'glow', label: 'Forest' },
+  night: { bg: ['#1B2A33', '#090F14'], glow: '#2A4152', ink: '#F8F3EA', accent: '#F8D486', pat: 'stars', label: 'Starlight' },
+  dawn: { bg: ['#F6C79A', '#D9785A'], glow: '#FFE6CC', ink: '#2A1A14', accent: '#7A2E1E', pat: 'rays', label: 'Sunrise' },
+  ocean: { bg: ['#1F4A63', '#0B1F2C'], glow: '#3A7390', ink: '#F4F8FA', accent: '#9FD3E6', pat: 'waves', label: 'Ocean' },
+  olive: { bg: ['#6D7A45', '#2B331B'], glow: '#9AA866', ink: '#F7F3E6', accent: '#F2D08A', pat: 'hills', label: 'Hills' },
+  paper: { bg: ['#FBF6EC', '#EADFCB'], glow: '#FFFFFF', ink: '#1B4740', accent: '#A4562A', pat: 'grain', label: 'Paper' },
+  lilac: { bg: ['#CDBEE3', '#6F5E93'], glow: '#F1EAFB', ink: '#1F1830', accent: '#3E2F66', pat: 'glow', label: 'Lilac' },
+  ember: { bg: ['#6E2A1C', '#1E0E0A'], glow: '#C2603A', ink: '#FBEFE6', accent: '#F2B48A', pat: 'glow', label: 'Ember' },
 };
+const CARD_FONTS = {
+  classic: { css: '400 {s}px Newsreader, Georgia, serif', label: 'Classic', k: 1 },
+  italic: { css: 'italic 400 {s}px Newsreader, Georgia, serif', label: 'Italic', k: 1.04 },
+  bold: { css: '800 {s}px Manrope, sans-serif', label: 'Bold', k: .86 },
+  clean: { css: '500 {s}px Inter, sans-serif', label: 'Clean', k: .86 },
+};
+const CARD_SIZES = { portrait: [1080, 1350, '4:5'], square: [1080, 1080, 'Square'], story: [1080, 1920, 'Story'] };
 function wrapText(x, text, maxW) { const words = text.split(/\s+/), lines = []; let line = ''; for (const w of words) { const t = line ? line + ' ' + w : w; if (x.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t; } if (line) lines.push(line); return lines; }
-function drawCard(cv, c) {
-  const W = 1080, H = 1350, x = cv.getContext('2d'), st = CARD_STYLES[c.style] || CARD_STYLES.forest; cv.width = W; cv.height = H;
-  const g = x.createLinearGradient(0, 0, W * .4, H); g.addColorStop(0, st.bg[0]); g.addColorStop(1, st.bg[1]); x.fillStyle = g; x.fillRect(0, 0, W, H);
-  const r = x.createRadialGradient(W * .92, H * .06, 10, W * .92, H * .06, 760); r.addColorStop(0, st.glow + 'AA'); r.addColorStop(1, st.glow + '00'); x.fillStyle = r; x.fillRect(0, 0, W, H);
-  x.strokeStyle = st.accent; x.globalAlpha = .9; x.lineWidth = 4; x.beginPath(); x.arc(W - 150, 210, 92, 0, Math.PI * 2); x.stroke(); x.globalAlpha = 1;
-  x.fillStyle = st.accent; x.beginPath(); x.arc(W - 150, 210, 28, 0, Math.PI * 2); x.fill();
-  x.fillStyle = st.ink; let y;
-  if (c.kind === 'invite') {
-    x.font = '800 40px Manrope, sans-serif'; x.fillStyle = st.accent; x.fillText(c.kicker || 'You’re invited', 100, 520);
-    x.fillStyle = st.ink; x.font = '400 104px Newsreader, Georgia, serif'; y = 650;
-    wrapText(x, c.title || 'Come as you are', W - 200).slice(0, 4).forEach((l) => { x.fillText(l, 100, y); y += 116; });
-    x.font = '600 40px Manrope, sans-serif'; y += 30;
-    [c.when, c.where].filter(Boolean).forEach((l) => { wrapText(x, l, W - 200).slice(0, 2).forEach((ll) => { x.fillText(ll, 100, y); y += 56; }); });
-  } else {
-    const text = `“${c.text}”`, size = text.length > 300 ? 44 : text.length > 200 ? 52 : text.length > 120 ? 62 : 74;
-    x.font = `400 ${size}px Newsreader, Georgia, serif`; const lines = wrapText(x, text, W - 200), lh = size * 1.3;
-    y = Math.max(360, (H - lines.length * lh) / 2 + 30); lines.forEach((l) => { x.fillText(l, 100, y); y += lh; });
-    x.font = '800 34px Manrope, sans-serif'; x.fillStyle = st.accent; x.fillText(c.label || '', 100, y + 36);
+function seeded(n) { let s = n; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+function cardPattern(x, st, W, H) {
+  const rnd = seeded(7);
+  if (st.pat === 'glow') {
+    const r = x.createRadialGradient(W * .9, H * .05, 10, W * .9, H * .05, W * .8); r.addColorStop(0, st.glow + 'BB'); r.addColorStop(1, st.glow + '00'); x.fillStyle = r; x.fillRect(0, 0, W, H);
+    const r2 = x.createRadialGradient(W * .05, H, 10, W * .05, H, W * .7); r2.addColorStop(0, st.glow + '55'); r2.addColorStop(1, st.glow + '00'); x.fillStyle = r2; x.fillRect(0, 0, W, H);
+  } else if (st.pat === 'stars') {
+    const r = x.createRadialGradient(W * .5, H * .1, 10, W * .5, H * .1, W); r.addColorStop(0, st.glow + 'AA'); r.addColorStop(1, st.glow + '00'); x.fillStyle = r; x.fillRect(0, 0, W, H);
+    for (let i = 0; i < 160; i++) { const sx = rnd() * W, sy = rnd() * H * .75, sr = rnd() * 2.4 + .4; x.globalAlpha = .25 + rnd() * .7; x.fillStyle = '#FFFFFF'; x.beginPath(); x.arc(sx, sy, sr, 0, Math.PI * 2); x.fill(); }
+    x.globalAlpha = 1;
+  } else if (st.pat === 'rays') {
+    x.save(); x.translate(W * .5, H * 1.02); x.globalAlpha = .13; x.fillStyle = st.glow;
+    for (let i = 0; i < 14; i++) { x.rotate(Math.PI / 14); x.beginPath(); x.moveTo(0, 0); x.lineTo(-60, -H * 1.4); x.lineTo(60, -H * 1.4); x.closePath(); x.fill(); }
+    x.restore(); x.globalAlpha = 1;
+    const r = x.createRadialGradient(W * .5, H, 10, W * .5, H, W * .7); r.addColorStop(0, st.glow + 'DD'); r.addColorStop(1, st.glow + '00'); x.fillStyle = r; x.fillRect(0, 0, W, H);
+  } else if (st.pat === 'waves') {
+    for (let k = 0; k < 5; k++) { const y0 = H * (.72 + k * .065); x.globalAlpha = .1 + k * .05; x.fillStyle = st.glow; x.beginPath(); x.moveTo(0, y0);
+      for (let px = 0; px <= W; px += 20) x.lineTo(px, y0 + Math.sin(px / (140 + k * 30) + k) * (18 + k * 4)); x.lineTo(W, H); x.lineTo(0, H); x.closePath(); x.fill(); }
+    x.globalAlpha = 1;
+  } else if (st.pat === 'hills') {
+    const r = x.createRadialGradient(W * .78, H * .18, 10, W * .78, H * .18, W * .5); r.addColorStop(0, st.accent + '88'); r.addColorStop(1, st.accent + '00'); x.fillStyle = r; x.fillRect(0, 0, W, H);
+    [[.78, .16], [.84, .22], [.9, .3]].forEach(([yy, a], k) => { x.globalAlpha = a + .1; x.fillStyle = k === 2 ? st.bg[1] : st.glow; x.beginPath(); x.moveTo(0, H);
+      for (let px = 0; px <= W; px += 30) x.lineTo(px, H * yy + Math.sin(px / (260 - k * 50) + k * 2) * (50 - k * 10)); x.lineTo(W, H); x.closePath(); x.fill(); });
+    x.globalAlpha = 1;
+  } else if (st.pat === 'grain') {
+    for (let i = 0; i < 9000; i++) { x.globalAlpha = rnd() * .06; x.fillStyle = rnd() > .5 ? '#000' : '#fff'; x.fillRect(rnd() * W, rnd() * H, 2, 2); }
+    x.globalAlpha = 1;
   }
-  x.fillStyle = st.ink; x.font = '800 40px Manrope, sans-serif'; x.fillText('always', 100, H - 100);
-  x.strokeStyle = st.accent; x.lineWidth = 7; x.lineCap = 'round'; x.beginPath(); x.moveTo(268, H - 140); x.lineTo(268, H - 92); x.moveTo(256, H - 128); x.lineTo(280, H - 128); x.stroke();
+}
+function drawLogo(x, st, cx, y, w) {
+  const s = w / 1328; x.save(); x.translate(cx - w / 2, y); x.scale(s, s); x.translate(-186, -250);
+  LOGO_D.forEach((d, i) => { x.fillStyle = i === 1 ? st.accent : st.ink; x.globalAlpha = i === 2 ? .8 : 1; x.fill(new Path2D(d), 'evenodd'); });
+  x.restore(); x.globalAlpha = 1;
+}
+function drawCard(cv, c) {
+  const [W, H] = CARD_SIZES[c.size] || CARD_SIZES.portrait, x = cv.getContext('2d'), st = CARD_STYLES[c.style] || CARD_STYLES.forest, f = CARD_FONTS[c.font] || CARD_FONTS.classic;
+  cv.width = W; cv.height = H;
+  const g = x.createLinearGradient(0, 0, W * .4, H); g.addColorStop(0, st.bg[0]); g.addColorStop(1, st.bg[1]); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  cardPattern(x, st, W, H);
+  const centre = c.align === 'center', pad = 100, X = centre ? W / 2 : pad; x.textAlign = centre ? 'center' : 'left'; x.textBaseline = 'alphabetic';
+  const logoH = 150, top = H > 1500 ? 260 : 140, bottom = H - logoH - (H > 1500 ? 160 : 80);
+  let lines, size, lh, block;
+  if (c.kind === 'invite') {
+    size = Math.round(104 * f.k); x.font = f.css.replace('{s}', size); lines = wrapText(x, c.title || 'Come as you are', W - pad * 2).slice(0, 4); lh = size * 1.12;
+    const meta = [c.when, c.where].filter(Boolean); block = 64 + lines.length * lh + meta.length * 58 + 20;
+    let y = Math.max(top, (top + bottom - block) / 2);
+    x.font = '800 40px Manrope, sans-serif'; x.fillStyle = st.accent; x.fillText(c.kicker || 'You’re invited', X, y + 40); y += 64 + size * .9;
+    x.fillStyle = st.ink; x.font = f.css.replace('{s}', size); lines.forEach((l) => { x.fillText(l, X, y); y += lh; });
+    x.font = '600 40px Manrope, sans-serif'; y += 10; meta.forEach((l) => { x.fillText(wrapText(x, l, W - pad * 2)[0], X, y); y += 58; });
+  } else {
+    const text = `“${c.text}”`, room = bottom - top - 90;
+    size = Math.round((text.length > 300 ? 46 : text.length > 200 ? 54 : text.length > 120 ? 64 : 78) * f.k * (H > 1500 ? 1.3 : H < 1200 ? .92 : 1));
+    for (;;) { x.font = f.css.replace('{s}', size); lines = wrapText(x, text, W - pad * 2); lh = size * 1.32; if (lines.length * lh <= room || size < 30) break; size -= 3; }
+    block = lines.length * lh + 70; let y = (top + bottom - block) / 2 + size;
+    x.fillStyle = st.ink; lines.forEach((l) => { x.fillText(l, X, y); y += lh; });
+    x.font = '800 32px Manrope, sans-serif'; x.fillStyle = st.accent; x.fillText(c.label || '', X, y + 24);
+  }
+  drawLogo(x, st, centre ? W / 2 : pad + 140, H - logoH - (H > 1500 ? 120 : 60), 280);
 }
 on(/^\/card$/, async () => {
-  const c = Object.assign({ kind: 'verse', style: 'forest', title: 'Come as you are', kicker: 'You’re invited', when: '', where: '' }, window.CARD || {});
-  if (c.kind === 'verse' && !c.text) { const p = await passage(votdRef()); c.text = p.text; c.label = `${p.label} · ${TR[S.settings.tr].name}`; }
+  const c = Object.assign({ kind: 'verse', style: 'forest', font: 'classic', size: 'portrait', align: 'left', title: 'Come as you are', kicker: 'You’re invited', when: '', where: '' }, window.CARD || {});
+  if (c.kind === 'verse' && !c.text) { const p = await passage(votdRef()); c.text = p.text; c.label = `${p.label} · ${TR[S.settings.tr].name}`; c.votd = true; }
   window.CARD = c;
-  try { await Promise.all([document.fonts.load('400 60px Newsreader'), document.fonts.load('800 30px Manrope'), document.fonts.load('600 30px Manrope')]); } catch {}
-  render(`${top('#/', 'Share card')}
+  try { await Promise.all(['400 60px Newsreader', 'italic 400 60px Newsreader', '800 30px Manrope', '600 30px Manrope', '500 30px Inter'].map((f) => document.fonts.load(f))); } catch {}
+  const chips = (key, obj, lab) => `<div class="cs-row" role="group" aria-label="${lab}">${Object.entries(obj).map(([k, v]) => `<button class="chip" data-${key}="${k}" aria-pressed="${c[key === 'fn' ? 'font' : key === 'sz' ? 'size' : 'align'] === k}">${Array.isArray(v) ? v[2] : v.label || v}</button>`).join('')}</div>`;
+  render(`${top('#/', c.votd ? 'Verse of the day' : 'Share card')}
     <div class="seg" role="group" aria-label="Card"><button data-k="verse" aria-pressed="${c.kind === 'verse'}">Verse</button><button data-k="invite" aria-pressed="${c.kind === 'invite'}">Invitation</button></div>
-    <div class="sp"></div><div class="card-preview"><canvas id="cv" aria-label="Preview of your card" role="img"></canvas></div><div class="sp"></div>
-    <div class="swatches" role="group" aria-label="Style">${Object.entries(CARD_STYLES).map(([k, v]) => `<button data-st="${k}" aria-pressed="${c.style === k}" aria-label="${v.label}" style="background:linear-gradient(150deg,${v.bg[0]},${v.bg[1]})"><i style="background:${v.accent}"></i></button>`).join('')}</div>
+    <div class="sp"></div><div class="card-preview cp-${c.size}"><canvas id="cv" aria-label="Preview of your card" role="img"></canvas></div><div class="sp"></div>
+    <p class="k">Background</p><div class="swatches" role="group" aria-label="Background">${Object.entries(CARD_STYLES).map(([k, v]) => `<button data-st="${k}" aria-pressed="${c.style === k}" aria-label="${v.label}" style="background:linear-gradient(150deg,${v.bg[0]},${v.bg[1]})"><i style="background:${v.accent}"></i></button>`).join('')}</div>
+    <p class="k" style="margin-top:14px">Font</p>${chips('fn', CARD_FONTS, 'Font')}
+    <p class="k" style="margin-top:14px">Shape</p>${chips('sz', CARD_SIZES, 'Shape')}<p class="k" style="margin-top:14px">Align</p>${chips('al', { left: 'Left', center: 'Centre' }, 'Align')}
     <div id="inv" class="stack-s" style="${c.kind === 'invite' ? '' : 'display:none'}"><div class="sp"></div>
       <div class="field"><label for="ci-t">Headline</label><input class="input" id="ci-t" maxlength="60" value="${esc(c.title)}"></div>
       <div class="field"><label for="ci-w">When</label><input class="input" id="ci-w" maxlength="60" placeholder="Tuesdays at 7pm" value="${esc(c.when)}"></div>
@@ -325,8 +378,9 @@ on(/^\/card$/, async () => {
     <div class="sp2"></div><button class="btn peach" id="c-share">${ic('share', 20)}Share card</button>
     <p class="note" style="margin-top:10px;text-align:center">Made on your phone. Nothing is uploaded.</p>`, { tab: 'home' });
   const cv = $('#cv'), redraw = () => drawCard(cv, window.CARD); redraw();
+  const pick = (attr, key) => $$(`[data-${attr}]`).forEach((b) => (b.onclick = () => { window.CARD[key] = b.dataset[attr]; $$(`[data-${attr}]`).forEach((y) => y.setAttribute('aria-pressed', y === b)); if (key === 'size') $('.card-preview').className = 'card-preview cp-' + b.dataset[attr]; redraw(); }));
+  pick('st', 'style'); pick('fn', 'font'); pick('sz', 'size'); pick('al', 'align');
   $$('[data-k]').forEach((b) => (b.onclick = () => { window.CARD.kind = b.dataset.k; route(); }));
-  $$('[data-st]').forEach((b) => (b.onclick = () => { window.CARD.style = b.dataset.st; $$('[data-st]').forEach((x) => x.setAttribute('aria-pressed', x === b)); redraw(); }));
   [['ci-t', 'title'], ['ci-w', 'when'], ['ci-p', 'where']].forEach(([id, k]) => $('#' + id)?.addEventListener('input', (e) => { window.CARD[k] = e.target.value; redraw(); }));
   $('#c-share').onclick = () => cv.toBlob(async (blob) => {
     const name = window.CARD.kind === 'invite' ? 'invitation.png' : 'verse.png', file = new File([blob], name, { type: 'image/png' });
@@ -580,7 +634,7 @@ on(/^\/gather$/, () => {
       <a class="li" href="#/gather/people"><span class="ico sand">${ic('walk')}</span><div class="grow"><div class="t">People you’ve connected</div><div class="s">${S.connected.length ? `${S.connected.length} so far` : 'None yet'}</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/walk/notes"><span class="ico">${ic('note')}</span><div class="grow"><div class="t">Field notes</div><div class="s">A quick note after a conversation</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div><div class="sp2"></div>
-    <div class="card sage"><div class="row"><span class="ico green">${ic('lock')}</span><p class="p grow" style="color:var(--ink)">Details go only to the Always Foundation in Sydney, with the person’s consent, so a church nearby can welcome them. Never sold.</p></div></div>`, { tab: 'gather' });
+    <div class="card sage"><div class="row"><span class="ico green">${ic('lock')}</span><p class="p grow" style="color:var(--ink)">Details go only to the Always Foundation, with the person’s consent, so a church nearby can welcome them. Never sold.</p></div></div>`, { tab: 'gather' });
 });
 on(/^\/gather\/point$/, () => {
   render(`${top('#/gather', 'New response point')}<p class="p">Give it a name so you can remember it, like “Friday street team” or “Youth camp”. The name stays on your phone.</p><div class="sp2"></div>
@@ -638,7 +692,7 @@ function respondFlow({ mode, kind }) {
       <h1 class="big-serif" style="font-size:36px">${kind === 'baptism' ? 'Ready to be baptised?' : kind === 'yes' ? 'You said yes to Jesus. You won’t walk alone.' : 'Take a next step with Jesus.'}</h1>
       <p class="p" style="font-size:16.5px">${kind === 'baptism' ? 'Baptism is a joyful step of following Jesus. Tell us a little about you, and choose who you’d like to help you take it.' : kind === 'yes' ? 'This is the best decision anyone can make. We’d love to help you find a church nearby to welcome you and walk with you.' : 'Whether you’re curious, have questions, or are ready to find a church, we’d love to help.'}</p>
       <div class="card sage"><p class="scripture" data-scripture="${kind === 'baptism' ? 'ACT 2 38' : kind === 'yes' ? '2CO 5 17' : 'MAT 11 28'}"></p></div>
-      <button class="btn peach" id="r-go">Get started</button><p class="note" style="text-align:center">About a minute. Your details are kept in Australia and never sold.</p></div>`);
+      <button class="btn peach" id="r-go">Get started</button><p class="note" style="text-align:center">About a minute. Your details are never sold.</p></div>`);
     $('#r-go').onclick = age;
   };
   const age = () => {
@@ -693,7 +747,7 @@ function respondFlow({ mode, kind }) {
       <div class="stack-s"><div class="check"><input type="checkbox" id="c-connect"><label for="c-connect"><b>Connect me.</b> I’m happy for the Always Foundation to keep my first name, mobile and suburb, so they can get in touch and help me find a church or ministry near me.</label></div>
       <div class="check"><input type="checkbox" id="c-nearby" checked><label for="c-nearby"><b>Try the next one nearby</b> if the first church can’t welcome me.</label></div>
       ${u13 ? '<div class="check"><input type="checkbox" id="c-assent"><label for="c-assent"><b>My child agrees too.</b> I’ve talked with my child and they’re happy to be connected with a youth group.</label></div>' : ''}</div>
-      <p class="note" style="margin-top:12px">Details are kept in Australia and never sold. We delete them after 90 days. To change your mind any time, email hello@alwaysfoundation.org and we’ll delete them straight away.</p>
+      <p class="note" style="margin-top:12px">Details are never sold. We delete them after 90 days. To change your mind any time, email hello@alwaysfoundation.org and we’ll delete them straight away.</p>
       <p class="err" id="c-err" role="alert"></p><div class="row"><button class="btn light" id="c-back">Back</button><button class="btn peach" id="c-send" disabled>Send</button></div>`, back);
     const upd = () => ($('#c-send').disabled = !$('#c-connect').checked || (u13 && !$('#c-assent').checked));
     ['c-connect', 'c-assent'].forEach((id) => $('#' + id)?.addEventListener('change', upd));
@@ -719,7 +773,7 @@ function respondFlow({ mode, kind }) {
         ${adult ? `<div class="check"><input type="checkbox" id="b-tgh"><label for="b-tgh"><b>${esc(partner.name)}.</b> Share my first name, mobile and suburb with ${esc(partner.name)}, so their team can talk with me about baptism.</label></div>` : ''}
         <div class="check" id="b-near-w" style="display:none"><input type="checkbox" id="b-near" checked><label for="b-near"><b>Try the next church nearby</b> if the first can’t help.</label></div>
         ${u13 ? '<div class="check"><input type="checkbox" id="c-assent"><label for="c-assent"><b>My child agrees too.</b> I’ve talked with my child and they’d like to talk with a church about baptism.</label></div>' : ''}</div>
-      <p class="note" style="margin-top:12px">Your faith is personal, so nothing is shared without your tick. Details are kept in Australia, never sold, and deleted after 90 days. To change your mind, email hello@alwaysfoundation.org.</p>
+      <p class="note" style="margin-top:12px">Your faith is personal, so nothing is shared without your tick. Details are never sold, and are deleted after 90 days. To change your mind, email hello@alwaysfoundation.org.</p>
       <p class="err" id="c-err" role="alert"></p><div class="row"><button class="btn light" id="c-back">Back</button><button class="btn peach" id="c-send" disabled>Send</button></div>`, back);
     const upd = () => {
       const ch = $('#b-church').checked, tg = !!$('#b-tgh')?.checked;
@@ -843,6 +897,84 @@ on(/^\/connect$/, () => {
 });
 
 // ---------------------------------------------------------------- Me
+const INVITE_TO = [
+  ['church', 'Church on Sunday', 'church'],
+  ['alpha', 'An Alpha course', 'Alpha'],
+  ['youth', 'Youth night', 'youth'],
+  ['group', 'A small group', 'my small group'],
+  ['christmas', 'Christmas or Easter', 'our Christmas service'],
+  ['coffee', 'Coffee, then church', 'church'],
+];
+const INVITE_TIPS = [
+  ['Pray first', 'Ask God who to invite, and pray for them by name before you ask.'],
+  ['Make it personal', 'A message from you means more than a flyer. Say why it matters to you.'],
+  ['Go together', 'Offer to meet them out the front, pick them up, or sit with them.'],
+  ['Keep it light', 'Make it easy to say no. A warm “maybe next time” keeps the door open.'],
+  ['Follow up', 'Afterwards, ask what they thought and listen. Then keep walking with them.'],
+];
+function inviteText(v) {
+  const it = INVITE_TO.find((x) => x[0] === v.to) || INVITE_TO[0], who = v.name ? `Hey ${v.name}! ` : 'Hey! ';
+  const what = v.to === 'coffee' ? `Want to grab a coffee and then come to church with me` : `Would you like to come to ${it[2]} with me`;
+  const where = [v.church && `at ${v.church}`, v.when].filter(Boolean).join(', ');
+  const tone = { warm: ` It’s a big part of my life and I’d love to share it with you. No pressure at all.`, casual: ` No pressure, just thought you might enjoy it.`, simple: '' }[v.tone || 'warm'];
+  return `${who}${what}${where ? ' ' + where : ''}?${tone}${v.pickup ? ' I’m happy to pick you up.' : ''}`;
+}
+on(/^\/invite$/, () => {
+  const v = Object.assign({ name: '', to: 'church', church: '', when: '', tone: 'warm', pickup: false }, window.INVITE || {}); window.INVITE = v;
+  render(`${top('#/', 'Invite a friend')}
+    <div class="faq-hero"><h2>Who could you invite?</h2><p>Many people who visit a church for the first time come because a friend asked. A personal invitation is one of the simplest ways to share Jesus.</p></div>
+    <div class="sp2"></div>
+    <div class="field"><label for="iv-n">Friend’s first name <span class="note">(optional)</span></label><input class="input" id="iv-n" maxlength="40" autocomplete="off" value="${esc(v.name)}"></div>
+    <div class="sp"></div><p class="k">Invite them to</p><div class="cs-row" role="group" aria-label="Invite them to">${INVITE_TO.map(([k, l]) => `<button class="chip" data-to="${k}" aria-pressed="${v.to === k}">${l}</button>`).join('')}</div>
+    <div class="sp"></div><div class="field"><label for="iv-c">Church or place</label><input class="input" id="iv-c" maxlength="60" placeholder="Hope Church, Parramatta" value="${esc(v.church)}"></div>
+    <div class="field"><label for="iv-w">When</label><input class="input" id="iv-w" maxlength="60" placeholder="this Sunday at 10am" value="${esc(v.when)}"></div>
+    <label class="check"><input type="checkbox" id="iv-p" ${v.pickup ? 'checked' : ''}><span>Offer to pick them up</span></label>
+    <div class="sp"></div><p class="k">Your message</p><div class="cs-row" role="group" aria-label="Tone">${[['warm', 'Warm'], ['casual', 'Casual'], ['simple', 'Short']].map(([k, l]) => `<button class="chip" data-tone="${k}" aria-pressed="${v.tone === k}">${l}</button>`).join('')}</div>
+    <div class="sp"></div><textarea class="input" id="iv-m" rows="4" aria-label="Your message">${esc(inviteText(v))}</textarea>
+    <div class="sp2"></div><div class="stack-s">
+      <a class="btn peach" id="iv-sms" href="#">${ic('send', 20)}Send as a text</a>
+      <button class="btn light" id="iv-share">${ic('share', 18)}Share another way</button>
+      <button class="btn light" id="iv-card">${ic('image', 18)}Make an invitation card</button></div>
+    <div class="sp2"></div><p class="h2">Inviting well</p><div class="sp"></div>
+    <div class="faq">${INVITE_TIPS.map(([t, d]) => `<details><summary>${t}</summary><p>${d}</p></details>`).join('')}</div>`, { tab: 'home' });
+  const msg = () => $('#iv-m').value, regen = () => { $('#iv-m').value = inviteText(v); };
+  $('#iv-n').oninput = (e) => { v.name = e.target.value.trim(); regen(); };
+  $('#iv-c').oninput = (e) => { v.church = e.target.value.trim(); regen(); };
+  $('#iv-w').oninput = (e) => { v.when = e.target.value.trim(); regen(); };
+  $('#iv-p').onchange = (e) => { v.pickup = e.target.checked; regen(); };
+  $$('[data-to]').forEach((b) => (b.onclick = () => { v.to = b.dataset.to; $$('[data-to]').forEach((y) => y.setAttribute('aria-pressed', y === b)); regen(); }));
+  $$('[data-tone]').forEach((b) => (b.onclick = () => { v.tone = b.dataset.tone; $$('[data-tone]').forEach((y) => y.setAttribute('aria-pressed', y === b)); regen(); }));
+  const remember = () => {
+    if (!v.name) return;
+    let p = S.people.find((x) => x.name.toLowerCase() === v.name.toLowerCase());
+    if (!p) { p = { id: uid(), name: v.name, since: Date.now(), steps: {}, log: [] }; S.people.unshift(p); }
+    p.log.unshift({ t: `Invited to ${(INVITE_TO.find((x) => x[0] === v.to) || INVITE_TO[0])[1].toLowerCase()}${v.when ? ', ' + v.when : ''}`, at: Date.now() });
+    if (!S.prayer.some((x) => x.name === v.name)) S.prayer.unshift({ id: uid(), name: v.name, note: 'Invited to church', at: Date.now() });
+    save();
+  };
+  $('#iv-sms').onclick = (e) => { e.preventDefault(); remember(); location.href = 'sms:?&body=' + encodeURIComponent(msg()); if (v.name) toast(`${v.name} is on your walk and prayer lists`); };
+  $('#iv-share').onclick = async () => { remember(); if (navigator.share) { try { await navigator.share({ text: msg() }); } catch {} } else { try { await navigator.clipboard.writeText(msg()); toast('Message copied'); } catch {} } };
+  $('#iv-card').onclick = () => { const it = INVITE_TO.find((x) => x[0] === v.to) || INVITE_TO[0]; window.CARD = { kind: 'invite', style: 'dawn', font: 'classic', size: 'portrait', align: 'left', kicker: v.name ? `${v.name}, you’re invited` : 'You’re invited', title: it[1], when: v.when, where: v.church }; location.hash = '#/card'; };
+});
+const APP_FAQ = [
+  ['What is the Always App?', 'A free app to help you share Jesus and walk with people. It has a Bible, short guides for real conversations, training from trusted ministries, a prayer list, and a simple way to help someone take their next step.'],
+  ['Why does it exist?', 'Jesus calls every one of us to make disciples (Matthew 28:19). Many Christians want to share their faith but don’t know where to start, and many people who say yes to Jesus never find a church family. The Always App helps with both: confidence to share, and a safe next step for everyone who responds.'],
+  ['Who is it for?', 'Every Christian. You don’t need to be a pastor or an evangelist. Use it with a friend over coffee, at a youth event, on the street or at church.'],
+  ['Is it free?', 'Yes, completely. No ads, no subscriptions and nothing to buy. It’s built by the Always Foundation, a Christian nonprofit, and shared freely with the whole Church.'],
+  ['Do I need an account?', 'No. Open it and start. Add it to your home screen and it works like any other app.'],
+  ['Where are my notes and prayer list kept?', 'Only on this phone. We can’t see your notes, highlights, people or prayers. You can download them as a file, move them to a new phone, or delete everything at any time.'],
+  ['What happens when someone says yes to Jesus?', 'Show them your QR code, or fill in the form together. With their permission, a church near them is told so someone can welcome them. They never need the app themselves. Nothing is shared without their tick, and young people are cared for with extra protection.'],
+  ['Which Bible translations are included?', 'The World English Bible and the King James Version, both free to use. You can read, listen, highlight, take notes and share any verse.'],
+  ['Can I share the verse of the day?', 'Yes. Tap the share button on today’s verse to make a card, choose a background, font and shape, and send it anywhere. It’s made on your phone and nothing is uploaded.'],
+  ['Where does the training come from?', 'From ministries we trust, like The Global Harvest, NeedGod.net, Two Ways to Live and Alpha. Each one is credited, and opens on their own site.'],
+  ['Does it work without internet?', 'Mostly, yes. Once you’ve opened it, the Bible chapters you’ve read, your notes and your prayer list are all available offline.'],
+  ['Who is behind it?', 'The Always Foundation, an independent, member-based Christian nonprofit that brings churches and ministries together for the Gospel. The app’s code is open source.'],
+];
+on(/^\/me\/faq$/, () => {
+  render(`${top('#/me', 'About the app')}<div class="faq-hero"><h2>Share Jesus. Walk with people.</h2><p>A free app for every Christian, so no one who says yes to Jesus walks alone.</p></div>
+    <div class="sp2"></div><div class="faq">${APP_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div>
+    <div class="sp2"></div><a class="btn light" href="mailto:hello@alwaysfoundation.org">${ic('mail', 18)}Ask us something else</a>`, { tab: 'home' });
+});
 on(/^\/me$/, () => {
   render(`${top('#/', 'Me')}<div class="card"><div class="field"><label for="mn">Your first name</label><input class="input" id="mn" value="${esc(S.settings.name)}" maxlength="40"></div></div><div class="sp2"></div>
     <p class="k">Reading</p><div class="sp"></div><div class="card">
@@ -854,6 +986,7 @@ on(/^\/me$/, () => {
       <label class="li" for="imp" style="cursor:pointer"><span class="ico sand">${ic('share')}</span><div class="grow"><div class="t">Restore from a file</div><div class="s">Bring your data from another phone</div></div><input type="file" id="imp" accept="application/json" class="sr"></label>
       <button class="li" id="del"><span class="ico peach">${ic('trash')}</span><div class="grow"><div class="t">Delete everything</div><div class="s">Clears this app on this phone</div></div></button></div>
     <div class="sp2"></div><p class="k">About</p><div class="sp"></div><div class="list">
+      <a class="li" href="#/me/faq"><span class="ico">${ic('help')}</span><div class="grow"><div class="t">About the Always App</div><div class="s">What it is, why it exists, and common questions</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="https://alwaysfoundation.org/#/privacy" target="_blank" rel="noopener"><div class="grow"><div class="t">Privacy</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="https://alwaysfoundation.org/#/terms" target="_blank" rel="noopener"><div class="grow"><div class="t">Terms</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="mailto:hello@alwaysfoundation.org"><div class="grow"><div class="t">Contact us</div><div class="s">hello@alwaysfoundation.org</div></div><span class="chev">${ic('right', 18)}</span></a></div>

@@ -107,10 +107,10 @@ STEPS_APP = [
 APP = f'''<section class="page-hero ap-hero"><div class="wrap ap-hero-in">
   <div class="ap-copy">{PR.mod_icon("app", "mi-lg")}<p class="pl-kick">Always App</p>
   <h1>Share Jesus.<br>Walk with people.</h1>
-  <p>A Bible, God&rsquo;s story in seven languages, training and a gentle way to walk with people who say yes. Free, and nothing to download.</p>
+  <p>A free app for every Christian: the Bible, training to share your faith, invitations and verse cards to send, and a safe next step for everyone who says yes. Nothing to download.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="https://app.alwaysfoundation.org">Open the Always App</a><a class="btn btn-ghost" href="#/docs/app">How it works</a></div>
   <div class="ap-qr"><span>{AP_QR}</span><p>On a computer? Scan to open it on your phone.</p></div></div>
-  <div class="ap-stage" aria-hidden="true">{ph('story-zh', '', 'ap-l')}{ph('home', '', 'ap-c')}{ph('card', '', 'ap-r')}</div>
+  <div class="ap-stage" aria-hidden="true">{ph('splash', '', 'ap-l')}{ph('home-dark', '', 'ap-c')}{ph('card', '', 'ap-r')}</div>
 </div></section>
 <section class="sec pg-sec ap-journey"><div class="wrap">
   <h2 class="pg-h rv">From hello to home.</h2>
@@ -119,14 +119,16 @@ APP = f'''<section class="page-hero ap-hero"><div class="wrap ap-hero-in">
 </div></section>
 <section class="sec pg-sec ap-rows"><div class="wrap">
   <div class="ap-row rv"><div class="ap-row-art ap-duo">{ph('bible', 'The Bible in light mode')}{ph('bible-dark', 'The Bible in dark mode')}</div>
-    <div class="ap-row-tx"><h2>A Bible that feels like home.</h2><p>Read, highlight, bookmark and listen, with notes kept on your phone. It follows your phone&rsquo;s light or dark setting, or choose Light, Warm or Dark.</p></div></div>
-  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('card', 'Making an invitation card')}</div>
-    <div class="ap-row-tx"><h2>Share cards in seconds.</h2><p>Turn a verse or an invitation into a beautiful card in four styles, ready to send in any message. It&rsquo;s made on your phone and nothing is uploaded.</p></div></div>
-  <div class="ap-row rv"><div class="ap-row-art">{ph('sent', 'Day 3 of the Sent plan')}</div>
+    <div class="ap-row-tx"><h2>A Bible that feels like home.</h2><p>Read, highlight, bookmark and listen, with notes kept on your phone. Dark by default, easy on the eyes at night, or choose Light or Warm.</p></div></div>
+  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('card', 'Sharing the verse of the day as a card')}</div>
+    <div class="ap-row-tx"><h2>Share the verse of the day.</h2><p>One tap turns today&rsquo;s verse, or any verse, into a beautiful card. Choose from eight backgrounds, four fonts and three shapes for posts, messages and stories. It&rsquo;s made on your phone and nothing is uploaded.</p></div></div>
+  <div class="ap-row rv"><div class="ap-row-art">{ph('invite', 'Inviting a friend to church')}</div>
+    <div class="ap-row-tx"><h2>Invite a friend to church.</h2><p>Many people visit a church for the first time because a friend asked. Choose what to invite them to, and the app writes a warm, personal message to send by text, with an invitation card to match. Your friend joins your prayer list so you can keep walking with them.</p></div></div>
+  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('sent', 'Day 3 of the Sent plan')}</div>
     <div class="ap-row-tx"><h2>Sent: 30 days for everyday evangelists.</h2><p>Each day has a reading, a verse to keep and one small step of faith, from praying for three people by name to inviting a friend to church. Turn the day&rsquo;s verse into a card in one tap.</p></div></div>
-  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('library', 'The training library')}</div>
-    <div class="ap-row-tx"><h2>The best training, in one place.</h2><p>Our partners The Global Harvest and NeedGod.net, alongside well-loved resources like Two Ways to Live, Steps to Peace with God, GodTools, Christianity Explored and Alpha. Each opens on its own site.</p></div></div>
-  <div class="ap-row rv"><div class="ap-row-art">{ph('baptism', 'Asking about baptism')}</div>
+  <div class="ap-row rv"><div class="ap-row-art">{ph('library', 'The training library')}</div>
+    <div class="ap-row-tx"><h2>The best training, in one place.</h2><p>Our partners The Global Harvest and NeedGod.net, alongside well-loved training like Two Ways to Live, The Way of the Master, The Bridge to Life, Steps to Peace with God, Christianity Explored and Alpha. Each opens on its own site.</p></div></div>
+  <div class="ap-row ap-flip rv"><div class="ap-row-art">{ph('baptism', 'Asking about baptism')}</div>
     <div class="ap-row-tx"><h2>Ready to be baptised?</h2><p>Anyone can ask. They choose who helps them take the step: a local church, a partner, or both, each by its own tick.</p></div></div>
 </div></section>
 <section class="sec pg-sec ap-trust"><div class="wrap ap-trust-in rv">

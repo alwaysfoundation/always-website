@@ -1,5 +1,5 @@
 // Always App service worker: the app shell works offline, and Bible books are kept once read.
-const SHELL = 'always-shell-v6';
+const SHELL = 'always-shell-v7';
 const BIBLE = 'always-bible-v1';
 const FILES = ['/', '/index.html', '/app.css', '/app.js', '/content.js', '/qrcode.js', '/manifest.webmanifest', '/bible/books.json', '/icon-192.png',
   '/fonts/manrope-latin-500-normal.woff2', '/fonts/manrope-latin-600-normal.woff2', '/fonts/manrope-latin-700-normal.woff2', '/fonts/manrope-latin-800-normal.woff2',

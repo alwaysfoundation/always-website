@@ -48,6 +48,9 @@ window.AC = {
     { id: 'ce', name: 'Christianity Explored', by: 'Christianity Explored Ministries', kind: 'Course', tone: 'peach', line: 'A relaxed course through Mark’s Gospel, for friends who want to look closer at Jesus.', url: 'https://www.christianityexplored.org/explore-online' },
     { id: 'zume', name: 'Zúme Training', by: 'Zúme', kind: 'Course', tone: 'sage', line: 'A free course for small groups on making disciples who make disciples.', url: 'https://zume.training' },
     { id: 'd2s', name: 'The GOSPEL in six words', by: 'Dare 2 Share', kind: 'Youth', tone: 'peach', line: 'A simple way for young people to learn the Gospel and share it with friends.', url: 'https://www.dare2share.org' },
+    { id: 'wotm', name: 'The Way of the Master', by: 'Living Waters', kind: 'Training', tone: 'sand', line: 'Ray Comfort’s training in sharing the Gospel one to one, with real street conversations to learn from.', url: 'https://livingwaters.com' },
+    { id: 'btl', name: 'The Bridge to Life', by: 'The Navigators', kind: 'Outline', tone: 'sage', line: 'A simple drawing that shows how Jesus bridges the gap between us and God.', url: 'https://www.navigators.org' },
+    { id: 'kgp', name: 'Knowing God Personally', by: 'Cru', kind: 'Outline', tone: 'night', line: 'A short booklet to read through with a friend, one page at a time.', url: 'https://www.cru.org' },
     { id: 'alpha', name: 'Alpha', by: 'Alpha Australia', kind: 'Course', tone: 'night', line: 'Food, a short talk and honest conversation about life and faith, at churches near you.', url: 'https://alpha.org.au' },
   ],
   partners: [
