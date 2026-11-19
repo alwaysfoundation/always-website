@@ -301,9 +301,16 @@ JOURNEYS = """
 <p class="js-turn">Normally, none of these ministries knows they&rsquo;re helping the same person. <b>Always connects the dots, with Sam&rsquo;s yes.</b></p>
 <ul class="jl jl-big">
 <li>Sam isn&rsquo;t left to chance.</li>
-<li>The church knows Sam&rsquo;s story.</li>
+<li>The church knows Sam&rsquo;s earlier steps.</li>
 <li>We see whether people find a church, not just attend an event.</li>
 </ul>
+<section class="jh">
+<h2>How does Always connect the dots?</h2>
+<div class="jh-q"><h3>How Always recognises Sam</h3><p>When Sam responds through a ministry, Always turns Sam&rsquo;s mobile number into a private fingerprint that only Always can read. If Sam later responds somewhere else with the same number, Always recognises it&rsquo;s the same journey.</p></div>
+<div class="jh-q"><h3>Who decides</h3><p>Sam does. When Sam responds, there&rsquo;s a separate tick to link their journey. It&rsquo;s never pre-ticked, and Sam can withdraw it any time. Without it, nothing is linked.</p></div>
+<div class="jh-q"><h3>Who sees what</h3><p>Each ministry gets a different code for Sam, so they can&rsquo;t use those codes to connect Sam&rsquo;s records. Only Always links the journey. When Sam joins a church, that church sees the earlier steps Sam agreed to share, like &ldquo;responded in February&rdquo; or &ldquo;did a course in March&rdquo;, and never other ministries&rsquo; notes or which ministries they were.</p></div>
+<p class="jh-end">Always connects the journey. Sam stays in control.</p>
+</section>
 <blockquote class="jbig"><p>Saying yes to Jesus shouldn&rsquo;t be the end of the story. It should be the beginning of a journey.</p></blockquote>
 
 <h2>Why this is hard today</h2>
@@ -313,11 +320,9 @@ JOURNEYS = """
   <div class="jx-yes"><b>Always</b><span>Only Sam&rsquo;s steps, only with Sam&rsquo;s yes.</span></div>
 </div>
 
-<h2>How it stays private</h2>
+<h2>What else keeps it private</h2>
 <ul class="jl">
-<li><b>Sam chooses.</b> A separate tick, withdrawn any time.</li>
-<li><b>A different code for each ministry.</b> No one can match records.</li>
-<li><b>Steps, not stories.</b> The church sees what happened and the month. Never notes.</li>
+<li><b>Always staff</b> see only what&rsquo;s needed to help, and every view is logged.</li>
 <li><b>Totals for everyone else.</b> Small groups are withheld.</li>
 <li><b>Never under 18.</b></li>
 </ul>
@@ -606,6 +611,11 @@ CSS = '''
 .jx, .jx > div { background: none !important; box-shadow: none !important; border-radius: 0 !important; }
 .jx { padding: 0 !important; border: 0 !important; }
 .jdev code { font-size: 13px; }
+.jh { margin: 30px 0 6px; }
+.jh-q { padding: 14px 0; border-top: 1px solid rgba(20,53,47,.12); }
+.jh-q h3 { margin: 0 0 4px !important; font: 700 16.5px/1.3 var(--head) !important; color: var(--green); }
+.jh-q p { margin: 0 !important; font-size: 16.5px; line-height: 1.6; color: var(--soft); }
+.jh-end { margin: 6px 0 0 !important; padding-top: 14px; border-top: 2px solid #E8A577; font: 700 18px/1.4 var(--head); color: var(--green); }
 /* journeys: calm overrides */
 .js-steps li { padding: 0 0 20px 34px !important; background: none !important; border: 0 !important; border-radius: 0 !important; font-size: 17.5px !important; }
 .js-steps li::before { content: '' !important; left: 0 !important; top: 8px !important; transform: none !important; width: 12px !important; height: 12px !important; background: #FFFDF8 !important; border: 2px solid #E8A577; box-sizing: border-box; }
