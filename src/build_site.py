@@ -1230,7 +1230,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{ST.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{ST.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{HM.SEAM_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>

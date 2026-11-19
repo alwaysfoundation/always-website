@@ -9,7 +9,7 @@ INTRO = """
 <p>Switch on what you need. Each module works on its own and shares the same sign-in and records.</p>
 <table class="dt"><tr><th>Module</th><th>What it helps you do</th></tr>
 <tr><td><a href="#/docs/modules">Always App</a></td><td>Share Jesus and capture a response, at an event or in a conversation.</td></tr>
-<tr><td><a href="#/docs/senders">Always Pages</a></td><td>Response pages and QR codes under your own brand, on the street, from the stage or online.</td></tr>
+<tr><td><a href="#/docs/senders">Always Respond</a></td><td>A way to respond under your own brand, by QR code, tap, ticket or link, on the street, from the stage or online.</td></tr>
 <tr><td><a href="#/docs/compliance-overview">Always Compliance</a></td><td>Stay on top of privacy, child safety, charity and messaging rules.</td></tr>
 <tr><td><a href="#/docs/results">Always Reports</a></td><td>Show the fruit to your board and funders, with totals only.</td></tr>
 <tr><td><a href="#/docs/inbox">Always Connect</a></td><td>Find a local church, hand people on safely and follow up together.</td></tr></table>
@@ -27,8 +27,8 @@ MODULES = """
 <p class="lead">Always Platform is one platform with five modules. Your team signs in once and switches on what it needs.</p>
 <h2>Always App</h2>
 <p>For sharing Jesus. A simple way to start a conversation, capture a yes with the person's consent, and open Scripture with them through YouVersion. Runs in any browser, with nothing to download.</p>
-<h2>Always Pages</h2>
-<p>Response pages and QR codes in your own colours and words: for street evangelism, an altar call, a landing page, or a response card under a video. See <a href="#/docs/senders">Response pages and QR codes</a> and <a href="#/docs/branding">Your own brand</a>.</p>
+<h2>Always Respond</h2>
+<p>A simple way for people to respond, in your colours and words: a QR code on the street or the big screen, a tap on an NFC armband, disc or ticket, a landing page, or a response card under a video. See <a href="#/docs/senders">Response pages and QR codes</a>, <a href="#/docs/taps">Taps, tickets and armbands</a> and <a href="#/docs/branding">Your own brand</a>.</p>
 <h2>Always Compliance</h2>
 <p>A guide to the rules that apply to your ministry, with a check-up every quarter and plain updates when the law changes. Free for churches. See <a href="#/docs/compliance-overview">Always Compliance</a>.</p>
 <h2>Always Reports</h2>
@@ -157,6 +157,44 @@ TERMS = """
 <p>Questions: <b>hello@alwaysfoundation.org</b></p>
 """
 
+TAPS = """
+<p class="lead">Any NFC armband, tap disc, card, sticker or ticket can open your response page with a tap. No app needed.</p>
+<h2>How it works</h2>
+<ol>
+<li><b>Create a placement</b> for each way in: "Armbands, Brisbane night", "Tap discs, street team".</li>
+<li><b>Write its short link</b> to the chips. Most modern phones open an NFC link without an app.</li>
+<li><b>People tap</b> and land on your response page, with the same consent and age questions as every other way in.</li>
+<li><b>See responses by placement</b> in Always Reports, with totals only and no names.</li>
+</ol>
+<p>You can point a placement at a different page later without rewriting a single chip.</p>
+<h2>What works</h2>
+<table class="dt"><tr><th>Item</th><th>How</th></tr>
+<tr><td>Tap discs, cards and stickers</td><td>Standard NFC tags (such as NTAG213 or NTAG215) with your placement link</td></tr>
+<tr><td>Armbands and lanyards</td><td>Bands with a standard NFC chip. Cashless payment bands are usually locked, so ask your supplier for a band with a second, open chip</td></tr>
+<tr><td>Concert tickets and event passes</td><td>A QR code, plus an NFC chip if the ticket has one</td></tr>
+<tr><td>Phone wallet passes</td><td>A QR code or a link on the back of the pass</td></tr>
+<tr><td>Long-range RFID gate bands</td><td>Not readable by phones. Add a QR code or a separate NFC chip</td></tr></table>
+<h2>Keeping people safe</h2>
+<ul>
+<li>A chip holds only a placement link, never anyone's personal details.</li>
+<li>Don't give each person their own chip linked to who they are. A tap should open a page, not track a person.</li>
+<li>Lock chips after writing them, so no one can change where they point.</li>
+</ul>
+"""
+
+YOUVERSION = """
+<p class="lead">YouVersion Platform opens the technology behind the Bible App to ministries. We plan to use it in Always Respond and the Always App.</p>
+<p>This is planned, not yet live.</p>
+<h2>What we plan</h2>
+<ol>
+<li><b>Scripture at the moment someone responds.</b> The Good News, reading plans and verses on a response page, in the person's own language and translation.</li>
+<li><b>A Scripture component for developers.</b> One part of the Always SDK that shows Scripture alongside a response, built on YouVersion's own SDKs.</li>
+<li><b>Sign in with YouVersion, for adults.</b> People can use the account they already have. If they agree, Always Platform records their home church.</li>
+</ol>
+<h2>What stays separate</h2>
+<p>YouVersion provides Scripture and confirms who someone is. Always Platform holds which church they belong to and what they agreed to share. No response, consent or church details are sent to YouVersion, and personal information stays in Australia.</p>
+"""
+
 AGENTS = """
 <p class="lead">Agents are a feature inside Always Connect and Always Compliance. They help people do the admin around a welcome, so there's more time for the welcome itself.</p>
 <p>A person always decides what happens next. An agent never contacts someone who responded to Jesus on its own.</p>
@@ -182,7 +220,7 @@ AGENTS = """
 GLOSSARY = """
 <dl class="gloss">
 <dt>Always Platform</dt><dd>The shared platform behind every module, with one sign-in and shared records.</dd>
-<dt>Module</dt><dd>A part of Always Platform you can switch on: Always App, Always Pages, Always Compliance, Always Reports and Always Connect.</dd>
+<dt>Module</dt><dd>A part of Always Platform you can switch on: Always App, Always Respond, Always Compliance, Always Reports and Always Connect.</dd>
 <dt>Member</dt><dd>A church or ministry that has joined the foundation and affirms the Nicene Creed.</dd>
 <dt>Response</dt><dd>Someone telling us they responded to Jesus and would like a next step, with their consent.</dd>
 <dt>Next best faith step</dt><dd>What would help most right now: usually a local church, sometimes a course, a youth group or care.</dd>
@@ -193,6 +231,7 @@ GLOSSARY = """
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to Always Platform.</dd>
 <dt>Welcoming now</dt><dd>A church or ministry that is verified, trained, has room this month and answers introductions on time.</dd>
 <dt>Agents</dt><dd>A feature in Always Connect and Always Compliance that helps teams with admin, with a person deciding every step.</dd>
+<dt>Placement</dt><dd>One way into a response page, such as a QR code on a screen or a batch of NFC armbands, so reports can show responses by channel without anyone's name.</dd>
 <dt>Developers</dt><dd>The API, SDK, MCP server and webhooks for building on Always Platform.</dd>
 </dl>
 """
@@ -225,9 +264,12 @@ def apply(DOCS):
     gi, _ = find('introduction')
     DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING)]
 
-    edit('senders', 'in Always for ministries', 'in Always Pages')
-    set_page('senders', title='Always Pages: response pages and QR codes')
-    edit('branding', 'In the console, set', 'In Always Pages, set')
+    edit('senders', 'in Always for ministries', 'in Always Respond')
+    set_page('senders', title='Always Respond: response pages and QR codes')
+    gi, pi = find('senders')
+    DOCS[gi][1].insert(pi + 1, ('taps', 'Taps, tickets and armbands', TAPS))
+    set_page('youversion', body=YOUVERSION)
+    edit('branding', 'In the console, set', 'In Always Respond, set')
     set_page('branding', title='Your own brand')
     set_page('results', title='Always Reports: reports for your funders')
     set_page('inbox', title='Always Connect: welcome from your phone')

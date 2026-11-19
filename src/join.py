@@ -2,7 +2,7 @@
 from products import ICON
 
 STATES = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']
-MODULES = [('app', 'Always App'), ('pages', 'Always Pages'), ('compliance', 'Always Compliance'), ('reports', 'Always Reports'), ('connect', 'Always Connect')]
+MODULES = [('app', 'Always App'), ('pages', 'Always Respond'), ('compliance', 'Always Compliance'), ('reports', 'Always Reports'), ('connect', 'Always Connect')]
 PATHS = [
     ('church', 'A church or ministry', 'Become a member and switch on the modules you need.', 'churches'),
     ('evangelist', 'An evangelist', 'Join the Always App pilot and share Jesus with confidence.', 'evangelists'),

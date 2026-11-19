@@ -50,7 +50,7 @@ SYDNEYFIRE = '''
       <h2>At a glance</h2>
       <dl>
         <dt>Ministry</dt><dd>Street evangelism across Sydney</dd>
-        <dt>Uses</dt><dd>Always Pages, Always App and Always Connect</dd>
+        <dt>Uses</dt><dd>Always Respond, Always App and Always Connect</dd>
         <dt>Integration</dt><dd><a href="#/alpha">Alpha</a>, for people exploring faith</dd>
         <dt>Their app</dt><dd><a href="https://sydneyfire.alwaysfoundation.org">sydneyfire.alwaysfoundation.org</a></dd>
       </dl>
@@ -92,7 +92,7 @@ ALPHA = '''
     <blockquote class="ft-pull">Every next step is the person's choice, and their details go only where they agree.</blockquote>
 
     <h2>Already in use</h2>
-    <p>Sydney Fire Evangelism's response app routes people who choose "Explore faith" to Alpha. Any ministry using Always Pages can offer the same next step.</p>
+    <p>Sydney Fire Evangelism's response app routes people who choose "Explore faith" to Alpha. Any ministry using Always Respond can offer the same next step.</p>
     <a class="st-card" href="#/sydneyfire">
       <img src="{{SF_PHOTO}}" alt="" width="56" height="56">
       <span><b>Sydney Fire Evangelism</b><span>Street evangelists with their own branded response app.</span></span>
@@ -110,7 +110,7 @@ ALPHA = '''
         <dt>Shared with consent</dt><dd>First name, mobile and suburb</dd>
         <dt>In use</dt><dd><a href="#/sydneyfire">Sydney Fire Evangelism</a></dd>
       </dl>
-      <a class="btn btn-peach" href="#/pages">See Always Pages</a>
+      <a class="btn btn-peach" href="#/respond">See Always Respond</a>
       <a class="ft-link" href="https://alpha.org.au/">Visit alpha.org.au</a>
     </div>
   </aside>

@@ -169,3 +169,10 @@ ABOUT_CSS = r'''
 @media (max-width: 900px) { .ab-why, .ab-help, .ab-three { grid-template-columns: minmax(0, 1fr); } .ab-photos { grid-template-columns: 1fr 1fr; } .ab-photos figure:first-child { grid-column: 1 / -1; } .ab-photos figure:nth-child(2) { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .ab-photos img, .ab-mods a, .ab-mods i { transition: none; } .ab-photos figure:hover img { transform: none; } }
 '''
+
+SEAM_CSS = r'''
+#page-home .hero::after, .page .hero::after { left: 0; right: 0; bottom: 0; top: auto; width: auto; height: 160px; max-width: none; max-height: none; border-radius: 0; background: linear-gradient(180deg, rgba(27,71,64,0), var(--green)); z-index: 1; }
+#page-home .hero > .wrap { position: relative; z-index: 3; }
+.hero { padding-bottom: clamp(72px, 8vw, 112px) !important; }
+.case { padding-top: clamp(40px, 5vw, 72px) !important; }
+'''

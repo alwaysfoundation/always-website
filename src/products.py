@@ -20,14 +20,14 @@ PILLARS = [
 # slug: (route, name, pillar, positioning, for)
 PRODUCTS = {
     'app':        ('app',        'Always App',        'equip',   'Everything a Christian needs to share Jesus and walk with people.', 'Every Christian and evangelist'),
-    'pages':      ('pages',      'Always Pages',      'equip',   'Your own branded response pages, from the street to the altar call to online.', 'Churches, evangelists, events and ministries'),
+    'pages':      ('respond',    'Always Respond',    'equip',   'A branded way to respond, by QR, tap, ticket or link, from the street to the altar call to online.', 'Churches, evangelists, events and ministries'),
     'compliance': ('compliance', 'Always Compliance', 'support', 'Stay lawful on privacy, child safety, charity and messaging rules, with a quarterly check-up.', 'Every ministry'),
     'reports':    ('reports',    'Always Reports',    'support', 'A monthly report for your board and funders, written for you, with totals only.', 'Ministries with boards and funders'),
     'connect':    ('connect',    'Always Connect',    'connect', 'Find a local church, hand people on safely, and follow up together.', 'Churches, ministries and events'),
 }
 DEVELOPERS = ('developers', 'Developers', 'The API, SDK, MCP connector, feeds and webhooks behind every Always module.')
 # Old routes: agents live inside Always Connect; the developer page moved.
-ALIASES = {'agents': 'connect', 'build': 'developers'}
+ALIASES = {'agents': 'connect', 'build': 'developers', 'pages': 'respond'}
 
 # slug: (route, menu name, one line, products used, story)
 SOLUTIONS = {
@@ -151,7 +151,7 @@ ICON = {
     'platforms': '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
 }
 MENU_LINE = {
-    'app': 'Share Jesus and walk with people', 'pages': 'Branded response pages and QR codes',
+    'app': 'Share Jesus and walk with people', 'pages': 'Respond by QR, tap or link, in your name',
     'compliance': 'Stay lawful, state by state', 'reports': 'Monthly reports for funders',
     'connect': 'Hand people on to a local church',
     'churches': 'Welcome people near you', 'youth': 'Safe, compliant, welcoming', 'ministries': 'A next step for every response',
@@ -271,7 +271,7 @@ REPORTS_EXTRA = '''<section class="sec pg-sec pg-green"><div class="wrap rp-defs
 </div></section>'''
 
 REPORTS_PAGE = product_page('reports',
-    'Answer to donors, a foundation or a denomination? Always Reports writes your report each month from what already happened in Always Pages and Always Connect. Nothing extra to enter.',
+    'Answer to donors, a foundation or a denomination? Always Reports writes your report each month from what already happened in Always Respond and Always Connect. Nothing extra to enter.',
     [('Written for you', 'A clear monthly report, ready for your board and funders.'),
      ('Totals only', 'No names. Small numbers are hidden so no one can be identified.'),
      ('Your words', "Use your funder's titles and the outcomes they care about."),
@@ -711,7 +711,7 @@ document.querySelectorAll('.sw').forEach((sw) => {
 '''.replace('__PRODUCT_ROUTES__', repr(PRODUCT_ROUTES).replace("'", '"')).replace('__SOLUTION_ROUTES__', repr(SOLUTION_ROUTES).replace("'", '"'))
 
 NEW_PAGES = {
-    'pages': PAGES_PAGE, 'reports': REPORTS_PAGE, 'connect': CONNECT_PAGE,
+    'respond': PAGES_PAGE, 'reports': REPORTS_PAGE, 'connect': CONNECT_PAGE,
     'youth': YOUTH_PAGE, 'evangelists': EVANGELISTS_PAGE, 'networks': NETWORKS_PAGE, 'platforms': PLATFORMS_PAGE,
 }
 TITLES = {r: f'{n} · Always Foundation' for r, n, *_ in PRODUCTS.values()}
