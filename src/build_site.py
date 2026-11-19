@@ -9,6 +9,7 @@ import extras, pages as P, re as _re
 import compliance_page as CP
 import products as PR
 import polish as PO
+import developers as DV
 def _swap(h, marker, new):
     i = h.find(marker); a = h.rfind('<section', 0, i); b = h.find('</section>', i) + 10
     return h[:a] + new + h[b:]
@@ -957,7 +958,7 @@ footer .wrap { display: grid; grid-template-columns: minmax(240px, 1fr) 2.2fr; g
 .foot-mail:hover { text-decoration: underline; }
 footer .brand svg.wm { height: 34px; width: auto; }
 .foot-line { margin: 0; max-width: 30ch; color: #CFE0D6; font-size: 17px; line-height: 1.55; }
-.foot-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+.foot-cols { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px; }
 .foot-cols h2 { font: 700 14px/1.2 var(--head); color: #E8A577; margin: 0 0 14px; letter-spacing: 0; }
 .foot-cols a { display: block; color: #E3ECE6; text-decoration: none; padding: 7px 0; min-height: 0; overflow-wrap: anywhere; }
 .foot-cols a:hover, .foot-cols a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
@@ -1031,7 +1032,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => e
 function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io ? io.observe(el) : el.classList.add('in'); }); }
 
 // Router
-const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform', compliance: 'page-compliance', build: 'page-build'""" + ''.join(f", {k}: 'page-{k}'" for k in PR.NEW_PAGES) + """ };
+const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers'""" + ''.join(f", {k}: 'page-{k}'" for k in PR.NEW_PAGES) + """ };
 const anchors = { join: 'join', how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
@@ -1048,7 +1049,7 @@ function route() {
   if (page === 'compliance' && second === 'check') { requestAnimationFrame(() => document.getElementById('check').scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = 'Free compliance check-up · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', build: 'For developers · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
+  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
   if (page !== 'docs') document.title = titles[page];
   watch(document.getElementById(pages[page]));
 }
@@ -1198,7 +1199,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{PO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{PO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
@@ -1217,7 +1218,7 @@ doc = f"""<!DOCTYPE html>
 <div class="page" id="page-research" hidden>{P.RESEARCH}</div>
 <div class="page" id="page-brand" hidden>{P.BRAND}</div>
 <div class="page" id="page-platform" hidden>{PR.PLATFORM_OVERVIEW}</div>
-<div class="page" id="page-build" hidden>{P.PLATFORM}</div>
+<div class="page" id="page-developers" hidden>{DV.PAGE}</div>
 {''.join(f'<div class="page" id="page-{k}" hidden>{v}</div>' for k, v in PR.NEW_PAGES.items())}
 <div class="page" id="page-compliance" hidden>{CP.PAGE}</div>
 </main>
