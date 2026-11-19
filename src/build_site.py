@@ -728,7 +728,7 @@ about = about.replace('{{MODS}}', ''.join(f'<li><a href="#/{PR.PRODUCTS[k][0]}">
 
 picker = ''.join(f'<optgroup label="{esc(g)}">' + ''.join(f'<option value="{sl}">{esc(t)}</option>' for sl,t,_ in ps) + '</optgroup>' for g, ps in DOCS)
 docs_page = f"""
-<section class="page-hero" style="padding-bottom:56px"><div class="wrap"><h1>Docs</h1><p>How Always Platform and its five modules work, for churches, ministries, people and developers.</p>
+<section class="page-hero" style="padding-bottom:56px"><div class="wrap"><h1>Docs</h1><p>How Always Platform and its modules work, for churches, ministries, people and developers.</p>
   <nav class="dq" aria-label="Start here">
     <a href="#/docs/joining"><b>Joining</b><span>Register and get ready</span></a>
     <a href="#/docs/inbox"><b>Churches</b><span>Welcome people from your phone</span></a>

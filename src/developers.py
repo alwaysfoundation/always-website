@@ -47,6 +47,7 @@ BUILD = [
     ('reports', 'Webhooks', 'Hear about introductions, handoffs and rule changes as they happen.', 'docs/webhooks'),
     ('pages', 'Response pages and embeds', 'Branded response cards and pages you drop into your own site.', 'docs/senders'),
     ('app', 'Scripture', 'The Bible in your app through YouVersion.', 'docs/youversion'),
+    ('reports', 'Journeys across ministries', 'See the fruit across the Body, from a first yes to a church family, with totals that identify no one.', 'docs/journeys'),
 ]
 
 

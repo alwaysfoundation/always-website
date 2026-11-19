@@ -285,6 +285,79 @@ SAVING = """
 <p>Always Platform is open source, so anyone can check that it works the way we say.</p>
 """
 
+JOURNEYS = """
+<p class="lead">How Always follows a person&rsquo;s journey from a first yes to a church family, across many ministries, while keeping that journey theirs. A research write-up of the design and how it&rsquo;s built.</p>
+<div class="callout"><b>In short.</b> Ministries and funders see totals that identify no one. Inside Always, the steps one person takes can be linked across ministries, but only when that adult says yes to it, and each ministry sees only what it needs.</div>
+
+<h2>The problem</h2>
+<p>A young adult says yes to Jesus at a concert run by one ministry, is introduced to a church by another, joins a course run by a third and is baptised by a fourth. Each holds a fragment. No one can see whether the yes became a disciple, and the person may be asked the same questions four times, or fall through the gaps between them.</p>
+<p>We want the whole Body to see the fruit, and to see where people are being lost, without building a database of who believes what.</p>
+
+<h2>What the law asks</h2>
+<ul>
+<li>Information is personal information when a person is identified or reasonably identifiable from it, and that depends on the information and the context it&rsquo;s held or released in.</li>
+<li>Information about a person&rsquo;s religious beliefs is sensitive information, so collecting it needs their consent.</li>
+<li>The privacy regulator treats de-identification as a privacy-enhancing tool, but data that can be re-identified is still personal information.</li>
+</ul>
+<p>So a record that follows one person over time is pseudonymous, not de-identified, even without a name on it. We treat it as personal information and protect it accordingly. Only totals leave the platform as de-identified data.</p>
+
+<h2>The design: two layers</h2>
+<h3>1. Totals that identify no one</h3>
+<p>Every time a journey reaches a milestone, a tally goes up in a reporting table that holds no names, numbers or ids. Reports count people, never list them.</p>
+<ul>
+<li>Counts are grouped by month, region, ministry and the step someone chose.</li>
+<li>Groups smaller than 10 people, or 20 where young people are included, are withheld on the server and never sent to the browser.</li>
+<li>Only standard periods are offered (month, quarter, financial year), so overlapping date ranges can&rsquo;t be subtracted to single someone out.</li>
+<li>Totals survive when a person&rsquo;s details are deleted, because the tally never held them.</li>
+</ul>
+
+<h3>2. One journey, linked only with consent</h3>
+<p>When an adult who has said yes to sharing their journey responds again through another ministry, Always links the two responses into one journey.</p>
+<ul>
+<li><b>Inside Always only.</b> Responses are matched with a keyed fingerprint of the mobile number, made with a secret key that never leaves the platform. Names and numbers are encrypted separately.</li>
+<li><b>A different code for each ministry.</b> Each ministry sees its own code for the same person, so two ministries can never join their records outside Always.</li>
+<li><b>Steps, not stories.</b> A ministry that later helps someone sees which earlier steps happened and when (for example &ldquo;introduced to a church in March&rdquo;), never notes or conversations.</li>
+<li><b>Every view is logged,</b> and the person can see, download or withdraw it all from their own link. Withdrawal reaches every system through a signed webhook.</li>
+<li><b>Never for young people.</b> No one under 18 is linked across ministries. Each response from a young person stands alone.</li>
+</ul>
+
+<h2>Milestones</h2>
+<table>
+<tr><th>Milestone</th><th>Who records it</th></tr>
+<tr><td>Responded</td><td>The platform, when someone says yes</td></tr>
+<tr><td>Introduced</td><td>The platform, when a church is offered the chance to welcome them</td></tr>
+<tr><td>Accepted and contacted</td><td>The receiving church</td></tr>
+<tr><td>Connected</td><td>The person themselves</td></tr>
+<tr><td>Baptised, in a group, serving, still connected a year on</td><td>The person themselves, when they choose to tell us</td></tr>
+</table>
+<p>We count someone as connected, baptised or growing only when they tell us. We would rather undercount than claim fruit that isn&rsquo;t there.</p>
+
+<h2>How it&rsquo;s built</h2>
+<ol>
+<li><b>Consent purpose.</b> A new purpose, <code>share.journey</code>, separate from being introduced to a church and never ticked for the person. Adults only.</li>
+<li><b>Link key.</b> <code>link = HMAC(LINK_KEY, normalised mobile)</code>, held in the platform&rsquo;s database and never returned by any API. The key is kept in the environment, rotated yearly, and can be destroyed to unlink everything.</li>
+<li><b>Ministry codes.</b> <code>code = HMAC(ORG_KEY, journey id + ministry id)</code>. Codes are stable for one ministry and unrelated between ministries.</li>
+<li><b>Standard rule.</b> The Always Handoff standard carries the ministry code with the consent receipt. A receiving system must not pass the code on, or combine it with other records, beyond what the consent covers, and must honour withdrawal.</li>
+<li><b>Network reports.</b> A funnel from &ldquo;said yes at any partner event&rdquo; to &ldquo;in a church a year later&rdquo;, by region, built only from the tally table with the same small-number rules.</li>
+<li><b>Tests.</b> Cross-tenant tests prove one ministry can never read another&rsquo;s codes or journeys. Minors tests prove no link is ever made under 18.</li>
+</ol>
+
+<h2>What we chose not to do</h2>
+<ul>
+<li><b>No shared id across ministries.</b> A single public id would let anyone holding two datasets join them.</li>
+<li><b>No plain hash of a mobile number.</b> There are few enough Australian mobile numbers that an unkeyed hash can be reversed by trying them all.</li>
+<li><b>No browsing or search.</b> No ministry can look a person up. Journeys appear only when that person is introduced to them.</li>
+</ul>
+
+<h2>Open questions</h2>
+<ul>
+<li>How often to ask someone to update their journey, without becoming a burden.</li>
+<li>Whether a person should be able to name which ministries may see their earlier steps, rather than all who later help them.</li>
+<li>The exact consent wording, which Prolegis will review before this goes live.</li>
+</ul>
+<p>See also <a href="#/docs/consent">Consent receipts</a>, <a href="#/docs/standard">the Always Handoff standard</a> and <a href="#/docs/results">Reports for your funders</a>. Sources: OAIC, <i>What is personal information</i>; OAIC, <i>De-identification and the Privacy Act</i>; Australian Privacy Principles guidelines, Chapter B.</p>
+"""
+
 AGENTS = """
 <p class="lead">Agents are a feature inside Always Connect and Always Safety. They help people do the admin around a welcome, so there's more time for the welcome itself.</p>
 <p>A person always decides what happens next. An agent never contacts someone who responded to Jesus on its own.</p>
@@ -388,6 +461,8 @@ def apply(DOCS):
     gi, pi = find('privacy')
     DOCS[gi][1].insert(pi + 1, ('terms', 'Terms of use', TERMS))
     set_page('always-agent', title='Agents', body=AGENTS)
+    gi, pi = find('journey')
+    DOCS[gi][1].insert(pi + 1, ('journeys', 'Journeys across ministries', JOURNEYS))
     edit('ai', 'The <a href="#/docs/always-agent">Always Agent</a> helps', '<a href="#/docs/always-agent">Agents</a> in Always Connect and Always Safety help')
     edit('policies', '<td>Privacy Policy</td>', '<td><a href="#/docs/privacy">Privacy Policy</a></td>')
     edit('policies', '<td>Terms of Use</td>', '<td><a href="#/docs/terms">Terms of Use</a></td>')
@@ -414,7 +489,7 @@ def apply(DOCS):
         ('Always Reports', ['results']),
         ('For people', ['your-choices']),
         ('Integrations', ['integrations', 'int-chms', 'int-messaging', 'int-automation']),
-        ('Developers', ['api', 'sdk', 'youversion', 'feed', 'mcp', 'webhooks', 'consent', 'journey', 'standard']),
+        ('Developers', ['api', 'sdk', 'youversion', 'feed', 'mcp', 'webhooks', 'consent', 'journey', 'journeys', 'standard']),
         ('Trust and safety', ['security', 'privacy', 'terms', 'young-people', 'ai', 'policies']),
         ('The foundation', ['governance', 'open-source', 'brand']),
     ]
