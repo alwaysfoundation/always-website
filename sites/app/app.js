@@ -176,6 +176,10 @@ on(/^\/$/, async () => {
     <div class="sp"></div>
     <div style="position:relative"><a class="verse-card tod-${hr < 6 || hr >= 20 ? 'night' : hr < 10 ? 'dawn' : hr < 17 ? 'day' : 'dusk'}" href="#/bible?ref=${encodeURIComponent(votdRef())}" style="text-decoration:none;display:block"><p class="k" style="color:#E8A577">Verse of the day</p><p class="serif" data-votd>…</p><span class="ref" data-votd-ref></span></a><a class="vc-share" href="#/card" onclick="window.CARD=null" aria-label="Share the verse of the day">${ic('share', 19)}</a></div>
     <div class="sp2"></div>
+    <nav class="jr" aria-label="Your journey">${[['#/learn', 'cap', 'Learn', 'Grow in confidence'], ['#/learn/testimony', 'pen', 'Share', 'The Gospel and your story'], ['#/invite', 'send', 'Invite', 'Offer a next step'], ['#/walk', 'heart', 'Follow up', 'Pray and stay close']].map(([h, i, t, d], n) => `<a class="jr-i" href="${h}"${h === '#/invite' ? ' onclick="window.INVITE=null"' : ''}><span class="jr-n">${n + 1}</span><span class="jr-ic">${ic(i, 20)}</span><b>${t}</b><span>${d}</span></a>`).join('')}</nav>
+    <div class="sp2"></div>
+    ${S.testimony.short || S.testimony.since ? `<a class="ts-hero" href="#/learn/testimony/share"><p class="k" style="color:#E8A577">Your story</p><p class="big-serif">Ready to share what Jesus has done?</p><p class="p">Your short version is ready for your next conversation.</p></a>` : `<a class="ts-hero" href="#/learn/testimony"><p class="k" style="color:#E8A577">Ready to share?</p><p class="big-serif">Your story could start a conversation.</p><p class="p">Tell someone what Jesus has done in your life. Three short prompts, kept on your phone.</p><span class="ts-cta">Write my story</span></a>`}
+    <div class="sp2"></div>
     <div class="quick">
       <a class="card peach" href="#/gather"><span class="ico" style="background:rgba(30,42,38,.1);color:var(--night)">${ic('qr')}</span><div><p class="h3">Start a response point</p><p class="note" style="color:#5A3A22">Show a QR code</p></div></a>
       <a class="card" href="#/bible"><span class="ico">${ic('book')}</span><div><p class="h3">Keep reading</p><p class="note">${esc(pos.name)} ${S.pos.c}</p></div></a>
@@ -515,6 +519,13 @@ const confirmBox = (t) => window.confirm(t);
 on(/^\/learn$/, () => {
   const done = (c) => (S.courses[c.id] || []).length;
   render(`<div class="sp"></div><h1 class="h1">Learn</h1><p class="p" style="margin-top:6px">Grow in sharing Jesus and walking with people.</p><div class="sp2"></div>
+    <p class="h2">Start here</p><div class="sp"></div><div class="list">
+      <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">How do I start a conversation?</div><div class="s">Guides for friends of every background</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/learn/story"><span class="ico sand">${ic('sparkle')}</span><div class="grow"><div class="t">How do I explain the Gospel?</div><div class="s">God’s story in four moments, in seven languages</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/learn/testimony"><span class="ico peach">${ic('pen')}</span><div class="grow"><div class="t">How do I tell my story?</div><div class="s">Three prompts and a 30-second version</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/learn/questions"><span class="ico">${ic('help')}</span><div class="grow"><div class="t">How do I answer hard questions?</div><div class="s">Honest, short answers</div></div><span class="chev">${ic('right', 18)}</span></a>
+    </div>
+    <div class="sp2"></div>
     <a class="hero-card" href="#/learn/story" style="display:block;text-decoration:none"><p class="k" style="color:#E8A577">The heart of it</p><p class="big-serif" style="color:#F8F3EA;margin:8px 0">God’s story in four moments</p><p class="p">Created, broken, rescued, restored. Share it with anyone in a few minutes.</p></a>
     <div class="sp"></div><a class="sent-hero" href="#/plan/sent30"><span class="sent-badge">30-day plan</span><p class="sent-ht">Sent</p><p class="sent-hs">For everyday evangelists. A reading, a verse to keep and one small step of faith each day.</p>${S.plans.sent30 ? `<div class="progress"><i style="width:${(S.plans.sent30.done.length / 30) * 100}%"></i></div>` : ''}</a>
     <div class="sp2"></div><div class="row between"><p class="h2">Learn from partners</p></div><p class="p" style="margin-top:4px">Trusted training from ministries we work with. It opens on their sites.</p><div class="sp"></div>
@@ -524,7 +535,7 @@ on(/^\/learn$/, () => {
     <div class="sp2"></div><div class="list">
       <a class="li" href="#/learn/road"><span class="ico peach">${ic('book')}</span><div class="grow"><div class="t">The Romans Road</div><div class="s">Six verses that explain the Gospel</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">Conversation guides</div><div class="s">${AC.guides.length} guides for different friends</div></div><span class="chev">${ic('right', 18)}</span></a>
-      <a class="li" href="#/learn/testimony"><span class="ico sand">${ic('pen')}</span><div class="grow"><div class="t">Your story</div><div class="s">Write and practise your three-minute story</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/learn/testimony"><span class="ico sand">${ic('pen')}</span><div class="grow"><div class="t">Your story</div><div class="s">Write, practise and share it</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/questions"><span class="ico">${ic('sparkle')}</span><div class="grow"><div class="t">Big questions</div><div class="s">Honest, short answers</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/plans"><span class="ico peach">${ic('cal')}</span><div class="grow"><div class="t">Reading plans</div><div class="s">Read with someone you’re walking with</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div>
@@ -607,17 +618,42 @@ on(/^\/learn\/lesson\/([\w-]+)\/(\d+)$/, (m) => {
     <button class="btn" id="ldone">${i < c.lessons.length - 1 ? 'Done, next lesson' : 'Finish course'}</button>`, { tab: 'learn' });
   $('#ldone').onclick = () => { const d = (S.courses[c.id] = S.courses[c.id] || []); if (!d.includes(i)) d.push(i); save(); if (i < c.lessons.length - 1) location.hash = `#/learn/lesson/${c.id}/${i + 1}`; else { toast('Course complete. Well done!'); location.hash = '#/learn/course/' + c.id; } };
 });
+const TS_PARTS = [['before', 'Before', 'What was life like? What were you looking for?'], ['meet', 'Meeting Jesus', 'How did you come to trust Him?'], ['since', 'Since', 'What has changed? What does He mean to you now?']];
+const words = (t) => (t || '').trim().split(/\s+/).filter(Boolean).length;
 on(/^\/learn\/testimony$/, () => {
   const t = S.testimony;
-  render(`${top('#/learn')}<p class="k">Your story</p><h1 class="h1">How Jesus changed your life</h1><p class="p" style="margin-top:6px">Three short parts, about a minute each. Kept on this device.</p><div class="sp2"></div>
-    <div class="stack">${[['before', 'Before', 'What was life like? What were you looking for?'], ['meet', 'Meeting Jesus', 'How did you come to trust Him?'], ['since', 'Since', 'What has changed? What does He mean to you now?']].map(([k, l, h]) => `<div class="field"><label for="t-${k}">${l}</label><textarea class="input" id="t-${k}" placeholder="${h}" data-k="${k}">${esc(t[k])}</textarea></div>`).join('')}
-    <p class="note" id="t-count"></p><div class="row"><button class="btn" id="t-save">Save</button><button class="btn ghost" id="t-time">${ic('play', 18)}Practise</button></div></div>`, { tab: 'learn' });
-  const count = () => { const words = ['before', 'meet', 'since'].map((k) => $('#t-' + k).value.trim().split(/\s+/).filter(Boolean).length).reduce((a, b) => a + b, 0); $('#t-count').textContent = `${words} words, about ${Math.max(1, Math.round(words / 140))} minute${words > 200 ? 's' : ''} to say.`; };
-  $$('textarea[data-k]').forEach((x) => x.addEventListener('input', count)); count();
-  $('#t-save').onclick = () => { ['before', 'meet', 'since'].forEach((k) => (S.testimony[k] = $('#t-' + k).value)); save(); toast('Your story is saved'); };
+  render(`${top('#/learn')}<p class="k">Your story</p><h1 class="h1">How Jesus changed your life</h1><p class="p" style="margin-top:6px">Three prompts, then a short version for everyday conversations. Kept on this phone and never published.</p><div class="sp2"></div>
+    <div class="stack">${TS_PARTS.map(([k, l, h], i) => `<div class="field"><label for="t-${k}"><span class="ts-step">${i + 1}</span>${l}</label><textarea class="input" id="t-${k}" rows="4" placeholder="${h}" data-k="${k}">${esc(t[k])}</textarea></div>`).join('')}
+    <p class="note" id="t-count"></p>
+    <div class="ts-short"><div class="field"><label for="t-short">Your 30-second version</label><textarea class="input" id="t-short" rows="3" maxlength="420" placeholder="One or two sentences for each part. Start with “Before I knew Jesus…”">${esc(t.short || '')}</textarea></div><button class="chip" id="t-draft">${ic('sparkle', 16)}Start it from my answers</button></div>
+    <div class="row"><button class="btn" id="t-save">Save my story</button><button class="btn ghost" id="t-time">${ic('play', 18)}Practise</button></div></div>`, { tab: 'learn' });
+  const val = (k) => $('#t-' + k).value;
+  const count = () => { const w = TS_PARTS.reduce((n, [k]) => n + words(val(k)), 0), sw = words(val('short')); $('#t-count').textContent = `Full story: ${w} words, about ${Math.max(1, Math.round(w / 140))} min. Short version: ${sw} words, about ${Math.max(5, Math.round(sw / 2.4))} seconds.`; };
+  $$('textarea').forEach((x) => x.addEventListener('input', count)); count();
+  $('#t-draft').onclick = () => { const first = (x) => (x.trim().match(/[^.!?]+[.!?]?/) || [''])[0].trim(); const d = TS_PARTS.map(([k]) => first(val(k))).filter(Boolean).join(' '); if (!d) return toast('Write a little in each part first'); $('#t-short').value = d.slice(0, 420); count(); };
+  $('#t-save').onclick = () => { TS_PARTS.forEach(([k]) => (S.testimony[k] = val(k))); S.testimony.short = val('short'); save(); toast('Your story is saved'); location.hash = '#/learn/testimony/share'; };
   let timer = null;
-  $('#t-time').onclick = () => { if (timer) { clearInterval(timer); timer = null; $('#t-time').innerHTML = ic('play', 18) + 'Practise'; return; } let s = 180; $('#t-time').textContent = '3:00'; timer = setInterval(() => { s--; $('#t-time').textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; if (s <= 0) { clearInterval(timer); timer = null; $('#t-time').innerHTML = ic('check', 18) + 'Time'; toast('Three minutes. Great practice!'); } }, 1000); };
+  $('#t-time').onclick = () => { if (timer) { clearInterval(timer); timer = null; $('#t-time').innerHTML = ic('play', 18) + 'Practise'; return; } let s = val('short').trim() ? 30 : 180; const fmt = () => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; $('#t-time').textContent = fmt(); timer = setInterval(() => { s--; $('#t-time').textContent = fmt(); if (s <= 0) { clearInterval(timer); timer = null; $('#t-time').innerHTML = ic('check', 18) + 'Done'; } }, 1000); };
   cleanup.push(() => clearInterval(timer));
+});
+on(/^\/learn\/testimony\/share$/, () => {
+  const t = S.testimony, full = TS_PARTS.map(([k]) => (t[k] || '').trim()).filter(Boolean).join('\n\n');
+  if (!full && !(t.short || '').trim()) { location.hash = '#/learn/testimony'; return; }
+  const v = { which: t.short ? 'short' : 'full' };
+  const text = () => (v.which === 'short' ? t.short : full) || full;
+  render(`${top('#/learn/testimony', 'Your story', `<a class="icon-btn" href="#/learn/testimony" aria-label="Edit your story">${ic('pen', 20)}</a>`)}
+    <div class="seg" role="group" aria-label="Version"><button data-v="short" aria-pressed="${v.which === 'short'}" ${t.short ? '' : 'disabled'}>30 seconds</button><button data-v="full" aria-pressed="${v.which === 'full'}" ${full ? '' : 'disabled'}>Full story</button></div>
+    <div class="sp"></div><article class="ts-read" id="ts-text"></article>
+    <div class="sp2"></div><div class="stack-s"><button class="btn peach" id="ts-send">${ic('share', 20)}Send to someone</button><button class="btn light" id="ts-copy">${ic('copy', 18)}Copy</button></div>
+    <p class="note" style="margin-top:12px;text-align:center">Only shared when you choose. Nothing is ever posted for you.</p>
+    <div class="sp2"></div><p class="h2">Sharing your story well</p><div class="sp"></div>
+    <div class="faq">${[['Ask first', 'Listen to their story before telling yours. “Can I tell you what changed for me?” goes a long way.'], ['Point to Jesus', 'Your story is about what He has done. Keep the focus on Him, not on how good or bad you were.'], ['Keep it short', 'Thirty seconds opens a door. If they want more, they’ll ask.'], ['Invite a next step', 'Offer to pray, read a passage together, or invite them to church.']].map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
+    <div class="sp2"></div><a class="btn light" href="#/invite" onclick="window.INVITE=null">${ic('send', 18)}Invite them to church</a>`, { tab: 'learn' });
+  const show = () => { $('#ts-text').textContent = text(); };
+  show();
+  $$('[data-v]').forEach((b) => (b.onclick = () => { v.which = b.dataset.v; $$('[data-v]').forEach((y) => y.setAttribute('aria-pressed', y === b)); show(); }));
+  $('#ts-send').onclick = async () => { if (navigator.share) { try { await navigator.share({ text: text() }); } catch {} } else location.href = 'sms:?&body=' + encodeURIComponent(text()); };
+  $('#ts-copy').onclick = async () => { try { await navigator.clipboard.writeText(text()); toast('Copied'); } catch { toast('Couldn’t copy on this phone'); } };
 });
 on(/^\/learn\/questions$/, () => {
   render(`${top('#/learn')}<h1 class="h1">Big questions</h1><p class="p" style="margin-top:6px">Short, honest answers to talk through together.</p><div class="sp2"></div>

@@ -378,3 +378,21 @@ main { padding-bottom: calc(68px + var(--safe-b) + 40px); }
 [data-theme="dark"] .sent-do { background: linear-gradient(150deg, #4A2E1E, #3A2418); color: var(--ink); } [data-theme="dark"] .sent-do span { background: rgba(255,255,255,.08); color: #F2B98E; } [data-theme="dark"] .sent-do b { color: #F2B98E; }
 
 .days .day { text-decoration: none; }
+
+/* journey strip and testimony */
+.jr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.jr-i { position: relative; display: grid; gap: 4px; align-content: center; justify-items: center; text-align: center; min-height: 92px; padding: 12px 6px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.jr-n { position: absolute; top: 8px; left: 9px; font: 700 11px/1 Manrope, sans-serif; color: var(--soft); opacity: .7; }
+.jr-ic { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; background: rgba(232,165,119,.16); color: #E8A577; margin-bottom: 6px; }
+.jr-i b { font: 700 14px/1.2 Manrope, sans-serif; }
+.jr-i > span:last-child { display: none; }
+.jr-ic { margin-bottom: 2px !important; }
+.ts-hero { display: block; text-decoration: none; padding: 22px; border-radius: 24px; color: #F8F3EA; background: radial-gradient(80% 70% at 100% 0%, rgba(232,165,119,.32), rgba(232,165,119,0) 60%), linear-gradient(160deg, #3A2418, #1A1210); border: 1px solid rgba(232,165,119,.18); }
+.ts-hero .big-serif { color: #F8F3EA; margin: 8px 0 6px; }
+.ts-hero .p { color: rgba(248,243,234,.78); }
+.ts-cta { display: inline-flex; align-items: center; min-height: 44px; margin-top: 14px; padding: 0 18px; border-radius: 999px; background: #E8A577; color: #1E2A26; font: 700 15px/1 Manrope, sans-serif; }
+.ts-step { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 8px; border-radius: 50%; background: rgba(232,165,119,.18); color: #E8A577; font: 700 12px/1 Manrope, sans-serif; }
+.ts-short { padding: 16px; border-radius: 18px; background: rgba(232,165,119,.08); border: 1px dashed rgba(232,165,119,.35); display: grid; gap: 10px; justify-items: start; }
+.ts-short .field { width: 100%; }
+.ts-read { white-space: pre-line; padding: 22px; border-radius: 22px; background: var(--card); border: 1px solid var(--line); font: 400 20px/1.6 Newsreader, Georgia, serif; color: var(--ink); }
+@media (max-width: 360px) { .jr { grid-template-columns: repeat(2, 1fr); } }
