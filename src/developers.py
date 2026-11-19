@@ -1,79 +1,196 @@
 """The Developers area: the API, SDK, MCP connector, feeds and webhooks under every Always module."""
 from html import escape
+import products as PR
 
-SNIPPETS = [
-    ('api', 'API', 'REST, OpenAPI 3.1, hosted in Sydney', 'docs/api', 'API=https://api.alwaysfoundation.org\n\n# Churches near Parramatta\ncurl $API/v1/directory?q=parramatta\n\n# The open register\ncurl $API/v1/compliance/register'),
-    ('sdk', 'SDK', 'TypeScript, for any app or site', 'docs/sdk', "import { AlwaysClient } from '@always/sdk';\n\nconst always = new AlwaysClient();\nconst { items } = await always.directory.search({\n  q: 'parramatta', kind: 'church',\n});"),
-    ('mcp', 'MCP', 'For Claude and other AI assistants', 'docs/mcp', '# Add as a custom connector\nhttps://api.alwaysfoundation.org/mcp\n\n# Tools: find_churches, verify_church,\n#        list_events, how_always_works'),
-    ('webhooks', 'Webhooks', 'Signed CloudEvents, ids only', 'docs/webhooks', "import { verifyWebhook } from '@always/sdk';\n\nconst ok = await verifyWebhook({\n  secret, body, timestamp, signature,\n});"),
+# Console examples: a request and a synthetic response. Names and numbers are invented.
+CONSOLE = [
+    ('find', 'Find a church', 'GET', '/v1/directory?q=parramatta&kind=church',
+     '{\n  "items": [\n    {\n      "slug": "example-church-parramatta",\n      "name": "Example Church",\n      "suburb": "Parramatta",\n      "partner": true,\n      "steps": ["visit", "talk", "course"]\n    }\n  ],\n  "next": null\n}', 'docs/feed'),
+    ('handoff', 'Hand someone on', 'POST', '/v1/responses',
+     '{\n  "ageBand": "18_plus",\n  "step": "talk",\n  "suburb": "Harris Park",\n  "consent": {\n    "purposes": ["connect"],\n    "allowNextNearby": true,\n    "party": "self"\n  }\n}\n\n201 Created\n{ "id": "rsp_7Hq2", "status": "offered" }', 'docs/standard'),
+    ('guard', 'Fail closed', 'SDK', "canShare(consent, 'connect')",
+     "// A 14-year-old, without a parent's okay\n{\n  \"ok\": false,\n  \"reason\": \"parent_confirmation_required\"\n}\n\n// Nothing moves until it passes.", 'docs/consent'),
+    ('mcp', 'Ask an assistant', 'MCP', 'find_churches',
+     '// "Which partner churches near Penrith\n//  run a course for new Christians?"\n{\n  "tool": "find_churches",\n  "input": { "near": "Penrith", "step": "course" }\n}\n\n// Public information only. No people.', 'docs/mcp'),
+]
+
+FACTS = [
+    ('OpenAPI 3.1', 'One described contract for every endpoint'),
+    ('Sydney', 'Where people’s details are stored and processed'),
+    ('Apache 2.0', 'Open source, so no one is locked in'),
+    ('3,937', 'Churches and ministries in the open feed'),
+]
+
+FLOW = [
+    ('A person responds', 'POST /v1/responses', 'Age band first, then the step they chose and what they agreed to share.'),
+    ('One church is offered', 'handoff.offered', 'The nearest partner church that fits. Webhooks carry ids, never names.'),
+    ('The church accepts', 'POST /v1/handoffs/:id/accept', 'Their details open to that church only, and the clock for first contact starts.'),
+    ('Someone gets in touch', 'POST /v1/handoffs/:id/contacted', 'First contact is logged. If it never comes, the person moves on to the next church.'),
+]
+
+GUARDS = [
+    ('Consent is checked on every move', 'Send, show, export or sync: each one asks first, and a missing or withdrawn consent stops it.'),
+    ('Age comes before anything else', 'Under 13s: no details at all. Under 15s: a parent or guardian confirms. Young people go only to youth partners, and never to AI.'),
+    ('Nothing personal leaves in messages', 'No names or numbers in logs, webhooks, emails, texts or analytics.'),
+    ('Kept in Australia', 'Stored and processed in Sydney. No dependency that sends people’s details offshore.'),
 ]
 
 WAYS = [
-    ('The API', 'Send responses, receive introductions, manage a church page and read the church feed. Scoped tokens, shown once, revocable.', 'docs/api', 'API reference'),
-    ('The SDK', 'A TypeScript client, a drop-in response card, the safety check-up and guardrails that fail closed.', 'docs/sdk', 'SDK guide'),
-    ('The MCP connector', 'Let AI assistants find churches, see which are partner churches and list events, using public information only.', 'docs/mcp', 'Connect an assistant'),
+    ('api', 'The API', 'Send responses, receive introductions, manage a church page and read the church feed. Scoped tokens, shown once, revocable.', 'docs/api', 'API reference'),
+    ('sdk', 'The SDK', 'A TypeScript client, a drop-in response card, the safety check-up and guardrails that fail closed.', 'docs/sdk', 'SDK guide'),
+    ('mcp', 'The MCP connector', 'Let AI assistants find churches, see which are partner churches and list events, using public information only.', 'docs/mcp', 'Connect an assistant'),
 ]
+
+WAY_ICON = {
+    'api': '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/>',
+    'sdk': '<path d="M4 7.5L12 3l8 4.5v9L12 21l-8-4.5z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
+    'mcp': '<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 11l7.4-3.8M8.3 13l7.4 3.8"/>',
+}
 
 BUILD = [
-    ('Church feed and finder', 'Partner churches near any postcode, for your website, app or map.', 'docs/feed'),
-    ('Responses and handoff', 'Pass people to a local partner church, with consent that travels with them.', 'docs/standard'),
-    ('Safety infrastructure', 'The open register, change alerts and an embeddable check-up.', 'docs/compliance-platforms'),
-    ('Webhooks', 'Hear about introductions, handoffs and rule changes as they happen.', 'docs/webhooks'),
-    ('Response pages and embeds', 'Branded response cards and pages you drop into your own site.', 'docs/senders'),
-    ('Scripture', 'The Bible in your app through YouVersion.', 'docs/youversion'),
-]
-
-RULES = [
-    ('Consent travels with the data', 'Every send, share and sync checks it first, and fails closed.'),
-    ('Young people first', 'Age is asked first. No AI and no sharing for anyone under 18.'),
-    ('Kept in Australia', "People's details are stored and processed here."),
-    ('Nothing personal in messages', 'No personal details in logs, webhooks, emails or texts.'),
-    ('Open source', 'Code under Apache 2.0, the standard open, so no one is locked in.'),
-    ('Free for churches', 'Partner platforms and larger ministries contribute according to their size.'),
+    ('connect', 'Church feed and finder', 'Partner churches near any postcode, for your website, app or map.', 'docs/feed'),
+    ('connect', 'Responses and handoff', 'Pass people to a local partner church, with consent that travels with them.', 'docs/standard'),
+    ('compliance', 'Safety infrastructure', 'The open register, change alerts and an embeddable check-up.', 'docs/compliance-platforms'),
+    ('reports', 'Webhooks', 'Hear about introductions, handoffs and rule changes as they happen.', 'docs/webhooks'),
+    ('pages', 'Response pages and embeds', 'Branded response cards and pages you drop into your own site.', 'docs/senders'),
+    ('app', 'Scripture', 'The Bible in your app through YouVersion.', 'docs/youversion'),
 ]
 
 
-def _code_card(code):
-    return f'<div class="mk mk-build dv-code" aria-hidden="true"><div class="mk-card mk-code"><div class="mk-dots"><i></i><i></i><i></i></div><code>{escape(code)}</code></div></div>'
+def _way_icon(k):
+    return f'<span class="mi" aria-hidden="true"><svg viewBox="0 0 24 24">{WAY_ICON[k]}</svg></span>'
 
 
-def _switcher():
-    tabs = ''.join(f'<button type="button" role="tab" class="sw-tab" id="dv-t-{k}" aria-controls="dv-p-{k}" aria-selected="{str(i == 0).lower()}" tabindex="{0 if i == 0 else -1}">{n}</button>' for i, (k, n, _, _, _) in enumerate(SNIPPETS))
-    panels = ''.join(f'<div class="sw-panel" role="tabpanel" id="dv-p-{k}" aria-labelledby="dv-t-{k}"{"" if i == 0 else " hidden"}>{_code_card(code)}<p class="sw-line"><b>{n}</b> {line}. <a href="#/{doc}">Read the docs</a></p></div>' for i, (k, n, line, doc, code) in enumerate(SNIPPETS))
-    return f'<div class="sw"><div class="sw-bar"><span class="sw-me"><i></i>api.alwaysfoundation.org</span></div><div class="sw-tabs" role="tablist" aria-label="Ways to build">{tabs}</div>{panels}</div>'
+def _console():
+    tabs = ''.join(
+        f'<button type="button" role="tab" class="sw-tab" id="dv-t-{k}" aria-controls="dv-p-{k}" aria-selected="{str(i == 0).lower()}" tabindex="{0 if i == 0 else -1}">{n}</button>'
+        for i, (k, n, _, _, _, _) in enumerate(CONSOLE))
+    panels = ''.join(
+        f'<div class="sw-panel dvc-panel" role="tabpanel" id="dv-p-{k}" aria-labelledby="dv-t-{k}"{"" if i == 0 else " hidden"}>'
+        f'<p class="dvc-req"><span class="dvc-m dvc-m-{m.lower()}">{m}</span><code>{escape(path)}</code></p>'
+        f'<pre class="dvc-out"><code>{"".join(f"<span>{escape(line) or " "}</span>" for line in out.split(chr(10)))}</code></pre>'
+        f'<a class="dvc-doc" href="#/{doc}">Read the docs</a></div>'
+        for i, (k, n, m, path, out, doc) in enumerate(CONSOLE))
+    return (f'<div class="sw dvc" data-dvc><div class="dvc-bar"><span class="dvc-dots" aria-hidden="true"><i></i><i></i><i></i></span>'
+            f'<span class="dvc-host">api.alwaysfoundation.org</span><span class="dvc-au">Sydney</span></div>'
+            f'<div class="sw-tabs" role="tablist" aria-label="Examples">{tabs}</div>{panels}'
+            f'<p class="dvc-note">Example data. Names are invented.</p></div>')
 
 
-PAGE = f'''<section class="page-hero pf-hero"><div class="wrap pf-split">
-  <div><p class="pl-kick">Developers</p>
-  <h1>Build on Always Platform.</h1>
-  <p>The same open-source API, SDK and AI connector every Always module runs on. Free for churches and ministries, and open to the platforms that serve them.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/docs/api">Read the docs</a><a class="btn btn-ghost" href="#/join/platform">Register as a platform</a></div></div>
-  {_switcher()}
+PAGE = f'''<section class="page-hero dv-hero"><div class="wrap dv-split">
+  <div class="dv-copy"><p class="pl-kick">Developers</p>
+  <h1>Build with the Body.</h1>
+  <p>The same open-source API, SDK and AI connector every Always module runs on. Help people who say yes to Jesus find a local church, from your own website, app or event.</p>
+  <p class="dv-pilot"><i aria-hidden="true"></i>In pilot. Keys are free for churches and ministries.</p>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/docs/api">Read the docs</a><a class="btn btn-ghost" href="#/join/platform">Ask for a key</a></div></div>
+  {_console()}
+</div><div class="wrap dv-facts"><dl class="dv-facts-in">{''.join(f'<div class="rv"><dt>{t}</dt><dd>{d}</dd></div>' for t, d in FACTS)}</dl></div></section>
+<section class="sec pg-sec dv-flow-sec"><div class="wrap">
+  <h2 class="pg-h rv">A handoff, end to end.</h2>
+  <p class="pg-lead rv">Four calls take someone from a moment of decision to a real person at a church near home.</p>
+  <ol class="dv-flow">{''.join(f'<li class="rv"><span class="dv-n" aria-hidden="true">{i}</span><h3>{t}</h3><code>{escape(c)}</code><p>{p}</p></li>' for i, (t, c, p) in enumerate(FLOW, 1))}</ol>
+</div></section>
+<section class="sec pg-sec dv-guard-sec"><div class="wrap dv-guard">
+  <div><h2 class="pg-h rv">Guardrails you can&rsquo;t switch off.</h2>
+  <p class="pg-lead rv">Care for people is written into the platform, so every integration inherits it. These rules aren&rsquo;t settings.</p>
+  <ul class="dv-rules">{''.join(f'<li class="rv"><h3>{t}</h3><p>{p}</p></li>' for t, p in GUARDS)}</ul></div>
+  <figure class="dv-refuse rv" aria-label="An example of a share being refused"><pre><code><span class="c">// Someone withdrew yesterday</span><span>await always.handoffs.share(id)</span><span> </span><span class="r">&#10005; refused: withdrawn</span><span class="c">// The church never sees them again,</span><span class="c">// and the person hears it&rsquo;s done.</span></code></pre></figure>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
-  <h2 class="pg-h rv">Three ways in</h2>
-  <div class="sl-rows dv-ways">{''.join(f'<a class="sl-row rv" href="#/{d}"><h3>{t}</h3><p>{p}</p><span class="sl-with">{l}</span></a>' for t, p, d, l in WAYS)}</div>
+  <h2 class="pg-h rv">Three ways in.</h2>
+  <div class="dv-ways">{''.join(f'<a class="dv-way rv" href="#/{d}">{_way_icon(k)}<h3>{t}</h3><p>{p}</p><span class="dv-go">{l}</span></a>' for k, t, p, d, l in WAYS)}</div>
 </div></section>
-<section class="sec pd-statement"><div class="wrap"><p class="rv">Open by default. Built for the Church.</p></div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
-  <h2 class="pg-h rv">What you can build</h2>
-  <div class="sl-rows">{''.join(f'<a class="sl-row rv" href="#/{d}"><h3>{t}</h3><p>{p}</p></a>' for t, p, d in BUILD)}</div>
-</div></section>
-<section class="sec pg-sec solutions-home"><div class="wrap">
-  <h2 class="pg-h rv">Rules every integration follows</h2>
-  <div class="sl-rows">{''.join(f'<div class="sl-row rv"><h3>{t}</h3><p>{p}</p></div>' for t, p in RULES)}</div>
+  <h2 class="pg-h rv">What you can build.</h2>
+  <div class="dv-build">{''.join(f'<a class="pd-link rv" href="#/{d}">{PR.mod_icon(s)}<b>{t}</b><span>{p}</span></a>' for s, t, p, d in BUILD)}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap sl-end">
   <h2 class="pg-h rv">Building for churches or ministries?</h2>
-  <p class="pg-lead rv">Tell us what you're making. We'll help you get started and keep it safe for the people it serves.</p>
+  <p class="pg-lead rv">Tell us what you&rsquo;re making. We&rsquo;ll help you get started and keep it safe for the people it serves.</p>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/contact/developer">Talk to us</a><a class="btn btn-green" href="#/docs/introduction">Browse the docs</a></div>
 </div></section>'''
 
 CSS = '''
-.dv-code { min-height: 300px; border-radius: 22px; }
-.dv-code .mk-card { width: min(440px, 100%); }
-.dv-code code { font-size: 12.5px; overflow-x: auto; }
-.dv-code .mk-card { min-width: 0; }
-@media (max-width: 640px) { .dv-code { padding: 18px 12px; min-height: 240px; } .dv-code code { font-size: 11px; } }
-.solutions-home .sl-row h3 { color: var(--cream); }
+/* ---- Developers ---- */
+.dv-hero { padding-bottom: 72px; }
+.dv-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 56px; align-items: center; }
+.dv-copy h1 { font-size: clamp(48px, 6.4vw, 92px); line-height: .95; letter-spacing: -.035em; }
+.dv-copy > p:not(.pl-kick):not(.dv-pilot) { max-width: 46ch; margin-top: 22px; font-size: 19px; line-height: 1.55; color: rgba(248,243,234,.82); }
+.page-hero p.dv-pilot, .page-hero p.dvc-note { max-width: none; }
+.page-hero p.dv-pilot { font-size: 14px; }
+.page-hero p.dvc-note { font-size: 12.5px; margin: 0; }
+.dv-pilot { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 9px 14px; border-radius: 999px; background: rgba(248,243,234,.08); font: 600 14px/1.3 var(--head); color: var(--cream); }
+.dv-pilot i { width: 8px; height: 8px; border-radius: 50%; background: var(--peach); box-shadow: 0 0 0 4px rgba(232,165,122,.25); }
+.dvc { padding: 0; border-radius: 26px; background: #102A25; box-shadow: inset 0 0 0 1px rgba(248,243,234,.08), 0 40px 80px -40px rgba(0,0,0,.7); overflow: hidden; }
+.dvc-bar { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid rgba(248,243,234,.07); font: 500 13px/1 var(--head); color: rgba(248,243,234,.6); }
+.dvc-dots { display: flex; gap: 6px; } .dvc-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(248,243,234,.16); }
+.dvc-host { flex: 1; }
+.dvc-au { padding: 5px 10px; border-radius: 999px; background: rgba(232,165,122,.14); color: var(--peach); font-weight: 600; }
+.dvc .sw-tabs { margin: 14px 16px 0; }
+.dvc .dvc-panel p.dvc-req { margin: 0; font-size: inherit; max-width: none; }
+.dvc-panel { padding: 20px 22px 18px; }
+.dvc-req { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.dvc-req code { font: 500 14px/1.4 ui-monospace, 'SF Mono', Menlo, monospace; color: var(--cream); overflow-wrap: anywhere; }
+.dvc-m { flex: none; padding: 4px 8px; border-radius: 7px; font: 700 12px/1 var(--head); background: rgba(248,243,234,.1); color: var(--cream); }
+.dvc-m-post { background: rgba(232,165,122,.2); color: var(--peach); }
+.dvc-m-get { background: rgba(167,207,186,.18); color: #A7CFBA; }
+.dvc-out { margin: 16px 0 0; padding: 18px; min-height: 270px; border-radius: 16px; background: rgba(0,0,0,.22); overflow-x: auto; }
+.dvc-out code { display: block; font: 500 13px/1.7 ui-monospace, 'SF Mono', Menlo, monospace; color: #DCE7DF; white-space: pre; }
+.dvc-out span { display: block; }
+.dvc.go .dvc-panel:not([hidden]) .dvc-out span { animation: dvLine .35s ease both; }
+''' + ''.join(f'.dvc.go .dvc-out span:nth-child({i}) {{ animation-delay: {i * 0.05:.2f}s; }}\n' for i in range(1, 16)) + '''
+@keyframes dvLine { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.dvc-doc { display: inline-block; margin-top: 14px; color: var(--peach); font: 600 14px/1 var(--head); text-underline-offset: 3px; }
+.dvc-note { padding: 0 22px 18px; font-size: 12.5px; color: rgba(248,243,234,.45); }
+.dv-facts { margin-top: 64px; color: var(--cream); }
+.dv-facts-in { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(248,243,234,.12); }
+.dv-facts-in > div { padding: 26px 24px 0 0; }
+.dv-facts dt { font: 800 clamp(26px, 3vw, 38px)/1 var(--head); letter-spacing: -.02em; color: var(--cream); }
+.dv-facts dd { margin: 10px 0 0; max-width: 24ch; font-size: 15px; line-height: 1.45; color: rgba(248,243,234,.7); }
+.dv-flow { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 40px 0 0; padding: 0; counter-reset: none; position: relative; }
+.dv-flow::before { content: ''; position: absolute; top: 22px; left: 22px; right: 22px; height: 2px; background: linear-gradient(90deg, var(--peach), rgba(232,165,122,.15)); }
+.dv-flow li { position: relative; }
+.dv-n { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--green); color: var(--cream); font: 800 17px/1 var(--head); box-shadow: 0 0 0 6px var(--cream-bg, #F6F1E8); }
+.dv-flow h3 { margin-top: 20px; font: 800 20px/1.2 var(--head); color: var(--green); }
+.dv-flow code { display: inline-block; margin-top: 10px; padding: 6px 9px; border-radius: 8px; background: #E9EFE9; color: var(--green); font: 600 12.5px/1.3 ui-monospace, 'SF Mono', Menlo, monospace; overflow-wrap: anywhere; }
+.dv-flow p { margin-top: 10px; font-size: 15.5px; line-height: 1.55; color: var(--soft); }
+.dv-guard-sec { background: #14352F; color: var(--cream); }
+.dv-guard { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center; }
+.dv-guard .pg-h { color: var(--cream); } .dv-guard .pg-lead { color: rgba(248,243,234,.75); }
+.dv-rules { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 22px; }
+.dv-rules li { padding-left: 22px; border-left: 2px solid var(--peach); }
+.dv-rules h3 { font: 700 19px/1.3 var(--head); color: var(--cream); }
+.dv-rules p { margin-top: 6px; font-size: 15.5px; line-height: 1.55; color: rgba(248,243,234,.72); max-width: 52ch; }
+.dv-refuse { margin: 0; padding: 26px; border-radius: 24px; background: #0D241F; box-shadow: inset 0 0 0 1px rgba(248,243,234,.08); overflow-x: auto; }
+.dv-refuse code { display: block; font: 500 14px/1.8 ui-monospace, 'SF Mono', Menlo, monospace; color: #DCE7DF; white-space: pre; }
+.dv-refuse span { display: block; } .dv-refuse .c { color: rgba(220,231,223,.5); } .dv-refuse .r { color: var(--peach); font-weight: 700; }
+.dv-ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.dv-way { display: grid; align-content: start; gap: 10px; padding: 28px; border-radius: 24px; background: #FFFDF8; color: inherit; text-decoration: none; box-shadow: 0 1px 0 rgba(27,71,64,.06); transition: transform .2s ease, box-shadow .2s ease; }
+.dv-way:hover, .dv-way:focus-visible { transform: translateY(-3px); box-shadow: 0 24px 44px -30px rgba(10,30,26,.45); }
+.dv-way h3 { margin-top: 8px; font: 800 22px/1.2 var(--head); color: var(--green); }
+.dv-way p { font-size: 15.5px; line-height: 1.55; color: var(--soft); }
+.dv-go { margin-top: 6px; font: 600 15px/1 var(--head); color: var(--clay, #B55A2E); }
+.dv-build { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 32px; }
+@media (max-width: 1000px) {
+  .dv-split, .dv-guard { grid-template-columns: 1fr; gap: 40px; }
+  .dv-flow { grid-template-columns: 1fr 1fr; row-gap: 36px; } .dv-flow::before { display: none; }
+  .dv-facts-in { grid-template-columns: 1fr 1fr; }
+  .dv-ways, .dv-build { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .dv-flow { grid-template-columns: 1fr; }
+  .dvc-out { min-height: 0; } .dvc-out code { font-size: 12px; }
+  .dv-facts-in > div { padding-right: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .dvc.go .dvc-out span { animation: none !important; } .dv-way { transition: none; } }
+'''
+
+JS = r'''
+// Developer console: lines arrive once when it comes into view, and again on each tab change.
+(() => {
+  const c = document.querySelector('[data-dvc]'); if (!c) return;
+  const replay = () => { c.classList.remove('go'); void c.offsetWidth; c.classList.add('go'); };
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { replay(); o.disconnect(); } }).observe(c);
+  c.querySelectorAll('.sw-tab').forEach((t) => t.addEventListener('click', replay));
+})();
 '''
