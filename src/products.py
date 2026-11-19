@@ -39,6 +39,7 @@ SOLUTIONS = {
     'platforms':  ('platforms',   'Christian tech platforms',     'Build compliance, handoff and church data into your own product, on open standards.', ['compliance', 'connect'], ('Love is Our Weapon', 'Our first Always Compliance user, ready to roll it out to youth ministries and churches.')),
 }
 
+VERBS = {'app': 'Share Jesus', 'pages': 'Capture every yes', 'compliance': 'Stay lawful', 'reports': 'Show the fruit', 'connect': 'Hand people on'}
 PILLAR_NAME = {k: n for k, n, _ in PILLARS} | {'build': 'Build'}
 
 
@@ -83,7 +84,7 @@ BENTO = ['app', 'pages', 'compliance', 'reports', 'connect']
 def bento_tile(slug):
     route, name, pillar, line, _ = PRODUCTS[slug]
     return (f'<a class="bt bt-{slug} rv" href="#/{route}">{mock(slug)}'
-            f'<div class="bt-body"><span class="bt-k btp-{pillar}">{PILLAR_NAME[pillar]}</span>'
+            f'<div class="bt-body"><span class="bt-k btv-{slug}">{VERBS[slug]}</span>'
             f'<h3>{name}</h3><p>{line}</p></div></a>')
 
 
@@ -91,15 +92,10 @@ def product_bento():
     return '<div class="bento">' + ''.join(bento_tile(s) for s in BENTO) + '</div>'
 
 
-VERBS = {'app': 'Share Jesus', 'pages': 'Capture every yes', 'compliance': 'Stay lawful', 'reports': 'Show the fruit', 'connect': 'Hand people on'}
 
 
 def platform_diagram():
-    groups = ''.join(
-        f'<div class="dg-group dg-{key}"><span class="dg-pillar">{name}</span><div class="dg-row">'
-        + ''.join(f'<a class="dg-mod" href="#/{PRODUCTS[s][0]}"><span class="dg-sw" aria-hidden="true"><i></i></span><b>{PRODUCTS[s][1]}</b><span>{VERBS[s]}</span></a>' for s in PRODUCTS if PRODUCTS[s][2] == key)
-        + '</div></div>'
-        for key, name, _ in PILLARS)
+    groups = ''.join(f'<a class="dg-mod dg-m-{s}" href="#/{PRODUCTS[s][0]}"><span class="dg-sw" aria-hidden="true"><i></i></span><b>{PRODUCTS[s][1]}</b><span>{VERBS[s]}</span></a>' for s in PRODUCTS)
     return f'''<figure class="dg rv" aria-label="How Always Platform fits together">
   <div class="dg-top"><b>Your church or ministry</b><span>Your team, your people, your brand</span></div>
   <div class="dg-mods">{groups}</div>
@@ -121,22 +117,68 @@ def switcher():
             f'<div class="sw-tabs" role="tablist" aria-label="Always modules">{tabs}</div>{panels}</div>')
 
 
-def solutions_grid():
-    return '<div class="sl-rows">' + ''.join(solution_card(s) for s in SOLUTIONS) + '</div>'
+def solutions_grid(prefix='sx'):
+    """Who it's for: pick an audience, see what Always does for them."""
+    keys = list(SOLUTIONS)
+    tabs = ''.join(
+        f'<button type="button" role="tab" class="sx-tab" id="{prefix}-t-{k}" aria-controls="{prefix}-p-{k}" aria-selected="{str(i == 0).lower()}" tabindex="{0 if i == 0 else -1}">{SOLUTIONS[k][1]}</button>'
+        for i, k in enumerate(keys))
+    panels = []
+    for i, k in enumerate(keys):
+        route, name, line, uses, story = SOLUTIONS[k]
+        mods = ''.join(f'<li><a href="#/{PRODUCTS[u][0]}"><b>{PRODUCTS[u][1]}</b><span>{VERBS[u]}</span></a></li>' for u in uses)
+        story_html = f'<p class="sx-story"><b>{story[0]}</b> {story[1]}</p>' if story else ''
+        panels.append(
+            f'<div class="sx-panel" role="tabpanel" id="{prefix}-p-{k}" aria-labelledby="{prefix}-t-{k}"{"" if i == 0 else " hidden"}>'
+            f'<div class="sx-art">{mock(uses[0])}</div>'
+            f'<div class="sx-body"><h3>{name}</h3><p class="sx-line">{line}</p>'
+            f'<p class="sx-k">Modules to switch on</p><ul class="sx-mods">{mods}</ul>{story_html}'
+            f'<a class="btn btn-green sx-cta" href="#/{route}">See how we help</a></div></div>')
+    return f'<div class="sx rv"><div class="sx-list" role="tablist" aria-orientation="vertical" aria-label="Who it\'s for">{tabs}</div><div class="sx-panels">{"".join(panels)}</div></div>'
+
+
+ICON = {
+    'app': '<rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10.5 18h3"/>',
+    'pages': '<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/>',
+    'compliance': '<path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/>',
+    'reports': '<path d="M5 20V11M10 20V6M15 20v-7M20 20V9"/>',
+    'connect': '<circle cx="6.5" cy="12" r="3"/><circle cx="17.5" cy="12" r="3"/><path d="M9.5 12h5"/>',
+    'churches': '<path d="M12 3v4M10 5h4"/><path d="M5 21v-8l7-5 7 5v8"/><path d="M10 21v-4h4v4"/>',
+    'youth': '<path d="M12 3l2.4 5 5.6.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.6-.8z"/>',
+    'ministries': '<path d="M4 8a2 2 0 002-2h12a2 2 0 002 2v8a2 2 0 00-2 2H6a2 2 0 00-2-2z"/><path d="M12 9v6"/>',
+    'evangelists': '<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 010 6"/>',
+    'networks': '<circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M11 7l-5 9M13 7l5 9M7 18h10"/>',
+    'platforms': '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
+}
+MENU_LINE = {
+    'app': 'Share Jesus and walk with people', 'pages': 'Branded response pages and QR codes',
+    'compliance': 'Stay lawful, state by state', 'reports': 'Monthly reports for funders',
+    'connect': 'Hand people on to a local church',
+    'churches': 'Welcome people near you', 'youth': 'Safe, compliant, welcoming', 'ministries': 'A next step for every response',
+    'evangelists': 'Share and connect with confidence', 'networks': 'Ready to welcome, together', 'platforms': 'Build on open standards',
+}
+
+
+def _icon(k):
+    return f'<span class="dd-ic dd-ic-{k}" aria-hidden="true"><svg viewBox="0 0 24 24">{ICON[k]}</svg></span>'
 
 
 def menu_html():
     """Platform and Solutions drop-downs for the main menu."""
-    plat = ''.join(
-        f'<div class="dd-col"><p class="dd-h">{name}</p>' + ''.join(f'<a href="#/{PRODUCTS[s][0]}" data-route="{PRODUCTS[s][0]}"><b>{PRODUCTS[s][1]}</b><span>{PRODUCTS[s][3]}</span></a>' for s in PRODUCTS if PRODUCTS[s][2] == key) + '</div>'
-        for key, name, _ in PILLARS)
-    build_row = f'<a class="dd-build" href="#/{DEVELOPERS[0]}" data-route="{DEVELOPERS[0]}"><b>{DEVELOPERS[1]}</b><span>{DEVELOPERS[2]}</span></a>'
-    sol = ''.join(f'<a href="#/{r}" data-route="{r}"><b>{n}</b><span>{l}</span></a>' for r, n, l, _, _ in SOLUTIONS.values())
+    plat = '<p class="dd-h">Modules</p><div class="dd-mods">' + ''.join(
+        f'<a href="#/{PRODUCTS[s][0]}" data-route="{PRODUCTS[s][0]}">{_icon(s)}<span class="dd-tx"><b>{PRODUCTS[s][1]}</b><span>{MENU_LINE[s]}</span></span></a>'
+        for s in PRODUCTS) + '</div>'
+    feature = ('<a class="dd-feature" href="#/platform" data-route="platform"><span class="dd-f-k">Always Platform</span>'
+               '<b>Five modules. One sign-in.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>'
+               '<span class="dd-f-l">See how it fits together</span></a>')
+    sol = ''.join(f'<a href="#/{r}" data-route="{r}">{_icon(k)}<span class="dd-tx"><b>{n}</b><span>{MENU_LINE[k]}</span></span></a>' for k, (r, n, l, _, _) in SOLUTIONS.items())
+    story = ('<a class="dd-story" href="#/stories"><span class="dd-f-k">Story</span><b>Sydney Fire Evangelism</b>'
+             '<span>Street evangelists with their own branded response app.</span><span class="dd-f-l">Read the stories</span></a>')
     return (
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button>'
-        f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-grid">{plat}</div><div class="dd-foot"><span class="dd-note">One sign-in for every module.</span><a class="dd-all" href="#/platform" data-route="platform">See Always Platform</a></div></div></li>'
-        '<li class="dd"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-solutions" data-group="solutions">Solutions</button>'
-        f'<div class="dd-panel" id="dd-solutions"><div class="dd-list">{sol}</div></div></li>'
+        f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-layout">{feature}<div class="dd-grid">{plat}</div></div></div></li>'
+        '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-solutions" data-group="solutions">Solutions</button>'
+        f'<div class="dd-panel dd-wide dd-sol" id="dd-solutions"><div class="dd-layout dd-layout-sol"><div class="dd-list">{sol}</div>{story}</div></div></li>'
         f'<li><a href="#/{DEVELOPERS[0]}" data-route="{DEVELOPERS[0]}">{DEVELOPERS[1]}</a></li>'
         '<li><a href="#/stories" data-route="stories">Stories</a></li>'
         '<li><a href="#/docs/introduction" data-route="docs">Docs</a></li>'
@@ -175,7 +217,7 @@ def product_page(slug, intro, feats, works_with, extra='', status=None, primary=
     sec = f'<a class="btn btn-ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
     stmt = f'<section class="sec pd-statement"><div class="wrap"><p class="rv">{statement}</p></div></section>' if statement else ''
     return f'''<section class="page-hero pd-hero"><div class="wrap pd-split">
-  <div><p class="pl-kick">{PILLAR_NAME[pillar]} module, Always Platform</p>
+  <div><p class="pl-kick">A module of Always Platform</p>
   <h1>{name}</h1>
   <p class="pd-line">{line}</p>
   <p>{intro}</p>{badge}
@@ -328,7 +370,7 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-s
 </div></section>
 <section class="sec pg-sec solutions-home"><div class="wrap">
   <h2 class="pg-h rv">Who it's for</h2>
-  {solutions_grid()}
+  {solutions_grid('pfx')}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">What never changes</h2>
@@ -435,7 +477,8 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
 .dg { margin: 48px 0 0; display: grid; gap: 14px; }
 .dg-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 26px; border-radius: 22px; background: #FFFDF8; border: 1px dashed rgba(27,71,64,.3); }
 .dg-top b { font: 800 20px/1.2 var(--head); color: var(--green); } .dg-top span { color: var(--soft); font-size: 15px; }
-.dg-mods { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 14px; }
+.dg-mods { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; padding: 14px; border-radius: 26px; background: var(--sage); }
+.dg-m-app, .dg-m-pages { box-shadow: inset 0 3px 0 var(--peach), 0 14px 28px -24px rgba(20,53,47,.5); } .dg-m-compliance, .dg-m-reports { box-shadow: inset 0 3px 0 var(--green-2), 0 14px 28px -24px rgba(20,53,47,.5); } .dg-m-connect { box-shadow: inset 0 3px 0 #C9A55A, 0 14px 28px -24px rgba(20,53,47,.5); }
 .dg-group { display: grid; gap: 10px; align-content: start; padding: 14px; border-radius: 24px; background: var(--peach-soft); }
 .dg-support { background: var(--sage); } .dg-connect { background: #EFE5D1; }
 .dg-pillar { font: 700 13px/1 var(--head); color: var(--clay); padding: 4px 6px 0; }
@@ -453,7 +496,44 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
 .dg-dev { display: flex; gap: 16px; align-items: baseline; padding: 16px 28px; border-radius: 18px; background: var(--green-deep); color: var(--on-green); text-decoration: none; }
 .dg-dev b { color: var(--cream); font: 800 16px/1 var(--head); } .dg-dev span { font-size: 14.5px; }
 .dg-dev:hover b, .dg-dev:focus-visible b { text-decoration: underline; text-decoration-color: var(--peach); text-underline-offset: 5px; }
-@media (max-width: 900px) { .dg-mods { grid-template-columns: 1fr; } .dg-top { flex-direction: column; align-items: start; gap: 4px; } .dg-dev { flex-direction: column; gap: 6px; } }
+@media (max-width: 1000px) { .dg-mods { grid-template-columns: repeat(2, minmax(0, 1fr)); } .dg-m-connect { grid-column: span 2; } }
+@media (max-width: 900px) { .dg-top { flex-direction: column; align-items: start; gap: 4px; } .dg-dev { flex-direction: column; gap: 6px; } }
+
+/* ---- Who it's for: explorer ---- */
+.sx { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; margin-top: 48px; align-items: start; }
+.sx-list { display: grid; gap: 2px; position: sticky; top: 110px; }
+.sx-tab { position: relative; text-align: left; background: none; border: 0; padding: 14px 0 14px 22px; color: var(--cream); opacity: .5; font: 800 clamp(20px, 2.1vw, 28px)/1.15 var(--head); letter-spacing: -0.02em; cursor: pointer; transition: opacity .2s, transform .25s cubic-bezier(.2,.8,.2,1); }
+.sx-tab::before { content: ''; position: absolute; left: 0; top: 50%; width: 3px; height: 0; border-radius: 3px; background: var(--peach); transform: translateY(-50%); opacity: 0; transition: height .25s cubic-bezier(.2,.8,.2,1), opacity .2s; }
+.sx-tab:hover { opacity: .85; }
+.sx-tab[aria-selected="true"] { opacity: 1; transform: translateX(4px); } .sx-tab[aria-selected="true"]::before { height: 70%; opacity: 1; }
+.sx-tab:focus-visible { outline: 2px solid var(--peach); outline-offset: 4px; border-radius: 6px; }
+.sx-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); background: #FFFDF8; border-radius: 30px; overflow: hidden; box-shadow: 0 40px 80px -40px rgba(0,0,0,.55); }
+.sx-panel[hidden] { display: none; }
+.sx-panel:not([hidden]) { animation: sxIn .45s cubic-bezier(.2,.8,.2,1); }
+@keyframes sxIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.sx-art .mk { height: 100%; min-height: 420px; border-radius: 0; }
+.sx-body { padding: 34px 32px 32px; display: grid; align-content: start; gap: 10px; }
+.sx-body h3 { margin: 0; font: 800 28px/1.1 var(--head); letter-spacing: -0.02em; color: var(--green); }
+.sx-line { margin: 0; font-size: 16.5px; line-height: 1.55; color: var(--soft); }
+.sx-k { margin: 14px 0 0; font: 700 12.5px/1 var(--head); color: var(--clay); }
+.sx-mods { list-style: none; margin: 0; padding: 0; display: grid; }
+.sx-mods a { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); color: inherit; text-decoration: none; }
+.sx-mods b { font: 700 15.5px/1.3 var(--head); color: var(--green); } .sx-mods span { font-size: 14px; color: var(--muted); text-align: right; }
+.sx-mods a:hover b, .sx-mods a:focus-visible b { text-decoration: underline; text-decoration-color: var(--peach); text-underline-offset: 4px; }
+.sx-story { margin: 8px 0 0; padding: 14px 16px; border-radius: 16px; background: var(--sage-2); font-size: 14.5px; line-height: 1.5; color: var(--soft); }
+.sx-story b { display: block; color: var(--green); font-family: var(--head); margin-bottom: 2px; }
+.sx-cta { justify-self: start; margin-top: 14px; }
+@media (max-width: 1100px) { .sx-panel { grid-template-columns: minmax(0, 1fr); } .sx-art .mk { min-height: 260px; } }
+@media (max-width: 860px) {
+  .sx { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .sx-list { position: static; display: flex; overflow-x: auto; gap: 22px; padding-bottom: 6px; scrollbar-width: none; border-bottom: 1px solid rgba(248,243,234,.16); }
+  .sx-list::-webkit-scrollbar { display: none; }
+  .sx-tab { flex: none; padding: 10px 0 14px; font-size: 18px; white-space: nowrap; }
+  .sx-tab::before { left: 0; right: 0; top: auto; bottom: -1px; width: 0; height: 3px; transform: none; transition: width .25s; }
+  .sx-tab[aria-selected="true"] { transform: none; } .sx-tab[aria-selected="true"]::before { width: 100%; height: 3px; }
+  .sx-body { padding: 26px 22px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .sx-panel:not([hidden]) { animation: none; } .sx-tab, .sx-tab::before { transition: none; } }
 
 /* ---- Statement (deck style) ---- */
 .pd-statement { padding: 120px 0; background: var(--cream); }
@@ -511,7 +591,7 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
 .sl-story-sec p.sl-story-k { font: 700 15px/1.2 var(--head); color: var(--clay); margin-bottom: 18px; letter-spacing: 0; }
 .sl-story-cta { text-align: center; margin-top: 32px; }
 .bt-k { font: 700 13px/1 var(--head); color: var(--clay); background: none !important; padding: 0; }
-.bt-k.btp-support, .bt-k.btp-build { color: var(--green-2); } .bt-k.btp-agents { color: #5B4A86; } .bt-k.btp-connect { color: #85651F; }
+.bt-k.btv-compliance, .bt-k.btv-reports { color: var(--green-2); } .bt-k.btv-connect { color: #85651F; }
 
 /* ---- Menu drop-downs ---- */
 .dd { position: relative; }
@@ -545,9 +625,65 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
   .dd-all { border: 0; padding: 8px 0 !important; color: var(--peach) !important; }
   .dd-foot { display: grid; border: 0; padding: 0; margin: 4px 0 0; gap: 0; } .dd-panel .dd-build { margin: 0; }
 }
+
+/* ---- Menu drop-downs, refined ---- */
+@media (min-width: 901px) {
+  .dd-panel { display: block; visibility: hidden; opacity: 0; transform: translate(-50%, 8px); transition: opacity .18s ease, transform .22s cubic-bezier(.2,.8,.2,1), visibility 0s .22s; padding: 14px; border-radius: 26px; box-shadow: 0 40px 80px -30px rgba(10,30,26,.55), 0 0 0 1px rgba(27,71,64,.06); }
+  .dd-panel.open { visibility: visible; opacity: 1; transform: translate(-50%, 0); transition: opacity .18s ease, transform .22s cubic-bezier(.2,.8,.2,1); }
+  .dd-wide { width: min(980px, 94vw); }
+  .dd-sol { width: min(860px, 94vw); }
+  .dd-layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 14px; }
+  .dd-layout-sol { grid-template-columns: minmax(0, 1fr) 250px; }
+  .dd-grid { display: block; padding: 10px 8px; }
+  .dd-mods { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 8px; }
+  .dd-wide:not(.dd-sol) { width: min(820px, 94vw); }
+  .dd-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 8px; padding: 8px; align-content: start; }
+  .dd-feature, .dd-story { display: grid !important; align-content: start; gap: 10px !important; margin: 0 !important; padding: 22px !important; border-radius: 20px !important; background: var(--green) !important; color: var(--cream) !important; }
+  .dd-story { background: var(--green-deep) !important; }
+  .dd-f-k { font: 700 12px/1 var(--head); color: var(--peach) !important; font-size: 12px !important; }
+  .dd-feature b, .dd-story b { font: 800 21px/1.15 var(--head) !important; color: var(--cream) !important; letter-spacing: -0.01em; }
+  .dd-story > span:not(.dd-f-k):not(.dd-f-l) { color: var(--on-green) !important; font-size: 14px !important; line-height: 1.45; }
+  .dd-f-sw { display: flex; gap: 6px; margin-top: 4px; }
+  .dd-f-sw i { width: 26px; height: 14px; border-radius: 99px; background: rgba(248,243,234,.18); position: relative; }
+  .dd-f-sw i::after { content: ''; position: absolute; top: 2px; left: 2px; width: 10px; height: 10px; border-radius: 50%; background: var(--cream); transition: left .25s cubic-bezier(.2,.8,.2,1), background-color .25s; }
+  .dd-panel.open .dd-f-sw i { background: var(--peach); transition: background-color .25s; }
+  .dd-panel.open .dd-f-sw i::after { left: 14px; }
+  .dd-panel.open .dd-f-sw i:nth-child(2), .dd-panel.open .dd-f-sw i:nth-child(2)::after { transition-delay: .06s; }
+  .dd-panel.open .dd-f-sw i:nth-child(3), .dd-panel.open .dd-f-sw i:nth-child(3)::after { transition-delay: .12s; }
+  .dd-panel.open .dd-f-sw i:nth-child(4), .dd-panel.open .dd-f-sw i:nth-child(4)::after { transition-delay: .18s; }
+  .dd-panel.open .dd-f-sw i:nth-child(5), .dd-panel.open .dd-f-sw i:nth-child(5)::after { transition-delay: .24s; }
+  .dd-f-l { margin-top: auto; padding-top: 18px; font: 700 14px/1 var(--head); color: var(--peach) !important; font-size: 14px !important; }
+  .dd-feature:hover .dd-f-l, .dd-story:hover .dd-f-l, .dd-feature:focus-visible .dd-f-l, .dd-story:focus-visible .dd-f-l { text-decoration: underline; text-underline-offset: 4px; }
+  .dd-h { padding: 4px 10px 6px; margin: 0; }
+  .dd-mods a, .dd-col a, .dd-list a { display: flex !important; gap: 12px !important; align-items: flex-start; padding: 10px !important; margin: 0 !important; border-radius: 14px !important; }
+  .dd-tx { display: grid; gap: 2px; }
+  .dd-tx b { font: 700 15px/1.25 var(--head); color: var(--green); }
+  .dd-tx span { font-size: 13px; line-height: 1.4; color: var(--soft); }
+  .dd-ic { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: var(--peach-soft); color: var(--clay); transition: transform .2s cubic-bezier(.2,.8,.2,1); }
+  .dd-ic-compliance, .dd-ic-reports { background: var(--sage); color: var(--green); }
+  .dd-ic-connect { background: #EFE5D1; color: #85651F; }
+  .dd-list .dd-ic { background: var(--sage-2); color: var(--green); }
+  .dd-ic svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .dd-mods a:hover .dd-ic, .dd-mods a:focus-visible .dd-ic, .dd-col a:hover .dd-ic, .dd-list a:hover .dd-ic, .dd-col a:focus-visible .dd-ic, .dd-list a:focus-visible .dd-ic { transform: scale(1.08) rotate(-3deg); }
+  .dd-mods a:hover, .dd-mods a:focus-visible, .dd-mods a[aria-current="page"], .dd-col a:hover, .dd-list a:hover, .dd-col a:focus-visible, .dd-list a:focus-visible, .dd-col a[aria-current="page"], .dd-list a[aria-current="page"] { background: var(--cream) !important; }
+}
+@media (max-width: 900px) {
+  .dd-mods { display: grid; gap: 2px; } .dd-mods a { display: block; padding: 6px 0; text-decoration: none; }
+  .dd-feature, .dd-story, .dd-ic { display: none !important; }
+  .dd-tx { display: block; } .dd-tx span { display: none; }
+  .dd-tx b { color: var(--cream); font-size: 17px; }
+  .dd-list { display: grid; gap: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { .dd-panel, .dd-f-sw i, .dd-f-sw i::after, .dd-ic { transition: none !important; } }
 '''
 
 MENU_JS = '''
+// Who it's for: vertical tabs, arrow keys move between audiences
+document.querySelectorAll('.sx').forEach((sx) => {
+  const tabs = [...sx.querySelectorAll('.sx-tab')];
+  const pick = (t, focus) => { tabs.forEach((x) => { const on = x === t; x.setAttribute('aria-selected', String(on)); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; }); if (focus) t.focus(); if (matchMedia('(max-width: 860px)').matches) t.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' }); };
+  tabs.forEach((t, i) => { t.addEventListener('click', () => pick(t)); t.addEventListener('keydown', (e) => { const d = ['ArrowDown', 'ArrowRight'].includes(e.key) ? 1 : ['ArrowUp', 'ArrowLeft'].includes(e.key) ? -1 : 0; if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); } }); });
+});
 // Platform hero product switcher (tabs with arrow keys)
 document.querySelectorAll('.sw').forEach((sw) => {
   const tabs = [...sw.querySelectorAll('.sw-tab')];

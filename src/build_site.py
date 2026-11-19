@@ -15,7 +15,7 @@ def _swap(h, marker, new):
     i = h.find(marker); a = h.rfind('<section', 0, i); b = h.find('</section>', i) + 10
     return h[:a] + new + h[b:]
 home = _swap(home, 'class="sec map"', '')
-home = home.replace('{{PILLARS}}', PR.product_bento()).replace('{{SOLUTIONS}}', PR.solutions_grid())
+home = home.replace('{{PILLARS}}', PR.product_bento()).replace('{{SOLUTIONS}}', PR.solutions_grid('hsx'))
 import base64 as _b
 import io as _io
 from PIL import Image as _Im
@@ -1158,7 +1158,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + CP.JS + extras.JS + PR.MENU_JS + CF.JS
+""" + CP.JS + extras.JS + PR.MENU_JS + CF.JS + PO.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order))
 
 footer = """

@@ -87,7 +87,7 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
 app_home = phone('<p class="pg-url">Always App · in your browser</p><p class="pg-serif">Who will you walk with today?</p><div class="pg-verse"><p>“For the Son of Man came to seek and to save the lost.”</p><span>Luke 19:10 (ESV)</span></div><p class="pg-small"><b>Pray for Sam, Priya and Josh</b></p><div class="pg-b pe">Start a response point</div>')
 def mini(title, inner): return f'<div class="pg-mini rv"><div class="pg-mini-ph">{phone(inner)}</div><h3>{title}</h3></div>'
 APP = f'''<section class="page-hero"><div class="wrap pg-split">
-  <div><p class="pl-kick">Equip module, Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
+  <div><p class="pl-kick">A module of Always Platform</p><h1>Always App</h1><p class="pd-line">Everything a Christian needs to share Jesus and walk with people.</p><p>A Bible, conversation guides, training and follow-up in one free app, so every yes can grow into a disciple.</p><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join the pilot</a></div>
   <div class="pg-hero-ph">{app_home}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
