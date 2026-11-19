@@ -87,6 +87,30 @@ a { color: inherit; }
 .linkbtn { background: none; border: 0; color: var(--mute); font: 600 14px/1 Archivo, sans-serif; text-decoration: underline; min-height: 44px; padding: 0; cursor: pointer; }
 .bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; color: var(--mute); font-size: 14px; }
 .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #2a1213; color: #ff9da1; font-size: 13px; font-weight: 700; margin-left: 6px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.rr-bar { height: 4px; border-radius: 4px; background: var(--line); margin-top: 10px; overflow: hidden; }
+.rr-bar i { display: block; height: 100%; width: 16.7%; background: var(--red); border-radius: 4px; transition: width .4s cubic-bezier(.2,.7,.2,1); }
+.rr { position: relative; margin-top: 26px; display: grid; }
+.rr-card { grid-area: 1 / 1; padding: 30px 24px 26px; border-radius: 24px; background: var(--paper); color: var(--ink); box-shadow: 0 30px 60px -30px rgba(227,38,46,.35); opacity: 0; visibility: hidden; transform: translateX(24px); transition: opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1), visibility 0s .35s; }
+.rr-card.on { opacity: 1; visibility: visible; transform: none; transition: opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1); }
+.rr-card.out { transform: translateX(-24px); }
+.rr-k { font-weight: 900; font-size: 15px; color: var(--red-d); letter-spacing: -0.01em; }
+.rr-card blockquote { margin: 14px 0 0; font-size: clamp(23px, 6.4vw, 28px); font-weight: 800; line-height: 1.25; letter-spacing: -0.015em; }
+.rr-card cite { display: block; margin-top: 16px; font-style: normal; font-weight: 800; font-size: 15px; color: #6b655d; }
+.rr-pray { margin-top: 20px; padding: 16px; border-radius: 16px; background: #fff; border-left: 4px solid var(--red); font-size: 16px; line-height: 1.5; color: #3a3631; }
+.rr-pray b { display: block; color: var(--ink); margin-bottom: 4px; }
+.rr-nav { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; margin-top: 22px; }
+.row-pc { grid-template-columns: 1fr 1.6fr; }
+.pc { position: relative; }
+.pc input { letter-spacing: .12em; font-size: 20px !important; }
+.pc-state { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); padding: 5px 9px; border-radius: 999px; background: #241112; color: #ff9da1; font-size: 13px; font-weight: 800; opacity: 0; transition: opacity .2s ease; pointer-events: none; }
+.pc-state.show { opacity: 1; }
+.field input.ok { box-shadow: inset 0 0 0 2px #2f7d5b; }
+.opt span { transition: box-shadow .2s ease, background .2s ease, transform .15s ease; }
+.opt input:active + span { transform: scale(.985); }
+.hero-logo { animation: glow 3.5s ease-in-out infinite alternate; }
+@keyframes glow { to { box-shadow: 0 0 0 1px var(--line), 0 24px 80px rgba(227,38,46,.32); } }
+@media (prefers-reduced-motion: reduce) { .rr-card, .rr-bar i, .pc-state, .opt span { transition: none; } .hero-logo { animation: none; } }
 @media (prefers-reduced-motion: no-preference) { .screen.on { animation: in .25s ease both; } @keyframes in { from { opacity: 0; transform: translateY(8px); } } }
 </style>
 </head>
@@ -101,15 +125,41 @@ a { color: inherit; }
   <div class="stack">
     <button class="btn btn-red" data-start="yes">I said yes to Jesus today</button>
     <button class="btn btn-line" data-start="talk">I'd like to talk with someone</button>
-    <a class="btn btn-line" href="https://www.bible.com/bible/59/JHN.3.ESV" rel="noopener" target="_blank">Read about Jesus</a>
+    <button class="btn btn-line" data-go="gospel">Read the Good News</button>
   </div>
   <div class="spacer"></div>
   <p class="foot">Sydney Fire Evangelism · powered by <a href="https://alwaysfoundation.org/#/platform">Always Platform</a><br><a href="#team">For the team</a> · <a href="https://alwaysfoundation.org/#/docs/privacy">Privacy</a></p>
 </section>
 
+<!-- The Romans Road -->
+<section class="screen" id="gospel" aria-labelledby="gospel-h">
+  <div class="top"><button class="back" data-go="home">← Back</button><span class="step-count" id="rr-count">1 of 6</span></div>
+  <div class="rr-bar" aria-hidden="true"><i id="rr-fill"></i></div>
+  <h2 id="gospel-h" class="sr">The Good News, from the book of Romans</h2>
+  <div class="rr" id="rr" aria-live="polite">
+    <article class="rr-card on"><p class="rr-k">We all fall short</p><blockquote>“For all have sinned and fall short of the glory of God.”</blockquote><cite>Romans 3:23</cite></article>
+    <article class="rr-card"><p class="rr-k">Sin costs us everything</p><blockquote>“For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.”</blockquote><cite>Romans 6:23</cite></article>
+    <article class="rr-card"><p class="rr-k">God loves you</p><blockquote>“But God shows his love for us in that while we were still sinners, Christ died for us.”</blockquote><cite>Romans 5:8</cite></article>
+    <article class="rr-card"><p class="rr-k">Believe and confess</p><blockquote>“If you confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved.”</blockquote><cite>Romans 10:9</cite></article>
+    <article class="rr-card"><p class="rr-k">Anyone can call on Him</p><blockquote>“For ‘everyone who calls on the name of the Lord will be saved.’”</blockquote><cite>Romans 10:13</cite></article>
+    <article class="rr-card rr-last"><p class="rr-k">Peace with God</p><blockquote>“Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ.”</blockquote><cite>Romans 5:1</cite>
+      <div class="rr-pray"><b>Want to say yes to Jesus?</b> You can pray something like this: Jesus, I believe You died for me and rose again. Forgive me. I give You my life. Amen.</div>
+    </article>
+  </div>
+  <div class="spacer"></div>
+  <div class="rr-nav" id="rr-nav"><button class="btn btn-line" id="rr-prev" disabled>Back</button><button class="btn btn-red" id="rr-next">Next</button></div>
+  <div class="stack hidden" id="rr-route">
+    <button class="btn btn-red" data-start="yes">I said yes to Jesus</button>
+    <button class="btn btn-line" data-start="talk">I have questions</button>
+    <button class="btn btn-line" id="rr-again">Read it again</button>
+  </div>
+  <p class="foot">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.</p>
+</section>
+
 <!-- 1. Age (minors rules first) -->
 <section class="screen" id="age" aria-labelledby="age-h">
-  <div class="top"><button class="back" data-go="home">← Back</button><span class="step-count">1 of 4</span></div>
+  <div class="top"><button class="back" data-go="home">← Back</button><span class="step-count">Step 1 of 4</span></div>
+  <div class="rr-bar" aria-hidden="true"><i style="width:25%"></i></div>
   <h2 id="age-h" style="margin-top:22px">How old are you?</h2>
   <p class="lead">This helps us connect you safely.</p>
   <div class="opts" role="radiogroup" aria-labelledby="age-h">
@@ -124,7 +174,8 @@ a { color: inherit; }
 
 <!-- 2. Next step -->
 <section class="screen" id="step" aria-labelledby="step-h">
-  <div class="top"><button class="back" data-go="age">← Back</button><span class="step-count">2 of 4</span></div>
+  <div class="top"><button class="back" data-go="age">← Back</button><span class="step-count">Step 2 of 4</span></div>
+  <div class="rr-bar" aria-hidden="true"><i style="width:50%"></i></div>
   <h2 id="step-h" style="margin-top:22px">What would help you next?</h2>
   <div class="opts" role="radiogroup" aria-labelledby="step-h" id="step-opts">
     <label class="opt" data-adult><input type="radio" name="step" value="church"><span>Find a church near me <small>We'll help you find one that will welcome you.</small></span></label>
@@ -138,17 +189,19 @@ a { color: inherit; }
 
 <!-- 3. Details -->
 <section class="screen" id="details" aria-labelledby="details-h">
-  <div class="top"><button class="back" data-go="step">← Back</button><span class="step-count">3 of 4</span></div>
+  <div class="top"><button class="back" data-go="step">← Back</button><span class="step-count">Step 3 of 4</span></div>
+  <div class="rr-bar" aria-hidden="true"><i style="width:75%"></i></div>
   <h2 id="details-h" style="margin-top:22px">How can we reach you?</h2>
   <p class="lead" id="details-lead">Just the basics, so someone can get in touch.</p>
   <form id="details-form" novalidate>
-    <div class="field" id="f-name"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" maxlength="60"></div>
-    <div class="field"><label for="mobile" id="mobile-l">Mobile</label><input id="mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="04"></div>
-    <div class="field hidden" id="f-parent"><label for="parentMobile">Parent or guardian's mobile</label><input id="parentMobile" name="parentMobile" type="tel" inputmode="tel" maxlength="20" placeholder="04"></div>
-    <div class="row">
-      <div class="field"><label for="suburb">Suburb</label><input id="suburb" name="suburb" autocomplete="address-level2" maxlength="60"></div>
-      <div class="field"><label for="postcode">Postcode</label><input id="postcode" name="postcode" inputmode="numeric" autocomplete="postal-code" maxlength="4" pattern="\d{4}"></div>
+    <div class="field" id="f-name"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" maxlength="60"></div>
+    <div class="field"><label for="mobile" id="mobile-l">Mobile</label><input id="mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" maxlength="20" placeholder="0400 000 000"></div>
+    <div class="field hidden" id="f-parent"><label for="parentMobile">Parent or guardian's mobile</label><input id="parentMobile" name="parentMobile" type="tel" inputmode="tel" enterkeyhint="next" maxlength="20" placeholder="0400 000 000"></div>
+    <div class="row row-pc">
+      <div class="field"><label for="postcode">Postcode</label><div class="pc"><input id="postcode" name="postcode" inputmode="numeric" autocomplete="postal-code" enterkeyhint="next" maxlength="4" pattern="\d{4}" placeholder="2000"><span class="pc-state" id="pc-state" aria-live="polite"></span></div></div>
+      <div class="field"><label for="suburb">Suburb</label><input id="suburb" name="suburb" autocomplete="address-level2" autocapitalize="words" enterkeyhint="done" maxlength="60"></div>
     </div>
+    <p class="note" style="margin-top:10px">Your postcode helps us find a church near where you live.</p>
     <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden"><label>Website<input id="hp" name="website" tabindex="-1" autocomplete="off"></label></div>
     <p class="err" id="details-err" role="alert"></p>
     <button class="btn btn-red" type="submit" style="margin-top:8px">Next</button>
@@ -157,7 +210,8 @@ a { color: inherit; }
 
 <!-- 4. Consent -->
 <section class="screen" id="consent" aria-labelledby="consent-h">
-  <div class="top"><button class="back" data-go="details">← Back</button><span class="step-count">4 of 4</span></div>
+  <div class="top"><button class="back" data-go="details">← Back</button><span class="step-count">Step 4 of 4</span></div>
+  <div class="rr-bar" aria-hidden="true"><i style="width:100%"></i></div>
   <h2 id="consent-h" style="margin-top:22px">Your yes, your choice</h2>
   <div class="check"><input type="checkbox" id="c-connect"><label for="c-connect"><b>Connect me.</b> I'm happy for Sydney Fire Evangelism and the Always Foundation to keep my first name, mobile and suburb, so they can get in touch and help me find a church or ministry near me.</label></div>
   <div class="check"><input type="checkbox" id="c-nearby" checked><label for="c-nearby"><b>Try the next one nearby</b> if the first church can't welcome me.</label></div>
@@ -256,7 +310,8 @@ a { color: inherit; }
   function reset() {
     f = {};
     document.querySelectorAll('input[type=radio]').forEach((i) => (i.checked = false));
-    document.querySelectorAll('#details-form input').forEach((i) => (i.value = ''));
+    document.querySelectorAll('#details-form input').forEach((i) => { i.value = ''; i.classList.remove('ok'); });
+    if ($('pc-state')) { $('pc-state').textContent = ''; $('pc-state').classList.remove('show'); }
     $('c-connect').checked = false; $('c-alpha').checked = false; $('c-nearby').checked = true; $('c-sender').checked = false; $('c-assent').checked = false;
     $('age-next').disabled = true; $('step-next').disabled = true; $('send').disabled = true;
     ['details-err', 'consent-err'].forEach((i) => ($(i).textContent = ''));
@@ -310,6 +365,49 @@ a { color: inherit; }
     updateSend();
     go('consent');
   });
+
+
+  // The Romans Road: six verses, then a route into the response form.
+  (() => {
+    const cards = [...document.querySelectorAll('.rr-card')];
+    let i = 0;
+    function show(n) {
+      cards[i].classList.remove('on'); cards[i].classList.toggle('out', n > i);
+      i = Math.max(0, Math.min(cards.length - 1, n));
+      cards.forEach((c) => c !== cards[i] && c.classList.remove('on'));
+      cards[i].classList.remove('out'); cards[i].classList.add('on');
+      $('rr-count').textContent = (i + 1) + ' of ' + cards.length;
+      $('rr-fill').style.width = ((i + 1) / cards.length * 100) + '%';
+      $('rr-prev').disabled = i === 0;
+      const last = i === cards.length - 1;
+      $('rr-nav').classList.toggle('hidden', last);
+      $('rr-route').classList.toggle('hidden', !last);
+    }
+    $('rr-next').addEventListener('click', () => show(i + 1));
+    $('rr-prev').addEventListener('click', () => show(i - 1));
+    $('rr-again').addEventListener('click', () => show(0));
+    document.querySelector('[data-go=gospel]').addEventListener('click', () => show(0));
+    let x0 = null;
+    $('rr').addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    $('rr').addEventListener('touchend', (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1)); x0 = null; });
+  })();
+
+  // Details helpers: format mobiles, show the state from the postcode, move on when a field is complete.
+  const STATE = (pc) => { const n = +pc; if (/^0[89]/.test(pc)) return 'NT'; if (/^02/.test(pc)) return 'ACT'; if (n >= 1000 && n <= 2999) return (n >= 2600 && n <= 2618) || (n >= 2900 && n <= 2920) ? 'ACT' : 'NSW'; if (n >= 3000 && n <= 3999) return 'VIC'; if (n >= 4000 && n <= 4999) return 'QLD'; if (n >= 5000 && n <= 5999) return 'SA'; if (n >= 6000 && n <= 6999) return 'WA'; if (n >= 7000 && n <= 7999) return 'TAS'; return ''; };
+  $('postcode').addEventListener('input', (e) => {
+    const v = e.target.value.replace(/\D/g, '').slice(0, 4); e.target.value = v;
+    const st = v.length === 4 ? STATE(v) : '';
+    $('pc-state').textContent = st; $('pc-state').classList.toggle('show', !!st);
+    e.target.classList.toggle('ok', !!st);
+    if (st) $('suburb').focus();
+  });
+  ['mobile', 'parentMobile'].forEach((id) => $(id).addEventListener('input', (e) => {
+    const d = e.target.value.replace(/\D/g, '');
+    if (/^04\d{0,8}$/.test(d)) e.target.value = [d.slice(0, 4), d.slice(4, 7), d.slice(7, 10)].filter(Boolean).join(' ');
+    e.target.classList.toggle('ok', mobileOk(e.target.value));
+  }));
+  $('firstName').addEventListener('input', (e) => e.target.classList.toggle('ok', e.target.value.trim().length > 0));
+  $('suburb').addEventListener('input', (e) => e.target.classList.toggle('ok', e.target.value.trim().length > 1));
 
   // 4. Consent: nothing is sent without an explicit yes.
   function updateSend() {
