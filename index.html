@@ -1274,6 +1274,36 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
   .app-band-grid > div:first-child { padding: 96px 0 56px; }
   .app-band-mark { margin: 0; height: auto; padding: 0 0 72px !important; }
 }
+
+/* ---- Quiet rows in place of card grids ---- */
+.pg-feats { column-gap: 48px; row-gap: 0; }
+.pg-feats .pg-feat, .pg-sage .pg-feats .pg-feat { background: none; border-radius: 0; padding: 28px 0 32px; border-top: 1px solid rgba(27,71,64,.16); box-shadow: none; }
+.pg-feats .pg-feat h3 { margin: 0 0 8px; font-size: 21px; color: var(--green); }
+.pg-feats .pg-feat p { max-width: 38ch; }
+.pg-night .pg-feats .pg-feat, .pg-green .pg-feats .pg-feat { border-top-color: rgba(248,243,234,.16); }
+.pg-night .pg-feats .pg-feat h3, .pg-green .pg-feats .pg-feat h3 { color: var(--cream); }
+.pg-night .pg-feats .pg-feat p, .pg-green .pg-feats .pg-feat p { color: var(--on-green); }
+
+/* ---- Steps: a real sequence, so numbered, in serif ---- */
+.pg-steps { column-gap: 48px; }
+.pg-steps .pg-step { background: none; border-radius: 0; padding: 26px 0 0; border-top: 2px solid var(--green); }
+.pg-steps .pg-step span { display: block; font: 400 44px/1 'Newsreader', Georgia, serif; color: var(--clay); margin-bottom: 18px; }
+.pg-steps .pg-step h3 { margin-top: 0; }
+
+/* ---- Compliance steps, same language ---- */
+.cm-steps { column-gap: 40px; row-gap: 0; }
+.cm-steps li { background: none; border-radius: 0; padding: 26px 0 0; border-top: 2px solid var(--green); }
+.cm-steps li::before { content: counter(s, decimal-leading-zero); display: block; width: auto; height: auto; background: none; border-radius: 0; font: 400 44px/1 'Newsreader', Georgia, serif; color: var(--clay); margin-bottom: 18px; }
+
+/* ---- About: vision, name, posture ---- */
+.mv { column-gap: 48px; row-gap: 0; }
+.mv div { background: none; border-radius: 0; padding: 28px 0 0; border-top: 1px solid rgba(27,71,64,.16); }
+
+/* ---- Solution heroes with a product screen ---- */
+.page-hero .pd-split .pg-cta { margin-top: 28px; }
+.sl-end { text-align: center; }
+.sl-end .pg-lead { margin-left: auto; margin-right: auto; }
+.sl-end .pg-cta { justify-content: center; }
 .photo-band{margin:0;height:min(52vh,480px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>
 </head>
 <body class="no-js">
@@ -1543,7 +1573,9 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
   <article class="prose" id="doc"></article></div>
 </div>
 </div>
-<div class="page" id="page-churches" hidden><section class="page-hero"><div class="wrap"><p class="pl-kick">Solutions</p><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples. Free, always.</p></div></section>
+<div class="page" id="page-churches" hidden><section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples. Free, always.</p><div class="pg-cta"><a class="btn btn-peach" href="#/claim">Claim your church</a></div></div><div class="mk mk-connect mk-lg" aria-hidden="true"><div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
+<span class="mk-link" aria-hidden="true"></span>
+<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div></div></div></section>
 <figure class="photo-band"><img src="https://images.unsplash.com/photo-1790805370091-2c237d73bf16?w=1800&q=75&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1790805370091-2c237d73bf16?w=900&q=75&auto=format&fit=crop 900w, https://images.unsplash.com/photo-1790805370091-2c237d73bf16?w=1800&q=75&auto=format&fit=crop 1800w" sizes="100vw" alt="" loading="lazy" onerror="this.parentNode.remove()"></figure>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Three steps to welcoming people</h2>
@@ -1566,7 +1598,9 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
   <div class="pg-feats"><div class="pg-feat rv"><h3>Your page on the map</h3><p>Your welcome, service times, what to expect, and the next steps you offer, in your colours.</p></div><div class="pg-feat rv"><h3>Introductions near you</h3><p>People who have already said yes to Jesus, within the area you choose.</p></div><div class="pg-feat rv"><h3>Next steps and capacity</h3><p>Choose what you offer and how many people you can welcome each month. Pause any time.</p></div><div class="pg-feat rv"><h3>Your team</h3><p>Invite your pastor, connect lead and youth leaders, each with the right access.</p></div><div class="pg-feat rv"><h3>Walking with</h3><p>Keep track of everyone you are welcoming, and get a simple monthly report for your leaders.</p></div><div class="pg-feat rv"><h3>Your own tools</h3><p>Use the free inbox, or connect your church management system through the API.</p></div></div>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/claim">Claim your church</a><a class="btn btn-green" href="#/docs/claim">How claiming works</a></div>
 </div></section></div>
-<div class="page" id="page-ministries" hidden><section class="page-hero"><div class="wrap"><p class="pl-kick">Solutions</p><h1>For events, tours and ministries</h1><p>Tours, camps, outreach and online ministries: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p></div></section>
+<div class="page" id="page-ministries" hidden><section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For events, tours and ministries</h1><p>Tours, camps, outreach and online ministries: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p><div class="pg-cta"><a class="btn btn-peach" href="#/join">Talk to us</a></div></div><div class="mk mk-pages mk-lg" aria-hidden="true"><div class="mk-card mk-pages"><div class="mk-brand"><span class="mk-logo"></span><b>Your ministry</b></div>
+<p class="mk-h">Today I said yes to Jesus</p><span class="mk-in">First name</span><span class="mk-in">Suburb</span>
+<span class="mk-btn">Take my next step</span><span class="mk-qr" aria-hidden="true"></span></div></div></div></section>
 <figure class="photo-band"><img src="https://images.unsplash.com/photo-1663162550932-f67b561e656f?w=1800&q=75&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1663162550932-f67b561e656f?w=900&q=75&auto=format&fit=crop 900w, https://images.unsplash.com/photo-1663162550932-f67b561e656f?w=1800&q=75&auto=format&fit=crop 1800w" sizes="100vw" alt="" loading="lazy" onerror="this.parentNode.remove()"></figure>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">From the altar call to a church family</h2>
@@ -1601,9 +1635,9 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
   <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony, sermon or post? Add a response link or QR code. Anyone in Australia can say yes and meet a church near them.</p></div>
   <div class="pg-link-card rv" aria-hidden="true"><span class="plc-k">Your response link</span><b>always.au/r/testimony</b><span class="plc-qr"></span><span class="plc-f">Add it under a video, in a post, or as a QR code on screen.</span></div>
 </div></section>
-<section class="sec pg-sec"><div class="wrap">
-  <h2 class="pg-h rv">Built for events of every size</h2>
-  <div class="pg-feats"><div class="pg-feat rv"><h3>Response pages and QR codes</h3><p>For the big screen, printed cards, video descriptions and short links.</p></div><div class="pg-feat rv"><h3>Leading the moment</h3><p>Simple wording for the altar call: invite, pray, respond, welcome.</p></div><div class="pg-feat rv"><h3>Your team</h3><p>Response team leads, evangelists and youth leaders, each with the right access.</p></div><div class="pg-feat rv"><h3>Safe for young people</h3><p>Young people are introduced only to verified youth partners. Under 15s need a parent to confirm.</p></div><div class="pg-feat rv"><h3>Reports for funders</h3><p>A monthly report with clear definitions, ready for donors, foundations and your board.</p></div><div class="pg-feat rv"><h3>Agents for follow-up</h3><p>Help your team with reminders, messages and records. A person approves every step.</p></div></div>
+<section class="sec pg-sec"><div class="wrap sl-end">
+  <h2 class="pg-h rv">Planning an event or a tour?</h2>
+  <p class="pg-lead rv">We'd love to hear about it, and help everyone who responds find a next step near home.</p>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section></div>
 <div class="page" id="page-app" hidden><section class="page-hero"><div class="wrap pg-split">

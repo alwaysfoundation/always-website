@@ -1,5 +1,6 @@
 """Website pages: For churches, For ministries, Always App, FAQs."""
 import json
+from mocks import mock
 import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 L = json.load(open(os.path.join(ROOT,'paths.json')))
@@ -22,7 +23,7 @@ church_desk = f'''<div class="pg-desk rv" aria-label="The church inbox on the we
 </div>'''
 church_phone = phone(f'''<p class="pg-cap">Always Connect · Inbox</p><div class="pg-card hl"><div class="pg-row-h"><b>Sam</b><em class="new">New</em></div><span class="pg-mut">Parramatta · Find a church</span><div class="pg-field">04•• ••• •••</div><div class="pg-btns"><span class="pg-b">Accept</span><span class="pg-b ln">Pass</span></div></div><div class="pg-card"><div class="pg-row-h"><b>Josh</b><em class="ok">Accepted</em></div><span class="pg-mut">Harris Park · Talk with someone</span></div>''')
 
-CHURCHES = f'''<section class="page-hero"><div class="wrap"><p class="pl-kick">Solutions</p><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples. Free, always.</p></div></section>
+CHURCHES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples. Free, always.</p><div class="pg-cta"><a class="btn btn-peach" href="#/claim">Claim your church</a></div></div>{mock('connect', 'mk-lg')}</div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Three steps to welcoming people</h2>
   {steps([('Claim your page', 'Tell us about your church and who you are. It takes about ten minutes.'), ('Get verified', 'We check with your denomination or network, and your connect lead does a 20-minute course.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
@@ -51,7 +52,7 @@ ministry_phone = phone('<p class="pg-mbrand">YOUR MINISTRY</p><p class="pg-mh">S
 
 report_mock = '<div class="pg-desk pg-report rv" aria-label="An example monthly report"><div class="pg-desk-main"><div class="pg-row-h"><b>September report</b><em class="ok">Ready</em></div><span class="pg-mut">City worship tour · Prepared for our supporters</span><div class="pg-kpis">' + ''.join(f'<div><b{" class=pe" if i == 3 else ""}>{v}</b><span>{l}</span></div>' for i, (v, l) in enumerate([('310', 'Responded'), ('295', 'Introduced'), ('258', 'Accepted'), ('117', 'Connected')])) + '</div><div class="pg-btns"><span class="pg-b">Download PDF</span><span class="pg-b ln">Share a link</span></div><p class="pg-mut">Example figures. Totals only.</p></div></div>'
 
-MINISTRIES = f'''<section class="page-hero"><div class="wrap"><p class="pl-kick">Solutions</p><h1>For events, tours and ministries</h1><p>Tours, camps, outreach and online ministries: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p></div></section>
+MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For events, tours and ministries</h1><p>Tours, camps, outreach and online ministries: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p><div class="pg-cta"><a class="btn btn-peach" href="#/join">Talk to us</a></div></div>{mock('pages', 'mk-lg')}</div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">From the altar call to a church family</h2>
   {steps([('Create a response page', 'Choose the next steps you offer and add your brand. Ready in minutes.'), ('Invite a response', 'Show the QR code on the big screen, hand out cards, or use the response card in your own app.'), ('See the fruit', 'Watch results live, and get a monthly report ready for your funders and board.')])}
@@ -77,9 +78,9 @@ MINISTRIES = f'''<section class="page-hero"><div class="wrap"><p class="pl-kick"
   <div><h2 class="pg-h rv">Responses online, too</h2><p class="pg-lead rv">Sharing a testimony, sermon or post? Add a response link or QR code. Anyone in Australia can say yes and meet a church near them.</p></div>
   <div class="pg-link-card rv" aria-hidden="true"><span class="plc-k">Your response link</span><b>always.au/r/testimony</b><span class="plc-qr"></span><span class="plc-f">Add it under a video, in a post, or as a QR code on screen.</span></div>
 </div></section>
-<section class="sec pg-sec"><div class="wrap">
-  <h2 class="pg-h rv">Built for events of every size</h2>
-  {feats([('Response pages and QR codes', 'For the big screen, printed cards, video descriptions and short links.'), ('Leading the moment', 'Simple wording for the altar call: invite, pray, respond, welcome.'), ('Your team', 'Response team leads, evangelists and youth leaders, each with the right access.'), ('Safe for young people', 'Young people are introduced only to verified youth partners. Under 15s need a parent to confirm.'), ('Reports for funders', 'A monthly report with clear definitions, ready for donors, foundations and your board.'), ('Agents for follow-up', 'Help your team with reminders, messages and records. A person approves every step.')])}
+<section class="sec pg-sec"><div class="wrap sl-end">
+  <h2 class="pg-h rv">Planning an event or a tour?</h2>
+  <p class="pg-lead rv">We'd love to hear about it, and help everyone who responds find a next step near home.</p>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/join">Book a catch-up call</a><a class="btn btn-green" href="#/docs/senders">Read the guide</a></div>
 </div></section>'''
 
