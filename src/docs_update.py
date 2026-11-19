@@ -316,16 +316,16 @@ JOURNEYS = """
 <p class="js-turn">Normally, none of these ministries knows they&rsquo;re helping the same person. <b>Always connects the dots, with Sam&rsquo;s yes.</b></p>
 <ul class="jl jl-big">
 <li>Sam isn&rsquo;t left to chance.</li>
-<li>The church knows Sam&rsquo;s earlier steps.</li>
+<li>Every ministry on Sam&rsquo;s journey can see how it&rsquo;s going.</li>
 <li>We see whether people find a church, not just attend an event.</li>
 </ul>
 <section class="jh">
 <h2>How does Always connect the dots?</h2>
 <div class="jh-q"><h3>How Always recognises Sam</h3><p>When Sam responds through a ministry, Always turns Sam&rsquo;s mobile number into a private fingerprint that only Always can use to match records. If Sam later responds somewhere else with the same number, Always recognises it&rsquo;s the same journey.</p></div>
-<div class="jh-q"><h3>Who decides</h3><p>Sam does. When Sam responds, there&rsquo;s a separate tick to link their journey. It&rsquo;s never pre-ticked, and Sam can withdraw it any time. Without it, nothing is linked.</p></div>
-<div class="jh-q"><h3>Who sees what</h3><p>Each ministry gets a different code for Sam, so they can&rsquo;t use those codes to connect Sam&rsquo;s records. Only Always links the journey. When Sam joins a church, that church sees the earlier steps Sam agreed to share, like &ldquo;responded in February&rdquo; or &ldquo;did a course in March&rdquo;, and never other ministries&rsquo; notes or which ministries they were.</p></div>
+<div class="jh-q"><h3>Who decides</h3><p>Sam does. When Sam responds, there&rsquo;s a separate tick: &ldquo;The ministries that help me can see my steps.&rdquo; It&rsquo;s never pre-ticked, and Sam can withdraw it any time. Without it, nothing is linked.</p></div>
+<div class="jh-q"><h3>Who sees what</h3><p>Every ministry on Sam&rsquo;s journey sees the steps before and after its own part, like &ldquo;responded in February&rdquo;, &ldquo;did a course in March&rdquo; and &ldquo;joined a church in May&rdquo;. So the event team learns Sam found a church, and the church knows where Sam has come from. No one sees other ministries&rsquo; notes or names, and each ministry gets a different code for Sam, so codes can&rsquo;t be used to join records.</p></div>
 <p class="jh-end">Always connects the journey. Sam stays in control.</p>
-<div class="jpp"><h3>Built on an established approach</h3><p>Always draws on privacy-preserving record linkage, an established approach in healthcare and research. Just as health services can recognise the same patient&rsquo;s records without sharing whole databases, Always helps ministries connect a person&rsquo;s journey from evangelism to discipleship and a local church. Protected fingerprints, a different code for each ministry and Sam&rsquo;s clear yes give continuity of care, while respecting each person&rsquo;s privacy and each ministry&rsquo;s independence.</p></div>
+<div class="jpp"><h3>Built on an established approach</h3><p>Always draws on privacy-preserving record linkage, an established approach in healthcare and research. Just as health services can recognise the same patient&rsquo;s records without sharing whole databases, Always helps ministries connect a person&rsquo;s journey from evangelism to discipleship and a local church.</p><p>Martyn Lloyd-Jones trained as a physician at St Bartholomew&rsquo;s Hospital in London before he became a preacher, and he saw caring for souls much as a doctor cares for the body. We take the same view: good care of the soul, like good care of the body, depends on continuity of care, with each person&rsquo;s privacy respected and each ministry&rsquo;s independence kept.</p></div>
 </section>
 <blockquote class="jbig"><p>Saying yes to Jesus shouldn&rsquo;t be the end of the story. It should be the beginning of a journey.</p></blockquote>
 
@@ -336,21 +336,45 @@ JOURNEYS = """
   <div class="jx-yes"><b>Always</b><span>Only Sam&rsquo;s steps, only with Sam&rsquo;s yes.</span></div>
 </div>
 
-<h2>What else keeps it private</h2>
+<h2>What you&rsquo;re trusting Always with</h2>
+<p>Only Always holds the key that turns mobile numbers into fingerprints, so ministries and the people they serve need to trust Always to look after it. These are the assurances behind that trust:</p>
 <ul class="jl">
-<li><b>Always staff</b> see only what&rsquo;s needed to help, and every view is logged.</li>
-<li><b>Totals for everyone else.</b> Small groups are withheld.</li>
-<li><b>Never under 18.</b></li>
+<li><b>Open source.</b> Anyone can read the code that links journeys and check that it does what we say.</li>
+<li><b>Every view is logged,</b> in a record that can&rsquo;t be quietly changed. Always staff see only what&rsquo;s needed to help.</li>
+<li><b>Never under 18.</b> Young people&rsquo;s journeys are never linked, and this can&rsquo;t be switched on.</li>
+<li><b>Independent review</b> of privacy and security before journeys open widely.</li>
+<li><b>Board oversight,</b> with a cybersecurity and technical adviser.</li>
+<li><b>One key, one switch.</b> The key is kept apart from the data. Destroying it unlinks every journey at once.</li>
 </ul>
 
-<h2>How we&rsquo;re trialling it</h2>
+<h2>What funders and networks see</h2>
+<p>Totals, but detailed ones: results by event, city, month and channel, the paths people take, and how long it takes them to find a church. A funder backing a tour can see exactly how that tour went.</p>
 <ul class="jl">
-<li><b>Adults who choose it.</b> Only people 18 and over who tick the separate box.</li>
-<li><b>A small group of ministries first,</b> at events where people already respond through Always.</li>
-<li><b>Totals first.</b> We check counts are right and small groups stay hidden before any church sees earlier steps.</li>
-<li><b>Independent review</b> of privacy and security before it opens more widely.</li>
-<li><b>Withdraw any time,</b> and the journey is unlinked straight away.</li>
+<li><b>No individual journeys.</b> Sam agreed to share their steps with the ministries caring for them, not with funders.</li>
+<li><b>Small groups are hidden.</b> Any group of fewer than 10 people is withheld, so no one can be picked out.</li>
+<li><b>Stories need their own yes.</b> If someone wants to share their testimony, they agree to that separately.</li>
 </ul>
+
+<h2>Join the pilot</h2>
+<p>We&rsquo;re inviting churches and ministries to run journeys live with us for six months, then publish the results the way health researchers do.</p>
+<ul class="jl">
+<li><b>Who:</b> churches and ministries already receiving responses through Always, with adults who choose to link their journey.</li>
+<li><b>What we&rsquo;ll measure:</b> how many people choose to link, how accurate the matches are, how many find a church and how long it takes, and what churches found helpful.</li>
+<li><b>What we&rsquo;ll publish:</b> totals and lessons learned, with small groups hidden, so the whole church in Australia can learn from it.</li>
+<li><b>Safeguards from day one:</b> everything above applies, and anyone can withdraw at any time.</li>
+</ul>
+<p><a class="jcta" href="#/contact/journeys">Register interest in the pilot</a></p>
+
+<h2>Questions people ask</h2>
+<div class="jfaq">
+<details><summary>Do we have to trust Always Foundation?</summary><p>Yes, because only Always holds the key. That&rsquo;s why the code is open, every view is logged, the board oversees it with a cybersecurity and technical adviser, and it has an independent review.</p></details>
+<details><summary>Can other ministries see our notes?</summary><p>No. Ministries see steps and months, like &ldquo;joined a church in May&rdquo;. Never notes, and never the names of other ministries.</p></details>
+<details><summary>Does every ministry have to be on Always?</summary><p>A step only counts if Sam responds through Always: our response pages, the church inbox, or a ministry&rsquo;s own system connected to ours. Steps elsewhere aren&rsquo;t counted.</p></details>
+<details><summary>What if Sam changes phone number?</summary><p>Then the new steps start a new journey. We match on the mobile number only, not names or birthdays, because guessing would mean more personal details and more wrong matches. We&rsquo;d rather miss a link than join two different people.</p></details>
+<details><summary>Why can&rsquo;t funders see more?</summary><p>A single journey can point to one person even without a name, and faith is sensitive information. Detailed totals give funders what they need without anyone&rsquo;s steps leaving the ministries caring for them.</p></details>
+<details><summary>What about young people?</summary><p>Journeys are never linked for anyone under 18.</p></details>
+<details><summary>Has this been done before?</summary><p>In health, yes. Australian studies have linked millions of hospital records this way with accuracy close to linking by name. As far as we know, this is the first time it has been used to care for people across ministries.</p></details>
+</div>
 
 <h2>In the Australian context</h2>
 <ul class="jl">
@@ -362,9 +386,10 @@ JOURNEYS = """
 
 <h2>For developers</h2>
 <dl class="jdev">
-<div><dt><code>share.journey</code></dt><dd>Its own consent purpose. Refused under 18.</dd></div>
+<div><dt><code>share.journey</code></dt><dd>Its own consent purpose: the ministries that help the person can see their steps. Refused under 18.</dd></div>
 <div><dt>Link and codes</dt><dd>Keyed hashes (<code>LINK_KEY</code>, <code>ORG_CODE_KEY</code>). No shared id, never returned by an API.</dd></div>
-<div><dt>Endpoints</dt><dd><code>GET /v1/handoffs/:id/journey</code>, <code>POST /v1/me/:token/milestones</code>, <code>GET /v1/network/journeys</code></dd></div>
+<div><dt>Endpoints</dt><dd><code>GET /v1/responses/:id/journey</code> for the ministry the person responded through, <code>GET /v1/handoffs/:id/journey</code> for each ministry that welcomed them, <code>POST /v1/me/:token/milestones</code>, <code>GET /v1/network/journeys</code></dd></div>
+<div><dt>What a view returns</dt><dd>Steps and months, with <code>byYou</code> on the viewer&rsquo;s own steps. Never notes or other ministries&rsquo; names.</dd></div>
 <div><dt>Guards</dt><dd>The database refuses minors and anyone without consent. Every rule is tested.</dd></div>
 </dl>
 <p>See also <a href="#/docs/consent">Consent receipts</a> and <a href="#/docs/standard">the Always Handoff standard</a>.</p>
@@ -672,6 +697,17 @@ CSS = '''
 .jpp { margin: 22px 0 0; padding: 18px 20px; border-radius: 18px; background: #EAF1EC; }
 .jpp h3 { margin: 0 0 6px !important; font: 700 16.5px/1.3 var(--head) !important; color: var(--green); }
 .jpp p { margin: 0 !important; font-size: 15.5px; line-height: 1.6; color: var(--soft); }
+.jcta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--green); color: #FFFDF8 !important; font: 700 15.5px/1 var(--head); text-decoration: none !important; }
+.jcta:hover { background: var(--night); }
+.jfaq { margin-top: 10px; }
+.jfaq details { border-top: 1px solid rgba(20,53,47,.12); }
+.jfaq details:last-child { border-bottom: 1px solid rgba(20,53,47,.12); }
+.jfaq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; padding: 12px 0; cursor: pointer; list-style: none; font: 700 16.5px/1.35 var(--head); color: var(--green); }
+.jfaq summary::-webkit-details-marker { display: none; }
+.jfaq summary::after { content: '+'; flex: none; font: 400 22px/1 var(--head); color: #9A4A22; transition: transform .2s; }
+.jfaq details[open] summary::after { transform: rotate(45deg); }
+.jfaq details p { margin: 0 0 16px !important; font-size: 16px; line-height: 1.6; color: var(--soft); }
+.jpp p + p { margin-top: 10px !important; }
 /* journeys: calm overrides */
 .js-steps li { padding: 0 0 20px 34px !important; background: none !important; border: 0 !important; border-radius: 0 !important; font-size: 17.5px !important; }
 .js-steps li::before { content: '' !important; left: 0 !important; top: 8px !important; transform: none !important; width: 12px !important; height: 12px !important; background: #FFFDF8 !important; border: 2px solid #E8A577; box-sizing: border-box; }

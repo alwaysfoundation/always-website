@@ -293,7 +293,7 @@ DOCS = [
 <ul>
 <li>Its own consent purpose, <code>share.journey</code>, separate from being introduced to a church. Refused for anyone under 18.</li>
 <li>Always links steps with a keyed fingerprint of the person&rsquo;s mobile. Each ministry gets a different code for the same person, so ministries can&rsquo;t use codes to connect records. Only Always links the journey.</li>
-<li>The church that accepted someone sees their earlier steps by month (<code>GET /v1/handoffs/:id/journey</code>), never notes or which ministries. Every view is logged.</li>
+<li>Every ministry on the journey sees the steps before and after its own part, by month, with its own steps marked: the ministry the person responded through (<code>GET /v1/responses/:id/journey</code>) and each one that welcomed them (<code>GET /v1/handoffs/:id/journey</code>). Never notes or other ministries&rsquo; names. Every view is logged.</li>
 <li>Networks see totals by state and year (<code>GET /v1/network/journeys</code>), with small groups withheld.</li>
 <li>No one can search for people or browse a list. Withdraw once and the journey is unlinked straight away.</li>
 </ul>
@@ -1374,5 +1374,7 @@ doc = doc.replace('</style>', '.photo-band{margin:0;height:min(52vh,480px);overf
 _svg = lambda n: 'data:image/svg+xml;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', n), 'rb').read()).decode()
 doc = doc.replace('{{LOGO}}', _svg('always-foundation-logo.svg')).replace('{{LOGO_REV}}', _svg('always-foundation-logo-reverse.svg'))
 doc = _re2.sub(r'<img (?![^>]*loading=)([^>]*src="img/)', r'<img loading="lazy" decoding="async" \1', doc)
+import typography as TY
+doc = TY.apply(doc)
 open(os.path.join(ROOT, '..', 'index.html'), 'w').write(doc)
 print('pages', len(order), 'bytes', len(doc))

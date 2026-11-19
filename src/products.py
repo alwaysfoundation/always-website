@@ -279,7 +279,7 @@ CONNECT_EXTRA = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
 REPORTS_EXTRA = '''<section class="sec pg-sec pg-green"><div class="wrap rp-defs">
   <h2 class="pg-h rv">The same four numbers, every month</h2>
   <div class="rp-row rv"><div><b>Responded</b><span>Said yes, and agreed to be contacted.</span></div><div><b>Introduced</b><span>Passed to a partner church or ministry.</span></div><div><b>Contacted</b><span>A real person got in touch.</span></div><div><b>Part of a church family</b><span>Told us themselves, a few months on.</span></div></div>
-  <p class="rp-jn rv"><b>Journeys across ministries.</b> When someone agrees, their steps are linked across every ministry that helps them, so each person is counted once. <a href="#/docs/journeys">How journeys work</a></p>
+  <p class="rp-jn rv"><b>Journeys across ministries.</b> When someone agrees, their steps are linked across every ministry that helps them, so each person is counted once and every ministry can see how the journey went. <a href="#/docs/journeys">How journeys work</a></p>
 </div></section>'''
 
 REPORTS_PAGE = product_page('reports',
