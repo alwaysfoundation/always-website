@@ -386,7 +386,9 @@ CSS = MOCK_CSS + '''
 .pd-hero p.pd-status { font-size: 14px; line-height: 1; }
 .pd-status { display: inline-block; margin-top: 16px; padding: 8px 14px; border-radius: 999px; background: rgba(248,243,234,.12); font: 600 14px/1 var(--head); color: var(--cream); }
 .pd-with { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.mi { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 14px; background: var(--sage); color: var(--green); }
+.mi, .dd-mods .dd-ic, .msx-ic { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 14px; background: linear-gradient(155deg, #E6F0E9 0%, #D3E4D9 100%); color: var(--green); box-shadow: inset 0 0 0 1px rgba(27,71,64,.07), inset 0 1px 0 rgba(255,255,255,.75); transition: background .25s ease, color .25s ease, box-shadow .25s ease; }
+.dd-mods .dd-ic svg, .msx-ic svg { width: 22px; height: 22px; }
+.pd-link:hover .mi, .pd-link:focus-visible .mi, .dg-mod:hover .mi, .dg-mod:focus-visible .mi, .dv-way:hover .mi, .dv-way:focus-visible .mi, .md-mod:hover .msx-ic, .md-mod:focus-visible .msx-ic, .dd-mods a:hover .dd-ic, .dd-mods a:focus-visible .dd-ic, .msx-tab[aria-selected="true"] .msx-ic, .bt:hover .mi { background: var(--green); color: var(--cream); box-shadow: 0 10px 22px -12px rgba(20,53,47,.6); }
 .mi svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .mi-sm { width: 32px; height: 32px; border-radius: 10px; } .mi-sm svg { width: 17px; height: 17px; }
 .mi-lg { width: 56px; height: 56px; border-radius: 18px; margin-bottom: 18px; } .mi-lg svg { width: 28px; height: 28px; }
@@ -673,7 +675,7 @@ a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a
   .dd-ic { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: var(--sage); color: var(--green); transition: transform .2s cubic-bezier(.2,.8,.2,1); }
   .dd-list .dd-ic { background: var(--sage-2); color: var(--green); }
   .dd-ic svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  .dd-mods a:hover .dd-ic, .dd-mods a:focus-visible .dd-ic, .dd-col a:hover .dd-ic, .dd-list a:hover .dd-ic, .dd-col a:focus-visible .dd-ic, .dd-list a:focus-visible .dd-ic { transform: scale(1.08) rotate(-3deg); }
+  .dd-col a:hover .dd-ic, .dd-list a:hover .dd-ic, .dd-col a:focus-visible .dd-ic, .dd-list a:focus-visible .dd-ic { transform: scale(1.08) rotate(-3deg); }
   .dd-mods a:hover, .dd-mods a:focus-visible, .dd-mods a[aria-current="page"], .dd-col a:hover, .dd-list a:hover, .dd-col a:focus-visible, .dd-list a:focus-visible, .dd-col a[aria-current="page"], .dd-list a[aria-current="page"] { background: var(--cream) !important; }
 }
 @media (max-width: 900px) {

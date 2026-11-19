@@ -74,10 +74,8 @@ CSS = r'''
 .msx-tab:hover { background: rgba(27,71,64,.05); }
 .msx-tab[aria-selected="true"] { background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.06), 0 18px 36px -28px rgba(10,30,26,.45); }
 .msx-tab:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
-.msx-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--sage); color: var(--green); flex: none; }
 .msx-ic .dd-ic { background: none !important; width: auto; height: auto; }
 .msx-ic svg { width: 22px; height: 22px; }
-.msx-tab[aria-selected="true"] .msx-ic { background: var(--green); color: var(--cream); }
 .msx-tt { display: grid; gap: 2px; }
 .msx-verb { font: 700 12.5px/1.2 var(--head); color: var(--clay); }
 .msx-tt b { font: 800 19px/1.2 var(--head); color: var(--green); letter-spacing: -0.015em; }
