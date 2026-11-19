@@ -72,7 +72,7 @@ PAGE = '''<section class="page-hero ig-hero"><div class="wrap">
     <div class="sl-row rv"><h3>Consent travels</h3><p>Details go only where the person agreed, and a withdrawal reaches every system.</p></div>
     <div class="sl-row rv"><h3>Australia first</h3><p>Personal data stays in Australia. Offshore tools get only what a person agreed to send.</p></div>
     <div class="sl-row rv"><h3>Your system stays yours</h3><p>Pastoral notes never come back to Always, only the outcomes a person agreed to share.</p></div>
-    <div class="sl-row rv"><h3>Young people first</h3><p>No one under 18 goes to a messaging or marketing tool, only to their verified youth partner.</p></div>
+    <div class="sl-row rv"><h3>Young people first</h3><p>No one under 18 goes to a messaging or marketing tool, only to their youth partner.</p></div>
   </div>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/integrations">Read the integration docs</a><a class="btn btn-ghost" href="#/contact">Suggest an integration</a></div>
 </div></section>'''
@@ -151,7 +151,7 @@ DOCS = ("Integrations", [
 <tr><td>Email</td><td>Always, from Sydney</td><td>Who will be in touch, and the private link to say connected or change your mind</td><td>Building</td></tr>
 <tr><td>SMS</td><td>Always, through an Australian gateway</td><td>The same, by text</td><td>Planned</td></tr>
 <tr><td>WhatsApp</td><td>The church, if it chooses</td><td>Ongoing conversation</td><td>Planned, adults only, with consent</td></tr></table>
-<p>No marketing messages, ever. Message previews never mention faith, and nothing goes to anyone under 18 except through their verified youth partner or a parent.</p>
+<p>No marketing messages, ever. Message previews never mention faith, and nothing goes to anyone under 18 except through their youth partner or a parent.</p>
 """),
   ("int-automation", "Automation and AI", """
 <p class="lead">Connect Always to anything else without custom code. Every trigger carries ids only, never people's details.</p>

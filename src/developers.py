@@ -11,12 +11,12 @@ SNIPPETS = [
 WAYS = [
     ('The API', 'Send responses, receive introductions, manage a church page and read the church feed. Scoped tokens, shown once, revocable.', 'docs/api', 'API reference'),
     ('The SDK', 'A TypeScript client, a drop-in response card, the compliance check-up and guardrails that fail closed.', 'docs/sdk', 'SDK guide'),
-    ('The MCP connector', 'Let AI assistants find churches, check verification and list events, using public information only.', 'docs/mcp', 'Connect an assistant'),
+    ('The MCP connector', 'Let AI assistants find churches, see which are partner churches and list events, using public information only.', 'docs/mcp', 'Connect an assistant'),
 ]
 
 BUILD = [
-    ('Church feed and finder', 'Verified churches near any postcode, for your website, app or map.', 'docs/feed'),
-    ('Responses and handoff', 'Pass people to a verified local church, with consent that travels with them.', 'docs/standard'),
+    ('Church feed and finder', 'Partner churches near any postcode, for your website, app or map.', 'docs/feed'),
+    ('Responses and handoff', 'Pass people to a local partner church, with consent that travels with them.', 'docs/standard'),
     ('Compliance infrastructure', 'The open register, change alerts and an embeddable check-up.', 'docs/compliance-platforms'),
     ('Webhooks', 'Hear about introductions, handoffs and rule changes as they happen.', 'docs/webhooks'),
     ('Response pages and embeds', 'Branded response cards and pages you drop into your own site.', 'docs/senders'),

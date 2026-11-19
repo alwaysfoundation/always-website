@@ -24,7 +24,7 @@ PAGE = '''
     <h2>What's open to builders</h2>
     <ul>
       <li><b>Always Compliance</b>, live now. A check-up for privacy, child safety, charity and messaging rules, as a hosted API and a drop-in widget. Nothing about the person using it is stored.</li>
-      <li><b>Church feed and finder.</b> Verified churches near a postcode, and whether they are welcoming now, for your site, app or AI tool.</li>
+      <li><b>Church feed and finder.</b> Partner churches near a postcode, and whether they are welcoming now, for your site, app or AI tool.</li>
       <li><b>Response pages and handoff.</b> Pass a consenting person to a local church through the API and SDK, with consent attached.</li>
       <li><b>MCP server.</b> Let an AI assistant find churches and explain Always Platform accurately, using public information only.</li>
       <li><b>Webhooks</b> for the moments that matter, carrying ids only, never personal details.</li>
@@ -44,7 +44,7 @@ PAGE = '''
     <ul>
       <li>A prayer or Bible app adds "Find a church near me" in a line of code.</li>
       <li>A youth events tool checks its compliance before its first event.</li>
-      <li>An outreach app hands every yes to a verified local church, with consent, instead of a spreadsheet.</li>
+      <li>An outreach app hands every yes to a local partner church, with consent, instead of a spreadsheet.</li>
     </ul>
 
     <h2>Start building</h2>

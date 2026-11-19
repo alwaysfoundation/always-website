@@ -85,7 +85,7 @@ FLOW = '''<section class="sec pg-sec nb-sec"><div class="wrap">
   <p class="pg-lead rv">Always Respond captures the moment someone says yes to Jesus. Always Connect makes sure it leads somewhere: the next best faith step for that person, near where they live, with a real person to walk with them.</p>
   <ol class="nb-flow">
     <li class="rv"><span class="nb-mod">Always Respond</span><b>They say yes</b><p>By QR code, tap, ticket or link. They choose what would help, and agree to be connected.</p></li>
-    <li class="rv"><span class="nb-mod">Always Connect</span><b>We find the right step</b><p>A verified church nearby, or the ministry that fits best: Alpha to explore faith, a youth group, or someone to talk to.</p></li>
+    <li class="rv"><span class="nb-mod">Always Connect</span><b>We find the right step</b><p>A partner church nearby, or the ministry that fits best: Alpha to explore faith, a youth group, or someone to talk to.</p></li>
     <li class="rv"><span class="nb-mod">Always Connect</span><b>Someone walks with them</b><p>A real person reaches out. They count as connected only when they tell us so themselves.</p></li>
   </ol>
   <p class="nb-fine rv">Often that step is a local church. Sometimes it’s another ministry first. Either way, consent travels with them, and no one is left without a next step.</p>

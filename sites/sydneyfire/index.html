@@ -566,7 +566,7 @@ a { color: inherit; }
     try {
       const { contacts, minorsWithCareTeam } = await team('GET');
       $('l-count').textContent = contacts.length;
-      $('l-minors').textContent = minorsWithCareTeam ? `${minorsWithCareTeam} young ${minorsWithCareTeam === 1 ? 'person is' : 'people are'} with the Always care team, who'll connect them with a verified youth group.` : '';
+      $('l-minors').textContent = minorsWithCareTeam ? `${minorsWithCareTeam} young ${minorsWithCareTeam === 1 ? 'person is' : 'people are'} with the Always care team, who'll connect them with a youth partner.` : '';
       const list = $('l-list'); list.textContent = '';
       if (!contacts.length) list.appendChild(el('p', 'note', 'No contacts yet. They appear here as soon as someone sends the form.'));
       for (const c of contacts) {

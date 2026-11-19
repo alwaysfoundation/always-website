@@ -267,7 +267,7 @@ CONNECT_EXTRA = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
 
 REPORTS_EXTRA = '''<section class="sec pg-sec pg-green"><div class="wrap rp-defs">
   <h2 class="pg-h rv">The same four numbers, every month</h2>
-  <div class="rp-row rv"><div><b>Responded</b><span>Said yes, and agreed to be contacted.</span></div><div><b>Introduced</b><span>Passed to a verified church or ministry.</span></div><div><b>Contacted</b><span>A real person got in touch.</span></div><div><b>Part of a church family</b><span>Told us themselves, a few months on.</span></div></div>
+  <div class="rp-row rv"><div><b>Responded</b><span>Said yes, and agreed to be contacted.</span></div><div><b>Introduced</b><span>Passed to a partner church or ministry.</span></div><div><b>Contacted</b><span>A real person got in touch.</span></div><div><b>Part of a church family</b><span>Told us themselves, a few months on.</span></div></div>
 </div></section>'''
 
 REPORTS_PAGE = product_page('reports',
@@ -286,7 +286,7 @@ REPORTS_PAGE = product_page('reports',
 CONNECT_PAGE = product_page('connect',
     'When someone says yes to Jesus, Always Connect helps them find a next step near home, with a real person reaching out, and your team follows up together.',
     [('The directory', '3,937 churches and ministries mapped across Australia, each able to join and manage its own page.'),
-     ('Verified churches', 'We check with each church\'s denomination or network before anyone is introduced.'),
+     ('Partner churches', 'We check with each church\'s denomination or network before anyone is introduced.'),
      ('A safe handoff', 'The person chooses their next step and sees who will reach out before anything is shared.'),
      ('Your team inbox', 'Accept or pass introductions from any phone, and keep walking with people.'),
      ('Next steps beyond church', 'People exploring faith can choose Alpha. Others may need a youth group or a care team.'),
@@ -327,12 +327,12 @@ def solution_page(slug, outcomes, cta=('Talk to us', '#/contact')):
 
 YOUTH_PAGE = solution_page('youth', [
     ('Stay lawful and compliant', 'Child Safe Standards, working with children checks and privacy, with a quarterly check-up your board approves.'),
-    ('Welcome young people safely', 'Age comes first. Under-15s need a parent to confirm, and young people are introduced only to verified youth partners.'),
+    ('Welcome young people safely', 'Age comes first. Under-15s need a parent to confirm, and young people are introduced only to youth partners.'),
     ('Show the fruit', 'Monthly reports for your board and funders, with totals only.'),
 ], cta=('Try the free compliance check-up', '#/compliance/check'))
 
 NETWORKS_PAGE = solution_page('networks', [
-    ('Ready to welcome', 'Help every church in your network join, get verified and be ready to receive people.'),
+    ('Ready to welcome', 'Help every church in your network join, get ready at their own pace and become partner churches.'),
     ('See the fruit across your network', 'Combined reports across your churches, with totals only.'),
     ('Shared compliance', 'One view of privacy and child safety obligations, so every church can stay lawful with less admin.'),
     ('Build it into your platform', 'Tech platforms can add the Always Compliance check-up and a safe handoff to local churches through the open API.'),

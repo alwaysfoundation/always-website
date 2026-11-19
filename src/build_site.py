@@ -72,7 +72,7 @@ DOCS = [
 <h2>1. Someone responds</h2>
 <p>At an event, a service or online, the person opens a response card (a QR code, a link or a ministry's own app). They choose what would help: a church, a course, someone to talk to, a youth group or reading the Bible. They give their first name, a mobile and their suburb, and agree to share them with a church or ministry nearby.</p>
 <h2>2. They're connected</h2>
-<p>Always Platform offers them to the nearest verified church or ministry that offers that next step, has room this month and speaks their language. It accepts, or passes with a reason, and the next one nearby that fits is offered.</p>
+<p>Always Platform offers them to the nearest partner church or ministry that offers that next step, has room this month and speaks their language. It accepts, or passes with a reason, and the next one nearby that fits is offered.</p>
 <h2>3. A real person walks with them</h2>
 <p>Once a church accepts, it sees the person's contact details and reaches out from its own phone. The person gets a text saying who will be in touch. The church notes that they've been in touch (never what was said) and keeps going: coffee, Sunday together, a small group.</p>
 <h2>The care team</h2>
@@ -87,11 +87,11 @@ DOCS = [
 <dt>Introduction</dt><dd>An invitation to a church or ministry nearby to welcome a person. Their details are shared only once it accepts.</dd>
 
 <dt>Care team</dt><dd>Trained Always staff and volunteers who say hello and walk with anyone no church could take.</dd>
-<dt>Listed, claimed, verified</dt><dd>Every church starts as a listing on the map. A claimed page is managed by the church. A verified church has been checked with its denomination or network and can receive introductions. Verified youth partners can receive young people.</dd>
+<dt>On the map, getting ready, partner church</dt><dd>Every church starts on the map. A church that has claimed its page and started the steps is getting ready. A partner church has been checked with its denomination or network, its connect lead has done the welcoming course, and it can receive introductions. Youth partners, with child-safe checks in place, can receive young people.</dd>
 <dt>Consent receipt</dt><dd>A record of what the person agreed to, who may see their details, and the exact words they saw.</dd>
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to the network.</dd>
 <dt>Always Network</dt><dd>The churches and ministries connected through Always Platform. It grew out of an earlier project called Branches.</dd>
-<dt>Welcoming now</dt><dd>A church or ministry that is verified, trained, has room this month and answers introductions on time.</dd>
+<dt>Welcoming now</dt><dd>A partner church or ministry that is trained, has room this month and answers introductions on time.</dd>
 <dt>Always Agent</dt><dd>An assistant that helps teams with the admin around a welcome, with a person deciding every step.</dd>
 </dl>
 """),
@@ -105,8 +105,8 @@ DOCS = [
 <li>We check with your denomination or network and email you when your page is ready.</li>
 <li>Once confirmed, invite your team and set up your page, next steps and capacity.</li>
 </ol>
-<h2>Becoming verified</h2>
-<p>Before receiving introductions, a church is verified. It affirms the Nicene Creed, belongs to a denomination or network (or has two references from verified churches), and has a connect lead who has done the 20-minute welcoming course. To receive young people, a church is verified as a youth partner, which adds Working With Children Checks and a child-safe policy.</p>
+<h2>Becoming a partner church</h2>
+<p>Churches go at their own pace: on the map, then getting ready, then partner church. Before receiving introductions, a partner church affirms the Nicene Creed, belongs to a denomination or network (or has two references from partner churches), and has a connect lead who has done the 20-minute welcoming course. To receive young people, a church becomes a youth partner, which adds Working With Children Checks and a child-safe policy.</p>
 """),
   ("inbox", "Welcome from your phone", """
 <p class="lead">The Always Connect inbox works in any phone's browser. It shows everyone you're walking with, what they asked for and what's due.</p>
@@ -130,7 +130,7 @@ DOCS = [
 <li><b>Sections in your order:</b> welcome, service times, what to expect, kids, youth, next steps, map and up to four custom sections.</li>
 <li><b>Next steps you offer:</b> Sunday welcome, a course to explore faith, a conversation, youth group, small groups, practical help.</li>
 </ul>
-<p>Pages show a verified badge once you're verified. Your team's details stay private unless you choose to show them.</p>
+<p>Pages show a partner badge once you're a partner church. Your team's details stay private unless you choose to show them.</p>
 """),
   ("capacity", "Next steps and capacity", """
 <p>Tell us what you can do well, and we'll only send you people you can welcome.</p>
@@ -146,7 +146,7 @@ DOCS = [
 <p class="lead">Churches marked <b>welcoming now</b> are ready to receive people this month.</p>
 <p>A church or ministry is welcoming now when:</p>
 <ol>
-<li>It's verified with its denomination or network.</li>
+<li>It's checked with its denomination or network.</li>
 <li>Its connect lead has done the short welcoming course.</li>
 <li>It offers at least one next step and has room this month.</li>
 <li>It has checked its details in the last 90 days.</li>
@@ -159,7 +159,7 @@ DOCS = [
 <p>Everyone sees your name, suburb, the next steps you offer and the badge. Partner ministries can check readiness through the API so they can offer people a church nearby. Capacity and response times stay private.</p>
 """),
   ("welcoming", "Welcoming well", """
-<p class="lead">The free 20-minute course every connect lead completes before their church is verified.</p>
+<p class="lead">The free 20-minute course every connect lead completes before their church becomes a partner.</p>
 <ol>
 <li><b>Reply soon.</b> A short, warm text: who you are, that you're glad they reached out, and one simple invitation.</li>
 <li><b>Offer a friend at the door.</b> People are far more likely to come back when someone they've met is waiting for them.</li>
@@ -176,7 +176,7 @@ DOCS = [
 <li>Create a campaign for your event or tour in Always for ministries.</li>
 <li>Add placements: a QR code for the screen, a short link, an armband card, or the response card inside your app.</li>
 <li>People respond on their own phones. Volunteers can capture a conversation for someone too, with their consent.</li>
-<li>Each person is offered to a verified church or ministry near where they live, anywhere in Australia.</li>
+<li>Each person is offered to a partner church or ministry near where they live, anywhere in Australia.</li>
 </ol>
 <h2>What you see</h2>
 <p>You see how many people responded and how many were received, accepted and connected. Their details stay with the church that welcomes them. If a person agrees, you'll also see that they connected.</p>
@@ -194,7 +194,7 @@ DOCS = [
 <p class="lead">Christian events across Australia, in one place: worship nights, concerts, outreach, youth camps, courses and training.</p>
 <h2>How events get in</h2>
 <ol>
-<li><b>Churches and ministries add their own</b> when they sign in to Always. Verified partners publish straight away.</li>
+<li><b>Churches and ministries add their own</b> when they sign in to Always. Partner churches publish straight away.</li>
 <li><b>Our team adds major events</b>, like tours and conferences.</li>
 <li><b>Anyone can suggest an event.</b> Our team checks it before it shows.</li>
 <li><b>Ticketing platforms.</b> Organisers can bring in events from their ticketing account, where the platform allows it. We're talking with platforms about doing this well.</li>
@@ -353,12 +353,12 @@ await always.responses.create({
 });</code></pre>
 """),
   ("feed", "Church feed and finder", """
-<p class="lead">Point people to verified churches near them, from your own website, app or AI tool. Free.</p>
+<p class="lead">Point people to partner churches near them, from your own website, app or AI tool. Free.</p>
 <p>The church feed lists churches that chose to be included: name, suburb, denomination, service times, the next steps they offer, and whether they're <b>welcoming now</b>. It never includes anyone's personal details.</p>
 <h2>Add "Find a church near me" to your site</h2>
 <pre><code>&lt;script type="module" src="https://cdn.alwaysfoundation.org/sdk/v0/finder.js"&gt;&lt;/script&gt;
 &lt;always-church-finder accent="#1B4740"&gt;&lt;/always-church-finder&gt;</code></pre>
-<p>Add <code>step="youth"</code> to show youth groups, or <code>youth</code> to show only verified youth partners.</p>
+<p>Add <code>step="youth"</code> to show youth groups, or <code>youth</code> to show only youth partners.</p>
 <h2>Use the feed in your code</h2>
 <pre><code>import { AlwaysClient } from '@always/sdk';
 
@@ -382,7 +382,7 @@ GET https://api.alwaysfoundation.org/v1/verify/hope-parramatta</code></pre>
 <p>The Always MCP server gives an assistant four tools. All of them read public church information only, so no one's personal details are ever involved.</p>
 <ul>
 <li><b>find_churches</b>: churches near a postcode, with filters for welcoming now, youth partners and next steps.</li>
-<li><b>verify_church</b>: whether a church is verified, and whether it welcomes young people.</li>
+<li><b>verify_church</b>: whether a church is a partner church, and whether it welcomes young people.</li>
 <li><b>list_events</b>: upcoming Christian events.</li>
 <li><b>how_always_works</b>: a short guide, so the assistant explains Always Platform accurately.</li>
 </ul>
@@ -444,7 +444,7 @@ const ok = await verifyWebhook({
 """),
   ("young-people", "Children and young people", """
 <p class="lead">Young people are welcome, and kept safe. The rules below are built into Always Platform and can't be switched off.</p>
-<table class="doc-table age-table"><thead><tr><th scope="col"><span class="sr-only">Rule</span></th><th scope="col">Under 13</th><th scope="col">13 and 14</th><th scope="col">15 to 17</th></tr></thead><tbody><tr><th scope="row">Who says yes to sharing</th><td data-label="Under 13">A parent or guardian</td><td data-label="13 and 14">A parent or guardian</td><td data-label="15 to 17">The young person</td></tr><tr><th scope="row">The young person's own agreement</th><td data-label="Under 13">Asked, in plain words</td><td data-label="13 and 14">Asked</td><td data-label="15 to 17">They decide</td></tr><tr><th scope="row">Their own details</th><td data-label="Under 13">None. A parent responds</td><td data-label="13 and 14">First name and contact only</td><td data-label="15 to 17">First name and contact only</td></tr><tr><th scope="row">Who they meet</th><td colspan="3" data-label="Everyone under 18">Only verified youth partners</td></tr></tbody></table>
+<table class="doc-table age-table"><thead><tr><th scope="col"><span class="sr-only">Rule</span></th><th scope="col">Under 13</th><th scope="col">13 and 14</th><th scope="col">15 to 17</th></tr></thead><tbody><tr><th scope="row">Who says yes to sharing</th><td data-label="Under 13">A parent or guardian</td><td data-label="13 and 14">A parent or guardian</td><td data-label="15 to 17">The young person</td></tr><tr><th scope="row">The young person's own agreement</th><td data-label="Under 13">Asked, in plain words</td><td data-label="13 and 14">Asked</td><td data-label="15 to 17">They decide</td></tr><tr><th scope="row">Their own details</th><td data-label="Under 13">None. A parent responds</td><td data-label="13 and 14">First name and contact only</td><td data-label="15 to 17">First name and contact only</td></tr><tr><th scope="row">Who they meet</th><td colspan="3" data-label="Everyone under 18">Only youth partners</td></tr></tbody></table>
 <h2>What every young person can count on</h2>
 <ul>
 <li>Only youth leaders with a current Working With Children Check can see a young person's details, and only at the church that welcomes them.</li>
@@ -727,7 +727,7 @@ picker = ''.join(f'<optgroup label="{esc(g)}">' + ''.join(f'<option value="{sl}"
 docs_page = f"""
 <section class="page-hero" style="padding-bottom:56px"><div class="wrap"><h1>Docs</h1><p>How Always Platform and its five modules work, for churches, ministries, people and developers.</p>
   <nav class="dq" aria-label="Start here">
-    <a href="#/docs/joining"><b>Joining</b><span>Register and get verified</span></a>
+    <a href="#/docs/joining"><b>Joining</b><span>Register and get ready</span></a>
     <a href="#/docs/inbox"><b>Churches</b><span>Welcome people from your phone</span></a>
     <a href="#/docs/senders"><b>Ministries</b><span>Response pages and reports</span></a>
     <a href="#/docs/api"><b>Developers</b><span>API, SDK, MCP, webhooks</span></a>
@@ -1050,8 +1050,8 @@ header = """
 # Home: rewrite in-page links to routes
 home = home.replace('href="#join"', 'href="#/join"').replace('href="#stories"', 'href="#/stories"')
 home = home.replace('<a class="btn btn-peach" href="#/join">Join as a church or ministry</a>', '<a class="btn btn-peach" href="#/join">Join as a church or ministry</a>')
-home = home.replace('<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and is verified before anyone is introduced to it.</p>',
- '<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and is verified before anyone is introduced to it.</p><a class="btn btn-green" href="#/directory" style="margin-top:28px">Search the directory</a>')
+home = home.replace('<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and becomes a partner church before anyone is introduced to it.</p>',
+ '<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and becomes a partner church before anyone is introduced to it.</p><a class="btn btn-green" href="#/directory" style="margin-top:28px">Search the directory</a>')
 
 script = """
 

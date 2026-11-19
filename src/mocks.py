@@ -16,7 +16,7 @@ MOCKS = {
 <div class="mk-bar" style="--w:55%"><span>Contacted</span></div><div class="mk-bar mk-bar-p" style="--w:38%"><span>Part of a church family</span></div></div>''',
 'connect': '''<div class="mk-conn"><div class="mk-card mk-person"><span class="mk-av">S</span><div><b>Sam</b><span>Wants a church nearby</span></div></div>
 <span class="mk-link" aria-hidden="true"></span>
-<div class="mk-card mk-church"><b>A local church</b><span>Verified · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div>''',
+<div class="mk-card mk-church"><b>A local church</b><span>Partner church · 2 km away</span><div class="mk-row"><span class="mk-pill">Welcome Sam</span><span class="mk-pill mk-pill-o">Pass</span></div></div></div>''',
 'agents': '''<div class="mk-card mk-agent"><span class="mk-k">Draft for your team</span>
 <p class="mk-msg">Hi Sam, great to meet you on Friday. Youth night is Tuesday at 7. Would you like to come?</p>
 <div class="mk-row"><span class="mk-pill">Approve</span><span class="mk-pill mk-pill-o">Edit</span></div>

@@ -27,7 +27,7 @@ HOW = """
 <p class="lead">One yes, the next best faith step. Always Respond captures the moment someone says yes to Jesus. Always Connect makes sure it leads somewhere, with a real person to walk with them.</p>
 <ol class="dflow">
 <li><b>They say yes</b><span>Always Respond</span><p>At an event, on the street or online, the person scans a QR code, taps an armband or opens a link. They choose what would help, give a first name, a way to reach them and their suburb, and agree to be connected. Age comes first, and the rules for young people apply before anything else.</p></li>
-<li><b>We find the right step</b><span>Always Connect</span><p>They're offered to the church or ministry nearby that fits best: a verified church that has room this month, Alpha to explore faith, a youth partner for young people, or someone to talk to. It accepts, or passes with a reason, and the next one that fits is offered.</p></li>
+<li><b>We find the right step</b><span>Always Connect</span><p>They're offered to the church or ministry nearby that fits best: a partner church that has room this month, Alpha to explore faith, a youth partner for young people, or someone to talk to. It accepts, or passes with a reason, and the next one that fits is offered.</p></li>
 <li><b>Someone walks with them</b><span>Always Connect</span><p>Once a church or ministry accepts, it sees their contact details and reaches out from its own phone. The person gets a text saying who will be in touch. If no one can take them, our care team helps.</p></li>
 </ol>
 <h2>Only the person says "connected"</h2>
@@ -120,7 +120,7 @@ PRIVACY = """
 <li>Use AI on a young person's information.</li>
 </ul>
 <h2>Young people</h2>
-<p>Under 13s don't give us their own details. A parent or guardian confirms for anyone under 15. Young people are only introduced to verified youth partners. See <a href="#/docs/young-people">Children and young people</a>.</p>
+<p>Under 13s don't give us their own details. A parent or guardian confirms for anyone under 15. Young people are only introduced to youth partners. See <a href="#/docs/young-people">Children and young people</a>.</p>
 <h2>Your rights</h2>
 <ul>
 <li>See, download, correct or delete what we hold, from the link in your text, or by emailing us.</li>
@@ -259,10 +259,10 @@ GLOSSARY = """
 <dt>Next best faith step</dt><dd>What would help most right now: usually a local church, sometimes a course, a youth group or care.</dd>
 <dt>Introduction</dt><dd>An invitation to a church or ministry nearby to welcome a person. Their details are shared only once it accepts.</dd>
 <dt>Care team</dt><dd>Trained Always staff and volunteers who say hello and walk with anyone no church could take.</dd>
-<dt>Listed, claimed, verified</dt><dd>Every church starts as a listing on the map. A claimed page is managed by the church. A verified church has been checked with its denomination or network and can receive introductions. Verified youth partners can receive young people.</dd>
+<dt>On the map, getting ready, partner church</dt><dd>Every church starts on the map. A church that has claimed its page and started the steps is getting ready. A partner church has been checked with its denomination or network, its connect lead has done the welcoming course, and it can receive introductions. Youth partners, with child-safe checks in place, can receive young people.</dd>
 <dt>Consent receipt</dt><dd>A record of what the person agreed to, who may see their details, and the exact words they saw.</dd>
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to Always Platform.</dd>
-<dt>Welcoming now</dt><dd>A church or ministry that is verified, trained, has room this month and answers introductions on time.</dd>
+<dt>Welcoming now</dt><dd>A partner church or ministry that is trained, has room this month and answers introductions on time.</dd>
 <dt>Agents</dt><dd>A feature in Always Connect and Always Compliance that helps teams with admin, with a person deciding every step.</dd>
 <dt>Placement</dt><dd>One way into a response page, such as a QR code on a screen or a batch of NFC armbands, so reports can show responses by channel without anyone's name.</dd>
 <dt>Developers</dt><dd>The API, SDK, MCP server and webhooks for building on Always Platform.</dd>

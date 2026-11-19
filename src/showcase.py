@@ -6,7 +6,7 @@ ORDER = ['app', 'pages', 'connect', 'compliance', 'reports']
 CHIPS = {
     'app': ('The Good News, verse by verse', 'Runs in any browser'),
     'pages': ('QR code, tap or link', 'Your name, your colours'),
-    'connect': ('Verified churches nearby', 'Consent travels with them'),
+    'connect': ('Partner churches nearby', 'Consent travels with them'),
     'compliance': ('A check-up every quarter', 'State by state'),
     'reports': ('Totals only, never names', 'Written for you, monthly'),
 }
