@@ -93,7 +93,7 @@ PAGE = f'''<section class="page-hero cm-hero"><div class="wrap pg-split">
 
 <section class="sec pg-sec"><div class="wrap cm-end">
   <h2 class="pg-h rv">Get your check-up every quarter</h2>
-  <p class="pg-lead rv">Free for churches. Larger ministries contribute according to their size. One sign-in with every Always product.</p>
+  <p class="pg-lead rv">Free for churches. Larger ministries contribute according to their size. One sign-in for every Always module.</p>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/contact/compliance">Join Always</a><a class="btn btn-ghost-dark" href="#/compliance/check">Try the check-up first</a></div>
 </div></section>
 '''

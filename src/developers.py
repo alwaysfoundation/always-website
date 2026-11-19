@@ -1,4 +1,4 @@
-"""The Developers area: the API, SDK, MCP connector, feeds and webhooks under every Always product."""
+"""The Developers area: the API, SDK, MCP connector, feeds and webhooks under every Always module."""
 from html import escape
 
 SNIPPETS = [
@@ -46,7 +46,7 @@ def _switcher():
 PAGE = f'''<section class="page-hero pf-hero"><div class="wrap pf-split">
   <div><p class="pl-kick">Developers</p>
   <h1>Build on Always Platform.</h1>
-  <p>The same open-source API, SDK and AI connector every Always product runs on. Free for churches and ministries, and open to the platforms that serve them.</p>
+  <p>The same open-source API, SDK and AI connector every Always module runs on. Free for churches and ministries, and open to the platforms that serve them.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/docs/api">Read the docs</a><a class="btn btn-ghost" href="https://github.com/alwaysfoundation">View on GitHub</a></div></div>
   {_switcher()}
 </div></section>

@@ -1,9 +1,9 @@
-"""The Always product line and solutions: one source of truth for names, positioning and pages.
+"""The Always modules and solutions: one source of truth for names, positioning and pages.
 
 Brand architecture
   Always Foundation  the member-based Christian nonprofit
   Always Platform    the open-source technology every product runs on
-  Always + one word  the products ministries use (never "the Always X platform")
+  Always + one word  the modules ministries switch on (never "the Always X platform")
 
 Every product's one-line positioning is defined once here and reused on the home page,
 the Platform page, the product page, solution pages, the menu and the footer.
@@ -25,7 +25,7 @@ PRODUCTS = {
     'reports':    ('reports',    'Always Reports',    'support', 'A monthly report for your board and funders, written for you, with totals only.', 'Ministries with boards and funders'),
     'connect':    ('connect',    'Always Connect',    'connect', 'Find a local church, hand people on safely, and follow up together.', 'Churches, ministries and events'),
 }
-DEVELOPERS = ('developers', 'Developers', 'The API, SDK, MCP connector, feeds and webhooks behind every Always product.')
+DEVELOPERS = ('developers', 'Developers', 'The API, SDK, MCP connector, feeds and webhooks behind every Always module.')
 # Old routes: agents live inside Always Connect; the developer page moved.
 ALIASES = {'agents': 'connect', 'build': 'developers', 'join': 'contact'}
 
@@ -101,7 +101,7 @@ def switcher():
     tabs = ''.join(f'<button type="button" role="tab" class="sw-tab" id="sw-t-{s}" aria-controls="sw-p-{s}" aria-selected="{str(s == "pages").lower()}" tabindex="{0 if s == "pages" else -1}">{PRODUCTS[s][1].replace("Always ", "")}</button>' for s in BENTO)
     panels = ''.join(f'<div class="sw-panel" role="tabpanel" id="sw-p-{s}" aria-labelledby="sw-t-{s}"{"" if s == "pages" else " hidden"}>{mock(s)}<p class="sw-line"><b>{PRODUCTS[s][1]}</b> {PRODUCTS[s][3]} <a href="#/{PRODUCTS[s][0]}">Explore</a></p></div>' for s in BENTO)
     return (f'<div class="sw"><div class="sw-bar"><span class="sw-me"><i></i>Signed in to Always</span></div>'
-            f'<div class="sw-tabs" role="tablist" aria-label="Always products">{tabs}</div>{panels}</div>')
+            f'<div class="sw-tabs" role="tablist" aria-label="Always modules">{tabs}</div>{panels}</div>')
 
 
 def solutions_grid():
@@ -117,7 +117,7 @@ def menu_html():
     sol = ''.join(f'<a href="#/{r}" data-route="{r}"><b>{n}</b><span>{l}</span></a>' for r, n, l, _, _ in SOLUTIONS.values())
     return (
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button>'
-        f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-grid">{plat}</div><div class="dd-foot"><span class="dd-note">One sign-in for every product.</span><a class="dd-all" href="#/platform" data-route="platform">See Always Platform</a></div></div></li>'
+        f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-grid">{plat}</div><div class="dd-foot"><span class="dd-note">One sign-in for every module.</span><a class="dd-all" href="#/platform" data-route="platform">See Always Platform</a></div></div></li>'
         '<li class="dd"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-solutions" data-group="solutions">Solutions</button>'
         f'<div class="dd-panel" id="dd-solutions"><div class="dd-list">{sol}</div></div></li>'
         f'<li><a href="#/{DEVELOPERS[0]}" data-route="{DEVELOPERS[0]}">{DEVELOPERS[1]}</a></li>'
@@ -173,7 +173,7 @@ def product_page(slug, intro, feats, works_with, extra='', status=None, primary=
 {extra}
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Works with</h2>
-  <p class="pg-lead rv">Every Always product runs on Always Platform, with one sign-in for your team.</p>
+  <p class="pg-lead rv">Every Always module runs on Always Platform, with one sign-in for your team.</p>
   {_works_with(works_with)}
 </div></section>'''
 
@@ -259,7 +259,7 @@ def solution_page(slug, outcomes, cta=('Talk to us', '#/join')):
   <div class="sl-rows sl-rows-{len(outcomes)}">{rows}</div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
-  <h2 class="pg-h rv">Products you'll use</h2>
+  <h2 class="pg-h rv">Modules you'll use</h2>
   <div class="bento bento-even bento-{len(uses)}">{''.join(bento_tile(s) for s in uses)}</div>
 </div></section>
 {story_html}'''
@@ -293,14 +293,14 @@ PLATFORMS_PAGE = solution_page('platforms', [
 
 PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-split">
   <div><p class="pl-kick">Always Platform</p>
-  <h1>Five products. One sign-in. Shared freely.</h1>
-  <p>The open-source technology behind every Always product. Your team signs in once and uses whichever tools your ministry needs.</p>
+  <h1>Five modules. One sign-in. Shared freely.</h1>
+  <p>One open-source platform with shared data and one sign-in. Your team switches on the modules your ministry needs, and developers can build on the same foundation.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/developers">For developers</a></div></div>
   {switcher()}
 </div></section>
 <section class="sec pd-statement"><div class="wrap"><p class="rv">Built once. Shared with every church and ministry.</p></div></section>
 <section class="sec pg-sec pf-products"><div class="wrap">
-  <h2 class="pg-h rv">The products</h2>
+  <h2 class="pg-h rv">The modules</h2>
   <p class="pg-lead rv">Equip, support and connect ministries, with agents to help with follow-up and admin wherever they're needed.</p>
   {product_bento()}
   {developers_band()}

@@ -122,7 +122,7 @@ FAQ_GROUPS = [
  ('About Always', [
   ('What is the Always Foundation?', 'An independent, member-based Christian nonprofit that brings churches and Christian ministries together. We equip them with free, open-source tools, support them with shared tools for governance, compliance, safeguarding and reporting, and connect them as one network.'),
   ('Who can become a member?', 'Churches and Christian ministries that affirm the Nicene Creed. Members help shape what we build and share in the benefits. Supporters can join us too, through prayer and giving.'),
-  ('What is Always Platform?', 'The open-source technology behind everything we offer members: branded response pages, forms, reports, the directory and the Always App. Developers can build on it too.'),
+  ('What is Always Platform?', 'One open-source platform with one sign-in. Members switch on the modules they need: Always App, Always Pages, Always Compliance, Always Reports and Always Connect. Developers can build on it too.'),
   ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always Platform only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
