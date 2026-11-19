@@ -780,7 +780,7 @@ DECK_CSS = '''
 .age-table td { text-align: left; font-weight: 400; padding-right: 12px; } .age-table th[scope=row] { padding-right: 16px; } .age-table thead th:last-child { text-align: left; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (max-width: 640px) { .age-table thead { display: none; } .age-table, .age-table tbody, .age-table tr, .age-table th, .age-table td { display: block; width: 100%; } .age-table tr { border-bottom: 1px solid var(--line); padding: 12px 0; } .age-table th[scope=row] { border: 0; padding: 0 0 6px; font-weight: 700; color: var(--green); } .age-table td { border: 0; padding: 3px 0; display: flex; gap: 12px; } .age-table td::before { content: attr(data-label); flex: 0 0 120px; color: var(--muted); font-size: 14px; } }
-@media (max-width: 860px) { #page-docs .page-hero { padding: 120px 0 40px; } }
+@media (max-width: 860px) { #page-docs .page-hero { padding: 120px 0 40px; } #page-docs.in-doc .page-hero { padding: 100px 0 26px; } #page-docs.in-doc .page-hero p, #page-docs.in-doc .dq { display: none; } }
 .rv { transform: none; transition: opacity .6s ease; }
 .word .verse { font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; color: var(--green); }
 .word .verse::before { content: '\\201C'; display: inline; font-size: inherit; line-height: inherit; margin: 0; color: inherit; }
@@ -1096,6 +1096,7 @@ window.addEventListener('hashchange', route);
 // Docs
 function showDoc(slug) {
   const d = DOCS[slug] || DOCS.introduction;
+  document.getElementById('page-docs')?.classList.toggle('in-doc', d !== DOCS.introduction);
   const i = ORDER.indexOf(slug in DOCS ? slug : 'introduction');
   const prev = ORDER[i - 1], next = ORDER[i + 1];
   document.getElementById('doc').innerHTML =
