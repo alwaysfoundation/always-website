@@ -286,76 +286,91 @@ SAVING = """
 """
 
 JOURNEYS = """
-<p class="lead">How Always follows a person&rsquo;s journey from a first yes to a church family, across many ministries, while keeping that journey theirs. A research write-up of the design and how it&rsquo;s built.</p>
-<div class="callout"><b>In short.</b> Ministries and funders see totals that identify no one. Inside Always, the steps one person takes can be linked across ministries, but only when that adult says yes to it, and each ministry sees only what it needs.</div>
+<p class="lead">Someone meets Jesus at a UEN event, is discipled through The Global Harvest, does Alpha, and finds a home at a local church. Four ministries share in one person&rsquo;s journey. How can they see that it&rsquo;s the same person, and that no one was lost along the way, without any of them holding that person&rsquo;s identity or spiritual story?</p>
 
-<h2>The problem</h2>
-<p>A young adult says yes to Jesus at a concert run by one ministry, is introduced to a church by another, joins a course run by a third and is baptised by a fourth. Each holds a fragment. No one can see whether the yes became a disciple, and the person may be asked the same questions four times, or fall through the gaps between them.</p>
-<p>We want the whole Body to see the fruit, and to see where people are being lost, without building a database of who believes what.</p>
+<div class="jx" aria-label="One person, four ministries, each with its own code">
+  <div class="jx-row">
+    <div class="jx-m"><b>UEN</b><span>Said yes at an event</span><code>jny_4fQ…</code></div>
+    <div class="jx-m"><b>The Global Harvest</b><span>Discipleship</span><code>jny_Zk8…</code></div>
+    <div class="jx-m"><b>Alpha</b><span>A course</span><code>jny_r2C…</code></div>
+    <div class="jx-m"><b>Hope Church</b><span>A church family</span><code>jny_9Lw…</code></div>
+  </div>
+  <div class="jx-core"><b>Always</b><span>Links the steps only with the person&rsquo;s yes. Holds the key. Shows each ministry only its own code, and only steps by month.</span></div>
+</div>
 
-<h2>What the law asks</h2>
-<ul>
-<li>Information is personal information when a person is identified or reasonably identifiable from it, and that depends on the information and the context it&rsquo;s held or released in.</li>
-<li>Information about a person&rsquo;s religious beliefs is sensitive information, so collecting it needs their consent.</li>
-<li>The privacy regulator treats de-identification as a privacy-enhancing tool, but data that can be re-identified is still personal information.</li>
-</ul>
-<p>So a record that follows one person over time is pseudonymous, not de-identified, even without a name on it. We treat it as personal information and protect it accordingly. Only totals leave the platform as de-identified data.</p>
-
-<h2>The design: two layers</h2>
-<h3>1. Totals that identify no one</h3>
-<p>Every time a journey reaches a milestone, a tally goes up in a reporting table that holds no names, numbers or ids. Reports count people, never list them.</p>
-<ul>
-<li>Counts are grouped by month, region, ministry and the step someone chose.</li>
-<li>Groups smaller than 10 people, or 20 where young people are included, are withheld on the server and never sent to the browser.</li>
-<li>Only standard periods are offered (month, quarter, financial year), so overlapping date ranges can&rsquo;t be subtracted to single someone out.</li>
-<li>Totals survive when a person&rsquo;s details are deleted, because the tally never held them.</li>
-</ul>
-
-<h3>2. One journey, linked only with consent</h3>
-<p>When an adult who has said yes to sharing their journey responds again through another ministry, Always links the two responses into one journey.</p>
-<ul>
-<li><b>Inside Always only.</b> Responses are matched with a keyed fingerprint of the mobile number, made with a secret key that never leaves the platform. Names and numbers are encrypted separately.</li>
-<li><b>A different code for each ministry.</b> Each ministry sees its own code for the same person, so two ministries can never join their records outside Always.</li>
-<li><b>Steps, not stories.</b> A ministry that later helps someone sees which earlier steps happened and when (for example &ldquo;introduced to a church in March&rdquo;), never notes or conversations.</li>
-<li><b>Every view is logged,</b> and the person can see, download or withdraw it all from their own link. Withdrawal reaches every system through a signed webhook.</li>
-<li><b>Never for young people.</b> No one under 18 is linked across ministries. Each response from a young person stands alone.</li>
-</ul>
-
-<h2>Milestones</h2>
+<h2>Two goals, two designs</h2>
+<p>People ask this for two different reasons, and they need different answers. We built both, kept apart.</p>
 <table>
-<tr><th>Milestone</th><th>Who records it</th></tr>
-<tr><td>Responded</td><td>The platform, when someone says yes</td></tr>
-<tr><td>Introduced</td><td>The platform, when a church is offered the chance to welcome them</td></tr>
-<tr><td>Accepted and contacted</td><td>The receiving church</td></tr>
-<tr><td>Connected</td><td>The person themselves</td></tr>
-<tr><td>Baptised, in a group, serving, still connected a year on</td><td>The person themselves, when they choose to tell us</td></tr>
+<tr><th></th><th>No one lost</th><th>Seeing the fruit</th></tr>
+<tr><td>The question</td><td>Is this person being cared for, and what has already happened?</td><td>Across the Body, how many yeses become disciples?</td></tr>
+<tr><td>What it needs</td><td>A linked journey for one person</td><td>Totals only</td></tr>
+<tr><td>Who sees it</td><td>The one church or ministry now caring for them</td><td>Ministries, networks and funders</td></tr>
+<tr><td>Is it personal information?</td><td>Yes, so it needs the person&rsquo;s consent</td><td>No, it identifies no one</td></tr>
+<tr><td>Young people</td><td>Never linked</td><td>Counted, with larger minimum groups</td></tr>
 </table>
-<p>We count someone as connected, baptised or growing only when they tell us. We would rather undercount than claim fruit that isn&rsquo;t there.</p>
+
+<h2>How it works for one person</h2>
+<ol>
+<li><b>Sam says yes</b> at a UEN event and ticks two boxes: introduce me to a church, and let ministries who help me later see my earlier steps. The second is optional and never pre-ticked.</li>
+<li><b>Always links Sam&rsquo;s responses</b> when Sam responds again through another ministry, using a keyed fingerprint of Sam&rsquo;s mobile. The key stays inside Always. No ministry ever sees the fingerprint.</li>
+<li><b>A church welcomes Sam</b> and, only after accepting, sees Sam&rsquo;s earlier steps by month: said yes in February, introduced in March, connected in April. Never which ministries, never notes, never exact dates.</li>
+<li><b>Sam tells us</b> when they&rsquo;re baptised, join a small group or start serving. Those steps are counted in the totals, and added to Sam&rsquo;s journey only if Sam shares it.</li>
+<li><b>Sam can change their mind</b> any time. Withdrawing unlinks the journey straight away, and removes anything Sam reported through it.</li>
+</ol>
+
+<h2>What each person and ministry sees</h2>
+<table>
+<tr><th>Who</th><th>Sees</th><th>Never sees</th></tr>
+<tr><td>Sam</td><td>Everything held about them, to download, correct or withdraw</td><td>Nothing is hidden from them</td></tr>
+<tr><td>The church caring for Sam now</td><td>Sam&rsquo;s details, their own code, earlier steps by month</td><td>Other ministries&rsquo; names, notes, exact dates</td></tr>
+<tr><td>Earlier ministries</td><td>Totals for the people they introduced</td><td>Sam&rsquo;s later steps, other ministries&rsquo; codes</td></tr>
+<tr><td>Networks and funders</td><td>Totals by state and financial year</td><td>Any person, any code, any group under 10 (20 with young people)</td></tr>
+<tr><td>Always staff</td><td>Only what&rsquo;s needed to help, with every view logged</td><td>Anything for marketing, fundraising or profiling</td></tr>
+</table>
+
+<h2>In the Australian context</h2>
+<p>Faith is among the most personal things we know about anyone. Australian law treats it that way, and so do we.</p>
+<ul>
+<li><b>Faith is sensitive information.</b> Under the Australian Privacy Principles, religious beliefs and affiliations are sensitive information, so they&rsquo;re collected only with consent and only when reasonably necessary (APP 3). Linking a journey has its own consent, separate from being introduced to a church.</li>
+<li><b>Used only for what the person agreed to</b> (APP 6). A journey helps the next church care well. It&rsquo;s never used for marketing, fundraising or profiling, and it&rsquo;s never sold.</li>
+<li><b>Pseudonymous isn&rsquo;t anonymous.</b> Information is personal information when someone is reasonably identifiable from it in context. A linked journey is, even without a name, so it&rsquo;s protected as personal information. Only totals are treated as de-identified, following the OAIC and CSIRO&rsquo;s De-identification Decision-Making Framework: minimum group sizes, set reporting periods and no identifiers in the reporting table.</li>
+<li><b>Kept in Australia</b> (APP 8). Journeys are stored and processed in Australia and are never sent offshore.</li>
+<li><b>Secured, and deleted when no longer needed</b> (APP 11). Names and numbers are encrypted. The link key is kept apart from the data and can be destroyed to unlink every journey at once. Unconnected details are deleted on our retention schedule.</li>
+<li><b>Yours to see and correct</b> (APPs 12 and 13). Each person has a private link to see, download, correct or withdraw.</li>
+<li><b>Breaches are reported.</b> We follow the Notifiable Data Breaches scheme and tell people and the OAIC if a breach is likely to cause serious harm.</li>
+<li><b>A higher bar than the law sets.</b> Many churches are small enough to sit outside the Privacy Act. Always applies the same principles to every journey anyway, because every person deserves the same care.</li>
+<li><b>Serious invasions of privacy.</b> Since 10 June 2025, Australians can take action for serious invasions of privacy. Designing so ministries can&rsquo;t combine records is part of honouring that.</li>
+<li><b>Children and young people.</b> No one under 18 is ever linked across ministries, whatever is ticked. This holds ahead of the Children&rsquo;s Online Privacy Code, due by 10 December 2026, and alongside the National Principles for Child Safe Organisations.</li>
+</ul>
+<p>We&rsquo;re watching the second tranche of Privacy Act reforms and will update this design as the law changes. This page explains our approach and isn&rsquo;t legal advice. Prolegis reviews the consent wording before release.</p>
 
 <h2>How it&rsquo;s built</h2>
-<ol>
-<li><b>Consent purpose.</b> A new purpose, <code>share.journey</code>, separate from being introduced to a church and never ticked for the person. Adults only.</li>
-<li><b>Link key.</b> <code>link = HMAC(LINK_KEY, normalised mobile)</code>, held in the platform&rsquo;s database and never returned by any API. The key is kept in the environment, rotated yearly, and can be destroyed to unlink everything.</li>
-<li><b>Ministry codes.</b> <code>code = HMAC(ORG_KEY, journey id + ministry id)</code>. Codes are stable for one ministry and unrelated between ministries.</li>
-<li><b>Standard rule.</b> The Always Handoff standard carries the ministry code with the consent receipt. A receiving system must not pass the code on, or combine it with other records, beyond what the consent covers, and must honour withdrawal.</li>
-<li><b>Network reports.</b> A funnel from &ldquo;said yes at any partner event&rdquo; to &ldquo;in a church a year later&rdquo;, by region, built only from the tally table with the same small-number rules.</li>
-<li><b>Tests.</b> Cross-tenant tests prove one ministry can never read another&rsquo;s codes or journeys. Minors tests prove no link is ever made under 18.</li>
-</ol>
+<table>
+<tr><th>Part</th><th>What it does</th></tr>
+<tr><td><code>share.journey</code></td><td>A separate consent purpose. Refused for anyone under 18.</td></tr>
+<tr><td>The link</td><td>A keyed hash of the normalised mobile, using <code>LINK_KEY</code>. Stored in the database, never returned by any API.</td></tr>
+<tr><td>Ministry codes</td><td>A keyed hash of the journey and the ministry, using <code>ORG_CODE_KEY</code>. Stable for one ministry, unrelated between ministries.</td></tr>
+<tr><td><code>GET /v1/handoffs/:id/journey</code></td><td>For the church that accepted someone: their code and earlier steps by month. Every view is audited.</td></tr>
+<tr><td><code>POST /v1/me/:token/milestones</code></td><td>The person reports baptised, small group, serving or a year on.</td></tr>
+<tr><td><code>GET /v1/network/journeys</code></td><td>Totals across every ministry by state and financial year, small numbers withheld.</td></tr>
+<tr><td>Database guards</td><td>The database itself refuses to link a minor or anyone without current consent, unlinks on withdrawal and removes empty journeys. No ministry can read journey tables directly.</td></tr>
+</table>
+<p>Tests prove each rule: minors are never linked, codes differ between ministries, a church that hasn&rsquo;t accepted someone sees nothing, withdrawal unlinks, and small totals are withheld. The Handoff standard requires receiving systems to keep codes to themselves and to honour withdrawal.</p>
 
 <h2>What we chose not to do</h2>
 <ul>
-<li><b>No shared id across ministries.</b> A single public id would let anyone holding two datasets join them.</li>
-<li><b>No plain hash of a mobile number.</b> There are few enough Australian mobile numbers that an unkeyed hash can be reversed by trying them all.</li>
-<li><b>No browsing or search.</b> No ministry can look a person up. Journeys appear only when that person is introduced to them.</li>
+<li><b>One shared id for everyone.</b> Anyone holding two ministries&rsquo; data could join them.</li>
+<li><b>A plain hash of a mobile number.</b> There are few enough Australian mobile numbers to reverse it by trying them all.</li>
+<li><b>Searching for people.</b> No ministry can look anyone up. A journey appears only when that person is introduced to them.</li>
 </ul>
 
-<h2>Open questions</h2>
+<h2>Still to decide</h2>
 <ul>
-<li>How often to ask someone to update their journey, without becoming a burden.</li>
-<li>Whether a person should be able to name which ministries may see their earlier steps, rather than all who later help them.</li>
-<li>The exact consent wording, which Prolegis will review before this goes live.</li>
+<li><b>Gentle care when a journey stalls.</b> Whether Always&rsquo;s care team, and only them, should notice when someone who shared their journey hasn&rsquo;t connected after a month.</li>
+<li>Whether a person should choose which ministries may see their earlier steps, rather than all who later help them.</li>
+<li>How often to invite people to share a new step, without becoming a burden.</li>
 </ul>
-<p>See also <a href="#/docs/consent">Consent receipts</a>, <a href="#/docs/standard">the Always Handoff standard</a> and <a href="#/docs/results">Reports for your funders</a>. Sources: OAIC, <i>What is personal information</i>; OAIC, <i>De-identification and the Privacy Act</i>; Australian Privacy Principles guidelines, Chapter B.</p>
+<p><b>Status:</b> built and tested, awaiting review of the consent wording before release. See also <a href="#/docs/consent">Consent receipts</a>, <a href="#/docs/standard">the Always Handoff standard</a> and <a href="#/docs/results">Reports for your funders</a>.</p>
 """
 
 AGENTS = """
@@ -481,16 +496,15 @@ def apply(DOCS):
     DOCS.append(IG.DOCS)
     pages = {t[0]: t for _, ps in DOCS for t in ps}
     layout = [
-        ('Start here', ['introduction', 'how-it-works', 'modules', 'joining', 'glossary']),
+        ('Get started', ['introduction', 'how-it-works', 'modules', 'joining', 'glossary']),
         ('Always App', ['app', 'saving']),
         ('Always Respond', ['senders', 'taps', 'branding', 'online']),
         ('Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming', 'always-agent']),
         ('Always Safety', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review', 'compliance-api', 'compliance-platforms']),
-        ('Always Reports', ['results']),
-        ('For people', ['your-choices']),
+        ('Always Reports', ['results', 'journeys']),
         ('Integrations', ['integrations', 'int-chms', 'int-messaging', 'int-automation']),
-        ('Developers', ['api', 'sdk', 'youversion', 'feed', 'mcp', 'webhooks', 'consent', 'journey', 'journeys', 'standard']),
-        ('Trust and safety', ['security', 'privacy', 'terms', 'young-people', 'ai', 'policies']),
+        ('Developers', ['api', 'sdk', 'standard', 'consent', 'journey', 'webhooks', 'feed', 'mcp', 'youversion']),
+        ('Trust and privacy', ['security', 'privacy', 'your-choices', 'young-people', 'ai', 'terms', 'policies']),
         ('The foundation', ['governance', 'open-source', 'brand']),
     ]
     used = {sl for _, sls in layout for sl in sls}
@@ -522,8 +536,27 @@ CSS = '''
 .dtoc p { margin: 0 0 10px; font: 700 13px/1 var(--head); color: var(--clay); }
 .dtoc button { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--line); padding: 7px 0 7px 14px; min-height: 32px; color: var(--soft); font: 500 14px/1.35 var(--text, inherit); cursor: pointer; transition: color .2s ease, border-color .2s ease; }
 .dtoc button:hover, .dtoc button.on { color: var(--green); border-left-color: var(--green); }
+.jx { margin: 30px 0 8px; padding: 22px; border-radius: 24px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.05); }
+.jx-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.jx-m { display: grid; gap: 4px; padding: 14px; border-radius: 16px; background: var(--sage); }
+.jx-m b { font: 700 15px/1.25 var(--head); color: var(--green); } .jx-m span { font-size: 13.5px; color: var(--soft); }
+.jx-m code { justify-self: start; margin-top: 6px; font-size: 12px; background: #fff !important; }
+.jx-core { position: relative; display: grid; gap: 4px; margin-top: 26px; padding: 16px 18px; border-radius: 16px; background: var(--green); color: var(--cream); }
+.jx-core::before { content: ''; position: absolute; left: 12%; right: 12%; top: -18px; height: 18px; border: 2px dashed rgba(27,71,64,.3); border-bottom: 0; border-radius: 12px 12px 0 0; }
+.jx-core b { font: 800 16px/1.2 var(--head); color: var(--cream) !important; } .jx-core span { font-size: 14.5px; line-height: 1.5; opacity: .85; }
+@media (max-width: 700px) { .jx-row { grid-template-columns: 1fr 1fr; } }
 .dnav { top: 104px; max-height: calc(100vh - 128px); }
-.dnav .dgroup { display: flex; align-items: center; gap: 8px; margin: 22px 0 6px; padding: 0 12px; font-size: 12.5px; letter-spacing: .01em; }
+.dnav .dsec { border-bottom: 1px solid var(--line); }
+.dnav .dsec:last-child { border-bottom: 0; }
+.dnav summary.dgroup { display: flex; align-items: center; gap: 8px; margin: 0; padding: 13px 12px; min-height: 44px; list-style: none; cursor: pointer; font: 700 15px/1.2 var(--head); color: var(--green); letter-spacing: 0; border-radius: 10px; }
+.dnav summary.dgroup::-webkit-details-marker { display: none; }
+.dnav summary.dgroup::after { content: ''; width: 8px; height: 8px; margin-left: auto; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .2s ease; opacity: .55; }
+.dnav details[open] > summary.dgroup::after { transform: rotate(45deg); }
+.dnav summary.dgroup:hover { background: var(--paper); }
+.dnav summary.dgroup:focus-visible { outline: 3px solid var(--peach); outline-offset: 2px; }
+.dnav .dcount { font: 600 12px/1 var(--head); color: var(--soft); background: rgba(27,71,64,.07); padding: 3px 7px; border-radius: 99px; }
+.dnav details ul { padding: 0 0 12px 4px; }
+@media (prefers-reduced-motion: reduce) { .dnav summary.dgroup::after { transition: none; } }
 .dnav a { font-size: 15px; padding: 7px 12px; transition: background .2s ease, color .2s ease; }
 .dnav a.on { box-shadow: 0 10px 20px -16px rgba(10,30,26,.6); }
 .dsearch { border-radius: 14px !important; }

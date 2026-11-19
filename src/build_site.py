@@ -549,12 +549,12 @@ nav_html = ''
 pages_json = {}
 order = []
 for group, pages in DOCS:
-    nav_html += f'<p class="dgroup">{esc(group)}</p><ul>'
+    nav_html += f'<details class="dsec"><summary class="dgroup">{esc(group)}<span class="dcount">{len(pages)}</span></summary><ul>'
     for slug, title, body in pages:
         nav_html += f'<li><a href="#/docs/{slug}" data-slug="{slug}">{esc(title)}</a></li>'
         pages_json[slug] = {'title': title, 'group': group, 'html': body.strip()}
         order.append(slug)
-    nav_html += '</ul>'
+    nav_html += '</ul></details>'
 
 extra_css = """
 .dt-wrap { overflow-x: auto; margin: 20px 0; }
@@ -1105,6 +1105,7 @@ function showDoc(slug) {
     (next ? `<a class="next" href="#/docs/${next}"><span>Next</span><b>${DOCS[next].title}</b></a>` : '') + `</nav>` +
     `<div class="doc-meta"><span>Updated November 2026 · CC BY 4.0</span><span><a href="#/feedback">Suggest a change</a></span></div>`;
   document.querySelectorAll('.dnav a').forEach((a) => a.classList.toggle('on', a.dataset.slug === slug));
+  if (!document.getElementById('dsq').value) document.querySelectorAll('.dnav details.dsec').forEach((dt) => { dt.open = !!dt.querySelector(`a[data-slug="${slug}"]`); });
   document.getElementById('dpick').value = slug in DOCS ? slug : 'introduction';
   document.title = d.title + ' · Always docs';
   const toc = document.getElementById('dtoc'), hs = [...document.querySelectorAll('#doc h2')];
@@ -1126,6 +1127,11 @@ document.getElementById('dsq').addEventListener('input', (e) => {
     const hit = !q || DOCS[slug].title.toLowerCase().includes(q) || DOCS[slug].html.toLowerCase().includes(q);
     li.hidden = !hit;
   });
+  document.querySelectorAll('.dnav details.dsec').forEach((dt) => {
+    const any = [...dt.querySelectorAll('li')].some((li) => !li.hidden);
+    dt.hidden = !any; if (q) dt.open = any;
+  });
+  if (!q) { const cur = document.querySelector('.dnav a.on'); document.querySelectorAll('.dnav details.dsec').forEach((dt) => { dt.hidden = false; dt.open = !!(cur && dt.contains(cur)); }); }
 });
 
 document.getElementById('dpick').addEventListener('change', (e) => { location.hash = '#/docs/' + e.target.value; });
