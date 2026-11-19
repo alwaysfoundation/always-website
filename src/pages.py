@@ -100,7 +100,7 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
     {mini('Walk', '<p class="pg-cap">Walking with Sam</p>' + ''.join(f'<div class="pg-tick{" done" if d else ""}"><i></i>{t}</div>' for t, d in [('Send a welcome message', 1), ('Share John 3', 1), ('Coffee this week', 0), ('Church together', 0)]))}
     {mini('Connect', '<p class="pg-cap">Near you</p><div class="pg-mapbox"></div><div class="pg-card">Hope Church Parramatta</div><div class="pg-card">City worship night · Fri</div>')}
   </div>
-  <p class="pg-built rv">Built on <a href="#/platform">Always Platform</a>: Connect uses the church feed and events, Gather uses response pages and the handoff, and the Bible comes through the YouVersion Platform.</p>
+  <p class="pg-built rv">Built on <a href="#/platform">Always Platform</a>. Connect uses the church feed and events. Gather uses Always Respond and Always Connect. The Bible has KJV and WEB built in, with more translations through the YouVersion Platform.</p>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Made for evangelists, and for everyone</h2>
