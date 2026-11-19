@@ -195,7 +195,7 @@ def footer_cols():
     return (f'<div><h2>Platform</h2>{plat}</div>'
             f'<div><h2>Solutions</h2>{sol}</div>'
             f'<div><h2>Developers</h2>{dev}</div>'
-            '<div><h2>Foundation</h2><a href="#/about">About</a><a href="#/stories">Stories</a><a href="#/docs/brand">Brand</a><a href="#/faq">FAQs</a></div>'
+            '<div><h2>Foundation</h2><a href="#/about">About</a><a href="#/stories">Stories</a><a href="#/faq">FAQs</a></div>'
             '<div><h2>Help</h2><a href="#/contact">Contact us</a><a href="#/docs/introduction">Docs</a><a href="#/docs/privacy">Privacy</a><a href="#/docs/terms">Terms</a></div>')
 
 
