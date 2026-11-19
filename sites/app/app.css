@@ -288,3 +288,23 @@ main > * { animation: pageIn .32s ease both; }
 [data-theme="dark"] .tab-gather { border-color: var(--bg); }
 [data-theme="dark"] .bible-tr { background: #24413A; color: #CFE3D8; }
 [data-theme="dark"] .ptr-night .ptr-mono { background: #F8D486; color: #1E2A26; }
+
+/* Languages, cards, walk rhythm */
+.langs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; } .langs::-webkit-scrollbar { display: none; }
+.langs button { flex: none; min-height: 40px; padding: 0 14px; border-radius: 99px; border: 1.5px solid var(--line); background: var(--card); font: 600 14px var(--head); color: var(--ink); }
+.langs button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: var(--cream); }
+.story-refs { margin: 0; font: 600 13px var(--head); opacity: .7; }
+.story-card[dir="rtl"] { text-align: right; }
+.card-preview { border-radius: 22px; overflow: hidden; box-shadow: 0 24px 50px -30px rgba(20,53,47,.6); aspect-ratio: 4 / 5; }
+.card-preview canvas { width: 100%; height: 100%; display: block; }
+.swatches { display: flex; gap: 12px; justify-content: center; }
+.swatches button { position: relative; width: 48px; height: 48px; border-radius: 50%; border: 3px solid var(--bg); box-shadow: 0 0 0 1.5px var(--line); padding: 0; }
+.swatches button[aria-pressed="true"] { box-shadow: 0 0 0 2.5px var(--green); }
+.swatches i { position: absolute; right: 8px; top: 8px; width: 9px; height: 9px; border-radius: 50%; }
+.tick em.due { margin-left: auto; font: 600 12px var(--head); font-style: normal; color: var(--muted); white-space: nowrap; }
+.tick em.due.now { color: var(--clay); }
+.card.today { background: linear-gradient(150deg, #FBE7D8, #F5D3BA); border: 0; color: var(--night); }
+.card.today .note { color: #6A4A33; }
+[data-theme="dark"] .card.today { background: linear-gradient(150deg, #4A2E1E, #3A2418); color: var(--ink); } [data-theme="dark"] .card.today .note { color: #E8C9A0; }
+[data-theme="dark"] .langs button[aria-pressed="true"] { background: #2F6B5E; border-color: #2F6B5E; }
+[data-theme="dark"] .tick em.due.now { color: #F2B98E; }

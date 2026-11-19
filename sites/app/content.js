@@ -2,6 +2,43 @@
 // Refs: 'BOOK chapter verse' or 'BOOK chapter verse-verse'.
 window.AC = {
 
+  // God's story in other languages spoken across Australia. Same four moments; Scripture references stay as listed in English.
+  storyLangs: {
+    en: { name: 'English' },
+    'zh-Hans': { name: '简体中文', ask: '问：', items: [
+      ['创造', '神创造了我们，也爱我们。', '神创造了世界和其中的万物，祂创造人，是要人认识祂、以祂为乐。你不是偶然出现的。你是神所造，也是为神而造。', '你是否曾感觉，自己是为了更大的意义而被造的？'],
+      ['破碎', '我们离开了祂。', '我们都走了自己的路，在思想、言语和行为上犯了错。罪破坏了我们与神的关系，也伤害了周围的世界。我们无法靠自己修复。', '你在世界上或自己的生命中，在哪里看到这种破碎？'],
+      ['拯救', '耶稣来带我们回家。', '神没有离弃我们。祂差遣祂的儿子耶稣，过了我们无法过的生活，在十字架上替我们死，又从死里复活。借着祂，赦免和新生命作为白白的礼物赐给我们。', '你怎么看耶稣？'],
+      ['恢复', '我们现在就能认识祂，直到永远。', '凡转向耶稣、信靠祂的人，都蒙赦免，被接纳进入神的家。祂使我们成为新造的人，有一天祂要使万物更新。', '有什么在拦阻你今天信靠耶稣吗？'] ] },
+    'zh-Hant': { name: '繁體中文', ask: '問：', items: [
+      ['創造', '神創造了我們，也愛我們。', '神創造了世界和其中的萬物，祂創造人，是要人認識祂、以祂為樂。你不是偶然出現的。你是神所造，也是為神而造。', '你是否曾感覺，自己是為了更大的意義而被造的？'],
+      ['破碎', '我們離開了祂。', '我們都走了自己的路，在思想、言語和行為上犯了錯。罪破壞了我們與神的關係，也傷害了周圍的世界。我們無法靠自己修復。', '你在世界上或自己的生命中，在哪裡看到這種破碎？'],
+      ['拯救', '耶穌來帶我們回家。', '神沒有離棄我們。祂差遣祂的兒子耶穌，過了我們無法過的生活，在十字架上替我們死，又從死裡復活。藉著祂，赦免和新生命作為白白的禮物賜給我們。', '你怎麼看耶穌？'],
+      ['恢復', '我們現在就能認識祂，直到永遠。', '凡轉向耶穌、信靠祂的人，都蒙赦免，被接納進入神的家。祂使我們成為新造的人，有一天祂要使萬物更新。', '有甚麼在攔阻你今天信靠耶穌嗎？'] ] },
+    vi: { name: 'Tiếng Việt', ask: 'Hỏi: ', items: [
+      ['Được tạo dựng', 'Đức Chúa Trời dựng nên chúng ta và yêu thương chúng ta.', 'Đức Chúa Trời dựng nên thế giới và muôn vật, và Ngài tạo dựng con người để biết Ngài và vui hưởng Ngài. Bạn không phải là một sự tình cờ. Bạn được Đức Chúa Trời tạo dựng, và cho Ngài.', 'Bạn đã bao giờ cảm thấy mình được tạo dựng cho một điều lớn lao hơn chưa?'],
+      ['Đổ vỡ', 'Chúng ta đã quay lưng với Ngài.', 'Tất cả chúng ta đều đi theo đường riêng và làm điều sai, trong suy nghĩ, lời nói và việc làm. Tội lỗi làm đổ vỡ mối quan hệ của chúng ta với Đức Chúa Trời và làm tổn thương thế giới quanh ta. Chúng ta không thể tự mình sửa chữa.', 'Bạn thấy sự đổ vỡ ấy ở đâu trong thế giới, hay trong chính đời sống mình?'],
+      ['Được cứu', 'Chúa Giê-xu đến để đưa chúng ta về nhà.', 'Đức Chúa Trời không bỏ mặc chúng ta. Ngài sai Con Ngài là Chúa Giê-xu, Đấng đã sống cuộc đời mà chúng ta không thể sống, chết trên thập tự giá thay cho chúng ta, và đã sống lại. Qua Ngài, sự tha thứ và sự sống mới được ban cho như một món quà miễn phí.', 'Bạn nghĩ gì về Chúa Giê-xu?'],
+      ['Được phục hồi', 'Chúng ta có thể biết Ngài ngay bây giờ và mãi mãi.', 'Ai quay về với Chúa Giê-xu và tin cậy Ngài đều được tha thứ và được đón nhận vào gia đình của Đức Chúa Trời. Ngài làm cho chúng ta trở nên mới, và một ngày kia Ngài sẽ làm mới mọi sự.', 'Có điều gì ngăn cản bạn tin cậy Chúa Giê-xu hôm nay không?'] ] },
+    ar: { name: 'العربية', dir: 'rtl', ask: 'اسأل: ', items: [
+      ['الخلق', 'الله خلقنا، وهو يحبنا.', 'خلق الله العالم وكل ما فيه، وخلق الإنسان ليعرفه ويتمتع به. أنت لست صدفة. لقد خلقك الله، ولأجله خُلقت.', 'هل شعرت يومًا أنك خُلقت لشيء أعظم؟'],
+      ['الانكسار', 'ابتعدنا عنه.', 'كلنا سلكنا طريقنا الخاص وأخطأنا، في أفكارنا وأقوالنا وأفعالنا. الخطية تكسر علاقتنا بالله وتؤذي العالم من حولنا. ولا نستطيع أن نصلح ذلك بأنفسنا.', 'أين ترى هذا الانكسار في العالم، أو في حياتك؟'],
+      ['الخلاص', 'جاء يسوع ليعيدنا إلى البيت.', 'لم يتركنا الله. أرسل ابنه يسوع، الذي عاش الحياة التي لم نستطع أن نعيشها، ومات على الصليب عوضًا عنا، ثم قام من بين الأموات. وبه يُقدَّم لنا الغفران والحياة الجديدة هبةً مجانية.', 'ما رأيك في يسوع؟'],
+      ['الاسترداد', 'يمكننا أن نعرفه الآن وإلى الأبد.', 'كل من يرجع إلى يسوع ويثق به ينال الغفران ويُقبل في عائلة الله. هو يجعلنا خليقة جديدة، ويومًا ما سيجعل كل شيء جديدًا.', 'هل هناك ما يمنعك من أن تثق بيسوع اليوم؟'] ] },
+    ko: { name: '한국어', ask: '질문: ', items: [
+      ['창조', '하나님은 우리를 만드셨고, 우리를 사랑하십니다.', '하나님은 세상과 그 안의 모든 것을 만드셨고, 사람을 지으셔서 그분을 알고 즐거워하게 하셨습니다. 당신은 우연히 생긴 존재가 아닙니다. 당신은 하나님에 의해, 하나님을 위해 지음 받았습니다.', '자신이 더 큰 무언가를 위해 지음 받았다고 느껴 본 적이 있나요?'],
+      ['깨어짐', '우리는 그분에게서 돌아섰습니다.', '우리는 모두 자기 길로 가며 생각과 말과 행동으로 잘못을 저질렀습니다. 죄는 하나님과 우리의 관계를 깨뜨리고 주변 세상에도 상처를 줍니다. 우리 스스로는 고칠 수 없습니다.', '세상이나 당신의 삶 속에서 그런 깨어짐을 어디에서 보나요?'],
+      ['구원', '예수님은 우리를 집으로 데려가시려고 오셨습니다.', '하나님은 우리를 버려두지 않으셨습니다. 그분의 아들 예수님을 보내셨고, 예수님은 우리가 살 수 없는 삶을 사셨으며, 우리를 대신해 십자가에서 죽으시고 다시 살아나셨습니다. 그분을 통해 용서와 새 생명이 값없는 선물로 주어집니다.', '예수님에 대해 어떻게 생각하나요?'],
+      ['회복', '우리는 지금부터 영원히 그분을 알 수 있습니다.', '예수님께 돌아와 그분을 신뢰하는 사람은 누구나 용서받고 하나님의 가족으로 환영받습니다. 그분은 우리를 새롭게 하시고, 언젠가 모든 것을 새롭게 하실 것입니다.', '오늘 예수님을 신뢰하는 데 망설여지는 것이 있나요?'] ] },
+    tl: { name: 'Tagalog', ask: 'Itanong: ', items: [
+      ['Nilikha', 'Nilikha tayo ng Diyos, at mahal Niya tayo.', 'Nilikha ng Diyos ang mundo at lahat ng naririto, at nilikha Niya ang tao upang makilala Siya at magalak sa Kanya. Hindi ka aksidente. Nilikha ka ng Diyos, para sa Kanya.', 'Naramdaman mo na ba na nilikha ka para sa isang bagay na mas dakila?'],
+      ['Wasak', 'Tumalikod tayo sa Kanya.', 'Lahat tayo ay sumunod sa sariling daan at nagkasala, sa isip, salita at gawa. Sinisira ng kasalanan ang ating ugnayan sa Diyos at nasasaktan ang mundo sa paligid natin. Hindi natin ito kayang ayusin nang mag-isa.', 'Saan mo nakikita ang pagkawasak na iyon sa mundo, o sa sarili mong buhay?'],
+      ['Iniligtas', 'Dumating si Jesus upang iuwi tayo.', 'Hindi tayo pinabayaan ng Diyos. Isinugo Niya ang Kanyang Anak na si Jesus, na namuhay ng buhay na hindi natin kayang ipamuhay, namatay sa krus para sa atin, at muling nabuhay. Sa pamamagitan Niya, iniaalok ang kapatawaran at bagong buhay bilang libreng regalo.', 'Ano ang tingin mo kay Jesus?'],
+      ['Ibinalik', 'Makikilala natin Siya ngayon at magpakailanman.', 'Ang sinumang lumapit kay Jesus at magtiwala sa Kanya ay pinatatawad at tinatanggap sa pamilya ng Diyos. Ginagawa Niya tayong bago, at balang araw gagawin Niyang bago ang lahat ng bagay.', 'May pumipigil ba sa iyo na magtiwala kay Jesus ngayon?'] ] },
+  },
+  // Days after you start walking with someone that each Walk step is suggested.
+  walkDays: [0, 1, 3, 7, 10, 21],
+
   // Partner training. We link out to each partner's own pages and credit them; their content stays theirs.
   partners: [
     { id: 'tgh', name: 'The Global Harvest', short: 'Global Harvest', mono: 'GH', tone: 'sage', tag: 'Make disciples who make disciples',

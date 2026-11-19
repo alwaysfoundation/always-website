@@ -45,6 +45,9 @@ APP = """
 <li><b>Conversation guides and short training</b> for sharing your story and welcoming well.</li>
 <li><b>Learn from partners.</b> Training from The Global Harvest and NeedGod.net, opening on their own sites.</li>
 <li><b>Ready to be baptised?</b> A simple way to ask a local church, a partner, or both, to help.</li>
+<li><b>Share cards.</b> Turn a verse or an invitation into a card to send, made on your phone.</li>
+<li><b>God&rsquo;s story in seven languages.</b> English, Simplified and Traditional Chinese, Vietnamese, Arabic, Korean and Tagalog.</li>
+<li><b>A rhythm for walking with people.</b> Suggested steps over someone&rsquo;s first month, a Today card, and reminders for your own calendar.</li>
 <li><b>Light and dark.</b> It follows your phone, or choose Light, Warm or Dark in Me.</li>
 </ul>
 <p>Most of what you do stays on your phone. See <a href="#/docs/saving">How your information is saved</a>.</p>

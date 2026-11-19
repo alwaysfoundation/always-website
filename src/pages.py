@@ -95,7 +95,7 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
   <h2 class="pg-h rv">What's inside</h2>
   <p class="pg-lead rv">A free web app with everything you need to share Jesus. Nothing to download: open <a href="https://app.alwaysfoundation.org">app.alwaysfoundation.org</a> on your phone and add it to your home screen.</p>
   <div class="pg-minis">
-    {mini('Bible', '<p class="pg-cap">John 3 · ESV</p><span class="pg-big">3</span><p class="pg-read"><sup>16</sup> <mark>For God so loved the world, that he gave his only Son…</mark></p>')}
+    {mini('Bible', '<p class="pg-cap">John 3 · WEB</p><span class="pg-big">3</span><p class="pg-read"><sup>16</sup> <mark>For God so loved the world, that he gave his one and only Son…</mark></p>')}
     {mini('Learn', '<p class="pg-cap">The Always path</p>' + ''.join(f'<div class="pg-path"><i class="s{i}"></i><b>0{i+1} / {s}</b></div>' for i, s in enumerate(['Understand', 'Live', 'Share', 'Walk'])))}
     {mini('Gather', '<p class="pg-serif sm">Someone said yes to Jesus. Give them a next step.</p><div class="pg-tile">Show a QR code</div><div class="pg-card">Connect someone now</div>')}
     {mini('Walk', '<p class="pg-cap">Walking with Sam</p>' + ''.join(f'<div class="pg-tick{" done" if d else ""}"><i></i>{t}</div>' for t, d in [('Send a welcome message', 1), ('Share John 3', 1), ('Coffee this week', 0), ('Church together', 0)]))}
@@ -103,20 +103,32 @@ APP = f'''<section class="page-hero"><div class="wrap pg-split">
   </div>
   <p class="pg-built rv">Built on <a href="#/platform">Always Platform</a>. Connect uses the church feed and events. Gather uses Always Respond and Always Connect. The Bible has KJV and WEB built in, with more translations through the YouVersion Platform.</p>
 </div></section>
+<section class="sec pg-sec app-new"><div class="wrap">
+  <h2 class="pg-h rv">New in the Always App</h2>
+  <p class="pg-lead rv">Simple tools for the moments that matter, all made on your phone.</p>
+  <div class="app-new-grid">
+    <div class="an rv an-card"><div class="an-art" aria-hidden="true"><div class="an-share"><span class="an-k">You&rsquo;re invited</span><span class="an-t">Come as you are</span><span class="an-s">Tuesdays at 7pm</span></div></div><h3>Share cards</h3><p>Turn a verse or an invitation into a beautiful card, ready to send. Made on your phone, nothing uploaded.</p></div>
+    <div class="an rv"><div class="an-art" aria-hidden="true"><div class="an-langs"><span>English</span><span lang="zh-Hans">简体中文</span><span lang="zh-Hant">繁體中文</span><span lang="vi">Tiếng Việt</span><span lang="ar" dir="rtl">العربية</span><span lang="ko">한국어</span><span>Tagalog</span></div></div><h3>God&rsquo;s story in seven languages</h3><p>Created, broken, rescued, restored, in languages spoken across Australia, so more people hear it in their heart language.</p></div>
+    <div class="an rv"><div class="an-art" aria-hidden="true"><div class="an-today"><span class="an-k">Today</span><b>Pray for Sam by name</b><span class="an-s">Coffee on Saturday</span></div></div><h3>A rhythm for walking with people</h3><p>Gentle steps over someone&rsquo;s first month, a Today card on your home screen, and reminders you can add to your own calendar.</p></div>
+    <div class="an rv"><div class="an-art" aria-hidden="true"><div class="an-ptrs"><span class="an-mono">GH</span><span class="an-mono an-ng">NG</span></div></div><h3>Learn from partners</h3><p>Training from The Global Harvest and NeedGod.net, credited and one tap away, opening on their own sites.</p></div>
+    <div class="an rv"><div class="an-art" aria-hidden="true"><div class="an-today"><span class="an-k">Baptism</span><b>Ready to be baptised?</b><span class="an-s">A local church, a partner, or both</span></div></div><h3>A simple way to ask about baptism</h3><p>Someone chooses who helps them take the step, each by its own tick. Young people go only to a safe local church.</p></div>
+    <div class="an rv"><div class="an-art an-dark" aria-hidden="true"><div class="an-modes"><i></i><i></i></div></div><h3>Light and dark</h3><p>It follows your phone, or choose Light, Warm or Dark. Your notes and people stay on your phone either way.</p></div>
+  </div>
+</div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Made for evangelists, and for everyone</h2>
   {feats([('A beautiful Bible', 'KJV and WEB built in, more through YouVersion. Highlight, share verses as images, listen with soft music and a sleep timer.'), ('Conversation guides', 'How to share with someone with no faith, a Muslim friend, a Jehovah\'s Witness, a Buddhist and more.'), ('Altar calls and the street', 'Start a response point in seconds, coach the moment, and connect people with their yes.'), ('Prayer list and field notes', 'Pray for people by name and keep short notes after a conversation. They stay in your browser, on your own device.'), ('Church team inbox', 'Connect leads accept introductions in Always Connect, on the web.'), ('Private by design', 'Your prayer list, notes and plans stay on your own device. No ads.')])}
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Training</h2>
-  <p class="pg-lead rv">Short, free courses you can do in any browser, made with evangelists and churches.</p>
+  <p class="pg-lead rv">Short, free courses you can do in any browser, made with evangelists and churches, plus training from partners like The Global Harvest and NeedGod.net.</p>
   {feats([('Sharing your story', 'Tell how Jesus changed your life, in three minutes, in your own words.'), ('Leading someone to Jesus', 'What to say, how to pray, and what to do next when someone says yes.'), ('Welcoming well', 'For church connect leads: the first call, the first coffee, the first Sunday.'), ('Safe ministry with young people', 'Child safe practice for youth leaders and events.'), ('Conversations across faiths', 'Listening well and sharing gently with friends of other beliefs.'), ('Walking with someone', 'The first months of following Jesus: Bible, prayer, church and friends.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">Tools for your team</h2>
   <p class="pg-lead rv">Running a street team, an outreach or a tour? Get your own branded response app on Always Platform, like Sydney Fire Evangelism's, and use the same open tools we use, free.</p>
   {feats([('Response pages and QR codes', 'People say yes on a page with your name on it, and get a next step near home.'), ('Find a church near me', 'Add our church finder to your website or app in one line.'), ('Your own branded app', 'Like Sydney Fire Evangelism: your logo, your next steps, and contacts saved safely in Australia.'), ('Agents for follow-up', 'Reminders and message drafts after outreach. A person approves every step.'), ('Reports for funders', 'Monthly reports written for you, with totals only.'), ('Open source', 'Every tool is open, so you can check it, improve it or run it yourself.')])}
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Join the pilot</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Get started</a><a class="btn btn-green" href="#/docs/feed">Build with the church feed</a></div>
 </div></section>'''
 
 FAQ_GROUPS = [
@@ -179,6 +191,26 @@ FAQ = '<section class="page-hero"><div class="wrap"><h1>FAQs</h1><p>Short answer
   '<div class="pg-faq-more"><h3>Still have a question?</h3><p>We\'d love to hear from you, and to book a catch-up call. <a href="#/contact">Get in touch</a> or email <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p></div></div></div></section>'
 
 CSS = '''
+/* ---- New in the Always App ---- */
+.app-new-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+.an { display: grid; align-content: start; gap: 10px; }
+.an h3 { margin-top: 8px; font: 800 20px/1.25 var(--head); color: var(--green); }
+.an p { font-size: 15.5px; line-height: 1.55; color: var(--soft); }
+.an-art { display: grid; place-items: center; aspect-ratio: 4 / 3; border-radius: 24px; background: linear-gradient(150deg, #E7F0EA, #D3E4D9); overflow: hidden; }
+.an-dark { background: linear-gradient(150deg, #22302B, #101A17); }
+.an-share { display: grid; gap: 6px; height: 82%; aspect-ratio: 4 / 5; padding: 18px; border-radius: 16px; background: linear-gradient(160deg, #F2B48A, #E08E5E); color: #1E2A26; align-content: center; box-shadow: 0 20px 40px -24px rgba(164,86,42,.7); }
+.an-share .an-t { font: 400 26px/1.1 Newsreader, Georgia, serif; }
+.an-k { font: 700 12.5px/1.2 var(--head); color: var(--clay, #A4562A); } .an-share .an-k { color: #1B4740; }
+.an-s { font: 500 13px/1.3 var(--head); opacity: .8; }
+.an-langs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 18px; }
+.an-langs span { padding: 7px 12px; border-radius: 99px; background: #FFFDF8; font: 600 14px/1.2 var(--head); color: var(--green); box-shadow: 0 1px 0 rgba(27,71,64,.06); }
+.an-langs span:nth-child(2) { background: var(--green); color: var(--cream); }
+.an-today { display: grid; gap: 4px; width: 78%; padding: 18px 20px; border-radius: 18px; background: linear-gradient(150deg, #FBE7D8, #F5D3BA); color: #1E2A26; box-shadow: 0 20px 40px -26px rgba(164,86,42,.6); }
+.an-today b { font: 700 17px/1.3 var(--head); }
+.an-ptrs { display: flex; gap: 14px; } .an-mono { display: grid; place-items: center; width: 76px; height: 76px; border-radius: 24px; background: var(--green); color: var(--cream); font: 800 24px/1 var(--head); } .an-mono.an-ng { background: #F8D486; color: #1E2A26; }
+.an-modes { display: flex; gap: 12px; } .an-modes i { width: 70px; height: 120px; border-radius: 16px; background: #F8F3EA; box-shadow: 0 16px 30px -18px rgba(0,0,0,.7); } .an-modes i + i { background: #1B2B26; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 16px 30px -18px rgba(0,0,0,.7); }
+@media (max-width: 900px) { .app-new-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .app-new-grid { grid-template-columns: 1fr; } }
 .pg-code { background: var(--night, #1E2A26); color: #E4EEE7; border-radius: 22px; padding: 26px 28px; font: 500 15.5px/1.7 ui-monospace, Menlo, monospace; margin: 0; overflow-x: auto; }
 .pg-sec { padding: 96px 0; }
 .pg-sage { background: var(--sage); }

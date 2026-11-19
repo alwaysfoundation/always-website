@@ -182,6 +182,7 @@ on(/^\/$/, async () => {
       <a class="card" href="#/learn/story"><span class="ico sand">${ic('sparkle')}</span><div><p class="h3">God’s story</p><p class="note">In four moments</p></div></a>
       <a class="card" href="#/walk/pray"><span class="ico peach">${ic('heart')}</span><div><p class="h3">Pray</p><p class="note">${pray.length ? pray.join(', ') : 'Start your list'}</p></div></a>
     </div>
+    ${(() => { const d = dueToday(); return d.length ? `<div class="sp2"></div><a class="card today" href="#/walk/p/${d[0].p.id}" style="text-decoration:none"><p class="k">Today</p><p class="h3">${esc(d[0].st)} · ${esc(d[0].p.name)}</p>${d.length > 1 ? `<p class="note">and ${d.length - 1} more step${d.length > 2 ? 's' : ''} for people you’re walking with</p>` : ''}</a>` : ''; })()}
     <div class="sp2"></div>
     ${plan ? `<a class="card" href="#/plan/${plan.id}" style="text-decoration:none"><div class="row between"><p class="k">Your reading plan</p><span class="pill">Day ${Math.min(activePlan[1].done.length + 1, plan.days)} of ${plan.days}</span></div><p class="h3">${esc(plan.title)}</p><div class="progress"><i style="width:${(activePlan[1].done.length / plan.days) * 100}%"></i></div></a>` :
       `<a class="card sage" href="#/plans" style="text-decoration:none"><p class="k">Reading plans</p><p class="h3">Start with John in 21 days</p><p class="p">Meet Jesus, a chapter a day.</p></a>`}
@@ -191,6 +192,7 @@ on(/^\/$/, async () => {
       <a class="li" href="#/gather/moment"><span class="ico peach">${ic('flame')}</span><div class="grow"><div class="t">Leading the moment</div><div class="s">When someone says yes to Jesus</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">Conversation guides</div><div class="s">No faith, Muslim, Buddhist, and more</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/connect"><span class="ico sand">${ic('church')}</span><div class="grow"><div class="t">Find a church</div><div class="s">A next step near home</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/card" onclick="window.CARD=null"><span class="ico">${ic('image')}</span><div class="grow"><div class="t">Make a share card</div><div class="s">A verse or an invitation, ready to send</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/baptism"><span class="ico peach">${ic('sparkle')}</span><div class="grow"><div class="t">Ready to be baptised?</div><div class="s">Ask a church to help you take the step</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div>`, { tab: 'home' });
   passage(votdRef()).then((p) => { const v = $('[data-votd]'); if (v) { v.textContent = `“${p.text}”`; $('[data-votd-ref]').textContent = `${p.label} · ${TR[S.settings.tr].name}`; } }).catch(() => {});
@@ -277,30 +279,61 @@ function noteSheet(k, label) {
   $('#note-s').onclick = () => { const t = $('#note-t').value.trim(); if (t) S.notes[k] = { text: t, label, at: Date.now() }; else delete S.notes[k]; save(); closeSheet(); toast('Note saved'); route(); };
   if ($('#note-d')) $('#note-d').onclick = () => { delete S.notes[k]; save(); closeSheet(); route(); };
 }
-async function verseImage(text, label) {
-  toast('Making your image…');
-  try { await Promise.all([document.fonts.load('400 60px Newsreader'), document.fonts.load('800 30px Manrope')]); } catch {}
-  const W = 1080, H = 1350, cv = document.createElement('canvas'); cv.width = W; cv.height = H; const x = cv.getContext('2d');
-  x.fillStyle = '#14352F'; x.fillRect(0, 0, W, H);
-  x.fillStyle = '#1B4740'; x.beginPath(); x.arc(W + 60, -40, 520, 0, Math.PI * 2); x.fill();
-  x.strokeStyle = '#E8A577'; x.lineWidth = 4; x.beginPath(); x.arc(W - 150, 230, 110, 0, Math.PI * 2); x.stroke();
-  x.fillStyle = '#E8A577'; x.beginPath(); x.arc(W - 150, 230, 36, 0, Math.PI * 2); x.fill();
-  let size = text.length > 260 ? 46 : text.length > 160 ? 54 : 64;
-  x.fillStyle = '#F8F3EA'; x.font = `400 ${size}px Newsreader, Georgia, serif`;
-  const words = `“${text}”`.split(' '), lines = []; let line = '';
-  for (const w of words) { const t = line ? line + ' ' + w : w; if (x.measureText(t).width > W - 200) { lines.push(line); line = w; } else line = t; }
-  lines.push(line);
-  const lh = size * 1.3; let y = (H - lines.length * lh) / 2 + 40;
-  lines.forEach((l) => { x.fillText(l, 100, y); y += lh; });
-  x.font = '800 34px Manrope, sans-serif'; x.fillStyle = '#E8A577'; x.fillText(`${label} · ${TR[S.settings.tr].name}`, 100, y + 40);
-  x.font = '800 40px Manrope, sans-serif'; x.fillStyle = '#F8F3EA'; x.fillText('always', 100, H - 100);
-  x.strokeStyle = '#E8A577'; x.lineWidth = 7; x.lineCap = 'round'; x.beginPath(); x.moveTo(268, H - 140); x.lineTo(268, H - 92); x.moveTo(256, H - 128); x.lineTo(280, H - 128); x.stroke();
-  cv.toBlob(async (blob) => {
-    const file = new File([blob], 'verse.png', { type: 'image/png' });
-    if (navigator.canShare && navigator.canShare({ files: [file] })) { try { await navigator.share({ files: [file], text: label }); return; } catch {} }
-    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${label.replace(/[^\w]+/g, '-')}.png`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-  }, 'image/png');
+function verseImage(text, label) { window.CARD = { kind: 'verse', text, label: `${label} · ${TR[S.settings.tr].name}` }; closeSheet(); location.hash = '#/card'; }
+const CARD_STYLES = {
+  forest: { bg: ['#1F5248', '#12302A'], glow: '#2C6A5C', ink: '#F8F3EA', accent: '#E8A577', label: 'Forest' },
+  dawn: { bg: ['#F2B48A', '#E08E5E'], glow: '#F8D2B4', ink: '#1E2A26', accent: '#1B4740', label: 'Dawn' },
+  paper: { bg: ['#FBF6EC', '#EFE5D3'], glow: '#FFFFFF', ink: '#1B4740', accent: '#A4562A', label: 'Paper' },
+  night: { bg: ['#22302B', '#101A17'], glow: '#34463F', ink: '#F8F3EA', accent: '#F8D486', label: 'Night' },
+};
+function wrapText(x, text, maxW) { const words = text.split(/\s+/), lines = []; let line = ''; for (const w of words) { const t = line ? line + ' ' + w : w; if (x.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t; } if (line) lines.push(line); return lines; }
+function drawCard(cv, c) {
+  const W = 1080, H = 1350, x = cv.getContext('2d'), st = CARD_STYLES[c.style] || CARD_STYLES.forest; cv.width = W; cv.height = H;
+  const g = x.createLinearGradient(0, 0, W * .4, H); g.addColorStop(0, st.bg[0]); g.addColorStop(1, st.bg[1]); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  const r = x.createRadialGradient(W * .92, H * .06, 10, W * .92, H * .06, 760); r.addColorStop(0, st.glow + 'AA'); r.addColorStop(1, st.glow + '00'); x.fillStyle = r; x.fillRect(0, 0, W, H);
+  x.strokeStyle = st.accent; x.globalAlpha = .9; x.lineWidth = 4; x.beginPath(); x.arc(W - 150, 210, 92, 0, Math.PI * 2); x.stroke(); x.globalAlpha = 1;
+  x.fillStyle = st.accent; x.beginPath(); x.arc(W - 150, 210, 28, 0, Math.PI * 2); x.fill();
+  x.fillStyle = st.ink; let y;
+  if (c.kind === 'invite') {
+    x.font = '800 40px Manrope, sans-serif'; x.fillStyle = st.accent; x.fillText(c.kicker || 'You’re invited', 100, 520);
+    x.fillStyle = st.ink; x.font = '400 104px Newsreader, Georgia, serif'; y = 650;
+    wrapText(x, c.title || 'Come as you are', W - 200).slice(0, 4).forEach((l) => { x.fillText(l, 100, y); y += 116; });
+    x.font = '600 40px Manrope, sans-serif'; y += 30;
+    [c.when, c.where].filter(Boolean).forEach((l) => { wrapText(x, l, W - 200).slice(0, 2).forEach((ll) => { x.fillText(ll, 100, y); y += 56; }); });
+  } else {
+    const text = `“${c.text}”`, size = text.length > 300 ? 44 : text.length > 200 ? 52 : text.length > 120 ? 62 : 74;
+    x.font = `400 ${size}px Newsreader, Georgia, serif`; const lines = wrapText(x, text, W - 200), lh = size * 1.3;
+    y = Math.max(360, (H - lines.length * lh) / 2 + 30); lines.forEach((l) => { x.fillText(l, 100, y); y += lh; });
+    x.font = '800 34px Manrope, sans-serif'; x.fillStyle = st.accent; x.fillText(c.label || '', 100, y + 36);
+  }
+  x.fillStyle = st.ink; x.font = '800 40px Manrope, sans-serif'; x.fillText('always', 100, H - 100);
+  x.strokeStyle = st.accent; x.lineWidth = 7; x.lineCap = 'round'; x.beginPath(); x.moveTo(268, H - 140); x.lineTo(268, H - 92); x.moveTo(256, H - 128); x.lineTo(280, H - 128); x.stroke();
 }
+on(/^\/card$/, async () => {
+  const c = Object.assign({ kind: 'verse', style: 'forest', title: 'Come as you are', kicker: 'You’re invited', when: '', where: '' }, window.CARD || {});
+  if (c.kind === 'verse' && !c.text) { const p = await passage(votdRef()); c.text = p.text; c.label = `${p.label} · ${TR[S.settings.tr].name}`; }
+  window.CARD = c;
+  try { await Promise.all([document.fonts.load('400 60px Newsreader'), document.fonts.load('800 30px Manrope'), document.fonts.load('600 30px Manrope')]); } catch {}
+  render(`${top('#/', 'Share card')}
+    <div class="seg" role="group" aria-label="Card"><button data-k="verse" aria-pressed="${c.kind === 'verse'}">Verse</button><button data-k="invite" aria-pressed="${c.kind === 'invite'}">Invitation</button></div>
+    <div class="sp"></div><div class="card-preview"><canvas id="cv" aria-label="Preview of your card" role="img"></canvas></div><div class="sp"></div>
+    <div class="swatches" role="group" aria-label="Style">${Object.entries(CARD_STYLES).map(([k, v]) => `<button data-st="${k}" aria-pressed="${c.style === k}" aria-label="${v.label}" style="background:linear-gradient(150deg,${v.bg[0]},${v.bg[1]})"><i style="background:${v.accent}"></i></button>`).join('')}</div>
+    <div id="inv" class="stack-s" style="${c.kind === 'invite' ? '' : 'display:none'}"><div class="sp"></div>
+      <div class="field"><label for="ci-t">Headline</label><input class="input" id="ci-t" maxlength="60" value="${esc(c.title)}"></div>
+      <div class="field"><label for="ci-w">When</label><input class="input" id="ci-w" maxlength="60" placeholder="Tuesdays at 7pm" value="${esc(c.when)}"></div>
+      <div class="field"><label for="ci-p">Where</label><input class="input" id="ci-p" maxlength="60" placeholder="Hope Church, Parramatta" value="${esc(c.where)}"></div></div>
+    <div class="sp2"></div><button class="btn peach" id="c-share">${ic('share', 20)}Share card</button>
+    <p class="note" style="margin-top:10px;text-align:center">Made on your phone. Nothing is uploaded.</p>`, { tab: 'home' });
+  const cv = $('#cv'), redraw = () => drawCard(cv, window.CARD); redraw();
+  $$('[data-k]').forEach((b) => (b.onclick = () => { window.CARD.kind = b.dataset.k; route(); }));
+  $$('[data-st]').forEach((b) => (b.onclick = () => { window.CARD.style = b.dataset.st; $$('[data-st]').forEach((x) => x.setAttribute('aria-pressed', x === b)); redraw(); }));
+  [['ci-t', 'title'], ['ci-w', 'when'], ['ci-p', 'where']].forEach(([id, k]) => $('#' + id)?.addEventListener('input', (e) => { window.CARD[k] = e.target.value; redraw(); }));
+  $('#c-share').onclick = () => cv.toBlob(async (blob) => {
+    const name = window.CARD.kind === 'invite' ? 'invitation.png' : 'verse.png', file = new File([blob], name, { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { try { await navigator.share({ files: [file] }); return; } catch {} }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  }, 'image/png');
+});
 on(/^\/bible\/books$/, async () => {
   await loadBooks();
   const btn = (b) => `<button class="book" data-b="${b.i}">${esc(b.name)}</button>`;
@@ -451,15 +484,20 @@ on(/^\/learn\/story$/, () => {
   const tones = [['var(--sage)', 'var(--ink)'], ['var(--sand)', 'var(--ink)'], ['#1B4740', '#F8F3EA'], ['var(--peach)', '#1E2A26']];
   let i = 0;
   const draw = () => {
-    const s = AC.story[i], [bg, fg] = tones[i];
+    const code = AC.storyLangs[S.settings.storyLang] ? S.settings.storyLang : 'en';
+    const L = AC.storyLangs[code], en = AC.story[i];
+    const s = L.items ? { title: L.items[i][0], line: L.items[i][1], body: L.items[i][2], ask: L.items[i][3] } : en;
+    const [bg, fg] = tones[i];
     render(`${top('#/learn', 'God’s story')}
-      <div class="story-card fade-in" style="background:${bg};color:${fg}" aria-live="polite"><span class="n">${i + 1}</span><p class="h1" style="color:inherit">${esc(s.title)}</p><p class="big-serif" style="font-size:24px;color:inherit">${esc(s.line)}</p><p style="margin:0;font-size:16px;line-height:1.55;opacity:.88">${esc(s.body)}</p>
-        <div class="stack-s">${s.refs.map((r) => `<p class="scripture" data-scripture="${r}" style="font-size:17px"></p>`).join('')}</div>
-        <p style="margin:auto 0 0;font:700 15px var(--head)">Ask: ${esc(s.ask)}</p></div>
+      <div class="langs" role="group" aria-label="Language">${Object.entries(AC.storyLangs).map(([k, v]) => `<button lang="${k}" data-lang="${k}" aria-pressed="${k === code}">${v.name}</button>`).join('')}</div><div class="sp"></div>
+      <div class="story-card fade-in" lang="${code}" dir="${L.dir || 'ltr'}" style="background:${bg};color:${fg}" aria-live="polite"><span class="n">${i + 1}</span><p class="h1" style="color:inherit">${esc(s.title)}</p><p class="big-serif" style="font-size:24px;color:inherit">${esc(s.line)}</p><p style="margin:0;font-size:16px;line-height:1.6;opacity:.88">${esc(s.body)}</p>
+        ${code === 'en' ? `<div class="stack-s">${en.refs.map((r) => `<p class="scripture" data-scripture="${r}" style="font-size:17px"></p>`).join('')}</div>` : `<p class="story-refs" dir="ltr">${en.refs.map((r) => r.replace(/^(\w+) (\d+) /, (m, b, c) => `${b} ${c}:`)).join(' · ')}</p>`}
+        <p style="margin:auto 0 0;font:700 15px var(--head)">${esc(L.ask || 'Ask: ')}${esc(s.ask)}</p></div>
       <div class="sp2"></div><div class="dots" aria-hidden="true">${AC.story.map((_, j) => `<i class="${j === i ? 'on' : ''}"></i>`).join('')}</div><div class="sp2"></div>
       <div class="row"><button class="btn light" id="sb" ${i === 0 ? 'disabled' : ''}>Back</button>${i < 3 ? '<button class="btn" id="sn">Next</button>' : '<a class="btn peach" href="#/gather/moment">If they say yes</a>'}</div>`);
     $('#sb').onclick = () => { i--; draw(); };
     if ($('#sn')) $('#sn').onclick = () => { i++; draw(); };
+    $$('[data-lang]').forEach((b) => (b.onclick = () => { S.settings.storyLang = b.dataset.lang; save(); draw(); }));
     $$('.scripture').forEach((el) => (el.style.color = 'inherit'));
   };
   draw();
@@ -704,6 +742,16 @@ on(/^\/respond\/(yes|step|baptism)$/, (m) => respondFlow({ mode: 'self', kind: m
 on(/^\/baptism$/, () => respondFlow({ mode: 'self', kind: 'baptism' }));
 on(/^\/respond$/, () => respondFlow({ mode: 'self', kind: 'step' }));
 
+
+// Walk rhythm: each step is suggested a set number of days after you start walking with someone.
+const DAY = 864e5;
+const stepDue = (p, i) => (p.since || Date.now()) + (AC.walkDays[i] || 0) * DAY;
+function dueToday() { const end = new Date(); end.setHours(23, 59, 59, 999); const out = []; S.people.forEach((p) => AC.walkSteps.forEach((st, i) => { if (!p.steps?.[i] && stepDue(p, i) <= end.getTime()) out.push({ p, i, st }); })); return out; }
+function walkIcs(p) {
+  const pad = (n) => String(n).padStart(2, '0'), d = (t) => { const x = new Date(t); return `${x.getFullYear()}${pad(x.getMonth() + 1)}${pad(x.getDate())}`; };
+  const ev = AC.walkSteps.map((st, i) => p.steps?.[i] ? '' : ['BEGIN:VEVENT', `UID:${p.id}-${i}@app.alwaysfoundation.org`, `DTSTAMP:${d(Date.now())}T000000Z`, `DTSTART;VALUE=DATE:${d(Math.max(stepDue(p, i), Date.now()))}`, `SUMMARY:${st} (${p.name})`, 'DESCRIPTION:From the Always App', 'BEGIN:VALARM', 'TRIGGER:PT9H', 'ACTION:DISPLAY', `DESCRIPTION:${st}`, 'END:VALARM', 'END:VEVENT'].join('\r\n')).filter(Boolean);
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Always Foundation//Always App//EN', ...ev, 'END:VCALENDAR'].join('\r\n');
+}
 // ---------------------------------------------------------------- Walk
 on(/^\/walk$/, () => {
   const people = S.people;
@@ -728,12 +776,14 @@ on(/^\/walk\/p\/([\w-]+)$/, (m) => {
   render(`${top('#/walk', '', `<button class="icon-btn" id="pdel" aria-label="Remove ${esc(p.name)}">${ic('trash', 20)}</button>`)}
     <div class="row"><span class="avatar" style="width:60px;height:60px;font-size:24px">${esc(p.name[0])}</span><div><p class="k">Walking with</p><h1 class="h1">${esc(p.name)}</h1></div></div><div class="sp2"></div>
     <div class="progress"><i style="width:${(n / AC.walkSteps.length) * 100}%"></i></div><p class="note" style="margin-top:6px">${n} of ${AC.walkSteps.length} steps</p><div class="sp"></div>
-    <div class="list" id="steps">${AC.walkSteps.map((s, i) => `<button class="tick${p.steps[i] ? ' done' : ''}" data-i="${i}" aria-pressed="${!!p.steps[i]}"><i>${ic('check', 16, 3)}</i><span>${esc(s)}</span></button>`).join('')}</div>
+    <div class="list" id="steps">${AC.walkSteps.map((s, i) => `<button class="tick${p.steps[i] ? ' done' : ''}" data-i="${i}" aria-pressed="${!!p.steps[i]}"><i>${ic('check', 16, 3)}</i><span>${esc(s)}</span>${p.steps[i] ? '' : `<em class="due${stepDue(p, i) <= Date.now() ? ' now' : ''}">${stepDue(p, i) <= Date.now() ? 'Today' : fmtDate(stepDue(p, i))}</em>`}</button>`).join('')}</div>
+    <div class="sp"></div><button class="btn light small" id="pics">${ic('cal', 18)}Add reminders to my calendar</button>
     ${n === AC.walkSteps.length ? `<div class="sp2"></div><div class="card green"><p class="k">Milestone</p><p class="big-serif" style="color:#F8F3EA;font-size:24px">${esc(p.name)} is walking with a church family.</p><p class="p">Thank God for this. Keep praying and checking in.</p></div>` : ''}
     <div class="sp2"></div><p class="h2">Send a message</p><div class="sp"></div><div class="list">${AC.messages.map((x, i) => `<button class="li" data-msg="${i}"><span class="ico ${i % 2 ? 'peach' : ''}">${ic('chat')}</span><div class="grow"><div class="t">${esc(x.t)}</div><div class="s">${esc(x.m.replace('{name}', p.name)).slice(0, 70)}…</div></div></button>`).join('')}</div>
     <div class="sp2"></div><p class="h2">Notes</p><div class="sp"></div><div class="row"><input class="input grow" id="plog" placeholder="A quick note" maxlength="300"><button class="btn small" id="padd">Add</button></div>
     <div class="sp"></div>${p.log.length ? `<div class="list">${p.log.map((l) => `<div class="li"><div class="grow"><div class="s">${fmtDate(l.at)}</div><div style="font-size:15px">${esc(l.t)}</div></div></div>`).join('')}</div>` : ''}`, { tab: 'walk' });
   $$('#steps .tick').forEach((b) => (b.onclick = () => { const i = b.dataset.i; p.steps[i] = !p.steps[i]; save(); route(); }));
+  $('#pics').onclick = () => { const blob = new Blob([walkIcs(p)], { type: 'text/calendar' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `walking-with-${p.name.replace(/[^\w]+/g, '-').toLowerCase()}.ics`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); toast('Open the file to add the reminders'); };
   $$('[data-msg]').forEach((b) => (b.onclick = async () => { const text = AC.messages[b.dataset.msg].m.replace('{name}', p.name); if (navigator.share) { try { await navigator.share({ text }); return; } catch {} } try { await navigator.clipboard.writeText(text); toast('Message copied. Paste it in your messages app.'); } catch {} }));
   $('#padd').onclick = () => { const t = $('#plog').value.trim(); if (!t) return; p.log.unshift({ t, at: Date.now() }); save(); route(); };
   $('#pdel').onclick = () => { if (confirmBox(`Remove ${p.name} from Walk? This deletes your notes about them.`)) { S.people = S.people.filter((x) => x.id !== p.id); save(); location.hash = '#/walk'; } };
