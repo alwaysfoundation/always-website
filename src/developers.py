@@ -14,12 +14,6 @@ CONSOLE = [
      '// "Which partner churches near Penrith\n//  run a course for new Christians?"\n{\n  "tool": "find_churches",\n  "input": { "near": "Penrith", "step": "course" }\n}\n\n// Public information only. No people.', 'docs/mcp'),
 ]
 
-FACTS = [
-    ('OpenAPI 3.1', 'One described contract for every endpoint'),
-    ('Sydney', 'Where people’s details are stored and processed'),
-    ('Apache 2.0', 'Open source, so no one is locked in'),
-    ('3,937', 'Churches and ministries in the open feed'),
-]
 
 FLOW = [
     ('A person responds', 'POST /v1/responses', 'Age band first, then the step they chose and what they agreed to share.'),
@@ -29,10 +23,9 @@ FLOW = [
 ]
 
 GUARDS = [
-    ('Consent is checked on every move', 'Send, show, export or sync: each one asks first, and a missing or withdrawn consent stops it.'),
-    ('Age comes before anything else', 'Under 13s: no details at all. Under 15s: a parent or guardian confirms. Young people go only to youth partners, and never to AI.'),
-    ('Nothing personal leaves in messages', 'No names or numbers in logs, webhooks, emails, texts or analytics.'),
-    ('Kept in Australia', 'Stored and processed in Sydney. No dependency that sends people’s details offshore.'),
+    ('Consent comes first', 'Every share, sync and export checks it. If someone changes their mind, nothing moves.', 'share(id)', 'refused: withdrawn'),
+    ('Young people are protected', 'Age is asked before anything else. A parent says yes for under 15s, and young people never reach AI.', 'canShare(consent)', 'refused: parent_confirmation_required'),
+    ('Messages carry ids, not people', 'Webhooks, logs and alerts never hold a name or a number.', 'handoff.accepted', '{ "id": "hnd_8Fa2" }'),
 ]
 
 WAYS = [
@@ -72,7 +65,7 @@ def _console():
         f'<a class="dvc-doc" href="#/{doc}">Read the docs</a></div>'
         for i, (k, n, m, path, out, doc) in enumerate(CONSOLE))
     return (f'<div class="sw dvc" data-dvc><div class="dvc-bar"><span class="dvc-dots" aria-hidden="true"><i></i><i></i><i></i></span>'
-            f'<span class="dvc-host">api.alwaysfoundation.org</span><span class="dvc-au">Sydney</span></div>'
+            f'<span class="dvc-host">api.alwaysfoundation.org</span></div>'
             f'<div class="sw-tabs" role="tablist" aria-label="Examples">{tabs}</div>{panels}'
             f'<p class="dvc-note">Example data. Names are invented.</p></div>')
 
@@ -84,17 +77,16 @@ PAGE = f'''<section class="page-hero dv-hero"><div class="wrap dv-split">
   <p class="dv-pilot"><i aria-hidden="true"></i>Keys are free for churches and ministries.</p>
   <div class="pg-cta"><a class="btn btn-peach" href="#/docs/api">Read the docs</a><a class="btn btn-ghost" href="#/join/platform">Ask for a key</a></div></div>
   {_console()}
-</div><div class="wrap dv-facts"><dl class="dv-facts-in">{''.join(f'<div class="rv"><dt>{t}</dt><dd>{d}</dd></div>' for t, d in FACTS)}</dl></div></section>
+</div></section>
 <section class="sec pg-sec dv-flow-sec"><div class="wrap">
   <h2 class="pg-h rv">A handoff, end to end.</h2>
   <p class="pg-lead rv">Four calls take someone from a moment of decision to a real person at a church near home.</p>
   <ol class="dv-flow">{''.join(f'<li class="rv"><span class="dv-n" aria-hidden="true">{i}</span><h3>{t}</h3><code>{escape(c)}</code><p>{p}</p></li>' for i, (t, c, p) in enumerate(FLOW, 1))}</ol>
 </div></section>
-<section class="sec pg-sec dv-guard-sec"><div class="wrap dv-guard">
-  <div><h2 class="pg-h rv">Guardrails you can&rsquo;t switch off.</h2>
-  <p class="pg-lead rv">Care for people is written into the platform, so every integration inherits it. These rules aren&rsquo;t settings.</p>
-  <ul class="dv-rules">{''.join(f'<li class="rv"><h3>{t}</h3><p>{p}</p></li>' for t, p in GUARDS)}</ul></div>
-  <figure class="dv-refuse rv" aria-label="An example of a share being refused"><pre><code><span class="c">// Someone withdrew yesterday</span><span>await always.handoffs.share(id)</span><span> </span><span class="r">&#10005; refused: withdrawn</span><span class="c">// The church never sees them again,</span><span class="c">// and the person hears it&rsquo;s done.</span></code></pre></figure>
+<section class="sec pg-sec dv-guard-sec"><div class="wrap">
+  <h2 class="pg-h rv">Care, built in.</h2>
+  <p class="pg-lead rv">Every integration inherits the same promises to the people it serves.</p>
+  <div class="dv-cards">{''.join(f'<div class="dv-card rv"><h3>{t}</h3><p>{p}</p><code><span>{escape(c)}</span><b>{escape(r)}</b></code></div>' for t, p, c, r in GUARDS)}</div>
 </div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Three ways in.</h2>
@@ -142,11 +134,6 @@ CSS = '''
 @keyframes dvLine { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .dvc-doc { display: inline-block; margin-top: 14px; color: var(--peach); font: 600 14px/1 var(--head); text-underline-offset: 3px; }
 .dvc-note { padding: 0 22px 18px; font-size: 12.5px; color: rgba(248,243,234,.45); }
-.dv-facts { margin-top: 64px; color: var(--cream); }
-.dv-facts-in { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(248,243,234,.12); }
-.dv-facts-in > div { padding: 26px 24px 0 0; }
-.dv-facts dt { font: 800 clamp(26px, 3vw, 38px)/1 var(--head); letter-spacing: -.02em; color: var(--cream); }
-.dv-facts dd { margin: 10px 0 0; max-width: 24ch; font-size: 15px; line-height: 1.45; color: rgba(248,243,234,.7); }
 .dv-flow { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 40px 0 0; padding: 0; counter-reset: none; position: relative; }
 .dv-flow::before { content: ''; position: absolute; top: 22px; left: 22px; right: 22px; height: 2px; background: linear-gradient(90deg, var(--peach), rgba(232,165,122,.15)); }
 .dv-flow li { position: relative; }
@@ -155,15 +142,13 @@ CSS = '''
 .dv-flow code { display: inline-block; margin-top: 10px; padding: 6px 9px; border-radius: 8px; background: #E9EFE9; color: var(--green); font: 600 12.5px/1.3 ui-monospace, 'SF Mono', Menlo, monospace; overflow-wrap: anywhere; }
 .dv-flow p { margin-top: 10px; font-size: 15.5px; line-height: 1.55; color: var(--soft); }
 .dv-guard-sec { background: #14352F; color: var(--cream); }
-.dv-guard { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center; }
-.dv-guard .pg-h { color: var(--cream); } .dv-guard .pg-lead { color: rgba(248,243,234,.75); }
-.dv-rules { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 22px; }
-.dv-rules li { padding-left: 22px; border-left: 2px solid var(--peach); }
-.dv-rules h3 { font: 700 19px/1.3 var(--head); color: var(--cream); }
-.dv-rules p { margin-top: 6px; font-size: 15.5px; line-height: 1.55; color: rgba(248,243,234,.72); max-width: 52ch; }
-.dv-refuse { margin: 0; padding: 26px; border-radius: 24px; background: #0D241F; box-shadow: inset 0 0 0 1px rgba(248,243,234,.08); overflow-x: auto; }
-.dv-refuse code { display: block; font: 500 14px/1.8 ui-monospace, 'SF Mono', Menlo, monospace; color: #DCE7DF; white-space: pre; }
-.dv-refuse span { display: block; } .dv-refuse .c { color: rgba(220,231,223,.5); } .dv-refuse .r { color: var(--peach); font-weight: 700; }
+.dv-guard-sec .pg-h { color: var(--cream); } .dv-guard-sec .pg-lead { color: rgba(248,243,234,.75); }
+.dv-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 40px; }
+.dv-card { display: flex; flex-direction: column; gap: 12px; padding: 30px 28px 26px; border-radius: 26px; background: linear-gradient(165deg, rgba(248,243,234,.07), rgba(248,243,234,.02)); box-shadow: inset 0 0 0 1px rgba(248,243,234,.09); }
+.dv-card h3 { font: 800 24px/1.2 var(--head); letter-spacing: -.015em; color: var(--cream); }
+.dv-card p { font-size: 16px; line-height: 1.55; color: rgba(248,243,234,.72); }
+.dv-card code { margin-top: auto; display: grid; gap: 6px; padding: 16px 18px; border-radius: 16px; background: #0D241F; font: 500 13px/1.5 ui-monospace, 'SF Mono', Menlo, monospace; overflow-wrap: anywhere; }
+.dv-card code span { color: rgba(220,231,223,.6); } .dv-card code b { color: var(--peach); font-weight: 600; }
 .dv-ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
 .dv-way { display: grid; align-content: start; gap: 10px; padding: 28px; border-radius: 24px; background: #FFFDF8; color: inherit; text-decoration: none; box-shadow: 0 1px 0 rgba(27,71,64,.06); transition: transform .2s ease, box-shadow .2s ease; }
 .dv-way:hover, .dv-way:focus-visible { transform: translateY(-3px); box-shadow: 0 24px 44px -30px rgba(10,30,26,.45); }
@@ -172,16 +157,13 @@ CSS = '''
 .dv-go { margin-top: 6px; font: 600 15px/1 var(--head); color: var(--clay, #B55A2E); }
 .dv-build { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 32px; }
 @media (max-width: 1000px) {
-  .dv-split, .dv-guard { grid-template-columns: 1fr; gap: 40px; }
-  .dv-flow { grid-template-columns: 1fr 1fr; row-gap: 36px; } .dv-flow::before { display: none; }
-  .dv-facts-in { grid-template-columns: 1fr 1fr; }
-  .dv-ways, .dv-build { grid-template-columns: 1fr; }
+  .dv-split,   .dv-flow { grid-template-columns: 1fr 1fr; row-gap: 36px; } .dv-flow::before { display: none; }
+    .dv-ways, .dv-build { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .dv-flow { grid-template-columns: 1fr; }
   .dvc-out { min-height: 0; } .dvc-out code { font-size: 12px; }
-  .dv-facts-in > div { padding-right: 12px; }
-}
+  }
 @media (prefers-reduced-motion: reduce) { .dvc.go .dvc-out span { animation: none !important; } .dv-way { transition: none; } }
 '''
 
