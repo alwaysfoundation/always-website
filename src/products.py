@@ -27,16 +27,14 @@ PRODUCTS = {
 }
 DEVELOPERS = ('developers', 'Developers', 'The API, SDK, MCP connector, feeds and webhooks behind every Always module.')
 # Old routes: agents live inside Always Connect; the developer page moved.
-ALIASES = {'agents': 'connect', 'build': 'developers', 'pages': 'respond', 'claim': 'join/church'}
+ALIASES = {'agents': 'connect', 'build': 'developers', 'pages': 'respond', 'claim': 'join/church', 'events': 'stories', 'research': 'stories', 'brand': 'docs/brand', 'directory': 'join/church', 'evangelists': 'ministries', 'platforms': 'networks'}
 
 # slug: (route, menu name, one line, products used, story)
 SOLUTIONS = {
-    'churches':   ('churches',    'Churches',                     'Welcome people near you who have said yes to Jesus, and help them grow as disciples.', ['connect', 'pages', 'reports', 'compliance'], None),
-    'youth':      ('youth',       'Youth ministries',             'Keep young people safe, stay compliant, and give every young person a safe next step.', ['compliance', 'pages', 'connect', 'reports'], ('UEN', 'A Christian gaming ministry that tried Always Platform at youth events.')),
-    'ministries': ('ministries',  'Events, tours and ministries', 'Give everyone who responds a next step near home, and show funders the fruit.', ['pages', 'connect', 'reports'], ('CXMMXNS', 'A worship tour giving every response a next step across Australia.')),
-    'evangelists':('evangelists', 'Evangelists and street teams', 'Share Jesus with confidence, save every contact safely, and connect people with a local church.', ['app', 'pages', 'connect'], ('Sydney Fire Evangelism', 'Street evangelists using their own branded response app.')),
-    'networks':   ('networks',    'Denominations and networks',   'Help every church be ready to welcome, and see the fruit across your network, with totals only.', ['connect', 'reports', 'compliance'], None),
-    'platforms':  ('platforms',   'Christian tech platforms',     'Build compliance, handoff and church data into your own product, on open standards.', ['compliance', 'connect'], ('Love is Our Weapon', 'Our first Always Compliance user, ready to roll it out to youth ministries and churches.')),
+    'churches':   ('churches',   'Churches',   'Welcome people near you who have said yes to Jesus, and help them grow as disciples.', ['connect', 'pages', 'reports', 'compliance'], None),
+    'youth':      ('youth',      'Youth',      'Keep young people safe, stay compliant, and give every young person a safe next step.', ['compliance', 'pages', 'connect', 'reports'], ('UEN', 'A Christian gaming ministry that tried Always Platform at youth events.')),
+    'ministries': ('ministries', 'Ministries', 'Events, tours, evangelists and street teams: a next step near home for everyone who responds, and the fruit to show for it.', ['pages', 'app', 'connect', 'reports'], ('Sydney Fire Evangelism', 'Street evangelists using their own branded response app.')),
+    'networks':   ('networks',   'Networks',   'Denominations, networks and the tech platforms that serve them: every church ready to welcome, with totals only.', ['connect', 'reports', 'compliance'], ('Love is Our Weapon', 'Our first Always Compliance user, ready to roll it out to youth ministries and churches.')),
 }
 
 VERBS = {'app': 'Share Jesus', 'pages': 'Capture every yes', 'compliance': 'Stay lawful', 'reports': 'Show the fruit', 'connect': 'Hand people on'}
@@ -154,8 +152,8 @@ MENU_LINE = {
     'app': 'Share Jesus and walk with people', 'pages': 'Respond by QR, tap or link, in your name',
     'compliance': 'Stay lawful, state by state', 'reports': 'Monthly reports for funders',
     'connect': 'Hand people on to a local church',
-    'churches': 'Welcome people near you', 'youth': 'Safe, compliant, welcoming', 'ministries': 'A next step for every response',
-    'evangelists': 'Share and connect with confidence', 'networks': 'Ready to welcome, together', 'platforms': 'Build on open standards',
+    'churches': 'Welcome people near you', 'youth': 'Safe, compliant, welcoming',
+    'ministries': 'Events, tours and street teams', 'networks': 'Denominations and tech platforms',
 }
 
 
@@ -172,13 +170,13 @@ def menu_html():
                '<b>Five modules. One sign-in.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>'
                '<span class="dd-f-l">See how it fits together</span></a>')
     sol = ''.join(f'<a href="#/{r}" data-route="{r}">{_icon(k)}<span class="dd-tx"><b>{n}</b><span>{MENU_LINE[k]}</span></span></a>' for k, (r, n, l, _, _) in SOLUTIONS.items())
-    story = ('<a class="dd-story" href="#/stories"><span class="dd-f-k">Story</span><b>Sydney Fire Evangelism</b>'
-             '<span>Street evangelists with their own branded response app.</span><span class="dd-f-l">Read the stories</span></a>')
+    story = ('<a class="dd-story" href="#/sydneyfire"><span class="dd-story-img" aria-hidden="true"></span><span class="dd-f-k">Story</span><b>Sydney Fire Evangelism</b>'
+             '<span>Street evangelists with their own branded response app.</span><span class="dd-f-l">Read the story</span></a>')
     return (
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button>'
         f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-layout">{feature}<div class="dd-grid">{plat}</div></div></div></li>'
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-solutions" data-group="solutions">Solutions</button>'
-        f'<div class="dd-panel dd-wide dd-sol" id="dd-solutions"><div class="dd-layout dd-layout-sol"><div class="dd-list">{sol}</div>{story}</div></div></li>'
+        f'<div class="dd-panel dd-wide dd-sol" id="dd-solutions"><div class="dd-layout dd-layout-sol"><div class="dd-sol-main"><div class="dd-list">{sol}</div><a class="dd-sol-foot" href="#/contact">Not sure which fits? <b>Talk to us</b></a></div>{story}</div></div></li>'
         f'<li><a href="#/{DEVELOPERS[0]}" data-route="{DEVELOPERS[0]}">{DEVELOPERS[1]}</a></li>'
         '<li><a href="#/stories" data-route="stories">Stories</a></li>'
         '<li><a href="#/docs/introduction" data-route="docs">Docs</a></li>'
@@ -197,7 +195,7 @@ def footer_cols():
     return (f'<div><h2>Platform</h2>{plat}</div>'
             f'<div><h2>Solutions</h2>{sol}</div>'
             f'<div><h2>Developers</h2>{dev}</div>'
-            '<div><h2>Foundation</h2><a href="#/about">About</a><a href="#/stories">Stories</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/faq">FAQs</a></div>'
+            '<div><h2>Foundation</h2><a href="#/about">About</a><a href="#/stories">Stories</a><a href="#/docs/brand">Brand</a><a href="#/faq">FAQs</a></div>'
             '<div><h2>Help</h2><a href="#/contact">Contact us</a><a href="#/docs/introduction">Docs</a><a href="#/docs/privacy">Privacy</a><a href="#/docs/terms">Terms</a></div>')
 
 
@@ -252,7 +250,7 @@ PAGES_PAGE = product_page('pages',
      ('Online to in person', 'Every response can become a welcome from a local church or ministry, with consent.'),
      ('Safe by design', 'Consent recorded on every form. Age asked first. Live totals with no names on screen.')],
     ['connect', 'app', 'reports'],
-    extra=PAGES_BRAND,
+    extra=__import__('respond').FLOW + PAGES_BRAND,
     feats_title='Wherever people respond',
     feats_html=__import__('respond').SECTION,
     secondary=('Read the guide', '#/docs/senders'),
@@ -292,7 +290,7 @@ CONNECT_PAGE = product_page('connect',
      ('Next steps beyond church', 'People exploring faith can choose Alpha. Others may need a youth group or a care team.'),
      ('No one dropped', 'If no one nearby can help, the Always care team reaches out.')],
     ['pages', 'app', 'reports'],
-    extra=CONNECT_EXTRA,
+    extra=__import__('respond').FLOW + CONNECT_EXTRA,
     secondary=('Join as a church', '#/join/church'),
     statement='So no one walks alone.')
 
@@ -331,23 +329,12 @@ YOUTH_PAGE = solution_page('youth', [
     ('Show the fruit', 'Monthly reports for your board and funders, with totals only.'),
 ], cta=('Try the free compliance check-up', '#/compliance/check'))
 
-EVANGELISTS_PAGE = solution_page('evangelists', [
-    ('Share with confidence', 'Bible, conversation guides and short training in the Always App.'),
-    ('Save every contact safely', 'Your own branded response app, like Sydney Fire\'s, with contacts kept safe in Australia.'),
-    ('Connect people locally', 'With their consent, pass people to a church near them or to Alpha if they want to explore faith.'),
-], cta=('Join the pilot', '#/join/evangelist'))
-
 NETWORKS_PAGE = solution_page('networks', [
     ('Ready to welcome', 'Help every church in your network join, get verified and be ready to receive people.'),
     ('See the fruit across your network', 'Combined reports across your churches, with totals only.'),
     ('Shared compliance', 'One view of privacy and child safety obligations, so every church can stay lawful with less admin.'),
+    ('Build it into your platform', 'Tech platforms can add the Always Compliance check-up and a safe handoff to local churches through the open API.'),
 ])
-
-PLATFORMS_PAGE = solution_page('platforms', [
-    ('Compliance inside your product', 'Use the open Always Compliance register and check-up API, so your users stay lawful without leaving your app.'),
-    ('A safe handoff to local churches', 'Pass people to a verified church or ministry near them, with consent that travels with the data.'),
-    ('Open standards, Australian data', 'Open-source code, the Always Handoff standard, and personal data kept in Australia.'),
-], cta=('For developers', '#/developers'))
 
 # ---------------------------------------------------------------- Platform overview
 
@@ -363,6 +350,7 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-s
   <p class="pg-lead rv">Every module runs on the same foundation, so your team signs in once and your information works together. Start with one module and add more as you grow.</p>
   {platform_diagram()}
 </div></section>
+{__import__('respond').FLOW}
 <section class="sec pg-sec pf-products"><div class="wrap">
   <h2 class="pg-h rv">The modules</h2>
   <p class="pg-lead rv">Equip, support and connect ministries, with agents to help with follow-up and admin wherever they're needed.</p>
@@ -712,7 +700,7 @@ document.querySelectorAll('.sw').forEach((sw) => {
 
 NEW_PAGES = {
     'respond': PAGES_PAGE, 'reports': REPORTS_PAGE, 'connect': CONNECT_PAGE,
-    'youth': YOUTH_PAGE, 'evangelists': EVANGELISTS_PAGE, 'networks': NETWORKS_PAGE, 'platforms': PLATFORMS_PAGE,
+    'youth': YOUTH_PAGE, 'networks': NETWORKS_PAGE,
 }
 TITLES = {r: f'{n} · Always Foundation' for r, n, *_ in PRODUCTS.values()}
 TITLES.update({r: f'{for_name(n)} · Always Foundation' for r, n, *_ in SOLUTIONS.values()})

@@ -52,7 +52,7 @@ ministry_phone = phone('<p class="pg-mbrand">YOUR MINISTRY</p><p class="pg-mh">S
 
 report_mock = '<div class="pg-desk pg-report rv" aria-label="An example monthly report"><div class="pg-desk-main"><div class="pg-row-h"><b>September report</b><em class="ok">Ready</em></div><span class="pg-mut">City worship tour · Prepared for our supporters</span><div class="pg-kpis">' + ''.join(f'<div><b{" class=pe" if i == 3 else ""}>{v}</b><span>{l}</span></div>' for i, (v, l) in enumerate([('310', 'Responded'), ('295', 'Introduced'), ('258', 'Accepted'), ('117', 'Connected')])) + '</div><div class="pg-btns"><span class="pg-b">Download PDF</span><span class="pg-b ln">Share a link</span></div><p class="pg-mut">Example figures. Totals only.</p></div></div>'
 
-MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For events, tours and ministries</h1><p>Tours, camps, outreach and online ministries: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p><div class="pg-cta"><a class="btn btn-peach" href="#/join">Talk to us</a></div></div>{mock('pages', 'mk-lg')}</div></section>
+MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For ministries</h1><p>Events, tours, camps, evangelists and street teams: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p><div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a></div></div>{mock('pages', 'mk-lg')}</div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">From the altar call to a church family</h2>
   {steps([('Create a response page', 'Choose the next steps you offer and add your brand. Ready in minutes.'), ('Invite a response', 'Show the QR code on the big screen, hand out cards, or use the response card in your own app.'), ('See the fruit', 'Watch results live, and get a monthly report ready for your funders and board.')])}
@@ -699,3 +699,15 @@ PLATFORM_CSS = """
 .pg-green .btn-ghost { color: #F8F3EA; border-color: rgba(248,243,234,.5); }
 @media (max-width: 900px) { .pl-grid, .pl-never { grid-template-columns: 1fr; } .pl-layer { grid-template-columns: 1fr; gap: 6px; } }
 """
+
+
+MINISTRIES += """<section class="sec pg-sec pg-green"><div class="wrap">
+  <h2 class="pg-h rv">For evangelists and street teams</h2>
+  <p class="pg-lead rv">Share Jesus with confidence, save every contact safely, and connect people with a local church, like Sydney Fire Evangelism.</p>
+  <div class="sl-rows sl-rows-3">
+    <div class="sl-row rv"><h3>Share with confidence</h3><p>The Good News, Scripture and short training in the Always App.</p></div>
+    <div class="sl-row rv"><h3>Save every contact safely</h3><p>Your own branded response app, with contacts kept safe in Australia.</p></div>
+    <div class="sl-row rv"><h3>Connect people locally</h3><p>With their consent, pass people to a church near them, or to Alpha if they want to explore faith.</p></div>
+  </div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Join the pilot</a><a class="btn btn-ghost" href="#/sydneyfire">Sydney Fire\u2019s story</a></div>
+</div></section>"""

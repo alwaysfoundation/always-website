@@ -222,7 +222,7 @@ AGENTS = """
 <li>Young people's information is kept out of it entirely.</li>
 <li>No one's information is used to train AI.</li>
 </ul>
-<p>Agents grew from our earlier work on agents with a human in the loop. Read the field notes in <a href="#/research">Research</a>.</p>
+<p>Agents grew from our earlier work on agents with a human in the loop.</p>
 """
 
 GLOSSARY = """
@@ -244,6 +244,16 @@ GLOSSARY = """
 </dl>
 """
 
+
+def brand_body(DOCS):
+    import re, pages as P
+    b = P.BRAND
+    b = b[b.index('</section>') + len('</section>'):]
+    b = re.sub(r'<section class="sec pg-sec[^"]*"><div class="wrap">', '', b).replace('</div></section>', '')
+    b = b.replace('class="pg-h rv"', '').replace('class="pg-lead rv"', 'class="lead"').replace(' rv"', '"')
+    b = b.replace('{{LOGO}}', '/brand/always-foundation-logo.svg').replace('{{LOGO_REV}}', '/brand/always-foundation-logo-reverse.svg')
+    old = next(t[2] for g, ps in DOCS for t in ps if t[0] == 'brand')
+    return '<p class="lead">How Always looks and sounds. Use it freely when you talk about Always.</p>' + b + '<h2>Trademark</h2>' + old
 
 def apply(DOCS):
     def find(slug):
@@ -268,6 +278,7 @@ def apply(DOCS):
         DOCS[i] = (g, list(pages))
 
     set_page('introduction', body=INTRO)
+    edit('how-it-works', '<h2>1. Someone responds</h2>', '<div class="callout"><b>Always Respond and Always Connect work together.</b> Always Respond captures the yes. Always Connect finds the next best faith step for that person, near where they live, and makes sure a real person walks with them. Often that step is a local church; sometimes it is another ministry first, like Alpha.</div>\n<h2>1. Someone responds</h2>')
     set_page('glossary', body=GLOSSARY)
     gi, _ = find('introduction')
     DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING)]
@@ -285,6 +296,10 @@ def apply(DOCS):
 
     gi, pi = find('claim')
     DOCS[gi][1].pop(pi)
+    gi, pi = find('events')
+    DOCS[gi][1].pop(pi)
+    edit('mcp', '<li><b>list_events</b>: upcoming Christian events.</li>\n', '')
+    set_page('brand', title='Brand and logo', body=brand_body(DOCS))
     set_page('privacy', title='Privacy policy', body=PRIVACY)
     gi, pi = find('privacy')
     DOCS[gi][1].insert(pi + 1, ('terms', 'Terms of use', TERMS))
@@ -310,6 +325,7 @@ def apply(DOCS):
 
 
 CSS = '''
+.prose .br-dl .btn-green, .prose .br-dl .btn-peach { background-image: none; } .prose .br-dl .btn-green { color: var(--cream); } .prose .br-dl .btn-peach { color: var(--ink); }
 .page-hero .dq { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 36px; }
 .page-hero .dq a { display: grid; gap: 4px; min-height: 44px; padding: 16px 18px; border-radius: 18px; background: rgba(248,243,234,.07); border: 1px solid rgba(248,243,234,.14); color: var(--cream); text-decoration: none; transition: background .2s ease, transform .2s ease, border-color .2s ease; }
 .page-hero .dq a:hover, .page-hero .dq a:focus-visible { background: rgba(248,243,234,.13); border-color: var(--peach); transform: translateY(-2px); }

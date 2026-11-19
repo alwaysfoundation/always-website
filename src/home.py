@@ -176,3 +176,24 @@ SEAM_CSS = r'''
 .hero { padding-bottom: clamp(72px, 8vw, 112px) !important; }
 .case { padding-top: clamp(40px, 5vw, 72px) !important; }
 '''
+
+MENU_CSS = r'''
+@media (min-width: 861px) {
+  .dd-sol { width: min(880px, 94vw); }
+  .dd-sol-main { display: grid; gap: 10px; align-content: start; padding: 8px; }
+  .dd-sol .dd-list { grid-template-columns: 1fr 1fr; gap: 10px; padding: 0; }
+  .dd-sol .dd-list a { flex-direction: column; gap: 14px !important; min-height: 128px; padding: 18px !important; border-radius: 18px !important; background: var(--sage); transition: transform .25s cubic-bezier(.2,.7,.2,1), background .25s ease, box-shadow .25s ease; }
+  .dd-sol .dd-list a:hover, .dd-sol .dd-list a:focus-visible { transform: translateY(-2px); background: #DCEBE2; box-shadow: 0 16px 30px -22px rgba(10,30,26,.45); }
+  .dd-sol .dd-list .dd-ic { width: 40px; height: 40px; border-radius: 12px; background: #FFFDF8; }
+  .dd-sol .dd-list .dd-tx b { font-size: 17px; }
+  .dd-sol-foot { display: flex !important; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px !important; margin: 0 !important; border-radius: 14px; font-size: 14.5px; color: var(--soft) !important; }
+  .dd-sol-foot b { color: var(--green); font-weight: 700; }
+  .dd-sol-foot b::after { content: ' \2192'; }
+  .dd-sol-foot:hover { background: rgba(27,71,64,.05); }
+  .dd-layout-sol { grid-template-columns: minmax(0, 1fr) 260px; }
+  .dd-story .dd-story-img { display: block !important; height: 120px; margin: -8px -8px 6px; border-radius: 14px; background: url(img/sydneyfire-street.webp) center / cover; filter: grayscale(.2); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .dd-story:hover .dd-story-img { transform: scale(1.02); }
+}
+@media (max-width: 860px) { .dd-sol-foot, .dd-story-img { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .dd-sol .dd-list a { transition: none; } .dd-sol .dd-list a:hover { transform: none; } }
+'''

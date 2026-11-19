@@ -474,7 +474,7 @@ const ok = await verifyWebhook({
 <li>Young people's information is kept out of it entirely.</li>
 <li>No one's information is used to train AI.</li>
 </ul>
-<p>The Always Agent grew from our earlier work on agents with a human in the loop. Read the field notes in <a href="#/research">Research</a>. It is in pilot with the foundation team.</p>
+<p>The Always Agent grew from our earlier work on agents with a human in the loop.  It is in pilot with the foundation team.</p>
 """),
   ("ai", "AI", """
 <p class="lead">People welcome people. Technology helps them do it well.</p>
@@ -717,26 +717,7 @@ about = """
 about = about.replace('{{AB1}}', _photo('uen-event.jpg')).replace('{{AB2}}', _photo('sydneyfire-street.jpg')).replace('{{AB3}}', _photo('rejoice-team.jpg'))
 about = about.replace('{{MODS}}', ''.join(f'<li><a href="#/{PR.PRODUCTS[k][0]}"><span>{PR.VERBS[k]}</span><b>{PR.PRODUCTS[k][1]}</b><i aria-hidden="true"></i></a></li>' for k in ['app', 'pages', 'compliance', 'reports', 'connect']))
 
-directory_page = f"""
-<section class="page-hero"><div class="wrap"><h1>The directory</h1><p>{COUNT:,} evangelical and Pentecostal churches and ministries across Australia, and growing every week.</p></div></section>
-<section style="padding-bottom:120px"><div class="wrap">
-  <div class="dir-tools">
-    <label class="skip" for="dq">Search the directory</label>
-    <input id="dq" type="search" placeholder="Search by name, suburb or denomination" autocomplete="off">
-    <label class="skip" for="ds">State</label>
-    <select id="ds"><option value="">All states</option><option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option></select>
-    <label class="skip" for="dk">Type</label>
-    <select id="dk"><option value="">Churches and ministries</option><option value="C">Churches</option><option value="M">Ministries</option></select>
-  </div>
-  <div class="dir-meta"><span id="dcount" aria-live="polite"></span><span>Listed from public denominational and network directories</span></div>
-  <div class="dir-list" id="dlist"></div>
-  <div class="dir-more"><button class="btn btn-green" id="dmore" type="button">Show more</button></div>
-  <div class="claim-note">
-    <div><h3>Is this your church?</h3><p>Join Always to manage your page, choose your next steps and start welcoming people. Free for churches.</p></div>
-    <a class="btn btn-peach" href="#/join/church">Join as a church</a>
-  </div>
-</div></section>
-"""
+
 
 picker = ''.join(f'<optgroup label="{esc(g)}">' + ''.join(f'<option value="{sl}">{esc(t)}</option>' for sl,t,_ in ps) + '</optgroup>' for g, ps in DOCS)
 docs_page = f"""
@@ -1054,7 +1035,7 @@ header = """
     </a>
     <nav aria-label="Main" id="main-nav"><ul>
       """ + PR.menu_html() + """
-    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/events">Events</a><a href="#/research">Research</a><a href="#/brand">Brand</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/join">Join Always</a></div></nav>
+    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/docs/brand">Brand</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/join">Join Always</a></div></nav>
     <a class="btn btn-peach" href="#/join">Join Always</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" onclick="toggleMenu()"><span>Menu</span><i aria-hidden="true"></i></button>
   </div>
@@ -1078,7 +1059,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => e
 function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io ? io.observe(el) : el.classList.add('in'); }); }
 
 // Router
-const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', events: 'page-events', claim: 'page-claim', feedback: 'page-feedback', research: 'page-research', brand: 'page-brand', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact', join: 'page-join'""" + ''.join(f", {k}: 'page-{k}'" for k in PR.NEW_PAGES) + """ };
+const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', feedback: 'page-feedback', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact', join: 'page-join'""" + ''.join(f", {k}: 'page-{k}'" for k in PR.NEW_PAGES) + """ };
 const anchors = { how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
@@ -1096,7 +1077,7 @@ function route() {
   if (page === 'compliance' && ['check', 'problem', 'infrastructure'].includes(second)) { requestAnimationFrame(() => document.getElementById(second).scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = second === 'check' ? 'Free compliance check-up · Always Foundation' : 'Always Compliance · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For events, tours and ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
+  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Compliance · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'Always App · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...""" + json.dumps(PR.TITLES, ensure_ascii=False) + """ };
   document.body.classList.toggle('on-hello', page === 'hello');
   if (page !== 'docs') document.title = titles[page] || 'Always Foundation';
   watch(document.getElementById(pages[page]));
@@ -1113,7 +1094,7 @@ function showDoc(slug) {
     `<nav class="pager" aria-label="Next and previous">` +
     (prev ? `<a href="#/docs/${prev}"><span>Previous</span><b>${DOCS[prev].title}</b></a>` : '') +
     (next ? `<a class="next" href="#/docs/${next}"><span>Next</span><b>${DOCS[next].title}</b></a>` : '') + `</nav>` +
-    `<div class="doc-meta"><span>Updated November 2026 · CC BY 4.0</span><span><a href="#/feedback">Suggest a change</a> · <a href="https://github.com/alwaysfoundation/always-website">Edit on GitHub</a></span></div>`;
+    `<div class="doc-meta"><span>Updated November 2026 · CC BY 4.0</span><span><a href="#/feedback">Suggest a change</a></span></div>`;
   document.querySelectorAll('.dnav a').forEach((a) => a.classList.toggle('on', a.dataset.slug === slug));
   document.getElementById('dpick').value = slug in DOCS ? slug : 'introduction';
   document.title = d.title + ' · Always docs';
@@ -1132,25 +1113,14 @@ document.getElementById('dpick').addEventListener('change', (e) => { location.ha
 const esc = (s) => String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 const LIVE = /(^|\\.)alwaysfoundation\\.org$/.test(location.hostname);
-function evf(){const s=document.getElementById('ev-s').value,k=document.getElementById('ev-k').value;let n=0;document.querySelectorAll('#ev-list .ev').forEach((e)=>{const on=(!s||e.dataset.s===s)&&(!k||e.dataset.k===k);e.hidden=!on;if(on)n++;});document.getElementById('ev-empty').hidden=n>0;}
-['ev-s','ev-k'].forEach((id)=>document.getElementById(id).addEventListener('change',evf));
 
-// ---------- claim a church
+// ---------- forms
 const API_BASE = LIVE ? '/api/forms' : ''; // Claims and feedback go to the foundation inbox until the Always API is live.
 async function sendJSON(path, body) {
   if (!API_BASE) return true; // prototype: no API connected yet
   const r = await fetch(API_BASE + path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
   return r.ok;
 }
-document.getElementById('claim-form').addEventListener('submit', async (e) => {
-  e.preventDefault(); const f = e.target, st = document.getElementById('cl-status');
-  if (!f.checkValidity()) { st.textContent = 'Please add your church, your name, role and work email, and tick the box.'; return; }
-  const d = Object.fromEntries(new FormData(f));
-  st.textContent = 'Sending…';
-  const ok = await sendJSON('/v1/orgs/new/claims', { email: d.email, role: d.role, evidence: [d.church, d.suburb, d.name, d.evidence].filter(Boolean).join(' · ') }).catch(() => false);
-  if (!ok) { st.textContent = 'Your claim could not be sent. Please email hello@alwaysfoundation.org.'; return; }
-  st.textContent = ''; f.reset(); f.hidden = true; document.getElementById('cl-done').hidden = false;
-});
 // ---------- ideas and problems
 function fbKind() {
   const k = document.querySelector('#fb-form input[name=kind]:checked').value;
@@ -1234,7 +1204,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.EVENTS_CSS}{P.CLAIM_CSS}{P.RESEARCH_CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{ST.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{HM.SEAM_CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{ST.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
@@ -1247,11 +1217,7 @@ doc = f"""<!DOCTYPE html>
 <div class="page" id="page-ministries" hidden>{P.MINISTRIES}</div>
 <div class="page" id="page-app" hidden>{P.APP}</div>
 <div class="page" id="page-faq" hidden>{P.FAQ}</div>
-<div class="page" id="page-events" hidden>{P.EVENTS}</div>
-<div class="page" id="page-claim" hidden>{P.CLAIM}</div>
 <div class="page" id="page-feedback" hidden>{P.FEEDBACK}</div>
-<div class="page" id="page-research" hidden>{P.RESEARCH}</div>
-<div class="page" id="page-brand" hidden>{P.BRAND}</div>
 <div class="page" id="page-platform" hidden>{PR.PLATFORM_OVERVIEW}</div>
 <div class="page" id="page-developers" hidden>{DV.PAGE}</div>
 <div class="page" id="page-hello" hidden>{CF.HELLO}</div>

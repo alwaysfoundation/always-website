@@ -54,7 +54,7 @@ SYDNEYFIRE = '''
         <dt>Integration</dt><dd><a href="#/alpha">Alpha</a>, for people exploring faith</dd>
         <dt>Their app</dt><dd><a href="https://sydneyfire.alwaysfoundation.org">sydneyfire.alwaysfoundation.org</a></dd>
       </dl>
-      <a class="btn btn-peach" href="#/evangelists">Tools for evangelists</a>
+      <a class="btn btn-peach" href="#/ministries">Tools for ministries</a>
       <a class="ft-link" href="#/join/evangelist">Join as an evangelist</a>
     </div>
   </aside>

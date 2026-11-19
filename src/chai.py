@@ -55,7 +55,7 @@ PAGE = '''
     </ul>
 
     <h2>Find out more</h2>
-    <p>Read about <a href="#/connect">Always Connect</a>, the field notes in <a href="#/research">Research</a>, or <a href="#/join">join Always</a> to use it with your church or ministry.</p>
+    <p>Read about <a href="#/connect">Always Connect</a>, or <a href="#/join">join Always</a> to use it with your church or ministry.</p>
   </div>
 
   <aside class="ft-side" aria-label="At a glance">

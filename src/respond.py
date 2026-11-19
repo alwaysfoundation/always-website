@@ -78,3 +78,28 @@ CSS = '''
 @media (max-width: 640px) { .rs-grid, .rs-safe { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .rs-scan, .rs-waves path, .rs-hand { animation: none; } .rs-card, .rs-btn, .rs-form { transition: none; } .rs-card:hover { transform: none; } }
 '''
+
+FLOW = '''<section class="sec pg-sec nb-sec"><div class="wrap">
+  <p class="pl-kick rv">Always Respond + Always Connect</p>
+  <h2 class="pg-h rv">One yes. The next best faith step.</h2>
+  <p class="pg-lead rv">Always Respond captures the moment someone says yes to Jesus. Always Connect makes sure it leads somewhere: the next best faith step for that person, near where they live, with a real person to walk with them.</p>
+  <ol class="nb-flow">
+    <li class="rv"><span class="nb-mod">Always Respond</span><b>They say yes</b><p>By QR code, tap, ticket or link. They choose what would help, and agree to be connected.</p></li>
+    <li class="rv"><span class="nb-mod">Always Connect</span><b>We find the right step</b><p>A verified church nearby, or the ministry that fits best: Alpha to explore faith, a youth group, or someone to talk to.</p></li>
+    <li class="rv"><span class="nb-mod">Always Connect</span><b>Someone walks with them</b><p>A real person reaches out. They count as connected only when they tell us so themselves.</p></li>
+  </ol>
+  <p class="nb-fine rv">Often that step is a local church. Sometimes it’s another ministry first. Either way, consent travels with them, and no one is left without a next step.</p>
+</div></section>'''
+
+FLOW_CSS = '''
+.nb-sec { background: var(--paper, #FFFDF8); }
+.nb-flow { list-style: none; counter-reset: nb; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; position: relative; }
+.nb-flow li { counter-increment: nb; position: relative; padding: 0 28px 0 0; }
+.nb-flow li::before { content: counter(nb, decimal-leading-zero); display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--green); color: var(--cream); font: 400 20px/1 'Newsreader', Georgia, serif; position: relative; z-index: 1; }
+.nb-flow li:not(:last-child)::after { content: ''; position: absolute; left: 52px; right: 0; top: 25px; height: 2px; background: linear-gradient(90deg, var(--green), var(--peach)); opacity: .35; }
+.nb-mod { display: inline-block; margin-top: 20px; padding: 5px 11px; border-radius: 999px; background: var(--sage); color: var(--green); font: 700 12.5px/1 var(--head); }
+.nb-flow b { display: block; margin-top: 12px; font: 800 23px/1.15 var(--head); letter-spacing: -0.02em; color: var(--green); }
+.nb-flow p { margin: 8px 0 0; font-size: 16.5px; line-height: 1.55; color: var(--soft); max-width: 34ch; }
+.nb-fine { margin-top: 32px; font-size: 15.5px; color: var(--muted); max-width: 70ch; }
+@media (max-width: 860px) { .nb-flow { grid-template-columns: minmax(0, 1fr); gap: 28px; } .nb-flow li { padding: 0 0 0 68px; } .nb-flow li::before { position: absolute; left: 0; top: 0; } .nb-flow li:not(:last-child)::after { left: 25px; right: auto; top: 52px; bottom: -28px; width: 2px; height: auto; background: linear-gradient(180deg, var(--green), var(--peach)); } .nb-mod { margin-top: 0; } }
+'''
