@@ -83,6 +83,7 @@ HELPER = f'''<div class="hp" id="hp">
 </div>'''
 
 CSS = '''
+.contact-sec a.mail { display: inline-flex; align-items: center; min-height: 44px; }
 /* ---- Join form ---- */
 .cf { display: grid; gap: 16px; align-content: start; }
 .cf-chips { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }

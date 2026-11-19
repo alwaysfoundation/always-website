@@ -611,6 +611,23 @@ em.new { background: #FDF0D9; color: #7A4B07; } em.ok { background: var(--sage);
 .pg-green .btn-ghost { color: #F8F3EA; border-color: rgba(248,243,234,.5); }
 @media (max-width: 900px) { .pl-grid, .pl-never { grid-template-columns: 1fr; } .pl-layer { grid-template-columns: 1fr; gap: 6px; } }
 
+.cv-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 32px; }
+.cv-card { display: flex; flex-direction: column; padding: 24px; border-radius: 24px; background: #FFFDF8; border: 1px solid var(--line); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+.cv-card:hover { transform: translateY(-3px); box-shadow: 0 24px 44px -30px rgba(10,30,26,.4); }
+.cv-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.cv-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--green); color: var(--cream); }
+.cv-ic svg { width: 22px; height: 22px; }
+.cv-n { font: 400 34px/1 'Newsreader', Georgia, serif; color: var(--clay); }
+.cv-card h3 { margin: 0; font-size: 21px; letter-spacing: -0.015em; color: var(--green); }
+.cv-card > p { margin: 8px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--soft); }
+.cv-card ul { list-style: none; margin: 16px 0 0; padding: 14px 0 0; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+.cv-card li { position: relative; padding-left: 18px; font-size: 14.5px; line-height: 1.45; color: var(--ink); }
+.cv-card li::before { content: ''; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; border-radius: 50%; background: var(--peach); }
+.cv-card li.cv-more { color: var(--muted); } .cv-card li.cv-more::before { background: var(--line); }
+@media (max-width: 1000px) { .cv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .cv-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .cv-card { transition: none; } .cv-card:hover { transform: none; } }
+
 /* ---- Always Compliance, productised ---- */
 .cmx-hero h1 { font-size: clamp(48px, 6.2vw, 92px); }
 .cmx-card { justify-self: end; width: min(400px, 100%); background: #FFFDF8; color: var(--ink); border-radius: 26px; padding: 22px; display: grid; gap: 16px; box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); }
@@ -1394,6 +1411,7 @@ footer .photo-credit { grid-column: 1 / -1; padding: 0 !important; max-width: no
 @media (max-width: 640px) { .dv-code { padding: 18px 12px; min-height: 240px; } .dv-code code { font-size: 11px; } }
 .solutions-home .sl-row h3 { color: var(--cream); }
 
+.contact-sec a.mail { display: inline-flex; align-items: center; min-height: 44px; }
 /* ---- Join form ---- */
 .cf { display: grid; gap: 16px; align-content: start; }
 .cf-chips { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1582,7 +1600,7 @@ body.on-hello .hp, body.menu-open .hp { display: none; }
 .ft-hero { background: var(--green); color: var(--cream); padding: 168px 0 132px; }
 .ft-hero-in { max-width: 920px; }
 .ft-kick { margin: 0 0 22px; font: 700 15px/1.3 var(--head); color: var(--peach); }
-.ft-kick a { color: inherit; text-decoration: none; } .ft-kick a:hover { text-decoration: underline; } .ft-kick span { margin: 0 6px; opacity: .6; }
+.ft-kick a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0; } .ft-kick a:hover { text-decoration: underline; } .ft-kick span { margin: 0 6px; opacity: .6; }
 .ft-hero h1 { font-size: clamp(38px, 5vw, 68px); letter-spacing: -0.04em; line-height: 1.02; color: var(--cream); }
 .ft-dek { margin: 24px 0 0; max-width: 640px; font: 400 clamp(20px, 2vw, 24px)/1.45 'Newsreader', Georgia, serif; color: var(--on-green); }
 .ft-fig { margin: -84px auto 0; position: relative; }
@@ -1601,7 +1619,7 @@ body.on-hello .hp, body.menu-open .hp { display: none; }
 .ft-card dt { font: 700 13.5px/1.2 var(--head); color: var(--clay); }
 .ft-card dd { margin: 2px 0 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
 .ft-card .btn { display: flex; justify-content: center; width: 100%; }
-.ft-link { display: block; margin-top: 14px; text-align: center; font-weight: 600; color: var(--green); }
+.ft-link { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: 8px; text-align: center; font-weight: 600; color: var(--green); }
 @media (max-width: 1000px) { .ft-body { grid-template-columns: minmax(0, 1fr); gap: 40px; } .ft-side { position: static; } }
 @media (max-width: 640px) { .ft-hero { padding: 128px 0 96px; } .ft-fig { margin-top: -60px; } .ft-fig img { border-radius: 18px; } }
 
@@ -3288,7 +3306,8 @@ const ok = await verifyWebhook({
 
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">What it covers</h2>
-  <div class="pg-feats"><div class="pg-feat rv"><h3>Privacy</h3><p>The Privacy Act, data breaches, and the new Children's Online Privacy Code.</p></div><div class="pg-feat rv"><h3>Child safety</h3><p>Working with children checks and the Child Safe Standards in your state.</p></div><div class="pg-feat rv"><h3>Charity</h3><p>ACNC annual reporting, Governance Standards and record keeping.</p></div><div class="pg-feat rv"><h3>Emails and texts</h3><p>Spam Act rules for newsletters, invitations and appeals.</p></div></div>
+  <p class="pg-lead rv">22 obligations across four areas, plus changes we're watching,, each one linked to the law it comes from.</p>
+  <div class="cv-grid"><div class="cv-card rv"><div class="cv-top"><span class="cv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><span class="cv-n">9</span></div><h3>Privacy</h3><p>The Privacy Act, data breaches, and the new Children's Online Privacy Code.</p><ul><li>Have a clear, up-to-date privacy policy</li><li>Tell people why you're collecting their details</li><li>Only use details for the reason you collected them</li><li>Keep personal information safe, and delete it when it's no longer needed</li><li class="cv-more">and 5 more</li></ul></div><div class="cv-card rv"><div class="cv-top"><span class="cv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="cv-n">7</span></div><h3>Child safety</h3><p>Working with children checks and the Child Safe Standards in your state.</p><ul><li>Working with children checks for staff and volunteers</li><li>NSW Child Safe Standards</li><li>Victorian Child Safe Standards</li><li>Queensland Child Safe Standards</li><li class="cv-more">and 3 more</li></ul></div><div class="cv-card rv"><div class="cv-top"><span class="cv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></span><span class="cv-n">4</span></div><h3>Charity</h3><p>ACNC annual reporting, Governance Standards and record keeping.</p><ul><li>Submit your Annual Information Statement</li><li>Tell the ACNC about changes</li><li>Meet the ACNC Governance Standards</li><li>Keep financial and operational records for 7 years</li></ul></div><div class="cv-card rv"><div class="cv-top"><span class="cv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></span><span class="cv-n">2</span></div><h3>Emails and texts</h3><p>Spam Act rules for newsletters, invitations and appeals.</p><ul><li>Say who you are in every email and text</li><li>Ask permission, and make it easy to unsubscribe</li></ul></div></div>
 </div></section>
 
 <section class="sec pg-sec" id="check" aria-labelledby="check-h"><div class="wrap">

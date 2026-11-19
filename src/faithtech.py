@@ -73,7 +73,7 @@ CSS = '''
 .ft-hero { background: var(--green); color: var(--cream); padding: 168px 0 132px; }
 .ft-hero-in { max-width: 920px; }
 .ft-kick { margin: 0 0 22px; font: 700 15px/1.3 var(--head); color: var(--peach); }
-.ft-kick a { color: inherit; text-decoration: none; } .ft-kick a:hover { text-decoration: underline; } .ft-kick span { margin: 0 6px; opacity: .6; }
+.ft-kick a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; margin: -12px 0; } .ft-kick a:hover { text-decoration: underline; } .ft-kick span { margin: 0 6px; opacity: .6; }
 .ft-hero h1 { font-size: clamp(38px, 5vw, 68px); letter-spacing: -0.04em; line-height: 1.02; color: var(--cream); }
 .ft-dek { margin: 24px 0 0; max-width: 640px; font: 400 clamp(20px, 2vw, 24px)/1.45 'Newsreader', Georgia, serif; color: var(--on-green); }
 .ft-fig { margin: -84px auto 0; position: relative; }
@@ -92,7 +92,7 @@ CSS = '''
 .ft-card dt { font: 700 13.5px/1.2 var(--head); color: var(--clay); }
 .ft-card dd { margin: 2px 0 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
 .ft-card .btn { display: flex; justify-content: center; width: 100%; }
-.ft-link { display: block; margin-top: 14px; text-align: center; font-weight: 600; color: var(--green); }
+.ft-link { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: 8px; text-align: center; font-weight: 600; color: var(--green); }
 @media (max-width: 1000px) { .ft-body { grid-template-columns: minmax(0, 1fr); gap: 40px; } .ft-side { position: static; } }
 @media (max-width: 640px) { .ft-hero { padding: 128px 0 96px; } .ft-fig { margin-top: -60px; } .ft-fig img { border-radius: 18px; } }
 '''

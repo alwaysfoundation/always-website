@@ -11,6 +11,22 @@ from html import escape
 ROOT = os.path.dirname(os.path.abspath(__file__))
 REGISTER = json.load(open(os.path.join(ROOT, 'compliance-register.json')))
 
+COVER_ICON = {
+    'privacy': '<rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/>',
+    'child_safety': '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
+    'charity': '<path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/>',
+    'messages': '<path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/>',
+}
+
+def _cover(k):
+    t, d = AREAS[k]
+    items = [o['title'] for o in REGISTER['obligations'] if o['area'] == k and not o['title'].startswith('Watch')]
+    shown = items[:4]
+    more = len(items) - len(shown)
+    li = ''.join(f'<li>{x}</li>' for x in shown) + (f'<li class="cv-more">and {more} more</li>' if more > 0 else '')
+    return (f'<div class="cv-card rv"><div class="cv-top"><span class="cv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{COVER_ICON[k]}</svg></span>'
+            f'<span class="cv-n">{len(items)}</span></div><h3>{t}</h3><p>{d}</p><ul>{li}</ul></div>')
+
 AREAS = {
     'privacy': ('Privacy', 'The Privacy Act, data breaches, and the new Children\'s Online Privacy Code.'),
     'child_safety': ('Child safety', 'Working with children checks and the Child Safe Standards in your state.'),
@@ -91,7 +107,8 @@ PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
 
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">What it covers</h2>
-  <div class="pg-feats">{''.join(f'<div class="pg-feat rv"><h3>{t}</h3><p>{d}</p></div>' for t, d in AREAS.values())}</div>
+  <p class="pg-lead rv">{sum(1 for o in REGISTER['obligations'] if not o['title'].startswith('Watch'))} obligations across four areas, plus changes we're watching,, each one linked to the law it comes from.</p>
+  <div class="cv-grid">{''.join(_cover(k) for k in AREAS)}</div>
 </div></section>
 
 <section class="sec pg-sec" id="check" aria-labelledby="check-h"><div class="wrap">
@@ -133,6 +150,23 @@ PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
 '''
 
 CSS = '''
+.cv-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 32px; }
+.cv-card { display: flex; flex-direction: column; padding: 24px; border-radius: 24px; background: #FFFDF8; border: 1px solid var(--line); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+.cv-card:hover { transform: translateY(-3px); box-shadow: 0 24px 44px -30px rgba(10,30,26,.4); }
+.cv-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.cv-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--green); color: var(--cream); }
+.cv-ic svg { width: 22px; height: 22px; }
+.cv-n { font: 400 34px/1 'Newsreader', Georgia, serif; color: var(--clay); }
+.cv-card h3 { margin: 0; font-size: 21px; letter-spacing: -0.015em; color: var(--green); }
+.cv-card > p { margin: 8px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--soft); }
+.cv-card ul { list-style: none; margin: 16px 0 0; padding: 14px 0 0; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+.cv-card li { position: relative; padding-left: 18px; font-size: 14.5px; line-height: 1.45; color: var(--ink); }
+.cv-card li::before { content: ''; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; border-radius: 50%; background: var(--peach); }
+.cv-card li.cv-more { color: var(--muted); } .cv-card li.cv-more::before { background: var(--line); }
+@media (max-width: 1000px) { .cv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .cv-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .cv-card { transition: none; } .cv-card:hover { transform: none; } }
+
 /* ---- Always Compliance, productised ---- */
 .cmx-hero h1 { font-size: clamp(48px, 6.2vw, 92px); }
 .cmx-card { justify-self: end; width: min(400px, 100%); background: #FFFDF8; color: var(--ink); border-radius: 26px; padding: 22px; display: grid; gap: 16px; box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); }
