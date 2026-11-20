@@ -96,7 +96,7 @@ MORE = {
 <li><b>What we&rsquo;ll publish:</b> totals and lessons learned, with small groups hidden, so the whole church in Australia can learn from it.</li>
 <li><b>Safeguards from day one:</b> adults only, only with their yes, and anyone can withdraw at any time.</li>
 </ul>
-<p><a href="#/contact/journeys">Register interest in the pilot</a></p>
+<p><a href="#/pprl">Read the research paper</a>, or email <a href="mailto:hello@alwaysfoundation.org?subject=Journeys%20pilot%20expression%20of%20interest">hello@alwaysfoundation.org</a> by 10 December 2026 to join the pilot.</p>
 """,
 }
 

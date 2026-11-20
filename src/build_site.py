@@ -536,6 +536,9 @@ PR.NEW_PAGES['mycompliance'] = CA.PAGE
 PR.TITLES['mycompliance'] = 'Your safety check-up · Always Foundation'
 PR.TITLES['integrations'] = 'Integrations · Always Foundation'
 PR.NEW_PAGES['streets'] = ST.STREETS
+import research as RX
+PR.NEW_PAGES[RX.SLUG] = RX.PAGE
+PR.TITLES[RX.SLUG] = RX.TITLE
 PR.NEW_PAGES['dbs'] = ST.DBS
 PR.NEW_PAGES['cexp'] = ST.CEXP
 PR.NEW_PAGES['alpha'] = ST.ALPHA
@@ -1088,6 +1091,7 @@ header = """
 """
 
 # Home: rewrite in-page links to routes
+home = home.replace('<ul class="cs-track" role="list">', '<ul class="cs-track" role="list">' + RX.TILE, 1)
 home = home.replace('href="#join"', 'href="#/join"').replace('href="#stories"', 'href="#/stories"')
 home = home.replace('<a class="btn btn-peach" href="#/join">Join as a church or ministry</a>', '<a class="btn btn-peach" href="#/join">Join as a church or ministry</a>')
 home = home.replace('<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and becomes a partner church before anyone is introduced to it.</p>',
@@ -1301,7 +1305,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + CA.JS + CP.JS + extras.JS + DV.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS + HM.JS + SC.JS
+""" + CA.JS + CP.JS + extras.JS + DV.JS + PR.MENU_JS + CF.JS + JN.JS + RX.JS + PO.JS + MO.JS + HM.JS + SC.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order)).replace('__ALIAS__', json.dumps(DU.ALIAS))
 
 footer = """
@@ -1330,7 +1334,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{RX.CSS}{RX.TILE_CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>

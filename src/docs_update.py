@@ -392,7 +392,7 @@ JOURNEYS = """
 <div><dt>What a view returns</dt><dd>Steps and months, with <code>byYou</code> on the viewer&rsquo;s own steps. Never notes or other ministries&rsquo; names.</dd></div>
 <div><dt>Guards</dt><dd>The database refuses minors and anyone without consent. Every rule is tested.</dd></div>
 </dl>
-<p>See also <a href="#/docs/consent">Consent receipts</a> and <a href="#/docs/standard">the Always Handoff standard</a>.</p>
+<p>See also <a href="#/pprl">the research paper</a>, <a href="#/docs/consent">Consent receipts</a> and <a href="#/docs/standard">the Always Handoff standard</a>.</p>
 """
 
 AGENTS = """
