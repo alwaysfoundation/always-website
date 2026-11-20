@@ -1,10 +1,12 @@
-"""Research paper: privacy-preserving record linkage for journeys across ministries."""
+"""The Journeys initiative: privacy-preserving record linkage for journeys across ministries."""
 
 SLUG = 'pprl'
-TITLE = 'Linking journeys, not databases · Always Foundation'
+TITLE = 'The Journeys initiative · Always Foundation'
 
 TOC = [
-    ('rp-abstract', 'Abstract'),
+    ('rp-physician', 'A physician of the soul'),
+    ('rp-why', 'Why it matters'),
+    ('rp-abstract', 'In short'),
     ('rp-problem', '1. The problem'),
     ('rp-options', '2. Why today’s options fail'),
     ('rp-pprl', '3. Record linkage, privately'),
@@ -12,11 +14,10 @@ TOC = [
     ('rp-security', '5. Security analysis'),
     ('rp-health', '6. Lessons from Australian health'),
     ('rp-cyber', '7. The cyber threat'),
-    ('rp-physician', '8. Physicians of the soul'),
-    ('rp-open', '9. Open source as assurance'),
-    ('rp-pilot', '10. The pilot'),
-    ('rp-limits', '11. Limitations'),
-    ('rp-refs', 'References'),
+    ('rp-open', '8. Open source as assurance'),
+    ('rp-pilot', '9. The pilot'),
+    ('rp-limits', '10. Limitations'),
+    ('rp-refs', 'Sources'),
 ]
 
 
@@ -26,38 +27,78 @@ def _toc():
 
 PAGE = '''
 <article class="rp">
-<header class="rp-hero"><div class="wrap rp-hero-in">
-  <p class="rp-kick"><a href="#/stories">Stories</a> <span aria-hidden="true">/</span> Research</p>
+<div class="rp-hero"><div class="wrap rp-hero-in">
+  <p class="rp-kick"><a href="#/stories">Stories</a> <span aria-hidden="true">/</span> Initiative</p>
   <h1>Linking journeys, not databases</h1>
-  <p class="rp-dek">Privacy-preserving record linkage for Gospel ministry in Australia: why the church needs it, how Always Platform does it, and how it is defended.</p>
-  <p class="rp-meta">Always Foundation <span aria-hidden="true">&middot;</span> Research paper <span aria-hidden="true">&middot;</span> November 2026</p>
+  <p class="rp-dek">Helping churches and ministries care for people as one body, without ever sharing their databases. Built on privacy-preserving record linkage, the approach trusted in Australian health for three decades.</p>
+  <p class="rp-meta">The Journeys initiative <span aria-hidden="true">&middot;</span> Always Foundation <span aria-hidden="true">&middot;</span> November 2026</p>
   <div class="rp-pilot" role="note" aria-label="Pilot">
     <span class="rp-pulse" aria-hidden="true"></span>
     <div><b>Piloting in Australia through Always Respond and Always Connect.</b>
     <span>Expressions of interest from churches and ministries close <strong>10 December 2026</strong>. Email <a href="mailto:hello@alwaysfoundation.org?subject=Journeys%20pilot%20expression%20of%20interest">hello@alwaysfoundation.org</a>.</span></div>
   </div>
   <figure class="rp-heroart" aria-hidden="true">
-    <svg viewBox="0 0 1000 220" preserveAspectRatio="xMidYMid meet">
-      <defs><linearGradient id="rpg" x1="0" x2="1"><stop offset="0" stop-color="#E8A577" stop-opacity="0"/><stop offset=".5" stop-color="#E8A577"/><stop offset="1" stop-color="#E8A577" stop-opacity="0"/></linearGradient></defs>
-      <path class="rp-h-path" d="M40 150 C 180 40, 300 40, 380 110 S 600 190, 660 100 S 860 40, 960 120" fill="none" stroke="rgba(255,253,248,.18)" stroke-width="2" stroke-dasharray="6 10"/>
-      <path class="rp-h-draw" d="M40 150 C 180 40, 300 40, 380 110 S 600 190, 660 100 S 860 40, 960 120" fill="none" stroke="url(#rpg)" stroke-width="3"/>
+    <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet">
+      <defs><linearGradient id="rpg" x1="0" x2="1"><stop offset="0" stop-color="#E8A577" stop-opacity=".1"/><stop offset=".6" stop-color="#E8A577"/><stop offset="1" stop-color="#F2C29E"/></linearGradient></defs>
+      <path d="M60 190 C 200 70, 320 70, 390 140 S 600 230, 650 130 S 860 70, 940 150" fill="none" stroke="rgba(255,253,248,.2)" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/>
+      <path class="rp-h-draw" d="M60 190 C 200 70, 320 70, 390 140 S 600 230, 650 130 S 860 70, 940 150" fill="none" stroke="url(#rpg)" stroke-width="5" stroke-linecap="round"/>
       <g class="rp-h-nodes">
-        <circle cx="40" cy="150" r="9"/><circle cx="380" cy="110" r="9"/><circle cx="660" cy="100" r="9"/><circle cx="960" cy="120" r="11" class="rp-h-church"/>
+        <circle cx="60" cy="190" r="16"/><circle cx="390" cy="140" r="16"/><circle cx="650" cy="130" r="16"/><circle cx="940" cy="150" r="20" class="rp-h-church"/>
       </g>
-      <circle class="rp-h-dot" r="6" fill="#FFFDF8"><animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear" path="M40 150 C 180 40, 300 40, 380 110 S 600 190, 660 100 S 860 40, 960 120"/></circle>
+      <circle class="rp-h-dot" r="9" fill="#FFFDF8"><animateMotion dur="7s" repeatCount="indefinite" path="M60 190 C 200 70, 320 70, 390 140 S 600 230, 650 130 S 860 70, 940 150"/></circle>
+      <g class="rp-h-text"><text x="60" y="250" text-anchor="start">Event</text><text x="390" y="200" text-anchor="middle">Course</text><text x="650" y="90" text-anchor="middle">Bible study</text><text x="940" y="215" text-anchor="end">Church</text></g>
     </svg>
-    <div class="rp-h-labels"><span style="left:4%">Event</span><span style="left:38%">Course</span><span style="left:66%">Bible study</span><span style="left:96%">Church</span></div>
   </figure>
-</div></header>
+</div></div>
 
 <div class="wrap rp-body">
   <nav class="rp-toc" aria-label="Contents"><p>Contents</p>''' + _toc() + '''</nav>
 
   <div class="rp-main">
+    <section id="rp-physician" class="rp-mlj">
+      <p class="rp-mlj-k">Where this begins</p>
+      <h2>A physician of the soul</h2>
+      <p class="rp-mlj-lead">In the 1920s, one of the most promising young doctors in London was Martyn Lloyd-Jones. He trained at St Bartholomew&rsquo;s Hospital and became chief clinical assistant to Sir Thomas Horder, physician to the royal family.<sup><a data-goto="rp-refs">[10, 11]</a></sup></p>
+      <p>Then, for two years, he wrestled with a call to give it up: to leave medicine and become a &lsquo;physician of the soul&rsquo;. In 1927 he did, moving to a small mission church in Aberavon, South Wales, and went on to become one of the most influential preachers of the twentieth century.<sup><a data-goto="rp-refs">[11]</a></sup> He never stopped thinking like a doctor: careful diagnosis, care for the whole person, and the long view.</p>
+      <div class="rp-mlj-pair">
+        <div><b>Medicine learned</b><p>A patient seen by many clinicians needs one continuous record, held with discretion and shared only with those caring for them.</p></div>
+        <div><b>The church can too</b><p>Someone who meets Jesus at an event and joins a church months later deserves the same: continuity from those who care for them, confidentiality from everyone else.</p></div>
+      </div>
+      <p>Australian health has shown for three decades that both can be had together. The Journeys initiative brings that same discipline to the care of souls.</p>
+    </section>
+
+    <section id="rp-why" class="rp-why">
+      <p class="rp-why-lead">&ldquo;Saying yes to Jesus shouldn&rsquo;t be the end of a form. It should be the beginning of a journey.&rdquo;</p>
+      <div class="rp-why-grid">
+        <div class="rp-why-card rp-why-a">
+          <h2>The why</h2>
+          <p>People rarely come to faith through one ministry. They respond at an event, try a course, read the Bible with a friend, and find a church months later. Each ministry sees only its own step, so people slip through the gaps, follow-up depends on someone remembering, and no one can tell whether a yes became a church family.</p>
+        </div>
+        <div class="rp-why-card rp-why-b">
+          <h2>The benefits</h2>
+          <ul class="rp-ben">
+            <li><span class="rp-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><div><b>For people</b><p>Welcomed by a church that knows their story, with their own yes, and a way to withdraw any time.</p></div></li>
+            <li><span class="rp-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v4M10 5h4M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg></span><div><b>For churches</b><p>Know where someone has come from and meet them where they are.</p></div></li>
+            <li><span class="rp-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h10M10 6l6 6-6 6"/><circle cx="19" cy="12" r="2"/></svg></span><div><b>For ministries and evangelists</b><p>Learn whether the people you reached found a church, and improve your follow-up.</p></div></li>
+            <li><span class="rp-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><div><b>For networks and funders</b><p>Honest totals across ministries, each person counted once, never a name.</p></div></li>
+          </ul>
+        </div>
+        <div class="rp-why-card rp-why-c">
+          <h2>The unlock</h2>
+          <ul class="rp-unlock">
+            <li><b>One body, many ministries.</b> Churches and ministries care for people together while each keeps its own records and independence.</li>
+            <li><b>Fruit, not activity.</b> For the first time, the church can see whether hands raised became lasting connection.</li>
+            <li><b>Collaboration without honeypots.</b> No central database of who responded to the Gospel is ever built.</li>
+            <li><b>A shared public good.</b> Open code and an open standard any network in Australia can adopt.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section id="rp-abstract" class="rp-abstract">
-      <h2>Abstract</h2>
+      <h2>In short</h2>
       <p>People rarely come to faith through one ministry. They respond at an event, try a course, read the Bible with a friend and, God willing, join a local church. Each ministry keeps its own records, so no one can see the whole path, people fall through the gaps between ministries, and the church cannot tell whether a response became a lasting home. The two ways to close the gap today, pooling databases or reconciling them by hand, are respectively unsafe and impractical.</p>
-      <p>This paper describes how Always Platform links one adult&rsquo;s steps across ministries using privacy-preserving record linkage (PPRL), an approach with three decades of use in Australian health research. Linkage runs only with the person&rsquo;s explicit consent, on a keyed cryptographic fingerprint of their mobile number. Ministries never exchange records, each sees a different code for the same person, only milestones and months are shared, and funders see aggregate totals with small groups withheld. We set out the design, a threat model, the trade-offs we accepted, and a six-month live pilot in Australia, run through Always Respond and Always Connect.</p>
+      <p>The Journeys initiative is how Always Platform links one adult&rsquo;s steps across ministries using privacy-preserving record linkage (PPRL), an approach with three decades of use in Australian health research. Linkage runs only with the person&rsquo;s explicit consent, on a keyed cryptographic fingerprint of their mobile number. Ministries never exchange records, each sees a different code for the same person, only milestones and months are shared, and funders see aggregate totals with small groups withheld. We set out the design, a threat model, the trade-offs we accepted, and a six-month live pilot in Australia, run through Always Respond and Always Connect.</p>
       <dl class="rp-keys">
         <div><dt>Approach</dt><dd>Consent-based PPRL with a trusted linkage service</dd></div>
         <div><dt>Identifier</dt><dd>Normalised Australian mobile, keyed with HMAC-SHA256</dd></div>
@@ -225,20 +266,13 @@ PAGE = '''
       <p>The MediSecure breach, affecting about 12.9 million people&rsquo;s personal and health information, is the largest ever notified under the Notifiable Data Breaches scheme.<sup><a data-goto="rp-refs">[8]</a></sup> The lesson for the church is not to stop collaborating. It is to collaborate without building honeypots: collect less, share less, separate keys from data, and design every system on the assumption that it will one day be attacked. A pooled database of who responded to the Gospel, and where, would be one of the most sensitive collections in the country. PPRL lets ministries work together without anyone ever building it.</p>
     </section>
 
-    <section id="rp-physician">
-      <h2>8. Physicians of the soul</h2>
-      <blockquote class="rp-quote"><p>Continuity of care is how good doctors care for the body. It is also how the church cares for the soul.</p></blockquote>
-      <p>Martyn Lloyd-Jones trained in medicine at St Bartholomew&rsquo;s Hospital in London and became chief clinical assistant to Sir Thomas Horder, physician to the royal family. After two years of struggle he left medicine to preach, to become, in the phrase often used of him, a physician of the soul.<sup><a data-goto="rp-refs">[10, 11]</a></sup> He never stopped thinking like a doctor: careful diagnosis, the whole person, the long view.</p>
-      <p>Medicine learned long ago that a patient seen by many clinicians needs one continuous record, held with discretion and shared only with those caring for them. The spiritual journey is no different. A person who meets Jesus at an event and is welcomed by a church months later deserves continuity of care, from people who know where they have come from, and confidentiality, from people who do not need to know. Health linkage shows the two can be had together.</p>
-    </section>
-
     <section id="rp-open">
-      <h2>9. Open source as assurance</h2>
+      <h2>8. Open source as assurance</h2>
       <p>It can seem safer to keep the workings of a privacy system secret. For linkage the opposite is true. The protection is the key, not the obscurity of the method, just as the encryption that secures online banking is public. Publishing the code lets a church&rsquo;s volunteer, an independent reviewer or a regulator check what is collected and who sees what, lets flaws be found and fixed sooner, gives reviews something exact to test, and means no church depends on one organisation staying around. The keys, the data and every access token stay private.</p>
     </section>
 
     <section id="rp-pilot">
-      <h2>10. The pilot</h2>
+      <h2>9. The pilot</h2>
       <figure class="rp-fig rv" id="rp-fig8">
         <ol class="f8">
           <li class="f8-now"><b>Now to 10 December 2026</b><span>Expressions of interest</span></li>
@@ -266,7 +300,7 @@ PAGE = '''
     </section>
 
     <section id="rp-limits">
-      <h2>11. Limitations and future work</h2>
+      <h2>10. Limitations and future work</h2>
       <ul>
         <li><b>Coverage.</b> Only steps taken through Always are counted. Ministries using other systems can connect through the API.</li>
         <li><b>Exact matching.</b> One identifier misses people who change numbers. A second identifier, such as an email the person adds, is under consideration.</li>
@@ -276,7 +310,7 @@ PAGE = '''
     </section>
 
     <section id="rp-refs" class="rp-refs">
-      <h2>References</h2>
+      <h2>Sources</h2>
       <ol>
         <li>Hodges S, Eitelhuber T, Merchant A, Alan J. Population Data Centre Profile: the Western Australian Data Linkage Branch. <i>International Journal of Population Data Science</i>, 2020. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7477781/">PMC7477781</a></li>
         <li>Boyd JH et al. Data linkage infrastructure for cross-jurisdictional health-related research in Australia. <i>BMC Health Services Research</i> 12:480, 2012. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3579698/">PMC3579698</a></li>
@@ -292,7 +326,7 @@ PAGE = '''
         <li>Always Platform. ADR 0012: Journeys across ministries, and source code. <a href="https://github.com/alwaysfoundation/always-platform">github.com/alwaysfoundation/always-platform</a></li>
         <li>Krawczyk H, Bellare M, Canetti R. HMAC: Keyed-Hashing for Message Authentication. RFC 2104, IETF, 1997. <a href="https://www.rfc-editor.org/rfc/rfc2104">rfc-editor.org</a></li>
       </ol>
-      <p class="rp-note">This paper describes our design and is not legal advice. Prolegis Lawyers are reviewing the consent wording. Questions and corrections are welcome at <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p>
+      <p class="rp-note">This page describes our design and is not legal advice. Prolegis Lawyers are reviewing the consent wording. Questions and corrections are welcome at <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p>
     </section>
   </div>
 </div>
@@ -300,7 +334,7 @@ PAGE = '''
 '''
 
 CSS = r'''
-/* ---- Research paper ---- */
+/* ---- Journeys initiative ---- */
 .rp-hero { background: var(--green); color: var(--cream); padding: 160px 0 56px; overflow: hidden; }
 .rp-hero-in { max-width: 1040px; }
 .rp-kick { font: 600 14px/1 var(--head); color: rgba(255,253,248,.7); margin: 0 0 22px; }
@@ -317,14 +351,11 @@ CSS = r'''
 @keyframes rpPulse { 70% { box-shadow: 0 0 0 12px rgba(232,165,119,0); } 100% { box-shadow: 0 0 0 0 rgba(232,165,119,0); } }
 .rp-heroart { margin: 40px 0 0; }
 .rp-heroart svg { display: block; width: 100%; height: auto; }
-.rp-h-draw { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: rpDraw 7s linear infinite; }
+.rp-h-draw { stroke-dasharray: 1500; stroke-dashoffset: 1500; animation: rpDraw 7s linear infinite; }
 @keyframes rpDraw { to { stroke-dashoffset: 0; } }
-.rp-h-nodes circle { fill: #1F4D44; stroke: rgba(255,253,248,.55); stroke-width: 2; }
+.rp-h-nodes circle { fill: #173F37; stroke: rgba(255,253,248,.7); stroke-width: 3; }
+.rp-h-text text { fill: rgba(255,253,248,.78); font: 700 28px Manrope, sans-serif; }
 .rp-h-nodes .rp-h-church { fill: #E8A577; stroke: #FFFDF8; }
-.rp-h-labels { position: relative; height: 18px; margin-top: 4px; font: 600 13px/18px var(--head); color: rgba(255,253,248,.65); }
-.rp-h-labels span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
-.rp-h-labels span:first-child { transform: none; } .rp-h-labels span:last-child { transform: translateX(-100%); }
-
 .rp-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 64px; padding-top: 64px; padding-bottom: 96px; }
 .rp-toc { position: sticky; top: 96px; align-self: start; display: flex; flex-direction: column; gap: 2px; }
 .rp-toc p { margin: 0 0 10px; font: 700 13px/1 var(--head); color: var(--soft); }
@@ -349,6 +380,38 @@ CSS = r'''
 .rp-fig { margin: 30px 0 34px; }
 .rp-fig figcaption { margin-top: 12px; font-size: 14px; line-height: 1.55; color: var(--soft); }
 .rp-fig figcaption b { color: var(--green); }
+
+.rp-mlj { margin-bottom: 64px; }
+.rp-mlj-k { margin: 0 0 10px !important; font: 700 14px/1 var(--head) !important; color: #9A4A22 !important; }
+.rp-mlj h2 { font-size: clamp(32px, 4vw, 46px) !important; letter-spacing: -0.035em !important; margin-bottom: 20px !important; }
+.rp-mlj-lead { font-size: 20px !important; line-height: 1.6 !important; color: var(--green) !important; }
+.rp-mlj-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; margin: 26px 0 22px; }
+.rp-mlj-pair div { padding: 22px; border-radius: 20px; background: #fff; box-shadow: 0 1px 0 rgba(20,53,47,.08), 0 20px 40px -34px rgba(20,53,47,.4); }
+.rp-mlj-pair div + div { background: #14352F; }
+.rp-mlj-pair b { display: block; font: 700 15px/1.2 var(--head); color: #9A4A22; margin-bottom: 6px; }
+.rp-mlj-pair div + div b { color: #F2C29E; }
+.rp-mlj-pair p { margin: 0 !important; font-size: 16px !important; line-height: 1.55 !important; }
+.rp-mlj-pair div + div p { color: rgba(255,253,248,.88) !important; }
+.rp-why { margin-bottom: 72px; }
+.rp-why-lead { margin: 0 0 28px !important; font-family: var(--serif) !important; font-size: clamp(24px, 2.6vw, 32px) !important; line-height: 1.3 !important; color: var(--green) !important; max-width: 30ch; }
+.rp-why-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.rp-why-card { padding: 28px; border-radius: 24px; background: #fff; box-shadow: 0 1px 0 rgba(20,53,47,.08), 0 24px 48px -36px rgba(20,53,47,.4); }
+.rp-why-card h2 { font-size: 15px !important; letter-spacing: 0 !important; color: #9A4A22 !important; margin: 0 0 12px !important; }
+.rp-why-a { background: #14352F; }
+.rp-why-a p { color: rgba(255,253,248,.88) !important; font-size: 18px !important; line-height: 1.6 !important; margin: 0 !important; }
+.rp-why-a h2 { color: #F2C29E !important; }
+.rp-why-b { grid-row: span 2; }
+.rp-ben { list-style: none; margin: 0 !important; padding: 0 !important; display: grid; gap: 18px; }
+.rp-ben li { display: flex; gap: 14px; margin: 0 !important; }
+.rp-ben b { display: block; font: 700 16px/1.3 var(--head); color: var(--green); }
+.rp-ben p { margin: 4px 0 0 !important; font-size: 15px !important; line-height: 1.55 !important; }
+.rp-ic { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: rgba(232,165,119,.18); }
+.rp-ic svg { width: 22px; height: 22px; fill: none; stroke: #9A4A22; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.rp-why-c { background: linear-gradient(160deg, #F7E7DA, #F1D3BC); }
+.rp-unlock { list-style: none; margin: 0 !important; padding: 0 !important; display: grid; gap: 12px; }
+.rp-unlock li { margin: 0 !important; padding-left: 18px; position: relative; font-size: 15.5px !important; line-height: 1.55 !important; }
+.rp-unlock li::before { content: ''; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; background: #9A4A22; }
+.rp-unlock b { color: var(--green); }
 
 /* Figure 1 */
 .f1 { position: relative; padding: 26px 22px 20px; border-radius: 22px; background: #14352F; color: var(--cream); overflow: hidden; }
@@ -478,6 +541,10 @@ CSS = r'''
   .rp-hero { padding: 124px 0 40px; }
   .rp-abstract { padding: 22px; }
   .rp-keys { grid-template-columns: minmax(0, 1fr); }
+  .rp-why-grid, .rp-mlj-pair { grid-template-columns: minmax(0, 1fr); }
+  .rp-why-b { grid-row: auto; }
+  .rp-why-card { padding: 22px; }
+  .rp-heroart { margin-top: 28px; }
   .f1-row, .f2, .f7-stats, .f8 { grid-template-columns: minmax(0, 1fr); }
   .f3-s { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .f1-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -489,7 +556,6 @@ CSS = r'''
   .f4-r span[data-l]::before { content: attr(data-l) ': '; font-weight: 700; color: var(--soft); }
   .f4-r span:last-child { padding-bottom: 12px; }
   .f7-bar { grid-template-columns: 110px minmax(0, 1fr) 36px; }
-  .rp-h-labels { font-size: 11px; }
   .rp-main p, .rp-main li { font-size: 16.5px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -502,7 +568,7 @@ CSS = r'''
 '''
 
 JS = r'''
-// Research paper: contents buttons and reference links scroll within the page (hash routes stay intact).
+// Journeys initiative: contents buttons and reference links scroll within the page (hash routes stay intact).
 document.addEventListener('click', (e) => {
   const b = e.target.closest('[data-goto]'); if (!b) return;
   const t = document.getElementById(b.dataset.goto); if (!t) return;
@@ -528,10 +594,10 @@ TILE = '''
       <li class="cs-tile cs-tile-rp">
         <div class="cs-img rp-tile-art" aria-hidden="true"><svg viewBox="0 0 400 260"><path d="M30 190 C 110 60, 170 70, 210 140 S 320 220, 370 90" fill="none" stroke="rgba(255,253,248,.22)" stroke-width="3" stroke-dasharray="6 9"/><path d="M30 190 C 110 60, 170 70, 210 140 S 320 220, 370 90" fill="none" stroke="#E8A577" stroke-width="3" stroke-dasharray="520" stroke-dashoffset="0"/><circle cx="30" cy="190" r="9" fill="#1F4D44" stroke="#FFFDF8" stroke-width="2"/><circle cx="210" cy="140" r="9" fill="#1F4D44" stroke="#FFFDF8" stroke-width="2"/><circle cx="370" cy="90" r="11" fill="#E8A577" stroke="#FFFDF8" stroke-width="2"/><text x="30" y="236" fill="rgba(255,253,248,.75)" font-family="Manrope, sans-serif" font-weight="700" font-size="17">HMAC-SHA256(key, +614…)</text></svg></div>
         <div class="cs-text">
-          <p class="cs-name">Research</p>
+          <p class="cs-name">Initiative</p>
           <h3>Linking journeys, not databases.</h3>
-          <p>Privacy-preserving record linkage for ministry, now piloting in Australia. Expressions of interest close 10 December.</p>
-          <a class="cs-more" href="#/pprl">Read the paper</a>
+          <p>Caring for people across ministries as one body, without sharing databases. Piloting in Australia; expressions of interest close 10 December.</p>
+          <a class="cs-more" href="#/pprl">Explore the initiative</a>
         </div>
       </li>'''
 
