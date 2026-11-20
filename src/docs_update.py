@@ -205,7 +205,7 @@ TERMS = """
 <p>Questions: <b>hello@alwaysfoundation.org</b></p>
 <h2>Credits</h2>
 <p>Scripture quotations marked ESV are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Scripture quotations are not covered by our Creative Commons licence.</p>
-<p>Photos from UEN, Rejoice, evangelists in Sydney, The Global Harvest, Alpha Australia, CXMMXNS, FaithTech and Christians in AI are used with permission. Some photos are from Unsplash, under the Unsplash License.</p>
+<p>Photos from UEN, Rejoice, evangelists in Sydney, The Global Harvest, Alpha Australia, FaithTech and Christians in AI are used with permission. Some photos are from Unsplash, under the Unsplash License.</p>
 """
 
 TAPS = """

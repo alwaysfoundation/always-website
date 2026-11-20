@@ -31,12 +31,6 @@ STORIES = {
         'glance': [('Module', 'Always Reports'), ('Approach', 'Privacy-preserving record linkage'), ('Who', 'Adults who choose it'), ('Shared', 'Steps and months, never notes'), ('Code', 'Open source'), ('Pilot', 'Six months, live')],
         'cta': ('#/docs/journeys', 'Read how journeys work'), 'link': ('#/reports', 'See Always Reports'),
     },
-    'cxmmxns': {
-        'slug': 'cxmmxns', 'title': 'CXMMXNS tour · Always Foundation',
-        'dek': 'A worship tour across Australia in 2027, with a next step near home for everyone who says yes.',
-        'glance': [('Tour', 'CXMMXNS'), ('When', '2027'), ('Where', 'Cities across Australia'), ('Uses', 'Always Respond, Always Connect and Always Reports')],
-        'cta': ('#/ministries', 'For events and tours'), 'link': ('#/respond', 'See Always Respond'),
-    },
 }
 
 
@@ -104,7 +98,6 @@ MORE = {
 </ul>
 <p><a href="#/contact/journeys">Register interest in the pilot</a></p>
 """,
- "cxmmxns": "<h2>What each city gets</h2><ul><li>A response page in the tour&rsquo;s look, shown on the screens each night.</li><li>A choice of next steps: find a church, explore faith, join a youth group, or talk with someone.</li><li>Local partner churches ready to welcome people from that city, and a care team for anyone with no church nearby.</li><li>A report for each city, with totals only.</li></ul>\n<h2>Young people</h2><p>Age comes first on every response. Young people go only to a youth partner, with a parent&rsquo;s okay where needed, and no AI ever touches their information.</p>"
 }
 
 

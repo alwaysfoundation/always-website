@@ -31,7 +31,6 @@ def _photo(name, maxw=800, q=64):
   im.save(os.path.join(ROOT, '..', 'img', out), 'WEBP', quality=q, method=6)
   return 'img/' + out
 home = home.replace('{{UEN_STUDIO}}', _photo('uen-studio.jpg')).replace('{{TGH_IMG}}', _photo('tgh-baptism.jpg')).replace('{{NEEDGOD_IMG}}', _photo('needgod-cross.jpg'))
-home = home.replace('{{CXMMXNS_IMG}}', _photo('cxmmxns-tour.jpg'))
 home = home.replace('{{ALPHA_IMG}}', _photo('alpha-photo.jpg'))
 import shutil as _sh; os.makedirs(os.path.join(ROOT, '..', 'img'), exist_ok=True); _sh.copyfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), os.path.join(ROOT, '..', 'img', 'alpha-logo.png'))
 home = home.replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png').replace('{{DBS_TILE}}', _photo('dbs-illustration.png')).replace('{{CEXP_TILE}}', _photo('cexp-booklet.png'))
