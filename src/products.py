@@ -152,7 +152,6 @@ ICON = {
     'feed': '<path d="M12 21s-6-5.6-6-11a6 6 0 0112 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',
     'webhooks': '<path d="M6 16.5V11a6 6 0 0112 0v5.5l1.5 2h-15z"/><path d="M10 21h4"/>',
     'consent': '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 14l2 2 3-4"/>',
-    'journeys': '<circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h6a3 3 0 010 6h-2a3 3 0 000 6h6"/>',
 }
 MENU_LINE = {
     'app': 'Share Jesus and walk with people', 'pages': 'Respond by QR, tap or link, in your name',
@@ -279,7 +278,6 @@ CONNECT_EXTRA = f'''<section class="sec pg-sec pg-sage"><div class="wrap">
 REPORTS_EXTRA = '''<section class="sec pg-sec pg-green"><div class="wrap rp-defs">
   <h2 class="pg-h rv">The same four numbers, every month</h2>
   <div class="rp-row rv"><div><b>Responded</b><span>Said yes, and agreed to be contacted.</span></div><div><b>Introduced</b><span>Passed to a partner church or ministry.</span></div><div><b>Contacted</b><span>A real person got in touch.</span></div><div><b>Part of a church family</b><span>Told us themselves, a few months on.</span></div></div>
-  <p class="rp-jn rv"><b>Journeys across ministries.</b> When someone agrees, their steps are linked across every ministry that helps them, so each person is counted once and every ministry can see how the journey went. <a href="#/docs/journeys">How journeys work</a></p>
 </div></section>'''
 
 REPORTS_PAGE = product_page('reports',
@@ -483,8 +481,6 @@ CSS = MOCK_CSS + '''
 
 a.cx { display: block; color: inherit; text-decoration: none; } a.cx:hover h3, a.cx:focus-visible h3 { text-decoration: underline; text-decoration-color: var(--peach); text-underline-offset: 6px; }
 .rp-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 40px; margin-top: 40px; }
-.rp-jn { margin: 36px 0 0; max-width: 720px; font-size: 17px; line-height: 1.6; color: var(--on-green, rgba(248,243,234,.82)); }
-.rp-jn b { color: var(--cream); } .rp-jn a { color: var(--peach); font-weight: 600; margin-left: 4px; }
 .rp-row > div { padding-top: 22px; border-top: 2px solid var(--peach); display: grid; gap: 8px; }
 .rp-row b { font: 400 30px/1.15 'Newsreader', Georgia, serif; color: var(--cream); } .rp-row span { color: var(--on-green); font-size: 16px; line-height: 1.5; }
 .rp-defs .pg-h { color: var(--cream); }

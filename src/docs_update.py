@@ -81,7 +81,7 @@ MODULES = """
 <h2>Always Safety</h2>
 <p>A guide to the rules that apply to your ministry, with a check-up every quarter and plain updates when the law changes. Free for churches. See <a href="#/docs/compliance-overview">Always Safety</a>.</p>
 <h2>Always Reports</h2>
-<p>The report your board and funders ask for, written from what already happened, every month. With a person&rsquo;s yes, their steps across ministries are counted once. See <a href="#/docs/journeys">Journeys across ministries</a> and <a href="#/docs/results">Reports for your funders</a>.</p>
+<p>The report your board and funders ask for, written from what already happened, every month. See <a href="#/docs/results">Reports for your funders</a>.</p>
 <h2>Always Connect</h2>
 <p>The inbox where churches accept or pass introductions and keep walking with people, plus the church feed that helps anyone find a church nearby. See <a href="#/docs/inbox">Welcome from your phone</a>.</p>
 <h2>What every module shares</h2>
@@ -300,101 +300,6 @@ SAVING = """
 <p>Always Platform is open source, so anyone can check that it works the way we say.</p>
 """
 
-JOURNEYS = """
-<p class="lead">Someone decides to follow Jesus at a Christian event. What happens next? Do they find a church, or does everyone lose touch?</p>
-<figure class="jv" aria-labelledby="jv-cap" data-jv>
-  <div class="jv-top"><div class="jv-prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><button type="button" class="jv-play" aria-pressed="false" aria-label="Pause animation"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="jv-pa" d="M8 5v14M16 5v14"/><path class="jv-pl" d="M7 4.5v15l12-7.5z"/></svg></button></div>
-  <div class="jv-stage" aria-hidden="true">
-    <svg class="jv-lines"></svg>
-    <div class="jv-cards"><div class="jv-card" data-i="0"><span class="jv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9h12a4 4 0 0 1 3.9 4.9l-.8 3.4a2 2 0 0 1-3.4.9L15.5 16h-7l-2.2 2.2a2 2 0 0 1-3.4-.9l-.8-3.4A4 4 0 0 1 6 9z"/><path d="M8 12v2M7 13h2M16 12.5h.01M17.5 14h.01"/></svg></span><b>UEN</b><span class="jv-role">Said yes at an event</span><span class="jv-code">jny_4fQ…</span></div><div class="jv-card" data-i="1"><span class="jv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21V9"/><path d="M12 13c-3 0-5-2-5-5 3 0 5 2 5 5zM12 13c3 0 5-2 5-5-3 0-5 2-5 5zM12 9c-2 0-3.5-1.5-3.5-4C10.5 5 12 6.5 12 9zM12 9c2 0 3.5-1.5 3.5-4-2 0-3.5 1.5-3.5 4z"/></svg></span><b>The Global Harvest</b><span class="jv-role">Discipleship</span><span class="jv-code">jny_Zk8…</span></div><div class="jv-card" data-i="2"><span class="jv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9 11h6M9 14h4"/></svg></span><b>Alpha</b><span class="jv-role">A course</span><span class="jv-code">jny_r2C…</span></div><div class="jv-card" data-i="3"><span class="jv-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10"/><path d="M10 21v-5h4v5"/></svg></span><b>Hope Church</b><span class="jv-role">A church family</span><span class="jv-code">jny_9Lw…</span></div></div>
-    <span class="jv-orb"><span>S</span></span>
-    <div class="jv-hub"><span class="jv-lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><span><b>Always</b> links the steps, only with Sam&rsquo;s yes</span></div>
-  </div>
-  <p class="jv-cap" aria-live="off"><span>Sam says yes at a UEN event.</span><span>Sam is discipled through The Global Harvest.</span><span>Sam does an Alpha course.</span><span>Sam is welcomed at Hope Church.</span><span>Each ministry sees only its own code.</span></p>
-  <figcaption id="jv-cap" class="sr">An animation: one person, Sam, moves through four ministries. Each ministry gets a different code for Sam, and only Always can link them, because Sam said yes.</figcaption>
-</figure>
-<p class="js-turn">Normally, none of these ministries knows they&rsquo;re helping the same person. <b>Always connects the dots, with Sam&rsquo;s yes.</b></p>
-<ul class="jl jl-big">
-<li>Sam isn&rsquo;t left to chance.</li>
-<li>Every ministry on Sam&rsquo;s journey can see how it&rsquo;s going.</li>
-<li>We see whether people find a church, not just attend an event.</li>
-</ul>
-<section class="jh">
-<h2>How does Always connect the dots?</h2>
-<div class="jh-q"><h3>How Always recognises Sam</h3><p>When Sam responds through a ministry, Always turns Sam&rsquo;s mobile number into a private fingerprint that only Always can use to match records. If Sam later responds somewhere else with the same number, Always recognises it&rsquo;s the same journey.</p></div>
-<div class="jh-q"><h3>Who decides</h3><p>Sam does. When Sam responds, there&rsquo;s a separate tick: &ldquo;The ministries that help me can see my steps.&rdquo; It&rsquo;s never pre-ticked, and Sam can withdraw it any time. Without it, nothing is linked.</p></div>
-<div class="jh-q"><h3>Who sees what</h3><p>Every ministry on Sam&rsquo;s journey sees the steps before and after its own part, like &ldquo;responded in February&rdquo;, &ldquo;did a course in March&rdquo; and &ldquo;joined a church in May&rdquo;. So the event team learns Sam found a church, and the church knows where Sam has come from. No one sees other ministries&rsquo; notes or names, and each ministry gets a different code for Sam, so codes can&rsquo;t be used to join records.</p></div>
-<p class="jh-end">Always connects the journey. Sam stays in control.</p>
-<div class="jpp"><h3>Built on an established approach</h3><p>Always draws on privacy-preserving record linkage, an established approach in healthcare and research. Just as health services can recognise the same patient&rsquo;s records without sharing whole databases, Always helps ministries connect a person&rsquo;s journey from evangelism to discipleship and a local church.</p><p>Martyn Lloyd-Jones trained as a physician at St Bartholomew&rsquo;s Hospital in London before he became a preacher, and he saw caring for souls much as a doctor cares for the body. We take the same view: good care of the soul, like good care of the body, depends on continuity of care, with each person&rsquo;s privacy respected and each ministry&rsquo;s independence kept.</p></div>
-</section>
-<blockquote class="jbig"><p>Saying yes to Jesus shouldn&rsquo;t be the end of the story. It should be the beginning of a journey.</p></blockquote>
-
-<h2>Why this is hard today</h2>
-<div class="jx">
-  <div><b>Share databases</b><span>Everyone sees everything.</span></div>
-  <div><b>Do it by hand</b><span>Too much work, so it rarely happens.</span></div>
-  <div class="jx-yes"><b>Always</b><span>Only Sam&rsquo;s steps, only with Sam&rsquo;s yes.</span></div>
-</div>
-
-<h2>What you&rsquo;re trusting Always with</h2>
-<p>Only Always holds the key that turns mobile numbers into fingerprints, so ministries and the people they serve need to trust Always to look after it. These are the assurances behind that trust:</p>
-<ul class="jl">
-<li><b>Open source.</b> Anyone can read the code that links journeys and check that it does what we say.</li>
-<li><b>Every view is logged,</b> in a record that can&rsquo;t be quietly changed. Always staff see only what&rsquo;s needed to help.</li>
-<li><b>Never under 18.</b> Young people&rsquo;s journeys are never linked, and this can&rsquo;t be switched on.</li>
-<li><b>Independent review</b> of privacy and security before journeys open widely.</li>
-<li><b>Board oversight</b> of privacy and security.</li>
-<li><b>One key, one switch.</b> The key is kept apart from the data. Destroying it unlinks every journey at once.</li>
-</ul>
-
-<h2>What funders and networks see</h2>
-<p>Totals, but detailed ones: results by event, city, month and channel, the paths people take, and how long it takes them to find a church. A funder backing a tour can see exactly how that tour went.</p>
-<ul class="jl">
-<li><b>No individual journeys.</b> Sam agreed to share their steps with the ministries caring for them, not with funders.</li>
-<li><b>Small groups are hidden.</b> Any group of fewer than 10 people is withheld, so no one can be picked out.</li>
-<li><b>Stories need their own yes.</b> If someone wants to share their testimony, they agree to that separately.</li>
-</ul>
-
-<h2>Join the pilot</h2>
-<p>We&rsquo;re inviting churches and ministries to run journeys live with us for six months, then publish the results the way health researchers do.</p>
-<ul class="jl">
-<li><b>Who:</b> churches and ministries already receiving responses through Always, with adults who choose to link their journey.</li>
-<li><b>What we&rsquo;ll measure:</b> how many people choose to link, how accurate the matches are, how many find a church and how long it takes, and what churches found helpful.</li>
-<li><b>What we&rsquo;ll publish:</b> totals and lessons learned, with small groups hidden, so the whole church in Australia can learn from it.</li>
-<li><b>Safeguards from day one:</b> everything above applies, and anyone can withdraw at any time.</li>
-</ul>
-<p><a class="jcta" href="#/contact/journeys">Register interest in the pilot</a></p>
-
-<h2>Questions people ask</h2>
-<div class="jfaq">
-<details><summary>Do we have to trust Always Foundation?</summary><p>Yes, because only Always holds the key. That&rsquo;s why the code is open, every view is logged, the board oversees it, and it has an independent review.</p></details>
-<details><summary>Can other ministries see our notes?</summary><p>No. Ministries see steps and months, like &ldquo;joined a church in May&rdquo;. Never notes, and never the names of other ministries.</p></details>
-<details><summary>Does every ministry have to be on Always?</summary><p>A step only counts if Sam responds through Always: our response pages, the church inbox, or a ministry&rsquo;s own system connected to ours. Steps elsewhere aren&rsquo;t counted.</p></details>
-<details><summary>What if Sam changes phone number?</summary><p>Then the new steps start a new journey. We match on the mobile number only, not names or birthdays, because guessing would mean more personal details and more wrong matches. We&rsquo;d rather miss a link than join two different people.</p></details>
-<details><summary>Why can&rsquo;t funders see more?</summary><p>A single journey can point to one person even without a name, and faith is sensitive information. Detailed totals give funders what they need without anyone&rsquo;s steps leaving the ministries caring for them.</p></details>
-<details><summary>What about young people?</summary><p>Journeys are never linked for anyone under 18.</p></details>
-<details><summary>Has this been done before?</summary><p>In health, yes. Australian studies have linked millions of hospital records this way with accuracy close to linking by name. As far as we know, this is the first time it has been used to care for people across ministries.</p></details>
-</div>
-
-<h2>In the Australian context</h2>
-<ul class="jl">
-<li><b>Faith is sensitive information</b> under the Australian Privacy Principles, so it needs its own yes and is used for nothing else.</li>
-<li><b>A journey is personal information,</b> even without a name. Only totals count as de-identified, following the OAIC and CSIRO framework.</li>
-<li><b>Young people are protected</b> ahead of the Children&rsquo;s Online Privacy Code.</li>
-</ul>
-<p class="jnote">Not legal advice. Prolegis reviews the consent wording.</p>
-
-<h2>For developers</h2>
-<dl class="jdev">
-<div><dt><code>share.journey</code></dt><dd>Its own consent purpose: the ministries that help the person can see their steps. Refused under 18.</dd></div>
-<div><dt>Link and codes</dt><dd>Keyed hashes (<code>LINK_KEY</code>, <code>ORG_CODE_KEY</code>). No shared id, never returned by an API.</dd></div>
-<div><dt>Endpoints</dt><dd><code>GET /v1/responses/:id/journey</code> for the ministry the person responded through, <code>GET /v1/handoffs/:id/journey</code> for each ministry that welcomed them, <code>POST /v1/me/:token/milestones</code>, <code>GET /v1/network/journeys</code></dd></div>
-<div><dt>What a view returns</dt><dd>Steps and months, with <code>byYou</code> on the viewer&rsquo;s own steps. Never notes or other ministries&rsquo; names.</dd></div>
-<div><dt>Guards</dt><dd>The database refuses minors and anyone without consent. Every rule is tested.</dd></div>
-</dl>
-<p>See also <a href="#/pprl">the research paper</a>, <a href="#/docs/consent">Consent receipts</a> and <a href="#/docs/standard">the Always Handoff standard</a>.</p>
-"""
-
 AGENTS = """
 <p class="lead">Agents are a feature inside Always Connect and Always Safety. They help people do the admin around a welcome, so there's more time for the welcome itself.</p>
 <p>A person always decides what happens next. An agent never contacts someone who responded to Jesus on its own.</p>
@@ -432,7 +337,6 @@ GLOSSARY = """
 <dt>Sender</dt><dd>A ministry, event or app that passes responses to Always Platform.</dd>
 <dt>Welcoming now</dt><dd>A partner church or ministry that is trained, has room this month and answers introductions on time.</dd>
 <dt>Agents</dt><dd>A feature in Always Connect and Always Safety that helps teams with admin, with a person deciding every step.</dd>
-<dt>Journey</dt><dd>One person&rsquo;s steps across the ministries that help them, linked only with their yes. See <a href="#/docs/journeys">Journeys across ministries</a>.</dd>
 <dt>Placement</dt><dd>One way into a response page, such as a QR code on a screen or a batch of NFC armbands, so reports can show responses by channel without anyone's name.</dd>
 <dt>Developers</dt><dd>The API, SDK, MCP server and webhooks for building on Always Platform.</dd>
 </dl>
@@ -489,9 +393,6 @@ def apply(DOCS):
     edit('branding', 'In the console, set', 'In Always Respond, set')
     set_page('branding', title='Your own brand')
     set_page('results', title='Reports for your funders')
-    gi, pi = find('results')
-    _s, _t, _b = DOCS[gi][1][pi]
-    DOCS[gi][1][pi] = (_s, _t, _b + '<h2>Across ministries</h2><p>Reports count each person once, even when several ministries help them, using <a href="#/docs/journeys">journeys across ministries</a>. Only totals are shown.</p>')
     set_page('inbox', title='Welcome from your phone')
     edit('inbox', 'The Always Connect inbox works', 'Your Always Connect inbox works')
 
@@ -505,8 +406,6 @@ def apply(DOCS):
     gi, pi = find('privacy')
     DOCS[gi][1].insert(pi + 1, ('terms', 'Terms of use', TERMS))
     set_page('always-agent', title='Agents', body=AGENTS)
-    gi, pi = find('journey')
-    DOCS[gi][1].insert(pi + 1, ('journeys', 'Journeys across ministries', JOURNEYS))
     edit('ai', 'The <a href="#/docs/always-agent">Always Agent</a> helps', '<a href="#/docs/always-agent">Agents</a> in Always Connect and Always Safety help')
     edit('policies', '<td>Privacy Policy</td>', '<td><a href="#/docs/privacy">Privacy Policy</a></td>')
     edit('policies', '<td>Terms of Use</td>', '<td><a href="#/docs/terms">Terms of Use</a></td>')
@@ -530,7 +429,7 @@ def apply(DOCS):
         ('Always Respond', [('senders', 'Always Respond', ['senders', 'taps', 'branding', 'online'])]),
         ('Always Connect', [('inbox', 'Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming']), ('always-agent', 'Agents', ['always-agent'])]),
         ('Always Safety', [('compliance-overview', 'Always Safety', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review']), ('compliance-api', 'Safety API for platforms', ['compliance-api', 'compliance-platforms'])]),
-        ('Always Reports', [('results', 'Reports for your funders', ['results']), ('journeys', 'Journeys across ministries', ['journeys', 'journey'])]),
+        ('Always Reports', [('results', 'Reports for your funders', ['results'])]),
         ('Integrations', [('integrations', 'Integrations', ['integrations', 'int-chms', 'int-messaging', 'int-automation'])]),
         ('Developers', [('api', 'API and webhooks', ['api', 'webhooks']), ('sdk', 'SDK', ['sdk']), ('standard', 'Handoff standard and consent', ['standard', 'consent']), ('feed', 'Church feed and AI assistants', ['feed', 'mcp']), ('youversion', 'Scripture with YouVersion', ['youversion'])]),
         ('Trust and privacy', [('privacy', 'Privacy', ['privacy', 'your-choices']), ('security', 'Security and AI', ['security', 'ai']), ('young-people', 'Children and young people', ['young-people']), ('terms', 'Terms and policies', ['terms', 'policies'])]),
@@ -586,169 +485,9 @@ CSS = '''
 .dtoc button { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid var(--line); padding: 7px 0 7px 14px; min-height: 32px; color: var(--soft); font: 500 14px/1.35 var(--text, inherit); cursor: pointer; transition: color .2s ease, border-color .2s ease; }
 .dtoc button:hover, .dtoc button.on { color: var(--green); border-left-color: var(--green); }
 .prose :not(pre) > code { overflow-wrap: anywhere; }
-/* ---- Journeys page ---- */
-.js { margin: 30px 0 8px; }
-.js-steps { list-style: none; counter-reset: js; margin: 14px 0 0 !important; padding: 0 !important; display: grid; gap: 10px; }
-.js-steps li { counter-increment: js; position: relative; padding: 16px 18px 16px 58px; border-radius: 18px; background: #FFFDF8; border: 1px solid rgba(20,53,47,.09); font-size: 17px; line-height: 1.45; color: var(--soft); }
-.js-steps li::before { content: counter(js); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #F6DECB; color: #9A4A22; font: 700 13px/1 var(--head); }
-.js-steps li:not(:last-child)::after { content: ''; position: absolute; left: 29px; bottom: -11px; width: 2px; height: 12px; background: #E8A577; opacity: .6; }
-.js-steps b { color: var(--green); }
-.js-turn { margin: 18px 0 0; font-size: 18px; line-height: 1.6; color: var(--night); }
-.js-turn b { color: var(--green); }
-.jo { margin: 34px 0 8px; }
-.jo-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 14px; }
-.jo-grid > div { padding: 20px 22px; border-radius: 20px; background: #FFFDF8; border: 1px solid rgba(20,53,47,.09); border-left: 3px solid #E8A577; }
-.jo-grid h3 { margin: 0 0 6px; font: 700 17px/1.3 var(--head); color: var(--green); }
-.jo-grid p { margin: 0; color: var(--soft); font-size: 15.5px; line-height: 1.6; }
-.jbig { margin: 34px 0; padding: 30px 32px; border-radius: 26px; color: var(--cream); background: radial-gradient(70% 80% at 90% 0%, rgba(232,165,119,.25), rgba(232,165,119,0) 60%), linear-gradient(160deg, #1D4C43, #12302A); }
-.jbig p { margin: 0; font-family: var(--serif, Georgia, serif); font-size: clamp(21px, 2.6vw, 27px); line-height: 1.4; color: var(--cream); }
-.jk { margin-top: 8px; } .jk > p { font-size: 17px; line-height: 1.6; max-width: 62ch; }
-.jk-h { margin: 0 0 12px; font: 700 19px/1.3 var(--head); color: var(--green); }
-@media (max-width: 700px) { .jo-grid { grid-template-columns: 1fr; } .jbig { padding: 24px 22px; } }
-.jv .sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
-.jv { position: relative; margin: 30px 0 12px; padding: 22px 24px 20px; border-radius: 28px; overflow: hidden; color: var(--cream);
-  background: radial-gradient(70% 60% at 85% 0%, rgba(232,165,119,.22), rgba(232,165,119,0) 60%), radial-gradient(80% 70% at 0% 100%, rgba(77,150,128,.35), rgba(77,150,128,0) 60%), linear-gradient(160deg, #1D4C43, #12302A);
-  box-shadow: 0 40px 70px -40px rgba(10,30,26,.75), inset 0 0 0 1px rgba(248,243,234,.06); }
-.jv-top { display: flex; align-items: center; gap: 14px; }
-.jv-prog { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-.jv-prog i { height: 3px; border-radius: 3px; background: rgba(248,243,234,.18); overflow: hidden; position: relative; }
-.jv-prog i::after { content: ''; position: absolute; inset: 0; background: #E8A577; transform: scaleX(var(--p, 0)); transform-origin: left; }
-.jv-play { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(248,243,234,.25); background: rgba(248,243,234,.06); color: var(--cream); cursor: pointer; }
-.jv-play svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.jv-play .jv-pl { display: none; fill: currentColor; stroke: none; } .jv.paused .jv-play .jv-pl { display: block; } .jv.paused .jv-play .jv-pa { display: none; }
-.jv-play:focus-visible { outline: 3px solid #E8A577; outline-offset: 2px; }
-.jv-stage { position: relative; margin-top: 26px; padding-bottom: 96px; }
-.jv-cards { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.jv-card { display: grid; gap: 4px; align-content: start; padding: 16px 14px 14px; border-radius: 18px; background: rgba(248,243,234,.06); box-shadow: inset 0 0 0 1px rgba(248,243,234,.1); transition: background .6s ease, box-shadow .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
-.jv-card.on { background: rgba(248,243,234,.13); box-shadow: inset 0 0 0 1px rgba(232,165,119,.55), 0 18px 36px -20px rgba(0,0,0,.6); transform: translateY(-4px); }
-.jv-ic { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 8px; border-radius: 12px; background: rgba(248,243,234,.1); color: #F8F3EA; transition: background .6s ease, color .6s ease; }
-.jv-card.on .jv-ic { background: #E8A577; color: #1E2A26; }
-.jv-ic svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.jv-card b { font: 700 15px/1.25 var(--head); color: #F8F3EA !important; }
-.jv-role { font-size: 13px; line-height: 1.35; color: rgba(248,243,234,.62); }
-.jv-code { justify-self: start; margin-top: 10px; padding: 4px 9px; border-radius: 8px; background: #F8F3EA; color: #1B4740; font: 600 12px/1.2 ui-monospace, 'SF Mono', Menlo, monospace; opacity: 0; transform: translateY(6px) scale(.96); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
-.jv-card.coded .jv-code { opacity: 1; transform: none; }
-.jv-orb { position: absolute; z-index: 3; left: 0; top: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #FFD9BE, #E8A577 60%, #C9784A); color: #1E2A26; font: 800 13px/1 var(--head); box-shadow: 0 0 0 6px rgba(232,165,119,.18), 0 0 28px rgba(232,165,119,.65); opacity: 0; will-change: transform; }
-.jv-hub { position: absolute; z-index: 2; left: 50%; bottom: 8px; display: flex; align-items: center; gap: 10px; padding: 10px 18px 10px 10px; border-radius: 99px; background: #F8F3EA; color: #1E2A26; font-size: 14px; white-space: nowrap; transform: translate(-50%, 12px); opacity: 0; transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); box-shadow: 0 18px 36px -18px rgba(0,0,0,.6); }
-.jv-hub b { color: #1B4740 !important; }
-.jv-hub.on { opacity: 1; transform: translate(-50%, 0); }
-.jv-lock { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #1B4740; color: #F8F3EA; }
-.jv-lock svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.jv-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; overflow: visible; pointer-events: none; }
-.jv-lines path { fill: none; stroke: rgba(232,165,119,.75); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: var(--len); stroke-dashoffset: var(--len); transition: stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1); }
-.jv-lines.on path { stroke-dashoffset: 0; }
-.jv-cap { position: relative; height: 1.5em; margin: 14px 0 0; text-align: center; font: 600 16.5px/1.5 var(--head); }
-.jv-cap span { position: absolute; inset: 0; opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s ease; color: #F8F3EA; }
-.jv-cap span.on { opacity: 1; transform: none; }
-.jp { margin: 34px 0 6px; }
-.jp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
-.jp-grid > div { padding: 20px 22px; border-radius: 20px; background: #FFFDF8; border: 1px solid var(--line); }
-.jp-n { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #FBE3D2; color: var(--clay); font: 800 14px/1 var(--head); }
-.jp-grid h3 { margin: 12px 0 6px !important; font: 800 18px/1.25 var(--head) !important; color: var(--green); }
-.jp-grid p { margin: 0 !important; font-size: 15.5px; line-height: 1.55; color: var(--soft); }
-.jpr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 18px 0 8px; border-radius: 20px; overflow: hidden; background: var(--green); }
-.jpr > div { display: grid; gap: 4px; padding: 16px 18px; border-right: 1px solid rgba(248,243,234,.1); }
-.jpr > div:last-child { border-right: 0; }
-.jpr b { font: 700 15px/1.25 var(--head); color: #F8F3EA !important; } .jpr span { font-size: 13px; line-height: 1.4; color: rgba(248,243,234,.7); }
-.jau { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
-.jau-c { position: relative; padding: 18px 20px; border-radius: 18px; background: #FFFDF8; border: 1px solid var(--line); }
-.jau-t { position: absolute; right: 14px; top: 14px; padding: 4px 8px; border-radius: 99px; background: var(--sage); color: var(--green); font: 700 11.5px/1 var(--head); }
-.jau-c h3 { margin: 0 0 6px !important; padding-right: 70px; font: 800 16.5px/1.3 var(--head) !important; color: var(--green); }
-.jau-c p { margin: 0 !important; font-size: 15px; line-height: 1.55; color: var(--soft); }
-@media (max-width: 760px) {
-  .jv { padding: 16px 14px 16px; margin-left: -6px; margin-right: -6px; border-radius: 22px; }
-  .jv-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .jv-card { padding: 13px 12px 12px; } .jv-ic { width: 34px; height: 34px; margin-bottom: 6px; }
-  .jv-stage { padding-bottom: 84px; } .jv-hub { font-size: 12.5px; white-space: normal; width: max-content; max-width: 92%; }
-  .jv-cap { font-size: 15px; height: 3em; }
-  .jp-grid, .jau { grid-template-columns: 1fr; }
-  .jpr { grid-template-columns: 1fr 1fr; } .jpr > div:nth-child(2) { border-right: 0; } .jpr > div:nth-child(-n+2) { border-bottom: 1px solid rgba(248,243,234,.1); }
-}
-.jt td, .jt th { vertical-align: top; }
-/* journeys: rationalised */
-.js-turn { margin: 26px 0 8px !important; font-size: 18.5px !important; line-height: 1.6; }
-.jl { list-style: none; margin: 12px 0 0 !important; padding: 0 !important; }
-.jl li { margin: 0 !important; padding: 13px 0 !important; border-top: 1px solid rgba(20,53,47,.12); font-size: 16.5px; line-height: 1.55; color: var(--soft); }
-.jl li::before { display: none !important; content: none !important; }
-.jl b { color: var(--green); }
-.jl-law b { display: block; margin-bottom: 2px; }
-.jl-law .jau-t { display: inline-block; margin: 0 6px 0 0; vertical-align: 1px; }
-.jx { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0 24px; margin-top: 14px; }
-.jx > div { display: grid; gap: 4px; align-content: start; padding: 14px 0; border-top: 2px solid rgba(20,53,47,.18); }
-.jx b { font: 700 16.5px/1.3 var(--head); color: var(--night); } .jx span { font-size: 15.5px; line-height: 1.55; color: var(--soft); }
-.jx > .jx-yes { border-top-color: #E8A577; } .jx-yes b { color: #9A4A22; } .jx-yes span { color: var(--green); font-weight: 600; }
 .jn { margin-top: 12px !important; }
 .jn li { margin-bottom: 10px; font-size: 16.5px; line-height: 1.55; }
-.jnote { margin-top: 10px !important; font-size: 15px !important; color: var(--soft); }
-.jdev { margin: 12px 0 16px; }
-.jdev > div { padding: 12px 0; border-top: 1px solid rgba(20,53,47,.12); }
-.jdev dt { font: 700 15px/1.4 var(--head); color: var(--green); overflow-wrap: anywhere; }
-.jdev dd { margin: 3px 0 0; font-size: 15px; line-height: 1.55; color: var(--soft); }
-@media (max-width: 700px) { .jx { grid-template-columns: 1fr; } .jbig { margin: 26px 0 !important; } }
-.jl-big li { font: 700 19px/1.4 var(--head) !important; color: var(--green) !important; padding: 12px 0 !important; }
-.jx, .jx > div { background: none !important; box-shadow: none !important; border-radius: 0 !important; }
-.jx { padding: 0 !important; border: 0 !important; }
-.jdev code { font-size: 13px; }
-.jh { margin: 30px 0 6px; }
-.jh-q { padding: 14px 0; border-top: 1px solid rgba(20,53,47,.12); }
-.jh-q h3 { margin: 0 0 4px !important; font: 700 16.5px/1.3 var(--head) !important; color: var(--green); }
-.jh-q p { margin: 0 !important; font-size: 16.5px; line-height: 1.6; color: var(--soft); }
-.jh-end { margin: 6px 0 0 !important; padding-top: 14px; border-top: 2px solid #E8A577; font: 700 18px/1.4 var(--head); color: var(--green); }
-.jpp { margin: 22px 0 0; padding: 18px 20px; border-radius: 18px; background: #EAF1EC; }
-.jpp h3 { margin: 0 0 6px !important; font: 700 16.5px/1.3 var(--head) !important; color: var(--green); }
-.jpp p { margin: 0 !important; font-size: 15.5px; line-height: 1.6; color: var(--soft); }
-.jcta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--green); color: #FFFDF8 !important; font: 700 15.5px/1 var(--head); text-decoration: none !important; }
-.jcta:hover { background: var(--night); }
-.jfaq { margin-top: 10px; }
-.jfaq details { border-top: 1px solid rgba(20,53,47,.12); }
-.jfaq details:last-child { border-bottom: 1px solid rgba(20,53,47,.12); }
-.jfaq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; padding: 12px 0; cursor: pointer; list-style: none; font: 700 16.5px/1.35 var(--head); color: var(--green); }
-.jfaq summary::-webkit-details-marker { display: none; }
-.jfaq summary::after { content: '+'; flex: none; font: 400 22px/1 var(--head); color: #9A4A22; transition: transform .2s; }
-.jfaq details[open] summary::after { transform: rotate(45deg); }
-.jfaq details p { margin: 0 0 16px !important; font-size: 16px; line-height: 1.6; color: var(--soft); }
-.jpp p + p { margin-top: 10px !important; }
-/* journeys: calm overrides */
-.js-steps li { padding: 0 0 20px 34px !important; background: none !important; border: 0 !important; border-radius: 0 !important; font-size: 17.5px !important; }
-.js-steps li::before { content: '' !important; left: 0 !important; top: 8px !important; transform: none !important; width: 12px !important; height: 12px !important; background: #FFFDF8 !important; border: 2px solid #E8A577; box-sizing: border-box; }
-.js-steps li:last-child::before { background: var(--green) !important; border-color: var(--green); }
-.js-steps li:not(:last-child)::after { left: 5px !important; top: 22px !important; bottom: 2px !important; height: auto !important; width: 2px; opacity: .45 !important; }
-.js-steps li:last-child { padding-bottom: 0 !important; }
-.jo-grid { gap: 0 32px !important; }
-.jo-grid > div { padding: 16px 0 18px !important; background: none !important; border: 0 !important; border-top: 1px solid rgba(20,53,47,.12) !important; border-radius: 0 !important; }
-.jo-grid h3 { font-size: 16.5px !important; }
-.jpr { background: none !important; border-radius: 0 !important; gap: 0 28px !important; margin: 0 0 8px !important; }
-.jpr > div { padding: 14px 0 !important; border-right: 0 !important; border-bottom: 0 !important; border-top: 2px solid var(--green) !important; }
-.jpr b { color: var(--green) !important; font-size: 15.5px !important; } .jpr span { color: var(--soft) !important; font-size: 14px !important; }
-.jcmp th:last-child, .jcmp td:last-child { background: rgba(232,165,119,.12); color: var(--green); font-weight: 600; }
-.jcmp th:last-child { color: #9A4A22; }
-.jk-h { margin: 28px 0 0 !important; }
-.jau { gap: 0 32px !important; }
-.jau-c { padding: 16px 0 18px !important; background: none !important; border: 0 !important; border-top: 1px solid rgba(20,53,47,.12) !important; border-radius: 0 !important; }
-.jau-t { position: static !important; display: inline-block; margin-bottom: 8px; }
-.jau-c h3 { padding-right: 0 !important; }
-@media (max-width: 700px) { .jpr { gap: 0 18px !important; } }
 
-@media (max-width: 700px) {
-  #doc table.jt { display: block; border: 0; background: none; overflow: visible; max-width: none; }
-  #doc table.jt tr:first-child { display: none; }
-  #doc table.jt tr { display: block; margin: 0 0 12px; padding: 14px 16px; border-radius: 16px; background: #FFFDF8; border: 1px solid var(--line); }
-  #doc table.jt td { display: block; padding: 4px 0; border: 0; }
-  #doc table.jt td::before { content: attr(data-label); display: block; font: 700 12.5px/1.3 var(--head); color: var(--clay); }
-  #doc table.jt td:first-child { font: 700 16px/1.3 var(--head); color: var(--green); padding-bottom: 6px; }
-  #doc table.jt td:first-child::before { display: none; }
-  #doc table.jt td[data-label=""]::before { display: none; }
-  #doc .jx-row { grid-template-columns: 1fr; }
-}
-.jx { margin: 30px 0 8px; padding: 22px; border-radius: 24px; background: #FFFDF8; box-shadow: 0 1px 0 rgba(27,71,64,.05); }
-.jx-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.jx-m { display: grid; gap: 4px; padding: 14px; border-radius: 16px; background: var(--sage); }
-.jx-m b { font: 700 15px/1.25 var(--head); color: var(--green); } .jx-m span { font-size: 13.5px; color: var(--soft); }
-.jx-m code { justify-self: start; margin-top: 6px; font-size: 12px; background: #fff !important; }
-.jx-core { position: relative; display: grid; gap: 4px; margin-top: 26px; padding: 16px 18px; border-radius: 16px; background: var(--green); color: var(--cream); }
-.jx-core::before { content: ''; position: absolute; left: 12%; right: 12%; top: -18px; height: 18px; border: 2px dashed rgba(27,71,64,.3); border-bottom: 0; border-radius: 12px 12px 0 0; }
-.jx-core b { font: 800 16px/1.2 var(--head); color: var(--cream) !important; } .jx-core span { font-size: 14.5px; line-height: 1.5; opacity: .85; }
-@media (max-width: 700px) { .jx-row { grid-template-columns: 1fr 1fr; } }
 .dnav { top: 104px; max-height: calc(100vh - 128px); }
 .dnav .dsec { border-bottom: 1px solid var(--line); }
 .dnav .dsec:last-child { border-bottom: 0; }

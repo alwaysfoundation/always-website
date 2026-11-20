@@ -227,7 +227,7 @@ CEXP = '''
     <blockquote class="ft-pull">&ldquo;The beginning of the Good News of Jesus Christ, the Son of God.&rdquo;<cite>Mark 1:1</cite></blockquote>
 
     <h2>For churches running the course</h2>
-    <p>Leaders find the Study Guide and the How to Run video guide in the same screen. A church that runs the course can welcome people through Always Connect and invite them straight in. With their yes, journeys show whether people who did a course went on to join a church.</p>
+    <p>Leaders find the Study Guide and the How to Run video guide in the same screen. A church that runs the course can welcome people through Always Connect and invite them straight in.</p>
 
     <h2>Private by design</h2>
     <p>Nothing about your friend is sent to Always. The invitation goes from your phone, and your prayer list stays on it. The course belongs to its authors, and Always Sent links to their site.</p>

@@ -3,7 +3,7 @@ import json
 import qr
 
 # Preset: (role, topic shown above the form)
-PRESETS = {'church': ['Church or ministry', ''], 'compliance': ['Church or ministry', 'Always Safety'], 'reports': ['Church or ministry', 'Always Reports'], 'journeys': ['Church or ministry', 'Journeys pilot'],
+PRESETS = {'church': ['Church or ministry', ''], 'compliance': ['Church or ministry', 'Always Safety'], 'reports': ['Church or ministry', 'Always Reports'],
            'pilot': ['Evangelist', 'Always Sent'], 'evangelist': ['Evangelist', ''], 'supporter': ['Supporter', ''],
            'developer': ['Developer or tech platform', ''], 'platform': ['Developer or tech platform', 'Always Safety for platforms'], 'other': ['Something else', '']}
 

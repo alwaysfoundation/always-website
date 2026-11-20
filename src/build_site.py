@@ -219,7 +219,7 @@ DOCS = [
 <p>Always Platform already knows each step a person takes after they respond, so there is nothing extra to enter. Pick a month, a quarter or the financial year, and your report is ready.</p>
 <h2>What's in a report</h2>
 <ol>
-<li>The journey: how many people responded, were introduced, were accepted, were contacted and are connected.</li>
+<li>The steps: how many people responded, were introduced, were accepted, were contacted and are connected.</li>
 <li>What people asked for, like finding a church or exploring faith.</li>
 <li>Where they live, by state.</li>
 <li>Month by month, so you can show the trend.</li>
@@ -288,17 +288,6 @@ DOCS = [
 <tr><td><code>resources</code></td><td>Send a few helpful resources. Adults only.</td></tr>
 <tr><td><code>stats.anonymous</code></td><td>Count the person in anonymous totals.</td></tr></table>
 <p>The receipt follows ISO/IEC TS 27560 for consent records, so it can travel between any systems that implement the Always Handoff standard.</p>
-"""),
-  ("journey", "One journey, with consent", """
-<p class="lead">For developers: how a person&rsquo;s steps are linked across ministries, only with their permission.</p>
-<ul>
-<li>Its own consent purpose, <code>share.journey</code>, separate from being introduced to a church. Refused for anyone under 18.</li>
-<li>Always links steps with a keyed fingerprint of the person&rsquo;s mobile. Each ministry gets a different code for the same person, so ministries can&rsquo;t use codes to connect records. Only Always links the journey.</li>
-<li>Every ministry on the journey sees the steps before and after its own part, by month, with its own steps marked: the ministry the person responded through (<code>GET /v1/responses/:id/journey</code>) and each one that welcomed them (<code>GET /v1/handoffs/:id/journey</code>). Never notes or other ministries&rsquo; names. Every view is logged.</li>
-<li>Networks see totals by state and year (<code>GET /v1/network/journeys</code>), with small groups withheld.</li>
-<li>No one can search for people or browse a list. Withdraw once and the journey is unlinked straight away.</li>
-</ul>
-<p>The full design, in plain English, is in <a href="#/docs/journeys">Journeys across ministries</a>. Moving between church systems uses the open <a href="#/docs/standard">Always Handoff standard</a>.</p>
 """),
   ("standard", "The Always Handoff standard", """
 <p class="lead">An open specification for passing a person from one ministry to another, with consent attached.</p>
@@ -539,6 +528,7 @@ PR.NEW_PAGES['streets'] = ST.STREETS
 import research as RX
 PR.NEW_PAGES[RX.SLUG] = RX.PAGE
 PR.TITLES[RX.SLUG] = RX.TITLE
+PR.ALIASES['journeys'] = RX.SLUG
 PR.NEW_PAGES['dbs'] = ST.DBS
 PR.NEW_PAGES['cexp'] = ST.CEXP
 PR.NEW_PAGES['alpha'] = ST.ALPHA
@@ -1091,7 +1081,6 @@ header = """
 """
 
 # Home: rewrite in-page links to routes
-home = home.replace('<ul class="cs-track" role="list">', '<ul class="cs-track" role="list">' + RX.TILE, 1)
 home = home.replace('href="#join"', 'href="#/join"').replace('href="#stories"', 'href="#/stories"')
 home = home.replace('<a class="btn btn-peach" href="#/join">Join as a church or ministry</a>', '<a class="btn btn-peach" href="#/join">Join as a church or ministry</a>')
 home = home.replace('<p class="note">Evangelical and Pentecostal, in every state and territory, and growing every week. Every one can claim its page, and becomes a partner church before anyone is introduced to it.</p>',
@@ -1116,6 +1105,7 @@ function route() {
   const [first, second] = h.split('/');
   const aliases = """ + json.dumps(PR.ALIASES) + """;
   if (aliases[first]) { location.replace('#/' + aliases[first]); return; }
+  if (location.hash.startsWith('#/docs/journey')) { location.replace('#/pprl'); return; }
   if (location.hash === '#/docs/claim') { location.replace('#/docs/joining'); return; }
   if (location.hash.startsWith('#/compliance/my')) { location.replace('#/mycompliance'); return; }
   let page = 'home';
@@ -1148,7 +1138,6 @@ function showDoc(slug) {
     (prev ? `<a href="#/docs/${prev}"><span>Previous</span><b>${DOCS[prev].title}</b></a>` : '') +
     (next ? `<a class="next" href="#/docs/${next}"><span>Next</span><b>${DOCS[next].title}</b></a>` : '') + `</nav>` +
     `<div class="doc-meta"><span>Updated November 2026 · CC BY 4.0</span><span><a href="#/feedback">Suggest a change</a></span></div>`;
-  if (window.jvInit) setTimeout(window.jvInit, 60);
   document.querySelectorAll('.dnav a').forEach((a) => a.classList.toggle('on', a.dataset.slug === slug));
   if (!document.getElementById('dsq').value) document.querySelectorAll('.dnav details.dsec').forEach((dt) => { dt.open = !!dt.querySelector(`a[data-slug="${slug}"]`); });
   document.getElementById('dbar-t').textContent = d.title; document.getElementById('dbar-g').textContent = d.group; closeDocNav();
@@ -1186,53 +1175,6 @@ document.getElementById('dbar').addEventListener('click', openDocNav);
 document.getElementById('dnav-x').addEventListener('click', closeDocNav);
 document.getElementById('dscrim').addEventListener('click', closeDocNav);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDocNav(); });
-// Journeys explainer: a small timeline that moves Sam through four ministries, then shows Always linking them.
-window.jvInit = () => {
-  const root = document.querySelector('[data-jv]'); if (!root || root.dataset.ready) return; root.dataset.ready = '1';
-  const stage = root.querySelector('.jv-stage'), cards = [...root.querySelectorAll('.jv-card')], orb = root.querySelector('.jv-orb');
-  const hub = root.querySelector('.jv-hub'), lines = root.querySelector('.jv-lines'), caps = [...root.querySelectorAll('.jv-cap span')];
-  const bars = [...root.querySelectorAll('.jv-prog i')], play = root.querySelector('.jv-play');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const SCENE = 2800, TOTAL = SCENE * 5 + 1800;
-  let t0 = performance.now(), paused = false, pausedAt = 0, visible = true, raf;
-  const centre = (el) => { const a = el.getBoundingClientRect(), b = stage.getBoundingClientRect(); return { x: a.left - b.left + a.width / 2, y: a.top - b.top + a.height / 2, top: a.top - b.top, bottom: a.bottom - b.top }; };
-  const drawLines = () => {
-    const h = centre(hub), b = stage.getBoundingClientRect();
-    lines.setAttribute('viewBox', `0 0 ${b.width} ${b.height}`);
-    lines.innerHTML = cards.map((c) => { const p = centre(c.querySelector('.jv-code')); const mid = (p.bottom + h.top) / 2;
-      return `<path d="M${p.x} ${p.bottom + 4} C ${p.x} ${mid}, ${h.x} ${mid}, ${h.x} ${h.top - 2}"/>`; }).join('');
-    lines.querySelectorAll('path').forEach((pa) => pa.style.setProperty('--len', pa.getTotalLength() + 1));
-  };
-  const show = (scene, k) => {
-    cards.forEach((c, i) => { c.classList.toggle('on', i === scene); c.classList.toggle('coded', i < scene || (i === scene && k > .18) || scene >= 4); });
-    caps.forEach((c, i) => c.classList.toggle('on', i === Math.min(scene, 4)));
-    bars.forEach((b, i) => b.style.setProperty('--p', i < scene ? 1 : i === scene ? Math.min(k, 1) : 0));
-    hub.classList.toggle('on', scene >= 4); lines.classList.toggle('on', scene >= 4);
-  };
-  const orbAt = (scene, k) => {
-    if (scene >= 4) { orb.style.opacity = '0'; return; }
-    const ease = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
-    const to = centre(cards[scene].querySelector('.jv-ic')), from = scene ? centre(cards[scene - 1].querySelector('.jv-ic')) : { x: to.x, y: to.y - 30 };
-    const m = ease(Math.min(k / .35, 1)), x = from.x + (to.x - from.x) * m, y = from.y + (to.y - from.y) * m - Math.sin(m * Math.PI) * 26;
-    orb.style.transform = `translate(${x}px, ${y}px)`; orb.style.opacity = scene === 0 ? String(Math.min(k / .15, 1)) : '1';
-  };
-  const frame = (now) => {
-    if (!paused && visible) {
-      const t = (((now - t0) % TOTAL) + TOTAL) % TOTAL, scene = Math.min(Math.floor(t / SCENE), 4), k = (t - scene * SCENE) / SCENE;
-      show(scene, k); orbAt(scene, k);
-    }
-    raf = requestAnimationFrame(frame);
-  };
-  drawLines(); addEventListener('resize', drawLines);
-  if (reduce) { show(4, 1); play.hidden = true; return; }
-  new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(root);
-  play.addEventListener('click', () => {
-    paused = !paused; root.classList.toggle('paused', paused);
-    play.setAttribute('aria-pressed', String(paused)); play.setAttribute('aria-label', paused ? 'Play animation' : 'Pause animation');
-    if (paused) pausedAt = performance.now(); else t0 += performance.now() - pausedAt;
-  });
-  raf = requestAnimationFrame(frame);
-};
 
 
 
@@ -1305,7 +1247,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + CA.JS + CP.JS + extras.JS + DV.JS + PR.MENU_JS + CF.JS + JN.JS + RX.JS + PO.JS + MO.JS + HM.JS + SC.JS
+""" + CA.JS + CP.JS + extras.JS + DV.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS + HM.JS + SC.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order)).replace('__ALIAS__', json.dumps(DU.ALIAS))
 
 footer = """
@@ -1334,7 +1276,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{RX.CSS}{RX.TILE_CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{RX.CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>

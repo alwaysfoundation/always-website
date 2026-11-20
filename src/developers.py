@@ -49,7 +49,6 @@ BUILD = [
     ('app', 'Scripture', 'The Bible in your app through YouVersion.', 'docs/youversion'),
     ('platforms', 'AI assistants', 'Let assistants find partner churches through the MCP connector, using public information only.', 'docs/mcp'),
     ('consent', 'Consent receipts', 'A record of what each person agreed to, the words they saw and who may see their details.', 'docs/consent'),
-    ('journeys', 'Journeys across ministries', 'Link one person&rsquo;s steps across ministries, only with their yes.', 'docs/journeys'),
 ]
 
 

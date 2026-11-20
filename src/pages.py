@@ -192,7 +192,7 @@ FAQ_GROUPS = [
   ('How do you use AI?', 'To save time on routine work, like writing your monthly report. Every welcome comes from a real person, and young people\'s information is kept out of AI entirely.'),
   ('What is Always Safety?', 'A guide to the privacy, child safety, charity and messaging rules that apply to your ministry, with a check-up every quarter that a person at your ministry approves, and updates when the law changes. It is free for churches and is not legal advice. Try the free check-up at alwaysfoundation.org/#/compliance.'),
   ('What do Always agents do?', 'They help your team with follow-up and administration: drafting messages, setting reminders and keeping records up to date. A person approves every step, people\'s details stay in Australia, and agents never handle young people\'s information.'),
-  ('Can ministries see my journey across ministries?', 'Only if you say yes, with a separate tick you can withdraw any time. The ministries that help you then see your steps by month, never notes. Each ministry gets a different code, and only Always links the journey. See Journeys across ministries in the docs.'),
+  ('Do churches and ministries share my information with each other?', 'No. Your details go only to the church or ministry you ask to be introduced to. Always does not link your information across organisations.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
   ('How can I support the work?', 'Stand with us in prayer, and get in touch at hello@alwaysfoundation.org to book a catch-up call.'),

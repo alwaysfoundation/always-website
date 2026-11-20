@@ -85,10 +85,6 @@ CSS = '''
 .ptr-tile-night .ptr-tile-mono { background: #F8D486; color: #1E2A26; }
 .ptr-tile-k { font: 600 14px/1 var(--head); color: var(--clay, #B55A2E); } .ptr-tile-night .ptr-tile-k { color: #F2B98E; }
 .ptr-tile-n { font: 800 clamp(26px, 2.6vw, 34px)/1.05 var(--head); letter-spacing: -.02em; }
-.cs-img.jn-tile { background: radial-gradient(70% 60% at 85% 0%, rgba(232,165,119,.25), rgba(232,165,119,0) 60%), linear-gradient(160deg, #1D4C43, #12302A); display: grid; place-items: center; }
-.cs-img .jn-art { position: absolute; top: 7%; right: 5%; width: min(48%, 360px); height: auto; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
-.cs-tile:hover .cs-img .jn-art { transform: scale(1.04); }
-@media (max-width: 700px) { .cs-img .jn-art { width: 78%; right: 11%; top: 5%; } }
 .cs-img.chai-tile { background: #fff; display: grid; place-items: center; }
 .cs-img.chai-tile img { width: 70%; height: auto; object-fit: contain; }
 .cs-tile:hover .cs-img.chai-tile img { transform: scale(1.03); }
