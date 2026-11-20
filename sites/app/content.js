@@ -51,8 +51,8 @@ window.AC = {
     { id: 'wotm', name: 'The Way of the Master', by: 'Living Waters', kind: 'Training', tone: 'sand', line: 'Ray Comfort’s training in sharing the Gospel one to one, with real street conversations to learn from.', url: 'https://livingwaters.com' },
     { id: 'btl', name: 'The Bridge to Life', by: 'The Navigators', kind: 'Outline', tone: 'sage', line: 'A simple drawing that shows how Jesus bridges the gap between us and God.', url: 'https://www.navigators.org' },
     { id: 'kgp', name: 'Knowing God Personally', by: 'Cru', kind: 'Outline', tone: 'night', line: 'A short booklet to read through with a friend, one page at a time.', url: 'https://www.cru.org' },
-    { id: 'cexp', name: 'Christianity Explained', by: 'HumeRidge Church of Christ, Toowoomba', kind: 'Course', tone: 'night', line: 'A six-session Australian course through Mark’s Gospel for people with little or no Bible background. The session videos are free on YouTube, with a follow-up course, Your Walk with Jesus.', url: 'https://christianityexplained.com/pages/session-videos' },
-    { id: 'dbs', name: 'Discovery Bible Study', by: 'dbsguide.org', kind: 'Bible study', tone: 'sage', line: 'A simple way to read the Bible with a friend and see for yourself what it says, in several languages. Try it in the app under Read together.', url: 'https://dbsguide.org' },
+    { id: 'cexp', name: 'Christianity Explained', by: 'HumeRidge Church of Christ, Toowoomba', kind: 'Course', tone: 'night', line: 'A six-session Australian course through Mark’s Gospel for people with little or no Bible background. The session videos are free on YouTube, with a follow-up course, Your Walk with Jesus.', url: 'https://christianityexplained.com/pages/session-videos', app: '#/learn/cexp' },
+    { id: 'dbs', name: 'Discovery Bible Study', by: 'dbsguide.org', kind: 'Bible study', tone: 'sage', line: 'A simple way to read the Bible with a friend and see for yourself what it says, in several languages. Try it in the app under Read together.', url: 'https://dbsguide.org', app: '#/learn/dbs' },
     { id: 'alpha', name: 'Alpha', by: 'Alpha Australia', kind: 'Course', tone: 'night', line: 'Food, a short talk and honest conversation about life and faith, at churches near you.', url: 'https://alpha.org.au' },
   ],
   partners: [
@@ -81,6 +81,20 @@ window.AC = {
         { t: 'Gospels of John', s: 'Free tracts and Gospels to give away.', url: 'https://tracts.needgod.net' },
       ] },
   ],
+  cexp: {
+    sessions: [
+      ['Jesus', 'Son of God', 'https://youtu.be/LvPkoaavheA'],
+      ['Jesus', 'His death on a cross', 'https://youtu.be/uXmE7OVVOv4'],
+      ['Jesus', 'His resurrection', 'https://youtu.be/tZfQjbcIHQs'],
+      ['God’s Gift', 'Not our works', 'https://youtu.be/FZcOYXMTe3Q'],
+      ['Repenting', 'What is a Christian?', 'https://youtu.be/enYMJW3BqLI'],
+      ['Believing', 'What is a Christian?', 'https://youtu.be/mH8ZAKKKyYI'],
+    ],
+    videos: 'https://christianityexplained.com/pages/session-videos',
+    follow: 'https://christianityexplained.com/products/your-walk-with-jesus',
+    study: 'https://christianityexplained.com/products/study-guide',
+    run: 'https://christianityexplained.com/products/how-to-run-christianity-explained',
+  },
   dbs: [
     ['JHN 3 1-21', 'A visit at night'], ['JHN 4 1-26', 'The woman at the well'], ['MRK 2 1-12', 'Through the roof'], ['LUK 7 36-50', 'Forgiven much'],
     ['LUK 15 11-32', 'The father runs'], ['LUK 19 1-10', 'Jesus comes to dinner'], ['JHN 11 17-44', 'Lazarus'], ['LUK 23 32-49', 'The cross'],

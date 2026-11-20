@@ -34,8 +34,8 @@ home = home.replace('{{UEN_STUDIO}}', _photo('uen-studio.jpg')).replace('{{TGH_I
 home = home.replace('{{CXMMXNS_IMG}}', _photo('cxmmxns-tour.jpg'))
 home = home.replace('{{ALPHA_IMG}}', _photo('alpha-photo.jpg'))
 import shutil as _sh; os.makedirs(os.path.join(ROOT, '..', 'img'), exist_ok=True); _sh.copyfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), os.path.join(ROOT, '..', 'img', 'alpha-logo.png'))
-home = home.replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png')
-home = home.replace('{{SYDNEYFIRE_IMG}}', _photo('sydneyfire-street.jpg'))
+home = home.replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png').replace('{{DBS_TILE}}', _photo('dbs-illustration.png')).replace('{{CEXP_TILE}}', _photo('cexp-booklet.png'))
+home = home.replace('{{STREET_IMG}}', _photo('sydney-street.jpg'))
 home = home.replace('{{REJOICE_IMG}}', _photo('rejoice-team.jpg'))
 home = home.replace('{{UEN_IMG}}', _photo('uen-event.jpg'))
 import home as HM
@@ -44,8 +44,10 @@ home = home.replace('{{HORIZON}}', HM.HORIZON)
 FAITHTECH_IMG = _photo('faithtech.png', maxw=1600, q=84)
 BRANCHES_IMG = _photo('branches.png', maxw=1600, q=90)
 CHAI_LOGO = _photo('chai-logo.png', maxw=600, q=88)
-SF_PHOTO = _photo('sydneyfire-street.jpg', maxw=1600, q=78)
+SF_PHOTO = _photo('sydney-street.jpg', maxw=1600, q=78)
 ALPHA_PHOTO = _photo('alpha-photo.jpg', maxw=1600, q=78)
+DBS_IMG = _photo('dbs-illustration.png', maxw=1400, q=80)
+CEXP_IMG = _photo('cexp-booklet.png', maxw=1430, q=80)
 YV_IMG = _photo('youversion.png', maxw=1600, q=82)
 home = _swap(home, 'class="sec promise"', '')
   # 'Watch it work' removed
@@ -534,11 +536,15 @@ PR.NEW_PAGES['integrations'] = IG.PAGE
 PR.NEW_PAGES['mycompliance'] = CA.PAGE
 PR.TITLES['mycompliance'] = 'Your safety check-up · Always Foundation'
 PR.TITLES['integrations'] = 'Integrations · Always Foundation'
-PR.NEW_PAGES['sydneyfire'] = ST.SYDNEYFIRE
+PR.NEW_PAGES['streets'] = ST.STREETS
+PR.NEW_PAGES['dbs'] = ST.DBS
+PR.NEW_PAGES['cexp'] = ST.CEXP
 PR.NEW_PAGES['alpha'] = ST.ALPHA
 PR.NEW_PAGES['youversion'] = ST.YOUVERSION
 PR.TITLES['youversion'] = 'YouVersion integration · Always Foundation'
-PR.TITLES['sydneyfire'] = 'Sydney Fire Evangelism · Always Foundation'
+PR.TITLES['streets'] = 'Evangelists in Sydney · Always Foundation'
+PR.TITLES['dbs'] = 'Discovery Bible Study integration · Always Foundation'
+PR.TITLES['cexp'] = 'Christianity Explained integration · Always Foundation'
 PR.TITLES['alpha'] = 'Alpha integration · Always Foundation'
 PR.NEW_PAGES['chai'] = CH.PAGE
 PR.NEW_PAGES.update(_sp_pages); PR.TITLES.update(_sp_titles)
@@ -751,7 +757,7 @@ about = """
   </div>
 </div></section>
 """
-about = about.replace('{{AB1}}', _photo('uen-event.jpg')).replace('{{AB2}}', _photo('sydneyfire-street.jpg')).replace('{{AB3}}', _photo('alpha-photo.jpg'))
+about = about.replace('{{AB1}}', _photo('uen-event.jpg')).replace('{{AB2}}', _photo('sydney-street.jpg')).replace('{{AB3}}', _photo('alpha-photo.jpg'))
 about = about.replace('{{MODS}}', ''.join(f'<li><a href="#/{PR.PRODUCTS[k][0]}">{PR.mod_icon(k)}<span>{PR.VERBS[k]}</span><b>{PR.PRODUCTS[k][1]}</b><i aria-hidden="true"></i></a></li>' for k in ['app', 'pages', 'compliance', 'reports', 'connect']))
 
 
@@ -1369,7 +1375,7 @@ for _pid, (_page, _anchor) in PHOTOS:
     doc = doc[:_i] + _fig + doc[_i:]
 import re as _re2
 doc = _re2.sub(r'(<form\b[^>]*>)', r'\1<input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">', doc)
-doc = doc.replace('{{FAITHTECH_IMG}}', FAITHTECH_IMG).replace('{{BRANCHES_IMG}}', BRANCHES_IMG).replace('{{CHAI_LOGO}}', CHAI_LOGO).replace('{{SF_PHOTO}}', SF_PHOTO).replace('{{ALPHA_PHOTO}}', ALPHA_PHOTO).replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png').replace('{{YV_IMG}}', YV_IMG)
+doc = doc.replace('{{FAITHTECH_IMG}}', FAITHTECH_IMG).replace('{{BRANCHES_IMG}}', BRANCHES_IMG).replace('{{CHAI_LOGO}}', CHAI_LOGO).replace('{{SF_PHOTO}}', SF_PHOTO).replace('{{ALPHA_PHOTO}}', ALPHA_PHOTO).replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png').replace('{{YV_IMG}}', YV_IMG).replace('{{DBS_IMG}}', DBS_IMG).replace('{{CEXP_IMG}}', CEXP_IMG)
 doc = doc.replace('</style>', '.photo-band{margin:0;height:min(52vh,480px);overflow:hidden;background:var(--sage)}.photo-band img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:860px){.photo-band{height:300px}}.photo-credit{font-size:12px;opacity:.65;max-width:1240px;margin:22px auto 0;padding:0 40px;box-sizing:border-box}@media (max-width:640px){.photo-credit{padding:0 22px}}</style>', 1)
 _svg = lambda n: 'data:image/svg+xml;base64,' + _b.b64encode(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', n), 'rb').read()).decode()
 doc = doc.replace('{{LOGO}}', _svg('always-foundation-logo.svg')).replace('{{LOGO_REV}}', _svg('always-foundation-logo-reverse.svg'))

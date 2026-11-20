@@ -129,7 +129,7 @@ DOCS = ("Integrations", [
 <tr><td><a href="#/docs/int-chms">Church management</a></td><td>—</td><td>Elvanto, Planning Center (building); Fluro, ChurchSuite, Breeze</td></tr>
 <tr><td><a href="#/docs/int-messaging">Messaging</a></td><td>The church's own phone</td><td>Email from Sydney (building); Australian SMS; WhatsApp</td></tr>
 <tr><td><a href="#/docs/taps">Events, tickets and passes</a></td><td>NFC and QR</td><td>Humanitix, Eventbrite, Ticketek, Oztix, Moshtix, Apple and Google Wallet</td></tr>
-<tr><td>Scripture and next steps</td><td><a href="#/docs/youversion">YouVersion</a> (switching on), <a href="#/alpha">Alpha</a></td><td>—</td></tr>
+<tr><td>Scripture and next steps</td><td><a href="#/docs/youversion">YouVersion</a> (switching on), <a href="#/alpha">Alpha</a>, <a href="#/dbs">Discovery Bible Study</a>, <a href="#/cexp">Christianity Explained</a></td><td>—</td></tr>
 <tr><td><a href="#/docs/int-automation">Automation and AI</a></td><td>—</td><td>Zapier, Make, n8n; MCP server (building)</td></tr>
 <tr><td>For tech platforms</td><td><a href="#/docs/compliance-api">Safety API</a>, <a href="#/docs/youversion">Scripture component</a></td><td>Sign in with YouVersion</td></tr></table>
 <h2>The rules for every integration</h2>

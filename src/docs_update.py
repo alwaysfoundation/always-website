@@ -68,7 +68,7 @@ APP = """
 <li><b>Field notes</b> after time on the street or at an event.</li>
 </ul>
 <p>Your notes, prayer list, people and story stay on your phone. See <a href="#/docs/saving">How your information is saved</a>. When someone is introduced to a church, Always Connect handles it, and you only see the first names of people you connected.</p>
-<p>Always Sent opens in any browser, dark by default, with nothing to download. Street teams like Sydney Fire Evangelism use their own branded version. <a href="https://app.alwaysfoundation.org">Open Always Sent</a> or <a href="#/join/evangelist">join as an evangelist</a>.</p>
+<p>Always Sent opens in any browser, dark by default, with nothing to download. Street teams can use their own branded version. <a href="https://app.alwaysfoundation.org">Open Always Sent</a> or <a href="#/join/evangelist">join as an evangelist</a>.</p>
 """
 
 
@@ -205,7 +205,7 @@ TERMS = """
 <p>Questions: <b>hello@alwaysfoundation.org</b></p>
 <h2>Credits</h2>
 <p>Scripture quotations marked ESV are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Scripture quotations are not covered by our Creative Commons licence.</p>
-<p>Photos from UEN, Rejoice, Sydney Fire Evangelism, The Global Harvest, Alpha Australia, CXMMXNS, FaithTech and Christians in AI are used with permission. Some photos are from Unsplash, under the Unsplash License.</p>
+<p>Photos from UEN, Rejoice, evangelists in Sydney, The Global Harvest, Alpha Australia, CXMMXNS, FaithTech and Christians in AI are used with permission. Some photos are from Unsplash, under the Unsplash License.</p>
 """
 
 TAPS = """
@@ -238,7 +238,7 @@ YOUVERSION = """
 <h2>What's built</h2>
 <ul>
 <li><b>Scripture service.</b> <code>GET https://alwaysfoundation.org/api/scripture/passage?ref=ROM.5.8</code> returns the passage text, its reference, the translation and its copyright line. Passages are cached. No personal information is sent or kept.</li>
-<li><b>The Good News in Always Respond.</b> The Romans Road draws each verse from YouVersion, starting with Sydney Fire's app.</li>
+<li><b>The Good News in Always Respond.</b> The Romans Road draws each verse from YouVersion.</li>
 <li><b>A Bible reader.</b> "Start reading John" opens the Gospel inside the app, chapter by chapter.</li>
 <li><b>A component for developers.</b> <code>&lt;always-scripture&gt;</code> shows a passage in any site or app.</li>
 </ul>

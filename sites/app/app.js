@@ -524,6 +524,7 @@ on(/^\/learn$/, () => {
       <a class="li" href="#/learn/story"><span class="ico sand">${ic('sparkle')}</span><div class="grow"><div class="t">How do I explain the Gospel?</div><div class="s">God’s story in four moments, in seven languages</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/testimony"><span class="ico peach">${ic('pen')}</span><div class="grow"><div class="t">How do I tell my story?</div><div class="s">Three prompts and a 30-second version</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/dbs"><span class="ico sand">${ic('book')}</span><div class="grow"><div class="t">How do I read the Bible with a friend?</div><div class="s">Discovery Bible Study, ten stories to start</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="#/learn/cexp"><span class="ico peach">${ic('play')}</span><div class="grow"><div class="t">How do I help a curious friend?</div><div class="s">Christianity Explained, six short sessions</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/questions"><span class="ico">${ic('help')}</span><div class="grow"><div class="t">How do I answer hard questions?</div><div class="s">Honest, short answers</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div>
     <div class="sp2"></div>
@@ -532,7 +533,7 @@ on(/^\/learn$/, () => {
     <div class="sp2"></div><div class="row between"><p class="h2">Learn from partners</p></div><p class="p" style="margin-top:4px">Trusted training from ministries we work with. It opens on their sites.</p><div class="sp"></div>
     <div class="ptrs">${AC.partners.map((x) => `<a class="ptr ptr-${x.tone}" href="#/learn/partner/${x.id}"><span class="ptr-mono" aria-hidden="true">${x.mono}</span><span class="ptr-tx"><span class="ptr-by">Training by</span><b>${esc(x.name)}</b><span>${esc(x.tag)}</span></span><span class="ptr-n">${x.tools.length} tools</span></a>`).join('')}</div>
     <div class="sp2"></div><div class="row between"><p class="h2">More good training</p><a class="see" href="#/learn/library">See all</a></div><p class="p" style="margin-top:4px">Well-loved resources from ministries around the world.</p><div class="sp"></div>
-    <div class="libs">${AC.library.slice(0, 5).map((x) => `<a class="lib lib-${x.tone}" href="${x.url}${x.url.includes('?') ? '&' : '?'}utm_source=always-app&utm_medium=referral" target="_blank" rel="noopener"><span class="lib-k">${esc(x.kind)}</span><b>${esc(x.name)}</b><span class="lib-by">${esc(x.by)}</span><span class="lib-go">${ic('ext', 16)}</span></a>`).join('')}</div>
+    <div class="libs">${AC.library.slice(0, 5).map((x) => `<a class="lib lib-${x.tone}" href="${x.app || x.url + (x.url.includes('?') ? '&' : '?') + 'utm_source=always-app&utm_medium=referral'}"${x.app ? '' : ' target="_blank" rel="noopener"'}><span class="lib-k">${esc(x.kind)}</span><b>${esc(x.name)}</b><span class="lib-by">${esc(x.by)}</span><span class="lib-go">${ic('ext', 16)}</span></a>`).join('')}</div>
     <div class="sp2"></div><div class="list">
       <a class="li" href="#/learn/road"><span class="ico peach">${ic('book')}</span><div class="grow"><div class="t">The Romans Road</div><div class="s">Six verses that explain the Gospel</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="#/learn/guides"><span class="ico">${ic('chat')}</span><div class="grow"><div class="t">Conversation guides</div><div class="s">${AC.guides.length} guides for different friends</div></div><span class="chev">${ic('right', 18)}</span></a>
@@ -548,7 +549,7 @@ on(/^\/learn\/library$/, (m, q) => {
   const out = (u) => u + (u.includes('?') ? '&' : '?') + 'utm_source=always-app&utm_medium=referral';
   render(`${top('#/learn', 'Training library')}<p class="p">Well-loved evangelism training from ministries around the world. Each opens on their own site. We’re not affiliated with them, and nothing about you is sent.</p><div class="sp"></div>
     <div class="langs" role="group" aria-label="Kind">${kinds.map((x) => `<a href="#/learn/library?k=${encodeURIComponent(x)}" aria-pressed="${x === k}" class="lang-a">${x}</a>`).join('')}</div><div class="sp"></div>
-    <div class="stack">${AC.library.filter((x) => k === 'All' || x.kind === k).map((x) => `<a class="libc lib-${x.tone}" href="${out(x.url)}" target="_blank" rel="noopener"><div class="row between"><span class="lib-k">${esc(x.kind)}</span><span class="lib-go">${ic('ext', 18)}</span></div><p class="libc-t">${esc(x.name)}</p><p class="libc-l">${esc(x.line)}</p><span class="lib-by">${esc(x.by)}</span></a>`).join('')}</div>
+    <div class="stack">${AC.library.filter((x) => k === 'All' || x.kind === k).map((x) => `<a class="libc lib-${x.tone}" href="${x.app || out(x.url)}"${x.app ? '' : ' target="_blank" rel="noopener"'}><div class="row between"><span class="lib-k">${esc(x.kind)}${x.app ? ' · In the app' : ''}</span><span class="lib-go">${ic(x.app ? 'right' : 'ext', 18)}</span></div><p class="libc-t">${esc(x.name)}</p><p class="libc-l">${esc(x.line)}</p><span class="lib-by">${esc(x.by)}</span></a>`).join('')}</div>
     <div class="sp2"></div><a class="card" href="#/learn" style="text-decoration:none"><p class="k">Our partners</p><p class="h3">The Global Harvest and NeedGod.net</p><p class="p">Training from ministries we work alongside in Australia.</p></a>`, { tab: 'learn' });
 });
 on(/^\/learn\/partner\/([\w-]+)$/, (m) => {
@@ -964,6 +965,7 @@ const INVITE_TO = [
   ['church', 'Church on Sunday', 'church'],
   ['alpha', 'An Alpha course', 'Alpha'],
   ['course', 'A course about Jesus', 'a short course about Jesus, like Christianity Explained'],
+  ['dbs', 'Read the Bible together', 'read the Bible together'],
   ['youth', 'Youth night', 'youth'],
   ['group', 'A small group', 'my small group'],
   ['christmas', 'Christmas or Easter', 'our Christmas service'],
@@ -978,13 +980,17 @@ const INVITE_TIPS = [
 ];
 function inviteText(v) {
   const it = INVITE_TO.find((x) => x[0] === v.to) || INVITE_TO[0], who = v.name ? `Hey ${v.name}! ` : 'Hey! ';
-  const what = v.to === 'coffee' ? `Want to grab a coffee and then come to church with me` : `Would you like to come to ${it[2]} with me`;
+  const what = v.to === 'coffee' ? `Want to grab a coffee and then come to church with me`
+    : v.to === 'course' ? `Would you like to do Christianity Explained with me? It’s six short sessions about Jesus, through Mark’s Gospel. We could watch them together`
+    : v.to === 'dbs' ? `Would you like to read a story about Jesus with me and talk about it`
+    : `Would you like to come to ${it[2]} with me`;
   const where = [v.church && `at ${v.church}`, v.when].filter(Boolean).join(', ');
   const tone = { warm: ` It’s a big part of my life and I’d love to share it with you. No pressure at all.`, casual: ` No pressure, just thought you might enjoy it.`, simple: '' }[v.tone || 'warm'];
   return `${who}${what}${where ? ' ' + where : ''}?${tone}${v.pickup ? ' I’m happy to pick you up.' : ''}`;
 }
-on(/^\/invite$/, () => {
+on(/^\/invite$/, (m, q) => {
   const v = Object.assign({ name: '', to: 'church', church: '', when: '', tone: 'warm', pickup: false }, window.INVITE || {}); window.INVITE = v;
+  if (q && INVITE_TO.some((x) => x[0] === q.get('to'))) v.to = q.get('to');
   render(`${top('#/', 'Invite a friend')}
     <div class="faq-hero"><h2>Who could you invite?</h2><p>Many people who visit a church for the first time come because a friend asked. A personal invitation is one of the simplest ways to share Jesus.</p></div>
     <div class="sp2"></div>
@@ -1013,12 +1019,27 @@ on(/^\/invite$/, () => {
     let p = S.people.find((x) => x.name.toLowerCase() === v.name.toLowerCase());
     if (!p) { p = { id: uid(), name: v.name, since: Date.now(), steps: {}, log: [] }; S.people.unshift(p); }
     p.log.unshift({ t: `Invited to ${(INVITE_TO.find((x) => x[0] === v.to) || INVITE_TO[0])[1].toLowerCase()}${v.when ? ', ' + v.when : ''}`, at: Date.now() });
-    if (!S.prayer.some((x) => x.name === v.name)) S.prayer.unshift({ id: uid(), name: v.name, note: 'Invited to church', at: Date.now() });
+    if (!S.prayer.some((x) => x.name === v.name)) S.prayer.unshift({ id: uid(), name: v.name, note: `Invited: ${(INVITE_TO.find((x) => x[0] === v.to) || INVITE_TO[0])[1].toLowerCase()}`, at: Date.now() });
     save();
   };
   $('#iv-sms').onclick = (e) => { e.preventDefault(); remember(); location.href = 'sms:?&body=' + encodeURIComponent(msg()); if (v.name) toast(`${v.name} is on your walk and prayer lists`); };
   $('#iv-share').onclick = async () => { remember(); if (navigator.share) { try { await navigator.share({ text: msg() }); } catch {} } else { try { await navigator.clipboard.writeText(msg()); toast('Message copied'); } catch {} } };
   $('#iv-card').onclick = () => { const it = INVITE_TO.find((x) => x[0] === v.to) || INVITE_TO[0]; window.CARD = { kind: 'invite', style: 'dawn', font: 'classic', size: 'portrait', align: 'left', kicker: v.name ? `${v.name}, you’re invited` : 'You’re invited', title: it[1], when: v.when, where: v.church }; location.hash = '#/card'; };
+});
+on(/^\/learn\/cexp$/, () => {
+  const C = AC.cexp, seen = (S.cexp = S.cexp || { seen: [] }).seen;
+  render(`${top('#/learn', 'Christianity Explained')}<div class="faq-hero"><h2>Six short sessions about Jesus.</h2><p>An Australian course through Mark’s Gospel for people with little or no Bible background. Watch a session together, then talk about it over coffee.</p></div>
+    <div class="sp2"></div><p class="h2">The sessions</p><p class="p" style="margin-top:4px">Free videos. Tick each one off as you go.</p><div class="sp"></div>
+    <div class="list">${C.sessions.map(([t, s, u], i) => `<div class="li"><button class="ico ${seen.includes(i) ? 'green' : ''}" data-seen="${i}" aria-pressed="${seen.includes(i)}" aria-label="Session ${i + 1} watched" style="border:0;cursor:pointer">${seen.includes(i) ? ic('check', 20) : i + 1}</button><div class="grow"><div class="t">${esc(t)}</div><div class="s">${esc(s)}</div></div><a class="see" href="${u}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;min-height:44px">${ic('play', 16)}Watch</a></div>`).join('')}</div>
+    <div class="sp2"></div><div class="stack-s"><a class="btn peach" href="#/invite?to=course">${ic('send', 18)}Invite a friend to watch with you</a><a class="btn light" href="${C.videos}" target="_blank" rel="noopener">${ic('ext', 18)}All session videos</a></div>
+    <div class="sp2"></div><p class="h2">After the course</p><div class="sp"></div>
+    <div class="list"><a class="li" href="${C.follow}" target="_blank" rel="noopener"><span class="ico sand">${ic('sparkle')}</span><div class="grow"><div class="t">Your Walk with Jesus</div><div class="s">A follow-up course for new believers</div></div><span class="chev">${ic('ext', 18)}</span></a>
+      <a class="li" href="#/connect"><span class="ico">${ic('church')}</span><div class="grow"><div class="t">Find a church near you</div><div class="s">A church family to keep going with</div></div><span class="chev">${ic('right', 18)}</span></a></div>
+    <div class="sp2"></div><p class="h2">Running it at church</p><div class="sp"></div>
+    <div class="list"><a class="li" href="${C.study}" target="_blank" rel="noopener"><span class="ico peach">${ic('book')}</span><div class="grow"><div class="t">Study Guide</div><div class="s">For people doing the course</div></div><span class="chev">${ic('ext', 18)}</span></a>
+      <a class="li" href="${C.run}" target="_blank" rel="noopener"><span class="ico">${ic('play')}</span><div class="grow"><div class="t">How to Run Christianity Explained</div><div class="s">A video guide for leaders</div></div><span class="chev">${ic('ext', 18)}</span></a></div>
+    <p class="note" style="margin-top:14px">Christianity Explained is from HumeRidge Church of Christ, Toowoomba, shared with thanks. We’re not affiliated, and nothing about you is sent. Your progress is kept on this phone.</p>`, { tab: 'learn' });
+  $$('[data-seen]').forEach((b) => (b.onclick = () => { const i = +b.dataset.seen, k = seen.indexOf(i); if (k < 0) seen.push(i); else seen.splice(k, 1); save(); location.hash = '#/learn/cexp'; window.dispatchEvent(new HashChangeEvent('hashchange')); }));
 });
 const DBS_Q = {
   back: ['What are you thankful for this week?', 'What’s been hard? How can we pray for you?', 'How did you go with what you said you’d do last time?', 'Who did you share last week’s story with?'],
@@ -1032,7 +1053,8 @@ on(/^\/learn\/dbs$/, () => {
     <div class="faq">${[['Look back', DBS_Q.back], ['Look up', DBS_Q.up], ['Look forward', DBS_Q.fwd]].map(([t, qs]) => `<details><summary>${t}</summary><p>${qs.map(esc).join('<br>')}</p></details>`).join('')}</div>
     <div class="sp2"></div><p class="h2">Meeting Jesus</p><p class="p" style="margin-top:4px">Ten stories to read together, one each time you meet.</p><div class="sp"></div>
     <div class="list">${AC.dbs.map(([ref, t], i) => { const r = parseRef(ref); return `<a class="li" href="#/learn/dbs/${i}"><span class="jr-n" style="position:static;min-width:22px">${done.includes(i) ? ic('check', 16) : i + 1}</span><div class="grow"><div class="t">${esc(t)}</div><div class="s">${r ? refLabel(r) : ''}</div></div><span class="chev">${ic('right', 18)}</span></a>`; }).join('')}</div>
-    <div class="sp2"></div><a class="btn light" href="https://dbsguide.org" target="_blank" rel="noopener">${ic('ext', 18)}More at dbsguide.org</a>
+    <div class="sp2"></div><div class="stack-s"><a class="btn peach" href="#/invite?to=dbs">${ic('send', 18)}Invite a friend to read together</a><a class="btn light" href="https://dbsguide.org" target="_blank" rel="noopener">${ic('ext', 18)}More at dbsguide.org</a></div>
+    <p class="note" style="margin-top:12px">Discovery Bible Study is shared with thanks from dbsguide.org. We’re not affiliated, and nothing about you is sent.</p>
     <p class="note" style="text-align:center;margin-top:10px">Discovery Bible Study is a widely used method. We’re not affiliated with dbsguide.org.</p>`, { tab: 'learn' });
 });
 on(/^\/learn\/dbs\/(\d+)$/, async (m) => {
@@ -1046,7 +1068,7 @@ on(/^\/learn\/dbs\/(\d+)$/, async (m) => {
     <div class="sp"></div><p class="h3">Look forward</p>${qs(DBS_Q.fwd)}
     <div class="field"><label for="dbs-w">This week I will…</label><textarea class="input" id="dbs-w" rows="2" maxlength="280">${esc(S.dbs.will[i] || '')}</textarea></div>
     <p class="note">Kept on this phone.</p><div class="sp"></div>
-    <div class="stack-s"><button class="btn" id="dbs-done">${ic('check', 18)}We read this one</button>${AC.dbs[i + 1] ? `<a class="btn light" href="#/learn/dbs/${i + 1}">Next story</a>` : ''}</div>`, { tab: 'learn' });
+    <div class="stack-s"><button class="btn" id="dbs-done">${ic('check', 18)}We read this one</button>${AC.dbs[i + 1] ? `<a class="btn light" href="#/learn/dbs/${i + 1}">Next story</a>` : ''}<a class="btn light" href="#/invite?to=dbs">${ic('send', 18)}Invite someone to read with you</a></div>`, { tab: 'learn' });
   $('#dbs-w').onchange = (e) => { S.dbs.will[i] = e.target.value.trim(); save(); };
   $('#dbs-done').onclick = () => { if (!S.dbs.done.includes(i)) S.dbs.done.push(i); S.dbs.will[i] = $('#dbs-w').value.trim(); save(); toast('Marked as read'); location.hash = AC.dbs[i + 1] ? '#/learn/dbs/' + (i + 1) : '#/learn/dbs'; };
   try { const p = await passage(ref); const el = $('#dbs-text'); if (el) el.textContent = p.text; } catch { const el = $('#dbs-text'); if (el) el.innerHTML = `<a href="#/bible?ref=${encodeURIComponent(ref)}">Open ${r ? refLabel(r) : 'the passage'} in the Bible</a>`; }
@@ -1062,7 +1084,7 @@ const APP_FAQ = [
   ['What happens when someone says yes to Jesus?', 'Show them your QR code, or fill in the form together. With their permission, a church near them is told so someone can welcome them. They never need the app themselves. Nothing is shared without their tick, and young people are cared for with extra protection.'],
   ['Which Bible translations are included?', 'The World English Bible and the King James Version, both free to use. You can read, listen, highlight, take notes and share any verse.'],
   ['Can I share the verse of the day?', 'Yes. Tap the share button on today’s verse to make a card, choose a background, font and shape, and send it anywhere. It’s made on your phone and nothing is uploaded.'],
-  ['Where does the training come from?', 'From ministries we trust, like The Global Harvest, NeedGod.net, Two Ways to Live and Alpha. Each one is credited, and opens on their own site.'],
+  ['Where does the training come from?', 'From ministries we trust, like The Global Harvest, NeedGod.net, Two Ways to Live, Alpha, Discovery Bible Study and Christianity Explained. Each one is credited, and opens on their own site.'],
   ['Does it work without internet?', 'Mostly, yes. Once you’ve opened it, the Bible chapters you’ve read, your notes and your prayer list are all available offline.'],
   ['Who is behind it?', 'The Always Foundation, an independent, member-based Christian nonprofit that brings churches and ministries together for the Gospel. The app’s code is open source.'],
 ];

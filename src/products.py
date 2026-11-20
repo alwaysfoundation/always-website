@@ -35,7 +35,7 @@ ALIASES = {'agents': 'connect', 'build': 'developers', 'pages': 'respond', 'clai
 SOLUTIONS = {
     'churches':   ('churches',   'Churches',   'Welcome people near you who have said yes to Jesus, with less admin for your volunteers.', ['connect', 'pages', 'reports', 'compliance'], None),
     'youth':      ('youth',      'Youth',      'Keep young people safe, stay compliant, and give every young person a safe next step.', ['compliance', 'pages', 'connect', 'reports'], ('UEN', 'A Christian gaming ministry that tried Always Platform at youth events.')),
-    'ministries': ('ministries', 'Ministries', 'Events, tours, evangelists and street teams: a next step near home for everyone who responds, and the fruit to show for it.', ['pages', 'app', 'connect', 'reports'], ('Sydney Fire Evangelism', 'Street evangelists using their own branded response app.')),
+    'ministries': ('ministries', 'Ministries', 'Events, tours, evangelists and street teams: a next step near home for everyone who responds, and the fruit to show for it.', ['pages', 'app', 'connect', 'reports'], ('Evangelists in Sydney', 'Street evangelists sharing Jesus with Always Respond and Always Sent.')),
     'networks':   ('networks',   'Networks',   'Denominations, networks and the tech platforms that serve them: every church ready to welcome, with totals only.', ['connect', 'reports', 'compliance'], ('Love is Our Weapon', 'Our first Always Safety user, ready to roll it out to youth ministries and churches.')),
 }
 

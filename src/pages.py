@@ -806,11 +806,11 @@ PLATFORM_CSS = """
 
 MINISTRIES += """<section class="sec pg-sec pg-green"><div class="wrap">
   <h2 class="pg-h rv">For evangelists and street teams</h2>
-  <p class="pg-lead rv">Share Jesus with confidence, save every contact safely, and connect people with a local church, like Sydney Fire Evangelism.</p>
+  <p class="pg-lead rv">Share Jesus with confidence, save every contact safely, and connect people with a local church, like evangelists in Sydney.</p>
   <div class="sl-rows sl-rows-3">
     <div class="sl-row rv"><h3>Share with confidence</h3><p>The Good News, Scripture and short training in Always Sent.</p></div>
     <div class="sl-row rv"><h3>Save every contact safely</h3><p>Your own branded response app, with contacts kept safe in Australia.</p></div>
     <div class="sl-row rv"><h3>Connect people locally</h3><p>With their consent, pass people to a church near them, or to Alpha if they want to explore faith.</p></div>
   </div>
-  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Join as an evangelist</a><a class="btn btn-ghost" href="#/sydneyfire">Sydney Fire\u2019s story</a></div>
+  <div class="pg-cta rv"><a class="btn btn-peach" href="#/join/evangelist">Join as an evangelist</a><a class="btn btn-ghost" href="#/streets">Read their story</a></div>
 </div></section>"""
