@@ -118,7 +118,7 @@ PAGE = f'''<section class="page-hero cmx-hero"><div class="wrap pd-split">
 
 <section class="sec pd-statement cmx-end"><div class="wrap">
   <p class="rv">Free for churches.</p>
-  <span class="cmx-end-sub rv">Larger ministries contribute according to their size. One sign-in for every Always module.</span>
+  <span class="cmx-end-sub rv">Always is free for churches and ministries. One sign-in for every Always module.</span>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/compliance/check">Start your free check-up</a><a class="btn btn-ghost-dark" href="#/contact/compliance">Talk to us</a></div>
 </div></section>
 '''
@@ -430,7 +430,7 @@ DOCS = ("Always Safety", [
 <h2>Get started</h2>
 <ol>
 <li>Try the <a href="#/compliance/check">free check-up</a>. It takes about ten minutes, and nothing is saved.</li>
-<li><a href="#/join">Join Always</a> as a church or ministry.</li>
+<li><a href="#/join">Partner with Always</a> as a church or ministry.</li>
 <li>Sign in to Always and open <b>Safety</b>, answer the profile questions and save your answers.</li>
 <li>Each quarter, review your check-up, update anything that has changed, and approve it.</li>
 </ol>
@@ -464,7 +464,7 @@ DOCS = ("Always Safety", [
 <div class="callout">Found something wrong or missing? <a href="#/feedback">Tell us</a>. We read every message.</div>
 """),
   ("compliance-api", "Safety API", """
-<p class="lead">Use the register and the check-up in your own tools. The register is public; member data needs sign-in.</p>
+<p class="lead">Use the register and the check-up in your own tools. The register is public; partner data needs sign-in.</p>
 <h2>Public</h2>
 <table class="dt"><thead><tr><th>Call</th><th>What it does</th></tr></thead><tbody>
 <tr><td><code>GET /v1/compliance/register</code></td><td>The latest published register, with an ETag</td></tr>
@@ -480,7 +480,7 @@ DOCS = ("Always Safety", [
        "onlineServicesForChildren":false,"sendsEmailOrSms":true,"acncRegistered":true,
        "basicReligiousCharity":true,"acncMediumOrLarge":false},
        "answers":{"wwcc-register":"yes"}}'</code></pre>
-<h2>Members</h2>
+<h2>Partners</h2>
 <p>Sign in as an admin, or use a token with the <code>compliance</code> scope.</p>
 <table class="dt"><thead><tr><th>Call</th><th>What it does</th></tr></thead><tbody>
 <tr><td><code>GET /v1/compliance/profile</code> and <code>PUT</code></td><td>Your organisation's profile and answers</td></tr>

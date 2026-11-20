@@ -17,7 +17,7 @@ INTRO = """
 <h2>Where to start</h2>
 <ul>
 <li><b>New here?</b> Read <a href="#/docs/how-it-works">How it works</a>.</li>
-<li><b>A church or ministry?</b> <a href="#/docs/joining">Join Always</a>. Free for churches.</li>
+<li><b>A church or ministry?</b> <a href="#/docs/joining">Partner with Always</a>. Free for churches and ministries.</li>
 <li><b>Someone who responded?</b> See <a href="#/docs/your-choices">Your choices and your privacy</a>.</li>
 <li><b>A developer?</b> Start with the <a href="#/docs/api">API</a> or <a href="#/docs/compliance-api">Safety API</a>.</li>
 </ul>
@@ -96,14 +96,14 @@ MODULES = """
 JOINING = """
 <p class="lead">Register in a few minutes. We check your details, then switch on what you need.</p>
 <h2>Who can join</h2>
-<table class="dt"><tr><th>You are</th><th>What joining means</th></tr>
-<tr><td>A church or ministry</td><td>A member of the foundation. Choose your modules; churches use them free.</td></tr>
+<table class="dt"><tr><th>You are</th><th>What partnering means</th></tr>
+<tr><td>A church or ministry</td><td>A partner of the foundation. Choose your modules; Always is free for churches and ministries.</td></tr>
 <tr><td>An evangelist</td><td>Use Always Sent to share Jesus, with a safe next step for every yes.</td></tr>
-<tr><td>A supporter</td><td>Pray, give or volunteer with us.</td></tr>
+<tr><td>A supporter</td><td>Stand with us in prayer.</td></tr>
 <tr><td>A tech platform</td><td>Build on Always Platform, starting with Always Safety.</td></tr></table>
 <h2>How it works</h2>
 <ol>
-<li><b>Register</b> at <a href="#/join">Join Always</a>.</li>
+<li><b>Register</b> at <a href="#/join">Partner with Always</a>.</li>
 <li><b>Agree.</b> Churches and ministries affirm the Nicene Creed. Everyone agrees to the <a href="#/docs/terms">terms of use</a> and <a href="#/docs/privacy">privacy policy</a>.</li>
 <li><b>We check your details.</b> For churches and ministries, usually with your denomination or network.</li>
 <li><b>We switch on what you need</b>, with one sign-in for your team.</li>
@@ -119,7 +119,7 @@ PRIVACY = """
 <h2>What we collect, and why</h2>
 <table class="dt"><tr><th>When you</th><th>We collect</th><th>So that</th></tr>
 <tr><td>Respond to Jesus and ask for a next step</td><td>First name, a mobile or email, suburb, age band, the step you chose, your consent</td><td>A church or ministry near you can get in touch</td></tr>
-<tr><td>Register to join Always</td><td>Your name, email, optional mobile, your role, your organisation's details and what you agreed to</td><td>We can check your details and set you up</td></tr>
+<tr><td>Register to partner with Always</td><td>Your name, email, optional mobile, your role, your organisation's details and what you agreed to</td><td>We can check your details and set you up</td></tr>
 <tr><td>Contact us, or scan our QR code</td><td>First name, a way to reach you, an optional organisation and note</td><td>We can reply</td></tr>
 <tr><td>Use the safety check-up or API</td><td>Nothing about you. Answers are checked and the result returned; nothing is stored</td><td>You get your result</td></tr>
 <tr><td>Visit the website</td><td>No tracking cookies or advertising pixels</td><td>Nothing</td></tr></table>
@@ -161,16 +161,16 @@ TERMS = """
 <p class="lead">The agreement for using alwaysfoundation.org and Always Platform. Plain words, so everyone knows where they stand.</p>
 """ + REVIEW + """
 <h2>Who these terms are between</h2>
-<p>You and the Always Foundation. "Members" are churches and ministries that have joined. "You" means whoever uses the site or platform, including people acting for an organisation.</p>
-<h2>Joining</h2>
+<p>You and the Always Foundation. "Partners" are churches and ministries that have partnered with Always. "You" means whoever uses the site or platform, including people acting for an organisation.</p>
+<h2>Partnering</h2>
 <ul>
 <li>Give accurate details when you register, and keep them up to date.</li>
-<li>Churches and ministries affirm the Nicene Creed to become members.</li>
+<li>Churches and ministries affirm the Nicene Creed to become partners.</li>
 <li>We check registrations before switching anything on, and may decline one that doesn't fit our purpose.</li>
 <li>If you register for an organisation, you confirm you're allowed to.</li>
 </ul>
 <h2>Caring for people</h2>
-<p>Members who receive introductions agree to:</p>
+<p>Partners who receive introductions agree to:</p>
 <ul>
 <li>Use a person's details only to welcome them, as they agreed.</li>
 <li>Follow the consent the person gave, and stop when they withdraw.</li>
@@ -193,7 +193,7 @@ TERMS = """
 <li>Send spam, or scrape people's information.</li>
 </ul>
 <h2>Cost</h2>
-<p>Churches use the modules free. Larger ministries contribute according to their size, as agreed with them. We will tell members before any change.</p>
+<p>Always is free for churches and ministries.</p>
 <h2>Open source</h2>
 <p>The code is Apache 2.0 and the docs are CC BY 4.0. These terms cover our hosted service, not your own copy of the code. See <a href="#/docs/open-source">Open source and licences</a>.</p>
 <h2>Our responsibilities</h2>
@@ -201,7 +201,7 @@ TERMS = """
 <h2>Leaving</h2>
 <p>You can leave at any time. We may suspend access to protect people, for example after a serious breach of these terms. When an organisation leaves, we delete or return its people's details as their consent requires.</p>
 <h2>Changes</h2>
-<p>We'll post changes here and tell members before they take effect. These terms are governed by the law of New South Wales.</p>
+<p>We'll post changes here and tell partners before they take effect. These terms are governed by the law of New South Wales.</p>
 <p>Questions: <b>hello@alwaysfoundation.org</b></p>
 <h2>Credits</h2>
 <p>Scripture quotations marked ESV are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Scripture quotations are not covered by our Creative Commons licence.</p>
@@ -343,7 +343,7 @@ JOURNEYS = """
 <li><b>Every view is logged,</b> in a record that can&rsquo;t be quietly changed. Always staff see only what&rsquo;s needed to help.</li>
 <li><b>Never under 18.</b> Young people&rsquo;s journeys are never linked, and this can&rsquo;t be switched on.</li>
 <li><b>Independent review</b> of privacy and security before journeys open widely.</li>
-<li><b>Board oversight,</b> with a cybersecurity and technical adviser.</li>
+<li><b>Board oversight</b> of privacy and security.</li>
 <li><b>One key, one switch.</b> The key is kept apart from the data. Destroying it unlinks every journey at once.</li>
 </ul>
 
@@ -367,7 +367,7 @@ JOURNEYS = """
 
 <h2>Questions people ask</h2>
 <div class="jfaq">
-<details><summary>Do we have to trust Always Foundation?</summary><p>Yes, because only Always holds the key. That&rsquo;s why the code is open, every view is logged, the board oversees it with a cybersecurity and technical adviser, and it has an independent review.</p></details>
+<details><summary>Do we have to trust Always Foundation?</summary><p>Yes, because only Always holds the key. That&rsquo;s why the code is open, every view is logged, the board oversees it, and it has an independent review.</p></details>
 <details><summary>Can other ministries see our notes?</summary><p>No. Ministries see steps and months, like &ldquo;joined a church in May&rdquo;. Never notes, and never the names of other ministries.</p></details>
 <details><summary>Does every ministry have to be on Always?</summary><p>A step only counts if Sam responds through Always: our response pages, the church inbox, or a ministry&rsquo;s own system connected to ours. Steps elsewhere aren&rsquo;t counted.</p></details>
 <details><summary>What if Sam changes phone number?</summary><p>Then the new steps start a new journey. We match on the mobile number only, not names or birthdays, because guessing would mean more personal details and more wrong matches. We&rsquo;d rather miss a link than join two different people.</p></details>
@@ -422,7 +422,7 @@ GLOSSARY = """
 <dl class="gloss">
 <dt>Always Platform</dt><dd>The shared platform behind every module, with one sign-in and shared records.</dd>
 <dt>Module</dt><dd>A part of Always Platform you can switch on: Always Sent, Always Respond, Always Safety, Always Reports and Always Connect.</dd>
-<dt>Member</dt><dd>A church or ministry that has joined the foundation and affirms the Nicene Creed.</dd>
+<dt>Partner</dt><dd>A church or ministry that has partnered with the foundation and affirms the Nicene Creed.</dd>
 <dt>Response</dt><dd>Someone telling us they responded to Jesus and would like a next step, with their consent.</dd>
 <dt>Next best faith step</dt><dd>What would help most right now: usually a local church, sometimes a course, a youth group or care.</dd>
 <dt>Introduction</dt><dd>An invitation to a church or ministry nearby to welcome a person. Their details are shared only once it accepts.</dd>
@@ -479,7 +479,7 @@ def apply(DOCS):
     if False: edit('how-it-works', '<h2>1. Someone responds</h2>', '<div class="callout"><b>Always Respond and Always Connect work together.</b> Always Respond captures the yes. Always Connect finds the next best faith step for that person, near where they live, and makes sure a real person walks with them. Often that step is a local church; sometimes it is another ministry first, like Alpha.</div>\n<h2>1. Someone responds</h2>')
     set_page('glossary', body=GLOSSARY)
     gi, _ = find('introduction')
-    DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Join Always', JOINING), ('app', 'Always Sent', APP), ('saving', 'How your information is saved', SAVING)]
+    DOCS[gi][1][1:1] = [('modules', 'The five modules', MODULES), ('joining', 'Partner with Always', JOINING), ('app', 'Always Sent', APP), ('saving', 'How your information is saved', SAVING)]
 
     edit('senders', 'in Always for ministries', 'in Always Respond')
     set_page('senders', title='Response pages and QR codes')
@@ -512,7 +512,7 @@ def apply(DOCS):
     edit('policies', '<td>Terms of Use</td>', '<td><a href="#/docs/terms">Terms of Use</a></td>')
     edit('policies', 'Full policies are published', 'The Privacy Policy and Terms of Use are published here. The others are published')
     edit('brand', 'or "connects to the Always Network"', 'or "connects to Always Platform"')
-    edit('governance', 'one member, one vote.</li>', 'one member, one vote. <a href="#/join">Register to join</a>.</li>')
+    edit('governance', 'who the company&rsquo;s legal members are.]</li>', 'who the company&rsquo;s legal members are.] <a href="#/join">Partner with Always</a>.</li>')
     edit('mcp', 'how_always_works</b>: a short guide, so the assistant explains Always Platform accurately.',
          'how_always_works</b>: a short guide, so the assistant explains Always Platform and its modules accurately.')
 
@@ -525,7 +525,7 @@ def apply(DOCS):
     DOCS.append(IG.DOCS)
     pages = {t[0]: t for _, ps in DOCS for t in ps}
     layout = [
-        ('Get started', [('introduction', 'Welcome', ['introduction']), ('how-it-works', 'How it works', ['how-it-works', 'modules']), ('joining', 'Join Always', ['joining']), ('glossary', 'Glossary', ['glossary'])]),
+        ('Get started', [('introduction', 'Welcome', ['introduction']), ('how-it-works', 'How it works', ['how-it-works', 'modules']), ('joining', 'Partner with Always', ['joining']), ('glossary', 'Glossary', ['glossary'])]),
         ('Always Sent', [('app', 'Always Sent', ['app', 'saving'])]),
         ('Always Respond', [('senders', 'Always Respond', ['senders', 'taps', 'branding', 'online'])]),
         ('Always Connect', [('inbox', 'Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming']), ('always-agent', 'Agents', ['always-agent'])]),

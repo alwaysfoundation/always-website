@@ -55,7 +55,7 @@ def closing(slug):
     name = PR.PRODUCTS[slug][1]
     return (f'<section class="sec md-close"><div class="wrap"><div class="md-close-in rv">'
             f'<div><h2>Switch on {name}.</h2><p>Free for churches. One sign-in for your whole team, and your people’s details kept in Australia.</p></div>'
-            f'<div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/contact">Talk to us</a></div>'
+            f'<div class="pg-cta"><a class="btn btn-peach" href="#/join">Partner with Always</a><a class="btn btn-ghost" href="#/contact">Talk to us</a></div>'
             f'</div></div></section>')
 
 

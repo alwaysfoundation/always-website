@@ -414,8 +414,8 @@ const ok = await verifyWebhook({
 <p class="lead">YouVersion opens the technology behind the Bible App to ministries. Always Platform uses it in three places.</p>
 <ol>
 <li><b>Scripture from the first step.</b> Choosing "Start reading the Bible" opens a reading plan in the person's language, while a church gets in touch.</li>
-<li><b>Sign in with YouVersion.</b> People can sign in with the account they already use. If they agree, Always Platform links it to their home church, so their church stays with them across member apps.</li>
-<li><b>Every member app starts with Scripture.</b> Apps built on Always Platform can add the Bible reader in a few lines. Free, with no ads.</li>
+<li><b>Sign in with YouVersion.</b> People can sign in with the account they already use. If they agree, Always Platform links it to their home church, so their church stays with them across partner apps.</li>
+<li><b>Every partner app starts with Scripture.</b> Apps built on Always Platform can add the Bible reader in a few lines. Free, with no ads.</li>
 </ol>
 <p>YouVersion confirms who someone is. Always Platform holds which church they belong to and what they agreed to share. Neither holds the other's data.</p>
 """),
@@ -499,9 +499,9 @@ const ok = await verifyWebhook({
   ("governance", "Governance", """
 <p>The Always Foundation is being established as an Australian not-for-profit company limited by guarantee, with Prolegis Lawyers, and will register as a charity with the ACNC.</p>
 <ul>
-<li><b>Members own it.</b> Churches and ministries that affirm the Nicene Creed are voting members: one member, one vote.</li>
+<li><b>Partners shape it.</b> Churches and ministries that affirm the Nicene Creed partner with Always and help shape what we build through feedback and shared standards. [To confirm with Prolegis: who the company&rsquo;s legal members are.]</li>
 <li><b>A skilled, independent board</b> of five to nine directors, a majority independent of any single organisation.</li>
-<li><b>Committees:</b> Theology and Mission; Technology Steering; Safeguarding, Privacy and Ethics; Partnerships and Membership; Finance, Audit and Risk.</li>
+<li><b>Committees:</b> Theology and Mission; Technology Steering; Safeguarding, Privacy and Ethics; Partnerships; Finance, Audit and Risk.</li>
 <li><b>Builders on equal terms.</b> Anyone building on Always Platform, including commercial builders, does so on the same terms as everyone else, with no special rights.</li>
 </ul>
 """),
@@ -516,7 +516,7 @@ const ok = await verifyWebhook({
 <p>Code lives at <b>github.com/alwaysfoundation</b>. Our focus is Australia, but anyone, anywhere, can use the technology for their own network.</p>
 """),
   ("brand", "Brand and trademark", """
-<p>"Always", "Always Foundation" and the Always mark are trademarks held for the foundation's members. Anyone may say their app is "built on Always" or "connects to the Always Network". Please ask before using the mark, or anything that suggests the foundation endorses or verifies your product: <b>hello@alwaysfoundation.org</b>.</p>
+<p>"Always", "Always Foundation" and the Always mark are trademarks held by the foundation. Anyone may say their app is "built on Always" or "connects to the Always Network". Please ask before using the mark, or anything that suggests the foundation endorses or verifies your product: <b>hello@alwaysfoundation.org</b>.</p>
 """),
  ]),
 ]
@@ -750,9 +750,9 @@ about = """
 </div></section>
 <section class="sec" style="padding-top:0"><div class="wrap">
   <div class="creed rv">
-    <div><h2>Built together. Shared freely.</h2><a class="btn btn-peach" href="#/join" style="margin-top:28px">Join Always</a></div>
-    <div><p>Always Foundation is a Gospel technology foundation: an independent, member-based Christian nonprofit. Our members help shape what we build, contribute to common standards and share in the benefits. Churches use it free, and larger ministries contribute according to their size.</p>
-    <p style="margin-top:16px">Members affirm the Nicene Creed (AD 381), so churches across denominations can serve together on the historic faith. The foundation is being established as an Australian not-for-profit company limited by guarantee, to register as a charity with the ACNC.</p></div>
+    <div><h2>Built together. Shared freely.</h2><a class="btn btn-peach" href="#/join" style="margin-top:28px">Partner with Always</a></div>
+    <div><p>Always Foundation is a gospel technology ministry and not-for-profit serving churches and ministries freely. Our partner churches and ministries help shape what we build through feedback and shared standards. Always is free for churches and ministries.</p>
+    <p style="margin-top:16px">Partners affirm the Nicene Creed (AD 381), so churches across denominations can serve together on the historic faith. The foundation is being established as an Australian not-for-profit company limited by guarantee, to register as a charity with the ACNC.</p></div>
   </div>
 </div></section>
 """
@@ -1080,8 +1080,8 @@ header = """
     </a>
     <nav aria-label="Main" id="main-nav"><ul>
       """ + PR.menu_html() + """
-    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/join">Join Always</a></div></nav>
-    <a class="btn btn-peach" href="#/join">Join Always</a>
+    </ul><div class="nav-foot"><div class="nav-more"><a href="#/faq">FAQs</a><a href="#/contact">Contact</a></div><a class="btn btn-peach nav-cta" href="#/join">Partner with Always</a></div></nav>
+    <a class="btn btn-peach" href="#/join">Partner with Always</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" onclick="toggleMenu()"><span>Menu</span><i aria-hidden="true"></i></button>
   </div>
 </header>

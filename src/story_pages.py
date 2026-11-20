@@ -3,8 +3,8 @@ import re
 STORIES = {
     'uen': {
         'slug': 'uen', 'title': 'UEN · Always Foundation',
-        'dek': 'A Christian gaming ministry that meets young Australians where they play, and helped found Always Platform.',
-        'glance': [('Ministry', 'UEN, the Universal eSports Network'), ('Founder', 'Jake Wilson'), ('Role', 'Founding member and design partner'), ('Uses', 'Always Respond and Always Connect')],
+        'dek': 'A Christian gaming ministry that meets young Australians where they play, and was our founding design partner.',
+        'glance': [('Ministry', 'UEN, the Universal eSports Network'), ('Founder', 'Jake Wilson'), ('Role', 'Founding design partner'), ('Uses', 'Always Respond and Always Connect')],
         'cta': ('#/connect', 'See Always Connect'), 'link': ('#/youth', 'For youth ministries'),
     },
     'tgh': {
@@ -55,7 +55,7 @@ MORE = {
 <p>Journeys only work when everyone involved chooses them.</p>
 <ul>
 <li><b>The person.</b> Their own yes, separate from being introduced to a church, adults only, and withdrawable at any time.</li>
-<li><b>Churches and ministries.</b> They join Always, switch on journeys and agree to the terms: use the steps only to care for the person, never pass codes on or combine them, and honour a withdrawal straight away.</li>
+<li><b>Churches and ministries.</b> They partner with Always, switch on journeys and agree to the terms: use the steps only to care for the person, never pass codes on or combine them, and honour a withdrawal straight away.</li>
 <li><b>Evangelists.</b> People sharing Jesus with Always Sent pass on a friend&rsquo;s response through Always, so the journey starts from the very first yes.</li>
 </ul>
 
@@ -85,7 +85,7 @@ MORE = {
 <li>Every view is logged in a record that can&rsquo;t be quietly changed, and staff see only what&rsquo;s needed to help.</li>
 <li>Never for anyone under 18. This can&rsquo;t be switched on.</li>
 <li>An independent privacy and security review before journeys open widely.</li>
-<li>Board oversight, with a cybersecurity and technical adviser.</li>
+<li>Board oversight of privacy and security.</li>
 <li>The key is kept apart from the data, and destroying it unlinks every journey at once.</li>
 </ul>
 
@@ -152,7 +152,7 @@ def _page(home, key, meta):
 <figure class="ft-fig wrap sp-fig">{_tile_art(home, key)}{f"<figcaption>{fine}</figcaption>" if fine else ""}</figure>
 <div class="wrap ft-body">
   <div class="prose ft-prose">{body}{MORE.get(key, "")}
-    <h2>Find out more</h2><p><a href="#/join">Join Always</a> to use Always Platform with your church or ministry, or <a href="#/stories">read more stories</a>.</p>
+    <h2>Find out more</h2><p><a href="#/join">Partner with Always</a> to use Always Platform with your church or ministry, or <a href="#/stories">read more stories</a>.</p>
   </div>
   <aside class="ft-side" aria-label="At a glance"><div class="ft-card">
     <h2>At a glance</h2><dl>{glance}</dl>

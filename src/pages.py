@@ -27,7 +27,7 @@ church_phone = phone(f'''<p class="pg-cap">Always Connect · Inbox</p><div class
 CHURCHES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For churches</h1><p>Welcome people near you who have said yes to Jesus, and help them grow as disciples. Free, always.</p><div class="pg-cta"><a class="btn btn-peach" href="#/join/church">Join as a church</a></div></div>{mock('connect', 'mk-lg')}</div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">Three steps to welcoming people</h2>
-  {steps([('Join Always', 'Register your church and tell us who you are. It takes a few minutes.'), ('Get ready at your pace', 'We check with your denomination or network, and your connect lead does a 20-minute course. Then you\'re a partner church.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
+  {steps([('Partner with Always', 'Register your church and tell us who you are. It takes a few minutes.'), ('Get ready at your pace', 'We check with your denomination or network, and your connect lead does a 20-minute course. Then you\'re a partner church.'), ('Welcome people', 'When someone nearby asks for a next step you offer, accept or pass. Then call or text from your own phone.')])}
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
   <div><h2 class="pg-h rv">Always Connect, in any browser</h2><p class="pg-lead rv">A free web app for your team. Nothing to install, so your connect lead can say yes from their phone on a Sunday.</p>
@@ -53,7 +53,7 @@ ministry_phone = phone('<p class="pg-mbrand">YOUR MINISTRY</p><p class="pg-mh">S
 
 report_mock = '<div class="pg-desk pg-report rv" aria-label="An example monthly report"><div class="pg-desk-main"><div class="pg-row-h"><b>September report</b><em class="ok">Ready</em></div><span class="pg-mut">City worship tour · Prepared for our supporters</span><div class="pg-kpis">' + ''.join(f'<div><b{" class=pe" if i == 3 else ""}>{v}</b><span>{l}</span></div>' for i, (v, l) in enumerate([('310', 'Responded'), ('295', 'Introduced'), ('258', 'Accepted'), ('117', 'Connected')])) + '</div><div class="pg-btns"><span class="pg-b">Download PDF</span><span class="pg-b ln">Share a link</span></div><p class="pg-mut">Example figures. Totals only.</p></div></div>'
 
-MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For ministries</h1><p>Events, tours, camps, evangelists and street teams: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p><div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a></div></div>{mock('pages', 'mk-lg')}</div></section>
+MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><div><p class="pl-kick">Solutions</p><h1>For ministries</h1><p>Events, tours, camps, evangelists and street teams: free tools to share the Gospel, less administration, and a next step near home for everyone who responds.</p><div class="pg-cta"><a class="btn btn-peach" href="#/join">Partner with Always</a></div></div>{mock('pages', 'mk-lg')}</div></section>
 <section class="sec pg-sec"><div class="wrap">
   <h2 class="pg-h rv">From the altar call to a church family</h2>
   {steps([('Create a response page', 'Choose the next steps you offer and add your brand. Ready in minutes.'), ('Invite a response', 'Show the QR code on the big screen, hand out cards, or use the response card in your own app.'), ('See the fruit', 'Watch results live, and get a monthly report ready for your funders and board.')])}
@@ -72,7 +72,7 @@ MINISTRIES = f'''<section class="page-hero pd-hero"><div class="wrap pd-split"><
 <section class="sec pg-sec pg-night"><div class="wrap">
   <h2 class="pg-h rv">Less administration, more ministry</h2>
   <p class="pg-lead rv">Shared tools for the everyday work behind every ministry, with agents to help with follow-up and admin, so your team can spend more time on people.</p>
-  {feats([('Governance', 'Shared policies, templates and member records for boards and leaders.'), ('Consent and privacy', 'Consent records and privacy requests, ready to export when you need them.'), ('Safeguarding', 'Child safety checklists and Working With Children Check reminders, kept in one place.'), ('Reporting', 'A monthly report for your board and funders, with totals only.')])}
+  {feats([('Governance', 'Shared policies, templates and partner records for boards and leaders.'), ('Consent and privacy', 'Consent records and privacy requests, ready to export when you need them.'), ('Safeguarding', 'Child safety checklists and Working With Children Check reminders, kept in one place.'), ('Reporting', 'A monthly report for your board and funders, with totals only.')])}
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/compliance/check">Try the free safety check-up</a><a class="btn btn-ghost" href="#/compliance">About Always Safety</a></div>
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap pg-split">
@@ -146,19 +146,19 @@ APP = f'''<section class="page-hero ap-hero"><div class="wrap ap-hero-in">
 
 FAQ_GROUPS = [
  ('About Always', [
-  ('What is the Always Foundation?', 'A Gospel technology foundation: an independent, member-based Christian nonprofit that brings churches and Christian ministries across Australia together for the Gospel. We serve quietly in the background, building practical tools once and sharing them freely, so ministries spend less time on administration and more time making disciples.'),
+  ('What is the Always Foundation?', 'A gospel technology ministry and not-for-profit serving churches and ministries freely. We bring churches and Christian ministries across Australia together for the Gospel. We serve quietly in the background, building practical tools once and sharing them freely, so ministries spend less time on administration and more time making disciples.'),
   ('Are you a gospel ministry or a mercy ministry?', 'Neither, directly. We are a ministry that serves ministries. In Acts 6 the early church appointed people to carry the practical work so the apostles could devote themselves to prayer and the word, and the Gospel spread. We play that role for the wider Church: we exist to equip the saints for the work of ministry (Ephesians 4:12). We are not on the frontline. We stand behind it.'),
   ('What does Always do for a church or ministry?', 'Three things. We equip, with Always Sent and Always Respond, your own branded way for people to respond. We support, with Always Safety and Always Reports, so the administration is lighter. And we connect, with Always Connect, so everyone who says yes to Jesus can be welcomed by a local church.'),
-  ('Who can become a member?', 'Churches and Christian ministries that affirm the Nicene Creed. Members help shape what we build and share in the benefits. Supporters can join us too, through prayer and giving.'),
-  ('What is Always Platform?', 'One open-source platform with one sign-in and shared data. Members switch on the modules they need: Always Sent, Always Respond, Always Safety, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.'),
+  ('Who can become a partner?', 'Churches and Christian ministries. Partners affirm the Nicene Creed (AD 381), so churches across denominations can serve together on the historic faith. Our partner churches and ministries help shape what we build through feedback and shared standards. Supporters can stand with us in prayer.'),
+  ('What is Always Platform?', 'One open-source platform with one sign-in and shared data. Partners switch on the modules they need: Always Sent, Always Respond, Always Safety, Always Reports and Always Connect. Like YouVersion, there are tools people use every day and an open platform underneath that others can build on.'),
   ('Why modules?', 'Every ministry is different. Start with the one you need, perhaps Always Safety, and add others as you grow. Because every module runs on the same platform, your team signs in once and your information works together, with nothing to move later.'),
-  ('Who runs it?', 'The Always Foundation, a members-based not-for-profit being established in Australia. Churches and ministries that affirm the Nicene Creed are its members.'),
+  ('Who runs it?', 'The Always Foundation: a gospel technology ministry and not-for-profit serving churches and ministries freely. It is being established in Australia. Churches and ministries that affirm the Nicene Creed are its partners.'),
   ('Is it only for one denomination?', 'No. Evangelical and Pentecostal churches and ministries across denominations and networks take part, on the common ground of the Nicene Creed.'),
   ('Is Always Platform only in Australia?', 'Our focus is Australia. The technology is open source, so churches and ministries in other countries are welcome to use it.'),
   ('Do I need an account?', 'Not for Always Sent: open it and start, and your prayer list and notes stay on your phone. Church and ministry teams sign in with an email link for tools like Always Safety.')]),
  ('For churches', [
-  ('Does it cost anything?', 'No. Churches never pay. Larger ministries contribute according to their size.'),
-  ('How do we join?', 'Register at Join Always and get ready at your own pace. We check with your denomination or network, and then you\'re a partner church.'),
+  ('Does it cost anything?', 'No. Always is free for churches and ministries.'),
+  ('How do we partner with Always?', 'Register at Partner with Always and get ready at your own pace. We check with your denomination or network, and then you\'re a partner church.'),
   ('What if we can\'t welcome someone?', 'Pass, with a reason. The next church or ministry nearby is asked. If none can, our care team helps.'),
   ('Do we have to change our church software?', 'No. Use the free Always Connect inbox, in any browser, or connect your system through the API. Elvanto and Planning Center come first.'),
   ('What does welcoming now mean?', 'You\'re a partner church, trained, have room this month and usually reply on time. If you get busy, introductions simply pause.'),
@@ -195,8 +195,7 @@ FAQ_GROUPS = [
   ('Can ministries see my journey across ministries?', 'Only if you say yes, with a separate tick you can withdraw any time. The ministries that help you then see your steps by month, never notes. Each ministry gets a different code, and only Always links the journey. See Journeys across ministries in the docs.'),
   ('How do I report a concern?', 'Email safeguarding@alwaysfoundation.org for safeguarding, privacy@ for privacy and security@ for security.')]),
  ('Supporters and builders', [
-  ('How is the Always Foundation funded?', 'By supporters, and by larger ministries contributing according to their size. Churches never pay.'),
-  ('How can I support the work?', 'Pray with us, and get in touch at hello@alwaysfoundation.org to book a catch-up call.'),
+  ('How can I support the work?', 'Stand with us in prayer, and get in touch at hello@alwaysfoundation.org to book a catch-up call.'),
   ('Can developers build on Always Platform?', 'Yes. The API, SDK and open standard are open source under Apache 2.0, with docs under CC BY 4.0. An MCP server for AI assistants is coming, and it never sees a person\'s details.')])]
 
 FAQ = '<section class="page-hero"><div class="wrap"><h1>FAQs</h1><p>Short answers to the questions we hear most.</p></div></section><section class="sec pg-sec"><div class="wrap pg-faq">' + \
@@ -753,7 +752,7 @@ PLATFORM = f'''<section class="page-hero"><div class="wrap pg-split">
 <section class="sec pg-sec pg-green"><div class="wrap">
   <p class="pl-kick rv">What never changes</p>
   <h2 class="pg-h rv">A gift to the Church.</h2>
-  <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free for churches', 'Larger ministries contribute according to their size.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', 'People\'s details stay here.'), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'AI helps with the work. People make the calls.')])}</div>
+  <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free', 'Always is free for churches and ministries.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', 'People\'s details stay here.'), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'AI helps with the work. People make the calls.')])}</div>
   <div class="pg-cta rv"><a class="btn btn-peach" href="#/docs/feed">Start building</a><a class="btn btn-ghost" href="#/contact">Talk to us</a></div>
 </div></section>'''
 

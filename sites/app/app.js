@@ -938,7 +938,7 @@ on(/^\/connect$/, (m, q) => {
     <form id="cf" class="row" role="search" style="gap:8px"><input class="input grow" id="cf-q" inputmode="search" autocomplete="postal-code" placeholder="Postcode or suburb" value="${esc(q.get('q') || S.settings.pc || '')}" aria-label="Postcode or suburb"><button class="btn" style="width:auto;padding:0 20px">Search</button></form>
     <div class="sp"></div><div id="cf-res" aria-live="polite"></div>
     <div class="sp2"></div><div class="list">
-      <a class="li" href="https://alwaysfoundation.org/#/join/church" target="_blank" rel="noopener"><span class="ico">${ic('church')}</span><div class="grow"><div class="t">Are you a church?</div><div class="s">Join Always, free for churches</div></div><span class="chev">${ic('right', 18)}</span></a>
+      <a class="li" href="https://alwaysfoundation.org/#/join/church" target="_blank" rel="noopener"><span class="ico">${ic('church')}</span><div class="grow"><div class="t">Are you a church?</div><div class="s">Partner with Always, free for churches and ministries</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="https://alwaysfoundation.org" target="_blank" rel="noopener"><span class="ico peach">${ic('globe')}</span><div class="grow"><div class="t">About the Always Foundation</div><div class="s">Together for the Gospel</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div>`, { tab: 'home' });
   const CH = window.AC_CHURCHES || [];
@@ -1086,7 +1086,7 @@ const APP_FAQ = [
   ['Can I share the verse of the day?', 'Yes. Tap the share button on today’s verse to make a card, choose a background, font and shape, and send it anywhere. It’s made on your phone and nothing is uploaded.'],
   ['Where does the training come from?', 'From ministries we trust, like The Global Harvest, NeedGod.net, Two Ways to Live, Alpha, Discovery Bible Study and Christianity Explained. Each one is credited, and opens on their own site.'],
   ['Does it work without internet?', 'Mostly, yes. Once you’ve opened it, the Bible chapters you’ve read, your notes and your prayer list are all available offline.'],
-  ['Who is behind it?', 'The Always Foundation, an independent, member-based Christian nonprofit that brings churches and ministries together for the Gospel. The app’s code is open source.'],
+  ['Who is behind it?', 'The Always Foundation, a gospel technology ministry and not-for-profit serving churches and ministries freely. The app’s code is open source.'],
 ];
 on(/^\/me\/faq$/, () => {
   render(`${top('#/me', 'About Always Sent')}<div class="faq-hero"><h2>Always Sent</h2><p>Be equipped to share Jesus, tell your story and help someone take their next step. Free for every Christian.</p></div>

@@ -1,12 +1,12 @@
-"""Join Always: a short registration with four paths. The foundation team verifies each one."""
+"""Partner with Always: a short registration with four paths. The foundation team verifies each one."""
 from products import ICON
 
 STATES = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']
 MODULES = [('app', 'Always Sent'), ('pages', 'Always Respond'), ('compliance', 'Always Safety'), ('reports', 'Always Reports'), ('connect', 'Always Connect')]
 PATHS = [
-    ('church', 'A church or ministry', 'Become a member and switch on the modules you need.', 'churches'),
+    ('church', 'A church or ministry', 'Become a partner and switch on the modules you need.', 'churches'),
     ('evangelist', 'An evangelist', 'Use Always Sent to share Jesus with confidence.', 'evangelists'),
-    ('supporter', 'A supporter', 'Pray, give or volunteer with us.', 'youth'),
+    ('supporter', 'A supporter', 'Stand with us in prayer.', 'youth'),
     ('platform', 'A tech platform', 'Build on Always Platform, starting with Always Safety.', 'platforms'),
 ]
 
@@ -25,7 +25,7 @@ def _state_select(name, optional=True):
 
 
 PAGE = f'''<section class="page-hero jn-hero"><div class="wrap">
-  <p class="pl-kick">Join Always</p>
+  <p class="pl-kick">Partner with Always</p>
   <h1>Be part of Always.</h1>
   <p>Register in a few minutes. We'll verify your details and switch on what you need. Free for churches.</p>
 </div></section>
@@ -73,7 +73,7 @@ PAGE = f'''<section class="page-hero jn-hero"><div class="wrap">
 
     <fieldset class="jn-step" data-for="supporter">
       <legend><span class="jn-n">03</span>How you'd like to help</legend>
-      {_checks('support', [('pray', 'Pray'), ('give', 'Give'), ('volunteer', 'Volunteer')])}
+      {_checks('support', [('pray', 'Pray'), ('updates', 'Prayer updates by email')])}
       <div class="jn-grid"><label>State <em>optional</em><span class="jn-sel">{_state_select('supState')}</span></label></div>
     </fieldset>
 
@@ -101,14 +101,14 @@ PAGE = f'''<section class="page-hero jn-hero"><div class="wrap">
     <ol>
       <li><span>01</span><b>We check your details</b><p>For churches and ministries, usually with your denomination or network.</p></li>
       <li><span>02</span><b>We switch on what you need</b><p>The modules you chose, with one sign-in for your team.</p></li>
-      <li><span>03</span><b>You're part of Always</b><p>Free for churches. Larger ministries contribute according to their size.</p></li>
+      <li><span>03</span><b>You're part of Always</b><p>Always is free for churches and ministries.</p></li>
     </ol>
     <p class="jn-aside-q">Questions first? <a href="#/contact">Get in touch</a></p>
   </aside>
 </div></section>'''
 
 CSS = '''
-/* ---- Join Always ---- */
+/* ---- Partner with Always ---- */
 .jn-hero { padding-bottom: 72px; }
 .jn-sec { background: var(--cream); padding-top: 64px; }
 .jn-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: start; }
@@ -166,7 +166,7 @@ CSS = '''
 '''
 
 JS = r'''
-// Join Always: show the fields for the chosen path; only those are required and sent.
+// Partner with Always: show the fields for the chosen path; only those are required and sent.
 (() => {
   const form = document.getElementById('join-form');
   if (!form) return;

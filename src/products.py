@@ -1,7 +1,7 @@
 """The Always modules and solutions: one source of truth for names, positioning and pages.
 
 Brand architecture
-  Always Foundation  the member-based Christian nonprofit
+  Always Foundation  the gospel technology ministry and not-for-profit
   Always Platform    the open-source technology every product runs on
   Always + one word  the modules ministries switch on (never "the Always X platform")
 
@@ -182,7 +182,7 @@ def menu_html():
                '<span class="dd-f-l">See how it fits together</span></a>')
     sol = ''.join(f'<a href="#/{r}" data-route="{r}">{_icon(k)}<span class="dd-tx"><b>{n}</b><span>{MENU_LINE[k]}</span></span></a>' for k, (r, n, l, _, _) in SOLUTIONS.items())
     story = ('<a class="dd-story" href="#/uen"><span class="dd-story-img" aria-hidden="true"></span><span class="dd-f-k">Story</span><b>UEN</b>'
-             '<span>A Christian gaming ministry that helped found Always Platform.</span><span class="dd-f-l">Read the story</span></a>')
+             '<span>A Christian gaming ministry and our founding design partner.</span><span class="dd-f-l">Read the story</span></a>')
     return (
         '<li class="dd dd-static"><button type="button" class="dd-btn" aria-expanded="false" aria-controls="dd-platform" data-group="platform">Platform</button>'
         f'<div class="dd-panel dd-wide" id="dd-platform"><div class="dd-layout">{feature}<div class="dd-grid">{plat}</div></div></div></li>'
@@ -220,7 +220,7 @@ def _works_with(slugs):
     return '<div class="pd-with">' + ''.join(product_link(s) for s in slugs) + '</div>'
 
 
-def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Join Always', '#/join'), secondary=None, feats_title='What you get', statement=None, feats_html=None):
+def product_page(slug, intro, feats, works_with, extra='', status=None, primary=('Partner with Always', '#/join'), secondary=None, feats_title='What you get', statement=None, feats_html=None):
     import showcase as SC
     route, name, pillar, line, who = PRODUCTS[slug]
     badge = f'<p class="pd-status">{status}</p>' if status else ''
@@ -356,7 +356,7 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-s
   <div><p class="pl-kick">Always Platform</p>
   <h1>Built once. Shared by every ministry.</h1>
   <p>One open-source platform with shared data and one sign-in. Your team switches on the modules your ministry needs, and developers can build on the same foundation.</p>
-  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Join Always</a><a class="btn btn-ghost" href="#/developers">For developers</a></div></div>
+  <div class="pg-cta"><a class="btn btn-peach" href="#/join">Partner with Always</a><a class="btn btn-ghost" href="#/developers">For developers</a></div></div>
   {switcher()}
 </div></section>
 <section class="sec pg-sec dg-sec"><div class="wrap">
@@ -377,7 +377,7 @@ PLATFORM_OVERVIEW = f'''<section class="page-hero pf-hero"><div class="wrap pf-s
 </div></section>
 <section class="sec pg-sec pg-sage"><div class="wrap">
   <h2 class="pg-h rv">What never changes</h2>
-  <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free for churches', 'Larger ministries contribute according to their size.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', "People's details stay here."), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'Agents help with the work. People make the calls.')])}</div>
+  <div class="pl-never">{''.join(f'<div class="rv"><b>{t}</b><span>{d}</span></div>' for t, d in [('Free', 'Always is free for churches and ministries.'), ('Open', 'Every line is public, to check and build on.'), ('Permission first', 'Nothing about a person moves without their yes.'), ('Kept in Australia', "People's details stay here."), ('Safe for young people', 'No AI and no sharing for anyone under 18.'), ('People decide', 'Agents help with the work. People make the calls.')])}</div>
 </div></section>'''
 
 CSS = MOCK_CSS + '''
@@ -736,5 +736,5 @@ TITLES.update({r: f'{for_name(n)} · Always Foundation' for r, n, *_ in SOLUTION
 TITLES['platform'] = 'Always Platform · Always Foundation'
 TITLES['developers'] = 'Developers · Always Foundation'
 TITLES['contact'] = 'Contact · Always Foundation'
-TITLES['join'] = 'Join Always · Always Foundation'
+TITLES['join'] = 'Partner with Always · Always Foundation'
 TITLES['hello'] = "Let's stay in touch · Always Foundation"

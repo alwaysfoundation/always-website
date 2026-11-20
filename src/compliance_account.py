@@ -150,7 +150,7 @@ JS = r'''
       ${opts.local ? `<div class="cw-then">
         <div><h5>A summary for your board</h5><div class="cw-name"><label for="cw-name">Ministry name</label><input id="cw-name" type="text" autocomplete="organization" maxlength="120" placeholder="Optional"></div><p>One page with where you stand and space to sign. It's made on your device.</p><button class="btn btn-ghost-dark" type="button" data-print>Download board summary</button></div>
         ${saveCard}
-        <div><h5>Join Always</h5><p>Free for churches. One sign-in for every Always module, from safety to reports.</p><a class="btn btn-ghost-dark" href="#/join/church" data-join-interest="compliance">Join Always</a></div>
+        <div><h5>Partner with Always</h5><p>Free for churches and ministries. One sign-in for every Always module, from safety to reports.</p><a class="btn btn-ghost-dark" href="#/join/church" data-join-interest="compliance">Partner with Always</a></div>
       </div>` : ''}
       <p class="cw-notice">Register ${esc(a.version)} (${esc(a.status)}). ${esc(a.notice)}${opts.local ? ' Nothing you entered has been sent or saved.' : ''}</p>
       ${opts.local ? '<div class="cw-nav"><button class="btn btn-ghost-dark" type="button" data-edit>Change my answers</button><span></span></div>' : ''}`;
