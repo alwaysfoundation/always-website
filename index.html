@@ -1986,7 +1986,7 @@ body.on-hello .hp, body.menu-open .hp { display: none; }
 .rp-h-draw { stroke-dasharray: 1500; stroke-dashoffset: 1500; animation: rpDraw 7s linear infinite; }
 @keyframes rpDraw { to { stroke-dashoffset: 0; } }
 .rp-h-nodes circle { fill: #173F37; stroke: rgba(255,253,248,.7); stroke-width: 3; }
-.rp-h-text text { fill: rgba(255,253,248,.78); font: 700 28px Manrope, sans-serif; }
+.rp-h-text text { fill: rgba(255,253,248,.78); font: 600 26px var(--head, Inter), Inter, sans-serif; letter-spacing: -0.01em; }
 .rp-h-nodes .rp-h-church { fill: #E8A577; stroke: #FFFDF8; }
 .rp-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 64px; padding-top: 64px; padding-bottom: 96px; }
 .rp-toc { position: sticky; top: 96px; align-self: start; display: flex; flex-direction: column; gap: 2px; }
@@ -2198,8 +2198,16 @@ body.on-hello .hp, body.menu-open .hp { display: none; }
   .f6::after, .f7-bar i::after { transition: none !important; }
 }
 
-.rp-stat-dot { flex: none; width: 12px; height: 12px; margin-top: 5px; border-radius: 50%; background: #E8A577; }
+.rp-mast { display: grid; grid-template-columns: 1fr 1.5fr 1.3fr; gap: 28px; max-width: 920px; margin: 40px 0 0; padding: 22px 0 0; border-top: 1px solid rgba(255,253,248,.18); }
+.rp-mast dt { font: 600 13px/1.3 var(--head); color: rgba(255,253,248,.55); margin: 0 0 6px; }
+.rp-mast dd { margin: 0; font-size: 16px; line-height: 1.5; color: rgba(255,253,248,.9); }
+@media (max-width: 760px) { .rp-mast { grid-template-columns: 1fr; gap: 16px; } }
 .rp-h-rings circle { fill: none; stroke: rgba(242,194,158,.38); stroke-width: 2; stroke-dasharray: 3 8; }
+.rp-risks { margin: 22px 0 8px; border-top: 1px solid rgba(20,53,47,.14); }
+.rp-risks div { display: grid; grid-template-columns: 210px 1fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid rgba(20,53,47,.1); }
+.rp-risks dt { font: 700 16px/1.4 var(--head); color: var(--green); }
+.rp-risks dd { margin: 0; font-size: 17px; line-height: 1.6; color: #2B3A36; }
+@media (max-width: 700px) { .rp-risks div { grid-template-columns: 1fr; gap: 4px; } }
 .f2-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 700px) { .f2-two { grid-template-columns: minmax(0, 1fr); } }
 
@@ -2843,8 +2851,8 @@ b, strong { font-weight: 700; }
         <div class="cs-img rp-tile-art" aria-hidden="true"><svg viewBox="0 0 400 260"><path d="M40 170 C 110 70, 170 80, 200 130 S 300 200, 360 110" fill="none" stroke="rgba(255,253,248,.18)" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/><g fill="none" stroke="rgba(242,194,158,.45)" stroke-width="2" stroke-dasharray="3 6"><circle cx="40" cy="170" r="26"/><circle cx="200" cy="130" r="26"/><circle cx="360" cy="110" r="28"/></g><circle cx="40" cy="170" r="9" fill="#1F4D44" stroke="#FFFDF8" stroke-width="2"/><circle cx="200" cy="130" r="9" fill="#1F4D44" stroke="#FFFDF8" stroke-width="2"/><circle cx="360" cy="110" r="11" fill="#E8A577" stroke="#FFFDF8" stroke-width="2"/><text x="40" y="236" fill="rgba(255,253,248,.75)" font-family="Inter, sans-serif" font-weight="700" font-size="17">HMAC-SHA256(key, +614…)</text></svg></div>
         <div class="cs-text">
           <p class="cs-name">Research case study</p>
-          <h3>Why we don&rsquo;t link people across ministries.</h3>
-          <p>We designed and tested privacy-preserving record linkage for churches, then decided not to use it. What we learned, and why.</p>
+          <h3>Why Always does not link people across ministries.</h3>
+          <p>Privacy-preserving record linkage for Christian ministry: the architecture, the threat model, and the decision not to deploy it.</p>
           <a class="cs-more" href="#/pprl">Read the case study</a>
         </div>
       </li>
@@ -3639,14 +3647,13 @@ b, strong { font-weight: 700; }
 <article class="rp">
 <div class="rp-hero"><div class="wrap rp-hero-in">
   <p class="rp-kick"><a href="#/stories">Stories</a> <span aria-hidden="true">/</span> Research case study</p>
-  <h1>Why we don&rsquo;t link people across ministries</h1>
-  <p class="rp-dek">We designed a way for churches and ministries to follow one person&rsquo;s journey using privacy-preserving record linkage, the method Australian health researchers have relied on for three decades. We built it, tested it and decided not to use it. This is what we learned.</p>
-  <p class="rp-meta">Always Foundation, November 2026</p>
-  <div class="rp-pilot rp-status" role="note" aria-label="Status">
-    <span class="rp-stat-dot" aria-hidden="true"></span>
-    <div><b>Not in use.</b>
-    <span>Always does not link people across organisations. Nothing described here runs on Always Platform, and it never ran with real people.</span></div>
-  </div>
+  <h1>Why Always does not link people across ministries</h1>
+  <p class="rp-dek">A case study in privacy-preserving record linkage for Christian ministry: the problem, the architecture, the threat model, and the reasons the Foundation declined to deploy it.</p>
+  <dl class="rp-mast">
+    <div><dt>Published</dt><dd>Always Foundation, November 2026</dd></div>
+    <div><dt>Status</dt><dd>Not deployed. Implemented, tested and removed; no personal information was processed.</dd></div>
+    <div><dt>Decision record</dt><dd>ADR 0013, no linkage of individuals across organisations</dd></div>
+  </dl>
   <figure class="rp-heroart" aria-hidden="true">
     <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet">
       <path d="M60 190 C 200 70, 320 70, 390 140 S 600 230, 650 130 S 860 70, 940 150" fill="none" stroke="rgba(255,253,248,.16)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/>
@@ -3668,149 +3675,150 @@ b, strong { font-weight: 700; }
 </div></div>
 
 <div class="wrap rp-body">
-  <nav class="rp-toc" aria-label="Contents"><p>Contents</p><button type="button" data-goto="rp-physician">A physician of the soul</button><button type="button" data-goto="rp-abstract">In short</button><button type="button" data-goto="rp-problem">1. The question</button><button type="button" data-goto="rp-pprl">2. Record linkage, privately</button><button type="button" data-goto="rp-design">3. The design we built</button><button type="button" data-goto="rp-security">4. Where it breaks down</button><button type="button" data-goto="rp-health">5. Lessons from Australian health</button><button type="button" data-goto="rp-cyber">6. The cyber threat</button><button type="button" data-goto="rp-decision">7. Why we didn’t proceed</button><button type="button" data-goto="rp-church">8. The local church</button><button type="button" data-goto="rp-instead">9. What we do instead</button><button type="button" data-goto="rp-conditions">10. If the question returns</button><button type="button" data-goto="rp-refs">Sources</button></nav>
+  <nav class="rp-toc" aria-label="Contents"><p>Contents</p><button type="button" data-goto="rp-physician">A physician of the soul</button><button type="button" data-goto="rp-abstract">Abstract</button><button type="button" data-goto="rp-problem">1. Problem statement</button><button type="button" data-goto="rp-pprl">2. Privacy-preserving linkage</button><button type="button" data-goto="rp-design">3. Architecture</button><button type="button" data-goto="rp-security">4. Threat model</button><button type="button" data-goto="rp-health">5. Lessons from Australian health</button><button type="button" data-goto="rp-cyber">6. Threat environment</button><button type="button" data-goto="rp-decision">7. Decision</button><button type="button" data-goto="rp-church">8. The local church</button><button type="button" data-goto="rp-instead">9. Evidence without linkage</button><button type="button" data-goto="rp-conditions">10. Conditions for any study</button><button type="button" data-goto="rp-refs">Sources</button></nav>
 
   <div class="rp-main">
     <section id="rp-physician" class="rp-mlj">
       <h2>A physician of the soul</h2>
       <p class="rp-mlj-lead">In the 1920s, one of the most promising young doctors in London was Martyn Lloyd-Jones. He trained at St Bartholomew&rsquo;s Hospital and became chief clinical assistant to Sir Thomas Horder, physician to the royal family.<sup><a data-goto="rp-refs">[10, 11]</a></sup></p>
-      <p>Then, for two years, he wrestled with a call to give it up: to leave medicine and become a &lsquo;physician of the soul&rsquo;. In 1927 he did, moving to a small mission church in Aberavon, South Wales, and went on to become one of the most influential preachers of the twentieth century.<sup><a data-goto="rp-refs">[11]</a></sup> He brought a doctor&rsquo;s habits of careful diagnosis and attention to the whole person into the care of a local congregation.</p>
+      <p>Over two years he weighed a call to leave medicine and become a &lsquo;physician of the soul&rsquo;. In 1927 he moved to a small mission church in Aberavon, South Wales, and went on to become one of the most influential preachers of the twentieth century.<sup><a data-goto="rp-refs">[11]</a></sup> He carried a clinician&rsquo;s discipline of diagnosis and attention to the whole person into the care of a local congregation.</p>
       <div class="rp-mlj-pair">
-        <div><b>What medicine needs</b><p>A patient seen by many clinicians needs one joined-up record. Australian health builds it with independent linkage units, specific laws and ethics approval.</p></div>
-        <div><b>What the church has</b><p>Care happens in local congregations, where people are known by name. Each church can hold its own people without anyone building a shared record of them.</p></div>
+        <div><b>Medicine</b><p>Continuity of care across many clinicians depends on linked records. Australian health achieves this through independent linkage units, enabling legislation and ethics oversight.</p></div>
+        <div><b>The church</b><p>Pastoral care is exercised within local congregations, where people are known personally. Each congregation can hold its own people without a shared record of them.</p></div>
       </div>
-      <p>We asked whether the church should borrow medicine&rsquo;s tools for following people across ministries. We did the work properly, and our answer was no.</p>
+      <p>This case study examines whether the church requires medicine&rsquo;s apparatus for linking records across institutions. Having designed and tested that apparatus, the Foundation concluded that it does not.</p>
     </section>
 
     <section id="rp-abstract" class="rp-abstract">
-      <h2>In short</h2>
-      <p>People rarely come to faith through one ministry. They respond at an event, try a course, read the Bible with a friend and, God willing, join a local church. Each ministry sees only its own step. Funders and networks back many independent ministries and can&rsquo;t see whether the same people move between them. We framed this as a question for the whole sector: how can independent organisations recognise a shared record without exchanging their databases? Australian health research had already faced the same question with hospital and GP records, so we started from its methods, privacy-preserving record linkage (PPRL).</p>
-      <p>We designed a consent-based system: a keyed cryptographic fingerprint of the person&rsquo;s mobile, a different code for every ministry, and only milestones and months shared. In everyday terms, the phone number was scrambled with a secret key, a kind of one-way encryption, so no one without the key could turn it back. It worked in testing. We then weighed what it would create around it: a key and a set of links that together amount to a record of who responded to the Gospel and where they went. We decided the risk outweighed the benefit, removed the code, and recorded the decision. We made that call before any real person&rsquo;s record was processed, before ministries built it into their work, and before funders came to rely on it.</p>
+      <h2>Abstract</h2>
+      <p>Faith formation rarely occurs within a single organisation. A person may respond at an event, complete a course run by another ministry, read the Bible with a friend and later join a local church. Each organisation observes one stage. Funders and networks that support many independent ministries can measure activity at each stage, yet cannot determine whether the same individuals progress from one to the next.</p>
+      <p>We treated this as a problem of interoperability between independent institutions: how organisations might recognise records relating to the same person without exchanging their databases. Australian health research has addressed the same problem for three decades through privacy-preserving record linkage (PPRL). We adapted that method to ministry, implemented a consent-based design using a keyed cryptographic fingerprint of the person&rsquo;s mobile number with organisation-specific pseudonyms, and verified it under automated tests.</p>
+      <p>We then assessed the system&rsquo;s second-order effects. Its utility increases with adoption, and so does its value as a target: at scale, the key and the resulting links would constitute a record of religious participation across the network. We concluded that the residual risk was not justified by the benefit, removed the implementation, and adopted a standing architectural prohibition. The decision was taken before any personal information was processed and before any organisation depended on the capability.</p>
       <dl class="rp-keys">
         <div><dt>Method</dt><dd>Consent-based PPRL with a single linkage service</dd></div>
-        <div><dt>Encoding</dt><dd>HMAC-SHA256 of a normalised Australian mobile</dd></div>
-        <div><dt>Status</dt><dd>Designed and tested; never used with real people</dd></div>
-        <div><dt>Decision</dt><dd>Not to proceed, at any scale (ADR 0013)</dd></div>
+        <div><dt>Encoding</dt><dd>HMAC-SHA256 over a normalised Australian mobile number</dd></div>
+        <div><dt>Status</dt><dd>Implemented and tested; never deployed</dd></div>
+        <div><dt>Decision</dt><dd>Not to deploy, at any scale (ADR 0013)</dd></div>
       </dl>
     </section>
 
     <section id="rp-problem">
-      <h2>1. The question we explored</h2>
-      <p>Consider Sam. Sam says yes to Jesus at a youth event in February, signs up for a course run by another ministry in March, reads the Bible with a friend through a third, and is welcomed by a local church in May. Four organisations each hold one part of the story.</p>
+      <h2>1. Problem statement</h2>
+      <p>Consider a hypothetical individual, Sam, who responds at a youth event in February, enrols in a course run by another ministry in March, joins a Bible reading group through a third in April, and is welcomed by a local church in May. Four organisations each hold one record. None can observe the sequence.</p>
       <figure class="rp-fig rv" id="rp-fig1">
         <div class="f1">
           <div class="f1-row">
             <div class="f1-node"><b>Event</b><span>Responded, Feb</span></div>
-            <div class="f1-node"><b>Course</b><span>Signed up, Mar</span></div>
+            <div class="f1-node"><b>Course</b><span>Enrolled, Mar</span></div>
             <div class="f1-node"><b>Bible study</b><span>Reading, Apr</span></div>
             <div class="f1-node f1-church"><b>Church</b><span>Welcomed, May</span></div>
           </div>
           <div class="f1-line" aria-hidden="true"><i></i></div>
-          <div class="f1-states" aria-hidden="true"><span class="f1-a">As it is: each ministry holds its own step</span><span class="f1-b">What linkage would add: one joined journey, held centrally</span></div>
+          <div class="f1-states" aria-hidden="true"><span class="f1-a">Present state: four independent records</span><span class="f1-b">With linkage: one reconstructed journey, held centrally</span></div>
         </div>
-        <figcaption><b>Figure 1.</b> One person, four ministries. Linkage would join the steps into one journey. That journey is useful, and it is also a new record that did not exist before.</figcaption>
+        <figcaption><b>Figure 1.</b> One individual, four organisations. Linkage reconstructs the sequence. In doing so it creates a record that did not previously exist.</figcaption>
       </figure>
-      <p>The appeal is real. The event team never learns whether Sam found a church, and the church doesn&rsquo;t know the steps Sam has already taken. Across a network, the gap grows. A funder supporting evangelism, courses and church planting can count plenty of activity and still can&rsquo;t tell whether the same people are moving from one ministry to the next. We wanted to know whether that gap could be closed safely.</p>
+      <p>At the level of a single ministry the consequence is incomplete follow-up. At the level of a network it is a measurement gap: a funder supporting evangelism, discipleship and church planting can count activity in each, but cannot observe progression between them. The research question was whether that gap could be closed without creating an unacceptable concentration of sensitive information.</p>
     </section>
 
     <section id="rp-pprl">
-      <h2>2. Record linkage, privately</h2>
-      <p>Record linkage finds records that belong to the same person across separate collections. Privacy-preserving record linkage does this without the collections revealing their identifying details to each other. In the usual model, each data holder sends only an encoded identifier to a linkage unit, the unit works out which encodings match, and it returns link keys instead of names.<sup><a data-goto="rp-refs">[1, 2]</a></sup></p>
-      <p>Two kinds of encoding are common. <b>Keyed hashing</b> runs a normalised identifier through a one-way function with a secret key, and only finds exact matches. <b>Bloom-filter encoding</b> breaks identifiers such as names into fragments, which allows near matches that tolerate spelling differences.<sup><a data-goto="rp-refs">[3, 5]</a></sup> We chose the first, for reasons in section 4.</p>
+      <h2>2. Privacy-preserving record linkage</h2>
+      <p>Record linkage identifies records that refer to the same individual across separate collections. Privacy-preserving record linkage performs this without the collections disclosing identifying information to one another. In the conventional trusted-third-party model, each data custodian submits only an encoded identifier to a linkage unit, which determines matches and returns link keys in place of identities.<sup><a data-goto="rp-refs">[1, 2]</a></sup></p>
+      <p>Two encoding families predominate. <b>Keyed hashing</b> applies a secret-keyed one-way function to a normalised identifier and supports exact matching only. <b>Bloom-filter encoding</b> decomposes identifiers such as names into fragments, permitting approximate matching that tolerates variation in spelling.<sup><a data-goto="rp-refs">[3, 5]</a></sup> The design adopted keyed hashing, for the reasons set out in section 4.</p>
       <figure class="rp-fig rv">
         <div class="f2">
-          <div class="f2-col f2-bad"><h3>Pool the databases</h3><ul><li>Every ministry sees every person</li><li>One breach exposes all of them</li><li>Hard to justify, because faith is sensitive information</li></ul></div>
-          <div class="f2-col f2-bad"><h3>Reconcile by hand</h3><ul><li>Phone calls and spreadsheets</li><li>Names passed around in email</li><li>So much work it rarely happens</li></ul></div>
-          <div class="f2-col f2-good"><h3>Privacy-preserving linkage</h3><ul><li>No records exchanged</li><li>Only with the person&rsquo;s yes</li><li>Still needs a key and a linkage service</li></ul></div>
+          <div class="f2-col f2-bad"><h3>Pooled database</h3><ul><li>Every participant sees every individual</li><li>A single breach exposes all records</li><li>Difficult to justify for sensitive information</li></ul></div>
+          <div class="f2-col f2-bad"><h3>Manual reconciliation</h3><ul><li>Telephone calls and spreadsheets</li><li>Identities circulated by email</li><li>Too costly to sustain</li></ul></div>
+          <div class="f2-col f2-good"><h3>Privacy-preserving linkage</h3><ul><li>No exchange of records</li><li>Conditional on individual consent</li><li>Requires a key and a linkage service</li></ul></div>
         </div>
-        <figcaption><b>Figure 2.</b> The three ways to join records. PPRL is the best of them, and it still leaves a key and a set of links someone has to hold.</figcaption>
+        <figcaption><b>Figure 2.</b> Approaches to joining records across organisations. PPRL dominates the alternatives, but retains a key and a linkage service that must be trusted.</figcaption>
       </figure>
     </section>
 
     <section id="rp-design">
-      <h2>3. The design we built</h2>
-      <p>The design sat inside Always Platform&rsquo;s API and database. It was built in the open, covered by automated tests including tests that try to read across organisations, and recorded in ADR 0012.<sup><a data-goto="rp-refs">[12]</a></sup> It was never switched on, and it has since been removed.</p>
+      <h2>3. Architecture</h2>
+      <p>The design was implemented within the Always Platform API and database, published as open source, verified by automated tests including tests that attempt to read across organisational boundaries, and recorded in ADR 0012.<sup><a data-goto="rp-refs">[12]</a></sup> It was never enabled, and has since been removed by migration.</p>
 
       <figure class="rp-fig rv" id="rp-fig3">
         <ol class="f3">
-          <li class="f3-s"><span class="f3-k">Input</span><code>0412 345 678</code><small>Mobile given with consent</small></li>
-          <li class="f3-s"><span class="f3-k">Normalise</span><code>+61412345678</code><small>One canonical form</small></li>
+          <li class="f3-s"><span class="f3-k">Input</span><code>0412 345 678</code><small>Provided with consent</small></li>
+          <li class="f3-s"><span class="f3-k">Normalise</span><code>+61412345678</code><small>Canonical E.164 form</small></li>
           <li class="f3-s f3-key"><span class="f3-k">Fingerprint</span><code>HMAC-SHA256(LINK_KEY, &middot;)</code><small>Key held outside the database</small></li>
-          <li class="f3-s"><span class="f3-k">Match</span><code>9f3c&hellip;e1a7</code><small>Same fingerprint, same journey</small></li>
-          <li class="f3-s f3-key"><span class="f3-k">Per-ministry code</span><code>jny_Q2v&hellip; &ne; jny_8Lk&hellip;</code><small>HMAC(ORG_CODE_KEY, journey | ministry)</small></li>
+          <li class="f3-s"><span class="f3-k">Match</span><code>9f3c&hellip;e1a7</code><small>Equal fingerprint, same journey</small></li>
+          <li class="f3-s f3-key"><span class="f3-k">Pseudonym</span><code>jny_Q2v&hellip; &ne; jny_8Lk&hellip;</code><small>HMAC(ORG_CODE_KEY, journey | organisation)</small></li>
         </ol>
-        <figcaption><b>Figure 3.</b> From a mobile number to a journey, as designed. The number is normalised, scrambled with a secret key, matched, and shown to each ministry under its own unrelated code. Example values are made up.</figcaption>
+        <figcaption><b>Figure 3.</b> Identifier processing as designed. The number is normalised, transformed under a secret key, matched, and presented to each organisation under an unrelated pseudonym. Values shown are illustrative.</figcaption>
       </figure>
 
-      <h3>3.1 Consent and age</h3>
-      <p><b>Technically:</b> a separate consent purpose, <code>share.journey</code>, never pre-ticked and checked by the database before any link. The API refused it for anyone under 18. <b>In plain words:</b> people had to say yes to this on its own, and children were never included.</p>
+      <h3>3.1 Consent and eligibility</h3>
+      <p>Linkage required a distinct consent purpose, <code>share.journey</code>, never pre-selected, separate from consent to be introduced to a church, and verified by the database before any link was written. The API rejected the purpose for anyone under 18. In practical terms, participation was a separate and explicit choice, and minors were excluded without exception.</p>
 
-      <h3>3.2 The keyed fingerprint</h3>
-      <p><b>Technically:</b> <code>HMAC-SHA256(LINK_KEY, +614XXXXXXXX)</code>, a standard keyed hash,<sup><a data-goto="rp-refs">[13]</a></sup> with the key kept in the environment, apart from the database. <b>In plain words:</b> the phone number became a code using a secret key. It works like one-way encryption: without the key, the code can&rsquo;t be turned back into the number.</p>
+      <h3>3.2 Keyed fingerprint</h3>
+      <p>The fingerprint was <code>HMAC-SHA256(LINK_KEY, +614XXXXXXXX)</code>, a standard keyed hash,<sup><a data-goto="rp-refs">[13]</a></sup> with the key held in the runtime environment and isolated from the database and from authentication secrets. Functionally it behaves as one-way encryption: without the key, the fingerprint cannot be computed from a number or inverted to recover one.</p>
 
-      <h3>3.3 A different code for every ministry</h3>
-      <p><b>Technically:</b> each ministry saw <code>HMAC(ORG_CODE_KEY, journey id | ministry id)</code>, stable for that ministry and unrelated between ministries. <b>In plain words:</b> two ministries comparing lists couldn&rsquo;t find the same person.</p>
+      <h3>3.3 Organisation-specific pseudonyms</h3>
+      <p>No organisation received the fingerprint or the internal journey identifier. Each received <code>HMAC(ORG_CODE_KEY, journey id | organisation id)</code>, stable within that organisation and uncorrelated across organisations. Two organisations comparing their data could not establish that they held the same individual.</p>
 
-      <h3>3.4 Who would have seen what</h3>
+      <h3>3.4 Disclosure matrix</h3>
       <figure class="rp-fig rv">
-        <div class="f4" role="table" aria-label="Who would have seen what">
-          <div class="f4-r f4-h" role="row"><span role="columnheader">Party</span><span role="columnheader">Identity</span><span role="columnheader">Steps</span><span role="columnheader">Notes</span></div>
-          <div class="f4-r" role="row"><span role="cell">The person</span><span role="cell" data-l="Identity" class="y">Own</span><span role="cell" data-l="Steps" class="y">All, and could withdraw</span><span role="cell" data-l="Notes">&mdash;</span></div>
-          <div class="f4-r" role="row"><span role="cell">Each ministry on the journey</span><span role="cell" data-l="Identity" class="p">Its own record only</span><span role="cell" data-l="Steps" class="y">Milestone and month</span><span role="cell" data-l="Notes" class="n">Its own only</span></div>
-          <div class="f4-r" role="row"><span role="cell">Always Platform</span><span role="cell" data-l="Identity" class="p">Fingerprints and the keys</span><span role="cell" data-l="Steps" class="y">To serve the journey</span><span role="cell" data-l="Notes" class="n">None</span></div>
-          <div class="f4-r" role="row"><span role="cell">Funders and networks</span><span role="cell" data-l="Identity" class="n">None</span><span role="cell" data-l="Steps" class="p">Totals, small groups withheld</span><span role="cell" data-l="Notes" class="n">None</span></div>
+        <div class="f4" role="table" aria-label="Disclosure matrix">
+          <div class="f4-r f4-h" role="row"><span role="columnheader">Party</span><span role="columnheader">Identity</span><span role="columnheader">Milestones</span><span role="columnheader">Notes</span></div>
+          <div class="f4-r" role="row"><span role="cell">The individual</span><span role="cell" data-l="Identity" class="y">Own</span><span role="cell" data-l="Milestones" class="y">All; withdrawal at any time</span><span role="cell" data-l="Notes">&mdash;</span></div>
+          <div class="f4-r" role="row"><span role="cell">Each organisation on the journey</span><span role="cell" data-l="Identity" class="p">Its own record only</span><span role="cell" data-l="Milestones" class="y">Milestone and month</span><span role="cell" data-l="Notes" class="n">Its own only</span></div>
+          <div class="f4-r" role="row"><span role="cell">Always Platform</span><span role="cell" data-l="Identity" class="p">Fingerprints and keys</span><span role="cell" data-l="Milestones" class="y">As required to operate</span><span role="cell" data-l="Notes" class="n">None</span></div>
+          <div class="f4-r" role="row"><span role="cell">Funders and networks</span><span role="cell" data-l="Identity" class="n">None</span><span role="cell" data-l="Milestones" class="p">Aggregates; small cells suppressed</span><span role="cell" data-l="Notes" class="n">None</span></div>
         </div>
-        <figcaption><b>Figure 4.</b> Who would have seen what. The third row is the problem: one organisation holding the fingerprints and the keys.</figcaption>
+        <figcaption><b>Figure 4.</b> Disclosure by party. The third row concentrates the fingerprints and the keys in a single organisation, and is the locus of the residual risk.</figcaption>
       </figure>
     </section>
 
     <section id="rp-security">
-      <h2>4. Where it breaks down</h2>
+      <h2>4. Threat model</h2>
       <figure class="rp-fig rv" id="rp-fig5">
         <div class="f5">
-          <div class="f5-z"><h3>Sources</h3><p>Response pages, church inboxes, ministries&rsquo; systems</p><ul><li>Encrypted in transit</li><li>Consent checked first</li></ul></div>
+          <div class="f5-z"><h3>Sources</h3><p>Response pages, church inboxes, partner systems</p><ul><li>Encrypted in transit</li><li>Consent verified first</li></ul></div>
           <div class="f5-arrow" aria-hidden="true"><i></i></div>
-          <div class="f5-z f5-core"><h3>Linkage service</h3><p>Fingerprints and journeys in the database; <b>keys outside it</b></p><ul><li>Row-level security</li><li>Every view logged</li></ul></div>
+          <div class="f5-z f5-core"><h3>Linkage service</h3><p>Fingerprints and journeys in the database; <b>keys held separately</b></p><ul><li>Row-level security</li><li>All access logged</li></ul></div>
           <div class="f5-arrow" aria-hidden="true"><i></i></div>
-          <div class="f5-z"><h3>Outputs</h3><p>Per-ministry codes and milestones; totals for reports</p><ul><li>No fingerprint leaves</li><li>Small groups withheld</li></ul></div>
-          <div class="f5-threat" aria-hidden="true"><span>Anyone who gets the key as well as the data</span><b>Can reverse every fingerprint and rebuild every journey</b></div>
+          <div class="f5-z"><h3>Outputs</h3><p>Pseudonyms and milestones; aggregates for reporting</p><ul><li>No fingerprint disclosed</li><li>Small cells suppressed</li></ul></div>
+          <div class="f5-threat" aria-hidden="true"><span>Adversary holding the key and the data</span><b>Inverts every fingerprint and reconstructs every journey</b></div>
         </div>
-        <figcaption><b>Figure 5.</b> The design survives a stolen database. It doesn&rsquo;t survive a stolen or misused key, and someone always has to hold the key.</figcaption>
+        <figcaption><b>Figure 5.</b> Trust zones. The design withstands exfiltration of the database. It does not withstand compromise or misuse of the key, and the key must be held by someone.</figcaption>
       </figure>
-      <p>The cryptography holds up. The trouble is what the system creates around it.</p>
-      <ul>
-        <li><b>Success makes it riskier.</b> Linking ten ministries might be useful. Linking a thousand would create one of the most sensitive records of Christian participation in the country. The better it works and the further it spreads, the more it is worth to the wrong people.</li>
-        <li><b>Only 100 million numbers.</b> Australian mobiles are 04 plus eight digits. Without the key the fingerprints are useless, but with it a computer can try every number in minutes. All the protection rests on one secret.</li>
-        <li><b>A rogue insider</b> at the linkage service is the strongest attacker, because that is where the keys live. Logging and oversight reduce the risk, and can&rsquo;t remove it.</li>
-        <li><b>Patterns give people away.</b> Even without the key, &ldquo;event in March, course in May, church in Penrith in July&rdquo; can point to one person in a small community.</li>
-        <li><b>Orders to hand it over.</b> A court, regulator or foreign government could demand the links. Links that were never made can&rsquo;t be handed over.</li>
-        <li><b>Requests grow.</b> More ministries, longer histories, a funder dashboard. Each step seems reasonable, and together they become a register of religious participation.</li>
-        <li><b>Recycled and shared phones.</b> Reissued numbers and family phones could join two different people into one journey.</li>
-      </ul>
-      <h3>Why not Bloom filters</h3>
-      <p>Bloom-filter linkage tolerates typos and is widely used in health, but published attacks have re-identified encoded values, especially common names, from sets of filters.<sup><a data-goto="rp-refs">[5, 6]</a></sup> It also needs more personal details, such as names and dates of birth. Exact matching on one number was the safer choice, and it still left the key problem in place.</p>
+      <p>The cryptographic primitives are sound. The material risks arise from the system&rsquo;s position, its custodian and its trajectory.</p>
+      <dl class="rp-risks">
+        <div><dt>Value increases with adoption</dt><dd>Linkage across ten ministries offers modest utility. Linkage across a thousand would produce one of the most sensitive datasets on religious participation in the country. Utility and attractiveness to adversaries scale together.</dd></div>
+        <div><dt>Small identifier space</dt><dd>Australian mobile numbers occupy roughly 10<sup>8</sup> values. With the key, exhaustive enumeration is computationally trivial. The entire protection therefore reduces to the custody of a single secret.</dd></div>
+        <div><dt>Privileged insider</dt><dd>The strongest adversary sits within the linkage service, where the keys reside. Access controls, logging and oversight reduce this risk but cannot eliminate it.</dd></div>
+        <div><dt>Inference from sequences</dt><dd>Without the key, a sequence of milestones, places and months may still identify an individual within a small community.</dd></div>
+        <div><dt>Compelled disclosure</dt><dd>Courts, regulators or foreign authorities may demand linked data. Data that has not been created cannot be compelled.</dd></div>
+        <div><dt>Function creep</dt><dd>Requests for additional participants, longer histories and finer reporting are each individually defensible and collectively produce a register of religious participation.</dd></div>
+        <div><dt>Identifier instability</dt><dd>Reissued numbers and shared handsets can merge distinct individuals into a single journey.</dd></div>
+      </dl>
+      <h3>4.1 Rejection of Bloom-filter encoding</h3>
+      <p>Bloom-filter linkage tolerates typographical variation and is widely used in health research, but published cryptanalysis has re-identified encoded values, particularly common names, from sets of filters.<sup><a data-goto="rp-refs">[5, 6]</a></sup> It also requires additional identifying attributes, such as names and dates of birth. Exact matching on a single consented identifier was the more conservative choice. It did not resolve the custody problem.</p>
     </section>
 
     <section id="rp-health">
       <h2>5. Lessons from Australian health</h2>
-      <p>Australia is one of the most experienced countries in the world at linking records responsibly, which is why we looked there first.</p>
+      <p>Australia has one of the most mature record-linkage environments in the world, which made it the natural reference point.</p>
       <figure class="rp-fig rv" id="rp-fig6">
         <ol class="f6">
-          <li><span class="f6-y">1995</span><b>WA Data Linkage System</b><p>Established in Western Australia, now the longest-running linkage system in Australia.<sup><a data-goto="rp-refs">[1]</a></sup></p></li>
-          <li><span class="f6-y">2009&ndash;12</span><b>A national network</b><p>The Population Health Research Network adds linkage units in every state and a Centre for Data Linkage.<sup><a data-goto="rp-refs">[2]</a></sup></p></li>
-          <li><span class="f6-y">2018</span><b>Tested at scale</b><p>A NSW evaluation links primary-care records from 16 general practices to tens of millions of hospital records using privacy-preserving methods.<sup><a data-goto="rp-refs">[4]</a></sup></p></li>
-          <li><span class="f6-y">2018</span><b>Tested by attackers</b><p>Researchers at the Australian National University publish efficient attacks on Bloom-filter encodings.<sup><a data-goto="rp-refs">[5]</a></sup></p></li>
-          <li><span class="f6-y">2022</span><b>As accurate as plain linkage</b><p>A blinded WA evaluation finds 99.3% of groupings identical between privacy-preserving and clear-text linkage.<sup><a data-goto="rp-refs">[3]</a></sup></p></li>
-          <li class="f6-now"><span class="f6-y">2026</span><b>Considered for ministry</b><p>Always designs and tests consent-based linkage across ministries, then decides not to proceed.</p></li>
+          <li><span class="f6-y">1995</span><b>WA Data Linkage System</b><p>Established in Western Australia; now the longest-running linkage system in Australia.<sup><a data-goto="rp-refs">[1]</a></sup></p></li>
+          <li><span class="f6-y">2009&ndash;12</span><b>National infrastructure</b><p>The Population Health Research Network establishes linkage units in every state and a Centre for Data Linkage.<sup><a data-goto="rp-refs">[2]</a></sup></p></li>
+          <li><span class="f6-y">2018</span><b>Evaluated at scale</b><p>A NSW evaluation links primary-care records from 16 general practices to tens of millions of hospital records using privacy-preserving methods.<sup><a data-goto="rp-refs">[4]</a></sup></p></li>
+          <li><span class="f6-y">2018</span><b>Evaluated adversarially</b><p>Researchers at the Australian National University publish efficient attacks on Bloom-filter encodings.<sup><a data-goto="rp-refs">[5]</a></sup></p></li>
+          <li><span class="f6-y">2022</span><b>Accuracy established</b><p>A blinded WA evaluation finds 99.3% of groupings identical between privacy-preserving and clear-text linkage.<sup><a data-goto="rp-refs">[3]</a></sup></p></li>
+          <li class="f6-now"><span class="f6-y">2026</span><b>Assessed for ministry</b><p>Always implements and evaluates consent-based linkage across ministries, and declines to deploy it.</p></li>
         </ol>
-        <figcaption><b>Figure 6.</b> Three decades of Australian record linkage, and the point where we stopped.</figcaption>
+        <figcaption><b>Figure 6.</b> Three decades of Australian record linkage, and the point at which the Foundation stopped.</figcaption>
       </figure>
-      <p>Health linkage works because of what surrounds the cryptography: independent units that link records but don&rsquo;t hold them, legislation, ethics committees, and published methods. Those took decades and public institutions to build. A ministry network has none of them, and a small foundation shouldn&rsquo;t try to become one.</p>
+      <p>The safety of health linkage derives less from its cryptography than from its institutional setting: separation between those who link records and those who hold them, enabling legislation, ethics review, and published methods. That setting was built over decades by public institutions. A voluntary network of churches and ministries has no equivalent, and it would be inappropriate for a small foundation to attempt to become one.</p>
     </section>
 
     <section id="rp-cyber">
-      <h2>6. The cyber threat to shared infrastructure</h2>
-      <p>Any system that brings ministries together becomes infrastructure, and infrastructure is a target. Australia&rsquo;s cyber agency reports that state-sponsored actors are a serious and growing threat to government, critical infrastructure and business networks.<sup><a data-goto="rp-refs">[7]</a></sup></p>
+      <h2>6. Threat environment</h2>
+      <p>Any system that connects independent organisations acquires the characteristics of infrastructure, and with them its exposure. The Australian Signals Directorate assesses state-sponsored actors as a serious and growing threat to government, critical infrastructure and business networks.<sup><a data-goto="rp-refs">[7]</a></sup></p>
       <figure class="rp-fig rv" id="rp-fig7">
         <div class="f7">
           <div class="f7-stats">
@@ -3827,71 +3835,71 @@ b, strong { font-weight: 700; }
         </div>
         <figcaption><b>Figure 7.</b> The threat environment. Sources: ASD&rsquo;s Annual Cyber Threat Report 2024&ndash;25; OAIC; AAP.<sup><a data-goto="rp-refs">[7, 8, 9]</a></sup></figcaption>
       </figure>
-      <p>The MediSecure breach, affecting about 12.9 million people&rsquo;s personal and health information, is the largest ever notified under the Notifiable Data Breaches scheme.<sup><a data-goto="rp-refs">[8]</a></sup> A record of who responded to the Gospel, and where they went, would be one of the most sensitive collections in the country. PPRL makes that record harder to read. Not creating it at all is the stronger protection.</p>
+      <p>The MediSecure breach, affecting approximately 12.9 million people, is the largest notified under the Notifiable Data Breaches scheme.<sup><a data-goto="rp-refs">[8]</a></sup> A linked record of who responded to the Gospel, and where they subsequently went, would rank among the most sensitive collections in the country. PPRL raises the cost of exploiting such a record. Declining to create it removes the record altogether.</p>
     </section>
 
     <section id="rp-decision">
-      <h2>7. Why we didn&rsquo;t proceed</h2>
+      <h2>7. Decision</h2>
       <figure class="rp-fig rv">
         <div class="f2 f2-two">
-          <div class="f2-col f2-good"><h3>What linkage offered</h3><ul><li>Ministries learning whether people found a church</li><li>Each person counted once in totals</li><li>Less manual follow-up between ministries</li></ul></div>
-          <div class="f2-col f2-bad"><h3>What it would have cost</h3><ul><li>A key and a set of links worth stealing or demanding</li><li>Re-identification risk in small communities</li><li>A promise to people that goes beyond meeting one church</li><li>Pressure to widen it once it existed</li></ul></div>
+          <div class="f2-col f2-good"><h3>Benefits</h3><ul><li>Visibility of progression between ministries</li><li>De-duplicated network totals</li><li>Reduced manual coordination</li></ul></div>
+          <div class="f2-col f2-bad"><h3>Costs</h3><ul><li>A key and link set attractive to theft and compulsion</li><li>Re-identification risk in small communities</li><li>A commitment to individuals beyond an introduction to one church</li><li>Structural pressure to extend scope</li></ul></div>
         </div>
-        <figcaption><b>Figure 8.</b> The trade we weighed. The benefits are mostly available in other ways. The costs aren&rsquo;t.</figcaption>
+        <figcaption><b>Figure 8.</b> The assessment. Most benefits are obtainable by other means (section 9). The costs are intrinsic to the capability.</figcaption>
       </figure>
-      <h3>Deciding early</h3>
-      <p>The system worked in testing, and the people who built it stood to gain from switching it on. We decided anyway, while nothing depended on it: no real records, no ministry workflows built around it, no funder dashboards to keep running. A decision like this is much harder once a system is relied on.</p>
-      <h3>A small pilot doesn&rsquo;t fix it</h3>
-      <p>It is tempting to allow linkage only for a few high-impact programmes, under tight rules. That reduces how many people are exposed, but the core risks stay. Small groups are easier to identify, the key is just as valuable, and once one funder has it, the next will ask.</p>
-      <h3>The law sets a high bar</h3>
-      <p>Australian law doesn&rsquo;t ban record linkage, but it treats a person&rsquo;s religious beliefs as sensitive information. Under the Privacy Act 1988, organisations generally need consent to collect it, and can use or share it only for the purpose it was collected for, or a closely related one the person would reasonably expect. A Children&rsquo;s Online Privacy Code must be registered by 10 December 2026, adding stricter rules for children&rsquo;s information online.<sup><a data-goto="rp-refs">[14]</a></sup> On top of what the law requires, we chose not to do it at all.</p>
-      <h3>Making the decision last</h3>
-      <p>We removed the code and the database tables, recorded a standing rule in ADR 0013, ruled out exceptions for large funders or high-impact programmes, and set the conditions any future study would have to meet. The aim is for the decision to hold even when the people who made it have moved on.</p>
+      <h3>7.1 Timing</h3>
+      <p>The assessment was completed while the system functioned and before any dependency had formed: no personal information had been processed, no ministry workflows relied on it, and no funder reporting had been built upon it. Decisions of this kind become materially harder once a capability is embedded in operations and expectations.</p>
+      <h3>7.2 Limited deployment</h3>
+      <p>Restricting linkage to selected high-impact programmes would reduce the number of individuals exposed without reducing the principal risks. Smaller cohorts are more readily re-identified, the key retains its value irrespective of scale, and an exception granted to one funder establishes a precedent for the next.</p>
+      <h3>7.3 Legal context</h3>
+      <p>Australian law does not prohibit record linkage, but classifies religious belief as sensitive information. Under the Privacy Act 1988, collection generally requires consent, and use or disclosure is confined to the primary purpose or a directly related secondary purpose the individual would reasonably expect. A Children&rsquo;s Online Privacy Code is required to be registered by 10 December 2026, imposing further obligations for children&rsquo;s information online.<sup><a data-goto="rp-refs">[14]</a></sup> The Foundation&rsquo;s position is more restrictive than the law requires.</p>
+      <h3>7.4 Durability</h3>
+      <p>The implementation and its database objects were removed, a standing prohibition was recorded in ADR 0013, exceptions for major funders or high-impact programmes were expressly excluded, and conditions were set for any future study. The intent is that the decision should not depend on the continued presence of those who made it.</p>
     </section>
 
     <section id="rp-church">
-      <h2>8. The strength of the local church</h2>
-      <p>The church has always been many local congregations, each knowing and caring for its own people. That is a strength for privacy as well as for care.</p>
+      <h2>8. The local church as privacy architecture</h2>
+      <p>The church has always existed as many local congregations, each responsible for the care of its own people. That structure is a strength for privacy as well as for pastoral care.</p>
       <div class="rp-mlj-pair">
-        <div><b>No single list</b><p>When each church holds its own records, there is nothing central to steal, sell or seize, and a breach at one church doesn&rsquo;t expose another.</p></div>
-        <div><b>Care where people are known</b><p>Someone who asks to be introduced goes to one church, with their permission, and that church cares for them. Always introduces people and then steps back.</p></div>
+        <div><b>No central register</b><p>Where each congregation holds its own records, there is no single collection to steal, sell or seize, and a compromise at one does not expose another.</p></div>
+        <div><b>Care where people are known</b><p>A person who asks to be introduced is referred to one church, with their permission, and that church assumes their care. Always facilitates the introduction and retains nothing further.</p></div>
       </div>
-      <p>Always is built the same way. It connects churches and ministries, and leaves their people with them.</p>
+      <p>Always Platform follows the same principle. It connects churches and ministries while leaving each responsible for its own people.</p>
     </section>
 
     <section id="rp-instead">
-      <h2>9. What we do instead</h2>
-      <p>Most of what ministries and funders want to know can be answered without recognising anyone across organisations.</p>
+      <h2>9. Evidence without linkage</h2>
+      <p>Most questions asked by ministries and funders can be answered without recognising any individual across organisations.</p>
       <figure class="rp-fig rv">
-        <div class="f4" role="table" aria-label="Evidence without tracking">
-          <div class="f4-r f4-h" role="row"><span role="columnheader">The question</span><span role="columnheader">How it&rsquo;s answered</span><span role="columnheader">Who sees it</span><span role="columnheader">Linking?</span></div>
-          <div class="f4-r" role="row"><span role="cell">Did people from this event find a church?</span><span role="cell" data-l="How">The receiving church records each handoff step</span><span role="cell" data-l="Who" class="p">Totals per event</span><span role="cell" data-l="Linking" class="y">Not needed</span></div>
-          <div class="f4-r" role="row"><span role="cell">Are they still connected months later?</span><span role="cell" data-l="How">The person&rsquo;s chosen church asks them, and asks to count the answer</span><span role="cell" data-l="Who" class="p">Totals only</span><span role="cell" data-l="Linking" class="y">Not needed</span></div>
-          <div class="f4-r" role="row"><span role="cell">How is our ministry going?</span><span role="cell" data-l="How">Each ministry&rsquo;s own handoffs and outcomes, by month</span><span role="cell" data-l="Who" class="p">That ministry</span><span role="cell" data-l="Linking" class="y">Not needed</span></div>
-          <div class="f4-r" role="row"><span role="cell">Did this programme cause the outcome?</span><span role="cell" data-l="How">Can&rsquo;t be answered from routine data</span><span role="cell" data-l="Who">&mdash;</span><span role="cell" data-l="Linking" class="n">Would need a study</span></div>
+        <div class="f4" role="table" aria-label="Evidence without linkage">
+          <div class="f4-r f4-h" role="row"><span role="columnheader">Question</span><span role="columnheader">Method</span><span role="columnheader">Disclosure</span><span role="columnheader">Linkage</span></div>
+          <div class="f4-r" role="row"><span role="cell">Did respondents at this event join a church?</span><span role="cell" data-l="Method">Handoff outcomes recorded by the receiving church</span><span role="cell" data-l="Disclosure" class="p">Aggregates per event</span><span role="cell" data-l="Linkage" class="y">Not required</span></div>
+          <div class="f4-r" role="row"><span role="cell">Are they still connected after some months?</span><span role="cell" data-l="Method">Self-report collected by the chosen church, with consent to count</span><span role="cell" data-l="Disclosure" class="p">Aggregates only</span><span role="cell" data-l="Linkage" class="y">Not required</span></div>
+          <div class="f4-r" role="row"><span role="cell">How is a ministry performing over time?</span><span role="cell" data-l="Method">The ministry&rsquo;s own handoffs and outcomes by month</span><span role="cell" data-l="Disclosure" class="p">That ministry</span><span role="cell" data-l="Linkage" class="y">Not required</span></div>
+          <div class="f4-r" role="row"><span role="cell">Did a programme cause the outcome?</span><span role="cell" data-l="Method">Not identifiable from routine data</span><span role="cell" data-l="Disclosure">&mdash;</span><span role="cell" data-l="Linkage" class="n">Research study</span></div>
         </div>
-        <figcaption><b>Figure 9.</b> Evidence without tracking. Only the last question needs linkage, and that is a research question.</figcaption>
+        <figcaption><b>Figure 9.</b> Evidence without linkage. Only causal attribution requires linkage, and it is properly a research question.</figcaption>
       </figure>
     </section>
 
     <section id="rp-conditions">
-      <h2>10. If the question returns</h2>
-      <p>If someone ever needs to know whether a programme caused people to join churches, it would have to be a one-off study run outside Always. These are the least we would expect before discussing one:</p>
+      <h2>10. Conditions for any future study</h2>
+      <p>Should causal attribution ever be required, it would need to be pursued as a discrete study conducted outside Always. The following are minimum conditions for consideration:</p>
       <ol>
-        <li>Run by an independent university or accredited researcher, never by Always, a funder or a participating ministry.</li>
+        <li>Conducted by an independent university or accredited researcher, not by Always, a funder or a participating ministry.</li>
         <li>Approved by a human research ethics committee.</li>
-        <li>Its own plain-language consent, which people can refuse without losing any help.</li>
+        <li>Study-specific consent in plain language, which may be declined without any effect on care.</li>
         <li>Adults only.</li>
-        <li>Identities held apart from the study data.</li>
-        <li>A fixed end date, after which the linked data and keys are destroyed.</li>
-        <li>Results published as totals, whatever they show.</li>
-        <li>No linkage feature in Always, and no linking key held by Always.</li>
-        <li>Decided in the open, with a new architecture decision, legal and independent privacy review, and board approval.</li>
+        <li>Separation of identifying data from study data.</li>
+        <li>A fixed end date, after which linked data and keys are destroyed and destruction is recorded.</li>
+        <li>Publication of results in aggregate, irrespective of findings.</li>
+        <li>No linkage capability in Always Platform, and no linkage key held by Always.</li>
+        <li>An open decision process: a new architecture decision record, legal and independent privacy review, and board approval.</li>
       </ol>
-      <p>If a proposal can&rsquo;t meet all of them, the answer is no.</p>
-      <h3>Our position</h3>
-      <p>Always does not link people across organisations, at any scale or under any name. The decision is recorded in our open-source architecture decisions (ADR 0013) and applies to our code, our partners and our funders. We publish this case study because the reasoning matters as much as the result: we did the design work properly, and it told us not to build it.</p>
-      <p>Building a capability and being entitled to hold it are separate questions. For an organisation that exists to serve independent churches, the second one decides.</p>
+      <p>A proposal that does not satisfy every condition will not proceed.</p>
+      <h3>Position</h3>
+      <p>Always does not link individuals across organisations, at any scale or under any name. The position is recorded in the Foundation&rsquo;s open-source architecture decisions (ADR 0013) and binds its code, its partners and its funders.</p>
+      <p>The technical capacity to build a capability and the institutional standing to hold it are distinct questions. For an organisation constituted to serve independent churches, the second is decisive.</p>
     </section>
 
     <section id="rp-refs" class="rp-refs">
@@ -3908,11 +3916,11 @@ b, strong { font-weight: 700; }
         <li>Australian Associated Press. Millions of people hit by prescription cyber attack, 2024. <a href="https://aapnews.aap.com.au/news/millions-of-people-hit-by-prescription-cyber-attack">aapnews.aap.com.au</a></li>
         <li>MLJ Trust. Meet Martyn Lloyd-Jones. <a href="https://mljtrust.org/meet-mlj/">mljtrust.org</a></li>
         <li>MLJ Trust. 10 years and 20 million downloads. <a href="https://www.mljtrust.org/blog/10-year-anniversary/">mljtrust.org</a></li>
-        <li>Always Platform. ADR 0012 (withdrawn) and ADR 0013: no linkage of people across organisations. <a href="https://github.com/alwaysfoundation/always-platform">github.com/alwaysfoundation/always-platform</a></li>
+        <li>Always Platform. ADR 0012 (withdrawn) and ADR 0013: no linkage of individuals across organisations. <a href="https://github.com/alwaysfoundation/always-platform">github.com/alwaysfoundation/always-platform</a></li>
         <li>Krawczyk H, Bellare M, Canetti R. HMAC: Keyed-Hashing for Message Authentication. RFC 2104, IETF, 1997. <a href="https://www.rfc-editor.org/rfc/rfc2104">rfc-editor.org</a></li>
         <li>Office of the Australian Information Commissioner. Children&rsquo;s Online Privacy Code. <a href="https://www.oaic.gov.au/privacy/privacy-registers/privacy-codes/childrens-online-privacy-code">oaic.gov.au</a></li>
       </ol>
-      <p class="rp-note">This is a research case study, not legal advice. Nothing described here runs on Always Platform. Questions or a different view are welcome at <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p>
+      <p class="rp-note">This research case study does not constitute legal advice. Nothing described here operates on Always Platform. Correspondence is welcome at <a href="mailto:hello@alwaysfoundation.org">hello@alwaysfoundation.org</a>.</p>
     </section>
   </div>
 </div>
@@ -4507,7 +4515,7 @@ function route() {
   if (page === 'compliance' && ['check', 'problem', 'how', 'covers', 'infrastructure'].includes(second)) { requestAnimationFrame(() => document.getElementById(second).scrollIntoView({ behavior: 'smooth' })); watch(document.getElementById(pages[page])); document.title = second === 'check' ? 'Free safety check-up · Always Foundation' : 'Always Safety · Always Foundation'; return; }
   if (page === 'home' && anchors[first]) { requestAnimationFrame(() => document.getElementById(anchors[first]).scrollIntoView({ behavior: 'smooth' })); }
   else window.scrollTo(0, 0);
-  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Safety · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'Always Sent · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...{"app": "Always Sent · Always Foundation", "respond": "Always Respond · Always Foundation", "compliance": "Always Safety · Always Foundation", "reports": "Always Reports · Always Foundation", "connect": "Always Connect · Always Foundation", "churches": "For churches · Always Foundation", "youth": "For youth · Always Foundation", "ministries": "For ministries · Always Foundation", "networks": "For networks · Always Foundation", "platform": "Always Platform · Always Foundation", "developers": "Developers · Always Foundation", "contact": "Contact · Always Foundation", "join": "Partner with Always · Always Foundation", "hello": "Let's stay in touch · Always Foundation", "mycompliance": "Your safety check-up · Always Foundation", "integrations": "Integrations · Always Foundation", "pprl": "Why we don’t link people across ministries · Always Foundation", "youversion": "YouVersion integration · Always Foundation", "streets": "Evangelists in Sydney · Always Foundation", "dbs": "Discovery Bible Study integration · Always Foundation", "cexp": "Christianity Explained integration · Always Foundation", "alpha": "Alpha integration · Always Foundation", "uen": "UEN · Always Foundation", "globalharvest": "The Global Harvest · Always Foundation", "needgod": "NeedGod.net · Always Foundation", "rejoice": "Rejoice · Always Foundation", "chai": "Christians in AI: Branches · Always Foundation", "faithtech": "FaithTech Australia · Always Foundation"} };
+  const titles = { home: 'Always Foundation · Together for the Gospel', compliance: 'Always Safety · Always Foundation', directory: 'Directory · Always Foundation', about: 'About · Always Foundation', churches: 'For churches · Always Foundation', ministries: 'For ministries · Always Foundation', app: 'Always Sent · Always Foundation', faq: 'FAQs · Always Foundation', events: 'Events · Always Foundation', claim: 'Claim your church · Always Foundation', feedback: 'Ideas and problems · Always Foundation', research: 'Research · Always Foundation', brand: 'Brand · Always Foundation', platform: 'Always Platform · Always Foundation', ...{"app": "Always Sent · Always Foundation", "respond": "Always Respond · Always Foundation", "compliance": "Always Safety · Always Foundation", "reports": "Always Reports · Always Foundation", "connect": "Always Connect · Always Foundation", "churches": "For churches · Always Foundation", "youth": "For youth · Always Foundation", "ministries": "For ministries · Always Foundation", "networks": "For networks · Always Foundation", "platform": "Always Platform · Always Foundation", "developers": "Developers · Always Foundation", "contact": "Contact · Always Foundation", "join": "Partner with Always · Always Foundation", "hello": "Let's stay in touch · Always Foundation", "mycompliance": "Your safety check-up · Always Foundation", "integrations": "Integrations · Always Foundation", "pprl": "Why Always does not link people across ministries · Always Foundation", "youversion": "YouVersion integration · Always Foundation", "streets": "Evangelists in Sydney · Always Foundation", "dbs": "Discovery Bible Study integration · Always Foundation", "cexp": "Christianity Explained integration · Always Foundation", "alpha": "Alpha integration · Always Foundation", "uen": "UEN · Always Foundation", "globalharvest": "The Global Harvest · Always Foundation", "needgod": "NeedGod.net · Always Foundation", "rejoice": "Rejoice · Always Foundation", "chai": "Christians in AI: Branches · Always Foundation", "faithtech": "FaithTech Australia · Always Foundation"} };
   document.body.classList.toggle('on-hello', page === 'hello');
   if (page !== 'docs') document.title = titles[page] || 'Always Foundation';
   watch(document.getElementById(pages[page]));
