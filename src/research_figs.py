@@ -25,7 +25,7 @@ def journey():
     g = [f'<svg viewBox="0 0 760 452" role="img" aria-labelledby="rxf1t" {_T}><title id="rxf1t">Four organisations each hold one record about the same person. A central linked record would exist only if linkage were built.</title>']
     g.append(f'<rect x="250" y="16" width="260" height="62" rx="6" fill="{PAPER}" stroke="{MUTED}" stroke-width="1.5" stroke-dasharray="6 5"/>')
     g.append(f'<text x="380" y="42" text-anchor="middle" font-size="15" font-weight="600" fill="{INK}">Central journey record</text>')
-    g.append(f'<text x="380" y="62" text-anchor="middle" font-size="12.5" fill="{MUTED}">created only by linkage; not built</text>')
+    g.append(f'<text x="380" y="62" text-anchor="middle" font-size="12.5" fill="{MUTED}">would exist only if records were linked</text>')
     for cx, *_ in cols:
         g.append(f'<path d="M380 78 C 380 100, {cx} 96, {cx} 120" fill="none" stroke="{MUTED}" stroke-width="1.3" stroke-dasharray="4 5"/>')
     for cx, org, step, mon in cols:
