@@ -205,11 +205,6 @@ FAQ_GROUPS = [
   ('Is partner content open source too?', 'Not necessarily. Training and Bible study material from partners, such as NeedGod.net, Discovery Bible Study and Christianity Explained, stays under each partner&rsquo;s own terms. Our code and documentation are open; their content remains theirs.'),
   ('What is the Always Handoff standard?', 'An open, published way for one ministry to introduce a consenting person to another. Anyone may implement it, free, whether or not they use Always Platform.'),
   ('Can I contribute?', 'Yes. Contributions are welcome on GitHub. You keep the copyright in what you write and license it under the same open terms, confirming each change with a simple sign-off.')]),
- ('Always AI', [
-  ('What is Always AI?', 'A research prototype: an open AI model that a church can run on its own computer, with instructions written by Always that carry the Nicene Creed and our rules for care, privacy and children. It is not available yet, and we will only offer it if published testing shows it is useful, faithful and safe. <a href="#/ai-research">Read the research</a>.'),
-  ('Why not use ChatGPT or Claude?', 'They are excellent, and churches are welcome to use them. Always AI is for work a church would rather keep private, including a pastor&rsquo;s own study, at no cost. The best paid tools are more capable.'),
-  ('Is it trained on the Creed?', 'The Creed is built into its instructions, so it is always present. A church can add its own statement of faith and documents for it to consult. Retraining the model would come later, if at all, and only with theological review.'),
-  ('Will it touch children&rsquo;s information?', 'No. It declines to work with details identifying anyone under 18, and that rule cannot be switched off.')]),
  ('Supporters and builders', [
   ('How can I support the work?', 'Stand with us in prayer, and get in touch at hello@alwaysfoundation.org to book a catch-up call.'),
   ('Can developers build on Always Platform?', 'Yes. The API, SDK and open standard are open source under Apache 2.0, with docs under CC BY 4.0. An MCP server for AI assistants is coming, and it never sees a person\'s details.')])]
