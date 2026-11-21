@@ -932,32 +932,13 @@ on(/^\/walk\/notes$/, () => {
 });
 
 // ---------------------------------------------------------------- Connect
-on(/^\/connect$/, (m, q) => {
+on(/^\/connect$/, () => {
   render(`${top('#/', 'Find a church')}<div class="hero-card"><p class="k" style="color:#E8A577">A next step near home</p><p class="big-serif" style="color:#F8F3EA;margin:8px 0">Looking for a church?</p><p class="p">Tell us your suburb and what would help. A church or ministry nearby will be in touch, or our care team will.</p><div class="sp"></div><a class="btn peach" href="#/respond">Help me find a church</a></div>
-    <div class="sp2"></div><p class="h2">Churches near you</p><p class="p" style="margin-top:4px">Search by postcode or suburb. Listed from each church’s own website.</p><div class="sp"></div>
-    <form id="cf" class="row" role="search" style="gap:8px"><input class="input grow" id="cf-q" inputmode="search" autocomplete="postal-code" placeholder="Postcode or suburb" value="${esc(q.get('q') || S.settings.pc || '')}" aria-label="Postcode or suburb"><button class="btn" style="width:auto;padding:0 20px">Search</button></form>
-    <div class="sp"></div><div id="cf-res" aria-live="polite"></div>
+    <div class="sp2"></div><div class="card"><p class="h3">A list of partner churches is coming</p><p class="p">We&rsquo;re building a list of churches that have chosen to share their details. Until then, tap &ldquo;Help me find a church&rdquo; and a church nearby, or our care team, will be in touch.</p></div>
     <div class="sp2"></div><div class="list">
       <a class="li" href="https://alwaysfoundation.org/#/join/church" target="_blank" rel="noopener"><span class="ico">${ic('church')}</span><div class="grow"><div class="t">Are you a church?</div><div class="s">Partner with Always, free for churches and ministries</div></div><span class="chev">${ic('right', 18)}</span></a>
       <a class="li" href="https://alwaysfoundation.org" target="_blank" rel="noopener"><span class="ico peach">${ic('globe')}</span><div class="grow"><div class="t">About the Always Foundation</div><div class="s">Together for the Gospel</div></div><span class="chev">${ic('right', 18)}</span></a>
     </div>`, { tab: 'home' });
-  const CH = window.AC_CHURCHES || [];
-  const find = (raw) => {
-    const t = raw.trim().toLowerCase(); if (!t) return [];
-    if (/^\d{4}$/.test(t)) { const n = +t; return CH.filter((c) => c[5]).map((c) => [Math.abs(+c[5] - n), c]).filter(([d]) => d <= 40).sort((x, y) => x[0] - y[0]).slice(0, 15).map(([, c]) => c); }
-    return CH.filter((c) => (c[3] || '').toLowerCase().includes(t) || c[0].toLowerCase().includes(t)).slice(0, 15);
-  };
-  const inviting = !!window.INVITE;
-  const show = () => {
-    const v = $('#cf-q').value, res = find(v);
-    if (/^\d{4}$/.test(v.trim())) { S.settings.pc = v.trim(); save(); }
-    $('#cf-res').innerHTML = !v.trim() ? '' : res.length ? `<div class="list">${res.map((c, i) => `<div class="li cf-li"><span class="ico ${c[1] === 'm' ? 'sand' : ''}">${ic('church')}</span><div class="grow"><div class="t">${esc(c[0])}</div><div class="s">${esc([c[3], c[4], c[5]].filter(Boolean).join(' '))}${c[2] ? ' · ' + esc(c[2]) : ''}</div>
-      <div class="cf-acts">${c[6] ? `<a class="chip" href="https://${esc(c[6])}" target="_blank" rel="noopener">${ic('ext', 14)}Website</a>` : ''}<button class="chip" data-inv="${i}">${ic('send', 14)}${inviting ? 'Invite them here' : 'Invite a friend'}</button></div></div></div>`).join('')}</div>`
-      : `<div class="card"><p class="h3">No churches found nearby yet</p><p class="p">Try a nearby suburb or postcode. Or use “Ask for help” above and a church or our care team will be in touch.</p></div>`;
-    $$('[data-inv]').forEach((bt) => (bt.onclick = () => { const c = res[+bt.dataset.inv]; window.INVITE = Object.assign(window.INVITE || {}, { church: [c[0], c[3]].filter(Boolean).join(', ') }); location.hash = '#/invite'; }));
-  };
-  $('#cf').onsubmit = (e) => { e.preventDefault(); show(); };
-  if ($('#cf-q').value) show();
 });
 
 // ---------------------------------------------------------------- Me

@@ -397,9 +397,6 @@ main { padding-bottom: calc(68px + var(--safe-b) + 40px); }
 .ts-read { white-space: pre-line; padding: 22px; border-radius: 22px; background: var(--card); border: 1px solid var(--line); font: 400 20px/1.6 Newsreader, Georgia, serif; color: var(--ink); }
 @media (max-width: 360px) { .jr { grid-template-columns: repeat(2, 1fr); } }
 
-.cf-li { align-items: flex-start; }
-.cf-acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.cf-acts .chip { min-height: 40px; display: inline-flex; align-items: center; gap: 6px; padding: 0 14px; text-decoration: none; }
 [data-theme="dark"] input[type="time"], [data-theme="dark"] input[type="date"] { color-scheme: dark; }
 
 .dbs-q { margin: 8px 0 12px; padding-left: 22px; color: var(--soft); line-height: 1.55; }

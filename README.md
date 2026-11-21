@@ -1,6 +1,6 @@
 # alwaysfoundation.org
 
-The Always Foundation website: who we are, the church directory, docs, events, claim your church, and ideas and problems.
+The Always Foundation website: who we are, docs, stories, partnering with Always, and ideas and problems.
 
 ## Build
 
@@ -8,7 +8,7 @@ The Always Foundation website: who we are, the church directory, docs, events, c
 cd src && python3 build_site.py   # writes ../index.html
 ```
 
-The site is one self-contained page with hash routes (`#/directory`, `#/docs/…`, `#/claim`, `#/feedback`). Forms post to the Always API when `API_BASE` is set in `build_site.py`.
+The site is one self-contained page with hash routes (`#/docs/…`, `#/join/church`, `#/feedback`). Forms post to the Always API when `API_BASE` is set in `build_site.py`.
 
 ## Licences
 
