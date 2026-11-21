@@ -343,6 +343,26 @@ GLOSSARY = """
 """
 
 
+AI_DOC = """<p class="lead">Always AI is a research prototype: an open-weights model, instructions written by Always with the Nicene Creed (AD 381) built in, and a published prompt checker. It is not available yet, and may not prove good enough to offer. See the <a href="#/ai-research">research note</a>.</p>
+<h2>What it is made of</h2>
+<ul><li><b>Base model.</b> Inkling 2 Mini from Thinking Machines Lab, open weights under Apache 2.0, about 20 GB. Each new open model is tested before we recommend it.</li>
+<li><b>Instructions.</b> A published system prompt carrying the full Nicene Creed, rules for matters on which churches differ, care and safety referrals, the children&rsquo;s information rule, and draft-only actions.</li>
+<li><b>Church library</b> (next stage, local only). A church&rsquo;s own statement of faith and documents, searched on the church&rsquo;s computer and supplied to the model when relevant.</li>
+<li><b>Prompt checker.</b> 31 cases across eleven categories, run against any OpenAI-compatible endpoint, with every transcript recorded.</li></ul>
+<h2>Data rules</h2>
+<table><thead><tr><th>Information</th><th>Local</th><th>Hosted in Australia</th></tr></thead><tbody>
+<tr><td>Adults&rsquo; details</td><td>Allowed</td><td>Allowed; processed and not kept</td></tr>
+<tr><td>Pastoral notes</td><td>Only if the senior leader turns it on</td><td>Not allowed</td></tr>
+<tr><td>Anything identifying a person under 18</td><td>Never</td><td>Never</td></tr></tbody></table>
+<h2>Try the prototype</h2>
+<p>For developers with a computer that can run the model (a Mac with 32 GB or more):</p>
+<pre><code>ollama pull &lt;inkling-2-mini tag&gt;
+npm run ai:modelfile -- &lt;that tag&gt;
+ollama create always-ai -f packages/ai/Modelfile
+npm run ai:eval</code></pre>
+<p>Never put real personal information into a test. The code, instructions and checker are in <a href="https://github.com/alwaysfoundation/always-platform/pull/42">pull request 42</a>, with the design in RFC 0007.</p>"""
+
+
 def brand_body(DOCS):
     import re, pages as P
     b = P.BRAND
@@ -393,6 +413,8 @@ def apply(DOCS):
     edit('branding', 'In the console, set', 'In Always Respond, set')
     set_page('branding', title='Your own brand')
     set_page('results', title='Reports for your funders')
+    gi, pi = find('results')
+    DOCS[gi][1].insert(pi + 1, ('always-ai', 'Always AI (research)', AI_DOC))
     set_page('inbox', title='Welcome from your phone')
     edit('inbox', 'The Always Connect inbox works', 'Your Always Connect inbox works')
 
@@ -430,6 +452,7 @@ def apply(DOCS):
         ('Always Connect', [('inbox', 'Always Connect', ['inbox', 'your-page', 'capacity', 'ready', 'welcoming']), ('always-agent', 'Agents', ['always-agent'])]),
         ('Always Safety', [('compliance-overview', 'Always Safety', ['compliance-overview', 'compliance', 'compliance-register', 'compliance-review']), ('compliance-api', 'Safety API for platforms', ['compliance-api', 'compliance-platforms'])]),
         ('Always Reports', [('results', 'Reports for your funders', ['results'])]),
+        ('Always AI', [('always-ai', 'Always AI (research)', ['always-ai'])]),
         ('Integrations', [('integrations', 'Integrations', ['integrations', 'int-chms', 'int-messaging', 'int-automation'])]),
         ('Developers', [('api', 'API and webhooks', ['api', 'webhooks']), ('sdk', 'SDK', ['sdk']), ('standard', 'Handoff standard and consent', ['standard', 'consent']), ('feed', 'Church feed and AI assistants', ['feed', 'mcp']), ('youversion', 'Scripture with YouVersion', ['youversion'])]),
         ('Trust and privacy', [('privacy', 'Privacy', ['privacy', 'your-choices']), ('security', 'Security and AI', ['security', 'ai']), ('young-people', 'Children and young people', ['young-people']), ('terms', 'Terms and policies', ['terms', 'policies'])]),

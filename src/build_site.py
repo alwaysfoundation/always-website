@@ -35,6 +35,9 @@ home = home.replace('{{ALPHA_IMG}}', _photo('alpha-photo.jpg'))
 import research as RX
 _t = home.index('<ul class="cs-track" role="list">'); _e = home.index('</ul>', _t)
 home = home[:_e] + RX.TILE + '\n' + home[_e:]
+import always_ai as AI
+_e = home.index('</ul>', _t)
+home = home[:_e] + AI.TILE + '\n' + home[_e:]
 import shutil as _sh; os.makedirs(os.path.join(ROOT, '..', 'img'), exist_ok=True); _sh.copyfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), os.path.join(ROOT, '..', 'img', 'alpha-logo.png'))
 home = home.replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png').replace('{{DBS_TILE}}', _photo('dbs-illustration.png')).replace('{{CEXP_TILE}}', _photo('cexp-booklet.png'))
 home = home.replace('{{STREET_IMG}}', _photo('sydney-street.jpg'))
@@ -529,6 +532,10 @@ PR.TITLES['mycompliance'] = 'Your safety check-up · Always Foundation'
 PR.TITLES['integrations'] = 'Integrations · Always Foundation'
 PR.NEW_PAGES['streets'] = ST.STREETS
 PR.NEW_PAGES[RX.SLUG] = RX.PAGE
+import always_ai as AI
+PR.NEW_PAGES[AI.PRODUCT_SLUG] = AI.PRODUCT
+PR.NEW_PAGES[AI.RESEARCH_SLUG] = AI.RESEARCH
+PR.TITLES.update(AI.TITLES)
 PR.TITLES[RX.SLUG] = RX.TITLE
 PR.NEW_PAGES['dbs'] = ST.DBS
 PR.NEW_PAGES['cexp'] = ST.CEXP
@@ -1099,7 +1106,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => e
 function watch(root) { root.querySelectorAll('.rv:not(.in)').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io ? io.observe(el) : el.classList.add('in'); }); }
 
 // Router
-const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', feedback: 'page-feedback', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact', join: 'page-join'""" + ''.join(f", {k}: 'page-{k}'" for k in PR.NEW_PAGES) + """ };
+const pages = { home: 'page-home', about: 'page-about', docs: 'page-docs', churches: 'page-churches', ministries: 'page-ministries', app: 'page-app', faq: 'page-faq', feedback: 'page-feedback', platform: 'page-platform', compliance: 'page-compliance', developers: 'page-developers', hello: 'page-hello', contact: 'page-contact', join: 'page-join'""" + ''.join(f", '{k}': 'page-{k}'" for k in PR.NEW_PAGES) + """ };
 const anchors = { how: 'heart', stories: 'stories' };
 function route() {
   const h = location.hash.replace(/^#\\/?/, '');
@@ -1248,7 +1255,7 @@ document.querySelectorAll('[data-interest]').forEach((b) => b.addEventListener('
   f.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
   const n = f.querySelector('input[name="name"]'); if (n) setTimeout(() => n.focus({ preventScroll: true }), 400);
 }));
-""" + CA.JS + RX.JS + CP.JS + extras.JS + DV.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS + HM.JS + SC.JS
+""" + CA.JS + RX.JS + AI.JS + CP.JS + extras.JS + DV.JS + PR.MENU_JS + CF.JS + JN.JS + PO.JS + MO.JS + HM.JS + SC.JS
 script = script.replace('__DIR__', directory).replace('__DOCS__', json.dumps(pages_json, ensure_ascii=False)).replace('__ORDER__', json.dumps(order)).replace('__ALIAS__', json.dumps(DU.ALIAS))
 
 footer = """
@@ -1277,7 +1284,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{RX.CSS}{RX.TILE_CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{RX.CSS}{RX.TILE_CSS}{AI.CSS}{AI.TILE_CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>

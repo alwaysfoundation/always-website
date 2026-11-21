@@ -175,7 +175,7 @@ def menu_html():
     """Platform and Solutions drop-downs for the main menu."""
     plat = '<p class="dd-h">Modules</p><div class="dd-mods">' + ''.join(
         f'<a href="#/{PRODUCTS[s][0]}" data-route="{PRODUCTS[s][0]}">{_icon(s)}<span class="dd-tx"><b>{PRODUCTS[s][1]}</b><span>{MENU_LINE[s]}</span></span></a>'
-        for s in PRODUCTS) + '</div><a class="dd-sol-foot dd-int" href="#/integrations" data-route="integrations">Works with Elvanto, Planning Center, Humanitix and more <b>Integrations</b></a>'
+        for s in PRODUCTS) + '</div><a class="dd-sol-foot dd-int" href="#/ai" data-route="ai">Open, private AI for churches, in research <b>Always AI</b></a><a class="dd-sol-foot dd-int" href="#/integrations" data-route="integrations">Works with Elvanto, Planning Center, Humanitix and more <b>Integrations</b></a>'
     feature = ('<a class="dd-feature" href="#/platform" data-route="platform"><span class="dd-f-k">Always Platform</span>'
                '<b>Built once. Shared freely.</b><span class="dd-f-sw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>'
                '<span class="dd-f-l">See how it fits together</span></a>')
