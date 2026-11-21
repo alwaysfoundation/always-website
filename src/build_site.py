@@ -32,6 +32,9 @@ def _photo(name, maxw=800, q=64):
   return 'img/' + out
 home = home.replace('{{UEN_STUDIO}}', _photo('uen-studio.jpg')).replace('{{TGH_IMG}}', _photo('tgh-baptism.jpg')).replace('{{NEEDGOD_IMG}}', _photo('needgod-cross.jpg'))
 home = home.replace('{{ALPHA_IMG}}', _photo('alpha-photo.jpg'))
+import research as RX
+_t = home.index('<ul class="cs-track" role="list">'); _e = home.index('</ul>', _t)
+home = home[:_e] + RX.TILE + '\n' + home[_e:]
 import shutil as _sh; os.makedirs(os.path.join(ROOT, '..', 'img'), exist_ok=True); _sh.copyfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img', 'alpha-logo.png'), os.path.join(ROOT, '..', 'img', 'alpha-logo.png'))
 home = home.replace('{{ALPHA_LOGO}}', 'img/alpha-logo.png').replace('{{DBS_TILE}}', _photo('dbs-illustration.png')).replace('{{CEXP_TILE}}', _photo('cexp-booklet.png'))
 home = home.replace('{{STREET_IMG}}', _photo('sydney-street.jpg'))
@@ -1276,7 +1279,7 @@ doc = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
-<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{RX.CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
+<style>{css}{extra_css}{extras.CSS}{P.CSS}{P.BRAND_CSS}{P.PLATFORM_CSS}{CP.CSS}{CA.CSS}{PR.CSS}{DECK_CSS}{DV.CSS}{CF.CSS}{JN.CSS}{DU.CSS}{FT.CSS}{CH.CSS}{SP.CSS}{ST.CSS}{RX.CSS}{RX.TILE_CSS}{IG.CSS}{SC.CSS}{HM.CSS}{HM.ABOUT_CSS}{RS.CSS}{RS.FLOW_CSS}{HM.SEAM_CSS}{HM.MENU_CSS}{PO.CSS}{MO.CSS}</style>
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
